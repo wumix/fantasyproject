@@ -27,7 +27,7 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label>Name</label>
-                            <input required value="{!! old('name') !!}" class="form-control" id="name" placeholder="Enter Clients Name" type="text" name="name">
+                            <input required value="{!! old('name') !!}" class="form-control" id="name" placeholder="Add Games name" type="text" name="name">
                         </div>
                         <div class="form-group">
                             <label>Email</label>

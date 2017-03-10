@@ -17,7 +17,7 @@ class Games extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            
+            $table->enum('is_active',[0,1])->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -1,0 +1,101 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Game;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class GamesController extends Controller {
+
+    protected $objGame;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->objGame = new Game;
+    }
+
+    public function index() {
+
+        $this->objGame = Game::all()->toArray();
+        $data['games_list'] = $this->objGame; //list of games form games table   
+        return view('adminlte::games.games_list', $data);
+    }
+
+    public function showAddView() {
+
+        return view('adminlte::games.games_add');
+    }
+
+    function addPost($gameId = null) {
+        $objGame = $this->objGame->firstOrNew(['id' => $gameId]);
+        $objGame->name = Input::get('name');
+        $objGame->save();
+        $lastInsertId = $objGame->id;
+        return redirect()->route('editGameForm', ['game_id' => $lastInsertId]);
+//        //echo ('neufhriq');
+//
+//        $this->objGame->name = Input::get('name');
+//        $this->objGame->save();
+//        return redirect()->back();
+//        //return view('adminlte::games.games_add');
+    }
+
+    function editGameForm($game_id) {
+
+        $games = Game::where('id', $game_id)->first();
+        if (!empty($games)) {
+            $games = $games->toArray();
+        }
+
+        // dd($games);
+
+        $data['result'] = $games;
+        // $data=$result;
+        return view('adminlte::games.games_edit', $data);
+
+        //return view('adminlte::games.games_add');
+    }
+
+    function deleteGame() {
+        echo 'delet gmae';
+        die;
+        $game = new Game;
+        $game->name = Input::get('name');
+        $game->save();
+        return redirect()->back();
+        //return view('adminlte::games.games_add');
+    }
+
+    function view_games() {
+
+        $data['payment'] = $payment;
+        return view('admin.payment.paymentDetailList', $data);
+    }
+
+    function editGamePost($game_id = NULL) {
+        //  dd(Input::all());
+        // echo Input::get('id');
+//        echo Input::get('gameid');
+//        die;//
+        $this->objGame = Game::find(Input::get('id'));
+
+        $this->objGame->name = Input::get('gamename');
+        $this->objGame->is_active = Input::get('is_active');
+        $this->objGame->save();
+        return redirect()->route('editGameForm', ['game_id' => Input::get('id')]);
+    }
+
+//    function view_games() {
+//
+//        $data['payment'] = $payment;
+//        return view('admin.payment.paymentDetailList', $data);
+//    }
+}

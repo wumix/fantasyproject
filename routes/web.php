@@ -10,13 +10,11 @@
   | contains the "web" middleware group. Now create something great!
   |
  */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
 });
-
-
-
 
 //Admin routes
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
@@ -32,11 +30,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
         Route::get('/delete/{game_id}', 'Admin\GamesController@deleteGame')->name('deleteGame');
         Route::post('/addRolePost', 'Admin\GamesController@addRolePost')->name('addGameRole');
         //  Route::post('/addRole', 'Admin\GamesController@addEditRole')->name('addGameRolePost');
-        Route::get('/orders',function(){
-            $order=  App\Game::with('gameRoles')->get()->toArray();
+        Route::get('/orders', function() {
+            $order = App\Game::with('gameRoles')->get()->toArray();
         });
-        
-        
+
+
         // Route::get('/postEditGame/{game_id}', 'Admin\GamesController@deleteGame')->name('postEditGame');
         //Route::get('/edit/{id}', 'Admin\GamesController@addOrEditPost')->name('editGame');
     });

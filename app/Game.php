@@ -10,6 +10,9 @@ class Game extends Model {
     protected $fillable = [
         'name', 'is_active', 'created_at', 'updated_at'
     ];
-    
+
+    public function game_roles() {
+        return $this->hasMany('App\GameRole');
+    }
 
 }

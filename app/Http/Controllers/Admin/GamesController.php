@@ -50,13 +50,11 @@ class GamesController extends Controller {
 
     function editGameForm($game_id) {
 
-        $games = Game::where('id', $game_id)->first();
+        $games = Game::where('id', $game_id)->with('game_roles')->first();
         if (!empty($games)) {
             $games = $games->toArray();
         }
-
-        // dd($games);
-
+        
         $data['result'] = $games;
         // $data=$result;
         return view('adminlte::games.games_edit', $data);
@@ -76,15 +74,12 @@ class GamesController extends Controller {
 
     function view_games() {
 
-        $data['payment'] = $payment;
-        return view('admin.payment.paymentDetailList', $data);
+//        $data['payment'] = $payment;
+//        return view('admin.payment.paymentDetailList', $data);
     }
 
     function editGamePost($game_id = NULL) {
-        //  dd(Input::all());
-        // echo Input::get('id');
-//        echo Input::get('gameid');
-//        die;//
+
         $this->objGame = Game::find(Input::get('id'));
 
         $this->objGame->name = Input::get('gamename');
@@ -93,9 +88,23 @@ class GamesController extends Controller {
         return redirect()->route('editGameForm', ['game_id' => Input::get('id')]);
     }
 
-//    function view_games() {
-//
-//        $data['payment'] = $payment;
-//        return view('admin.payment.paymentDetailList', $data);
-//    }
+    function addRolePost($game_id = NULL) {
+        //dd(Input::all()); //to debug post
+        $game_id = Input::get('id');
+         $a = \App\GameRole::find($game_id);
+         dd($a);
+         $a->delete();
+         
+         die;
+        $gameRoles = [];
+        foreach (Input::get('role_name') as $role_name) {
+            $gameRoles[] = [
+                'game_id' => $game_id,
+                'name' => $role_name
+            ];
+        }
+        \App\GameRole::insert($gameRoles);
+        return redirect()->back();
+    }
+
 }

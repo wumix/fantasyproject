@@ -39,6 +39,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{route('addGame')}}">Add Games</a></li>
                     <li><a href="{{route('gameslist')}}">Games List</a></li>
+                    <li><a href="{{route('addGameRole')}}">Add Game Roles</a></li>
                 </ul>
             </li>
             <!-- Optionally, you can add icons to the links -->

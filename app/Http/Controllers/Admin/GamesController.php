@@ -94,7 +94,7 @@ class GamesController extends Controller {
          $a = \App\GameRole::where('game_id', $game_id)->delete();
         
         $gameRoles = [];
-        foreach (Input::get('role_name') as $role_name) {
+        foreach (array_filter(Input::get('role_name')) as $role_name) {
             $gameRoles[] = [
                 'game_id' => $game_id,
                 'name' => $role_name

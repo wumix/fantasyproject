@@ -21,7 +21,6 @@ Route::get('/', function () {
 //Admin routes
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('/', 'Admin\DashboardController@index');
-
     //Games routes
     Route::group(['prefix' => 'games'], function () {
         Route::get('/', 'Admin\GamesController@index')->name('gameslist');

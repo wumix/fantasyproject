@@ -17,9 +17,9 @@ class PlayersController extends Controller {
 
     public function index() {
 
-        $this->objplayer = Game::all()->toArray();
-        $data['games_list'] = $this->objplayer; //list of games form games table   
-        return view('adminlte::games.games_list', $data);
+        $this->objplayer = \App\Player::all()->toArray();
+        $data['player_list'] = $this->objplayer; //list of games form games table   
+        return view('adminlte::players.players_list', $data);
     }
 
     public function addPlayerForm() {
@@ -36,23 +36,35 @@ class PlayersController extends Controller {
     }
 
     public function addPlayer() {
-        dd(Input::all()); //to debug post
+        //  dd(Input::all()); //to debug post
         $objplayer = new \App\Player;
-        //$objPlayerRoles= new \App\;
+       // $objPlayerRoles = new \App\PlayerRole;
         $objplayer->name = Input::get('name');
         $objplayer->game_id = Input::get('game_id');
         $objplayer->save();
-        $lastInsertId = $objGame->id;
 
-        $gameRoles = [];
-        foreach (array_filter(Input::get('player_roles')) as $role_name) {
-            $gameRoles[] = [
-                'game_id' => $game_id,
-                'name' => $role_name,
-                'player_id' => $lastInsertId
-            ];
+        $lastInsertId = $objplayer->id;
+
+        $objPlayer = \App\Player::find($lastInsertId);
+        $objPlayer->player_roles()->sync(array_filter(Input::get('player_roles')));
+
+        return redirect()->route('editGameForm', ['game_id' => $lastInsertId]);
+    }
+
+    function editPlayerForm($player_id) {
+        try {
+            $data['player'] = \App\Player::where('id', $player_id)
+                    ->with('player_games', 'player_games.game_roles', 'player_roles')
+                    ->firstOrFail()
+                    ->toArray();
+            $data['player']['player_roles'] = array_flatten(array_column($data['player']['player_roles'], 'id'));
+            $this->objplayer = Game::all()->toArray();
+            $data['gameslist'] = $this->objplayer;
+            //dd($data);
+            return view('adminlte::players.player_edit', $data);
+        } catch (ModelNotFoundException $ex) {
+            
         }
-        \App\Player::insert($gameRoles);
     }
 
 }

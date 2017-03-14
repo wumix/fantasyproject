@@ -50,11 +50,12 @@ class GamesController extends Controller {
 
     function editGameForm($game_id) {
 
-        $games = Game::where('id', $game_id)->with('game_roles')->first();
+        $games = Game::where('id', $game_id)->with('game_roles', 'game_terms')->first();
+
         if (!empty($games)) {
             $games = $games->toArray();
-        }
-        
+        } // check this later give error trhen game id has no realted data ::handle exception
+        //dd($games);
         $data['result'] = $games;
         // $data=$result;
         return view('adminlte::games.games_edit', $data);
@@ -91,8 +92,8 @@ class GamesController extends Controller {
     function addRolePost($game_id = NULL) {
         //dd(Input::all()); //to debug post
         $game_id = Input::get('id');
-         $a = \App\GameRole::where('game_id', $game_id)->delete();
-        
+        $a = \App\GameRole::where('game_id', $game_id)->delete();
+
         $gameRoles = [];
         foreach (array_filter(Input::get('role_name')) as $role_name) {
             $gameRoles[] = [
@@ -101,6 +102,23 @@ class GamesController extends Controller {
             ];
         }
         \App\GameRole::insert($gameRoles);
+        return redirect()->back();
+    }
+
+    function addTermPost() {
+       //dd(Input::all()); //to debug post
+        $game_id = Input::get('id');
+        $a = \App\GameTerm::where('game_id', $game_id)->delete();
+
+        $gameRoles = [];
+        foreach (array_filter(Input::get('term_name')) as $role_name) {
+            $gameRoles[] = [
+                'game_id' => $game_id,
+                'name' => $role_name
+            ];
+        }
+       // dd($gameRoles);
+        \App\GameTerm::insert($gameRoles);
         return redirect()->back();
     }
 

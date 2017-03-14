@@ -31,13 +31,17 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
         Route::post('/edit', 'Admin\GamesController@editGamePost')->name('postEditGame');
         Route::get('/delete/{game_id}', 'Admin\GamesController@deleteGame')->name('deleteGame');
         Route::post('/addRolePost', 'Admin\GamesController@addRolePost')->name('addGameRole');
+        Route::post('/addTerm', 'Admin\GamesController@addTermPost')->name('addGameTerm');
     });
 
     //Players routes
     Route::group([ 'prefix' => 'palyers'], function () {
-        Route::get('/', 'Admin\GamesController@index')->name('gameslist');
+        Route::get('/', 'Admin\PlayersController@index')->name('playerslist');
         Route::get('/add', 'Admin\PlayersController@addPlayerForm')->name('addPlayer'); //shows add player form
         Route::post('/postAddPlayer', 'Admin\PlayersController@addPlayer')->name('postAddPlayer'); 
+        Route::post('/edit', 'Admin\PlayersController@editPlayerForm')->name('editPlayer'); 
+        
+         Route::get('/edit/{player_id}', 'Admin\PlayersController@editPlayerForm')->name('editPlayerForm');
         Route::get('/ajax_get_game_terms', 'Admin\PlayersController@get_game_roles')->name('ajax_get_game_terms');
     });
 });

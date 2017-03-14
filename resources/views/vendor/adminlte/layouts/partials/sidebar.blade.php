@@ -47,6 +47,7 @@
                 <ul class="treeview-menu">
                   
                     <li><a href="{{route('addPlayer')}}">Add Player</a></li>
+                    <li><a href="{{route('playerslist')}}">Players List</a></li>
                 </ul>
             </li>
             <!-- Optionally, you can add icons to the links -->

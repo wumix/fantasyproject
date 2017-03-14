@@ -3,10 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/wamp64/www/gamithon/app/Http/Middleware/TrimStrings.php</file>
             <file>file:/C:/wamp64/www/gamithon/app/Http/Middleware/CheckAdmin.php</file>
             <file>file:/C:/wamp64/www/gamithon/routes/web.php</file>
             <file>file:/C:/wamp64/www/gamithon/app/Http/Kernel.php</file>
+=======
+            <file>file:/C:/wamp64/www/gamithon/app/GameRole.php</file>
+            <file>file:/C:/wamp64/www/gamithon/app/PlayerRole.php</file>
+            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/layouts/partials/sidebar.blade.php</file>
+            <file>file:/C:/wamp64/www/gamithon/app/Http/Controllers/Admin/PlayersController.php</file>
+            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/players/players_list.blade.php</file>
+            <file>file:/C:/wamp64/www/gamithon/app/Game.php</file>
+            <file>file:/C:/wamp64/www/gamithon/app/User.php</file>
+            <file>file:/C:/wamp64/www/gamithon/routes/web.php</file>
+            <file>file:/C:/wamp64/www/gamithon/app/Player.php</file>
+            <file>file:/C:/wamp64/www/gamithon/app/Http/Controllers/Admin/GamesController.php</file>
+>>>>>>> f7299874d997a52f2cb8ef887f979ae507522a8b
         </group>
     </open-files>
 </project-private>

@@ -1,4 +1,4 @@
-<?php //dd($result);     ?>
+<?php //dd($result);      ?>
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
@@ -42,22 +42,46 @@
                         <div class="form-group">
                             <label>Roles</label>
                             <input type="hidden" name="id" value="{{$result['id']}}"/>
-                            
+
                             @foreach($result['game_roles'] as $key => $val)
                             <input class="form-control" name="role_name[]" value="{{$val['name']}}" type="text" placeholder="" />
-                             
+
                             @endforeach
                             <input class="form-control" name="role_name[]" value="" type="text" placeholder="" />
                         </div>
-                        
+
                         <div class="form-group">
                             <button id="add_more_roles" name="add_more_roles" type="button" class="btn btn-success"> Add More </button>
                             <button type="submit" class="btn btn-primary">
-                               Add
+                                Add
                             </button>
                         </div>
                         {!! Form::close() !!}
                     </div>
+
+                    <div class="container-fluid">
+                        {!! Form::open(['url' => route('addGameTerm')]) !!}
+                        <div class="form-group">
+                            <label>Terms</label>
+                            <input type="hidden" name="id" value="{{$result['id']}}"/>
+
+                            @foreach($result['game_terms'] as $key => $val)
+                            <input class="form-control" name="term_name[]" value="{{$val['name']}}" type="text" placeholder="" />
+
+                            @endforeach
+                            <input class="form-control" name="term_name[]" value="" type="text" placeholder="" />
+                        </div>
+
+                        <div class="form-group">
+                            <button id="add_more_terms" name="add_more_terms" type="button" class="btn btn-success"> Add More </button>
+                            <button type="submit" class="btn btn-primary">
+                                Add
+                            </button>
+                        </div>
+                        {!! Form::close() !!}
+                    </div>
+
+                    
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -69,10 +93,15 @@
 
 @section('js')
 <script>
-$( "#add_more_roles" ).click(function( event ) {
-  event.preventDefault();
-  
- $( '<input  class="form-control" name="role_name[]" value="" type="text" placeholder="" />' ).insertBefore( "#add_more_roles" );
-});
+    $("#add_more_roles").click(function (event) {
+        event.preventDefault();
+
+        $('<input  class="form-control" name="role_name[]" value="" type="text" placeholder="" />').insertBefore("#add_more_roles");
+    });
+    $("#add_more_terms").click(function (event) {
+        event.preventDefault();
+
+        $('<input  class="form-control" name="term_name[]" value="" type="text" placeholder="" />').insertBefore("#add_more_terms");
+    });
 </script>
 @stop

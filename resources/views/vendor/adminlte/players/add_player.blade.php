@@ -24,11 +24,13 @@ Games
                         <label>Select Player Game</label>
                         <select id="game_id" class="custom-select form-control">
                             <option value="">Select</option>
+                            <?php $gameid;?>
                             @foreach($result as $row)
                             <option value="{{$row['id']}}">{{$row['name']}}</option>
-                            <input type="hidden" name="game_id" value="{{$row['id']}}"/>
+                             <?php $gameid=$row['id'];?>
                             @endforeach
                         </select>
+                        <input type="hidden" name="game_id" value=" <?php echo $gameid;?>"/>
                     </div>
                     <div class="form-group">
                         <label>Player roles</label>

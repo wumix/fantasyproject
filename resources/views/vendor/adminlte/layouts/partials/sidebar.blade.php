@@ -33,21 +33,29 @@
         <ul class="sidebar-menu">
             <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
 
-            
+
             <li class="treeview">
                 <a href="#"><i class='fa fa-link'></i> <span>GAMES</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('addGame')}}">Add Games</a></li>
                     <li><a href="{{route('gameslist')}}">Games List</a></li>
-                    
+
                 </ul>
             </li>
-             <li class="treeview">
+            <li class="treeview">
                 <a href="#"><i class='fa fa-link'></i> <span>Player</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                  
+
                     <li><a href="{{route('addPlayer')}}">Add Player</a></li>
                     <li><a href="{{route('playerslist')}}">Players List</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class='fa fa-link'></i> <span>Tournaments</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+
+                    <li><a href="">Add Tournament</a></li>
+                    <li><a href="">Tournaments List</a> </li>
                 </ul>
             </li>
             <!-- Optionally, you can add icons to the links -->

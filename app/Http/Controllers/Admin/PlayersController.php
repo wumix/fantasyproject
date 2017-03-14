@@ -37,7 +37,7 @@ class PlayersController extends Controller {
     }
 
     public function addPlayer() {
-        //  dd(Input::all()); //to debug post
+        // dd(Input::all()); //to debug post
         $objplayer = new \App\Player;
         // $objPlayerRoles = new \App\PlayerRole;
         $objplayer->name = Input::get('name');
@@ -49,7 +49,7 @@ class PlayersController extends Controller {
         $objPlayer = \App\Player::find($lastInsertId);
         $objPlayer->player_roles()->sync(array_filter(Input::get('player_roles')));
 
-        return redirect()->route('editGameForm', ['game_id' => $lastInsertId]);
+        return redirect()->route('editPlayerForm', ['player_id' => $lastInsertId]);
     }
 
     function editPlayerForm($player_id) { //shows player edit form
@@ -69,9 +69,10 @@ class PlayersController extends Controller {
     }
 
     function postEditPlayer() {
-        // dd(Input::all()); //to debug post
+         //dd(Input::all()); //to debug post
         $player = \App\Player::find(Input::get('player_id'));
         $player->name = Input::get('player_name');
+        $player->game_id = Input::get('game_id');
         $player->save();
         $objPlayer = \App\Player::find(Input::get('player_id'));
         $objPlayer->player_roles()->sync(array_filter(Input::get('player_role')));

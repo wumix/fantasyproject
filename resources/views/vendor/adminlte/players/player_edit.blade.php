@@ -1,4 +1,5 @@
 <?php
+//echo '<pre>'; print_r($gameslist);
 //echo '<pre>'; print_r($player);die;
 ?>
 @extends('adminlte::layouts.app')
@@ -18,20 +19,28 @@
                 </div>
                 <div class="box-body">
                     <div class="container-fluid">
-                        {!! Form::open(['url' => route('postEditGame')]) !!}
+                        {!! Form::open(['url' => route('editPlayer')]) !!}
                         <div class="form-group">
                             <label>Player Name</label>
                             <input type="hidden" name="player_id" value="{{$player['id']}}"/>
                             <input required class="form-control" name="player_name" value="{{$player['name']}}" type="text" placeholder="" />
                         </div>
                         <div class="form-group">
-                            <label>Player Current Game</label>
-                            <input disabled class="form-control" type="game_name" value="{{$player['player_games']['name']}}"/>
-
+                            <label>Change Game</label>
+                            <select id="game_id" name="game_id" class="custom-select form-control">
+                                <option value="">Select</option>
+                                <?php $gameid; ?>
+                                @foreach($gameslist as $row)
+                                <option 
+                                    <?php echo ($row['name'] == $player['player_games']['name']) ? 'selected' : '' ?> 
+                                    value="{{$row['id']}}">{{$row['name']}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">
-                            <label>Player Roles</label><br>
+                            <label>Player Roles</label>
+                            <div id="dynamic_player_roles">
                             @foreach($player['player_games']['game_roles'] as $key => $val)
                             {{$val['name']}}
                             <input
@@ -41,23 +50,14 @@
                                 <?php echo (in_array($val['id'], $player['player_roles'])) ? 'checked' : '' ?>
                                 />
                             @endforeach
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Change Game</label>
-                            <select id="game_id" class="custom-select form-control">
-                                <option value="">Select</option>
-                                <?php $gameid; ?>
-                                @foreach($gameslist as $row)
-                                <option value="{{$row['id']}}">{{$row['name']}}</option>
-                                <?php $gameid = $row['id']; ?>
-                                @endforeach
-                            </select>
-                            <input type="hidden" name="game_id" value=" <?php echo $gameid; ?>"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Player roles</label>
-                            <div id="dynamic_player_roles">No game roles defined.<!--Player roles will here--></div>
-                        </div>
+
+
+                        <!--                        <div class="form-group">
+                                                    <label>Player roles</label>
+                                                    <div id="dynamic_player_roles">No game roles defined.Player roles will here</div>
+                                                </div>-->
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">
                                 Update
@@ -86,6 +86,7 @@
 <script>
     $("#game_id").change(function (event) {
         var menuId = this.value;
+        
         $.ajax({
             type: 'GET',
             url: '{{route('ajax_get_game_terms')}}',
@@ -98,7 +99,7 @@
                 } else {
                     $.each(gameRoles, function (k, v) {
                         rolesHtml += '<label class="checkbox-inline">';
-                        rolesHtml += '<input name="player_roles[]" type="checkbox" value="' + v.id + '">' + v.name
+                        rolesHtml += '<input name="player_role[]" type="checkbox" value="' + v.id + '">' + v.name
                         rolesHtml += '</label>'
                     });
                 }

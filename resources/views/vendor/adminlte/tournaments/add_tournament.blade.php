@@ -11,7 +11,7 @@ Games
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Add Player</h3>
+                    <h3 class="box-title">Add Tournament</h3>
                 </div>
                 <div class="box-body">
                     {!! Form::open(['url' => route('postAddPlayer'),'files'=>true]) !!}
@@ -57,7 +57,6 @@ Games
 <script>
     $("#game_id").change(function (event) {
         var menuId = this.value;
-        
         $.ajax({
             type: 'GET',
             url: '{{route('ajax_get_game_terms')}}',

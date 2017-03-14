@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use \App\Game;
+use \App\Player;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
@@ -38,7 +39,7 @@ class PlayersController extends Controller {
     public function addPlayer() {
         //  dd(Input::all()); //to debug post
         $objplayer = new \App\Player;
-       // $objPlayerRoles = new \App\PlayerRole;
+        // $objPlayerRoles = new \App\PlayerRole;
         $objplayer->name = Input::get('name');
         $objplayer->game_id = Input::get('game_id');
         $objplayer->save();
@@ -51,7 +52,7 @@ class PlayersController extends Controller {
         return redirect()->route('editGameForm', ['game_id' => $lastInsertId]);
     }
 
-    function editPlayerForm($player_id) {
+    function editPlayerForm($player_id) { //shows player edit form
         try {
             $data['player'] = \App\Player::where('id', $player_id)
                     ->with('player_games', 'player_games.game_roles', 'player_roles')
@@ -65,6 +66,16 @@ class PlayersController extends Controller {
         } catch (ModelNotFoundException $ex) {
             
         }
+    }
+
+    function postEditPlayer() {
+        // dd(Input::all()); //to debug post
+        $player = \App\Player::find(Input::get('player_id'));
+        $player->name = Input::get('player_name');
+        $player->save();
+        $objPlayer = \App\Player::find(Input::get('player_id'));
+        $objPlayer->player_roles()->sync(array_filter(Input::get('player_role')));
+        return redirect()->route('editPlayerForm', ['player_id' => Input::get('player_id')]);
     }
 
 }

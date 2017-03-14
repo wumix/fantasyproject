@@ -91,13 +91,10 @@ class GamesController extends Controller {
     function addRolePost($game_id = NULL) {
         //dd(Input::all()); //to debug post
         $game_id = Input::get('id');
-         $a = \App\GameRole::find($game_id);
-         dd($a);
-         $a->delete();
-         
-         die;
+         $a = \App\GameRole::where('game_id', $game_id)->delete();
+        
         $gameRoles = [];
-        foreach (Input::get('role_name') as $role_name) {
+        foreach (array_filter(Input::get('role_name')) as $role_name) {
             $gameRoles[] = [
                 'game_id' => $game_id,
                 'name' => $role_name

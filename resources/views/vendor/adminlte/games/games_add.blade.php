@@ -17,7 +17,7 @@ Games
                     {!! Form::open(['url' => route('postAddGame')]) !!}
                     <div class="form-group">
                             <label>Name</label>
-                            <input required value="{!! old('name') !!}" class="form-control" id="name" placeholder="Enter Player Name" type="text" name="name">
+                            <input required value="{!! old('name') !!}" class="form-control" id="name" placeholder="Enter Game Name" type="text" name="name">
                         </div>
                         <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>

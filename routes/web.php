@@ -39,9 +39,15 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
         Route::get('/', 'Admin\PlayersController@index')->name('playerslist');
         Route::get('/add', 'Admin\PlayersController@addPlayerForm')->name('addPlayer'); //shows add player form
         Route::post('/postAddPlayer', 'Admin\PlayersController@addPlayer')->name('postAddPlayer'); 
-        Route::post('/edit', 'Admin\PlayersController@editPlayerForm')->name('editPlayer'); 
-        
-         Route::get('/edit/{player_id}', 'Admin\PlayersController@editPlayerForm')->name('editPlayerForm');
+        Route::post('/edit', 'Admin\PlayersController@postEditPlayer')->name('editPlayer'); 
+        Route::get('/edit/{player_id}', 'Admin\PlayersController@editPlayerForm')->name('editPlayerForm'); //show player edit form
         Route::get('/ajax_get_game_terms', 'Admin\PlayersController@get_game_roles')->name('ajax_get_game_terms');
+    });
+    //tournament routes
+     Route::group([ 'prefix' => 'tournament'], function () {
+       // Route::get('/', 'Admin\PlayersController@index')->name('playerslist');
+        Route::get('/add', 'Admin\TournamentsController@addTournamentForm')->name('addTournament'); //shows add player form
+        Route::post('/postAddTournament', 'Admin\TournamentsController@addTournament')->name('postAddTournament'); 
+      
     });
 });

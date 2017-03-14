@@ -52,7 +52,7 @@ class GamesController extends Controller {
 
         $games = Game::where('id', $game_id)->with('game_roles', 'game_terms')->first();
 
-        if (!empty($games)) {
+        if (!empty($games)) { 
             $games = $games->toArray();
         } // check this later give error trhen game id has no realted data ::handle exception
         //dd($games);

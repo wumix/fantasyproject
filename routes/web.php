@@ -44,10 +44,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
         Route::get('/ajax_get_game_terms', 'Admin\PlayersController@get_game_roles')->name('ajax_get_game_terms');
     });
     //tournament routes
-     Route::group([ 'prefix' => 'tournament'], function () {
+     Route::group([ 'prefix' => 'tournaments'], function () {
        // Route::get('/', 'Admin\PlayersController@index')->name('playerslist');
         Route::get('/add', 'Admin\TournamentsController@addTournamentForm')->name('addTournament'); //shows add player form
-        Route::post('/postAddTournament', 'Admin\TournamentsController@addTournament')->name('postAddTournament'); 
+        Route::post('/add', 'Admin\TournamentsController@add')->name('postAddTournament'); 
       
     });
 });

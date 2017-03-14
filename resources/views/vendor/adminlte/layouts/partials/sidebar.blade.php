@@ -54,7 +54,7 @@
                 <a href="#"><i class='fa fa-link'></i> <span>Tournaments</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
 
-                    <li><a href="">Add Tournament</a></li>
+                    <li><a href="{{route('addTournament')}}">Add Tournament</a></li>
                     <li><a href="">Tournaments List</a> </li>
                 </ul>
             </li>

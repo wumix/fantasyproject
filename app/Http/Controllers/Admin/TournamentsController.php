@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use \App\Game;
+use \App\Player;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
-class TournamentsController extends Controller
-{
+class TournamentsController extends Controller {
+
     protected $objplayer;
 
     function __construtct() {
@@ -19,15 +22,18 @@ class TournamentsController extends Controller
         $data['player_list'] = $this->objplayer; //list of games form games table   
         return view('adminlte::tournaments.tournaments_list', $data);
     }
-    public function addTournamentForm(){
-        $games = Game::where('id', $game_id)->with('game_roles', 'game_terms')->first();
 
-        if (!empty($games)) {
-            $games = $games->toArray();
-        } // check this later give error trhen game id has no realted data ::handle exception
-        //dd($games);
-        $data['result'] = $games;
-        // $data=$result;
-        return view('adminlte::games.add_tournament', $data);
+    public function addTournamentForm() {
+        $data['result'] = Game::all()->toArray();
+        return view('adminlte::tournaments.add_tournament', $data);
     }
+
+    function add(Request $request) {
+       // dd(Input::all()); //to debug post
+        $newTournament = new \App\Tournament;
+        $newTournament->name = $request->name;
+        $newTournament->game_id= $request->game_id;
+        $newTournament->save();
+    }
+
 }

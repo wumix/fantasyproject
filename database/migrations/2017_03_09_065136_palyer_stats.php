@@ -17,7 +17,7 @@ class PalyerStats extends Migration
             $table->increments('id');
          $table->string('name', 100);
          $table->integer('game_term_id')->unsigned();
-         $table->foreign('game_term_id')->references('id')->on('game_terms');
+         $table->foreign('game_term_id')->references('id')->on('game_terms')->onDelete('cascade');;
          $table->timestamps();
          $table->softDeletes();
          });

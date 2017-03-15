@@ -16,8 +16,10 @@ class Players extends Migration
          Schema::create('players', function (Blueprint $table) {
          $table->increments('id');
          $table->string('name', 100);
+         $table->string('profile_pic', 255);
          $table->integer('game_id')->unsigned();
-         $table->foreign('game_id')->references('id')->on('games');
+         $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
+         
          $table->timestamps();
          $table->softDeletes();
            });

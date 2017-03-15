@@ -19,6 +19,7 @@ class TournamentsController extends Controller {
     public function index() {
 
         $objplayer = \App\Tournament::all()->toArray();
+       // dd($objplayer);
         $data['tournaments_list'] = $objplayer; //list of games form games table   
         return view('adminlte::tournaments.tournaments_list', $data);
     }
@@ -42,6 +43,7 @@ class TournamentsController extends Controller {
 
     function editTournamentForm($tournament_id) {
 
+        
         $tour = \App\Tournament::where('id', $tournament_id)->with('tournament_game')->first();
 
         if (!empty($tour)) {
@@ -54,11 +56,31 @@ class TournamentsController extends Controller {
     }
 
     function postEditTournament() {
-       //dd( Input::all()); //to debug post
+        //dd( Input::all()); //to debug post
         $tour = \App\Tournament::find(Input::get('id'));
         $tour->fill(Input::all());
         $tour->save();
+
         return redirect()->route('editTournamentForm', ['tournament_id' => Input::get('id')]);
+    }
+    function showAddPlayerForm($tournament_id){
+        $objTP =  \App\Tournament::where('id', $tournament_id)->with('tournament_game', 'tournament_game.game_players')->first();
+        $objTP=$objTP->toArray();
+        $data['players_list'] =$objTP;
+        $objTP1 =  \App\Tournament::where('id', $tournament_id)->with('tournament_players')->first();
+        //dd($objTP1->toArray());
+        $data['tournament_players'] =$objTP1->toArray();
+        return view('adminlte::tournaments.add_tournament_players', $data);
+    }
+    function postAddTournamentPlayers(){
+        
+       // dd( Input::all()); //to debug post
+        $objPlayer = \App\Tournament::find(Input::get('tournament_id'));
+        $objPlayer->tournament_players()->sync(Input::get('player_id'));
+        
+         return redirect()->route('showAddPlayerForm', ['tournament_id' => Input::get('tournament_id')]);
+        
+        
     }
 
 }

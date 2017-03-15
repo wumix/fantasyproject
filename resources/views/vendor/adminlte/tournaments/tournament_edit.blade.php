@@ -53,6 +53,10 @@
                             <label>End Date</label>
                             <input required name="end_date" class="datetimepicker form-control"  type="text" value="{{$tournament_games['end_date']}}">
                         </div>
+                        <div class="form-group">
+                            <label>Max Players</label>
+                            <input required name="max_players" class=" form-control"  type="text" value="{{$tournament_games['max_players']}}">
+                        </div>
                         
 
                         <div class="form-group">

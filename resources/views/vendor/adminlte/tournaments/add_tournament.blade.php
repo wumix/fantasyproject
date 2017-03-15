@@ -1,7 +1,7 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-Games
+
 @endsection
 
 @section('main-content')
@@ -44,6 +44,11 @@ Games
                         <label>Venue</label>
                         <input name="venue" class="form-control"  type="text">
                     </div>
+                    <div class="form-group">
+                        <label>Max Players</label>
+                        <input required name="max_players" class="form-control"  type="text">
+                    </div>
+                    
                     <div class="form-group">
                         <label>Tournament Logo</label>
                         <input type="file"/>

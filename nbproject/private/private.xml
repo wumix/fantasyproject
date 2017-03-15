@@ -3,18 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/layouts/partials/htmlheader.blade.php</file>
-            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/layouts/app.blade.php</file>
-            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/layouts/partials/sidebar.blade.php</file>
+            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/tournaments/tournament_edit.blade.php</file>
+            <file>file:/C:/wamp64/www/gamithon/database/migrations/2017_03_09_063446_players.php</file>
             <file>file:/C:/wamp64/www/gamithon/app/Http/Controllers/Admin/TournamentsController.php</file>
             <file>file:/C:/wamp64/www/gamithon/app/Http/Controllers/Admin/PlayersController.php</file>
+            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/tournaments/add_tournament_players.blade.php</file>
             <file>file:/C:/wamp64/www/gamithon/app/Tournament.php</file>
-            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/layouts/partials/scripts.blade.php</file>
-            <file>file:/C:/wamp64/www/gamithon/public/mix-manifest.json</file>
             <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/tournaments/add_tournament.blade.php</file>
-            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/players/players_list.blade.php</file>
             <file>file:/C:/wamp64/www/gamithon/routes/web.php</file>
             <file>file:/C:/wamp64/www/gamithon/app/Player.php</file>
+            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/players/add_player.blade.php</file>
+            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/tournaments/tournaments_list.blade.php</file>
         </group>
     </open-files>
 </project-private>

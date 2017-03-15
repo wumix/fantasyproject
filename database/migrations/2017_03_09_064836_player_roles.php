@@ -18,7 +18,7 @@ class PlayerRoles extends Migration
          $table->integer('game_role_id')->unsigned();
          $table->foreign('game_role_id')->references('id')->on('game_roles');
          $table->integer('player_id')->unsigned();
-         $table->foreign('player_id')->references('id')->on('players');
+         $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');;
          $table->timestamps();
          $table->softDeletes();
         

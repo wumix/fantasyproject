@@ -6,33 +6,32 @@ use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 /**
  * Class RegisterController
  * @package %%NAMESPACE%%\Http\Controllers\Auth
  */
-class RegisterController extends Controller
-{
+class RegisterController extends Controller {
     /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
+      |--------------------------------------------------------------------------
+      | Register Controller
+      |--------------------------------------------------------------------------
+      |
+      | This controller handles the registration of new users as well as their
+      | validation and creation. By default this controller uses a trait to
+      | provide this functionality without requiring any additional code.
+      |
+     */
 
-    use RegistersUsers;
+use RegistersUsers;
 
     /**
      * Show the application registration form.
      *
      * @return \Illuminate\Http\Response
      */
-    public function showRegistrationForm()
-    {
+    public function showRegistrationForm() {
         return view('adminlte::auth.register');
     }
 
@@ -48,9 +47,20 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest');
+    public function __construct() {
+        //$this->middleware('guest');
+    }
+
+    /**
+     * Function by Umair Hamid
+     * Register user from admin
+     * @param Request $request
+     * @return type
+     */
+    public function postAddUserFromAdmin(Request $request) {
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        return redirect()->route('addUser')->with('status', 'User was added');
     }
 
     /**
@@ -59,14 +69,13 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
+    protected function validator(array $data) {
         return Validator::make($data, [
-            'name'     => 'required|max:255',
-            'username' => 'sometimes|required|max:255|unique:users',
-            'email'    => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-            'terms'    => 'required',
+                    'name' => 'required|max:255',
+                    'username' => 'sometimes|required|max:255|unique:users',
+                    'email' => 'required|email|max:255|unique:users',
+                    'password' => 'required|min:6|confirmed',
+                    'terms' => 'required',
         ]);
     }
 
@@ -76,16 +85,16 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
-    {
+    protected function create(array $data) {
         $fields = [
-            'name'     => $data['name'],
-            'email'    => $data['email'],
+            'name' => $data['name'],
+            'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ];
-        if (config('auth.providers.users.field','email') === 'username' && isset($data['username'])) {
+        if (config('auth.providers.users.field', 'email') === 'username' && isset($data['username'])) {
             $fields['username'] = $data['username'];
         }
         return User::create($fields);
     }
+
 }

@@ -17,7 +17,7 @@ class GameRoles extends Migration
          Schema::create('game_roles', function (Blueprint $table) {
          $table->increments('id');      
          $table->integer('game_id')->unsigned();
-         $table->foreign('game_id')->references('id')->on('games');
+         $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
          $table->string('name', 100);
          $table->timestamps();
          $table->softDeletes();

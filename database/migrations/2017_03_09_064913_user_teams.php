@@ -17,7 +17,7 @@ class UserTeams extends Migration
          $table->increments('id');
          $table->string('name', 100);
          $table->integer('tournament_id')->unsigned();
-         $table->foreign('tournament_id')->references('id')->on('tournaments');
+         $table->foreign('tournament_id')->references('id')->on('tournaments')->onDelete('cascade');;
          $table->timestamps();
          $table->softDeletes();
          

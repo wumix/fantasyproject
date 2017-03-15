@@ -8,7 +8,7 @@ class Player extends Model {
 
     protected $table = 'players';
     protected $fillable = [
-        'name', 'game_id', 'created_at', 'updated_at'
+        'name', 'game_id','profile_pic', 'created_at', 'updated_at'
     ];
 
     public function player_games() {
@@ -17,6 +17,9 @@ class Player extends Model {
 
     public function player_roles() {
         return $this->belongsToMany('App\GameRole', 'player_roles', 'player_id');
+    }
+    public function player_tournaments() {
+        return $this->belongsToMany('App\Tournament');
     }
 
 }

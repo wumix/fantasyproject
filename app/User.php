@@ -5,8 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
+
     use Notifiable;
 
     /**
@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'user_type'
     ];
 
     /**
@@ -26,4 +26,21 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Type casting of db columns
+     * @var type 
+     */
+    protected $casts = [
+        'user_type' => 'int',
+    ];
+
+    /**
+     * Check if this is an admin
+     * @return type
+     */
+    public static function isAdmin() {
+        return (\Auth::user()->user_type == 0) ? true : false;
+    }
+
 }

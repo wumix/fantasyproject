@@ -17,9 +17,12 @@ Route::get('/', function () {
 
 
 
-
+Route::group(['middleware' => 'web'], function () {
+    // Route::auth();
+    Route::get('/home', 'HomeController@index');
+});
 //Admin routes
-Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
+Route::group(['middleware' => ['is_admin', 'web'], 'prefix' => 'admin'], function () {
     Route::get('/', 'Admin\DashboardController@index');
     //Games routes
     Route::group(['prefix' => 'games'], function () {
@@ -48,4 +51,15 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
         Route::get('/add', 'Admin\TournamentsController@addTournamentForm')->name('addTournament'); //shows add player form
         Route::post('/postAddTournament', 'Admin\TournamentsController@addTournament')->name('postAddTournament');
     });
+
+    //User routes
+    Route::group(['prefix' => 'users'], function() {
+        Route::get('/', 'Admin\UsersController@index')->name('listUsers');
+        Route::get('/add', 'Admin\UsersController@addUser')->name('addUser');
+        Route::post('/add', 'Auth\RegisterController@postAddUserFromAdmin')->name('postAddUser');
+        Route::get('/edit', 'Auth\RegisterController@postAddUserFromAdmin')->name('editUser');
+        Route::post('/edit', 'Auth\RegisterController@postAddUserFromAdmin')->name('postEditUser');
+        Route::delete('/delete/{user_id}', 'Admin\UsersController@deleteUser')->name('deleteUser');
+    });
+    //End user routes
 });

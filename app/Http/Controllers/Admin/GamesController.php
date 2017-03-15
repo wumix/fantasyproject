@@ -106,7 +106,7 @@ class GamesController extends Controller {
     }
 
     function addTermPost() {
-       //dd(Input::all()); //to debug post
+        //dd(Input::all()); //to debug post
         $game_id = Input::get('id');
         $a = \App\GameTerm::where('game_id', $game_id)->delete();
 
@@ -117,7 +117,7 @@ class GamesController extends Controller {
                 'name' => $role_name
             ];
         }
-       // dd($gameRoles);
+        // dd($gameRoles);
         \App\GameTerm::insert($gameRoles);
         return redirect()->back();
     }

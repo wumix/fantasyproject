@@ -38,16 +38,17 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::group([ 'prefix' => 'palyers'], function () {
         Route::get('/', 'Admin\PlayersController@index')->name('playerslist');
         Route::get('/add', 'Admin\PlayersController@addPlayerForm')->name('addPlayer'); //shows add player form
-        Route::post('/postAddPlayer', 'Admin\PlayersController@addPlayer')->name('postAddPlayer'); 
-        Route::post('/edit', 'Admin\PlayersController@postEditPlayer')->name('editPlayer'); 
+        Route::post('/postAddPlayer', 'Admin\PlayersController@addPlayer')->name('postAddPlayer');
+        Route::post('/edit', 'Admin\PlayersController@postEditPlayer')->name('editPlayer');
         Route::get('/edit/{player_id}', 'Admin\PlayersController@editPlayerForm')->name('editPlayerForm'); //show player edit form
         Route::get('/ajax_get_game_terms', 'Admin\PlayersController@get_game_roles')->name('ajax_get_game_terms');
     });
     //tournament routes
-     Route::group([ 'prefix' => 'tournaments'], function () {
-       // Route::get('/', 'Admin\PlayersController@index')->name('playerslist');
+    Route::group([ 'prefix' => 'tournaments'], function () {
+        Route::get('/', 'Admin\TournamentsController@index')->name('Tournamentslist');
         Route::get('/add', 'Admin\TournamentsController@addTournamentForm')->name('addTournament'); //shows add player form
-        Route::post('/add', 'Admin\TournamentsController@add')->name('postAddTournament'); 
-      
+        Route::post('/add', 'Admin\TournamentsController@add')->name('postAddTournament');
+        Route::get('/edit/{tournament_id}', 'Admin\TournamentsController@editTournamentForm')->name('editTournamentForm');
+        Route::post('/edit', 'Admin\TournamentsController@postEditTournament')->name('editTournament');
     });
 });

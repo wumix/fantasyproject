@@ -12,7 +12,7 @@ class PlayersController extends Controller {
 
     protected $objplayer;
 
-    function __construtct() {
+    function __construct() {
         $this->objplayer = new Game;
     }
 

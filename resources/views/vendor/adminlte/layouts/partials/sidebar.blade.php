@@ -55,7 +55,7 @@
                 <ul class="treeview-menu">
 
                     <li><a href="{{route('addTournament')}}">Add Tournament</a></li>
-                    <li><a href="">Tournaments List</a> </li>
+                    <li><a href="{{route('Tournamentslist')}}">Tournaments List</a> </li>
                 </ul>
             </li>
             <!-- Optionally, you can add icons to the links -->

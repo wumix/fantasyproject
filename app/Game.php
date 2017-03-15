@@ -20,7 +20,7 @@ class Game extends Model {
         return $this->hasMany('App\GameTerm');
     }
      public function game_tournaments() {
-        return $this->hasMany('App\Tournament');
+        return $this->hasMany('App\Tournament','id');
     }
     
 

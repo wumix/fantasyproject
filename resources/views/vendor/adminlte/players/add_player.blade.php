@@ -17,20 +17,20 @@ Games
                     {!! Form::open(['url' => route('postAddPlayer'),'files'=>true]) !!}
                     <div class="form-group">
                         <label>Name</label>
-                        
-                        <input required value="{!! old('name') !!}" class="form-control" id="name" placeholder="Enter Player Name" type="text" name="name">
+
+                        <input required value="{!! old('name') !!}" class="form-control" id="name"
+                               placeholder="Enter Player Name" type="text" name="name">
                     </div>
                     <div class="form-group">
                         <label>Select Player Game</label>
                         <select id="game_id" name="game_id" class="custom-select form-control">
                             <option value="">Select</option>
-                            <?php $gameid;?>
+                            <?php $gameid; ?>
                             @foreach($result as $row)
                             <option value="{{$row['id']}}">{{$row['name']}}</option>
-                            
                             @endforeach
                         </select>
-                       
+
                     </div>
                     <div class="form-group">
                         <label>Player roles</label>
@@ -44,7 +44,9 @@ Games
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                     {!! Form::close() !!}
+                    <div class="form-group">
 
+                    </div>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -57,7 +59,7 @@ Games
 <script>
     $("#game_id").change(function (event) {
         var menuId = this.value;
-        
+
         $.ajax({
             type: 'GET',
             url: '{{route('ajax_get_game_terms')}}',

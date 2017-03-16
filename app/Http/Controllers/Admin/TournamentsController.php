@@ -64,8 +64,9 @@ class TournamentsController extends Controller {
 
     function editTournamentForm($tournament_id) {
         try {
+
             $data['tournament_games'] = \App\Tournament::where('id', $tournament_id)
-                            ->with('tournament_game', 'tournament_game.game_terms')
+                            ->with('tournament_game', 'tournament_game.game_terms', 'game_term_points')
                             ->firstOrFail()->toArray();
             $data['games'] = Game::all()->toArray();
             //dd($data['tournament_games']);
@@ -76,12 +77,13 @@ class TournamentsController extends Controller {
     }
 
     function postEditTournament() {
-        //dd( Input::all()); //to debug post
         $tour = \App\Tournament::find(Input::get('id'));
         $tour->fill(Input::all());
         $tour->save();
-
-        return redirect()->route('editTournamentForm', ['tournament_id' => Input::get('id')]);
+        //Inserting game_term_points
+        \App\TournamentGameTermPoint::insert(Input::get('tournament_game_term_points'));
+        return redirect()->route('editTournamentForm', ['tournament_id' => Input::get('id')])
+                        ->with('status', 'Tournament Updated');
     }
 
     function showAddPlayerForm($tournament_id) {

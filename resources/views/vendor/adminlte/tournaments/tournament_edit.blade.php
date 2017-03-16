@@ -42,8 +42,9 @@
                                 @foreach($games as $row)
                                 <option 
                                     {!! ($row['name'] == $tournament_games['tournament_game']['name']) ? 'selected' : '' !!} 
-                                    value="{{$row['id']}}"
-                                    >{{$row['name']}}</option>
+                                    value="{{$row['id']}}">
+                                    {{$row['name']}}
+                                </option>
                                 @endforeach
                             </select>
 
@@ -70,17 +71,24 @@
 
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Game term scores</h3>
+                                <h3 class="panel-title">
+                                    Game term points for this tournaments
+                                </h3>
                             </div>
                             <div class="panel-body">
+                                @php($counter = 0)
                                 @foreach($tournament_games['tournament_game']['game_terms'] as $key => $val)
-
-
                                 <div class="form-group">
                                     <label>{{$val['name']}}</label>
-                                    <input type="email" class="form-control" id="email">
+                                    <input type="hidden" value="{{$val['id']}}" class="form-control" name="tournament_game_term_points[{{$counter}}][game_term_id]">
+                                    <input 
+                                        type="hidden" 
+                                        value="{{$tournament_games['id']}}" 
+                                        class="form-control" 
+                                        name="tournament_game_term_points[{{$counter}}][tournament_id]">
+                                    <input type="text" value="" class="form-control" name="tournament_game_term_points[{{$counter}}][points]">
                                 </div>
-
+                                @php($counter++)
                                 @endforeach
                             </div>
                         </div>

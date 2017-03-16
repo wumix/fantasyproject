@@ -9,13 +9,17 @@
 @endsection
 
 @section('main-content')
+<?php getUploadsPath() ?>
 <div class="container-fluid spark-screen">
     <div class="row">
         <div class="col-md-12">
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Player Edit</h3>
+                    <h3 class="box-title">Player Edit <small>{{$player['name']}}</small></h3>
+                    <div class="pull-right">
+                        <img class="img-md" src="{{ getUploadsPath($player['profile_pic']) }}" />
+                    </div>
                 </div>
                 <div class="box-body">
                     <div class="container-fluid">
@@ -32,7 +36,7 @@
                                 <?php $gameid; ?>
                                 @foreach($gameslist as $row)
                                 <option 
-                                    <?php echo ($row['name'] == $player['player_games']['name']) ? 'selected' : '' ?> 
+                                <?php echo ($row['name'] == $player['player_games']['name']) ? 'selected' : '' ?> 
                                     value="{{$row['id']}}">{{$row['name']}}</option>
                                 @endforeach
                             </select>
@@ -41,23 +45,21 @@
                         <div class="form-group">
                             <label>Player Roles</label>
                             <div id="dynamic_player_roles">
-                            @foreach($player['player_games']['game_roles'] as $key => $val)
-                            {{$val['name']}}
-                            <input
-                                type="checkbox"
-                                name="player_role[]"
-                                value="{{$val['id']}}"
-                                <?php echo (in_array($val['id'], $player['player_roles'])) ? 'checked' : '' ?>
-                                />
-                            @endforeach
+                                @foreach($player['player_games']['game_roles'] as $key => $val)
+                                {{$val['name']}}
+                                <input
+                                    type="checkbox"
+                                    name="player_role[]"
+                                    value="{{$val['id']}}"
+                                    <?php echo (in_array($val['id'], $player['player_roles'])) ? 'checked' : '' ?>
+                                    />
+                                @endforeach
                             </div>
                         </div>
-
-
-                        <!--                        <div class="form-group">
-                                                    <label>Player roles</label>
-                                                    <div id="dynamic_player_roles">No game roles defined.Player roles will here</div>
-                                                </div>-->
+                        <div class="form-group">
+                            <label>Profile Picture</label>
+                            <input name="profile_pic" type="file"/>
+                        </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">
                                 Update
@@ -86,7 +88,7 @@
 <script>
     $("#game_id").change(function (event) {
         var menuId = this.value;
-        
+
         $.ajax({
             type: 'GET',
             url: '{{route('ajax_get_game_terms')}}',

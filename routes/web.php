@@ -15,12 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
 Route::group(['middleware' => 'web'], function () {
-    // Route::auth();
     Route::get('/home', 'HomeController@index');
 });
+
 //Admin routes
 Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
     Route::get('/', 'Auth\LoginController@showAdminLoginForm');

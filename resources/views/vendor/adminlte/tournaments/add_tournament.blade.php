@@ -50,8 +50,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label>Tournament Logo</label>
-                        <input type="file"/>
+                        <label>Profile Picture</label>
+                        <input name="t_logo" type="file"/>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Submit</button>

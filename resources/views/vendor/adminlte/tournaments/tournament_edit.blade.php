@@ -57,10 +57,12 @@
                             <label>Max Players</label>
                             <input required name="max_players" class=" form-control"  type="text" value="{{$tournament_games['max_players']}}">
                         </div>
-                        
-
+                        @if(!empty($tournament_games['t_logo']))
+                        <img class="img-md"  src="{{URL::to('uploads/'.$tournament_games['t_logo'])}}" />
+                        @endif
                         <div class="form-group">
-
+                            <label>Profile Picture</label>
+                            <input name="t_logo" type="file"/>
                         </div>
 
 

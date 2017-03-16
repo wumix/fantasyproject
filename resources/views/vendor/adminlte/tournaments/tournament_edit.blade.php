@@ -80,13 +80,22 @@
                                 @foreach($tournament_games['tournament_game']['game_terms'] as $key => $val)
                                 <div class="form-group">
                                     <label>{{$val['name']}}</label>
-                                    <input type="hidden" value="{{$val['id']}}" class="form-control" name="tournament_game_term_points[{{$counter}}][game_term_id]">
+                                    <input 
+                                        type="hidden" 
+                                        value="{{$val['id']}}" 
+                                        class="form-control" 
+                                        name="tournament_game_term_points[{{$counter}}][game_term_id]" />
                                     <input 
                                         type="hidden" 
                                         value="{{$tournament_games['id']}}" 
                                         class="form-control" 
                                         name="tournament_game_term_points[{{$counter}}][tournament_id]">
-                                    <input type="text" value="" class="form-control" name="tournament_game_term_points[{{$counter}}][points]">
+                                        <?php echo (array_search($val['id'], array_column($tournament_games['game_term_points'], 'points'))) ?>
+                                    <input 
+                                        type="text" 
+                                        value="{{array_search($val['id'], array_column($tournament_games['game_term_points'], 'points'))}}" 
+                                        class="form-control" 
+                                        name="tournament_game_term_points[{{$counter}}][points]">
                                 </div>
                                 @php($counter++)
                                 @endforeach

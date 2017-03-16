@@ -66,13 +66,21 @@ class TournamentsController extends Controller {
         try {
 
             $data['tournament_games'] = \App\Tournament::where('id', $tournament_id)
-                            ->with('tournament_game', 'tournament_game.game_terms', 'game_term_points')
+                            ->with(['tournament_game' => function($query) {
+                                    
+                                },
+                                'tournament_game.game_terms' => function($query) {
+                                    
+                                },
+                                'game_term_points' => function($query) {
+                                    return $query->select('game_term_id', 'points', 'tournament_id');
+                                }])
                             ->firstOrFail()->toArray();
             $data['games'] = Game::all()->toArray();
-            //dd($data['tournament_games']);
+            dd($data['tournament_games']);
             return view('adminlte::tournaments.tournament_edit', $data);
         } catch (ModelNotFoundException $ex) {
-            
+            abort('404');
         }
     }
 

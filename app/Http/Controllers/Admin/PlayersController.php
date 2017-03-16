@@ -43,11 +43,11 @@ class PlayersController extends Controller {
         $objplayer->name = Input::get('name');
         $objplayer->game_id = Input::get('game_id');
         if (Input::hasFile('profile_pic')) {
-                $files = uploadInputs(Input::file('profile_pic'), 'player_pictures');
-                $objplayer->profile_pic = $files;
-            }
+            $files = uploadInputs(Input::file('profile_pic'), 'player_pictures');
+            $objplayer->profile_pic = $files;
+        }
 
-        
+
         $objplayer->save();
 
         $lastInsertId = $objplayer->id;
@@ -75,7 +75,7 @@ class PlayersController extends Controller {
     }
 
     function postEditPlayer() {
-         //dd(Input::all()); //to debug post
+        //dd(Input::all()); //to debug post
         $player = \App\Player::find(Input::get('player_id'));
         $player->name = Input::get('player_name');
         $player->game_id = Input::get('game_id');

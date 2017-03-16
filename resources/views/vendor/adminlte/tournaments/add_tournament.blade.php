@@ -14,6 +14,7 @@
                     <h3 class="box-title">Add Tournament</h3>
                 </div>
                 <div class="box-body">
+                    @include('adminlte::layouts.form_errors')
                     {!! Form::open(['url' => route('postAddTournament'),'files'=>true]) !!}
                     <div class="form-group">
                         <label>Name</label>
@@ -33,46 +34,47 @@
 
                     </div>
                     <div class="form-group">
-                        <label>Start Date</label>
-                        <input name="start_date" class="datetimepicker form-control"  type="text" value="2014/03/15 05:06">
-                    </div>
-                    <div class="form-group">
-                        <label>Start Date</label>
-                        <input name="end_date" class="datetimepicker form-control"  type="text" value="2014/03/15 05:06">
-                    </div>
-                    <div class="form-group">
-                        <label>Venue</label>
-                        <input name="venue" class="form-control"  type="text">
-                    </div>
-                    <div class="form-group">
-                        <label>Max Players</label>
-                        <input required name="max_players" class="form-control"  type="text">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Tournament Logo</label>
-                        <input type="file"/>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                    {!! Form::close() !!}
+                        <label>Start Date Time <small class="help">(This must be a GMT)</small>
+                            <input name="start_date" class="datetimepicker form-control" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label>End Date Time <small class="help">(This must be a GMT)</small></label>
+                                <input name="end_date" class="datetimepicker form-control" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label>Venue</label>
+                                <input name="venue" class="form-control"  type="text">
+                            </div>
+                            <div class="form-group">
+                                <label>Max Players</label>
+                                <input required name="max_players" class="form-control"  type="text">
+                            </div>
 
+                            <div class="form-group">
+                                <label>Profile Picture</label>
+                                <input name="t_logo" type="file"/>
+                            </div>
+
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            {!! Form::close() !!}
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
+                <!-- /.box -->
             </div>
-            <!-- /.box -->
         </div>
     </div>
-</div>
-@endsection
-@section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('/datepicker/jquery.datetimepicker.css')}}">
-@stop
-@section('js')
-<script src="{{asset('/datepicker/jquery.datetimepicker.js')}}"></script>
-<script src="{{asset('/datepicker/jquery.datatimefull.js')}}"></script>
-<script>
+    @endsection
+    @section('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('/datepicker/jquery.datetimepicker.css')}}">
+    @stop
+    @section('js')
+    <script src="{{asset('/datepicker/jquery.datetimepicker.js')}}"></script>
+    <script src="{{asset('/datepicker/jquery.datatimefull.js')}}"></script>
+    <script>
 $(document).ready(function ($) {
     var datePickerTheme = 'default';
     var dateFormat = 'd.m.y';
@@ -88,6 +90,6 @@ $(document).ready(function ($) {
         theme: datePickerTheme
     });
 });
-</script>
+    </script>
 
-@stop
+    @stop

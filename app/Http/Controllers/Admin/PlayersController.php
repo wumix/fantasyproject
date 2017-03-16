@@ -44,6 +44,7 @@ class PlayersController extends Controller {
         $objplayer->game_id = Input::get('game_id');
         if (Input::hasFile('profile_pic')) {
             $files = uploadInputs(Input::file('profile_pic'), 'player_pictures');
+            
             $objplayer->profile_pic = $files;
         }
 

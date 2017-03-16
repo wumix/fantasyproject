@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 /**
  * Class RegisterController
@@ -58,9 +59,26 @@ use RegistersUsers;
      * @return type
      */
     public function postAddUserFromAdmin(Request $request) {
-        $this->validator($request->all())->validate();
-        event(new \Illuminate\Auth\Events\Registered($user = $this->create($request->all())));
-        return redirect()->route('addUser')->with('status', 'User was added');
+         //to debug post
+       $this->validator($request->all())->validate();
+        // dd($request->all());
+       // dd($request->profile_pic);
+        // $file = $request->file('photo');
+      if($request->hasFile('profile_pic')){
+           $files = uploadInputs($request->profile_pic, 'profile_pics');
+           $request->request->add(['profile_pics', $files]);
+           event(new \Illuminate\Auth\Events\Registered($user = $this->create($request->all())));
+       }
+         
+            
+         
+            
+            
+            
+        
+        
+       return redirect()->route('addUser')->with('status', 'User was added');
+        
     }
 
     /**
@@ -76,6 +94,7 @@ use RegistersUsers;
                     'email' => 'required|email|max:255|unique:users',
                     'password' => 'required|min:6|confirmed',
                     'terms' => 'required',
+                    'profile_pic'=>'required'
         ]);
     }
 
@@ -86,9 +105,11 @@ use RegistersUsers;
      * @return User
      */
     protected function create(array $data) {
+        
         $fields = [
             'name' => $data['name'],
             'email' => $data['email'],
+            'profile_pic'=>$data[1],
             'password' => bcrypt($data['password']),
         ];
         if (config('auth.providers.users.field', 'email') === 'username' && isset($data['username'])) {

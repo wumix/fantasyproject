@@ -20,14 +20,14 @@ Games
                                 <th>Player Name</th>
                                 <th colspan="3">Actions</th>
                             </tr>
-                            @foreach($player_list as $row)
+                            @foreach($users_list as $row)
 
                             <tr>
                                 <td>
                                     {{$row['name']}}
                                 </td>
                                 <td>
-                                    <a href="{{route('editPlayerForm', ['player_id'=>$row['id']])}}" class="btn btn-warning">
+                                    <a href="{{route('editUser', ['user_id'=>$row['id']])}}" class="btn btn-warning">
                                         <i class="fa fa-pencil"></i> Edit
                                     </a>      
                                     <a href="#" class="btn btn-danger">

@@ -60,8 +60,8 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::get('/', 'Admin\UsersController@index')->name('listUsers');
             Route::get('/add', 'Admin\UsersController@addUser')->name('addUser');
             Route::post('/add', 'Auth\RegisterController@postAddUserFromAdmin')->name('postAddUser');
-            Route::get('/edit', 'Auth\RegisterController@postAddUserFromAdmin')->name('editUser');
-            Route::post('/edit', 'Auth\RegisterController@postAddUserFromAdmin')->name('postEditUser');
+             Route::get('/edit/{user_id}', 'Admin\UsersController@userEditForm')->name('editUser');
+            Route::post('/edit/{user_id}', 'Admin\UsersController@postAddUserFromAdmin')->name('postEditUser');
             Route::delete('/delete/{user_id}', 'Admin\UsersController@deleteUser')->name('deleteUser');
         });
     });

@@ -36,7 +36,7 @@ function make_dir($fileType) {
     return $uploadDir;
 }
 
-function uploadInputs($inputName, $type = 'video', $visibility = 'private') {
+function uploadInputs($inputName, $type = 'image', $visibility = 'private') {
     $files = $inputName;
     $uploadPath = [];
     if (is_array($files)) {

@@ -25,9 +25,14 @@
         }
     },
     "autoload-dev": {
+        "files": [
+            "app/Helpers/file.php"
+            
+        ],
         "psr-4": {
             "Tests\\": "tests/"
         }
+		
     },
     "scripts": {
         "post-root-package-install": [

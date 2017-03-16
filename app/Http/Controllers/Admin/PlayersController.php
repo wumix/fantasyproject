@@ -12,7 +12,7 @@ class PlayersController extends Controller {
 
     protected $objplayer;
 
-    function __construtct() {
+    function __construct() {
         $this->objplayer = new Game;
     }
 
@@ -42,6 +42,12 @@ class PlayersController extends Controller {
         // $objPlayerRoles = new \App\PlayerRole;
         $objplayer->name = Input::get('name');
         $objplayer->game_id = Input::get('game_id');
+        if (Input::hasFile('profile_pic')) {
+                $files = uploadInputs(Input::file('profile_pic'), 'player_pictures');
+                $objplayer->profile_pic = $files;
+            }
+
+        
         $objplayer->save();
 
         $lastInsertId = $objplayer->id;

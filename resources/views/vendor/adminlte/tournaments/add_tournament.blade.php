@@ -1,7 +1,7 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-Games
+
 @endsection
 
 @section('main-content')
@@ -14,30 +14,43 @@ Games
                     <h3 class="box-title">Add Tournament</h3>
                 </div>
                 <div class="box-body">
-                    {!! Form::open(['url' => route('postAddPlayer'),'files'=>true]) !!}
+                    {!! Form::open(['url' => route('postAddTournament'),'files'=>true]) !!}
                     <div class="form-group">
                         <label>Name</label>
-                        
-                        <input required value="{!! old('name') !!}" class="form-control" id="name" placeholder="Enter Player Name" type="text" name="name">
+
+                        <input required value="{!! old('name') !!}" class="form-control" id="name" placeholder="Add Tournament Name" type="text" name="name">
                     </div>
                     <div class="form-group">
-                        <label>Select Player Game</label>
-                        <select id="game_id" class="custom-select form-control">
+                        <label>Select Tournament Game</label>
+                        <select required id="game_id" name="game_id"  class="custom-select form-control">
                             <option value="">Select</option>
-                            <?php $gameid;?>
+                            <?php $gameid; ?>
                             @foreach($result as $row)
                             <option value="{{$row['id']}}">{{$row['name']}}</option>
-                             <?php $gameid=$row['id'];?>
+                            <?php $gameid = $row['id']; ?>
                             @endforeach
                         </select>
-                        <input type="hidden" name="game_id" value=" <?php echo $gameid;?>"/>
+
                     </div>
                     <div class="form-group">
-                        <label>Player roles</label>
-                        <div id="dynamic_player_roles">No game roles defined.<!--Player roles will here--></div>
+                        <label>Start Date</label>
+                        <input name="start_date" class="datetimepicker form-control"  type="text" value="2014/03/15 05:06">
                     </div>
                     <div class="form-group">
-                        <label>Profile Picture</label>
+                        <label>Start Date</label>
+                        <input name="end_date" class="datetimepicker form-control"  type="text" value="2014/03/15 05:06">
+                    </div>
+                    <div class="form-group">
+                        <label>Venue</label>
+                        <input name="venue" class="form-control"  type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>Max Players</label>
+                        <input required name="max_players" class="form-control"  type="text">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Tournament Logo</label>
                         <input type="file"/>
                     </div>
                     <div class="form-group">
@@ -53,29 +66,28 @@ Games
     </div>
 </div>
 @endsection
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{asset('/datepicker/jquery.datetimepicker.css')}}">
+@stop
 @section('js')
+<script src="{{asset('/datepicker/jquery.datetimepicker.js')}}"></script>
+<script src="{{asset('/datepicker/jquery.datatimefull.js')}}"></script>
 <script>
-    $("#game_id").change(function (event) {
-        var menuId = this.value;
-        $.ajax({
-            type: 'GET',
-            url: '{{route('ajax_get_game_terms')}}',
-            data: {game_id: menuId},
-            success: function (data) {
-                var gameRoles = data.game_roles;
-                var rolesHtml = '';
-                if (gameRoles.length == 0) {
-                    rolesHtml = 'No game roles selected';
-                } else {
-                    $.each(gameRoles, function (k, v) {
-                        rolesHtml += '<label class="checkbox-inline">';
-                        rolesHtml += '<input name="player_roles[]" type="checkbox" value="' + v.id + '">' + v.name
-                        rolesHtml += '</label>'
-                    });
-                }
-                $("#dynamic_player_roles").html(rolesHtml);
-            }
-        });
+$(document).ready(function ($) {
+    var datePickerTheme = 'default';
+    var dateFormat = 'd.m.y';
+    var timeFormat = 'H:i';
+    var timeStep = 15;
+    //DateTime picker
+    $(".datetimepicker").datetimepicker({
+        minDate: '0', //yesterday is minimum date(for today use 0 or -1970/01/01)
+        // maxDate: '+1970/01/10',
+        //step: timeStep,
+        //minTime: 0,
+        hours12: false,
+        theme: datePickerTheme
     });
+});
 </script>
+
 @stop

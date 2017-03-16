@@ -1,7 +1,7 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-Games
+
 @endsection
 
 @section('main-content')
@@ -20,22 +20,25 @@ Games
                                 <th>Player Name</th>
                                 <th colspan="3">Actions</th>
                             </tr>
-                            @foreach($player_list as $row)
+                            @foreach($tournaments_list as $row)
 
                             <tr>
                                 <td>
                                     {{$row['name']}}
                                 </td>
                                 <td>
-                                    <a href="{{route('editPlayerForm', ['player_id'=>$row['id']])}}" class="btn btn-warning">
+                                   <a href="{{route('editTournamentForm', ['tournament_id'=>$row['id']])}}" class="btn btn-warning">
                                         <i class="fa fa-pencil"></i> Edit
                                     </a>      
                                     <a href="#" class="btn btn-danger">
                                         <i class="fa fa-times"></i> Delete
                                     </a>  
-                                    
+                                    <a href="{{route('showAddPlayerForm', ['tournament_id'=>$row['id']])}}" class="btn btn-danger">
+                                        <i class="fa fa-times"></i> Add Players
+                                    </a> 
+
                                 </td>
-                                
+
 
                             </tr>
                             @endforeach

@@ -16,9 +16,9 @@ class PlayerTeams extends Migration
         Schema::create('player_teams', function (Blueprint $table) {
          $table->increments('id');
          $table->integer('player_id')->unsigned();
-         $table->foreign('player_id')->references('id')->on('players');
+         $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');;
          $table->integer('team_id')->unsigned();
-         $table->foreign('team_id')->references('id')->on('user_teams');
+         $table->foreign('team_id')->references('id')->on('user_teams')->onDelete('cascade');;
          $table->timestamps();
          $table->softDeletes();
         

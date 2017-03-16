@@ -59,7 +59,7 @@ use RegistersUsers;
      */
     public function postAddUserFromAdmin(Request $request) {
         $this->validator($request->all())->validate();
-        event(new Registered($user = $this->create($request->all())));
+        event(new \Illuminate\Auth\Events\Registered($user = $this->create($request->all())));
         return redirect()->route('addUser')->with('status', 'User was added');
     }
 

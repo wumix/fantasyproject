@@ -1,4 +1,4 @@
-<?php //dd($result);      ?>
+<?php //dd($result);                     ?>
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
@@ -12,7 +12,7 @@
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Edit Game</h3>
+                    <h3 class="box-title">Edit Game <small>({{$result['name']}})</small></h3>
                 </div>
                 <div class="box-body">
                     <div class="container-fluid">
@@ -26,8 +26,8 @@
                             <label>Status</label>
                             <select required name="is_active" class="custom-select form-control">
                                 <option value="">Select status</option>
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
+                                <option value="1" {!! ($result['is_active'] == 1) ? 'selected':'' !!}>Active</option>
+                                <option value="0" {!! ($result['is_active'] == 0) ? 'selected':'' !!}>Inactive</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -40,12 +40,13 @@
                     <div class="container-fluid">
                         {!! Form::open(['url' => route('addGameRole')]) !!}
                         <div class="form-group">
-                            <label>Roles</label>
+                            <label>Player Roles <small>(Batsman, goal keeper, wicket keeper etc)</small></label>
                             <input type="hidden" name="id" value="{{$result['id']}}"/>
 
                             @foreach($result['game_roles'] as $key => $val)
-                            <input class="form-control" name="role_name[]" value="{{$val['name']}}" type="text" placeholder="" />
-
+                            <div class="form-group">
+                                <input class="form-control" name="role_name[]" value="{{$val['name']}}" type="text" placeholder="" />
+                            </div>
                             @endforeach
                             <input class="form-control" name="role_name[]" value="" type="text" placeholder="" />
                         </div>
@@ -62,12 +63,13 @@
                     <div class="container-fluid">
                         {!! Form::open(['url' => route('addGameTerm')]) !!}
                         <div class="form-group">
-                            <label>Terms</label>
+                            <label>Terms <small>(Catch, Out, Sixer etc)</small></label>
                             <input type="hidden" name="id" value="{{$result['id']}}"/>
 
                             @foreach($result['game_terms'] as $key => $val)
-                            <input class="form-control" name="term_name[]" value="{{$val['name']}}" type="text" placeholder="" />
-
+                            <div class="form-group">
+                                <input class="form-control" name="term_name[]" value="{{$val['name']}}" type="text" placeholder="" />
+                            </div>
                             @endforeach
                             <input class="form-control" name="term_name[]" value="" type="text" placeholder="" />
                         </div>
@@ -81,7 +83,7 @@
                         {!! Form::close() !!}
                     </div>
 
-                    
+
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -96,12 +98,11 @@
     $("#add_more_roles").click(function (event) {
         event.preventDefault();
 
-        $('<input  class="form-control" name="role_name[]" value="" type="text" placeholder="" />').insertBefore("#add_more_roles");
+        $('<div class="form-group"><input class="form-control" name="role_name[]" value="" type="text" placeholder="" /></div>').insertBefore("#add_more_roles");
     });
     $("#add_more_terms").click(function (event) {
         event.preventDefault();
-
-        $('<input  class="form-control" name="term_name[]" value="" type="text" placeholder="" />').insertBefore("#add_more_terms");
+        $('<div class="form-group"><input  class="form-control" name="term_name[]" value="" type="text" placeholder="" /></div>').insertBefore("#add_more_terms");
     });
 </script>
 @stop

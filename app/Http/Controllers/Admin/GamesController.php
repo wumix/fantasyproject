@@ -34,55 +34,42 @@ class GamesController extends Controller {
         return view('adminlte::games.games_add');
     }
 
+    /**
+     * Save game
+     * @param type $gameId
+     * @return type
+     */
     function addPost($gameId = null) {
         $objGame = $this->objGame->firstOrNew(['id' => $gameId]);
         $objGame->name = Input::get('name');
         $objGame->save();
         $lastInsertId = $objGame->id;
         return redirect()->route('editGameForm', ['game_id' => $lastInsertId]);
-//        //echo ('neufhriq');
-//
-//        $this->objGame->name = Input::get('name');
-//        $this->objGame->save();
-//        return redirect()->back();
-//        //return view('adminlte::games.games_add');
     }
 
     function editGameForm($game_id) {
-
         $games = Game::where('id', $game_id)->with('game_roles', 'game_terms')->first();
-
-        if (!empty($games)) { 
+        if (!empty($games)) {
             $games = $games->toArray();
         } // check this later give error trhen game id has no realted data ::handle exception
-        //dd($games);
         $data['result'] = $games;
-        // $data=$result;
         return view('adminlte::games.games_edit', $data);
-
-        //return view('adminlte::games.games_add');
     }
 
     function deleteGame() {
-        echo 'delet gmae';
-        die;
         $game = new Game;
         $game->name = Input::get('name');
         $game->save();
         return redirect()->back();
-        //return view('adminlte::games.games_add');
     }
 
     function view_games() {
-
-//        $data['payment'] = $payment;
-//        return view('admin.payment.paymentDetailList', $data);
+        //$data['payment'] = $payment;
+        //return view('admin.payment.paymentDetailList', $data);
     }
 
     function editGamePost($game_id = NULL) {
-
         $this->objGame = Game::find(Input::get('id'));
-
         $this->objGame->name = Input::get('gamename');
         $this->objGame->is_active = Input::get('is_active');
         $this->objGame->save();

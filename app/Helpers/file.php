@@ -47,11 +47,15 @@ function uploadInputs($inputName, $type = 'video', $visibility = 'private') {
     } else {
         //echo $type;die;
         $destinationPath = make_dir($type);
-        //$uploadPath = $inputName->move(Illuminate\Support\Facades\Storage::disk('uploads')->getDriver()->getAdapter()->getPathPrefix(), 'MytstName.mp3');
         $uploadPath = Illuminate\Support\Facades\Storage::disk('uploads')->put($destinationPath, $files, $visibility);
     }
     return $uploadPath;
 }
-function deleteFile($path){
-      File::delete($path);
+
+function deleteFile($path) {
+    File::delete($path);
+}
+
+function getUploadsPath($fileName = NULL) {
+    return Illuminate\Support\Facades\URL::to('uploads/' . $fileName);
 }

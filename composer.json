@@ -26,13 +26,13 @@
     },
     "autoload-dev": {
         "files": [
-            "app/Helpers/file.php"
-            
+            "app/Helpers/file.php",
+            "app/Helpers/array.php"
+
         ],
         "psr-4": {
             "Tests\\": "tests/"
         }
-		
     },
     "scripts": {
         "post-root-package-install": [

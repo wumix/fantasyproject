@@ -36,8 +36,11 @@
                             <input required class="form-control" name="venue" value="{{$tournament_games['venue']}}" type="text" placeholder="" />
                         </div>
                         <div class="form-group">
-                            <label>Tournament Game</label>
-                            <select readonly required id="game_id" name="game_id"  class="custom-select form-control">
+                            <label>
+                                Tournament Game 
+                                <small class="help-block alert-danger">By changing this field you have to set game term points again.</small>
+                            </label>
+                            <select required id="game_id" name="game_id"  class="custom-select form-control">
                                 <option value="">Select</option>
                                 @foreach($games as $row)
                                 <option 
@@ -90,10 +93,9 @@
                                         value="{{$tournament_games['id']}}" 
                                         class="form-control" 
                                         name="tournament_game_term_points[{{$counter}}][tournament_id]">
-                                        <?php echo (array_search($val['id'], array_column($tournament_games['game_term_points'], 'points'))) ?>
                                     <input 
                                         type="text" 
-                                        value="{{array_search($val['id'], array_column($tournament_games['game_term_points'], 'points'))}}" 
+                                        value="{{searchInMultiArray($val['id'], 'game_term_id', $tournament_games['game_term_points'], false, 'points')}}" 
                                         class="form-control" 
                                         name="tournament_game_term_points[{{$counter}}][points]">
                                 </div>

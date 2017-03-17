@@ -77,7 +77,6 @@ class TournamentsController extends Controller {
                                 }])
                             ->firstOrFail()->toArray();
             $data['games'] = Game::all()->toArray();
-            dd($data['tournament_games']);
             return view('adminlte::tournaments.tournament_edit', $data);
         } catch (ModelNotFoundException $ex) {
             abort('404');
@@ -85,11 +84,12 @@ class TournamentsController extends Controller {
     }
 
     function postEditTournament() {
-        $tour = \App\Tournament::find(Input::get('id'));
-        $tour->fill(Input::all());
-        $tour->save();
-        //Inserting game_term_points
-        \App\TournamentGameTermPoint::insert(Input::get('tournament_game_term_points'));
+        $tournamentId = Input::get('id');
+        $tournament = \App\Tournament::find($tournamentId);
+        $tournament->fill(Input::all());
+        $tournament->save();
+        \App\TournamentGameTermPoint::where('tournament_id', $tournament->id)->delete(); //Deleting all game points
+        \App\TournamentGameTermPoint::insert(Input::get('tournament_game_term_points')); //Insertong them again
         return redirect()->route('editTournamentForm', ['tournament_id' => Input::get('id')])
                         ->with('status', 'Tournament Updated');
     }

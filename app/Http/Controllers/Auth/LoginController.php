@@ -46,6 +46,15 @@ use AuthenticatesUsers {
     protected $redirectTo = '/home';
 
     /**
+     * Redirect user based upon condition
+     * @return type
+     */
+    protected function redirectTo() {
+
+        return (\Auth::user()->user_type == 0) ? 'admin/dashboard' : '/';
+    }
+
+    /**
      * Create a new controller instance.
      *
      * @return void

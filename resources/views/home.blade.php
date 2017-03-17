@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <!-- ..........................Banner Start ............................-->
 <section>
     <div class="container-fluid " id="ban" >
@@ -8,17 +9,21 @@
             <div class="col-md-6" id="headt">
 
                 <h1 class="ht1">LOREM</h1>
-                <h3 class="ht2">IPSUM LOREM IPSUM</h3>
+                <h3 class="ht2">
+                    </h3>
             </div>
             <div class="col-md-6" >
                 <div class="container" id="uocming">
                     <h3 id="uph">UPCOMING TOURNAMENT</h3>
-                    <h4 id="up4">INDIAN PREMMIER LEAGUE</h4>
+
+                    <h4 id="up4">{{$tournaments_list[0]['start_date']}}</h4>
                     <div class="perant">
-                        <div class="child">10</div>
-                        <div class="child"> 20</div>
-                        <div class="child"> 30</div>
-                        <div class="child"> 40</div>
+                        <div class="child" id="getting-started"></div>
+                        <div class="child" id="getting-started1"></div>
+                        <div class="child" id="getting-started2"></div>
+                        <div class="child" id="getting-started3"></div>
+
+
 
 
 
@@ -68,48 +73,16 @@
                     </tr>
                 </thead>
                 <tbody class="main-taible-body">
+
+
+                    @foreach ($tournaments_list as $row)
                     <tr>
-                        <td class="border-r" >Indian Premier League</td>
-                        <td class="border-r">India</td>
-                        <td class="border-r">1 April 2017</td>
-                        <td>25 May 2017</td>
+                        <td class="border-r" >{{$row['name']}}</td>
+                        <td class="border-r">{{$row['venue']}}</td>
+                        <td class="border-r">{{$row['start_date']}}</td>
+                        <td>{{$row['end_date']}}</td>
                     </tr>
-                    <tr class="trr">
-                        <td class="border-r">Indian Premier League</td>
-                        <td class="border-r">India</td>
-                        <td class="border-r">1 April 2017</td>
-                        <td>25 May 2017</td>
-                    </tr>
-                    <tr>
-                        <td class="border-r">Indian Premier League</td>
-                        <td class="border-r">India</td>
-                        <td class="border-r">1 April 2017</td>
-                        <td>25 May 2017</td>
-                    </tr>
-                    <tr class="trr">
-                        <td class="border-r">Indian Premier League</td>
-                        <td class="border-r">India</td>
-                        <td class="border-r">1 April 2017</td>
-                        <td>25 May 2017</td>
-                    </tr>
-                    <tr>
-                        <td class="border-r">Indian Premier League</td>
-                        <td class="border-r">India</td>
-                        <td class="border-r">1 April 2017</td>
-                        <td>25 May 2017</td>
-                    </tr>
-                    <tr class="trr">
-                        <td class="border-r">Indian Premier League</td>
-                        <td class="border-r">India</td>
-                        <td class="border-r">1 April 2017</td>
-                        <td>25 May 2017</td>
-                    </tr>
-                    <tr >
-                        <td class="border-r brr1" >Indian Premier League</td>
-                        <td class="border-r">India</td>
-                        <td class="border-r">1 April 2017</td>
-                        <td class="brr">25 May 2017</td>
-                    </tr>
+                    @endforeach
 
                 </tbody>
             </table>

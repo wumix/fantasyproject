@@ -11,21 +11,21 @@
   |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/* Route::get('/', function () {
 
-Route::group(['middleware' => 'web'], function () {
-    Route::get('/', 'HomeController@index');
-    
-});
+  return view('welcome');
+  }); */
+
+    Route::group(['middleware' => 'web'], function () {
+        Route::get('/', 'HomeController@index');
+    });
 
 //Admin routes
 Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
-    Route::get('/', 'Auth\LoginController@showAdminLoginForm');
-    Route::group(['middleware' => ['is_admin']], function () {
-        Route::get('/dashboard', 'Admin\DashboardController@index');  //Games routes
-        Route::group(['prefix' => 'games'], function () {
+            Route::get('/', 'Auth\LoginController@showAdminLoginForm');
+            Route::group(['middleware' => ['is_admin']], function () {
+            Route::get('/dashboard', 'Admin\DashboardController@index');  //Games routes
+            Route::group(['prefix' => 'games'], function () {
             Route::get('/', 'Admin\GamesController@index')->name('gameslist');
             Route::get('/add', 'Admin\GamesController@showAddView')->name('addGame'); //shows add game form
             Route::post('/add', 'Admin\GamesController@addPost')->name('postAddGame');
@@ -59,7 +59,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::get('/', 'Admin\UsersController@index')->name('listUsers');
             Route::get('/add', 'Admin\UsersController@addUser')->name('addUser');
             Route::post('/add', 'Auth\RegisterController@postAddUserFromAdmin')->name('postAddUser');
-             Route::get('/edit/{user_id}', 'Admin\UsersController@userEditForm')->name('editUser');
+            Route::get('/edit/{user_id}', 'Admin\UsersController@userEditForm')->name('editUser');
             Route::post('/edit/{user_id}', 'Admin\UsersController@postAddUserFromAdmin')->name('postEditUser');
             Route::delete('/delete/{user_id}', 'Admin\UsersController@deleteUser')->name('deleteUser');
         });

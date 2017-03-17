@@ -15,8 +15,13 @@
         <div class="col-md-12">
             <!-- Default box -->
             <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Edit User</h3>
+                 <div class="box-header with-border">
+                    <h3 class="box-title">Uer Edit</h3>
+                    <div class="pull-right">
+                        @if(!empty($user_edit['profile_pic']))
+                        <img class="img-md" src="{{ getUploadsPath($user_edit['profile_pic']) }}" />
+                        @endif
+                    </div>
                 </div>
                 <div class="box-body">
                     <div class="container-fluid">
@@ -57,9 +62,7 @@
                             <input required class="form-control" name="ref_key" value="{{$user_edit['referral_key']}}" type="text" placeholder="" />
                         </div>
                         <div class="form-group">
-                            @if(!empty($user_edit['profile_pic']))
-                            <img class="img-thumbnail img-lg"  src="/uploads/{{$user_edit['profile_pic']}}" />
-                            @endif
+                            
                             <label>Profile Pic</label>
 
                             <input class="form-control" name="profile_pic" type="file" />

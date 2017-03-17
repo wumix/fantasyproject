@@ -77,7 +77,13 @@ class TournamentsController extends Controller {
 
     function postEditTournament() {
         //dd( Input::all()); //to debug post
+        
         $tour = \App\Tournament::find(Input::get('id'));
+        if (Input::hasFile('t_logo')) {
+            
+            $files = uploadInputs(Input::file('t_logo'), 'tournament_logos');
+            $tour->t_logo = $files;
+        }
         $tour->fill(Input::all());
         $tour->save();
 

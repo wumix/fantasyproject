@@ -14,6 +14,7 @@ class GameRole extends Model {
     public function game() {
         return $this->belongsTo('App\Game');
     }
+    
 
     public function players() {
         return $this->belongsToMany('App\Player', 'player_roles');

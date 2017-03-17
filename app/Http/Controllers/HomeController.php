@@ -31,7 +31,8 @@ class HomeController extends Controller {
      * @return Response
      */
     public function index() {
-        return view('adminlte::home');
+       
+        return view('home');
     }
 
 }

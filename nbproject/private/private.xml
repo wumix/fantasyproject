@@ -3,27 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/gamithon/database/migrations/2017_03_09_063659_tournaments.php</file>
-            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/tournaments/tournament_edit.blade.php</file>
-            <file>file:/C:/wamp64/www/gamithon/database/migrations/2017_03_09_065054_game_terms.php</file>
-            <file>file:/C:/wamp64/www/gamithon/database/migrations/2017_03_09_063446_players.php</file>
-            <file>file:/C:/wamp64/www/gamithon/database/migrations/2017_03_15_111423_tournamnet_players.php</file>
-            <file>file:/C:/wamp64/www/gamithon/app/Http/Controllers/Admin/PlayersController.php</file>
-            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/tournaments/add_tournament_players.blade.php</file>
-            <file>file:/C:/wamp64/www/gamithon/app/Tournament.php</file>
-            <file>file:/C:/wamp64/www/gamithon/routes/web.php</file>
-            <file>file:/C:/wamp64/www/gamithon/database/migrations/2014_10_12_100000_create_password_resets_table.php</file>
-            <file>file:/C:/wamp64/www/gamithon/app/Http/Controllers/Admin/TournamentsController.php</file>
-            <file>file:/C:/wamp64/www/gamithon/database/migrations/2017_03_09_065136_palyer_stats.php</file>
-            <file>file:/C:/wamp64/www/gamithon/database/migrations/2017_03_09_062058_games.php</file>
-            <file>file:/C:/wamp64/www/gamithon/database/migrations/2017_03_09_064747_game_roles.php</file>
-            <file>file:/C:/wamp64/www/gamithon/database/migrations/2017_03_09_064836_player_roles.php</file>
-            <file>file:/C:/wamp64/www/gamithon/database/migrations/2017_03_09_064913_user_teams.php</file>
-            <file>file:/C:/wamp64/www/gamithon/database/migrations/2017_03_09_065028_player_teams.php</file>
-            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/tournaments/add_tournament.blade.php</file>
-            <file>file:/C:/wamp64/www/gamithon/app/Player.php</file>
-            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/players/add_player.blade.php</file>
-            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/tournaments/tournaments_list.blade.php</file>
+            <file>file:/C:/wamp64/www/gamithon/resources/views/home.blade.php</file>
+            <file>file:/C:/wamp64/www/gamithon/resources/views/layouts/app.blade.php</file>
+            <file>file:/C:/wamp64/www/gamithon/public/assets/css/nav.css</file>
         </group>
     </open-files>
 </project-private>

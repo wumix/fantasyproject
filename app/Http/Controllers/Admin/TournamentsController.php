@@ -64,20 +64,28 @@ class TournamentsController extends Controller {
 
     function editTournamentForm($tournament_id) {
         try {
+
             $data['tournament_games'] = \App\Tournament::where('id', $tournament_id)
-                            ->with('tournament_game', 'tournament_game.game_terms')
+                            ->with(['tournament_game' => function($query) {
+                                    
+                                },
+                                'tournament_game.game_terms' => function($query) {
+                                    
+                                },
+                                'game_term_points' => function($query) {
+                                    return $query->select('game_term_id', 'points', 'tournament_id');
+                                }])
                             ->firstOrFail()->toArray();
             $data['games'] = Game::all()->toArray();
-            //dd($data['tournament_games']);
+            dd($data['tournament_games']);
             return view('adminlte::tournaments.tournament_edit', $data);
         } catch (ModelNotFoundException $ex) {
-            
+            abort('404');
         }
     }
 
     function postEditTournament() {
-        //dd( Input::all()); //to debug post
-        
+
         $tour = \App\Tournament::find(Input::get('id'));
         if (Input::hasFile('t_logo')) {
             
@@ -86,8 +94,10 @@ class TournamentsController extends Controller {
         }
         $tour->fill(Input::all());
         $tour->save();
-
-        return redirect()->route('editTournamentForm', ['tournament_id' => Input::get('id')]);
+        //Inserting game_term_points
+        \App\TournamentGameTermPoint::insert(Input::get('tournament_game_term_points'));
+        return redirect()->route('editTournamentForm', ['tournament_id' => Input::get('id')])
+                        ->with('status', 'Tournament Updated');
     }
 
     function showAddPlayerForm($tournament_id) {

@@ -3,23 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
+            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/matches/matches_edit.blade.php</file>
+            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/tournaments/tournament_edit.blade.php</file>
+            <file>file:/C:/wamp64/www/gamithon/app/MatchPlayer.php</file>
+            <file>file:/C:/wamp64/www/gamithon/routes/web.php</file>
+            <file>file:/C:/wamp64/www/gamithon/app/Http/Controllers/Admin/GamesController.php</file>
+            <file>file:/C:/wamp64/www/gamithon/app/Http/Controllers/Auth/RegisterController.php</file>
+            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/layouts/partials/sidebar.blade.php</file>
             <file>file:/C:/wamp64/www/gamithon/app/Http/Controllers/Admin/TournamentsController.php</file>
-            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/tournaments/add_tournament_players.blade.php</file>
-=======
-            <file>file:/C:/wamp64/www/gamithon/app/Http/Controllers/Auth/LoginController.php</file>
-            <file>file:/C:/wamp64/www/gamithon/app/Helpers/array.php</file>
-            <file>file:/C:/wamp64/www/gamithon/resources/views/home.blade.php</file>
-            <file>file:/C:/wamp64/www/gamithon/app/Helpers/file.php</file>
-            <file>file:/C:/wamp64/www/gamithon/resources/views/layouts/app.blade.php</file>
-            <file>file:/C:/wamp64/www/gamithon/app/Http/Controllers/Controller.php</file>
-            <file>file:/C:/wamp64/www/gamithon/app/Http/Controllers/Admin/TournamentsController.php</file>
-            <file>file:/C:/wamp64/www/gamithon/config/const.php</file>
-            <file>file:/C:/wamp64/www/gamithon/app/Tournament.php</file>
-            <file>file:/C:/wamp64/www/gamithon/composer.json</file>
-            <file>file:/C:/wamp64/www/gamithon/resources/views/welcome.blade.php</file>
-            <file>file:/C:/wamp64/www/gamithon/app/Http/Controllers/HomeController.php</file>
->>>>>>> ba513aeb626a5908b0430f03684b2120f2d07d67
+            <file>file:/C:/wamp64/www/gamithon/resources/views/vendor/adminlte/matches/add_match.blade.php</file>
+            <file>file:/C:/wamp64/www/gamithon/app/Http/Controllers/Admin/MatchesController.php</file>
+            <file>file:/C:/wamp64/www/gamithon/app/Http/Controllers/Admin/UsersController.php</file>
+            <file>file:/C:/wamp64/www/gamithon/app/User.php</file>
+            <file>file:/C:/wamp64/www/gamithon/app/Match.php</file>
         </group>
     </open-files>
 </project-private>

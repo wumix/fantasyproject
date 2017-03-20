@@ -1,6 +1,4 @@
 <?php
-//echo '<pre>'; print_r($gameslist);
-//echo '<pre>'; print_r($player);die;
 //dd($games);
 //dd($tournament_games);
 ?>
@@ -11,6 +9,7 @@
 @endsection
 
 @section('main-content')
+
 <div class="container-fluid spark-screen">
     <div class="row">
         <div class="col-md-12">

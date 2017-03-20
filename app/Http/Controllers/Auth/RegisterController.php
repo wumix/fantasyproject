@@ -59,25 +59,13 @@ use RegistersUsers;
      * @return type
      */
     public function postAddUserFromAdmin(Request $request) {
-         //to debug post
-       $this->validator($request->all())->validate();
-        // dd($request->all());
-       // dd($request->profile_pic);
-        // $file = $request->file('photo');
+      $this->validator($request->all())->validate();     
       if($request->hasFile('profile_pic')){
            $files = uploadInputs($request->profile_pic, 'profile_pics');
            $request->request->add(['profile_pics', $files]);
            event(new \Illuminate\Auth\Events\Registered($user = $this->create($request->all())));
        }
-         
-            
-         
-            
-            
-            
-        
-        
-       return redirect()->route('addUser')->with('status', 'User was added');
+        return redirect()->route('addUser')->with('status', 'User was added');
         
     }
 

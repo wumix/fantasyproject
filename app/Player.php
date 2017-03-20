@@ -19,7 +19,10 @@ class Player extends Model {
         return $this->belongsToMany('App\GameRole', 'player_roles', 'player_id');
     }
     public function player_tournaments() {
-        return $this->belongsToMany('App\Tournament');
+        return $this->belongsToMany('App\Tournament', 'player_tournaments');
+    }
+    public function player_matches() {
+
     }
 
 }

@@ -57,6 +57,16 @@
                 Route::get('/addplayers/{tournament_id}', 'Admin\TournamentsController@showAddPlayerForm')->name('showAddPlayerForm');
                 Route::post('/addplayers/', 'Admin\TournamentsController@postAddTournamentPlayers')->name('postAddTournamentPlayers');
             });
+            //Matches
+            Route::group(['prefix' => 'match'], function () {
+                Route::get('/', 'Admin\MatchesController@index')->name('Matcheslist');
+                Route::get('/add', 'Admin\MatchesController@addMatchForm')->name('addMatch'); //shows add player form
+                Route::post('/add', 'Admin\MatchesController@addMatch')->name('postAddMatch');
+                Route::get('/edit/{match_id}', 'Admin\MatchesController@editMatchForm')->name('editMatchForm');
+                Route::post('/edit/{match_id}', 'Admin\MatchesController@postEditMatch')->name('editMatch');
+                Route::get('/addplayers/{match_id}', 'Admin\MatchesController@playerMatchScore')->name('showAddPlayerForm1');
+                 Route::post('/addscores/{match_id}', 'Admin\MatchesController@postAddMatchScore')->name('postAddMatchScore');
+            });
             //User routes
             Route::group(['prefix' => 'users'], function () {
                 Route::get('/', 'Admin\UsersController@index')->name('listUsers');

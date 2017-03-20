@@ -32,5 +32,8 @@ class Tournament extends Model {
     public function setStartDateAttribute($value) {
         $this->attributes['start_date'] = date('Y-m-d h:i:s', strtotime(Input::get('start_date')));
     }
+    public function tournament_matches() {
+        return $this->hasMany('App\Match', 'tournament_id');
+    }
 
 }

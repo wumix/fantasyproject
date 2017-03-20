@@ -67,6 +67,16 @@
                     <li><a href="{{route('listUsers')}}">Users List</a> </li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class='fa fa-users'></i> <span>Matches</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+
+                    <li><a href="{{route('addMatch')}}">Add Match</a></li>
+                    <li><a href="{{route('Matcheslist')}}">Matches List</a></li>
+
+                </ul>
+            </li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('home') }}">
                     <i class='fa fa-link'></i> <span>

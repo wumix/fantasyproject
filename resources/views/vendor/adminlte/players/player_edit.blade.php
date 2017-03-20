@@ -18,12 +18,16 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Player Edit <small>{{$player['name']}}</small></h3>
                     <div class="pull-right">
+                        @if(!empty($player['profile_pic']))
                         <img class="img-md" src="{{ getUploadsPath($player['profile_pic']) }}" />
+                         @endif
                     </div>
                 </div>
                 <div class="box-body">
                     <div class="container-fluid">
-                        {!! Form::open(['url' => route('editPlayer')]) !!}
+                         {!! Form::open(['url' => route('editPlayer'),'files' => true]) !!}
+
+                    
                         <div class="form-group">
                             <label>Player Name</label>
                             <input type="hidden" name="player_id" value="{{$player['id']}}"/>

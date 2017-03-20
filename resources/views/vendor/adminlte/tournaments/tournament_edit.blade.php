@@ -19,13 +19,15 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Tournament Edit</h3>
                     <div class="pull-right">
-                        <img class="img-md"  src="{{getUploadsPath($tournament_games['t_logo'])}}" />
+                        @if(!empty($tournament_games['t_logo']))
+                        <img class="img-md" src="{{ getUploadsPath($tournament_games['t_logo']) }}" />
+                        @endif
                     </div>
                 </div>
                 <div class="box-body">
                     @include('adminlte::layouts.form_errors')
                     <div class="container-fluid">
-                        {!! Form::open(['url' => route('editTournament')]) !!}
+                        {!! Form::open(['url' => route('editTournament'),'files' => true]) !!}
                         <div class="form-group">
                             <label>Tournament Name</label>
                             <input type="hidden" name="id" value="{{$tournament_games['id']}}"/>

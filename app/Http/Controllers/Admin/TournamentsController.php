@@ -36,7 +36,7 @@ class TournamentsController extends Controller {
 
     public function index() {
         $objTourmament = \App\Tournament::all()->toArray();
-        $data['tournaments_list'] = $objTourmament; //list of games form games table   
+        $data['tournaments_list'] = $objTourmament; //list of tournaments
         return view('adminlte::tournaments.tournaments_list', $data);
     }
 
@@ -77,12 +77,14 @@ class TournamentsController extends Controller {
     }
 
     function postEditTournament() {
+
         $tournamentId = Input::get('id');
         $tournament = \App\Tournament::find($tournamentId);
         $tournament->fill(Input::all());
         $tournament->save();
         \App\TournamentGameTermPoint::where('tournament_id', $tournament->id)->delete(); //Deleting all game points
         \App\TournamentGameTermPoint::insert(Input::get('tournament_game_term_points')); //Insertong them again
+
         return redirect()->route('editTournamentForm', ['tournament_id' => Input::get('id')])
                         ->with('status', 'Tournament Updated');
     }

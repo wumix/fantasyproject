@@ -44,6 +44,7 @@ class PlayersController extends Controller {
         $objplayer->game_id = Input::get('game_id');
         if (Input::hasFile('profile_pic')) {
             $files = uploadInputs(Input::file('profile_pic'), 'player_pictures');
+
             $objplayer->profile_pic = $files;
         }
 
@@ -79,6 +80,12 @@ class PlayersController extends Controller {
         $player = \App\Player::find(Input::get('player_id'));
         $player->name = Input::get('player_name');
         $player->game_id = Input::get('game_id');
+
+        if (Input::hasFile('profile_pic')) {
+            $files = uploadInputs(Input::file('profile_pic'), 'profile_pics');
+            $player->profile_pic = $files;
+        }
+
         $player->save();
         $objPlayer = \App\Player::find(Input::get('player_id'));
         $objPlayer->player_roles()->sync(array_filter(Input::get('player_role')));

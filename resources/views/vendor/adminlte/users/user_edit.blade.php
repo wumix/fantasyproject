@@ -1,6 +1,7 @@
 <?php
 //echo '<pre>'; print_r($gameslist);
 //echo '<pre>'; print_r($player);die;
+//dd($user_edit);
 ?>
 @extends('adminlte::layouts.app')
 
@@ -14,50 +15,58 @@
         <div class="col-md-12">
             <!-- Default box -->
             <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Player Edit</h3>
+                 <div class="box-header with-border">
+                    <h3 class="box-title">Uer Edit</h3>
+                    <div class="pull-right">
+                        @if(!empty($user_edit['profile_pic']))
+                        <img class="img-md" src="{{ getUploadsPath($user_edit['profile_pic']) }}" />
+                        @endif
+                    </div>
                 </div>
                 <div class="box-body">
                     <div class="container-fluid">
-                        {!! Form::open(['url' => route('editPlayer')]) !!}
+                        {!! Form::open(['url' => route('postEditUser',['user_id'=>$user_edit['id']]),'files' => true]) !!}
+
                         <div class="form-group">
-                            <label>Player Name</label>
-                            <input type="hidden" name="player_id" value="{{$player['id']}}"/>
-                            <input required class="form-control" name="player_name" value="{{$player['name']}}" type="text" placeholder="" />
+                            <label>User Name</label>
+
+                            <input required class="form-control" name="name" value="{{$user_edit['name']}}" type="text" placeholder="" />
                         </div>
                         <div class="form-group">
-                            <label>Change Game</label>
-                            <select id="game_id" name="game_id" class="custom-select form-control">
-                                <option value="">Select</option>
-                                <?php $gameid; ?>
-                                @foreach($gameslist as $row)
-                                <option 
-                                    <?php echo ($row['name'] == $player['player_games']['name']) ? 'selected' : '' ?> 
-                                    value="{{$row['id']}}">{{$row['name']}}</option>
-                                @endforeach
+                            <label>Email</label>
+
+                            <input required class="form-control" name="email" value="{{$user_edit['email']}}" type="text" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label>Phone no</label>
+
+                            <input  class="form-control" name="phone_number" value="{{$user_edit['phone_number']}}" type="text" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label>User Type</label>
+                            <select name="user_type">
+                                <option <?php echo ($user_edit['user_type'] == '1') ? 'selected' : '' ?> value="1">USER</option>
+                                <option <?php echo ($user_edit['user_type'] == '0') ? 'selected' : '' ?> value="0">ADMIN</option>  
                             </select>
                         </div>
-
                         <div class="form-group">
-                            <label>Player Roles</label>
-                            <div id="dynamic_player_roles">
-                            @foreach($player['player_games']['game_roles'] as $key => $val)
-                            {{$val['name']}}
-                            <input
-                                type="checkbox"
-                                name="player_role[]"
-                                value="{{$val['id']}}"
-                                <?php echo (in_array($val['id'], $player['player_roles'])) ? 'checked' : '' ?>
-                                />
-                            @endforeach
-                            </div>
+                            <label>User Type</label>
+                            <select name="is_active">
+                                <option <?php echo ($user_edit['is_active'] == '1') ? 'selected' : '' ?> value="1">Active</option>
+                                <option <?php echo ($user_edit['is_active'] == '0') ? 'selected' : '' ?> value="0">In Active</option>  
+                            </select>
                         </div>
+                        <div class="form-group">
+                            <label>Refearal Key Name</label>
 
+                            <input required class="form-control" name="ref_key" value="{{$user_edit['referral_key']}}" type="text" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            
+                            <label>Profile Pic</label>
 
-                        <!--                        <div class="form-group">
-                                                    <label>Player roles</label>
-                                                    <div id="dynamic_player_roles">No game roles defined.Player roles will here</div>
-                                                </div>-->
+                            <input class="form-control" name="profile_pic" type="file" />
+                        </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">
                                 Update
@@ -77,36 +86,10 @@
 
 @section('js')
 <script>
-    $("#add_more_roles").click(function (event) {
-        event.preventDefault();
 
-        $('<input  class="form-control" name="role_name[]" value="" type="text" placeholder="" />').insertBefore("#add_more_roles");
-    });
 </script>
 <script>
-    $("#game_id").change(function (event) {
-        var menuId = this.value;
-        
-        $.ajax({
-            type: 'GET',
-            url: '{{route('ajax_get_game_terms')}}',
-            data: {game_id: menuId},
-            success: function (data) {
-                var gameRoles = data.game_roles;
-                var rolesHtml = '';
-                if (gameRoles.length == 0) {
-                    rolesHtml = 'No game roles selected';
-                } else {
-                    $.each(gameRoles, function (k, v) {
-                        rolesHtml += '<label class="checkbox-inline">';
-                        rolesHtml += '<input name="player_role[]" type="checkbox" value="' + v.id + '">' + v.name
-                        rolesHtml += '</label>'
-                    });
-                }
-                $("#dynamic_player_roles").html(rolesHtml);
-            }
-        });
-    });
+
 </script>
 
 

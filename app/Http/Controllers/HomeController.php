@@ -22,7 +22,7 @@ class HomeController extends Controller {
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -31,7 +31,9 @@ class HomeController extends Controller {
      * @return Response
      */
     public function index() {
-        return view('adminlte::home');
+        $objTourmament = \App\Tournament::all()->toArray();
+        $data['tournaments_list'] = $objTourmament;
+        return view('home',$data);
     }
 
 }

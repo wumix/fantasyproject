@@ -36,6 +36,7 @@ class HomeController extends Controller
     {
         $objTourmament = \App\Tournament::all()->toArray();
         $data['tournaments_list'] = $objTourmament;
+        //dd($data['tournaments_list']);
         return view('home', $data);
     }
 

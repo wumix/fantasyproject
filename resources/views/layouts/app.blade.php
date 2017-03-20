@@ -142,6 +142,9 @@
     <input type="submit" value="logout" style="display: none;">
 </form>
 @php
+
+
+
 $timestamp=strtotime($tournaments_list[0]['start_date']);
 $php_date = getdate($timestamp);
 // or if you want to output a date in year/month/day format:
@@ -149,6 +152,7 @@ $date= date("Y/m/d", $timestamp);
 
 
 @endphp
+
 <script type="text/javascript">
     $("#getting-started")
         .countdown("{{$date}}", function (event) {

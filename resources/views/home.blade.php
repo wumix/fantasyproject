@@ -4,27 +4,26 @@
 
 <!-- ..........................Banner Start ............................-->
 <section>
-    <div class="container-fluid " id="ban" >
+    <div class="container-fluid " id="ban">
         <div class="row" id="rrh">
             <div class="col-md-6" id="headt">
 
                 <h1 class="ht1">LOREM</h1>
                 <h3 class="ht2">
-                    </h3>
+                </h3>
             </div>
-            <div class="col-md-6" >
+            <div class="col-md-6">
                 <div class="container" id="uocming">
                     <h3 id="uph">UPCOMING TOURNAMENT</h3>
 
-                    <h4 id="up4">{{$tournaments_list[0]['start_date']}}</h4>
+                    <h4 id="up4">
+
+                    </h4>
                     <div class="perant">
                         <div class="child" id="getting-started"></div>
                         <div class="child" id="getting-started1"></div>
                         <div class="child" id="getting-started2"></div>
                         <div class="child" id="getting-started3"></div>
-
-
-
 
 
                     </div>
@@ -37,13 +36,12 @@
                     </div>
 
 
-
                 </div>
             </div>
 
 
-
-        </div></div>
+        </div>
+    </div>
 
 </section>
 <!-- ............................Banner End.................... -->
@@ -64,25 +62,25 @@
 
 
             <table class="table table-striped" id="bgcol">
-                <thead class="main-taible-head" >
-                    <tr>
-                        <th class="border-r th1">TOURNAMENT NAME</th>
-                        <th class="border-r">VENUE</th>
-                        <th class="border-r">STARTING DATE</th>
-                        <th class="th2">ENDING DATE</th>
-                    </tr>
+                <thead class="main-taible-head">
+                <tr>
+                    <th class="border-r th1">TOURNAMENT NAME</th>
+                    <th class="border-r">VENUE</th>
+                    <th class="border-r">STARTING DATE</th>
+                    <th class="th2">ENDING DATE</th>
+                </tr>
                 </thead>
                 <tbody class="main-taible-body">
 
 
-                    @foreach ($tournaments_list as $row)
-                    <tr>
-                        <td class="border-r" >{{$row['name']}}</td>
-                        <td class="border-r">{{$row['venue']}}</td>
-                        <td class="border-r">{{$row['start_date']}}</td>
-                        <td>{{$row['end_date']}}</td>
-                    </tr>
-                    @endforeach
+                @foreach ($tournaments_list as $row)
+                <tr>
+                    <td class="border-r">{{$row['name']}}</td>
+                    <td class="border-r">{{$row['venue']}}</td>
+                    <td class="border-r">{{$row['start_date']}}</td>
+                    <td>{{$row['end_date']}}</td>
+                </tr>
+                @endforeach
 
                 </tbody>
             </table>
@@ -98,7 +96,8 @@
             <div class="row">
                 <div class="col-md-3">
                     <h1>1</h1>
-                    <i id="i1" class="fa fa-user-plus" aria-hidden="true" >  <h3>SIGN UP FOR A <br>FREE GAMITHONE<br> ACCOUNT</h3></i>
+                    <i id="i1" class="fa fa-user-plus" aria-hidden="true"><h3>SIGN UP FOR A <br>FREE GAMITHONE<br>
+                            ACCOUNT</h3></i>
 
                 </div>
                 <div class="col-md-1">
@@ -107,7 +106,7 @@
 
                 <div id="i2" class="col-md-3">
                     <h1>2</h1>
-                    <i class="fa fa-users"> <h3>CHOOSE A LEAGUE <br>FREE GAMITHONE<br> ACCOUNT</h3></i>
+                    <i class="fa fa-users"><h3>CHOOSE A LEAGUE <br>FREE GAMITHONE<br> ACCOUNT</h3></i>
                 </div>
                 <div class="col-md-1">
                     <i id="arow" class="fa fa-arrow-right"></i>
@@ -115,7 +114,7 @@
 
                 <div class="col-md-4">
                     <h1>3</h1>
-                    <i id="i3" class="fa fa-trophy"> <h3>SELECT PLAYERS<br>AND WIN!</h3></i>
+                    <i id="i3" class="fa fa-trophy"><h3>SELECT PLAYERS<br>AND WIN!</h3></i>
                 </div>
             </div>
 
@@ -131,18 +130,18 @@
             <div class="row">
                 <h3>GAMITHON GALLERY</h3>
                 <ul class="galeria">
-                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png" /></a></li>
-                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png" /></a></li>
-                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png" /></a></li>
-                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png" /></a></li>
-                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png" /></a></li>
-                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png" /></a></li>
-                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png" /></a></li>
-                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png" /></a></li>
-                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png" /></a></li>
-                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png" /></a></li>
-                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png" /></a></li>
-                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png" /></a></li>
+                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png"/></a></li>
+                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png"/></a></li>
+                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png"/></a></li>
+                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png"/></a></li>
+                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png"/></a></li>
+                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png"/></a></li>
+                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png"/></a></li>
+                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png"/></a></li>
+                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png"/></a></li>
+                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png"/></a></li>
+                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png"/></a></li>
+                    <li><a href="http://placehold.it/640x480.png"><img src="http://placehold.it/320x320.png"/></a></li>
                 </ul>
 
             </div>
@@ -151,7 +150,7 @@
 </section>
 <!-- .........................Gallery End .................................-->
 <!-- ...............................News start......................... -->
-<div class="container-fluid lnews" >
+<div class="container-fluid lnews">
     <div class="row">
         <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h3 class="gallery-title">LATEST NEWS</h3>
@@ -186,7 +185,6 @@
                             </p>
 
 
-
                         </div>
 
                     </div>
@@ -211,7 +209,6 @@
                                 sfklsfjks
                                 sfjsj
                             </p>
-
 
 
                         </div>
@@ -219,7 +216,7 @@
                     </div>
 
                 </div>
-                <div class="row " >
+                <div class="row ">
 
                     <div class="gallery_product col-md-5 ">
                         <div class="col-md-6 ">
@@ -241,7 +238,6 @@
                                 sfklsfjks
                                 sfjsj
                             </p>
-
 
 
                         </div>
@@ -268,8 +264,6 @@
                                 sfklsfjks
                                 sfjsj
                             </p>
-
-
 
 
                         </div>
@@ -301,7 +295,6 @@
                             </p>
 
 
-
                         </div>
                     </div>
                     <div class="gallery_product col-md-5 ">
@@ -326,7 +319,6 @@
                             </p>
 
 
-
                         </div>
 
                     </div>
@@ -343,7 +335,6 @@
 </section>
 
 <!-- /.....................footer Start......................../ -->
-
 
 
 @endsection

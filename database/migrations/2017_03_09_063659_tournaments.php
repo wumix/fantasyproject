@@ -19,8 +19,8 @@ class Tournaments extends Migration {
             $table->integer('game_id')->unsigned();
             $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
 
-            $table->dateTime('start_date')->comment('GMT standard time')->default('0000-00-00 00:00:00');
-            $table->dateTime('end_date')->comment('GMT standard time')->default('0000-00-00 00:00:00');
+            $table->dateTime('start_date')->comment('GMT standard time');
+            $table->dateTime('end_date')->comment('GMT standard time');
 
             $table->integer('max_players')->unsigned();
 

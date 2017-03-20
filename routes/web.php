@@ -17,19 +17,18 @@
   }); */
 
     Route::group(['middleware' => ['web']], function () {
-        Route::get('/', 'HomeController@index');
-        Route::group(['middleware' => ['is_user']], function () {
-           Route::get('/profile', 'HomeController@profile')->name('profile');
+            Route::get('/', 'HomeController@index');
+            Route::group(['middleware' => ['is_user']], function () {
+            Route::get('/profile', 'HomeController@profile')->name('profile');
         });
     });
 
     //Admin routes
     Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
-        Route::get('/', 'Auth\LoginController@showAdminLoginForm');
-
-        Route::group(['middleware' => ['is_admin']], function () {
-            Route::get('/dashboard', 'Admin\DashboardController@index');  //Games routes
-            Route::group(['prefix' => 'games'], function () {
+                Route::get('/', 'Auth\LoginController@showAdminLoginForm');
+                Route::group(['middleware' => ['is_admin']], function () {
+                Route::get('/dashboard', 'Admin\DashboardController@index');  //Games routes
+                Route::group(['prefix' => 'games'], function () {
                 Route::get('/', 'Admin\GamesController@index')->name('gameslist');
                 Route::get('/add', 'Admin\GamesController@showAddView')->name('addGame'); //shows add game form
                 Route::post('/add', 'Admin\GamesController@addPost')->name('postAddGame');

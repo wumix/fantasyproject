@@ -55,11 +55,11 @@
 
                         </div>
                         <div class="form-group">
-                            <label>Start Date Time <small class="help">This must be a GMT</small></label>
-                            <input required name="start_date" class="datetimepicker form-control"  type="text" value="{{$tournament_games['start_date']}}">
+                            <label>Start Date Time <small class="help">(This must be a GMT)</small></label>
+                            <input required name="start_date" class="datetimepicker form-control" type="text" value="{{$tournament_games['start_date']}}" />
                         </div>
                         <div class="form-group">
-                            <label>End Date Time <small class="help">This must be a GMT</small></label>
+                            <label>End Date Time <small class="help">(This must be a GMT)</small></label>
                             <input required name="end_date" class="datetimepicker form-control"  type="text" value="{{$tournament_games['end_date']}}">
                         </div>
                         <div class="form-group">
@@ -95,9 +95,15 @@
                                         value="{{$tournament_games['id']}}" 
                                         class="form-control" 
                                         name="tournament_game_term_points[{{$counter}}][tournament_id]">
+                                        <?php
+                                        $termPoint = 0;
+                                        if (!empty(searchInMultiArray($val['id'], 'game_term_id', $tournament_games['game_term_points'], false))) {
+                                            $termPoint = searchInMultiArray($val['id'], 'game_term_id', $tournament_games['game_term_points'], false, 'points');
+                                        }
+                                        ?>
                                     <input 
                                         type="text" 
-                                        value="{{searchInMultiArray($val['id'], 'game_term_id', $tournament_games['game_term_points'], false, 'points')}}" 
+                                        value="{{$termPoint}}" 
                                         class="form-control" 
                                         name="tournament_game_term_points[{{$counter}}][points]">
                                 </div>
@@ -146,5 +152,4 @@ $(document).ready(function ($) {
     });
 });
 </script>
-
 @stop

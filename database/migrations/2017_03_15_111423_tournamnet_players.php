@@ -20,8 +20,7 @@ class TournamnetPlayers extends Migration {
             $table->integer('tournament_id')->unsigned();
             $table->foreign('tournament_id')->references('id')->on('tournamentss')->onDelete('cascade');
 
-            $table->timestamps();
-            $table->softDeletes();
+            $table->double('player_price')->default(0);
         });
     }
 

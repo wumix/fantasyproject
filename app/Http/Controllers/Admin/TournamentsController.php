@@ -66,17 +66,10 @@ class TournamentsController extends Controller {
         try {
 
             $data['tournament_games'] = \App\Tournament::where('id', $tournament_id)
-                            ->with(['tournament_game' => function($query) {
-                                    
-                                },
-                                'tournament_game.game_terms' => function($query) {
-                                    
-                                },
-                                'game_term_points' => function($query) {
-                                    return $query->select('game_term_id', 'points', 'tournament_id');
-                                }])
+                            ->with('tournament_game', 'tournament_game.game_terms', 'game_term_points')
                             ->firstOrFail()->toArray();
             $data['games'] = Game::all()->toArray();
+            //dd($data);
             return view('adminlte::tournaments.tournament_edit', $data);
         } catch (ModelNotFoundException $ex) {
             abort('404');
@@ -97,22 +90,37 @@ class TournamentsController extends Controller {
     }
 
     function showAddPlayerForm($tournament_id) {
-        $objTP = \App\Tournament::where('id', $tournament_id)->with('tournament_game', 'tournament_game.game_players')->first();
-        $objTP = $objTP->toArray();
-        $data['players_list'] = $objTP;
-        $objTP1 = \App\Tournament::where('id', $tournament_id)->with('tournament_players')->first();
-        //dd($objTP1->toArray());
-        $data['tournament_players'] = $objTP1->toArray();
-        return view('adminlte::tournaments.add_tournament_players', $data);
+        try {
+            $data['players_in_tournament'] = [];
+            $data['players_list'] = \App\Tournament::where('id', $tournament_id)
+                            ->with(['tournament_game' => function() {
+                                    
+                                }, 'tournament_game.game_players' => function() {
+                                    
+                                }, 'tournament_players' => function($query) {
+                                    
+                                }]
+                            )->firstOrFail()->toArray();
+
+            ////////Making player price
+            //End making player price
+            if (!empty($data['players_list']['tournament_players'])) {
+                $data['players_in_tournament'] = array_flatten(array_column(array_column($data['players_list']['tournament_players'], 'pivot'), 'player_id'));
+            }
+            return view('adminlte::tournaments.add_tournament_players', $data);
+        } catch (ModelNotFoundException $ex) {
+            abort(404);
+        }
     }
 
     function postAddTournamentPlayers() {
-
-        // dd( Input::all()); //to debug post
-        $objPlayer = \App\Tournament::find(Input::get('tournament_id'));
-        $objPlayer->tournament_players()->sync(Input::get('player_id'));
-
-        return redirect()->route('showAddPlayerForm', ['tournament_id' => Input::get('tournament_id')]);
+        $postedData = Input::all();
+        $playerTournament = removeElementWithOutKey($postedData['player_tournament'], 'player_id');
+        \App\PlayerTournament::where('tournament_id', $postedData['tournament_id'])->delete();
+        \App\PlayerTournament::insert($playerTournament);
+        return redirect()
+                        ->route('showAddPlayerForm', ['tournament_id' => Input::get('tournament_id')])
+                        ->with('status', 'Player added to tournament');
     }
 
 }

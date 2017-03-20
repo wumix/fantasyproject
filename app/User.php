@@ -43,5 +43,8 @@ class User extends Authenticatable {
     public static function isAdmin() {
         return (\Auth::user()->user_type == 0) ? true : false;
     }
+    public static function isUser() {
+        return (\Auth::user()->user_type == 1) ? true : false;
+    }
 
 }

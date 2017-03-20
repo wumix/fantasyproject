@@ -34,7 +34,10 @@
                 @if(!Auth::check())
                 <a class="at" href="{{route('login')}}">Login <span class="mhline">|</span></a>
                 </a>
-
+                @endif
+                @if(!Auth::check())
+                <a class="at" href="{{ url('/register') }}">Sign Up <span class="mhline">|</span></a>
+                </a>
                 @endif
 
                 @if(Auth::check())
@@ -69,8 +72,17 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="topFixedNavbar1">
                 <ul class="nav navbar-nav" style="color:white; padding-top:45px">
-                    <li><a href="#" class="at"><span class="spn1">Home </span><span class="spn">|</span></a></li>
-                    <li><a href="#"><span class="spn1">About Us </span> <span class="spn">|</span></a></li>
+                    <li><a href="#" class="at"><span class="spn1">Home </span><span class="spn">|</span></a>
+                        @if(Auth::check())
+                    <li><a href="{{route('profile')}}"><span class="spn1">Profile </span> <span class="spn">|</span></a></li>
+
+                    @endif
+                    @if(Auth::check())
+                    <li><a href="{{route('profile')}}"><span class="spn1">Make Your Team</span> <span class="spn">|</span></a></li>
+
+                    @endif
+
+
                     <li><a href="#"><span class="spn1">Leagues</span> <span class="spn">|</span></a></li>
                     <li><a href="#"><span class="spn1">Tournaments </span> <span class="spn">|</span></a></li>
                     <li><a href="#"><span class="spn1">Gallery</span> <span class="spn">|</span></a></li>
@@ -139,7 +151,7 @@ $date= date("Y/m/d", $timestamp);
 @endphp
 <script type="text/javascript">
     $("#getting-started")
-        .countdown("{{$date}}", function(event) {
+        .countdown("{{$date}}", function (event) {
             $(this).text(
                 event.strftime('%D')
             );

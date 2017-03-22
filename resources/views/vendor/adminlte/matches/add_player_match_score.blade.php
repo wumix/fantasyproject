@@ -1,6 +1,8 @@
 @extends('adminlte::layouts.app')
-<?php //debugArr($players);?>
-<?php // debugArr($game_terms); die;?>
+<?php //debugArr($players);
+?>
+<?php // debugArr($game_terms); die;
+?>
 @section('htmlheader_title')
 @endsection
 
@@ -20,10 +22,10 @@
 
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered">
-                            @php($player_counter = 0)
+
                             @foreach($players as $row)
                             <tr>
-                                <input type="text" name="player_game_term_counter[{{$player_counter}}][player_id]" value="{{$row['id']}}" />
+                                <input type="text" name="player_game_term_counter[{{$row['id']}}][]" value="{{$row['id']}}" />
                                 <div class="form-group">
                                     <label><strong>{{$row['name']}} has: </strong></label>
                                     <div class="pull-right">
@@ -33,24 +35,24 @@
                                     </div>
                                 </div>
                             </tr>
+                            @endforeach
                             <tr>
                                 <div class="form-group">
-                                    @php($term_counter = 0)
+
                                     @foreach($game_terms['game_terms'] as $row)
                             <tr>
                                 <div class="form-group">
                                     <label>{{$row['name']}}</label>
-                                    <input type="text" name="player_game_term_counter[{{$player_counter}}][achived_terms][{{$term_counter}}][term_score]" value="" class="form-control"/>
-                                    <input type="text" name="player_game_term_counter[{{$player_counter}}][achived_terms][{{$term_counter}}][term_id]" value="{{$row['id']}}" class="form-control"/>
+                                    <input type="text" name="player_game_term_counter[{{$row[id][]}}[]" value="" class="form-control"/>
 
                                 </div>
                             </tr>
-                            @php($term_counter++)
+
                             @endforeach
                     </div>
                     </tr>
-                    @php($player_counter++)
-                    @endforeach
+
+
                     </table>
                 </div>
 

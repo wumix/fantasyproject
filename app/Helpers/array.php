@@ -39,3 +39,21 @@ function debugArr($array) {
     print_r($array);
     echo '</pre>';
 }
+
+/**
+ * Match in array
+ * @param array $inputArray
+ * @param array $searchCrieteria
+ * @return array
+ */
+function tapArray($inputArray, array $searchCrieteria, $returnSingle = true) {
+    $result = collect($inputArray);
+    foreach ($searchCrieteria as $key => $val) {
+        $result = $result->where($key, $val);
+    }
+    $result = $result->tap(function($collection) {
+                return $collection;
+            })->toArray();
+    $result = array_values($result);
+    return ($returnSingle) ? $result[0] : $result;
+}

@@ -14,6 +14,7 @@ Games
                     <h3 class="box-title">Add Match</h3>
                 </div>
                 <div class="box-body">
+                    @include('adminlte::layouts.form_errors')
                     {!! Form::open(['url' => route('postAddMatch'),'files'=>true]) !!}
                     <div class="form-group">
                         <label>Name</label>
@@ -41,9 +42,9 @@ Games
                                placeholder="Enter Second Team Name" type="text" name="team_two">
                     </div>
                     <div class="form-group">
-                        <label>Name</label>
+                        <label>Venue</label>
                         <input required value="{!! old('name') !!}" class="form-control" id="name"
-                               placeholder="Venue Name" type="text" name="venue_name">
+                               placeholder="Venue Name" type="text" name="venue">
                     </div>
                     <div class="form-group">
                         <label>Start Date Time <small class="help">(This must be a GMT)</small>

@@ -39,3 +39,37 @@ function debugArr($array) {
     print_r($array);
     echo '</pre>';
 }
+
+/**
+ * Match in array
+ * @param array $inputArray
+ * @param array $searchCrieteria
+ * @return array
+ */
+function tapArray($inputArray, array $searchCrieteria, $returnSingle = true) {
+    $result = collect($inputArray);
+    foreach ($searchCrieteria as $key => $val) {
+        $result = $result->where($key, $val);
+    }
+    $result = $result->tap(function($collection) {
+                return $collection;
+            })->toArray();
+    if(!empty($result)){
+        $result = fix_keys($result);
+        return ($returnSingle) ? $result[0] : $result;
+    }
+    return [];
+}
+
+function fix_keys($array) {
+    $numberCheck = false;
+    foreach ($array as $k => $val) {
+        if (is_array($val)) $array[$k] = fix_keys($val); //recurse
+        if (is_numeric($k)) $numberCheck = true;
+    }
+    if ($numberCheck === true) {
+        return array_values($array);
+    } else {
+        return $array;
+    }
+}

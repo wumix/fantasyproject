@@ -19,7 +19,7 @@ class RegisterController extends Controller {
       | Register Controller
       |--------------------------------------------------------------------------
       |
-      | This controller handles the registration of new users as well as their
+      | This controller handles the registration of new user as well as their
       | validation and creation. By default this controller uses a trait to
       | provide this functionality without requiring any additional code.
       |
@@ -37,7 +37,7 @@ use RegistersUsers;
     }
 
     /**
-     * Where to redirect users after login / registration.
+     * Where to redirect user after login / registration.
      *
      * @var string
      */
@@ -100,7 +100,7 @@ use RegistersUsers;
             'profile_pic'=>$data[1],
             'password' => bcrypt($data['password']),
         ];
-        if (config('auth.providers.users.field', 'email') === 'username' && isset($data['username'])) {
+        if (config('auth.providers.user.field', 'email') === 'username' && isset($data['username'])) {
             $fields['username'] = $data['username'];
         }
         return User::create($fields);

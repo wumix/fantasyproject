@@ -83,7 +83,7 @@ class AcachaAdminLTELaravelTest extends BrowserKitTest
      */
     public function testLogin()
     {
-        Config::set('auth.providers.users.field', 'email');
+        Config::set('auth.providers.user.field', 'email');
         $user = factory(App\User::class)->create(['password' => Hash::make('passw0RD')]);
 
         view()->share('user', $user);
@@ -104,7 +104,7 @@ class AcachaAdminLTELaravelTest extends BrowserKitTest
      */
     public function testLoginRequiredFieldsWithEmailLogin()
     {
-        Config::set('auth.providers.users.field', 'email');
+        Config::set('auth.providers.user.field', 'email');
         $this->visit('/login')
             ->type('', 'email')
             ->type('', 'password')
@@ -198,7 +198,7 @@ class AcachaAdminLTELaravelTest extends BrowserKitTest
      */
     public function testNewUserRegistration()
     {
-        Config::set('auth.providers.users.field', 'email');
+        Config::set('auth.providers.user.field', 'email');
         $user = factory(App\User::class)->create();
         view()->share('user', $user);
         $this->visit('/register')
@@ -209,7 +209,7 @@ class AcachaAdminLTELaravelTest extends BrowserKitTest
             ->type('passw0RD', 'password_confirmation')
             ->press('Register')
             ->seePageIs('/home')
-            ->seeInDatabase('users', ['email' => 'sergiturbadenas@gmail.com',
+            ->seeInDatabase('user', ['email' => 'sergiturbadenas@gmail.com',
                                       'name'  => 'Sergi Tur Badenas', ]);
     }
 

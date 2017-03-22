@@ -14,7 +14,6 @@ class matches extends Migration {
     public function up() {
         Schema::create('matches', function (Blueprint $table) {
             $table->increments('id');
-
             $table->string('name', 100);
             $table->string('team_one', 100);
             $table->string('team_two', 100);

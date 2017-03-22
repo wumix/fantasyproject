@@ -114,9 +114,14 @@ class TournamentsController extends Controller {
     }
 
     function postAddTournamentPlayers() {
+      //  dd(Input::get('tournament_id'));
+      //  dd(Input::all());
         $postedData = Input::all();
+        //dd($postedData);
         $playerTournament = removeElementWithOutKey($postedData['player_tournament'], 'player_id');
+     //   dd($postedData);
         \App\PlayerTournament::where('tournament_id', $postedData['tournament_id'])->delete();
+        //dd($playerTournament);
         \App\PlayerTournament::insert($playerTournament);
         return redirect()
                         ->route('showAddPlayerForm', ['tournament_id' => Input::get('tournament_id')])

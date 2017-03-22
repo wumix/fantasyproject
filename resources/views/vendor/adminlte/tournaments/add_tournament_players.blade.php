@@ -1,5 +1,5 @@
 @extends('adminlte::layouts.app')
-<?php // dd($tournament_players);?>
+<?php //dd($players_list);?>
 @section('htmlheader_title')
 @endsection
 
@@ -15,7 +15,7 @@
                 </div>
                 <div class="box-body">
                     {!! Form::open(['url' => route('postAddTournamentPlayers'),'files'=>true]) !!}
-                    <input type="hidden" name="tournament_id" value="{{$players_list['tournament_game']['id']}}" />
+                    <input type="hidden" name="tournament_id" value="{{$players_list['id']}}" />
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered">
                             <tr>
@@ -37,7 +37,7 @@
                                            name="player_tournament[{{$counter}}][player_id]"  
                                            {!! (in_array($row['id'], $players_in_tournament))?'checked':'' !!}
                                            value="{{$row['id']}}"/>  
-                                    <input type="hidden" name="player_tournament[{{$counter}}][tournament_id]" value="{{$players_list['tournament_game']['id']}}" />
+                                    <input type="hidden" name="player_tournament[{{$counter}}][tournament_id]" value="{{$players_list['id']}}" />
                                 </td>
                                 <td>
                                     <h4 class="media-heading">{{$row['name']}}</h4>

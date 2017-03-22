@@ -37,14 +37,13 @@ class PlayersController extends Controller {
     }
 
     public function addPlayer() {
-        // dd(Input::all()); //to debug post
+        //dd(Input::all()); //to debug post
         $objplayer = new \App\Player;
         // $objPlayerRoles = new \App\PlayerRole;
         $objplayer->name = Input::get('name');
         $objplayer->game_id = Input::get('game_id');
         if (Input::hasFile('profile_pic')) {
             $files = uploadInputs(Input::file('profile_pic'), 'player_pictures');
-
             $objplayer->profile_pic = $files;
         }
 

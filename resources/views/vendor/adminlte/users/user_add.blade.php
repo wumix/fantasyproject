@@ -35,7 +35,7 @@ Users
                         <input type="text" class="form-control" placeholder="{{ trans('adminlte_lang::message.fullname') }}" name="name" value="{{ old('name') }}"/>
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     </div>
-                    @if (config('auth.providers.users.field','email') === 'username')
+                    @if (config('user','email') === 'username')
                     <div class="form-group has-feedback">
                         <input type="text" class="form-control" placeholder="{{ trans('adminlte_lang::message.username') }}" name="username"/>
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>

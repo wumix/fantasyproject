@@ -52,7 +52,8 @@ function uploadInputs($inputName, $type = 'image', $visibility = 'private') {
     return $uploadPath;
 }
 
-function deleteFile($path) {
+function deleteFile($disk,$file){
+    $path=Storage::disk($disk)->getDriver()->getAdapter()->getPathPrefix().$file;
     File::delete($path);
 }
 

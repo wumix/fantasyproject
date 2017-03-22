@@ -60,7 +60,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- ..............................Nav Bar Start................................ -->
 <section>
-    <nav class="navbar navbar-default navbar-fixed-top" id="nav1">
+    <nav class="navbar navbar-default" id="nav1">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -72,7 +72,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="topFixedNavbar1">
                 <ul class="nav navbar-nav" style="color:white; padding-top:45px">
-                    <li><a href="#" class="at"><span class="spn1">Home </span><span class="spn">|</span></a>
+                    <li><a href="/" class="at"><span class="spn1">Home </span><span class="spn">|</span></a>
                         @if(Auth::check())
                     <li><a href="{{route('profile')}}"><span class="spn1">Profile </span> <span class="spn">|</span></a></li>
 
@@ -141,45 +141,6 @@
 
     <input type="submit" value="logout" style="display: none;">
 </form>
-@php
-
-
-
-$timestamp=strtotime($tournaments_list[0]['start_date']);
-$php_date = getdate($timestamp);
-// or if you want to output a date in year/month/day format:
-$date= date("Y/m/d", $timestamp);
-
-
-@endphp
-
-<script type="text/javascript">
-    $("#getting-started")
-        .countdown("{{$date}}", function (event) {
-            $(this).text(
-                event.strftime('%D')
-            );
-        });
-    $("#getting-started1")
-        .countdown("{{$date}}", function (event) {
-            $(this).text(
-                event.strftime('%H')
-            );
-        });
-    $("#getting-started2")
-        .countdown("{{$date}}", function (event) {
-            $(this).text(
-                event.strftime('%M')
-            );
-        });
-    $("#getting-started3")
-        .countdown("{{$date}}", function (event) {
-            $(this).text(
-                event.strftime('%S')
-            );
-        });
-
-</script>
-
+@yield('js')
 </body>
 </html>

@@ -12,7 +12,7 @@ class LoginController extends Controller {
       | Login Controller
       |--------------------------------------------------------------------------
       |
-      | This controller handles authenticating users for the application and
+      | This controller handles authenticating user for the application and
       | redirecting them to your home screen. The controller uses a trait
       | to conveniently provide its functionality to your applications.
       |
@@ -28,18 +28,21 @@ use AuthenticatesUsers {
      * @return \Illuminate\Http\Response
      */
     public function showLoginForm() {
-        return view('adminlte::auth.login');
+        $objTourmament = \App\Tournament::all()->toArray();
+        $data['tournaments_list'] = $objTourmament;
+        return view('adminlte::auth.login',$data);
     }
 
     /**
      * Show admin login form
      */
     public function showAdminLoginForm() {
+
         return view('adminlte::auth.login');
     }
 
     /**
-     * Where to redirect users after login.
+     * Where to redirect user after login.
      *
      * @var string
      */
@@ -69,7 +72,7 @@ use AuthenticatesUsers {
      * @return string
      */
     public function username() {
-        return config('auth.providers.users.field', 'email');
+        return config('auth.providers.user.field', 'email');
     }
 
     /**

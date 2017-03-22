@@ -19,20 +19,18 @@
                     <h3 class="box-title">Edit MATCH<small>{{$match['name']}}</small></h3>
                 </div>
                 <div class="box-body">
+                    @include('adminlte::layouts.form_errors')
                     <div class="container-fluid">
-                       
-                    {!! Form::open(['url' => route('editMatch',['match_id'=>$match['id']]),'files' => true]) !!}
-
+                        {!! Form::open(['url' => route('editMatch',['match_id'=>$match['id']]),'files' => true]) !!}
                         <div class="form-group">
                             <label>Match Name</label>
-                            
                             <input required class="form-control" name="name" value="{{$match['name']}}" type="text" placeholder="" />
                         </div>
                         <div class="form-group">
                             <label>Change Tournament</label>
                             <select id="tournament_id" name="tournament_id" class="custom-select form-control">
                                 <option value="">Select</option>
-                                
+
                                 @foreach($tournamentlist as $row)
                                 <option 
                                 <?php echo ($row['name'] == $match['match_tournament']['name']) ? 'selected' : '' ?> 
@@ -52,16 +50,16 @@
                                     <label>venue <small class="help">(This must be a GMT)</small></label>
                                     <input name="venue" value="{{$match['venue']}}" class="form-control" type="text">
                                 </div>
-                    <div class="form-group">
-                            <label>Team one</label>
-                            
-                            <input required class="form-control" name="team_one" value="{{$match['team_one']}}" type="text" placeholder="" />
-                        </div>
-                    <div class="form-group">
-                            <label>Team Two</label>
-                            
-                            <input required class="form-control" name="team_two" value="{{$match['team_two']}}" type="text" placeholder="" />
-                        </div>
+                                <div class="form-group">
+                                    <label>Team one</label>
+
+                                    <input required class="form-control" name="team_one" value="{{$match['team_one']}}" type="text" placeholder="" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Team Two</label>
+
+                                    <input required class="form-control" name="team_two" value="{{$match['team_two']}}" type="text" placeholder="" />
+                                </div>
 
 
                                 <div class="form-group">

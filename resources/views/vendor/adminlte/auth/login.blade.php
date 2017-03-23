@@ -1,4 +1,9 @@
-@extends('layouts.app')
+@extends('adminlte::layouts.auth')
+
+@section('htmlheader_title')
+    Log in
+@endsection
+
 @section('content')
     <!-- ...............................News start......................... -->
     <div class="container">
@@ -37,7 +42,7 @@
                                     domain="{{ config('auth.defaults.domain','') }}"
                             ></login-input-field>
                             <div class="form-group has-feedback">
-                            <input type="email" class="form-control" placeholder="{{ trans('adminlte_lang::message.<') }}" name="email"/>
+                            <input type="email" class="form-control" placeholder="Login" name="email"/>
                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                            </div>
                             <div class="form-group has-feedback">
@@ -58,7 +63,7 @@
                             </div>
                         </form>
 
-                        @include('adminlte::auth.partials.social_login')
+                        
 
                         <a href="{{ url('/password/reset') }}">{{ trans('adminlte_lang::message.forgotpassword') }}</a><br>
                         <a href="{{ url('/register') }}" class="text-center">{{ trans('adminlte_lang::message.registermember') }}</a>

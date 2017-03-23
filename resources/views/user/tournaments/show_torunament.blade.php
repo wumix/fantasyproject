@@ -113,7 +113,7 @@
                             <h3 class="ah3" id="ah31">{{$tournament_detail['name']}}</h3>
                         </div>
                         <div class="btnbb col-md-4">
-                            <button class="btn btn-md bttor">BUY YPUR TEAM YOUR TEAM IN JUST 10 POINTS</button>
+                            <a href="{{route('playTournament')}}" class="btn btn-md bttor">Play this TOurnament</a>
                         </div>
 
                     </div>

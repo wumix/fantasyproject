@@ -17,11 +17,11 @@ class TournamentsController extends Controller
         try {
             $data['players_in_tournament'] = [];
             $data['tournament_detail'] = \App\Tournament::where('id', $tournament_id)
-                ->with(['tournament_game' => function() {
+                ->with(['tournament_game' => function () {
 
-                    }, 'tournament_game.game_players' => function() {
+                    }, 'tournament_game.game_players' => function () {
 
-                    }, 'tournament_players' => function($query) {
+                    }, 'tournament_players' => function ($query) {
 
                     }]
                 )->firstOrFail()->toArray();
@@ -35,6 +35,10 @@ class TournamentsController extends Controller
         } catch (ModelNotFoundException $ex) {
             abort(404);
         }
+
+    }
+    function playTournament(){
+        return view('user.tournaments.show_torunament', $data);
 
     }
 }

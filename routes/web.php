@@ -22,6 +22,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['is_user']], function () {
         Route::get('/profile', 'HomeController@profile')->name('profile');
+        Route::get('/play', 'User\TournamentsController@playTournament')->name('playTournament');
+
         Route::group(['prefix' => 'tournaments'], function () {
         });
 

@@ -24,5 +24,9 @@ class Player extends Model {
     public function player_matches() {
 
     }
+    public function player_teams() {
+       // return $this->belongsToMany('App\Player', 'user_team_players','team_id');
+        return $this->belongsToMany('App\UserTeam', 'user_team_players','player_id');
+    }
 
 }

@@ -11,7 +11,9 @@ class Tournament extends Model {
     protected $fillable = [
         'name', 'game_id', 'venue', 'max_players', 'start_date', 'end_date', 'created_at', 'updated_at'
     ];
-
+    public static function getMaxPlayers($tournament_id){
+        return Tournament::find($tournament_id)->first()->max_players;
+    }
     public function tournament_game() { //tournaments ki games
         return $this->belongsTo('App\Game', 'game_id');
     }

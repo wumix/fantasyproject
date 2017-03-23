@@ -180,7 +180,8 @@
                                 <td class="border-r">Batsman</td>
                                 <td class="brr">{{$player['pivot']['player_price']}}</td>
                                 <td>
-                                    <a href="javascript:addplayertoteam('{{$player['id']}}','{{$tournament_detail['id']}}')"
+                                    <a id="btn-player-{{$player['id']}}"
+                                       href="javascript:addplayertoteam('{{$player['id']}}','{{$tournament_detail['id']}}')"
                                        class="btn btn-sucess">Add Player</a></td>
                             </tr>
                         @endforeach
@@ -506,7 +507,7 @@
                     if (data.status == "ok") {
                         $("#team_name").attr('disabled', true);
                         $("#addstatus").html("team added sucessfully");
-                        $('<input type="hidden" id="team_id" value="'+data.team_id+'"/>').insertBefore("#addstatus");
+                        $('<input type="hidden" id="team_id" value="' + data.team_id + '"/>').insertBefore("#addstatus");
                     }
                     else {
                         $("#addstatus").html("team Name Already Taken")
@@ -518,13 +519,20 @@
     </script>
     <script>
         function addplayertoteam(playerid, tournamentid) {
-            var teamid=$("#team_id").val();
+            var arr_player_id = [];
+            arr_player_id.push(playerid);
+            var teamid = $("#team_id").val();
             $.ajax({
                 type: 'POST',
                 url: '{{route('addUserTeamPlayerAjax')}}',
-                data: {tournament_id: playerid, player_id: tournamentid,team_id:teamid,_token:'{{csrf_token()}}'},
+                data: {
+                    tournament_id: tournamentid,
+                    player_id: arr_player_id,
+                    team_id: teamid, _token: '{{csrf_token()}}'
+                },
                 success: function (data) {
-                    console.log(data);
+                    console.log(data.success);
+                    $('#btn-player-' + playerid).attr('disabled', true);
 
                 }
             });

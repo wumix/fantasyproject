@@ -23,14 +23,14 @@ use AuthenticatesUsers {
     }
 
     /**
-     * Show the application's login form.
+     * Show the application's front-emd login form.
      *
      * @return \Illuminate\Http\Response
      */
     public function showLoginForm() {
         $objTourmament = \App\Tournament::all()->toArray();
         $data['tournaments_list'] = $objTourmament;
-        return view('adminlte::auth.login',$data);
+        return view('auth.login', $data);
     }
 
     /**
@@ -53,7 +53,7 @@ use AuthenticatesUsers {
      * @return type
      */
     protected function redirectTo() {
-        
+
         return (\Auth::user()->user_type == 0) ? 'admin/dashboard' : '/';
     }
 

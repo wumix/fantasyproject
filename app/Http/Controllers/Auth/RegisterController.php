@@ -36,6 +36,10 @@ use RegistersUsers;
         return view('adminlte::auth.register');
     }
 
+    public function showUserRegistrationForm() {
+        return view('auth.register');
+    }
+
     /**
      * Where to redirect user after login / registration.
      *
@@ -59,14 +63,13 @@ use RegistersUsers;
      * @return type
      */
     public function postAddUserFromAdmin(Request $request) {
-      $this->validator($request->all())->validate();     
-      if($request->hasFile('profile_pic')){
-           $files = uploadInputs($request->profile_pic, 'profile_pics');
-           $request->request->add(['profile_pics', $files]);
-           event(new \Illuminate\Auth\Events\Registered($user = $this->create($request->all())));
-       }
+        $this->validator($request->all())->validate();
+        if ($request->hasFile('profile_pic')) {
+            $files = uploadInputs($request->profile_pic, 'profile_pics');
+            $request->request->add(['profile_pics', $files]);
+            event(new \Illuminate\Auth\Events\Registered($user = $this->create($request->all())));
+        }
         return redirect()->route('addUser')->with('status', 'User was added');
-        
     }
 
     /**
@@ -82,7 +85,7 @@ use RegistersUsers;
                     'email' => 'required|email|max:255|unique:users',
                     'password' => 'required|min:6|confirmed',
                     'terms' => 'required',
-                    'profile_pic'=>'required'
+                    'profile_pic' => 'required'
         ]);
     }
 
@@ -93,11 +96,11 @@ use RegistersUsers;
      * @return User
      */
     protected function create(array $data) {
-        
+
         $fields = [
             'name' => $data['name'],
             'email' => $data['email'],
-            'profile_pic'=>$data[1],
+            'profile_pic' => $data[1],
             'password' => bcrypt($data['password']),
         ];
         if (config('auth.providers.user.field', 'email') === 'username' && isset($data['username'])) {

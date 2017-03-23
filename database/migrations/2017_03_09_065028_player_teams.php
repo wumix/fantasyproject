@@ -13,7 +13,7 @@ class PlayerTeams extends Migration
      */
     public function up()
     {
-        Schema::create('player_teams', function (Blueprint $table) {
+        Schema::create('user_team_players', function (Blueprint $table) {
          $table->increments('id');
          $table->integer('player_id')->unsigned();
          $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');;

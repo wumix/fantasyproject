@@ -36,7 +36,7 @@
                     </a>
                     @endif
                     @if(!Auth::check())
-                    <a class="at" href="{{ url('/register') }}">Sign Up <span class="mhline">|</span></a>
+                    <a class="at" href="{{ route('signUp') }}">Sign Up <span class="mhline">|</span></a>
                     </a>
                     @endif
 
@@ -142,5 +142,6 @@
             <input type="submit" value="logout" style="display: none;">
         </form>
         @yield('js')
+    @yield('addteamjs')
     </body>
 </html>

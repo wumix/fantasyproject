@@ -45,7 +45,7 @@ use RegistersUsers;
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/signup-confirmation';
 
     /**
      * Create a new controller instance.
@@ -86,7 +86,6 @@ use RegistersUsers;
                     'email' => 'required|email|max:255|unique:users',
                     'password' => 'required|min:6|confirmed',
                     'terms' => 'required',
-                    'profile_pic' => 'required'
         ]);
     }
 
@@ -101,13 +100,36 @@ use RegistersUsers;
         $fields = [
             'name' => $data['name'],
             'email' => $data['email'],
-            'profile_pic' => $data[1],
+            'profile_pic' => isset($data[1]) ? $data[1] : '',
             'password' => bcrypt($data['password']),
         ];
         if (config('auth.providers.user.field', 'email') === 'username' && isset($data['username'])) {
             $fields['username'] = $data['username'];
         }
         return User::create($fields);
+    }
+
+    /**
+     * The user has been registered. Override
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user) {
+        $userActionKey = 'user_signup';
+        $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
+        //Saving user points scored
+        $objPointsScored = new \App\UserPointsScored;
+        $objPointsScored->user_id = $user->id;
+        $objPointsScored->action_key = $userActionKey;
+        $objPointsScored->points_scored = $actionPoints;
+        $objPointsScored->save();
+        //Sending email to registered user
+//        Mail::send('emails.send', ['title' => $title, 'message' => $message], function ($message) {
+//            $message->from('no-reply@scotch.io', 'Scotch.IO');
+//            $message->to('batman@batcave.io');
+//        });
     }
 
 }

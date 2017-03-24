@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UserActionPoints extends Migration {
+class UserActionsName extends Migration {
 
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class UserActionPoints extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('user_action_points', function (Blueprint $table) {
+        Schema::create('user_actions_name', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('action_name', 50)->unique();
-            $table->string('action_key', 50)->unique();
-            $table->string('action_desc', 255);
-            $table->double('action_points');
+            $table->string('action_name', 255);
+            $table->string('action_key', 255);
+            $table->string('action_description');
             $table->timestamps();
         });
     }
@@ -28,7 +27,7 @@ class UserActionPoints extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('user_action_points');
+        Schema::dropIfExists('user_actions_name');
     }
 
 }

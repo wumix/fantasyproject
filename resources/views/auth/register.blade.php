@@ -21,6 +21,7 @@
 
                         <div class="form-group" id="sformbox">
 
+<<<<<<< HEAD
                             <div class="cols-md-12" id="withbox">
                                 <div class="input-group">
 									<span id="fbg" class="input-group-addon">
@@ -28,6 +29,13 @@
 									</span>
                                     <input id="fullname" type="text" class="form-control" name="name" placeholder="Name" required autofocus>
                                 </div>
+=======
+                                @if ($errors->has('name'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                                @endif
+>>>>>>> d302a890b842945af865ab0f2a13a0ad921c4f83
                             </div>
                         </div>
 
@@ -38,7 +46,15 @@
                                     <span id="fbg" class="input-group-addon"><i id="lgfico" class="fa fa-envelope fa-lg" aria-hidden="true"></i></span>
                                     <input id="email" type="email" class="form-control" name="email" placeholder="Email" required>
 
+<<<<<<< HEAD
                                 </div>
+=======
+                                @if ($errors->has('email'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                                @endif
+>>>>>>> d302a890b842945af865ab0f2a13a0ad921c4f83
                             </div>
                         </div>
                         @if ($errors->has('email'))
@@ -50,11 +66,19 @@
 
                         <div class="form-group">
 
+<<<<<<< HEAD
                             <div class="cols-md-10"  id="withbox">
                                 <div class="input-group">
                                     <span id="fbg" class="input-group-addon"><i id="lgfico" class="fa fa-key fa-lg" aria-hidden="true"></i></span>
                                     <input id="password" type="password" class="form-control" placeholder="Password" name="password" required>
                                 </div>
+=======
+                                @if ($errors->has('password'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                                @endif
+>>>>>>> d302a890b842945af865ab0f2a13a0ad921c4f83
                             </div>
                         </div>
                         @if ($errors->has('password'))
@@ -78,9 +102,26 @@
                             </label>
                         </div>
 
+<<<<<<< HEAD
                         <div class="form-group " id="withbox">
                             <a class="signuplink" href="">Already have an account</a>
                             <button type="submit" class="btn  btn-lg btn-block login-button">REGISTER</button>
+=======
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">&nbsp;</label>
+                            <div class="col-md-6">
+                                <input id="terms" type="checkbox" name="terms" required />
+                                I agreed to terms and conditions.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Register
+                                </button>
+                            </div>
+>>>>>>> d302a890b842945af865ab0f2a13a0ad921c4f83
                         </div>
 
                     </form>

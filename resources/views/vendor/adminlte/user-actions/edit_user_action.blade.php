@@ -21,23 +21,21 @@
                         <label>
                             Action Name
                         </label>
-                        <input required type="text" value="{{$user_action['action_name']}}" class="form-control"
-                               name="action_name"/>
+                        <input required type="text" value="{{$actionInfo['action_name']}}" class="form-control"
+                               name="action_name" readonly />
                     </div>
 
                     <div class="form-group">
                         <label>
                             Action Key
                         </label>
-                        <input required type="text" value="{{$user_action['action_key']}}" class="form-control"
-                               name="action_key"/>
+                        <input required type="text" value="{{$actionInfo['action_key']}}" readonly class="form-control" name="action_key"/>
                     </div>
                     <div class="form-group">
                         <label>
                             Description
                         </label>
-                        <input required type="text" value="{{$user_action['action_desc']}}" class="form-control"
-                               name="action_desc"/>
+                        <textarea required class="form-control" name="action_desc">{{$user_action['action_desc']}}</textarea>
                     </div>
                     <div class="form-group">
                         <label>
@@ -67,21 +65,21 @@
 <script src="{{asset('/datepicker/jquery.datetimepicker.js')}}"></script>
 <script src="{{asset('/datepicker/jquery.datatimefull.js')}}"></script>
 <script>
-    $(document).ready(function ($) {
-        var datePickerTheme = 'default';
-        var dateFormat = 'd.m.y';
-        var timeFormat = 'H:i';
-        var timeStep = 15;
-        //DateTime picker
-        $(".datetimepicker").datetimepicker({
-            minDate: '0', //yesterday is minimum date(for today use 0 or -1970/01/01)
-            // maxDate: '+1970/01/10',
-            //step: timeStep,
-            //minTime: 0,
-            hours12: false,
-            theme: datePickerTheme
-        });
+$(document).ready(function ($) {
+    var datePickerTheme = 'default';
+    var dateFormat = 'd.m.y';
+    var timeFormat = 'H:i';
+    var timeStep = 15;
+    //DateTime picker
+    $(".datetimepicker").datetimepicker({
+        minDate: '0', //yesterday is minimum date(for today use 0 or -1970/01/01)
+        // maxDate: '+1970/01/10',
+        //step: timeStep,
+        //minTime: 0,
+        hours12: false,
+        theme: datePickerTheme
     });
+});
 </script>
 
 @stop

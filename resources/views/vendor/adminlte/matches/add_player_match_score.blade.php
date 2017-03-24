@@ -1,6 +1,6 @@
 @extends('adminlte::layouts.app')
 <?php //debugArr($players);die;?>
-<?php  //debugArr($game_terms);die;?>
+<?php //debugArr($game_terms);die;?>
 @section('htmlheader_title')
 @endsection
 
@@ -39,64 +39,64 @@
                                 </td>
                             </tr>
                             <tr>
-                                <div class="form-group">
-                                    @php($term_counter = 0)
-                                    @foreach($game_terms['game_terms'] as $row)
-                                    @php($player_term_score = tapArray($player_scores, [
-                                    'player_id' => 1,
-                                    'game_term_id' => $row['id']
-                                    ]))
+                            <div class="form-group">
+                                @php($term_counter = 0)
+                                @foreach($game_terms['game_terms'] as $row)
+                                @php($player_term_score = tapArray($player_scores, [
+                                'player_id' => $player['id'],
+                                'game_term_id' => $row['id']
+                                ]))
 
-                                    @if(!empty($player_term_score))
-                                        @php($player_term_score = $player_term_score['player_term_count'])
-                                    @else
-                                        @php($player_term_score = 0)
-                                    @endif
+                                @if(!empty($player_term_score))
+                                @php($player_term_score = $player_term_score['player_term_count'])
+                                @else
+                                @php($player_term_score = 0)
+                                @endif
 
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <label>{{$row['name']}}</label>
+                                            <input type="text"
+                                                   name="player_game_term_counter[{{$player_counter}}][{{$term_counter}}][player_term_count]"
+                                                   value="{{$player_term_score}}"
+                                                   class="form-control"/>
+                                            <input type="hidden"
+                                                   name="player_game_term_counter[{{$player_counter}}][{{$term_counter}}][game_term_id]"
+                                                   value="{{$row['id']}}" class="form-control"/>
+                                            <input type="hidden"
+                                                   name="player_game_term_counter[{{$player_counter}}][{{$term_counter}}][player_id]"
+                                                   value="{{$player['id']}}"/>
+                                            <input type="hidden"
+                                                   name="player_game_term_counter[{{$player_counter}}][{{$term_counter}}][match_id]"
+                                                   value="{{$match_id}}"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @php($term_counter++)
+                                @endforeach
+                            </div>
+                            </tr>
+                            @php($player_counter++)
                             <tr>
                                 <td>
-                                    <div class="form-group">
-                                        <label>{{$row['name']}}</label>
-                                        <input type="text"
-                                               name="player_game_term_counter[{{$player_counter}}][{{$term_counter}}][player_term_count]"
-                                               value="{{$player_term_score}}"
-                                               class="form-control"/>
-                                        <input type="hidden"
-                                               name="player_game_term_counter[{{$player_counter}}][{{$term_counter}}][game_term_id]"
-                                               value="{{$row['id']}}" class="form-control"/>
-                                        <input type="hidden"
-                                               name="player_game_term_counter[{{$player_counter}}][{{$term_counter}}][player_id]"
-                                               value="{{$player['id']}}"/>
-                                        <input type="hidden"
-                                               name="player_game_term_counter[{{$player_counter}}][{{$term_counter}}][match_id]"
-                                               value="{{$match_id}}"/>
-                                    </div>
+
                                 </td>
                             </tr>
-                            @php($term_counter++)
                             @endforeach
+                        </table>
                     </div>
-                    </tr>
-                    @php($player_counter++)
-                    <tr>
-                        <td>
 
-                        </td>
-                    </tr>
-                    @endforeach
-                    </table>
+                    <div class="form-group">
+                        <button class="btn btn-success">Add</button>
+                    </div>
+                    {!! Form::close() !!}
+
                 </div>
-
-                <div class="form-group">
-                    <button class="btn btn-success">Add</button>
-                </div>
-                {!! Form::close() !!}
-
+                <!--/.box-body -->
             </div>
-            <!--/.box-body -->
+            <!-- /.box -->
         </div>
-        <!-- /.box -->
     </div>
-</div>
 </div>
 @endsection

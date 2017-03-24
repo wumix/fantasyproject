@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Input;
 class MatchesController extends Controller {
 
     protected $objMatch;
-    protected $matchinfo;
 
     function __construct() {
         $this->objMatch = new Match;
@@ -67,18 +66,18 @@ class MatchesController extends Controller {
 
     function playerMatchScore($match_id) {
         //dd($match_id);
-        $this->matchInfo = Match::where('id', $match_id)->with('player_scores')->firstOrFail();
-      //  dd($matchInfo->tournament_id);
-        $tournamentInfo = Tournament::find($this->matchInfo->tournament_id);
-       // dd($tournamentInfo);
+        $matchInfo = Match::where('id', $match_id)->with('player_scores')->firstOrFail();
+        //dd($matchInfo->toArray());
+        $tournamentInfo = Tournament::find($matchInfo->tournament_id);
+        // dd($tournamentInfo);
 
-        $data['players'] = Player::whereHas('player_tournaments', function($q) {
-                    $q->where('tournament_id',$this->matchInfo->tournament_id);
+        $data['players'] = Player::whereHas('player_tournaments', function($q) use ($matchInfo) {
+                    $q->where('tournament_id', $matchInfo->tournament_id);
                 })->get()->toArray();
         $data['match_id'] = $match_id;
-        $data['match_name'] = $this->matchInfo->name;
+        $data['match_name'] = $matchInfo->name;
         $data['tournament_name'] = $tournamentInfo->name;
-        $data['player_scores'] = $this->matchInfo->player_scores;
+        $data['player_scores'] = $matchInfo->player_scores;
         $data['game_terms'] = Game::find($tournamentInfo->game_id)->with('game_terms')->first()->toArray();
         return view('adminlte::matches.add_player_match_score', $data);
     }

@@ -182,7 +182,7 @@
                                 <td>
                                     <a id="btn-player-{{$player['id']}}"
                                        href="javascript:addplayertoteam('{{$player['id']}}','{{$tournament_detail['id']}}')"
-                                       class="btn btn-sucess">Add Player</a></td>
+                                       class="btn btn-warning">Add Player</a></td>
                             </tr>
                         @endforeach
 
@@ -531,8 +531,12 @@
                     team_id: teamid, _token: '{{csrf_token()}}'
                 },
                 success: function (data) {
-                    console.log(data.success);
-                    $('#btn-player-' + playerid).attr('disabled', true);
+
+                    if (data.success == true) {
+                        $('#btn-player-' + playerid).attr('disabled', true);
+                        $('#btn-player-' + playerid).attr('class', 'btn btn-danger');
+
+                    }
 
                 }
             });

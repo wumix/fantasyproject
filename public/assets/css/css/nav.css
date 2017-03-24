@@ -8,7 +8,7 @@
   background:#92b713;
    margin-top:-70px;
    color: #fff;
-
+   max-height: 
 }
 #nav1{
 	margin-top:33px; 
@@ -16,7 +16,7 @@
 	background-color:  rgba(102, 102, 102 , 0.8);
 }
 #ban{
-   background-image: url('http://gamithon.dev/assets/images/banner.jpg');
+   background-image: url('http://localhost/Gamithon/img/banner.jpg');
    width: 100%;
    background-size:contain;
 background-position:center;
@@ -469,10 +469,10 @@ font-size: 30pt;color: rgba(217, 217, 217 ,0.7);text-decoration: none;
  }
  .fos{
  	padding-top: 30px;
-
+ 	text-align: 
  }
  a{
-
+ 	color: white;
  }
 
 
@@ -828,12 +828,12 @@ input::-webkit-input-placeholder {
   background-color: #92b712;
   color: white;
   font-weight: 500;
-  margin: -12px 0 20px 240px;
+  margin: -20px 0 20px 190px;
    box-shadow: 2px 2px 1px 0  #c2c2c2;
 
 }
 #withbox{
-  width: 370px;
+  width: 300px;
 
 }
 .gbtn{
@@ -851,107 +851,3 @@ input::-webkit-input-placeholder {
 /*.................................Login Form Css End.............................*/
 
 /*.................................Login Css End...........................*/
-/*.................................SignUp Css Start...........................*/
-.slh{
-  color: #91b712;
-  text-align: center;
-}
-.signupline{
-   width: 40%;
-    margin-left: auto;
-    margin-right: auto;
-  
-    border-width: 1px;
-}
-.loginc{
-  margin: 150px 0 0 0;}
-/*
-/* Created by Filipe Pina
- * Specific styles of signin, register, component
- */
-/*
- * General styles
- */
-
-#fullname{
-   border-left: none;
-}
-#retypepassword{
-   border-left: none;
-}
-.smain{
-  margin-top: 85px;
-}
-#email{
-  border-left: none;
-}
-#password{
-  border-left: none;
-}
-#lgfico{
-  color: #c2c2c2;
-}
-
-
-
-.form-group{
-  margin-bottom: 15px;
-}
-
-label{
-  margin-bottom: 15px;
-}
-
-input,
-input::-webkit-input-placeholder {
-    font-size: 15px;
-    padding-top: 3px;
-}
-#formbox{
-  margin-bottom: 40px;
-}
-#forgetlink{
-  color: #9acc59;
-  padding-left: 105px;
-  font-weight: 100;
-}
-#remberbox{
-  color: #9acc59;
-  font-weight: 100;
-}
-#fbg{
-  background-color: #fff;
-  text-decoration: none;
-}
-
-.main-center{
-  margin-top: 80px;
-  margin: 0 auto;
-  max-width: 400px;
-    padding: 40px 40px;
-
-}
-
-
-#swithbox{
-  width: 300px;
-
-}
-.gbtn{
-  margin-top: 60px;
-}
-.signuplink{
-  color: #f8a120;
-  float: left;
-  font-weight: 100;
-}
-.login-register{
-  font-size: 11px;
-  text-align: center;
-}
-#termlink{
-  color: #f8a120;
-  
-  font-weight: 100;
-}
-/*.................................SignUp Css End...........................*/

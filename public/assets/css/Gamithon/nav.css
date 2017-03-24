@@ -8,7 +8,7 @@
   background:#92b713;
    margin-top:-70px;
    color: #fff;
-
+   max-height: 
 }
 #nav1{
 	margin-top:33px; 
@@ -16,7 +16,7 @@
 	background-color:  rgba(102, 102, 102 , 0.8);
 }
 #ban{
-   background-image: url('http://gamithon.dev/assets/images/banner.jpg');
+   background-image: url('http://localhost/Gamithon/img/banner.jpg');
    width: 100%;
    background-size:contain;
 background-position:center;
@@ -469,10 +469,10 @@ font-size: 30pt;color: rgba(217, 217, 217 ,0.7);text-decoration: none;
  }
  .fos{
  	padding-top: 30px;
-
+ 	text-align: 
  }
  a{
-
+ 	color: white;
  }
 
 
@@ -833,7 +833,7 @@ input::-webkit-input-placeholder {
 
 }
 #withbox{
-  width: 370px;
+  width: 355px;
 
 }
 .gbtn{

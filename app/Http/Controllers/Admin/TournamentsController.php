@@ -88,7 +88,14 @@ class TournamentsController extends Controller {
         return redirect()->route('editTournamentForm', ['tournament_id' => Input::get('id')])
                         ->with('status', 'Tournament Updated');
     }
+    function addTournamentRoles($tournament_id){
+       $data['tournament_max_roles']= \App\Tournament::where('id', $tournament_id)->with(['tournament_game.game_roles'])->firstOrFail()->toArray();
+        return view('adminlte::tournaments.add_tournament_max_roles', $data);
 
+    }
+function postAddmaxRoles(Request $request){
+        dd($request->id);
+}
     function showAddPlayerForm($tournament_id) {
         try {
             $data['players_in_tournament'] = [];

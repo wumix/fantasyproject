@@ -6,6 +6,8 @@ use \Auth;
 use Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DateTime;
+use DateTimeZone;
 
 class TournamentsController extends Controller
 {
@@ -42,7 +44,11 @@ class TournamentsController extends Controller
 
     function playTournament($tournament_id)
     {
-
+       // dd();
+//        $query=array('tournament_id'=>$tournament_id,'user_id'=>Auth::id());
+//        $x= \App\UserTeam::where($query)->first()->name;
+       // dd($x);
+       // die;
         try {
             $data['players_in_tournament'] = [];
             $data['tournament_detail'] = \App\Tournament::where('id', $tournament_id)
@@ -91,16 +97,31 @@ class TournamentsController extends Controller
 //            ->firstOrFail()
 //            ->toArray();
 //        //  dd($data['player']);
+
+        $tournamentDate=\App\Tournament::getStartdate($request->tournament_id);
+        $datetime = new \DateTime($tournamentDate);
+        $date = $datetime->format('Y-m-d H:i:sP');
+        $dateint = strtotime($date);
+        $date1=new DateTime();
+        $date1=$date1->format('Y-m-d H:i:sP');
+        $date1int=strtotime($date1);
+        // echo $dateint-$date1int;
+        $difference=round(($dateint-$date1int) / 60,0);
         $tournamentMaxPlayers=\App\Tournament::getMaxPlayers($request->tournament_id);
         $currentNoPlayers=\App\UserTeam::find($request->team_id)->user_team_player()->count();
         $data=[];
         $objResponse = [];
         $objResponse['success'] = false;
         if($tournamentMaxPlayers > $currentNoPlayers) {
-            $objteam = \App\UserTeam::find($request->team_id);
-            $objteam->user_team_player()->sync($request->player_id, false);
-            $objResponse['success'] = true;
-            $objResponse['msg'] = "Player added successfully";
+            if($difference>15) {
+                $objteam = \App\UserTeam::find($request->team_id);
+                $objteam->user_team_player()->sync($request->player_id, false);
+                $objResponse['success'] = true;
+                $objResponse['msg'] = "Player added successfully";
+            }else{
+                $objResponse['success'] =false;
+                $objResponse['msg'] = "Tournament starts in 15 minutes you cant add player now";
+            }
         }else{
             $objResponse['success'] = false;
             $objResponse['msg'] = "You can't have more than $tournamentMaxPlayers in this tournament.";

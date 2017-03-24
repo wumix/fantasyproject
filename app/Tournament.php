@@ -14,6 +14,9 @@ class Tournament extends Model {
     public static function getMaxPlayers($tournament_id){
         return Tournament::find($tournament_id)->first()->max_players;
     }
+    public static function getStartdate($tournament_id){
+        return Tournament::find($tournament_id)->first()->start_date;
+    }
     public function tournament_game() { //tournaments ki games
         return $this->belongsTo('App\Game', 'game_id');
     }

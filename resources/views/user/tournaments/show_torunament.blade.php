@@ -137,13 +137,13 @@
                         <tbody class="main-taible-body">
 
                         @foreach($tournament_detail['tournament_players'] as $player)
-                        <tr class="cwt">
-                            <td class="border-r" ><img id="timg" class="img-circle" src="{{ getUploadsPath($player['profile_pic']) }}"> {{$player['name']}}</td>
-                            <td class="border-r">Batsman</td>
-                            <td class="brr">{{$player['pivot']['player_price']}}</td>
+                            <tr class="cwt">
+                                <td class="border-r" ><img id="timg" class="img-circle" src="{{ getUploadsPath($player['profile_pic']) }}"> {{$player['name']}}</td>
+                                <td class="border-r">Batsman</td>
+                                <td class="brr">{{$player['pivot']['player_price']}}</td>
 
-                        </tr>
-                            @endforeach
+                            </tr>
+                        @endforeach
 
                         </tbody>
                     </table>

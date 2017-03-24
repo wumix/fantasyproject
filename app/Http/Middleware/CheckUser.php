@@ -19,7 +19,9 @@ class CheckUser {
 
             return $next($request);
         }
-        return abort(401, 'Unauthorized action.');
+      // return redirect('login');
+        return response()->view('auth.login');
+       // return view('auth.login');
     }
 
 }

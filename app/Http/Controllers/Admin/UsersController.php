@@ -30,16 +30,16 @@ class UsersController extends Controller {
 
     public function postAddUserFromAdmin(Request $request, $user_id) {
         $player = \App\USER::find($user_id);
-       $player->name = $request->name;
-       $player->email = $request->email;
-       $player->user_type = $request->user_type;
-       $player->phone_number = $request->phone_number;
-       $player->is_active = $request->is_active;
-       $player->user_type=$request->user_type;
-        $player->referral_key=$request->ref_key;
-        if($request->hasFile('profile_pic')){
-           $files = uploadInputs($request->profile_pic, 'profile_pics');
-           $player->profile_pic=$files;
+        $player->name = $request->name;
+        $player->email = $request->email;
+        $player->user_type = $request->user_type;
+        $player->phone_number = $request->phone_number;
+        $player->is_active = $request->is_active;
+        $player->user_type = $request->user_type;
+        $player->referral_key = $request->ref_key;
+        if ($request->hasFile('profile_pic')) {
+            $files = uploadInputs($request->profile_pic, 'profile_pics');
+            $player->profile_pic = $files;
         }
         $player->save();
         return redirect()->route('postEditUser', ['user_id' => $user_id]);

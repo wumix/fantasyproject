@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by IntelliJ IDEA.
  * User: zulfiqar
@@ -6,5 +7,6 @@
  * Time: 7:43 PM
  */
 return [
-    'sitewise_date_format' => 'D/m/y'
+    'sitewise_date_format' => 'D/m/y',
+    'email_from' => 'info@gamithonfantasy.com'
 ];

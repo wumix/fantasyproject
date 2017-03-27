@@ -9,7 +9,7 @@ class Tournament extends Model {
 
     protected $table = 'tournaments';
     protected $fillable = [
-        'name', 'game_id', 'venue', 'max_players', 'start_date', 'end_date', 'created_at', 'updated_at'
+        'name', 'game_id','tournament_price', 'venue', 'max_players', 'start_date', 'end_date', 'created_at', 'updated_at'
     ];
     public static function getMaxPlayers($tournament_id){
         return Tournament::find($tournament_id)->first()->max_players;
@@ -39,6 +39,9 @@ class Tournament extends Model {
     }
     public function tournament_matches() {
         return $this->hasMany('App\Match', 'tournament_id');
+    }
+    public function tournament_role_limit() {
+        return $this->belongsToMany('App\Player','tournament_role_imit','tournament_id','player_role_id')->withPivot('max_limit');;
     }
 
 }

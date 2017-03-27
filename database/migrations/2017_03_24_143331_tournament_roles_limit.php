@@ -13,7 +13,7 @@ class TournamentRolesLimit extends Migration
      */
     public function up()
     {
-        Schema::create('tournament_role_limit', function (Blueprint $table) {
+        Schema::create('tournament_role_imit', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('tournament_id')->unsigned();
             $table->foreign('tournament_id')->references('id')->on('tournaments')->onDelete('cascade');

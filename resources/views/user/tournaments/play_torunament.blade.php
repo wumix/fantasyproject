@@ -1,6 +1,26 @@
 @php
     // dd(Auth::id());
-         //dd($tournament_detail);
+    //debugArr($user_team_players['user_team_player']);
+  // debugArr($tournament_detail['tournament_players']);
+    // dd($tournament_detail['tournament_players']);
+   /* foreach($user_team_players['user_team_player'] as $row){
+   $i=0;
+      foreach($tournament_detail['tournament_players'] as $row1){
+      //   echo $row['id']." " ;echo $row1['id'];
+
+      if($row['id']==$row1['id']){
+
+        unset($tournament_detail['tournament_players'][$i]);
+
+      }
+      $i++;
+      }
+       }
+       //this array contains list of player that are not in user team kindly dont remove this code it may be helpfull in future
+ dd($tournament_detail['tournament_players']);  */ //
+
+
+
 
 @endphp
 @extends('layouts.app')
@@ -131,16 +151,26 @@
                     <div class="row">
                         <div class="col-md-8" id="ah31">
                             <h3 class="ah3" id="ah31">{{$tournament_detail['name']}}</h3>
+
                         </div>
 
 
                     </div>
                     <div class="row">
                         <div class="col-md-8" id="ah31">
+                            {{Auth::user()->email}}
+                            <label>Your Current Points: {{getUserTotalScore(Auth::id())}}</label>
                             <form id="team_submit">
                                 <div class="form-gorup">
-                                    <input type="text" id="team_name"/>
-                                    <button>Add</button>
+                                    @if($team_name==NULL)
+                                        <input type="text" id="team_name"/>
+                                        <button>Add</button>
+                                    @else
+
+                                        <input disabled type="text" id="team_name" value="{{$team_name}}"/>
+                                        <input id="team_id" type="hidden" name="team_id" value="{{$team_id}}"/>
+                                    @endif
+
                                 </div>
                             </form>
                             <div class="row">
@@ -178,7 +208,7 @@
                                                           src="{{ getUploadsPath($player['profile_pic']) }}"> {{$player['name']}}
                                 </td>
                                 <td class="border-r">Batsman</td>
-                                <td class="brr">{{$player['pivot']['player_price']}}</td>
+                                <td id="player_price" class="brr">{{$player['pivot']['player_price']}}</td>
                                 <td>
                                     <a id="btn-player-{{$player['id']}}"
                                        href="javascript:addplayertoteam('{{$player['id']}}','{{$tournament_detail['id']}}')"
@@ -522,19 +552,23 @@
             var arr_player_id = [];
             arr_player_id.push(playerid);
             var teamid = $("#team_id").val();
+            var player_price = $("#player_price").html();
             $.ajax({
                 type: 'POST',
                 url: '{{route('addUserTeamPlayerAjax')}}',
                 data: {
                     tournament_id: tournamentid,
                     player_id: arr_player_id,
+                    player_price: player_price,
                     team_id: teamid, _token: '{{csrf_token()}}'
                 },
                 success: function (data) {
 
                     if (data.success == true) {
                         $('#btn-player-' + playerid).attr('disabled', true);
-                        $('#btn-player-' + playerid).attr('class', 'btn btn-danger');
+                        $('#btn-player-' + playerid).attr('class', 'btn btn-success');
+
+                    } else {
 
                     }
 

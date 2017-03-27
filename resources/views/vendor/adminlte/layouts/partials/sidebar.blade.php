@@ -6,24 +6,27 @@
 
         <!-- Sidebar user panel (optional) -->
         @if (! Auth::guest())
-        <div class="user-panel">
-            <div class="pull-left image">
-                <img src="{{ Gravatar::get($user->email) }}" class="img-circle" alt="User Image" />
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="{{ Gravatar::get($user->email) }}" class="img-circle" alt="User Image"/>
+                </div>
+                <div class="pull-left info">
+                    <p>{{ Auth::user()->name }}</p>
+                    <!-- Status -->
+                    <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('adminlte_lang::message.online') }}
+                    </a>
+                </div>
             </div>
-            <div class="pull-left info">
-                <p>{{ Auth::user()->name }}</p>
-                <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('adminlte_lang::message.online') }}</a>
-            </div>
-        </div>
-        @endif
+    @endif
 
-        <!-- search form (Optional) -->
+    <!-- search form (Optional) -->
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="{{ trans('adminlte_lang::message.search') }}..."/>
+                <input type="text" name="q" class="form-control"
+                       placeholder="{{ trans('adminlte_lang::message.search') }}..."/>
                 <span class="input-group-btn">
-                    <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                    <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i
+                                class="fa fa-search"></i></button>
                 </span>
             </div>
         </form>
@@ -35,7 +38,8 @@
 
 
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>GAMES</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-link'></i> <span>GAMES</span> <i
+                            class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('addGame')}}">Add Games</a></li>
                     <li><a href="{{route('gameslist')}}">Games List</a></li>
@@ -43,7 +47,8 @@
                 </ul>
             </li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Player</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-link'></i> <span>Player</span> <i
+                            class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
 
                     <li><a href="{{route('addPlayer')}}">Add Player</a></li>
@@ -51,11 +56,13 @@
                 </ul>
             </li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Tournaments</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-link'></i> <span>Tournaments</span> <i
+                            class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
 
                     <li><a href="{{route('addTournament')}}">Add Tournament</a></li>
-                    <li><a href="{{route('Tournamentslist')}}">Tournaments List</a> </li>
+                    <li><a href="{{route('Tournamentslist')}}">Tournaments List</a></li>
+                    <li><a href="{{route('Matcheslist')}}">Matches List</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -64,7 +71,7 @@
                 <ul class="treeview-menu">
 
                     <li><a href="{{route('addUser')}}">Add user</a></li>
-                    <li><a href="{{route('listUsers')}}">Users List</a> </li>
+                    <li><a href="{{route('listUsers')}}">Users List</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -78,10 +85,14 @@
                 </ul>
             </li>
             <li class="treeview">
-                <a href="{{route('addAction')}}">
-                    <i class='fa fa-users'></i> 
-                    <span>User Action Points</span>
-                </a>
+                <a href="#">
+                    <i class='fa fa-users'></i> <span>User Action</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('addAction')}}">Add Action</a></li>
+                </ul>
+            </li>
+
+
             </li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('home') }}">
@@ -94,7 +105,8 @@
                 </a>
             </li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.multilevel') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.multilevel') }}</span> <i
+                            class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
                     <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>

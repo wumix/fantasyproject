@@ -76,6 +76,7 @@ class PlayersController extends Controller {
 
     function postEditPlayer() {
         //dd(Input::all()); //to debug post
+       // dd(Input::get('player_role'));
         $player = \App\Player::find(Input::get('player_id'));
         $player->name = Input::get('player_name');
         $player->game_id = Input::get('game_id');

@@ -28,6 +28,7 @@
         "files": [
             "app/Helpers/file.php",
             "app/Helpers/array.php",
+            "app/Helpers/user.php",
             "app/Helpers/datetime.php"
         ],
         "psr-4": {

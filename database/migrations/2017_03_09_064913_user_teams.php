@@ -15,6 +15,7 @@ class UserTeams extends Migration {
         Schema::create('user_teams', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100);
+            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('tournament_id')->unsigned();
             $table->foreign('tournament_id')->references('id')->on('tournaments')->onDelete('cascade');

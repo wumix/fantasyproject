@@ -21,21 +21,22 @@
 
                         <div class="form-group" id="sformbox">
 
-<<<<<<< HEAD
+
                             <div class="cols-md-12" id="withbox">
                                 <div class="input-group">
 									<span id="fbg" class="input-group-addon">
-									<i id="lgfico"  class="fa fa-user fa-lg" aria-hidden="true"></i>
+									<i id="lgfico" class="fa fa-user fa-lg" aria-hidden="true"></i>
 									</span>
-                                    <input id="fullname" type="text" class="form-control" name="name" placeholder="Name" required autofocus>
+                                    <input id="fullname" type="text" class="form-control" name="name" placeholder="Name"
+                                           required autofocus>
                                 </div>
-=======
+
                                 @if ($errors->has('name'))
-                                <span class="help-block">
+                                    <span class="help-block">
                                     <strong>{{ $errors->first('name') }}</strong>
                                 </span>
                                 @endif
->>>>>>> d302a890b842945af865ab0f2a13a0ad921c4f83
+
                             </div>
                         </div>
 
@@ -43,18 +44,20 @@
 
                             <div class="cols-md-12" id="withbox">
                                 <div class="input-group">
-                                    <span id="fbg" class="input-group-addon"><i id="lgfico" class="fa fa-envelope fa-lg" aria-hidden="true"></i></span>
-                                    <input id="email" type="email" class="form-control" name="email" placeholder="Email" required>
+                                    <span id="fbg" class="input-group-addon"><i id="lgfico" class="fa fa-envelope fa-lg"
+                                                                                aria-hidden="true"></i></span>
+                                    <input id="email" type="email" class="form-control" name="email" placeholder="Email"
+                                           required>
 
-<<<<<<< HEAD
+
                                 </div>
-=======
+
                                 @if ($errors->has('email'))
-                                <span class="help-block">
+                                    <span class="help-block">
                                     <strong>{{ $errors->first('email') }}</strong>
                                 </span>
                                 @endif
->>>>>>> d302a890b842945af865ab0f2a13a0ad921c4f83
+
                             </div>
                         </div>
                         @if ($errors->has('email'))
@@ -66,19 +69,21 @@
 
                         <div class="form-group">
 
-<<<<<<< HEAD
-                            <div class="cols-md-10"  id="withbox">
+
+                            <div class="cols-md-10" id="withbox">
                                 <div class="input-group">
-                                    <span id="fbg" class="input-group-addon"><i id="lgfico" class="fa fa-key fa-lg" aria-hidden="true"></i></span>
-                                    <input id="password" type="password" class="form-control" placeholder="Password" name="password" required>
+                                    <span id="fbg" class="input-group-addon"><i id="lgfico" class="fa fa-key fa-lg"
+                                                                                aria-hidden="true"></i></span>
+                                    <input id="password" type="password" class="form-control" placeholder="Password"
+                                           name="password" required>
                                 </div>
-=======
+
                                 @if ($errors->has('password'))
-                                <span class="help-block">
+                                    <span class="help-block">
                                     <strong>{{ $errors->first('password') }}</strong>
                                 </span>
                                 @endif
->>>>>>> d302a890b842945af865ab0f2a13a0ad921c4f83
+
                             </div>
                         </div>
                         @if ($errors->has('password'))
@@ -90,39 +95,62 @@
 
                             <div class="cols-md-12" id="withbox">
                                 <div class="input-group">
-                                    <span id="fbg" class="input-group-addon"><i id="lgfico" class="fa fa-key fa-lg" aria-hidden="true"></i></span>
-                                    <input id="retypepassword" type="password" class="form-control" placeholder="Retype Password" name="password_confirmation" required>
+                                    <span id="fbg" class="input-group-addon"><i id="lgfico" class="fa fa-key fa-lg"
+                                                                                aria-hidden="true"></i></span>
+                                    <input id="retypepassword" type="password" class="form-control"
+                                           placeholder="Retype Password" name="password_confirmation" required>
                                 </div>
                             </div>
                         </div>
+                        {{--asdasd--}}
+
                         <div class="form-group " id="withbox">
                             <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input">
-                                <span  id="remberbox"> I agreeto Gamithon's</span> <a href="" id="termlink"> Terms of Service Privacy Policy</a>
+
+                                <input required type="checkbox" name="terms" class="form-check-input"/>
+                                <span  id="remberbox"> I agree </span> <a href="{{ route('password.request') }}" id="forgetlink"> Forget Your Password?</a>
                             </label>
                         </div>
-
-<<<<<<< HEAD
                         <div class="form-group " id="withbox">
-                            <a class="signuplink" href="">Already have an account</a>
-                            <button type="submit" class="btn  btn-lg btn-block login-button">REGISTER</button>
-=======
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">&nbsp;</label>
-                            <div class="col-md-6">
-                                <input id="terms" type="checkbox" name="terms" required />
-                                I agreed to terms and conditions.
-                            </div>
+                            <a class="signuplink" href="{{ route('signUp') }}">Sign up for new account</a>
+                            <button type="submit" class="btn  btn-lg btn-block login-button">Sign Up</button>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
->>>>>>> d302a890b842945af865ab0f2a13a0ad921c4f83
-                        </div>
+
+                        {{--asdasda--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col-lg-1">--}}
+                                {{--<div class="input-group">--}}
+                                    {{--<input type="checkbox" aria-label="Checkbox for following text input"/>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="col-lg-5">--}}
+                                {{--<div class="form-group">--}}
+                                    {{--<label>I Agree</label>--}}
+                                {{--</div>--}}
+
+                            {{--</div>--}}
+                            {{--<div class="col-lg-5">--}}
+                                {{--<div class="form-group">--}}
+                                    {{--<button type="submit" class="btn btn-success">REGISTER</button>--}}
+                                {{--</div>--}}
+
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="form-group">--}}
+                            {{--<input id="terms" type="checkbox" name="terms" required class="form-check-input">--}}
+                            {{--<label>--}}
+                                {{--I agree--}}
+
+                            {{--</label>--}}
+
+                            {{--<a href="" id="termlink"> Terms of Service Privacy Policy</a>--}}
+                        {{--</div>--}}
+
+
+
+
+
 
                     </form>
                 </div>
@@ -135,76 +163,5 @@
 
 
 
-{{--<div class="container">--}}
-    {{--<div class="row">--}}
-        {{--<div class="col-md-8 col-md-offset-2">--}}
-            {{--<div class="panel panel-default">--}}
-                {{--<div class="panel-heading">Register</div>--}}
-                {{--<div class="panel-body">--}}
-                    {{--<form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">--}}
-                        {{--{{ csrf_field() }}--}}
 
-                        {{--<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">--}}
-                            {{--<label for="name" class="col-md-4 control-label">Name</label>--}}
-
-                            {{--<div class="col-md-6">--}}
-                                {{--<input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>--}}
-
-                                {{--@if ($errors->has('name'))--}}
-                                    {{--<span class="help-block">--}}
-                                        {{--<strong>{{ $errors->first('name') }}</strong>--}}
-                                    {{--</span>--}}
-                                {{--@endif--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">--}}
-                            {{--<label for="email" class="col-md-4 control-label">E-Mail Address</label>--}}
-
-                            {{--<div class="col-md-6">--}}
-                                {{--<input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>--}}
-
-                                {{--@if ($errors->has('email'))--}}
-                                    {{--<span class="help-block">--}}
-                                        {{--<strong>{{ $errors->first('email') }}</strong>--}}
-                                    {{--</span>--}}
-                                {{--@endif--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">--}}
-                            {{--<label for="password" class="col-md-4 control-label">Password</label>--}}
-
-                            {{--<div class="col-md-6">--}}
-                                {{--<input id="password" type="password" class="form-control" name="password" required>--}}
-
-                                {{--@if ($errors->has('password'))--}}
-                                    {{--<span class="help-block">--}}
-                                        {{--<strong>{{ $errors->first('password') }}</strong>--}}
-                                    {{--</span>--}}
-                                {{--@endif--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group">--}}
-                            {{--<label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>--}}
-
-                            {{--<div class="col-md-6">--}}
-                                {{--<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group">--}}
-                            {{--<div class="col-md-6 col-md-offset-4">--}}
-                                {{--<button type="submit" class="btn btn-primary">--}}
-                                    {{--Register--}}
-                                {{--</button>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</form>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</div>--}}
 @endsection

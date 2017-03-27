@@ -24,7 +24,7 @@
                     @foreach($tournament_max_roles['tournament_game']['game_roles'] as $row)
                     <div class="form-group">
                         <label>{{$row['name']}}</label>
-                        <input name="role_id[{{$row['id']}}]" type="text" class="form-control" placeholder="Enter Max Quantity" />
+                         <input required name="player_role_id[{{$row['id']}}][max_limit]" type="text" class="form-control" placeholder="Enter Max Quantity" />
                     </div>
                     @endforeach
 

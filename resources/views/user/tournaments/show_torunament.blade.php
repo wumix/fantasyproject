@@ -114,7 +114,7 @@
                         </div>
                         <div class="btnbb col-md-4">
 
-                            <a href="{{route('playTournament', ['tournament_id'=>$tournament_detail['id']])}}" class="btn btn-md bttor">Play this TOurnament</a>
+                            <a href="{{route('addTeam', ['tournament_id'=>$tournament_detail['id']])}}" class="btn btn-md bttor">Play this TOurnament</a>
                         </div>
 
                     </div>

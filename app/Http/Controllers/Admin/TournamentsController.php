@@ -103,6 +103,7 @@ class TournamentsController extends Controller
        // Category::with('challenges')->whereName($category_name)->first()->challenges;
       //  $a = \App\Tournament::where('id', $tournament_id)->withPivot($tournament_id);
      // dd($a);
+        $data['tournament_max_roles_values'] = \App\Tournament::where('id', $tournament_id)->with('tournament_role_max')->firstOrFail()->toArray();
         $data['tournament_max_roles'] = \App\Tournament::where('id', $tournament_id)->with('tournament_game.game_roles')->firstOrFail()->toArray();
       //  dd($data['tournament_max_roles']);
         return view('adminlte::tournaments.add_tournament_max_roles', $data);
@@ -112,6 +113,7 @@ class TournamentsController extends Controller
     function postAddmaxRoles($tournamentId, Request $request)
     {
        //dd( $request->all());
+
         $tour = \App\Tournament::find($tournamentId);
         $tour->tournament_role_limit()->sync(array_filter($request->player_role_id)); //can also user insert here
         return redirect()->route('postAddmaxRoles', ['tournament_id' => $tournamentId]);

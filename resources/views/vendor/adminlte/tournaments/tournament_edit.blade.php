@@ -104,7 +104,7 @@
                                         type="text" 
                                         value="{{$termPoint}}" 
                                         class="form-control" 
-                                        name="tournament_game_term_points[{{$counter}}][points]">
+                                        name="tournament_game_term_points[{{$counter}}][points]"/>
                                 </div>
                                 @php($counter++)
                                 @endforeach

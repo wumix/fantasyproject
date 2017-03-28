@@ -1,5 +1,6 @@
 @extends('adminlte::layouts.app')
-{{--{{dd($tournament_max_roles['id'])}};--}}
+{{--{{debugArr($tournament_max_roles['tournament_game']['game_roles'])}};--}}
+{{--{{dd($tournament_max_roles_values)}}--}}
 @section('htmlheader_title')
 
 @endsection
@@ -21,10 +22,10 @@
                         <label>{{$tournament_max_roles['name']}}</label>
 
                          </div>
-                    @foreach($tournament_max_roles['tournament_game']['game_roles'] as $row)
+                    @foreach($tournament_max_roles_values['tournament_role_max'] as $row)
                     <div class="form-group">
                         <label>{{$row['name']}}</label>
-                         <input required name="player_role_id[{{$row['id']}}][max_limit]" type="text" class="form-control" placeholder="Enter Max Quantity" />
+                         <input required name="player_role_id[{{$row['id']}}][max_limit]" value="{{$row['pivot']['max_limit']}}" type="text" class="form-control" placeholder="Enter Max Quantity" />
                     </div>
                     @endforeach
 

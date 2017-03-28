@@ -27,6 +27,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
         Route::group(['prefix' => 'tournaments'], function () {
+            Route::get('/addteamname/{tournament_id}', 'User\TournamentsController@addTeam')->name('addTeam');
             Route::get('/play/{tournament_id}', 'User\TournamentsController@playTournament')->name('playTournament');
             Route::get('/addteam', 'User\TournamentsController@teamNamePostAjax')->name('teamNamePostAjax');
             Route::post('/addplayerlox', 'User\TournamentsController@addUserPlayer')->name('addUserTeamPlayerAjax');

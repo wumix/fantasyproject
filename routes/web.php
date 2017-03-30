@@ -31,6 +31,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/play/{tournament_id}', 'User\TournamentsController@playTournament')->name('playTournament');
             Route::get('/addteam', 'User\TournamentsController@teamNamePostAjax')->name('teamNamePostAjax');
             Route::post('/addplayerlox', 'User\TournamentsController@addUserPlayer')->name('addUserTeamPlayerAjax');
+            Route::get('/transfer/{tournament_id}/{player_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
         });
     });
 });

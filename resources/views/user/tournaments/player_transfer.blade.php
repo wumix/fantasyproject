@@ -1,7 +1,8 @@
 @php
+
     //dd($tournament_max_roles_values);
   // echo Auth::id();
-    //    dd($user_team_players);
+     // dd($user_team_players);
         //dd($user_team_players1);
     //dd($team_id);
          //  dd($tournament_detail);
@@ -19,7 +20,7 @@
               }
                }
                //this array contains list of player that are not in user team kindly dont remove this code it may be helpfull in future
-         $tournament_detail['tournament_players'];
+        // dd($tournament_detail['tournament_players']);
 
               $bowlers=[];
 
@@ -30,34 +31,6 @@
                    if($row['player_roles'][0]['name']=="batsmen")$batsmen[]=$row ;
                    if($row['player_roles'][0]['name']=="wicket keeper")$wicketkeeper[]=$row ;
              }
-
-
-
-
-            //dd($bowlers);
-                 //dd($tournament_detail);
-                      //dd(Auth::id());
-                     //debugArr($user_team_players['user_team_player']);
-                   // debugArr($tournament_detail['tournament_players']);
-                     // dd($tournament_detail['tournament_players']);
-                    /* foreach($user_team_players['user_team_player'] as $row){
-                    $i=0;
-                       foreach($tournament_detail['tournament_players'] as $row1){
-                       //   echo $row['id']." " ;echo $row1['id'];
-
-                       if($row['id']==$row1['id']){
-
-                         unset($tournament_detail['tournament_players'][$i]);
-
-                       }
-                       $i++;
-                       }
-                        }
-                        //this array contains list of player that are not in user team kindly dont remove this code it may be helpfull in future
-                  dd($tournament_detail['tournament_players']);  */ //
-
-
-
 
 @endphp
 @extends('layouts.app')
@@ -112,8 +85,9 @@
             <div class="container">
                 <div class="row">
                     <div class="row" id="ah31">
-                        <h3 class="col-lg-7 ah3" id="ah31">SELECTED PLAYERS</h3>
-                        <h3 class="col-lg-5 ah3" id="ah31" style="padding-right: 5%;">TOTAL POINTS:<span id="total-score-user">{{getUserTotalScore(Auth::id())}}</span> </h3>
+                        <h3 class="col-lg-7 ah3" id="ah31">YOU ARE GOING TO TRANSFER THIS PLAYER</h3>
+                        <h3 class="col-lg-5 ah3" id="ah31" style="padding-right: 5%;">YOUR TOTAL POINTS:<span
+                                    id="total-score-user">{{getUserTotalScore(Auth::id())}}</span></h3>
                     </div>
 
 
@@ -130,6 +104,7 @@
                     </thead>
                     <tbody id="selected-player" class="main-taible-body">
                     @foreach($user_team_players['user_team_player'] as $row)
+                        @if($row['id']==$player_info['id'])
                         <tr>
                             <td class="border-r1"><img id="myteamtimg" class="img-circle"
                                                        src="{{getUploadsPath($row['profile_pic'])}}">
@@ -144,10 +119,11 @@
                                     @endforeach
                                 </p></td>
                             <td>
-                                <button id="" class="btn btn-md bttor1">TRANSFER</button>
+
                             </td>
 
                         </tr>
+                        @endif
                     @endforeach
 
 
@@ -205,7 +181,7 @@
                                             <td class=" add">
                                                 <a id="btn-player-{{$row['id']}}"
                                                    href="javascript:addplayertoteam('{{$row['player_roles'][0]['name']}}','{{$row['player_roles'][0]['id']}}','{{$row['id']}}','{{$tournament_detail['id']}}','{{$row['pivot']['player_price']}}')"
-                                                   class="btn btn-md bttor1">Add Player</a>
+                                                   class="btn btn-md bttor1" onclick="return confirm('Are you sure you want replace this player')">Replace with {{$player_info['name']}} </a>
                                             </td>
 
                                         </tr>
@@ -239,7 +215,7 @@
                                             <td class=" add">
                                                 <a id="btn-player-{{$row['id']}}"
                                                    href="javascript:addplayertoteam('{{$row['player_roles'][0]['name']}}','{{$row['player_roles'][0]['id']}}','{{$row['id']}}','{{$tournament_detail['id']}}','{{$row['pivot']['player_price']}}')"
-                                                   class="btn btn-md bttor1">Add Player</a>
+                                                   class="btn btn-md bttor1" onclick="return confirm('Are you sure you want replace this player')">Replace with {{$player_info['name']}} </a>
                                             </td>
 
                                         </tr>
@@ -274,7 +250,7 @@
                                             <td class=" add">
                                                 <a id="btn-player-{{$row['id']}}"
                                                    href="javascript:addplayertoteam('{{$row['player_roles'][0]['name']}}','{{$row['player_roles'][0]['id']}}','{{$row['id']}}','{{$tournament_detail['id']}}','{{$row['pivot']['player_price']}}')"
-                                                   class="btn btn-md bttor1">Add Player</a>
+                                                   class="btn btn-md bttor1" onclick="return confirm('Are you sure you want replace this player')">Replace with {{$player_info['name']}} </a>
                                             </td>
 
                                         </tr>

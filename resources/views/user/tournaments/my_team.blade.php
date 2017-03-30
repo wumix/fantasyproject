@@ -25,7 +25,7 @@
 
              $batsmen=[];
              $wicketkeeper=[];
-             foreach($tournament_detail['tournament_players']as $row){
+             foreach($tournament_detail['tournament_players'] as $row){
                   if($row['player_roles'][0]['name']=="bowler")$bowlers[]=$row ;
                    if($row['player_roles'][0]['name']=="batsmen")$batsmen[]=$row ;
                    if($row['player_roles'][0]['name']=="wicket keeper")$wicketkeeper[]=$row ;
@@ -113,7 +113,8 @@
                 <div class="row">
                     <div class="row" id="ah31">
                         <h3 class="col-lg-7 ah3" id="ah31">SELECTED PLAYERS</h3>
-                        <h3 class="col-lg-5 ah3" id="ah31" style="padding-right: 5%;">TOTAL POINTS:<span id="total-score-user">{{getUserTotalScore(Auth::id())}}</span> </h3>
+                        <h3 class="col-lg-5 ah3" id="ah31" style="padding-right: 5%;">YOUR TOTAL POINTS:<span
+                                    id="total-score-user">{{getUserTotalScore(Auth::id())}}</span></h3>
                     </div>
 
 
@@ -144,7 +145,10 @@
                                     @endforeach
                                 </p></td>
                             <td>
-                                <button id="" class="btn btn-md bttor1">TRANSFER</button>
+                                <a href="{{route('transferplayer', ['tournament_id'=>$tournament_detail['id'],'player_id'=>$row['id']])}}"
+                                   class="btn btn-md bttor1">Transfer</a>
+
+
                             </td>
 
                         </tr>

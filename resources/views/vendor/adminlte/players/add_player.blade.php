@@ -66,8 +66,8 @@ Games
                 } else {
                     $.each(gameRoles, function (k, v) {
                         rolesHtml += '<label class="checkbox-inline">';
-                        rolesHtml += '<input name="player_roles[]" type="checkbox" value="' + v.id + '">' + v.name
-                        rolesHtml += '</label>'
+                        rolesHtml += '<input name="player_roles[]" type="radio" required value="' + v.id + '"> ' + v.name
+                        rolesHtml += '</label><br/>'
                     });
                 }
                 $("#dynamic_player_roles").html(rolesHtml);

@@ -14,12 +14,15 @@ class Player extends Model {
     public function player_games() {
         return $this->belongsTo('App\Game', 'game_id');
     }
+    public static function get_player($palyer_id){
+        return Player::find($palyer_id);
+    }
 
     public function player_roles() {
         return $this->belongsToMany('App\GameRole', 'player_roles', 'player_id');
     }
     public function player_tournaments() {
-        return $this->belongsToMany('App\Tournament', 'player_tournaments');
+        return $this->belongsToMany('App\Tournament', 'player_tournaments')->withPivot('player_price');
     }
     public function player_matches() {
 

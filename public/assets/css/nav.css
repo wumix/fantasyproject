@@ -14,11 +14,11 @@
 }
 .nav li {
     float: left;
-    margin-right: 10px;
+
     position: relative;
 }
 .nav a {
-    display: block;
+
     padding: 5px;
     color: #fff;
 
@@ -27,6 +27,7 @@
 .nav a:hover {
     color: #fff;
     background-color: #6b0c36;
+
     text-decoration: underline;
 }
 
@@ -50,7 +51,7 @@
 }
 .nav li:hover a { /* These create persistent hover states, meaning the top-most link stays 'hovered' even when your cursor has moved down the list. */
     background-color:  rgba(102, 102, 102 , 0.8);
-    width: 150px;
+
     text-align: center;
 
 
@@ -77,28 +78,14 @@
 
 
 }
-#menubtn{
-    color:white;
-    padding-top:45px;
-}
+
+
 #nav1{
     margin-top:33px;
     height:100px; width:100%;
     background-color:  rgba(102, 102, 102 , 0.8);
 }
-#ban{
-    background-image: url('http://localhost/Gamithon/img/banner.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    min-height: 800px;
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    margin-top:-50px;
 
-
-}
 #rrh{
     margin-top: 200px;
 }
@@ -147,6 +134,7 @@
 
     justify-content: space-between;
 }
+
 .child{
     height: 80px;
     width: 80px;
@@ -158,9 +146,31 @@
     font-size: 20pt;
 
 }
+.perant1{
+    padding-top: 10px;
+    display: flex;
+    margin: auto;
+    width: 500px;
+    justify-content: space-between;
+    margin-right: 0px;
+}
+
+.child1{
+
+
+
+    color: #92B713;
+
+
+    font-size: 20pt;
+
+}
+.dropawidth{
+    width: 150px;
+}
 .pt{
     padding-top: 10px;
-    width: 400px;
+
 
     display: flex;
     margin: auto;
@@ -267,8 +277,14 @@
 
 
 }
+.border-r a{
+    color: black;
+}
 .main-taible-body{
     text-align: center;
+}
+.table-striped{
+    background-color: #ffffff;
 }
 .th1{
     border-radius: 8px 0 0 0 ;
@@ -544,9 +560,6 @@ footer{
 .fos{
     padding-top: 30px;
 }
-a{
-    color: white;
-}
 
 
 body {
@@ -565,11 +578,9 @@ h3{
 /* carousel */
 .sz1{
     font-size: 20pt;
+    color: #444;
+}
 
-}
-.fa{
-    color: #666666;
-}
 #serbtn{
     background-color: grey;
 }
@@ -585,20 +596,20 @@ h3{
 #afc1{
     position: relative;
     float: right;
+    background-color: grey;
 }
 #afc{
     background-color: grey;
+    margin-top: 10px;
 }
-#afc:active{
+
+#afc1:active{
     background-color: white;
 }
-#afc:focus{
+#afc1p:focus{
     background-color: white;
 }
-.mama{
-    margin-top: -45px;
-    margin-left: 270px;
-}
+
 
 .media-carousel
 {
@@ -619,15 +630,7 @@ h3{
     #socialserch { display: none; }
 }
 
-.serc{
 
-    display: flex;
-    margin: auto;
-    padding-top: 10px;
-    justify-content: space-between;
-    padding-left: 400px;
-
-}
 
 #chf{
     padding-right: 20px;
@@ -713,8 +716,8 @@ h3{
 
 }
 #ah31{
-    text-align:  right;
-    padding-left: 100px;
+    text-align:  center;
+
 
 }
 #tortable{
@@ -723,6 +726,7 @@ h3{
 
 }
 #timg{
+    float: left;
     width: 30px;
     height: 30px;
 }
@@ -1140,4 +1144,1364 @@ input::-webkit-input-placeholder {
 
 
 }
+/*.................................team Css End...........................*//*------------------------------------*\
+    NAV
+\*------------------------------------*/
+.nav {
+    list-style: none;
+    font-weight: bold;
+    margin-bottom: 10px;
+    float: left; /* Clear floats */
+    width: 100%;
+    /* Bring the nav above everything else--uncomment if needed.
+    position: relative;
+    z-index: 5;
+    */
+}
+.nav li {
+    float: left;
+
+    position: relative;
+}
+.nav a {
+    display: block;
+    padding: 5px;
+    color: #fff;
+
+    text-decoration: none;
+}
+.nav a:hover {
+    color: #fff;
+    background-color: #6b0c36;
+    text-decoration: underline;
+}
+
+/*--- DROPDOWN ---*/
+.nav ul {
+    /* Adding a background makes the dropdown work properly in IE7+. Make this as close to your page's background as possible (i.e. white page == white background). */
+    background: rgba(255,255,255,0); /* But! Let's make the background fully transparent where we can, we don't actually want to see it if we can help it... */
+    list-style: none;
+    position: absolute;
+    left: -9999px; /* Hide off-een when not needed (this is more accessible than display: none;) */
+}
+.nav ul li {
+    padding-top: 1px; /* Introducing a padding between the li and the a give the illusion spaced items */
+    float: none;
+}
+.nav ul a {
+    white-space: nowrap; /* Stop text wrapping and creating multi-line dropdown items */
+}
+.nav li:hover ul { /* Display the dropdown on hover */
+    left: 0; /* Bring back on-screen when needed */
+}
+.nav li:hover a { /* These create persistent hover states, meaning the top-most link stays 'hovered' even when your cursor has moved down the list. */
+    background-color:  rgba(102, 102, 102 , 0.8);
+
+    text-align: center;
+
+
+}
+.nav li:hover ul a { /* The persistent hover state does however create a global style for links even before they're hovered. Here we undo these effects. */
+    text-decoration: none;
+}
+.nav li:hover ul li a:hover { /* Here we define the most explicit hover states--what happens when you hover each individual link. */
+    background-color: #92b713;
+}
+
+.at{
+    color: white;
+}
+.mhline{
+    padding: 0 20px 10px 20px;
+}
+#mhead{
+    background:#92b713;
+    margin-top:-70px;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+
+
+}
+#menubtn{
+    color:white;
+
+    margin-left: 240px;
+}
+#nav1{
+    margin-top:33px;
+    height:100px; width:100%;
+    background-color:  rgba(102, 102, 102 , 0.8);
+}
+#ban{
+    background-image: url('http://gamithon.dev/assets/images/banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 800px;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    margin-top:-50px;
+
+
+}
+#rrh{
+    margin-top: 200px;
+}
+#uocming{
+    background-color:  rgba(0, 0, 0 , 0.6);
+    height: 348px;
+    width: 475px;
+    border-radius: 6px 6px 6px 6px;
+
+    margin-right: 170px;
+    color: #fff;
+    text-align: center;
+
+}
+#headt{
+    color: #fff;
+    padding-top: 60px;
+    padding-left: 170px;
+}
+.ht1{
+    font-weight: bold;
+    font-size: 40pt;
+}
+.ht2{
+    font-weight: bold;
+    margin-top: -10px;
+
+}
+#uph{
+    font-weight: bolder;
+    font-family: arial;
+    padding-top: 10px;
+}
+#up4{
+    color: #F9960E;
+    font-weight: bolder;
+    font-family: arial;
+    padding-top: 10px;
+}
+.perant{
+    padding-top: 50px;
+    width: 400px;
+
+    display: inline-block;
+    margin: auto;
+
+    justify-content: space-between;
+}
+.child{
+    height: 80px;
+    width: 80px;
+    padding: 20px;
+    background-color:  rgba(0, 0, 0 , 0.7);
+    color: #92B713;
+    border-radius: 90px;
+    margin-left: 20px;
+
+    font-size: 20pt;
+
+}
+.pt{
+    padding-top: 10px;
+    width: 400px;
+
+    display: inline-block;
+    margin: auto;
+
+    justify-content: space-between;
+}
+.ct{
+    height: 80px;
+    width: 80px;
+
+    font-size: 20pt;
+
+    margin: 10px;
+
+
+
+}
+.c2{
+    padding-right: 15px;
+
+}
+.navbar-brand>img {
+    max-height: 70px;
+
+
+    width: auto;
+    margin: 0 auto;
+
+
+    /* probably not needed anymore, but doesn't hurt */
+    -o-object-fit: contain;
+    object-fit: contain;
+
+}
+.head{
+    height:35px;
+    width:100%;
+    background: red;
+
+}
+.ban{
+    position: relative;
+}
+.bann{
+    position: absolute;
+}
+.black_nav{
+    background: black;
+    height:103px;
+    width: 100%;
+    opacity: 0.7;
+}
+.logos{
+    padding:35px 0 0 8%;
+}
+.pding{
+    padding-right:20px;
+    color: white;
+}
+.spn{
+    padding-left:20px;
+}
+.inner-box{
+    background: black;
+    height: 160px;
+    width: 60%;
+    margin-left:20%;
+    position: absolute;
+    margin-top: 100px;
+}
+.outer-box{
+    background: white;
+    height: 338px;
+}
+/*.........................................google..................................*/
+#googlec{
+    margin-top: -160px;
+    background-color: #e6e6e6;
+    height: 300px;
+
+
+
+}
+#googlel{
+    color: #fff;
+    margin-top:  75px;
+    padding-top: 35px;
+    height: 150px;
+    text-align: center;
+    max-width: 700px;
+    background-color: #000;
+}
+
+
+
+/*  ......................    table Style Start  .........................*/
+.main-taible-head{
+    background-color: #92b713;
+    color: white;
+    border-radius: 8px 0 0 0 ;
+}
+.main-taible-head th{
+    text-align: center;
+
+
+}
+.main-taible-body{
+    text-align: center;
+}
+.th1{
+    border-radius: 8px 0 0 0 ;
+}
+.th2{
+    border-radius: 0 8px 0 0 ;
+}
+.brr1{
+    border-radius:  0 0 0 8px;
+}
+.brr{
+    border-radius:  0 0 8px 0 ;
+}
+
+.border-r{
+    border-right: solid #e4e4e2;
+}
+#bgcol
+{
+    background-color: #2e312e;
+    margin-top: 50px;
+
+}
+.main-t{
+
+    min-height: 500px;
+    background-color: #2e312e;
+    padding-bottom: 50px;
+
+}
+.ah3{
+    color: #94b810;
+    text-align: center;
+    padding-top: 30px;
+    font-weight: bold;
+}
+.ah311{
+    color: #94b810;
+    text-align: center;
+
+    font-weight: bold;
+}
+.trr{
+    background-color: white;
+}
+.trr1{
+    background-color: #f8f8f7;
+}
+
+/*  ......................    table Style End  .........................*/
+/*................................ lets-play-gamithone Start.......................... */
+.lets-play-gamithone{
+    background-color: #0f1303;
+
+    color: white;
+    text-align: center;
+    min-height: 700px;
+}
+.lets-play-gamithone h1{
+    font-size: 50pt;
+    padding-top: 50px;
+
+}
+.lets-play-gamithone h4{
+    padding-top: 50px;
+}
+
+.lets-play-gamithone i{
+    font-size: 100pt;
+    padding-top: 30px;
+    color: #3b4909;
+
+
+}
+.lets-play-gamithone h3{
+
+    padding-top: 30px;
+    color: #3b4909;
+
+
+}
+.lets-play-gamithone i:hover{
+    color: white;
+}
+.lets-play-gamithone h3:hover{
+    color: white;
+}
+#arow{
+    padding-top: 230px;
+    font-size: 70px;
+    color: white;
+}
+#i1{
+    padding-left: 50px;
+}
+
+/*................................ lets-play-gamithone End.......................... */
+/*................................ Gallry Start.......................... */
+
+ul.galeria, ul.galeria > li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.galeria {
+    padding-top: 100px;
+
+}
+
+ul.galeria > li {
+    outline: 1px black solid;
+    float: left;
+}
+@media(max-width:639px){
+    ul.galeria > li {
+        width: 50%;
+    }
+}
+@media(min-width:640px){
+    ul.galeria > li {
+        width: 33.33333333333333%;
+    }
+}
+@media(min-width:768px){
+    ul.galeria > li {
+        width: 33.33333333333333%;
+    }
+}
+@media(min-width:992px){
+    ul.galeria > li {
+        width: 25%;
+    }
+}
+@media(min-width:1200px){
+    ul.galeria > li {
+        width: 25%;
+    }
+}
+
+
+ul.galeria > li img {
+    width: 100%;
+}
+
+#mh{
+
+    margin-top: -20px;
+    text-align:right;
+
+
+}
+
+
+.no-gutter [class^="col-"] {
+    padding-left:0;
+    padding-right:0;
+}
+.bgimg{
+
+
+    background-image: url('http://localhost/Gamithon/images/gamithon-home-1170px_02.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 1300px;
+
+
+}
+.gal{
+    margin-top: 100px;
+
+}
+.gal h3{
+    color: orange;
+    text-align: center;
+}
+/*......................Gallry End......................................*/
+/*..................................News Start..................................*/
+
+.gallery-title
+{
+
+    color: #94b810;
+    text-align: center;
+
+    margin-bottom: 70px;
+}
+
+
+
+
+
+
+.port-image
+{
+    width: 100%;
+}
+
+.gallery_product
+{
+    margin: 0 30px 30px 50px;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+
+
+
+}
+.imgn{
+    width: 200px;
+    height: 200px;
+    margin-left: -30px
+
+}
+.lnews{
+    background-color: #e6e6e6;
+}
+#nbton{
+
+    background-color: transparent;
+    color: #94b810;
+    border: solid 1px  #94b810 ;
+    border-radius: 0 0 0 0;
+    min-width: 250px;
+
+    margin-bottom: 50px;
+}
+.nt{
+    padding-top: 25px;
+    margin-left: -20px;
+}
+.nt1{
+
+    color: #968B8B;
+
+    font-size: 14pt;
+    margin-left: -20px;
+}
+.nt2{
+    font-size: 14pt;
+    font-weight: bolder;
+    margin-left: -15px;
+}
+.nt3{
+    color: #cccccc;
+    font-size: 12pt;
+    margin-left: -15px;
+}
+
+/*...................................News End........................................*/
+
+/*Footer*/
+footer{
+    opacity: 0.7;
+    background: black;
+    height: 150px;
+}
+.cop p{
+    opacity: 0.5;
+    color: white;
+    padding-top: 120px;
+    padding-right: 50px;
+    color: white;
+
+
+}
+.fnt{
+    padding:0 0 0 65px;
+
+}
+#sz{
+    padding-top: 20px;
+    font-size: 30pt;color: rgba(217, 217, 217 ,0.7);text-decoration: none;
+}
+.logof{
+    padding:0 0 20px 75px;
+}
+.fos{
+    padding-top: 30px;
+}
+a{
+    color: white;
+}
+
+
+body {
+    font-family: 'Raleway', sans-serif;
+    padding-top: 70px;
+}
+h3{
+    font-family: 'Raleway', sans-serif;
+}
+.fgreen{
+    background-color:  #92b713;
+    height: 7px;
+}
+/*............................Tournament Css Start..................................*/
+
+/* carousel */
+.sz1{
+    font-size: 20pt;
+
+}
+.fa{
+    color: #444;
+}
+#serbtn{
+    background-color: grey;
+}
+#serbtn:focus{
+    background-color:#ffffff ;
+}
+#serbtn:active{
+    background-color:#ffffff ;
+}
+#sz1 a{
+    color:grey;
+}
+#afc1{
+    position: relative;
+    float: right;
+}
+#afc{
+    background-color: grey;
+    width: 240px;
+}
+#afc1:active{
+    background-color: white;
+}
+#afc1:focus{
+    background-color: white;
+}
+.mama{
+
+    margin-left: 270px;
+}
+
+.media-carousel
+{
+    margin-bottom: 0;
+    padding: 0 40px 30px 40px;
+    margin-top: 30px;
+}
+.ser{
+    padding-left: 115px;
+}
+/* Previous button  */
+@media screen and (min-width: 1000px) and (max-width: 1500px) {
+    #prependTo { display: none; }
+}
+
+
+@media screen and (min-width: 200px) and (max-width: 900px) {
+    .perant1 { display: none; }
+
+}
+
+.serc{
+
+
+    margin: auto;
+    padding-top: 10px;
+    justify-content: space-between;
+    padding-left: 400px;
+
+}
+
+#chf{
+    padding-right: 20px;
+}
+
+.media-carousel .carousel-control.left
+{
+    left: 20px;
+    background-image: none;
+    background: none repeat scroll 0 0 #222222;
+    border: 4px solid #FFFFFF;
+    border-radius: 23px 23px 23px 23px;
+    height: 40px;
+    width : 40px;
+    margin-top: 30px
+}
+/* Next button  */
+.media-carousel .carousel-control.right
+{
+    right: 20px !important;
+    background-image: none;
+    background: none repeat scroll 0 0 #222222;
+    border: 4px solid #FFFFFF;
+    border-radius: 23px 23px 23px 23px;
+    height: 40px;
+    width : 40px;
+    margin-top: 30px
+}
+/* Changes the position of the indicators */
+.media-carousel .carousel-indicators
+{
+    right: 50%;
+    top: auto;
+    bottom: 0px;
+    margin-right: -19px;
+}
+/* Changes the colour of the indicators */
+.media-carousel .carousel-indicators li
+{
+    background: #c0c0c0;
+}
+.media-carousel .carousel-indicators .active
+{
+    background: #333333;
+}
+.media-carousel img
+{
+    display: block;
+    width: 150px;
+    height: 100px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+.hrt{
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    margin-top: 10px;
+
+}
+.mrg{
+    margin-top: 110px;
+
+}
+.tgoo{
+    margin-top: 200px;
+}
+/* End carousel */
+/*............................Tournament Table Start.........................*/
+.bttor{
+    color: #fff;
+    background-color: #F9960E;
+    font-weight: bold;
+
+}
+.btnbb{
+
+    text-align:  right;
+    padding-top: 43px;
+
+}
+#ah31{
+    text-align:  right;
+    padding-left: 100px;
+
+}
+#tortable{
+    box-shadow: 0 4px 1px 0 #F8F8F7;
+    background-color: #F8F8F7;
+
+}
+#timg{
+    width: 30px;
+    height: 30px;
+}
+.cwt{
+    background-color: #fff;
+}
+/*............................Tournament Table End.........................*/
+/*............................Show Hide Table Starts...........................*/
+#clickable1{
+    background-color: #92B713;
+    height: 50px;
+    color: #fff;
+
+
+}
+#tht{
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 16pt;
+    font-weight: 100;
+}
+
+.thti{
+    text-align: right;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 20pt;
+
+}
+#gg1{
+    font-size: 15pt;
+
+}
+#cols{
+    font-weight: bold;
+}
+#cols1{
+    font-weight: bold;
+    color: #fff;
+}
+#lefttable{
+    padding-left: 100px;
+}
+#bgren{
+    background-color: #D2E1A0;
+
+}
+
+/*............................Show Hide Table End...........................*/
+/*............................Tournament Css End..................................*/
+
+/*************Accordian header*************/
+.accordian-table-header{
+    background-color: #92B713;
+
+}
+.accordian-table-header ul li{
+    float: left;
+    padding: 20px 12px 20px;
+    font-size: 16pt;
+    font-weight: 100;
+    list-style: none;
+    color: #fff;
+
+}
+.mrgg{
+    margin-top: 20px;
+
+}
+.tablety{
+    background-color: #EEEEEE;
+    height: 300px;
+    margin-top: -10px;
+
+}
+#matr{
+    margin-top: -9px;
+}
+.tabletyg{
+    height: 10px;
+    margin-top: -9px;
+    margin-bottom: 50px;
+    background-color: #4A5E07;
+}
+.ftp{
+    font-weight: bold;
+    text-decoration: none;
+}
+.mrgg1{
+    margin-top: 2px;
+    background-color: #D2E1A0;
+    margin-left: 20px;
+    margin-bottom: 1px;
+}
+.mrgg11{
+    margin-top: 20px;
+    background-color: #D2E1A0;
+    margin-left: 20px;
+    margin-bottom: 1px;
+}
+.ftp1{
+    padding: 10px 0 10px 0;
+}
+.ftp11{
+    padding: 15px 0 15px 0;
+}
+.img-rounded{
+    margin-top: 50px;
+}
+#tblmarconten{
+    margin-top: 50px;
+}
+/*.................................Login Css Start...........................*/
+.lh{
+    color: #91b712;
+    text-align: center;
+
+}
+#fb{
+    width: 133px;
+
+    background-color: #425aa4;
+    color: white;
+    border-radius: 5px;
+}
+#tw{
+    width: 133px;
+
+    color: white;
+    border-radius: 5px;
+    background-color: #2fc6f5;
+}
+#googleb{
+    width: 133px;
+
+    color: white;
+    border-radius: 5px;
+    background-color: #f06562;
+}
+.loginc{
+    margin: 150px 0 0 0;
+}
+.lines{
+    margin-top: 30px;
+    color: #dddddd;
+}
+
+.lgline{
+
+    display: inline-flex;
+    width: 15%;
+    margin-left: auto;
+    margin-right: auto;
+
+    border-width: 1px;
+
+
+}
+.linor{
+    display: inline-flex;
+    border:1px solid;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    padding: 14px 0 0 9px;
+    color: #dddddd;
+}
+/*.................................Login Form Css Start.............................*/
+/*
+/* Created by Filipe Pina
+ * Specific styles of signin, register, component
+ */
+/*
+ * General styles
+ */
+
+
+
+.main{
+    margin-top: 250px;
+}
+#email{
+    border-left: none;
+}
+#password{
+    border-left: none;
+}
+#lgfico{
+    color: #c2c2c2;
+}
+
+
+
+.form-group{
+    margin-bottom: 15px;
+}
+
+label{
+    margin-bottom: 15px;
+}
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 15px;
+    padding-top: 3px;
+}
+#formbox{
+    margin-bottom: 40px;
+}
+#forgetlink{
+    color: #9acc59;
+    padding-left: 40px;
+    font-weight: 100;
+}
+#remberbox{
+    color: #9acc59;
+    font-weight: 100;
+}
+#fbg{
+    background-color: #fff;
+    text-decoration: none;
+}
+
+.main-center{
+    margin-top: 80px;
+    margin: 0 auto;
+    max-width: 330px;
+    padding: 40px 40px;
+
+}
+
+.login-button{
+    padding-bottom: 15px;
+    font-size: 14px;
+    width: 113px;
+    height: 40px;
+    background-color: #92b712;
+    color: white;
+    font-weight: 500;
+    margin: -12px 0 20px 240px;
+    box-shadow: 2px 2px 1px 0  #c2c2c2;
+
+}
+#withbox{
+    width: 355px;
+
+}
+.gbtn{
+    margin-top: 60px;
+}
+.signuplink{
+    color: #f8a120;
+    float: left;
+    font-weight: 100;
+}
+.login-register{
+    font-size: 11px;
+    text-align: center;
+}
+/*.................................Login Form Css End.............................*/
+
+/*.................................Login Css End...........................*/
+/*.................................SignUp Css Start...........................*/
+.slh{
+    color: #91b712;
+    text-align: center;
+}
+.signupline{
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+
+    border-width: 2px;
+}
+.loginc{
+    margin: 150px 0 0 0;}
+/*
+/* Created by Filipe Pina
+ * Specific styles of signin, register, component
+ */
+/*
+ * General styles
+ */
+
+#fullname{
+    border-left: none;
+}
+#retypepassword{
+    border-left: none;
+}
+.smain{
+    margin-top: 85px;
+}
+#email{
+    border-left: none;
+}
+#password{
+    border-left: none;
+}
+#lgfico{
+    color: #c2c2c2;
+}
+
+
+
+.form-group{
+    margin-bottom: 15px;
+}
+
+label{
+    margin-bottom: 15px;
+}
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 15px;
+    padding-top: 3px;
+}
+#formbox{
+    margin-bottom: 40px;
+}
+#forgetlink{
+    color: #9acc59;
+    padding-left: 105px;
+    font-weight: 100;
+}
+#remberbox{
+    color: #9acc59;
+    font-weight: 100;
+}
+#fbg{
+    background-color: #fff;
+    text-decoration: none;
+}
+
+.main-center{
+    margin-top: 80px;
+    margin: 0 auto;
+    max-width: 400px;
+    padding: 40px 40px;
+
+}
+
+@media only screen and (min-width: 768px) {
+    #endTo {display:none;
+
+
+
+    }
+}
+
+
+#swithbox{
+    width: 300px;
+
+}
+.gbtn{
+    margin-top: 60px;
+}
+.signuplink{
+    color: #f8a120;
+    float: left;
+    font-weight: 100;
+}
+.login-register{
+    font-size: 11px;
+    text-align: center;
+}
+#termlink{
+    color: #f8a120;
+
+    font-weight: 100;
+}
+/*.................................SignUp Css End...........................*/
 /*.................................team Css End...........................*/
+.team{
+    margin-bottom: 900px;
+    padding-top: 150px;
+}
+.tnt{
+    color : #f8a120;
+}
+.tnt1{
+    color :#9acc59;
+    font-size: 18pt;
+}
+.tnt2{
+    color: #2aabd2;
+}
+.tn3{
+    color: #CCC9D0;
+    margin-left: 70px;
+}
+.fw{
+    height: 50px;
+}
+.save-button{
+    padding-bottom: 15px;
+    font-size: 14px;
+    width: 113px;
+    height: 40px;
+    background-color: #92b712;
+    color: white;
+    font-weight: 500;
+    margin: 10px 0 20px 120px;
+    box-shadow: 2px 2px 1px 0  #c2c2c2;
+}
+#imgl{
+    display: flex;
+    float: right;
+    width: 450px;
+    height: 270px;
+
+
+}
+/*.................................team Css End...........................*/
+/*.................................myteam Css Start...........................*/
+#mytimg{
+    width: 100px;
+    height: 60px;
+}
+#mytl{
+    margin-top: 100px;
+    border-right:#DFDCE3 2px solid;
+    height: 300px;
+
+}
+.myteam{
+    margin-bottom: 900px;
+}
+.myt{
+    color: #CCC9D0;
+
+}
+.myt1{
+    color: #CCC9D0;
+    font-weight: 600;
+    padding-bottom: 10px;
+
+}
+.myt2{
+    color: #9acc59;
+    font-weight: 600;
+    padding-bottom: 10px;
+
+}
+.myt2 span{
+    color: #C5C2C9;
+}
+#myt2{
+    margin-top: 100px;
+
+    height: 300px;
+
+}
+#myteamtimg{
+    float: left;
+    width: 80px;
+    height: 80px;
+}
+.bttor1{
+    color: #fff;
+    background-color: #F9960E;
+    font-weight: bold;
+    margin-top: 20px;
+
+}
+.bttor1:active{
+    background-color:#92b713 ;
+}
+.bttor1:focus{
+    background-color:#92b713 ;
+}
+.border-r1{
+    border-right: solid #e4e4e2;
+    padding-top: 10px;
+}
+.myteamtt{
+    margin-top: 30px;
+
+}
+/******************************* Tabs Css Start*************************************/
+.nav-tabs{
+    background-color: #92b713;
+    border-radius: 7px 7px 0 0;
+    padding: 0 0 0 0;
+    margin-left: 5px;
+}
+.panel.with-nav-tabs .panel-heading{
+    padding: 5px 5px 0 5px;
+}
+.panel.with-nav-tabs .nav-tabs{
+    border-bottom: none;
+}
+.panel.with-nav-tabs .nav-justified{
+    margin-bottom: -1px;
+}
+.panel-body{
+    border:#92b713  1px solid;
+    margin-left: 10px;
+    margin-top: 50px;
+    padding: 0 0 0 0;
+    border-radius:0 0 6px 6px;
+    border-top: none;
+}
+/********************************************************************/
+/*** PANEL DEFAULT ***/
+.with-nav-tabs.panel-default .nav-tabs > li > a,
+.with-nav-tabs.panel-default .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li > a:focus {
+    color: #ffffff;
+}
+
+.with-nav-tabs.panel-default .nav-tabs > .open > a,
+.with-nav-tabs.panel-default .nav-tabs > .open > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > .open > a:focus,
+.with-nav-tabs.panel-default .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li > a:focus {
+    color: #777;
+    background-color: #ddd;
+    border-color: transparent;
+}
+.with-nav-tabs.panel-default .nav-tabs > li.active > a,
+.with-nav-tabs.panel-default .nav-tabs > li.active > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li.active > a:focus {
+    color: #555;
+    background-color: #fff;
+    border-color: #ddd;
+    border-bottom-color: transparent;
+}
+.with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu {
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+.with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > li > a {
+    color: #777;
+}
+.with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
+    background-color: #ddd;
+}
+#tabt:active {
+    color :#9acc59;
+}
+#tabt:focus {
+    color: #9acc59;
+}
+#tabt:hover{
+    width: auto;
+}
+.with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > .active > a,
+.with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > .active > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > .active > a:focus {
+    color: #fff;
+    background-color: #555;
+}
+.main-taible-head1{
+    background-color: #ffffff;
+    color:#9acc59;
+    border-radius: 8px 0 0 0 ;
+}
+.point{
+    text-align: center;
+}
+.add{
+    text-align: right;
+}
+.th11{
+    text-align: left;
+}
+#tabtabtab{
+    border:#9acc59 solid;
+}
+#tbbox{
+    margin: 10px 0 0 10px;
+}
+.tcen{
+    margin-left: 50px;
+}
+/******************************* Tabs Css End*************************************/
+/*.................................myteam Css End...........................*/
+
+
+
+
+.selected-player-name{
+    line-height:70px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.error {
+    width:200px;
+    height:20px;
+    height:auto;
+    position:fixed;
+    left:0%;
+    margin-left:40%;
+    bottom:5%;
+    background-color: #F9960E;
+    color: #F0F0F0;
+    z-index: 1000;
+    font-family: Calibri;
+    font-size: 20px;
+    padding:10px;
+    text-align:center;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+    -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+    box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+}

@@ -55,7 +55,7 @@
             </section>
         </div>
         <!-- .....................Team End............................... -->
-
+        <div class='error' style='display:none'></div>
 
     </section>
 
@@ -75,12 +75,17 @@
     success: function (data) {
     if (data.status == "ok") {
     $("#team_name").attr('disabled', true);
-    $("#addstatus").html("team added sucessfully");
         $("#save_button").remove();
+        $('.error').html('team added sucessfully');
+        $('.error').fadeIn(400).delay(3000).fadeOut(400); //fade out after 3 seconds
+        window.location.reload();
+
+
     $('<input type="hidden" id="team_id" value="' + data.team_id + '"/>').insertBefore("#addstatus");
     }
     else {
-    $("#addstatus").html("team Name Already Taken")
+        $('.error').html('Team Name Already taken');
+        $('.error').fadeIn(400).delay(3000).fadeOut(400); //fade out after 3 seconds
 
     }
 

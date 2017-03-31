@@ -106,11 +106,17 @@ class GamesController extends Controller {
         return redirect()->back();
     }
 
+    /**
+     * Remove player role by role id
+     */
     public function deleteGameRole() {
         $roleId = Input::get('role_id');
         \App\GameRole::find($roleId)->delete();
     }
 
+    /**
+     * Remove game term by id
+     */
     public function deleteGameTerm() {
         $termId = Input::get('term_id');
         \App\GameTerm::find($termId)->delete();

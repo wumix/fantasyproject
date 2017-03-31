@@ -1,4 +1,4 @@
-<?php //dd($result);                     ?>
+<?php //dd($result);                                           ?>
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
@@ -44,8 +44,14 @@
                             <input type="hidden" name="id" value="{{$result['id']}}"/>
 
                             @foreach($result['game_roles'] as $key => $val)
-                            <div class="form-group">
-                                <input class="form-control" name="role_name[]" value="{{$val['name']}}" type="text" placeholder="" />
+                            <div class="form-group" id='game-role-{{$val['id']}}'>
+                                <input 
+                                    disabled 
+                                    class="form-control" 
+                                    name="role_name[]" 
+                                    value="{{$val['name']}}" 
+                                    type="text" placeholder="" /> 
+                                <a class="btn btn-danger" href="javascript:deleteRole('{{$val['id']}}')" />Delete</a>
                             </div>
                             @endforeach
                             <input class="form-control" name="role_name[]" value="" type="text" placeholder="" />
@@ -67,8 +73,9 @@
                             <input type="hidden" name="id" value="{{$result['id']}}"/>
 
                             @foreach($result['game_terms'] as $key => $val)
-                            <div class="form-group">
-                                <input class="form-control" name="term_name[]" value="{{$val['name']}}" type="text" placeholder="" />
+                            <div class="form-group" id="game-term-{{$val['id']}}">
+                                <input disabled class="form-control" name="term_name[]" value="{{$val['name']}}" type="text" placeholder="" />
+                                <a class="btn btn-danger" href="javascript:deleteTerm('{{$val['id']}}')" />Delete</a>
                             </div>
                             @endforeach
                             <input class="form-control" name="term_name[]" value="" type="text" placeholder="" />
@@ -104,5 +111,40 @@
         event.preventDefault();
         $('<div class="form-group"><input  class="form-control" name="term_name[]" value="" type="text" placeholder="" /></div>').insertBefore("#add_more_terms");
     });
+    function deleteRole(roleId) {
+        var cnfrm = confirm('All players with this role also lost there roles!');
+        if (cnfrm) {
+            $.ajax({
+                url: "{{route('deleteGameRole')}}",
+                type: 'DELETE',
+                data: {
+                    role_id: roleId
+                },
+                success: function (result) {
+                    $("#game-role-" + roleId).fadeOut('slow', function () {
+                        $(this).remove();
+                    });
+                }
+            });
+        }
+    }
+
+    function deleteTerm(gameTermId) {
+        var cnfrm = confirm('All scores with this term will remove!');
+        if (cnfrm) {
+            $.ajax({
+                url: "{{route('deleteGameTerm')}}",
+                type: 'DELETE',
+                data: {
+                    term_id: gameTermId
+                },
+                success: function (result) {
+                    $("#game-term-" + gameTermId).fadeOut('slow', function () {
+                        $(this).remove();
+                    });
+                }
+            });
+        }
+    }
 </script>
 @stop

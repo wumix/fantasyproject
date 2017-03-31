@@ -24,14 +24,12 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['is_user']], function () {
         Route::get('/profile', 'HomeController@profile')->name('profile');
-
-
         Route::group(['prefix' => 'tournaments'], function () {
             Route::get('/addteamname/{tournament_id}', 'User\TournamentsController@addTeam')->name('addTeam');
             Route::get('/add-players/{team_id}', 'User\TournamentsController@playTournament')->name('addPlayers');
             Route::get('/addteam', 'User\TournamentsController@teamNamePostAjax')->name('teamNamePostAjax');
             Route::post('/addplayerlox', 'User\TournamentsController@addUserPlayer')->name('addUserTeamPlayerAjax');
-            Route::get('/transfer/{tournament_id}/{player_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
+            Route::get('/transfer/{team_id}/{player_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
         });
     });
 });
@@ -48,8 +46,10 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::get('/edit/{game_id}', 'Admin\GamesController@editGameForm')->name('editGameForm');
             Route::post('/edit', 'Admin\GamesController@editGamePost')->name('postEditGame');
             Route::get('/delete/{game_id}', 'Admin\GamesController@deleteGame')->name('deleteGame');
-            Route::post('/addRolePost', 'Admin\GamesController@addRolePost')->name('addGameRole');
-            Route::post('/addTerm', 'Admin\GamesController@addTermPost')->name('addGameTerm');
+            Route::post('/post-game-role', 'Admin\GamesController@addRolePost')->name('addGameRole');
+            Route::post('/add-game-term', 'Admin\GamesController@addTermPost')->name('addGameTerm');
+            Route::delete('delete-game-role', 'Admin\GamesController@deleteGameRole')->name('deleteGameRole');
+            Route::delete('delete-game-term', 'Admin\GamesController@deleteGameTerm')->name('deleteGameTerm');
         });
         //Players routes
         Route::group(['prefix' => 'palyers'], function () {
@@ -69,9 +69,8 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/edit', 'Admin\TournamentsController@postEditTournament')->name('editTournament');
             Route::get('/addplayers/{tournament_id}', 'Admin\TournamentsController@showAddPlayerForm')->name('showAddPlayerForm');
             Route::post('/addplayers/', 'Admin\TournamentsController@postAddTournamentPlayers')->name('postAddTournamentPlayers');
-            Route::get('/addroles/{tournament_id}','Admin\TournamentsController@addTournamentRoles')->name('addMaxRoles');
-            Route::post('/addroles/{tournament_id}','Admin\TournamentsController@postAddmaxRoles')->name('postAddmaxRoles');
-
+            Route::get('/addroles/{tournament_id}', 'Admin\TournamentsController@addTournamentRoles')->name('addMaxRoles');
+            Route::post('/addroles/{tournament_id}', 'Admin\TournamentsController@postAddmaxRoles')->name('postAddmaxRoles');
         });
         //Matches
         Route::group(['prefix' => 'match'], function () {

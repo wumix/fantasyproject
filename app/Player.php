@@ -19,7 +19,7 @@ class Player extends Model
 
     public static function get_player($palyer_id)
     {
-        return Player::find($palyer_id);
+        return Player::findOrFail($palyer_id);
     }
 
     public function player_roles()

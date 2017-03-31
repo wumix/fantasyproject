@@ -78,7 +78,7 @@
                         <th class="th2">CHANGE PLAYER</th>
                     </tr>
                     </thead>
-                    <tbody class="main-taible-body">
+                    <tbody id="selected-player" class="main-taible-body">
                     @foreach($user_team_player as $row)
                         <tr>
                             <td class="border-r1"><img id="myteamtimg" class="img-circle" src="{{getUploadsPath($row['profile_pic'])}}">
@@ -87,7 +87,8 @@
                             <td class="border-r1"><p class="myteamtt">Batsman</p></td>
                             <td class="border-r1"><p class="myteamtt">40000</p></td>
                             <td>
-                                <button class="btn btn-md bttor1">TRANSFER</button>
+
+                                <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id']])}}" class="btn btn-md bttor1">TRANSFER</a>
                             </td>
 
                         </tr>
@@ -146,14 +147,14 @@
                                         <tr>
                                             <th class=" th1">PLAYERS</th>
 
-                                            <th class="point">Price</th>
+                                            <th class="point">PRICE</th>
                                             <th class="add">ADD</th>
                                         </tr>
                                         </thead>
                                         <tbody class="main-taible-body">
 
                                         @foreach($role['players'] as $player)
-                                            <tr class="cwt">
+                                            <tr id="player_tr-{{$player['id']}}" class="cwt">
                                                 <td class=" th11"><img id="myteamtimg" class="img-circle"
                                                                        src="{{getUploadsPath($player['profile_pic'])}}"> {{$player['name']}}
                                                 </td>
@@ -163,7 +164,7 @@
                                                 </td>
 
                                                 <td class="add">
-                                                    <a href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$player['player_tournaments'][0]['pivot']['player_price']}}')" class="btn btn-md bttor1">Add To
+                                                    <a  id="btn-player-{{$player['id']}}"href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$player['player_tournaments'][0]['pivot']['player_price']}}')" class="btn btn-md bttor1">Add To
                                                         Team
                                                     </a>
                                                 </td>
@@ -256,7 +257,7 @@
                         t += '</tr>';
                         $('#selected-player').append(t);
                         t = "";
-                        t += '<tr id="player_tr_1" class="cwt"><td class=" point"><p class="myteamtt">Player Added Successfully</p></td></tr> ';
+                        t += '<tr id="player_tr_" class="cwt"><td class=" point"><p class="myteamtt">Player Added Successfully</p></td></tr> ';
                         $('#player_tr_' + obj.id).html(t);
 
 

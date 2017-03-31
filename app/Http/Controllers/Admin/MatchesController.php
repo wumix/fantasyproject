@@ -20,7 +20,9 @@ class MatchesController extends Controller {
     }
 
     public function index() {
-        $this->objMatch = \App\Match::all()->toArray();
+        $data['tournamentId'] = Input::get('tournament_id');
+        $data['tournaments'] = Tournament::all()->toArray();
+        $this->objMatch = \App\Match::where('tournament_id', $data['tournamentId'])->get()->toArray();
         $data['matches_list'] = $this->objMatch; //list of games form games table   
         return view('adminlte::matches.matches_list', $data);
     }
@@ -57,7 +59,6 @@ class MatchesController extends Controller {
     }
 
     function postEditMatch($match_id, Request $request) {
-        dd($request->all());
         $match = \App\Match::find($match_id);
         $match->fill($request->all());
         $match->save();

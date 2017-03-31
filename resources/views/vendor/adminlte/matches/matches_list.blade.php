@@ -12,12 +12,22 @@
             <div class="box">
                 <div class="box-header with-border">
                     <h3 class="box-title">List of Matches</h3>
+                    <div class="pull-right">
+                        <label>Tournament</label>
+                        <select class="form-control" onchange="chnageTournament(this.value)">
+                            <option value="">Select Tournament</option>
+                            @foreach($tournaments as $tournament)
+                            <option {!! ($tournamentId == $tournament['id'])?'selected':'' !!} value="{{$tournament['id']}}">{{$tournament['name']}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
                 <div class="box-body">
+                    @if(!empty($tournamentId))
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover">
                             <tr>
-                                <th>Player Name</th>
+                                <th>Match Name</th>
                                 <th colspan="3">Actions</th>
                             </tr>
                             @foreach($matches_list as $row)
@@ -38,13 +48,18 @@
                                     </a>
 
                                 </td>
-                                
+
 
                             </tr>
                             @endforeach
 
                         </table>
                     </div>
+                    @else
+                    <div class="alert alert-info">
+                        Please select tournament first.
+                    </div>
+                    @endif
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -53,3 +68,11 @@
     </div>
 </div>
 @endsection
+
+@section('js')
+<script>
+    function chnageTournament(tournamentId) {
+        window.location = "{{route('Matcheslist')}}?tournament_id=" + tournamentId;
+    }
+</script>
+@stop

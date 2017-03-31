@@ -24,8 +24,6 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['is_user']], function () {
         Route::get('/profile', 'HomeController@profile')->name('profile');
-
-
         Route::group(['prefix' => 'tournaments'], function () {
             Route::get('/play/{tournament_id}', 'User\TournamentsController@playTournament')->name('playTournament');
             Route::get('/addteam', 'User\TournamentsController@teamNamePostAjax')->name('teamNamePostAjax');
@@ -67,9 +65,8 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/edit', 'Admin\TournamentsController@postEditTournament')->name('editTournament');
             Route::get('/addplayers/{tournament_id}', 'Admin\TournamentsController@showAddPlayerForm')->name('showAddPlayerForm');
             Route::post('/addplayers/', 'Admin\TournamentsController@postAddTournamentPlayers')->name('postAddTournamentPlayers');
-            Route::get('/addroles/{tournament_id}','Admin\TournamentsController@addTournamentRoles')->name('addMaxRoles');
-            Route::post('/addroles/{tournament_id}','Admin\TournamentsController@postAddmaxRoles')->name('postAddmaxRoles');
-
+            Route::get('/addroles/{tournament_id}', 'Admin\TournamentsController@addTournamentRoles')->name('addMaxRoles');
+            Route::post('/addroles/{tournament_id}', 'Admin\TournamentsController@postAddmaxRoles')->name('postAddmaxRoles');
         });
         //Matches
         Route::group(['prefix' => 'match'], function () {

@@ -11,26 +11,24 @@ use App\Http\Controllers\Controller;
 use DateTime;
 use DateTimeZone;
 
-class TournamentsController extends Controller
-{
-    function __construct()
-    {
+class TournamentsController extends Controller {
+
+    function __construct() {
         $this->objTourmament = new \App\Tournament;
     }
 
-    function showTournamentDetails($tournament_id)
-    {
+    function showTournamentDetails($tournament_id) {
         try {
             $data['players_in_tournament'] = [];
             $data['tournament_detail'] = \App\Tournament::where('id', $tournament_id)
-                ->with(['tournament_game' => function () {
-
-                    }, 'tournament_game.game_players' => function () {
-
-                    }, 'tournament_players' => function ($query) {
-
-                    }]
-                )->firstOrFail()->toArray();
+                            ->with(['tournament_game' => function () {
+                                    
+                                }, 'tournament_game.game_players' => function () {
+                                    
+                                }, 'tournament_players' => function ($query) {
+                                    
+                                }]
+                            )->firstOrFail()->toArray();
 
             ////////Making player price
             //End making player price
@@ -41,12 +39,10 @@ class TournamentsController extends Controller
         } catch (ModelNotFoundException $ex) {
             abort(404);
         }
-
     }
 
-    function playTournament($tournament_id)
-    {
-  //      userdata = User::with( 'orders' )->where( 'userId', 15 )->first();
+    function playTournament($tournament_id) {
+        //      userdata = User::with( 'orders' )->where( 'userId', 15 )->first();
 //        $sum = $userdata[ 'orders' ]->sum( 'amount' );
 //        \App\user_points_consumed::find($userid)->first();
 
@@ -55,27 +51,26 @@ class TournamentsController extends Controller
         $userteam = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' => Auth::id()])->first();
 
 
-        if($userteam==null){
+        if ($userteam == null) {
             $data['team_name'] = NULL;
-        }else{
+        } else {
             $data['team_name'] = $userteam->name;
             $data['team_id'] = $userteam->id;
-            $data['user_team_players']= \App\UserTeam::where('id', $userteam->id)
-                ->with('user_team_player')
-                ->firstOrFail()->toArray();
-
+            $data['user_team_players'] = \App\UserTeam::where('id', $userteam->id)
+                            ->with('user_team_player')
+                            ->firstOrFail()->toArray();
         }
-           try {
+        try {
             $data['players_in_tournament'] = [];
             $data['tournament_detail'] = \App\Tournament::where('id', $tournament_id)
-                ->with(['tournament_game' => function () {
-
-                    }, 'tournament_game.game_players' => function () {
-
-                    }, 'tournament_players' => function ($query) {
-
-                    }]
-                )->firstOrFail()->toArray();
+                            ->with(['tournament_game' => function () {
+                                    
+                                }, 'tournament_game.game_players' => function () {
+                                    
+                                }, 'tournament_players' => function ($query) {
+                                    
+                                }]
+                            )->firstOrFail()->toArray();
 
             ////////Making player price
             //End making player price
@@ -86,23 +81,18 @@ class TournamentsController extends Controller
         } catch (ModelNotFoundException $ex) {
             abort(404);
         }
-
-
     }
 
-    function teamNamePostAjax(Request $request)
-    {
+    function teamNamePostAjax(Request $request) {
         $tournament_id = Input::get('tournament_id');
         $userteam = Input::get('name');
         $this->validator($request->all())->validate();
         $teamid = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' => Auth::id()])->first();
 
-        if ($teamid==null) {
+        if ($teamid == null) {
             $teamid['id'] = 0;
         } else {
             $teamid = $teamid->first()->toArray();
-
-
         }
         \App\UserTeam::updateOrCreate(['id' => $teamid['id']], ['tournament_id' => $tournament_id, 'user_id' => Auth::id(), 'name' => $userteam]);
 
@@ -119,10 +109,8 @@ class TournamentsController extends Controller
         return response()->json($data);
     }
 
-    function addUserPlayer(Request $request)
-    {
-       // dd($request->all());
-
+    function addUserPlayer(Request $request) {
+        // dd($request->all());
 //        $objteam = \App\UserTeam::where('id', $request->team_id)
 //            ->with('user_team_player')
 //            ->firstOrFail()
@@ -146,7 +134,7 @@ class TournamentsController extends Controller
         if ($tournamentMaxPlayers > $currentNoPlayers) {
             if ($difference > 15) {
 
-                if($request->player_price<getUserTotalScore(Auth::id())){
+                if ($request->player_price < getUserTotalScore(Auth::id())) {
 
                     $objteam = \App\UserTeam::find($request->team_id);
                     $objteam->user_team_player()->sync($request->player_id, false);
@@ -154,11 +142,9 @@ class TournamentsController extends Controller
                     \App\UserPointsConsumed::insert($array);
                     $objResponse['success'] = true;
                     $objResponse['msg'] = "Player added successfully";
-
-                }else{
+                } else {
                     $objResponse['success'] = false;
                     $objResponse['msg'] = "You donot have enough points";
-
                 }
             } else {
                 $objResponse['success'] = false;
@@ -171,10 +157,10 @@ class TournamentsController extends Controller
         return response()->json($objResponse);
     }
 
-    protected function validator(array $data)
-    {
+    protected function validator(array $data) {
         return Validator::make($data, [
-            'name' => 'unique:user_teams'
+                    'name' => 'unique:user_teams'
         ]);
     }
+
 }

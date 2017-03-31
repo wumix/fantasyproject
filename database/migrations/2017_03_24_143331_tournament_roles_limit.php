@@ -19,7 +19,7 @@ class TournamentRolesLimit extends Migration
             $table->foreign('tournament_id')->references('id')->on('tournaments')->onDelete('cascade');
             $table->integer('player_role_id')->unsigned();
             $table->foreign('player_role_id')->references('id')->on('player_roles')->onDelete('cascade');
-            $table->integer('max_limit')->unsigned();
+            $table->integer('max_limit')->unsigned()->default(0);
 
             $table->timestamps();
         });

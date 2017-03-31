@@ -5,6 +5,7 @@ namespace App\Http\Controllers\user;
 use App\GameRole;
 use App\Player;
 use App\Tournament;
+use App\UserTeam;
 use Illuminate\Support\Facades\DB;
 use \Auth;
 use Illuminate\Support\Facades\App;
@@ -24,6 +25,7 @@ class TournamentsController extends Controller
 
     function showTournamentDetails($tournament_id)
     {
+
         try {
             $data['players_in_tournament'] = [];
             $data['tournament_detail'] = \App\Tournament::where('id', $tournament_id)
@@ -49,11 +51,23 @@ class TournamentsController extends Controller
     }
 
 
-    function playerRoleLimit($tournament_id, $roleid)
-    {
-        $max = DB::table('tournament_role_imit')->select('max_limit')->where('tournament_id', $tournament_id)->where('player_role_id', $roleid)->get();
-        return ($max[0]->max_limit);
 
+
+
+
+    function addTeam($tournament_id)
+    {
+
+        $userteam = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' => Auth::id()])->first();
+
+        if (empty($userteam)) {
+            $data['team_name'] = NULL;
+            $data['tournament_detail'] = \App\Tournament::where('id', $tournament_id)->firstOrFail()->toArray();
+            return view('user.tournaments.add_user_team', $data);
+        } else {
+            $userteam = $userteam->toArray();
+            return redirect()->route('addPlayers', ['team_id' => $userteam['id']]);
+        }
     }
 
     function giveanygoodname($userid, $teamid, $roleid)
@@ -78,24 +92,61 @@ class TournamentsController extends Controller
 
     }
 
-    function addTeam($tournament_id)
+
+    function playerRoleLimit($tournament_id, $roleid)
     {
-        $userteam = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' => Auth::id()])->first();
-        if ($userteam == null) {
-            $data['team_name'] = NULL;
-        } else {
-            return redirect()->route('playTournament', ['tournament_id' => $tournament_id]);
+        $max = DB::table('tournament_role_imit')->select('max_limit')->where('tournament_id', $tournament_id)->where('player_role_id', $roleid)->get();
 
-            $data['team_name'] = $userteam->name;
-            $data['team_id'] = $userteam->id;
-
+        if(empty($max->toArray())){
+           return 0;
+        }else{
+            return ($max[0]->max_limit);
         }
 
-        $data['tournament_detail'] = \App\Tournament::where('id', $tournament_id)->firstOrFail()->toArray();
 
+    }
 
-        return view('user.tournaments.add_user_team', $data);
+    function playTournament($team_id)
+    {
+      //  dd($this->giveanygoodname(Auth::id(),1,12));
+       // dd($this->playerRoleLimit('3','12'));
 
+        $usersSelectedPlayers = UserTeam::where('id', $team_id)
+            ->with([
+                'user_team_player' => function ($q) {
+               //     $q->select('player_id');
+                },
+                'teamtournament'
+
+            ])->firstOrFail()->toArray();
+        $tournament_id = $usersSelectedPlayers['tournament_id'];
+        $selectedPlayers = [];
+        if (!empty($usersSelectedPlayers['user_team_player'])) {
+            $selectedPlayers = array_column($usersSelectedPlayers['user_team_player'], 'id');
+        }
+        $data['team_id']=$usersSelectedPlayers['id'];
+        $data['team_name']=$usersSelectedPlayers['name'];
+        $data['user_team_player']=$usersSelectedPlayers['user_team_player'];
+        $data['tournament_detail']=$usersSelectedPlayers['teamtournament'];
+      //  dd($usersSelectedPlayers['user_team_player']);
+//debugArr($usersSelectedPlayers);
+//debugArr($selectedPlayers);
+  //dd($selectedPlayers);
+       // $data['roles']=$selectedPlayers;
+
+       // $selectedPlayers=[1,2,3,4];
+        $data['roles'] = GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
+            $q->where('tournament_id', $tournament_id);
+        },
+            'players' => function ($q) use ($selectedPlayers) {
+                $q->whereNotIn('players.id', $selectedPlayers);
+            }
+        ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
+            $query->where('tournament_id', $tournament_id);
+        })->get()->toArray();
+     // dd($data['roles']);
+       return view('user.tournaments.my_team', $data);
+//
     }
 
     function transferPlayer($tournament_id, $player_id)
@@ -142,23 +193,6 @@ class TournamentsController extends Controller
     }
 
 
-    function playTournament($tournament_id)
-    {
-        $usersSelectedPlayers = [4, 3];
-        $roles = GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
-            $q->where('tournament_id', $tournament_id);
-        },
-            'players' => function ($q) use ($usersSelectedPlayers) {
-                $q->whereNotIn('players.id', $usersSelectedPlayers);
-            }
-        ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
-            $query->where('tournament_id', $tournament_id);
-        })->get()->toArray();
-        dd($roles);
-        //return view('user.tournaments.my_team', $data);
-//
-    }
-
     function teamNamePostAjax(Request $request)
     {
         $tournament_id = Input::get('tournament_id');
@@ -203,6 +237,7 @@ class TournamentsController extends Controller
 
         $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
         $currentNoPlayers = \App\UserTeam::find($request->team_id)->user_team_player()->count();
+
         $data = [];
         $objResponse = [];
         $objResponse['success'] = false;
@@ -210,6 +245,7 @@ class TournamentsController extends Controller
             if ($difference > 15) {
                 if ($request->player_price < getUserTotalScore(Auth::id())) {
                     if ($this->giveanygoodname(Auth::id(), $request->team_id, $request->role_id) < $this->playerRoleLimit($request->tournament_id, $request->role_id)) {
+
                         $objteam = \App\UserTeam::find($request->team_id);
                         $objteam->user_team_player()->sync($request->player_id, false);
                         $array = array(['action_key' => 'add_player', 'user_id' => Auth::id(), 'points_consumed' => $request->player_price]);

@@ -18,8 +18,11 @@ class Tournament extends Model {
        return Tournament::find($tournament_id)->start_date;
 
     }
-    public function tournament_game() { //tournaments ki games
+    public function tournament_game() { //tournamentsgames
         return $this->belongsTo('App\Game', 'game_id');
+    }
+    public function tournament_userteams() { //tournaments ki games
+        return $this->hasMany('App\UserTeam','tournament_id', 'id');
     }
 
     public function tournament_players() {
@@ -47,5 +50,6 @@ class Tournament extends Model {
     public function tournament_role_max() {
         return $this->belongsToMany('App\GameRole','tournament_role_imit','tournament_id','player_role_id')->withPivot('max_limit');;
     }
+
 
 }

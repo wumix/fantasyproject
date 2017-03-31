@@ -1,23 +1,24 @@
 @php
-    // dd(Auth::id());
-    //debugArr($user_team_players['user_team_player']);
-  // debugArr($tournament_detail['tournament_players']);
-    // dd($tournament_detail['tournament_players']);
-   /* foreach($user_team_players['user_team_player'] as $row){
-   $i=0;
-      foreach($tournament_detail['tournament_players'] as $row1){
-      //   echo $row['id']." " ;echo $row1['id'];
+    //dd($tournament_detail);
+         //dd(Auth::id());
+        //debugArr($user_team_players['user_team_player']);
+      // debugArr($tournament_detail['tournament_players']);
+        // dd($tournament_detail['tournament_players']);
+       /* foreach($user_team_players['user_team_player'] as $row){
+       $i=0;
+          foreach($tournament_detail['tournament_players'] as $row1){
+          //   echo $row['id']." " ;echo $row1['id'];
 
-      if($row['id']==$row1['id']){
+          if($row['id']==$row1['id']){
 
-        unset($tournament_detail['tournament_players'][$i]);
+            unset($tournament_detail['tournament_players'][$i]);
 
-      }
-      $i++;
-      }
-       }
-       //this array contains list of player that are not in user team kindly dont remove this code it may be helpfull in future
- dd($tournament_detail['tournament_players']);  */ //
+          }
+          $i++;
+          }
+           }
+           //this array contains list of player that are not in user team kindly dont remove this code it may be helpfull in future
+     dd($tournament_detail['tournament_players']);  */ //
 
 
 
@@ -167,7 +168,7 @@
                                         <button>Add</button>
                                     @else
 
-                                        <input disabled type="text" id="team_name" value="{{$team_name}}"/>
+                                        Team Name   <label>{{$team_name}}</label>
                                         <input id="team_id" type="hidden" name="team_id" value="{{$team_id}}"/>
                                     @endif
 
@@ -207,11 +208,12 @@
                                 <td class="border-r"><img id="timg" class="img-circle"
                                                           src="{{ getUploadsPath($player['profile_pic']) }}"> {{$player['name']}}
                                 </td>
-                                <td class="border-r">Batsman</td>
+
+                                <td class="border-r">{{$player['player_roles'][0]['name']}}</td>
                                 <td id="player_price" class="brr">{{$player['pivot']['player_price']}}</td>
                                 <td>
                                     <a id="btn-player-{{$player['id']}}"
-                                       href="javascript:addplayertoteam('{{$player['id']}}','{{$tournament_detail['id']}}')"
+                                       href="javascript:addplayertoteam('{{$player['player_roles'][0]['name']}}','{{$player['player_roles'][0]['id']}}','{{$player['id']}}','{{$tournament_detail['id']}}')"
                                        class="btn btn-warning">Add Player</a></td>
                             </tr>
                         @endforeach
@@ -548,17 +550,20 @@
         });
     </script>
     <script>
-        function addplayertoteam(playerid, tournamentid) {
+        function addplayertoteam(rolename, roleid, playerid, tournamentid) {
             var arr_player_id = [];
             arr_player_id.push(playerid);
             var teamid = $("#team_id").val();
             var player_price = $("#player_price").html();
+
             $.ajax({
                 type: 'POST',
                 url: '{{route('addUserTeamPlayerAjax')}}',
                 data: {
                     tournament_id: tournamentid,
                     player_id: arr_player_id,
+                    role_id: roleid,
+                    role_name: rolename,
                     player_price: player_price,
                     team_id: teamid, _token: '{{csrf_token()}}'
                 },
@@ -566,7 +571,7 @@
 
                     if (data.success == true) {
                         $('#btn-player-' + playerid).attr('disabled', true);
-                        $('#btn-player-' + playerid).attr('class', 'btn btn-success');
+                        $('#btn-player-' + playerid).attr('class', 'btn btn-danger');
 
                     } else {
 

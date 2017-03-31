@@ -79,8 +79,6 @@ class GamesController extends Controller {
     function addRolePost($game_id = NULL) {
         //dd(Input::all()); //to debug post
         $game_id = Input::get('id');
-        $a = \App\GameRole::where('game_id', $game_id)->delete();
-
         $gameRoles = [];
         foreach (array_filter(Input::get('role_name')) as $role_name) {
             $gameRoles[] = [
@@ -95,7 +93,6 @@ class GamesController extends Controller {
     function addTermPost() {
         //dd(Input::all()); //to debug post
         $game_id = Input::get('id');
-        $a = \App\GameTerm::where('game_id', $game_id)->delete();
 
         $gameRoles = [];
         foreach (array_filter(Input::get('term_name')) as $role_name) {
@@ -107,6 +104,16 @@ class GamesController extends Controller {
         // dd($gameRoles);
         \App\GameTerm::insert($gameRoles);
         return redirect()->back();
+    }
+
+    public function deleteGameRole() {
+        $roleId = Input::get('role_id');
+        \App\GameRole::find($roleId)->delete();
+    }
+
+    public function deleteGameTerm() {
+        $termId = Input::get('term_id');
+        \App\GameTerm::find($termId)->delete();
     }
 
 }

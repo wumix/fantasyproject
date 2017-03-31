@@ -37,9 +37,11 @@ class HomeController extends Controller
     public function index()
     {
 
-        $objTourmament = \App\Tournament::all()->toArray();
-        $data['tournaments_list'] = $objTourmament;
-        //dd($data['tournaments_list']);
+
+        $objTourmament = \App\Tournament::all()->sortBy("start_date");;
+        $data['tournaments_list'] = $objTourmament->toArray();
+
+       // dd($data['tournaments_list']);
         return view('home', $data);
     }
 

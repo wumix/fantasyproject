@@ -4,42 +4,44 @@
 
     <!-- ..........................Banner Start ............................-->
     <section>
-        <div class="container-fluid " id="ban" >
+        <div class="container-fluid " id="ban">
             <div class="row" id="rrh">
                 <div class="col-md-6" id="headt">
 
                     <h1 class="ht1">LOREM</h1>
-                    <h3 class="ht2">IPSUM LOREM IPSUM</h3>
+                    <h3 class="ht2">
+                    </h3>
                 </div>
-                <div class="col-md-6" >
+                <div class="col-md-6">
                     <div class="container" id="uocming">
                         <h3 id="uph">UPCOMING TOURNAMENT</h3>
-                        <h4 id="up4">{{$tournaments_list[0]['name']}}</h4>
-                        <div class="perant row">
-                            <div id="getting-started" class="child col-md-4">10</div>
-                            <div id="getting-started1" class="child col-md-4"> 20</div>
-                            <div id="getting-started2" class="child col-md-4"> 30</div>
-                            <div id="getting-started3" class="child col-md-4"> 40</div>
 
+                        <h4 id="up4">
+
+                        </h4>
+                        <div class="perant">
+                            <div class="child" id="getting-started"></div>
+                            <div class="child" id="getting-started1"></div>
+                            <div class="child" id="getting-started2"></div>
+                            <div class="child" id="getting-started3"></div>
 
 
                         </div>
-                        <div class="pt row">
-                            <div class="ct col-md-4">Days</div>
-                            <div class="ct col-md-4">Hours</div>
-                            <div class="ct col-md-4">Min</div>
-                            <div class="ct col-md-4">Sec</div>
+                        <div class="pt">
+                            <div class="ct">Days</div>
+                            <div class="ct">Hours</div>
+                            <div class="ct">Min</div>
+                            <div class="ct">Sec</div>
 
                         </div>
-
 
 
                     </div>
                 </div>
 
 
-
-            </div></div>
+            </div>
+        </div>
 
     </section>
     <!-- ............................Banner End.................... -->
@@ -59,11 +61,9 @@
                 <h3 class="ah3">ACTIVE TOURNAMENTS</h3>
 
 
-                <table class="table"  id="bgcol">
-                    <thead class="main-taible-head" >
-
-
-                    <tr >
+                <table class="table table-striped" id="bgcol">
+                    <thead class="main-taible-head">
+                    <tr>
                         <th class="border-r th1">TOURNAMENT NAME</th>
                         <th class="border-r">VENUE</th>
                         <th class="border-r">STARTING DATE</th>
@@ -71,25 +71,21 @@
                     </tr>
                     </thead>
                     <tbody class="main-taible-body">
+
+
                     @foreach ($tournaments_list as $row)
-                        <tr class="trr">
+                        <tr>
                             <td class="border-r"><a
                                         href="{{route('showTournament', ['tournament_id'=>$row['id']])}}">{{$row['name']}}</a>
                             </td>
                             <td class="border-r">{{$row['venue']}}</td>
                             <td class="border-r">{{$row['start_date']}}</td>
-                            <td >{{$row['end_date']}}</td>
+                            <td>{{$row['end_date']}}</td>
                         </tr>
                     @endforeach
 
                     </tbody>
                 </table>
-
-
-
-
-
-
             </div>
         </div>
     </section>
@@ -363,12 +359,14 @@
 
         $timestamp=strtotime($tournaments_list[0]['start_date']);
         $php_date = getdate($timestamp);
+        // or if you want to output a date in year/month/day format:
         $date= date("Y/m/d", $timestamp);
 
     @endphp
 
     <script type="text/javascript">
-        $("#getting-started").countdown("{{$date}}", function (event) {
+        $("#getting-started")
+            .countdown("{{$date}}", function (event) {
                 $(this).text(
                     event.strftime('%D')
                 );

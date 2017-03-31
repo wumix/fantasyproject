@@ -84,8 +84,10 @@
                             <td class="border-r1"><img id="myteamtimg" class="img-circle" src="{{getUploadsPath($row['profile_pic'])}}">
                                 {{$row['name']}}
                             </td>
-                            <td class="border-r1"><p class="myteamtt">Batsman</p></td>
-                            <td class="border-r1"><p class="myteamtt">40000</p></td>
+                            @foreach($row['player_tournaments'] as $key=>$val)
+                            <td class="border-r1"><p class="myteamtt">{{$row['player_roles'][0]['name']}}</p></td>
+                            <td class="border-r1"><p class="myteamtt">{{$val['pivot']['player_price']}}</p></td>
+                            @endforeach
                             <td>
 
                                 <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id']])}}" class="btn btn-md bttor1">TRANSFER</a>
@@ -239,26 +241,31 @@
 
                     if (data.success == true) {
 
-
+                        var obj = data.player;
                         $('.error').html(data.msg);
                         $('.error').fadeIn(400).delay(3000).fadeOut(400); //fade out after 3 seconds
                         $('#btn-player-' + playerid).attr('disabled', true);
 
                         $('#btn-player-' + playerid).remove();
 
-                        var obj = data.player;
+
                         $('#total-score-user').html(obj.player_score);
                         var t = '<tr>';
                         t += '<input type=hidden" name="player_id_t" value="' + obj.id + '"/>';
                         t += '<td class="border-r1"><img id="myteamtimg" class="img-circle"  src="' + obj.profile_pic + ' "><span class="selected-player-name">' + obj.name + '</span> </td>';
                         t += '<td class="border-r1"><p class="myteamtt"></p>' + obj.price + '</td>';
                         t += '<td class="border-r1"><p class="myteamtt"></p> ' + obj.role_name + '</span></td>';
-                        t += '<td><button id="" class="btn btn-md bttor1">TRANSFER</button></td >';
+
+                        var url = '{{ route("transferplayer", ["team_id"=>"id","player_id"=>'pid']) }}';
+                        url = url.replace('id', obj.id);
+                        url = url.replace('pid', obj.team_id);
+                        t += '<td><a href="'+url+'" id="" class="btn btn-md bttor1">TRANSFER</a></td >';
                         t += '</tr>';
                         $('#selected-player').append(t);
                         t = "";
-                        t += '<tr id="player_tr_" class="cwt"><td class=" point"><p class="myteamtt">Player Added Successfully</p></td></tr> ';
-                        $('#player_tr_' + obj.id).html(t);
+                        t += '<tr id="player_tr_'+obj.id +'" class="cwt"><td class=" point"><p class="myteamtt">Player Added Successfully</p></td></tr> ';
+
+                        $('#player_tr-'+ obj.id).html(t);
 
 
                     } else {

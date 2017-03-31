@@ -134,8 +134,8 @@ class TournamentsController extends Controller
         $data['team_name'] = $usersSelectedPlayers['name'];
         $data['user_team_player'] = $usersSelectedPlayers['user_team_player'];
         $data['tournament_detail'] = $usersSelectedPlayers['teamtournament'];
-         // dd($selectedPlayers);
-//debugArr($selectedPlayers);
+        // dd($selectedPlayers);
+//dd( $data['user_team_player']);
         //dd($selectedPlayers);
         // $data['roles']=$selectedPlayers;
 
@@ -149,7 +149,7 @@ class TournamentsController extends Controller
         ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
             $query->where('tournament_id', $tournament_id);
         })->get()->toArray();
-       // dd($data['roles']);
+         //sdd($data['roles']);
         return view('user.tournaments.my_team', $data);
 //
     }
@@ -191,7 +191,7 @@ class TournamentsController extends Controller
         ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
             $query->where('tournament_id', $tournament_id);
         })->get()->toArray();
-        // dd($data['roles']);
+        //dd($data['roles']);
         return view('user.tournaments.player_transfer', $data);
 
 

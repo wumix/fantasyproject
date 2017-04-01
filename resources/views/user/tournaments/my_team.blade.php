@@ -85,6 +85,7 @@
                                 {{$row['name']}}
                             </td>
                             @foreach($row['player_tournaments'] as $key=>$val)
+
                             <td class="border-r1"><p class="myteamtt">{{$row['player_roles'][0]['name']}}</p></td>
                             <td class="border-r1"><p class="myteamtt">{{$val['pivot']['player_price']}}</p></td>
                             @endforeach

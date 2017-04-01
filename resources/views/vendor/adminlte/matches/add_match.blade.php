@@ -47,12 +47,12 @@ Games
                                placeholder="Venue Name" type="text" name="venue">
                     </div>
                     <div class="form-group">
-                        <label>Start Date Time <small class="help">(This must be a GMT)</small>
-                        <input name="start_date" class="datetimepicker form-control" type="text">
+                        <label>Start Date Time <small class="help">(This must be a GMT)</small></label>
+                        <input  required name="start_date" class="datetimepicker form-control" type="text">
                     </div>
                     <div class="form-group">
                         <label>End Date Time <small class="help">(This must be a GMT)</small></label>
-                        <input name="end_date" class="datetimepicker form-control" type="text">
+                        <input required name="end_date" class="datetimepicker form-control" type="text">
                     </div>
                     <div class="form-group">
                     <button type="submit" class="btn btn-primary">Add</button>

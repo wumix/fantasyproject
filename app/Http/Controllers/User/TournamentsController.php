@@ -53,6 +53,10 @@ class TournamentsController extends Controller
 
     function addTeam($tournament_id)
     {
+//        $tournamentPrice=\App\Tournament::find(1)->tournament_price;
+//
+//        if($tournamentPrice<getUserTotalScore(Auth::id())) echo"less";
+//        dd($tournamentPrice);
 
         $userteam = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' => Auth::id()])->first();
 
@@ -104,6 +108,9 @@ class TournamentsController extends Controller
 
     function playTournament($team_id)
     {
+       
+
+
 
 
 //        $tournamentDate = \App\Tournament::getStartdate(3);
@@ -215,7 +222,7 @@ class TournamentsController extends Controller
         $userteam = Input::get('name');
         $this->validator($request->all())->validate();
         $teamid = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' => Auth::id()])->first();
-
+        $data=[];
         if ($teamid == null) {
             $teamid['id'] = 0;
         } else {
@@ -223,16 +230,22 @@ class TournamentsController extends Controller
 
 
         }
-        \App\UserTeam::updateOrCreate(['id' => $teamid['id']], ['tournament_id' => $tournament_id, 'user_id' => Auth::id(), 'name' => $userteam]);
 
-        $points = \App\UserAction::getPointsByKey('pusrchase_tournament');
-        $array = array(['action_key' => 'pusrchase_tournament', 'user_id' => Auth::id(), 'points_consumed' => $points]);
-        \App\UserPointsConsumed::insert($array);
-        $userteam = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' => Auth::id()])->first()->toArray();
+        $tournamentPrice=\App\Tournament::find($tournament_id)->tournament_price;
+        if($tournamentPrice<(double)getUserTotalScore(Auth::id())){
+            \App\UserTeam::updateOrCreate(['id' => $teamid['id']], ['tournament_id' => $tournament_id, 'user_id' => Auth::id(), 'name' => $userteam]);
+            $array = array(['action_key' => 'pusrchase_tournament', 'user_id' => Auth::id(), 'points_consumed' => $tournamentPrice]);
+            \App\UserPointsConsumed::insert($array);
+            $userteam = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' => Auth::id()])->first()->toArray();
 
-        $data['team_id'] = $userteam['id'];
-        $data['team_name'] = $userteam['name'];
-        $data['status'] = "ok";
+            $data['team_id'] = $userteam['id'];
+            $data['team_name'] = $userteam['name'];
+            $data['status'] = "ok";
+        }
+       else{
+            $data['status'] = "no";
+            $data['message']="You dont have enough points to play this tournament";
+    }
 
 
         return response()->json($data);
@@ -335,6 +348,8 @@ class TournamentsController extends Controller
                         $objResponse['player']['price'] = $request->player_price;
                         $objResponse['player']['team_id'] = $request->team_id;
                         $objResponse['player']['player_score'] = getUserTotalScore(Auth::id());
+
+
 
 
                     } else {

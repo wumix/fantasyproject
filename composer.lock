@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "acacha/admin-lte-template-laravel",
-            "version": "4.1.6",
+            "version": "4.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/acacha/adminlte-laravel.git",
-                "reference": "6ce4182cf793287234dac9ee48175db0877f949e"
+                "reference": "407ec5351a95df19f06f6e52dd8676fca4b46e73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acacha/adminlte-laravel/zipball/6ce4182cf793287234dac9ee48175db0877f949e",
-                "reference": "6ce4182cf793287234dac9ee48175db0877f949e",
+                "url": "https://api.github.com/repos/acacha/adminlte-laravel/zipball/407ec5351a95df19f06f6e52dd8676fca4b46e73",
+                "reference": "407ec5351a95df19f06f6e52dd8676fca4b46e73",
                 "shasum": ""
             },
             "require": {
@@ -69,7 +69,7 @@
                 "template",
                 "theme"
             ],
-            "time": "2017-03-22T12:50:31+00:00"
+            "time": "2017-03-29T16:05:20+00:00"
         },
         {
             "name": "acacha/filesystem",
@@ -379,16 +379,16 @@
         },
         {
             "name": "erusev/parsedown",
-            "version": "1.6.1",
+            "version": "1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/erusev/parsedown.git",
-                "reference": "20ff8bbb57205368b4b42d094642a3e52dac85fb"
+                "reference": "1bf24f7334fe16c88bf9d467863309ceaf285b01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/erusev/parsedown/zipball/20ff8bbb57205368b4b42d094642a3e52dac85fb",
-                "reference": "20ff8bbb57205368b4b42d094642a3e52dac85fb",
+                "url": "https://api.github.com/repos/erusev/parsedown/zipball/1bf24f7334fe16c88bf9d467863309ceaf285b01",
+                "reference": "1bf24f7334fe16c88bf9d467863309ceaf285b01",
                 "shasum": ""
             },
             "require": {
@@ -417,7 +417,7 @@
                 "markdown",
                 "parser"
             ],
-            "time": "2016-11-02T15:56:58+00:00"
+            "time": "2017-03-29T16:04:15+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",

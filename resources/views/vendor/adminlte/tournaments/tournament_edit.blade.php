@@ -30,18 +30,18 @@
                         <div class="form-group">
                             <label>Tournament Name</label>
                             <input type="hidden" name="id" value="{{$tournament_games['id']}}"/>
-                            <input required class="form-control" name="name" value="{{$tournament_games['name']}}" type="text" placeholder="" />
+                            <input  class="form-control" name="name" value="{{$tournament_games['name']}}" type="text" placeholder="" />
                         </div>
                         <div class="form-group">
                             <label>Venue</label>
-                            <input required class="form-control" name="venue" value="{{$tournament_games['venue']}}" type="text" placeholder="" />
+                            <input class="form-control" name="venue" value="{{$tournament_games['venue']}}" type="text" placeholder="" />
                         </div>
                         <div class="form-group">
                             <label>
                                 Tournament Game 
                                 <small class="help-block alert-danger">By changing this field you have to set game term points again.</small>
                             </label>
-                            <select required id="game_id" name="game_id"  class="custom-select form-control">
+                            <select id="game_id" name="game_id"  class="custom-select form-control">
                                 <option value="">Select</option>
                                 @foreach($games as $row)
                                 <option 
@@ -55,17 +55,21 @@
                         </div>
                         <div class="form-group">
                             <label>Start Date Time <small class="help">(This must be a GMT)</small></label>
-                            <input required name="start_date" class="datetimepicker form-control" type="text" value="{{$tournament_games['start_date']}}" />
+                            <input  name="start_date" class="datetimepicker form-control" type="text" value="{{$tournament_games['start_date']}}" />
                         </div>
                         <div class="form-group">
                             <label>End Date Time <small class="help">(This must be a GMT)</small></label>
-                            <input required name="end_date" class="datetimepicker form-control"  type="text" value="{{$tournament_games['end_date']}}">
+                            <input  name="end_date" class="datetimepicker form-control"  type="text" value="{{$tournament_games['end_date']}}">
                         </div>
                         <div class="form-group">
                             <label>Max Players</label>
-                            <input required name="max_players" class=" form-control"  type="text" value="{{$tournament_games['max_players']}}">
+                            <input name="max_players" class=" form-control"  type="text" value="{{$tournament_games['max_players']}}">
                         </div>
 
+                        <div class="form-group">
+                            <label>Tournament Price</label>
+                            <input name="tournament_price" class=" form-control"  type="text" value="{{$tournament_games['tournament_price']}}">
+                        </div>
                         <div class="form-group">
                             <label>Profile Picture</label>
                             <input name="t_logo" type="file"/>
@@ -144,7 +148,7 @@ $(document).ready(function ($) {
     $(".datetimepicker").datetimepicker({
         minDate: '0', //yesterday is minimum date(for today use 0 or -1970/01/01)
         // maxDate: '+1970/01/10',
-        step: timeStep,
+        //step: timeStep,
         //minTime: 0,
         hours12: false,
         theme: datePickerTheme

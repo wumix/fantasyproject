@@ -26,6 +26,7 @@
                         </div>
                     </div>
                     <div class="box-body">
+                        @include('adminlte::layouts.form_errors')
                         <div class="container-fluid">
                             {!! Form::open(['url' => route('editPlayer'),'files' => true]) !!}
 

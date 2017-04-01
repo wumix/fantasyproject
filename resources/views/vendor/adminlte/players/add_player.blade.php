@@ -14,6 +14,7 @@ Games
                     <h3 class="box-title">Add Player</h3>
                 </div>
                 <div class="box-body">
+                    @include('adminlte::layouts.form_errors')
                     {!! Form::open(['url' => route('postAddPlayer'),'files'=>true]) !!}
                     <div class="form-group">
                         <label>Name</label>

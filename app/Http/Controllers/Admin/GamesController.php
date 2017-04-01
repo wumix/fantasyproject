@@ -48,9 +48,10 @@ class GamesController extends Controller {
     }
 
     function editGameForm($game_id) {
-        $games = Game::where('id', $game_id)
-                        ->with('game_roles', 'game_actions')
-                        ->firstOrFail()->toArray();
+        $games = Game::where('id', $game_id)->with('game_roles', 'game_terms')->first();
+        if (!empty($games)) {
+            $games = $games->toArray();
+        } // check this later give error trhen game id has no realted data ::handle exception
         $data['result'] = $games;
         return view('adminlte::games.games_edit', $data);
     }
@@ -68,6 +69,7 @@ class GamesController extends Controller {
     }
 
     function editGamePost($game_id = NULL) {
+        dd(Input::all()); //to debug post
         $this->objGame = Game::find(Input::get('id'));
         $this->objGame->name = Input::get('gamename');
         $this->objGame->is_active = Input::get('is_active');
@@ -89,7 +91,21 @@ class GamesController extends Controller {
         return redirect()->back();
     }
 
+    function addTermPost() {
+        //dd(Input::all()); //to debug post
+        $game_id = Input::get('id');
 
+        $gameRoles = [];
+        foreach (array_filter(Input::get('term_name')) as $role_name) {
+            $gameRoles[] = [
+                'game_id' => $game_id,
+                'name' => $role_name
+            ];
+        }
+        // dd($gameRoles);
+        \App\GameTerm::insert($gameRoles);
+        return redirect()->back();
+    }
 
     /**
      * Remove player role by role id
@@ -105,19 +121,6 @@ class GamesController extends Controller {
     public function deleteGameTerm() {
         $termId = Input::get('term_id');
         \App\GameTerm::find($termId)->delete();
-    }
-
-    public function addGameActions() {
-        $game_id = Input::get('game_id');
-        $gameActions = [];
-        foreach (array_filter(Input::get('action_name')) as $action_name) {
-            $gameActions[] = [
-                'game_id' => $game_id,
-                'name' => $action_name
-            ];
-        }
-        \App\GameAction::insert($gameActions);
-        return redirect()->back();
     }
 
 }

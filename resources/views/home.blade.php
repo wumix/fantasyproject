@@ -8,13 +8,17 @@
             <div class="row" id="rrh">
                 <div class="col-md-6" id="headt">
 
-                    <h1 class="ht1">LOREM</h1>
-                    <h3 class="ht2">IPSUM LOREM IPSUM</h3>
+                    <h1 class="ht1">Welcome</h1>
+                    <h3 class="ht2">TO GAMITHON</h3>
                 </div>
                 <div class="col-md-6" >
                     <div class="container" id="uocming">
                         <h3 id="uph">UPCOMING TOURNAMENT</h3>
-                        <h4 id="up4">{{$tournaments_list[0]['name']}}</h4>
+                        <h4 id="up4">
+                            @if( !empty($data['tournaments_list']))
+                            {{$tournaments_list[0]['name']}}
+                                @endif
+                        </h4>
                         <div class="perant row">
                             <div id="getting-started" class="child col-md-4">10</div>
                             <div id="getting-started1" class="child col-md-4"> 20</div>
@@ -71,6 +75,7 @@
                     </tr>
                     </thead>
                     <tbody class="main-taible-body">
+                  @if(!empty($tournaments_list))
                     @foreach ($tournaments_list as $row)
                         <tr class="trr">
                             <td class="border-r"><a
@@ -81,6 +86,13 @@
                             <td >{{$row['end_date']}}</td>
                         </tr>
                     @endforeach
+                      @else
+                      <tr class="trr">
+                          <td class="border-r" colspan="4">NO LISTING YET</td>
+                      </tr>
+
+                    @endif
+
 
                     </tbody>
                 </table>
@@ -128,7 +140,7 @@
         </div>
     </section>
     <!-- LETS PLAY AT GAMITHON  End-->
-    <!-- .................Gallery Sart .........................-->
+    <!-- .................Gallery Sart .........................
     <section>
         <div class="container-fluid bgimg">
 
@@ -166,8 +178,9 @@
             </div>
         </div>
     </section>
+    -->
     <!-- .........................Gallery End .................................-->
-    <!-- ...............................News start......................... -->
+    <!-- ...............................News start.........................
     <div class="container-fluid lnews">
         <div class="row">
             <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -351,6 +364,7 @@
         </div>
     </div>
     </section>
+    -->
 
     <!-- /.....................footer Start......................../ -->
 
@@ -360,12 +374,17 @@
     @php
 
 
-
+if(!empty( $data['tournaments_list'])){
         $timestamp=strtotime($tournaments_list[0]['start_date']);
         $php_date = getdate($timestamp);
         $date= date("Y/m/d", $timestamp);
+    }
+    else{
+
+    }
 
     @endphp
+    @if(!empty( $data['tournaments_list']))
 
     <script type="text/javascript">
         $("#getting-started").countdown("{{$date}}", function (event) {
@@ -393,5 +412,5 @@
             });
 
     </script>
-
+@endif
 @stop

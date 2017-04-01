@@ -50,7 +50,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>User Type</label>
+                            <label>User Status</label>
                             <select name="is_active">
                                 <option <?php echo ($user_edit['is_active'] == '1') ? 'selected' : '' ?> value="1">Active</option>
                                 <option <?php echo ($user_edit['is_active'] == '0') ? 'selected' : '' ?> value="0">In Active</option>  

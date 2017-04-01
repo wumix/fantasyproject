@@ -50,6 +50,7 @@ class TournamentsController extends Controller {
         $this->validator($request->all())->validate();
         $newTournament = new \App\Tournament;
         $newTournament->name = $request->name;
+        $newTournament->tournament_price = $request->tournament_price;
         $newTournament->game_id = $request->game_id;
         $newTournament->start_date = $request->start_date;
         $newTournament->end_date = $request->end_date;
@@ -100,10 +101,10 @@ class TournamentsController extends Controller {
                 ->where('id', $tournament_id)
                 ->firstOrFail()
                 ->toArray();
-        dd($data['tournament_info']);
+      //dd($data['tournament_info']);
         $data['game_roles'] = $data['tournament_info']['tournament_game']['game_roles'];
 
-        dd($data['game_roles']);
+      // dd($data['game_roles']);
 
         return view('adminlte::tournaments.add_tournament_max_roles', $data);
     }

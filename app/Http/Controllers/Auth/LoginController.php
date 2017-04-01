@@ -35,7 +35,8 @@ use AuthenticatesUsers {
 
     /**
      * Show admin login form
-     */
+*/
+
     public function showAdminLoginForm() {
 
         return view('adminlte::auth.login');

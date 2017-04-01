@@ -11,15 +11,16 @@ Games Actions
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Games</h3>
+                    <h3 class="box-title">Games Action Terms - <small>{{$game_terms['name']}}</small></h3>
                 </div>
                 <div class="box-body">
+                    @include('adminlte::layouts.form_errors')
                     {!! Form::open(['url' => route('addGameTerm')]) !!}
                     <div class="form-group">
                         <label>Terms <small>(Catch, Out, Sixer etc)</small></label>
-                        <input type="hidden" name="id" value="{{$result['id']}}"/>
-
-                        @foreach($result['game_terms'] as $key => $val)
+                        <input type="hidden" name="game_action_id" value="{{$game_action_id}}"/>
+                        <input type="hidden" name="game_id" value="{{$game_terms['game_id']}}"/>
+                        @foreach($game_terms['game_terms'] as $key => $val)
                         <div class="form-group" id="game-term-{{$val['id']}}">
                             <input disabled class="form-control" name="term_name[]" value="{{$val['name']}}" type="text" placeholder="" />
                             <a class="btn btn-danger" href="javascript:deleteTerm('{{$val['id']}}')" />Delete</a>
@@ -27,7 +28,6 @@ Games Actions
                         @endforeach
                         <input class="form-control" name="term_name[]" value="" type="text" placeholder="" />
                     </div>
-
                     <div class="form-group">
                         <button id="add_more_terms" name="add_more_terms" type="button" class="btn btn-success"> Add More </button>
                         <button type="submit" class="btn btn-primary">
@@ -46,6 +46,10 @@ Games Actions
 
 @section('js')
 <script>
+    $("#add_more_terms").click(function (event) {
+        event.preventDefault();
+        $('<div class="form-group"><input class="form-control" name="term_name[]" value="" type="text" placeholder="" /></div>').insertBefore("#add_more_terms");
+    });
     function deleteTerm(gameTermId) {
         var cnfrm = confirm('All scores with this term will remove!');
         if (cnfrm) {

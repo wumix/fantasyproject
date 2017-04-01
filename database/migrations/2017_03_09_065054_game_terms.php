@@ -17,9 +17,7 @@ class GameTerms extends Migration {
             $table->string('name', 100);
             $table->integer('game_id')->unsigned();
             $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
-            $table->enum('is_active',[0,1])->default(1);
-            $table->timestamps();
-            $table->softDeletes();
+            $table->enum('is_active', [0, 1])->default(1);
         });
     }
 

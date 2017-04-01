@@ -9,25 +9,28 @@ class Tournament extends Model {
 
     protected $table = 'tournaments';
     protected $fillable = [
-        'name', 'game_id','tournament_price', 'venue', 'max_players', 'start_date', 'end_date', 'created_at', 'updated_at'
+        'name', 'game_id', 'tournament_price', 'venue', 'max_players', 'start_date', 'end_date', 'created_at', 'updated_at'
     ];
-    public static function getMaxPlayers($tournament_id){
+
+    public static function getMaxPlayers($tournament_id) {
         return Tournament::find($tournament_id)->first()->max_players;
     }
-    public static function getStartdate($tournament_id){
-       return Tournament::find($tournament_id)->start_date;
 
+    public static function getStartdate($tournament_id) {
+        return Tournament::find($tournament_id)->start_date;
     }
-    public function tournament_game() { //tournamentsgames
+
+    public function tournament_game() { //tournaments ki games
         return $this->belongsTo('App\Game', 'game_id');
     }
+
     public function tournament_userteams() { //tournaments ki games
-        return $this->hasMany('App\UserTeam','tournament_id', 'id');
+        return $this->hasMany('App\UserTeam', 'tournament_id', 'id');
     }
 
     public function tournament_players() {
         return $this->belongsToMany('App\Player', 'player_tournaments', 'tournament_id')
-                        ->withPivot('player_price');
+            ->withPivot('player_price');
     }
 
     public function game_term_points() {
@@ -41,15 +44,17 @@ class Tournament extends Model {
     public function setStartDateAttribute($value) {
         $this->attributes['start_date'] = date('Y-m-d h:i:s', strtotime(Input::get('start_date')));
     }
+
     public function tournament_matches() {
         return $this->hasMany('App\Match', 'tournament_id');
     }
+
     public function tournament_role_limit() {
-        return $this->belongsToMany('App\Player','tournament_role_limit','tournament_id','player_role_id')->withPivot('max_limit');;
-    }
-    public function tournament_role_max() {
-        return $this->belongsToMany('App\GameRole','tournament_role_limit','tournament_id','player_role_id')->withPivot('max_limit');;
+        return $this->belongsToMany('App\Player', 'tournament_role_limit', 'tournament_id', 'player_role_id')->withPivot('max_limit');
     }
 
+    public function tournament_role_max() {
+        return $this->belongsToMany('App\GameRole', 'tournament_role_limit', 'tournament_id', 'player_role_id')->withPivot('max_limit');
+    }
 
 }

@@ -50,7 +50,7 @@ class PlayersController extends Controller {
         return response()->json($data);
     }
 
-    public function addPlayer() {
+    public function addPlayer(Request $request) {
         //dd(Input::all()); //to debug post
         $this->validator($request->all())->validate();
         $objplayer = new \App\Player;

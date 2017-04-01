@@ -69,8 +69,8 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/edit', 'Admin\TournamentsController@postEditTournament')->name('editTournament');
             Route::get('/addplayers/{tournament_id}', 'Admin\TournamentsController@showAddPlayerForm')->name('showAddPlayerForm');
             Route::post('/addplayers/', 'Admin\TournamentsController@postAddTournamentPlayers')->name('postAddTournamentPlayers');
-            Route::get('/addroles/{tournament_id}', 'Admin\TournamentsController@addTournamentRoles')->name('addMaxRoles');
-            Route::post('/addroles/{tournament_id}', 'Admin\TournamentsController@postAddmaxRoles')->name('postAddmaxRoles');
+            Route::get('/add-max-roles/{tournament_id}', 'Admin\TournamentsController@addTournamentRolesLimit')->name('addMaxRoles');
+            Route::post('/add-max-roles/{tournament_id}', 'Admin\TournamentsController@postAddTournamentRolesLimit')->name('postAddmaxRoles');
         });
         //Matches
         Route::group(['prefix' => 'match'], function () {

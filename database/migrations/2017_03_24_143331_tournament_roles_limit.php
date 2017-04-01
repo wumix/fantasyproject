@@ -4,16 +4,15 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TournamentRolesLimit extends Migration
-{
+class TournamentRolesLimit extends Migration {
+
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('tournament_role_imit', function (Blueprint $table) {
+    public function up() {
+        Schema::create('tournament_role_limit', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('tournament_id')->unsigned();
             $table->foreign('tournament_id')->references('id')->on('tournaments')->onDelete('cascade');
@@ -30,8 +29,8 @@ class TournamentRolesLimit extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('user_action_points');
     }
+
 }

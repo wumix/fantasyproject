@@ -14,6 +14,7 @@ Games
                     <h3 class="box-title">Add Player</h3>
                 </div>
                 <div class="box-body">
+                    @include('adminlte::layouts.form_errors')
                     {!! Form::open(['url' => route('postAddPlayer'),'files'=>true]) !!}
                     <div class="form-group">
                         <label>Name</label>
@@ -36,7 +37,7 @@ Games
                     </div>
                     <div class="form-group">
                         <label>Profile Picture</label>
-                        <input name="profile_pic" type="file"/>
+                        <input name="profile_pic" required type="file"/>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Submit</button>

@@ -33,15 +33,16 @@ Games
                                     <a href="#" class="btn btn-danger">
                                         <i class="fa fa-times"></i> Delete
                                     </a>  
-                                    
+
                                 </td>
-                                
+
 
                             </tr>
                             @endforeach
 
                         </table>
                     </div>
+                    {{ $player_list->links() }}
                 </div>
                 <!-- /.box-body -->
             </div>

@@ -1235,7 +1235,7 @@ input::-webkit-input-placeholder {
     background-color:  rgba(102, 102, 102 , 0.8);
 }
 #ban{
-    background-image: url('http://gamithon.dev/assets/images/banner.jpg');
+    background-image: url('../images/banner.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;

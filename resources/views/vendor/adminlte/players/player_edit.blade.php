@@ -26,6 +26,7 @@
                         </div>
                     </div>
                     <div class="box-body">
+                        @include('adminlte::layouts.form_errors')
                         <div class="container-fluid">
                             {!! Form::open(['url' => route('editPlayer'),'files' => true]) !!}
 
@@ -66,7 +67,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Profile Picture</label>
-                                <input name="profile_pic" type="file"/>
+                                <input required name="profile_pic" type="file"/>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">

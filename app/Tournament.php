@@ -19,16 +19,13 @@ class Tournament extends Model {
     public static function getStartdate($tournament_id) {
         return Tournament::find($tournament_id)->start_date;
     }
-<<<<<<< HEAD
 
     public function tournament_game() { //tournaments ki games
-=======
-    public function tournament_game() { //tournamentsgames
->>>>>>> 291e9dd381c93e629e3a8710e38a87ccd352b525
         return $this->belongsTo('App\Game', 'game_id');
     }
+
     public function tournament_userteams() { //tournaments ki games
-        return $this->hasMany('App\UserTeam','tournament_id', 'id');
+        return $this->hasMany('App\UserTeam', 'tournament_id', 'id');
     }
 
     public function tournament_players() {
@@ -54,13 +51,10 @@ class Tournament extends Model {
 
     public function tournament_role_limit() {
         return $this->belongsToMany('App\Player', 'tournament_role_limit', 'tournament_id', 'player_role_id')->withPivot('max_limit');
-        ;
     }
 
     public function tournament_role_max() {
         return $this->belongsToMany('App\GameRole', 'tournament_role_limit', 'tournament_id', 'player_role_id')->withPivot('max_limit');
-        ;
     }
-
 
 }

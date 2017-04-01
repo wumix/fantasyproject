@@ -28,13 +28,13 @@
                 <div class="col-md-6">
                     <h3 class="tnt">{{$tournament_detail['name']}}</h3>
                     <br>
-                    <h4 class="tnt1">Tournament Cost:<span class="tnt2">000000</span></h4>
+                    <h4 class="tnt1">Tournament Cost:<span class="tnt2">{{$tournament_detail['tournament_price']}}</span></h4>
                     <br>
-                    <h4 class="tnt1">Current Points:<span class="tnt2">1000000</span></h4>
+                    <h4 class="tnt1">Current Points:<span class="tnt2">{{getUserTotalScore(Auth::id())}}</span></h4>
                     <br>
 
                     <div class="col-md-5">
-                        @if($team_name==NULL)
+                        {{--@if($team_name==NULL)--}}
                         <form id="team_submit">
                             <input type="text" id="team_name" class="fw form-control"
                                    placeholder="Enter Your Team Name">
@@ -43,12 +43,12 @@
                         </form>
                         <br>
 
-                        @else
+                        {{--@else--}}
 
-                            <h4 class="tnt1">Team Name:<span class="tnt2">{{$team_name}}</span></h4>
-                            <input id="team_id" type="hidden" name="team_id" value="{{$team_id}}"/>
-                            <h4 id="addstatus" class="tn3">Proceed</h4>
-                        @endif
+                            {{--<h4 class="tnt1">Team Name:<span class="tnt2">{{$team_name}}</span></h4>--}}
+                            {{--<input id="team_id" type="hidden" name="team_id" value="{{$team_id}}"/>--}}
+                            {{--<h4 id="addstatus" class="tn3">Proceed</h4>--}}
+                        {{--@endif--}}
                     </div>
 
                 </div>

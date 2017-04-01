@@ -59,7 +59,6 @@ class MatchesController extends Controller {
     }
 
     function postEditMatch($match_id, Request $request) {
-        dd($request->all());
         $match = \App\Match::find($match_id);
         $match->fill($request->all());
         $match->save();

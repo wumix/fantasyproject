@@ -82,6 +82,11 @@ class TournamentsController extends Controller {
         $tournamentId = Input::get('id');
         $tournament = \App\Tournament::find($tournamentId);
         $tournament->fill(Input::all());
+
+        if (Input::hasFile('t_logo')) {
+            $files = uploadInputs(Input::file('t_logo'), 'tournament_logos');
+            $tournament->t_logo = $files;
+        }
         $tournament->save();
         \App\TournamentGameTermPoint::where('tournament_id', $tournament->id)->delete(); //Deleting all game points
         \App\TournamentGameTermPoint::insert(Input::get('tournament_game_term_points')); //Insertong them again

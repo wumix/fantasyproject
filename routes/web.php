@@ -26,10 +26,10 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/profile', 'HomeController@profile')->name('profile');
         Route::group(['prefix' => 'tournaments'], function () {
             Route::get('/addteamname/{tournament_id}', 'User\TournamentsController@addTeam')->name('addTeam');
-            Route::get('/play/{tournament_id}', 'User\TournamentsController@playTournament')->name('playTournament');
+            Route::get('/add-players/{team_id}', 'User\TournamentsController@playTournament')->name('addPlayers');
             Route::get('/addteam', 'User\TournamentsController@teamNamePostAjax')->name('teamNamePostAjax');
             Route::post('/addplayerlox', 'User\TournamentsController@addUserPlayer')->name('addUserTeamPlayerAjax');
-            Route::get('/transfer/{tournament_id}/{player_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
+            Route::get('/transfer/{team_id}/{player_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
         });
     });
 });

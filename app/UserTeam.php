@@ -11,9 +11,13 @@ class UserTeam extends Model
         'name', 'tournament_id', 'user_id'
     ];
 
+
     function user_team_player()
     {
         return $this->belongsToMany('App\Player', 'user_team_players','team_id');
+    }
+    function teamtournament(){
+        return $this->belongsTo('App\Tournament','tournament_id');
     }
 
 }

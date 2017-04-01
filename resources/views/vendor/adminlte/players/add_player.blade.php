@@ -36,7 +36,7 @@ Games
                     </div>
                     <div class="form-group">
                         <label>Profile Picture</label>
-                        <input name="profile_pic" type="file"/>
+                        <input name="profile_pic" required type="file"/>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Submit</button>

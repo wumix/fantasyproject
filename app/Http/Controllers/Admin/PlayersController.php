@@ -18,7 +18,7 @@ class PlayersController extends Controller {
 
     public function index() {
 
-        $this->objplayer = \App\Player::all()->toArray();
+        $this->objplayer = \App\Player::paginate(20);
         $data['player_list'] = $this->objplayer; //list of games form games table   
         return view('adminlte::players.players_list', $data);
     }
@@ -76,7 +76,7 @@ class PlayersController extends Controller {
 
     function postEditPlayer() {
         //dd(Input::all()); //to debug post
-       // dd(Input::get('player_role'));
+        // dd(Input::get('player_role'));
         $player = \App\Player::find(Input::get('player_id'));
         $player->name = Input::get('player_name');
         $player->game_id = Input::get('game_id');

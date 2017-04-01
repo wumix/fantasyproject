@@ -27,4 +27,8 @@ class Game extends Model {
         return $this->hasMany('App\Tournament', 'id');
     }
 
+    public function game_actions() {
+        return $this->hasMany('App\GameAction');
+    }
+
 }

@@ -30,7 +30,7 @@ class Tournament extends Model {
 
     public function tournament_players() {
         return $this->belongsToMany('App\Player', 'player_tournaments', 'tournament_id')
-            ->withPivot('player_price');
+                        ->withPivot('player_price');
     }
 
     public function game_term_points() {

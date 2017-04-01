@@ -1,4 +1,4 @@
-<?php //dd($result);                                           ?>
+<?php //dd($result);                                                                   ?>
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
@@ -20,7 +20,7 @@
                         <div class="form-group">
                             <label>Game Name</label>
                             <input type="hidden" name="id" value="{{$result['id']}}"/>
-                            <input required class="form-control" name="gamename" value="" type="text" placeholder="{{$result['name']}}" />
+                            <input required class="form-control" name="gamename" value="{{$result['name']}}" type="text" placeholder="{{$result['name']}}" />
                         </div>
                         <div class="form-group">
                             <label>Status</label>
@@ -67,22 +67,27 @@
                     </div>
 
                     <div class="container-fluid">
-                        {!! Form::open(['url' => route('addGameTerm')]) !!}
+                        {!! Form::open(['url' => route('addGameActions')]) !!}
                         <div class="form-group">
-                            <label>Terms <small>(Catch, Out, Sixer etc)</small></label>
-                            <input type="hidden" name="id" value="{{$result['id']}}"/>
+                            <label>Actions <small>(Balling, Batting, Fielding etc)</small></label>
+                            <input type="hidden" name="game_id" value="{{$result['id']}}"/>
 
-                            @foreach($result['game_terms'] as $key => $val)
-                            <div class="form-group" id="game-term-{{$val['id']}}">
-                                <input disabled class="form-control" name="term_name[]" value="{{$val['name']}}" type="text" placeholder="" />
-                                <a class="btn btn-danger" href="javascript:deleteTerm('{{$val['id']}}')" />Delete</a>
+                            @foreach($result['game_actions'] as $key => $val)
+                            <div class="form-group" id="game-action-{{$val['id']}}">
+                                <input disabled class="form-control" name="action_name[]" value="{{$val['name']}}" type="text" placeholder="Action Name" />
+                                <a class="btn btn-danger" href="javascript:deleteAction('{{$val['id']}}')" />Delete</a>
+                                <a href="{{route('addGameTermView', ['action_id'=>$val['id']])}}" class="btn pull-right btn-warning">
+                                    Add/view terms of {{$val['name']}}
+                                </a>
                             </div>
                             @endforeach
-                            <input class="form-control" name="term_name[]" value="" type="text" placeholder="" />
+                            <input class="form-control" name="action_name[]" value="" type="text" placeholder="" />
                         </div>
 
                         <div class="form-group">
-                            <button id="add_more_terms" name="add_more_terms" type="button" class="btn btn-success"> Add More </button>
+                            <button id="add_more_actions" name="add_more_actions" type="button" class="btn btn-success"> 
+                                Add More 
+                            </button>
                             <button type="submit" class="btn btn-primary">
                                 Add
                             </button>
@@ -98,6 +103,25 @@
         </div>
     </div>
 </div>
+<!--Add terms model-->
+<div class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--Add terms model-->
 @endsection
 
 @section('js')
@@ -107,10 +131,12 @@
 
         $('<div class="form-group"><input class="form-control" name="role_name[]" value="" type="text" placeholder="" /></div>').insertBefore("#add_more_roles");
     });
-    $("#add_more_terms").click(function (event) {
+
+    $("#add_more_actions").click(function (event) {
         event.preventDefault();
-        $('<div class="form-group"><input  class="form-control" name="term_name[]" value="" type="text" placeholder="" /></div>').insertBefore("#add_more_terms");
+        $('<div class="form-group"><input class="form-control" name="action_name[]" value="" type="text" placeholder="" /></div>').insertBefore("#add_more_actions");
     });
+
     function deleteRole(roleId) {
         var cnfrm = confirm('All players with this role also lost there roles!');
         if (cnfrm) {
@@ -129,17 +155,18 @@
         }
     }
 
-    function deleteTerm(gameTermId) {
+
+    function deleteAction(gameActionId) {
         var cnfrm = confirm('All scores with this term will remove!');
         if (cnfrm) {
             $.ajax({
                 url: "{{route('deleteGameTerm')}}",
                 type: 'DELETE',
                 data: {
-                    term_id: gameTermId
+                    action_id: gameActionId
                 },
                 success: function (result) {
-                    $("#game-term-" + gameTermId).fadeOut('slow', function () {
+                    $("#game-action-" + gameActionId).fadeOut('slow', function () {
                         $(this).remove();
                     });
                 }

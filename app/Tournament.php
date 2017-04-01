@@ -45,10 +45,10 @@ class Tournament extends Model {
         return $this->hasMany('App\Match', 'tournament_id');
     }
     public function tournament_role_limit() {
-        return $this->belongsToMany('App\Player','tournament_role_imit','tournament_id','player_role_id')->withPivot('max_limit');;
+        return $this->belongsToMany('App\Player','tournament_role_limit','tournament_id','player_role_id')->withPivot('max_limit');;
     }
     public function tournament_role_max() {
-        return $this->belongsToMany('App\GameRole','tournament_role_imit','tournament_id','player_role_id')->withPivot('max_limit');;
+        return $this->belongsToMany('App\GameRole','tournament_role_limit','tournament_id','player_role_id')->withPivot('max_limit');;
     }
 
 

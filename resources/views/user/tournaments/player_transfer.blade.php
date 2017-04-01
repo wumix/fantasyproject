@@ -1,7 +1,8 @@
 @php
 
 
-
+//dd($roles);
+//dd($player_info);
 
         @endphp
 @extends('layouts.app')
@@ -73,9 +74,9 @@
                     <thead class="main-taible-head">
                     <tr>
                         <th class="border-r th1">PLAYERS</th>
-                        <th class="border-r">ROLES</th>
+                        <th class="border-r">ROLE</th>
                         <th class="border-r">POINTS</th>
-                        <th class="th2">CHANGE PLAYER</th>
+
                     </tr>
                     </thead>
                     <tbody id="selected-player" class="main-taible-body">
@@ -84,8 +85,9 @@
                             <td class="border-r1"><img id="myteamtimg" class="img-circle" src="{{getUploadsPath($player_info['profile_pic'])}}">
                                {{$player_info['name']}}
                             </td>
-                            <td class="border-r1"><p class="myteamtt">Batsman</p></td>
-                            <td class="border-r1"><p class="myteamtt">40000</p></td>
+
+                            <td class="border-r1"><p class="myteamtt">{{$player_info['player_roles'][0]['name']}}</p></td>
+                            <td class="border-r1"><p class="myteamtt">{{$player_info['player_tournaments'][0]['pivot']['player_price']}}</p></td>
                             <td>
 
                                     </td>
@@ -147,7 +149,7 @@
                                             <th class=" th1">PLAYERS</th>
 
                                             <th class="point">PRICE</th>
-                                            <th class="add">ADD</th>
+                                            <th class="add">ACTION</th>
                                         </tr>
                                         </thead>
                                         <tbody class="main-taible-body">
@@ -163,8 +165,8 @@
                                                 </td>
 
                                                 <td class="add">
-                                                    <a  id="btn-player-{{$player['id']}}"href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$player['player_tournaments'][0]['pivot']['player_price']}}')" class="btn btn-md bttor1">
-                                                        Transfer with {{$player_info['name']}}
+                                                    <a style="text-transform: uppercase"  id="btn-player-{{$player['id']}}"href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$player['player_tournaments'][0]['pivot']['player_price']}}')" class="btn btn-md bttor1">
+                                                        TRANSFER WITH {{$player_info['name']}}
                                                     </a>
                                                 </td>
 
@@ -189,56 +191,29 @@
 
 @endsection
 @section('addteamjs')
-    {{--<script>--}}
 
-
-    {{--$("#team_submit").submit(function (event) {--}}
-    {{--event.preventDefault();--}}
-    {{--var teamName = $("#team_name").val()--}}
-    {{--var tournamentId = '';--}}
-    {{--$.ajax({--}}
-    {{--type: 'GET',--}}
-    {{--url: '{{route('teamNamePostAjax')}}',--}}
-    {{--data: {tournament_id: tournamentId, name: teamName},--}}
-    {{--success: function (data) {--}}
-    {{--if (data.status == "ok") {--}}
-    {{--$("#team_name").attr('disabled', true);--}}
-    {{--$("#addstatus").html("team added sucessfully");--}}
-    {{--$('<input type="hidden" id="team_id" value="' + data.team_id + '"/>').insertBefore("#addstatus");--}}
-    {{--}--}}
-    {{--else {--}}
-    {{--$("#addstatus").html("team Name Already Taken")--}}
-    {{--}--}}
-
-    {{--}--}}
-    {{--});--}}
-    {{--});--}}
-    {{--</script>--}}
     <script>
-        function addplayertoteam(rolename, roleid, playerid, tournamentid, player_price) {
+        function addplayertoteam(rolename, roleid, playerin, tournamentid, player_price) {
 
             var arr_player_id = [];
-            arr_player_id.push(playerid);
-            var teamid = $("#team_id").val();
+            arr_player_id.push(playerin);
+
 
 
             $.ajax({
                 type: 'POST',
-                url: '{{route('addUserTeamPlayerAjax')}}',
+                url: '{{route('transferPlayerAjax')}}',
                 data: {
                     tournament_id: tournamentid,
-                    player_id: arr_player_id,
+                    player_in_id: arr_player_id[0],
+                    player_out_id:{{$player_info['id']}},
                     role_id: roleid,
                     role_name: rolename,
                     player_price: player_price,
-                    team_id: teamid, _token: '{{csrf_token()}}'
+                    team_id:{{$team_id}}, _token: '{{csrf_token()}}'
                 },
                 success: function (data) {
-
-
                     if (data.success == true) {
-
-
                         $('.error').html(data.msg);
                         $('.error').fadeIn(400).delay(3000).fadeOut(400); //fade out after 3 seconds
                         $('#btn-player-' + playerid).attr('disabled', true);

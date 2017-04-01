@@ -257,8 +257,8 @@
                         t += '<td class="border-r1"><p class="myteamtt"></p> ' + obj.role_name + '</span></td>';
 
                         var url = '{{ route("transferplayer", ["team_id"=>"id","player_id"=>'pid']) }}';
-                        url = url.replace('id', obj.id);
-                        url = url.replace('pid', obj.team_id);
+                        url = url.replace('pid', obj.id);
+                        url = url.replace('id', obj.team_id);
                         t += '<td><a href="'+url+'" id="" class="btn btn-md bttor1">TRANSFER</a></td >';
                         t += '</tr>';
                         $('#selected-player').append(t);

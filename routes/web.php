@@ -28,7 +28,8 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/addteamname/{tournament_id}', 'User\TournamentsController@addTeam')->name('addTeam');
             Route::get('/add-players/{team_id}', 'User\TournamentsController@playTournament')->name('addPlayers');
             Route::get('/addteam', 'User\TournamentsController@teamNamePostAjax')->name('teamNamePostAjax');
-            Route::post('/addplayerlox', 'User\TournamentsController@addUserPlayer')->name('addUserTeamPlayerAjax');
+            Route::post('/addplayerajax', 'User\TournamentsController@addUserPlayer')->name('addUserTeamPlayerAjax');
+            Route::post('/transferplayerajax', 'User\TournamentsController@transferPlayerPost')->name('transferPlayerAjax');
             Route::get('/transfer/{team_id}/{player_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
         });
     });

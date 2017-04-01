@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use \App\Game;
 use \App\Player;
+
+use Validator;
 use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 

@@ -84,7 +84,7 @@ $(document).ready(function ($) {
     $(".datetimepicker").datetimepicker({
         minDate: '0', //yesterday is minimum date(for today use 0 or -1970/01/01)
         // maxDate: '+1970/01/10',
-        //step: timeStep,
+        step: timeStep,
         //minTime: 0,
         hours12: false,
         theme: datePickerTheme

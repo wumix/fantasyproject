@@ -47,4 +47,22 @@ class GameTermController extends Controller {
         return redirect()->back()->with('status', 'Term Added Successfully');
     }
 
+    public function gameTermPoints($tournament_id) {
+        $data['tournament'] = \App\Tournament::where('id', $tournament_id)
+                ->with('tournament_game.game_actions.game_terms')
+                ->firstOrFail()
+                ->toArray();
+        $data['game_actions'] = $data['tournament']['tournament_game']['game_actions'];
+        //dd($data);
+        return view('adminlte::game-actions-terms.term_points', $data);
+    }
+
+    /**
+     * Remove game term by id
+     */
+    public function deleteGameTerm() {
+        $termId = Input::get('term_id');
+        \App\GameTerm::find($termId)->delete();
+    }
+
 }

@@ -56,8 +56,9 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
         //Game terms
         Route::group(['prefix' => 'games-terms'], function () {
             Route::get('add-game-term/{action_id}', 'Admin\GameTermController@index')->name('addGameTermView');
+            Route::get('game-term-points/{tournament_id}', 'Admin\GameTermController@gameTermPoints')->name('gameTermPoints');
             Route::post('add-game-term', 'Admin\GameTermController@addTermPost')->name('addGameTerm');
-            Route::delete('delete-game-term', 'Admin\GamesController@deleteGameTerm')->name('deleteGameTerm');
+            Route::delete('delete-game-term', 'Admin\GameTermController@deleteGameTerm')->name('deleteGameTerm');
         });
         //Players routes
         Route::group(['prefix' => 'palyers'], function () {

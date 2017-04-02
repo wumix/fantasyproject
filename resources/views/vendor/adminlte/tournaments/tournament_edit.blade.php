@@ -65,7 +65,6 @@
                             <label>Max Players</label>
                             <input name="max_players" class=" form-control"  type="text" value="{{$tournament_games['max_players']}}">
                         </div>
-
                         <div class="form-group">
                             <label>Tournament Price</label>
                             <input name="tournament_price" class=" form-control"  type="text" value="{{$tournament_games['tournament_price']}}">
@@ -74,47 +73,6 @@
                             <label>Profile Picture</label>
                             <input name="t_logo" type="file"/>
                         </div>
-
-
-
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    Game term points for this tournaments
-                                </h3>
-                            </div>
-                            <div class="panel-body">
-                                @php($counter = 0)
-                                @foreach($tournament_games['tournament_game']['game_terms'] as $key => $val)
-                                <div class="form-group">
-                                    <label>{{$val['name']}}</label>
-                                    <input 
-                                        type="hidden" 
-                                        value="{{$val['id']}}" 
-                                        class="form-control" 
-                                        name="tournament_game_term_points[{{$counter}}][game_term_id]" />
-                                    <input 
-                                        type="hidden" 
-                                        value="{{$tournament_games['id']}}" 
-                                        class="form-control" 
-                                        name="tournament_game_term_points[{{$counter}}][tournament_id]">
-                                        <?php
-                                        $termPoint = 0;
-                                        if (!empty(searchInMultiArray($val['id'], 'game_term_id', $tournament_games['game_term_points'], false))) {
-                                            $termPoint = searchInMultiArray($val['id'], 'game_term_id', $tournament_games['game_term_points'], false, 'points');
-                                        }
-                                        ?>
-                                    <input 
-                                        type="text" 
-                                        value="{{$termPoint}}" 
-                                        class="form-control" 
-                                        name="tournament_game_term_points[{{$counter}}][points]"/>
-                                </div>
-                                @php($counter++)
-                                @endforeach
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">
                                 Update

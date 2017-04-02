@@ -32,12 +32,15 @@
                                     </a>      
                                     <a href="{{route('showAddPlayerForm', ['tournament_id'=>$row['id']])}}" class="btn btn-warning">
                                         <i class="fa fa-users"></i> Add Players
-                                    </a> 
+                                    </a>
+                                    <a href="{{route('addMaxRoles',['tournament_id'=>$row['id']])}}" class="btn btn-info">
+                                        <i class="fa fa-plus"></i> Add Max Roles
+                                    </a>
+                                    <a href="{{route('gameTermPoints',['tournament_id'=>$row['id']])}}" class="btn btn-info">
+                                        <i class="fa fa-plus"></i> Term points
+                                    </a>
                                     <a href="#" class="btn btn-danger">
                                         <i class="fa fa-times"></i> Delete
-                                    </a>
-                                    <a href="{{route('addMaxRoles',['tournament_id'=>$row['id']])}}" class="btn btn-danger">
-                                        <i class="fa fa-times"></i> Add Max Roles
                                     </a>
                                 </td>
 

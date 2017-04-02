@@ -48,16 +48,17 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/edit', 'Admin\GamesController@editGamePost')->name('postEditGame');
             Route::get('/delete/{game_id}', 'Admin\GamesController@deleteGame')->name('deleteGame');
             Route::post('/post-game-role', 'Admin\GamesController@addRolePost')->name('addGameRole');
-
             Route::delete('delete-game-role', 'Admin\GamesController@deleteGameRole')->name('deleteGameRole');
-
             Route::post('add-game-actions', 'Admin\GamesController@addGameActions')->name('addGameActions');
         });
         //Game terms
         Route::group(['prefix' => 'games-terms'], function () {
             Route::get('add-game-term/{action_id}', 'Admin\GameTermController@index')->name('addGameTermView');
+            Route::get('game-term-points/{tournament_id}', 'Admin\GameTermController@gameTermPoints')->name('gameTermPoints');
+            Route::post('term-points', 'Admin\GameTermController@updateTermPoints')->name('updateTermPoints');
             Route::post('add-game-term', 'Admin\GameTermController@addTermPost')->name('addGameTerm');
-            Route::delete('delete-game-term', 'Admin\GamesController@deleteGameTerm')->name('deleteGameTerm');
+            Route::delete('delete-game-term', 'Admin\GameTermController@deleteGameTerm')->name('deleteGameTerm');
+            Route::delete('delete-game-term-point', 'Admin\GameTermController@deleteGameTermPoint')->name('deleteGameTermPoint');
         });
         //Players routes
         Route::group(['prefix' => 'palyers'], function () {

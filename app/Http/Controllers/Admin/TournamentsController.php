@@ -90,7 +90,6 @@ class TournamentsController extends Controller {
         }
         $tournament->save();
         \App\TournamentGameTermPoint::where('tournament_id', $tournament->id)->delete(); //Deleting all game points
-        \App\TournamentGameTermPoint::insert(Input::get('tournament_game_term_points')); //Insertong them again
 
         return redirect()->route('editTournamentForm', ['tournament_id' => Input::get('id')])
                         ->with('status', 'Tournament Updated');

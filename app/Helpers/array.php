@@ -7,8 +7,7 @@
  * @param type $inputArray
  * @return array
  */
-function searchInMultiArray($searchFor, $keyToSearch, $inputArray, $returnArray = true, $returnKey = NULL)
-{
+function searchInMultiArray($searchFor, $keyToSearch, $inputArray, $returnArray = true, $returnKey = NULL) {
     $filteredArray = array_filter($inputArray, function ($element) use ($searchFor, $keyToSearch) {
         return isset($element[$keyToSearch]) && $element[$keyToSearch] == $searchFor;
     });
@@ -26,8 +25,7 @@ function searchInMultiArray($searchFor, $keyToSearch, $inputArray, $returnArray 
  * @param type $value
  * @return type
  */
-function removeElementWithOutKey($array, $key)
-{
+function removeElementWithOutKey($array, $key) {
     foreach ($array as $subKey => $subArray) {
         if (!array_key_exists($key, $subArray)) {
             unset($array[$subKey]);
@@ -36,8 +34,7 @@ function removeElementWithOutKey($array, $key)
     return $array;
 }
 
-function debugArr($array)
-{
+function debugArr($array) {
     echo '<pre>';
     print_r($array);
     echo '</pre>';
@@ -47,17 +44,17 @@ function debugArr($array)
  * Match in array
  * @param array $inputArray
  * @param array $searchCrieteria
+ * @param array $returnSingle //Only return 0 index of an array
  * @return array
  */
-function tapArray($inputArray, array $searchCrieteria, $returnSingle = true)
-{
+function tapArray($inputArray, array $searchCrieteria, $returnSingle = true) {
     $result = collect($inputArray);
     foreach ($searchCrieteria as $key => $val) {
         $result = $result->where($key, $val);
     }
     $result = $result->tap(function ($collection) {
-        return $collection;
-    })->toArray();
+                return $collection;
+            })->toArray();
     if (!empty($result)) {
         $result = fix_keys($result);
         return ($returnSingle) ? $result[0] : $result;
@@ -70,12 +67,13 @@ function tapArray($inputArray, array $searchCrieteria, $returnSingle = true)
  * @param $array
  * @return array
  */
-function fix_keys($array)
-{
+function fix_keys($array) {
     $numberCheck = false;
     foreach ($array as $k => $val) {
-        if (is_array($val)) $array[$k] = fix_keys($val); //recurse
-        if (is_numeric($k)) $numberCheck = true;
+        if (is_array($val))
+            $array[$k] = fix_keys($val); //recurse
+        if (is_numeric($k))
+            $numberCheck = true;
     }
     if ($numberCheck === true) {
         return array_values($array);
@@ -84,9 +82,7 @@ function fix_keys($array)
     }
 }
 
-
-function whatever($array, $key, $val)
-{
+function whatever($array, $key, $val) {
     foreach ($array as $item)
         if (isset($item[$key]) && $item[$key] == $val)
             return true;

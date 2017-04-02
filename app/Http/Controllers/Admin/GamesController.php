@@ -99,13 +99,6 @@ class GamesController extends Controller {
         \App\GameRole::find($roleId)->delete();
     }
 
-    /**
-     * Remove game term by id
-     */
-    public function deleteGameTerm() {
-        $termId = Input::get('term_id');
-        \App\GameTerm::find($termId)->delete();
-    }
 
     public function addGameActions() {
         $game_id = Input::get('game_id');

@@ -49,9 +49,11 @@ class GameTermController extends Controller {
 
     public function gameTermPoints($tournament_id) {
         $data['tournament'] = \App\Tournament::where('id', $tournament_id)
-                ->with('tournament_game.game_actions.game_terms')
+                ->with('tournament_game.game_actions.game_terms', 'game_term_points')
                 ->firstOrFail()
                 ->toArray();
+
+        //dd($data);
         $data['game_actions'] = $data['tournament']['tournament_game']['game_actions'];
         //dd($data);
         return view('adminlte::game-actions-terms.term_points', $data);
@@ -63,6 +65,40 @@ class GameTermController extends Controller {
     public function deleteGameTerm() {
         $termId = Input::get('term_id');
         \App\GameTerm::find($termId)->delete();
+    }
+
+    public function updateTermPoints() {
+        $game_id = Input::get('game_id');
+        $tournament_id = Input::get('tournament_id');
+        //Delete all points b4 new inertion
+        \App\TournamentGameTermPoint::where('tournament_id', $tournament_id)->delete();
+        foreach (Input::get('term_score_range') as $termId => $pointsDetail) {
+            //Inserting terms 1 by 1
+            foreach ($pointsDetail as $key => $val) {
+                $val['tournament_id'] = $tournament_id;
+                $val['game_term_id'] = $termId;
+                if (empty($val['qty_from'])) {
+                    $val['qty_from'] = 1;
+                }
+                if (empty($val['qty_to'])) {
+                    $val['qty_to'] = 1;
+                }
+                if (empty($val['points'])) {
+                    continue;
+                }
+                \App\TournamentGameTermPoint::insert($val);
+            }
+        }
+        return redirect()->back()->with('status', 'Points Updated Successfully');
+    }
+
+    public function deleteGameTermPoint() {
+        $tournament_id = Input::get('tournament_id');
+        $termPointId = Input::get('termPointId');
+
+        \App\TournamentGameTermPoint::where('tournament_id', $tournament_id)
+                ->where('id', $termPointId)
+                ->delete();
     }
 
 }

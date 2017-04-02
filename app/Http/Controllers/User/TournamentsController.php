@@ -66,7 +66,7 @@ class TournamentsController extends Controller
             return view('user.tournaments.add_user_team', $data);
         } else {
             $userteam = $userteam->toArray();
-            return redirect()->route('addPlayers', ['team_id' => $userteam['id'],'tournament_id'=>$tournament_id]);
+            return redirect()->route('addPlayers', ['team_id' => $userteam['id'], 'tournament_id' => $tournament_id]);
         }
     }
 
@@ -106,13 +106,19 @@ class TournamentsController extends Controller
 
     }
 
-    function playTournament($team_id,$tournament_id)
+    function playTournament($team_id, $tournament_id)
+
     {
+
+
+
+//        $tournamentPrice=\App\Tournament::find($tournament_id)->tournament_price;
+//        dd($tournamentPrice);
         $usersSelectedPlayers = UserTeam::where('id', $team_id)
             ->with([
                 'user_team_player',
                 'user_team_player.player_roles',
-                'user_team_player.player_tournaments' => function ($q)  use ($tournament_id) {
+                'user_team_player.player_tournaments' => function ($q) use ($tournament_id) {
                     $q->where('tournaments.id', $tournament_id);
                 },
                 'teamtournament.tournament_players'
@@ -126,8 +132,10 @@ class TournamentsController extends Controller
         $data['team_name'] = $usersSelectedPlayers['name'];
         $data['user_team_player'] = $usersSelectedPlayers['user_team_player'];
         $data['tournament_detail'] = $usersSelectedPlayers['teamtournament'];
+        //  dd($user_team_player);
         // dd($selectedPlayers);
-  //dd( $data['user_team_player']);
+        //   dd($user_team_player)
+        //dd( $data['user_team_player']);
         //dd($selectedPlayers);
         // $data['roles']=$selectedPlayers;
 
@@ -147,16 +155,20 @@ class TournamentsController extends Controller
     }
 
 
-    function transferPlayer($team_id, $player_id)
+    function transferPlayer($team_id, $player_id, $tournament_id)
     {
+
+        // dd($test=$test->toArray());
+
+
 
 
         $usersSelectedPlayers = UserTeam::where('id', $team_id)
             ->with([
                 'user_team_player',
                 'user_team_player.player_roles',
-                'user_team_player.player_tournaments' => function ($q) {
-                    $q->where('tournaments.id', 3);
+                'user_team_player.player_tournaments' => function ($q) use ($tournament_id) {
+                    $q->where('tournaments.id', $tournament_id);
                 },
                 'teamtournament.tournament_players'
             ])->firstOrFail()->toArray();
@@ -207,7 +219,7 @@ class TournamentsController extends Controller
         $userteam = Input::get('name');
         $this->validator($request->all())->validate();
         $teamid = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' => Auth::id()])->first();
-        $data=[];
+        $data = [];
         if ($teamid == null) {
             $teamid['id'] = 0;
         } else {
@@ -216,8 +228,8 @@ class TournamentsController extends Controller
 
         }
 
-        $tournamentPrice=\App\Tournament::find($tournament_id)->tournament_price;
-        if($tournamentPrice<(double)getUserTotalScore(Auth::id())){
+        $tournamentPrice = \App\Tournament::find($tournament_id)->tournament_price;
+        if ($tournamentPrice < (double)getUserTotalScore(Auth::id())) {
             \App\UserTeam::updateOrCreate(['id' => $teamid['id']], ['tournament_id' => $tournament_id, 'user_id' => Auth::id(), 'name' => $userteam]);
             $array = array(['action_key' => 'pusrchase_tournament', 'user_id' => Auth::id(), 'points_consumed' => $tournamentPrice]);
             \App\UserPointsConsumed::insert($array);
@@ -226,11 +238,10 @@ class TournamentsController extends Controller
             $data['team_id'] = $userteam['id'];
             $data['team_name'] = $userteam['name'];
             $data['status'] = "ok";
-        }
-       else{
+        } else {
             $data['status'] = "no";
-            $data['message']="You dont have enough points to play this tournament";
-    }
+            $data['message'] = "You dont have enough points to play this tournament";
+        }
 
 
         return response()->json($data);
@@ -250,63 +261,83 @@ class TournamentsController extends Controller
 
     function transferPlayerPost(Request $request)
     {
-        dd($request->all());
+//        dd($request->all());
         $tournamentDate = \App\Tournament::getStartdate($request->tournament_id);
-        $difference=$this->getTImeDifference($tournamentDate);
-        $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
-        $currentNoPlayers = \App\UserTeam::find($request->team_id)->user_team_player()->count();
+        $difference = $this->getTImeDifference($tournamentDate);
+//        $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
+//        $currentNoPlayers = \App\UserTeam::find($request->team_id)->user_team_player()->count();
         $objResponse = [];
-        $objResponse['success']=false;
-        if ($tournamentMaxPlayers > $currentNoPlayers) {
-            if ($difference > 15) {
-                if ($request->player_price < getUserTotalScore(Auth::id())) {
-                    if ($this->giveanygoodname(Auth::id(), $request->team_id, $request->role_id) < $this->playerRoleLimit($request->tournament_id, $request->role_id)) {
+        $objResponse['success'] = false;
+        $tournament_id = $request->tournament_id;
+        $player_in_price = \App\Player::where('id', $request->player_in_id)->with(['player_tournaments' => function ($k) use ($tournament_id) {
+            $k->where('tournaments.id', $tournament_id);
+        }])->firstORFail();
+        $player_in_price = $player_in_price['player_tournaments'][0]['pivot']['player_price'];
+        // die;
 
-                        $objteam = \App\UserTeam::find($request->team_id);
-                        $objteam->user_team_player()->sync($request->player_id, false);
-                        $array = array(['action_key' => 'add_player', 'user_id' => Auth::id(), 'points_consumed' => $request->player_price]);
-                        \App\UserPointsConsumed::insert($array);
-                        $objResponse['success'] = true;
-                        $objResponse['msg'] = "Player added successfully";
-                        $objResponse['player']['id'] = $request->player_id[0];
-                        $objResponse['player']['name'] = \App\Player::get_player($request->player_id[0])->name;
-                        $objResponse['player']['profile_pic'] = getUploadsPath(\App\Player::get_player($request->player_id[0])->profile_pic);
-                        $objResponse['player']['price'] = $request->player_price;
-                        $objResponse['player']['role_id'] = $request->role_id;
-                        $objResponse['player']['role_name'] = $request->role_name;
-                        $objResponse['player']['price'] = $request->player_price;
-                        $objResponse['player']['team_id'] = $request->team_id;
-                        $objResponse['player']['player_score'] = getUserTotalScore(Auth::id());
+        if ($difference > 15) {
+            if ($request->player_in_price < getUserTotalScore(Auth::id())) {
+                if ($request->player_out_price > $player_in_price) {
+                    $playertransfer = new \App\PlayerTransfer;
+                    $playertransfer->player_in_id = $request->player_in_id;
+                    $playertransfer->player_in_out = $request->player_in_out;
+                    $playertransfer->team_id = $request->team_id;
+                    $transferDate = new \DateTime();
+                    $transferDate = $transferDate->format('Y-m-d H:i:sP');
+                    $playertransfer->transfer_date = $transferDate;
+                    $playertransfer->save();
+                    $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => 0]);
+                    \App\UserPointsConsumed::insert($array);
+                    $objResponse['success'] = true;
+                    $objResponse['msg'] = "Player transfered successfully";
+                    DB::table('user_team_players')->insert(
+                        ['team_id' =>$request->team_id, 'player_id' =>$request->player_in_id]
+                    );
+                    DB::table('user_team_players')->where(['team_id' =>$request->team_id, 'player_id' =>$request->player_out_id])->delete();
 
-
-                    } else {
-                        $objResponse['success'] = false;
-                        $objResponse['msg'] = "You cant have more " . $request->role_name;
-                    }
+//                        $objResponse['player']['id'] = $request->player_in_id;
+//                        $objResponse['player']['name'] = \App\Player::get_player($request->player_id[0])->name;
+//                        $objResponse['player']['profile_pic'] = getUploadsPath(\App\Player::get_player($request->player_id[0])->profile_pic);
+//                        $objResponse['player']['price'] = $request->player_price;
+//                        $objResponse['player']['role_id'] = $request->role_id;
+//                        $objResponse['player']['role_name'] = $request->role_name;
+//                        $objResponse['player']['price'] = $request->player_in_price;
+//                        $objResponse['player']['team_id'] = $request->team_id;
+//                        $objResponse['user_score'] = getUserTotalScore(Auth::id());
 
 
                 } else {
-                    $objResponse['success'] = false;
-                    $objResponse['msg'] = "You donot have enough points";
+                    $netpoints = $player_in_price - $request->player_out_price;
+                    $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => $netpoints]);
+                    \App\UserPointsConsumed::insert($array);
+                    DB::table('user_team_players')->insert(
+                        ['team_id' =>$request->team_id, 'player_id' =>$request->player_in_id]
+                    );
+                    DB::table('user_team_players')->where(['team_id' =>$request->team_id, 'player_id' =>$request->player_out_id])->delete();
 
+
+                    $objResponse['success'] = true;
+                    $objResponse['msg'] = "Player transfered successfully";
                 }
+
+
             } else {
                 $objResponse['success'] = false;
-                $objResponse['msg'] = "Tournament starts in 15 minutes you cant add player now";
+                $objResponse['msg'] = "You donot have enough points";
+
             }
         } else {
             $objResponse['success'] = false;
-            $objResponse['msg'] = "You can't have more than $tournamentMaxPlayers in this tournament.";
+            $objResponse['msg'] = "Tournament starts in 15 minutes you cant add player now";
         }
-
-
-
+        return response()->json($objResponse);
     }
+
 
     function addUserPlayer(Request $request)
     {
         $tournamentDate = \App\Tournament::getStartdate($request->tournament_id);
-        $difference=$this->getTImeDifference($tournamentDate);
+        $difference = $this->getTImeDifference($tournamentDate);
         $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
         $currentNoPlayers = \App\UserTeam::find($request->team_id)->user_team_player()->count();
 
@@ -332,9 +363,8 @@ class TournamentsController extends Controller
                         $objResponse['player']['role_name'] = $request->role_name;
                         $objResponse['player']['price'] = $request->player_price;
                         $objResponse['player']['team_id'] = $request->team_id;
+                        $objResponse['player']['tournament_id'] = $request->tournament_id;
                         $objResponse['player']['player_score'] = getUserTotalScore(Auth::id());
-
-
 
 
                     } else {

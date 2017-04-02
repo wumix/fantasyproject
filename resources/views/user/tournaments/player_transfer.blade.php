@@ -165,7 +165,7 @@
                                                 </td>
 
                                                 <td class="add">
-                                                    <a style="text-transform: uppercase"  id="btn-player-{{$player['id']}}"href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$player['player_tournaments'][0]['pivot']['player_price']}}')" class="btn btn-md bttor1">
+                                                    <a onclick="return confirm('Are you sure you want to transfer');" style="text-transform: uppercase"  id="btn-player-{{$player['id']}}"href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$player['player_tournaments'][0]['pivot']['player_price']}}')" class="btn btn-md bttor1">
                                                         TRANSFER WITH {{$player_info['name']}}
                                                     </a>
                                                 </td>
@@ -209,30 +209,14 @@
                     player_out_id:{{$player_info['id']}},
                     role_id: roleid,
                     role_name: rolename,
-                    player_price: player_price,
+                    player_out_price: player_price,
                     team_id:{{$team_id}}, _token: '{{csrf_token()}}'
                 },
                 success: function (data) {
                     if (data.success == true) {
                         $('.error').html(data.msg);
                         $('.error').fadeIn(400).delay(3000).fadeOut(400); //fade out after 3 seconds
-                        $('#btn-player-' + playerid).attr('disabled', true);
 
-                        $('#btn-player-' + playerid).remove();
-
-                        var obj = data.player;
-                        $('#total-score-user').html(obj.player_score);
-                        var t = '<tr>';
-                        t += '<input type=hidden" name="player_id_t" value="' + obj.id + '"/>';
-                        t += '<td class="border-r1"><img id="myteamtimg" class="img-circle"  src="' + obj.profile_pic + ' "><span class="selected-player-name">' + obj.name + '</span> </td>';
-                        t += '<td class="border-r1"><p class="myteamtt"></p>' + obj.price + '</td>';
-                        t += '<td class="border-r1"><p class="myteamtt"></p> ' + obj.role_name + '</span></td>';
-                        t += '<td><button id="" class="btn btn-md bttor1">TRANSFER</button></td >';
-                        t += '</tr>';
-                        $('#selected-player').append(t);
-                        t = "";
-                        t += '<tr id="player_tr_" class="cwt"><td class=" point"><p class="myteamtt">Player Added Successfully</p></td></tr> ';
-                        $('#player_tr_' + obj.id).html(t);
 
 
                     } else {

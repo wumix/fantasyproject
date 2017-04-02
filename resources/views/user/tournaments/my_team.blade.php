@@ -91,7 +91,7 @@
                             @endforeach
                             <td>
 
-                                <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id']])}}" class="btn btn-md bttor1">TRANSFER</a>
+                                <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}" class="btn btn-md bttor1">TRANSFER</a>
                             </td>
 
                         </tr>
@@ -257,9 +257,10 @@
                         t += '<td class="border-r1"><p class="myteamtt"></p>' + obj.price + '</td>';
                         t += '<td class="border-r1"><p class="myteamtt"></p> ' + obj.role_name + '</span></td>';
 
-                        var url = '{{ route("transferplayer", ["team_id"=>"id","player_id"=>'pid']) }}';
+                        var url = '{{ route("transferplayer", ["team_id"=>"id","player_id"=>'pid',"tournament_id"=>'tid']) }}';
                         url = url.replace('pid', obj.id);
                         url = url.replace('id', obj.team_id);
+                        url = url.replace('tid', obj.tournament_id);
                         t += '<td><a href="'+url+'" id="" class="btn btn-md bttor1">TRANSFER</a></td >';
                         t += '</tr>';
                         $('#selected-player').append(t);

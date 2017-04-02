@@ -66,7 +66,7 @@ class TournamentsController extends Controller
             return view('user.tournaments.add_user_team', $data);
         } else {
             $userteam = $userteam->toArray();
-            return redirect()->route('addPlayers', ['team_id' => $userteam['id']]);
+            return redirect()->route('addPlayers', ['team_id' => $userteam['id'],'tournament_id'=>$tournament_id]);
         }
     }
 
@@ -106,29 +106,14 @@ class TournamentsController extends Controller
 
     }
 
-    function playTournament($team_id)
+    function playTournament($team_id,$tournament_id)
     {
-       
-
-
-
-
-//        $tournamentDate = \App\Tournament::getStartdate(3);
-//        $datetime = new \DateTime($tournamentDate);
-//        $date = $datetime->format('Y-m-d H:i:sP');
-//        $dateint = strtotime($date);
-//        $date1 = new DateTime();
-//        $date1 = $date1->format('Y-m-d H:i:sP');
-//        $date1int = strtotime($date1);
-//        $difference = round(($dateint - $date1int) / 60, 0);
-//        dd($difference);
-
         $usersSelectedPlayers = UserTeam::where('id', $team_id)
             ->with([
                 'user_team_player',
                 'user_team_player.player_roles',
-                'user_team_player.player_tournaments' => function ($q) {
-                    $q->where('tournaments.id', 3);
+                'user_team_player.player_tournaments' => function ($q)  use ($tournament_id) {
+                    $q->where('tournaments.id', $tournament_id);
                 },
                 'teamtournament.tournament_players'
             ])->firstOrFail()->toArray();
@@ -142,7 +127,7 @@ class TournamentsController extends Controller
         $data['user_team_player'] = $usersSelectedPlayers['user_team_player'];
         $data['tournament_detail'] = $usersSelectedPlayers['teamtournament'];
         // dd($selectedPlayers);
-//dd( $data['user_team_player']);
+  //dd( $data['user_team_player']);
         //dd($selectedPlayers);
         // $data['roles']=$selectedPlayers;
 

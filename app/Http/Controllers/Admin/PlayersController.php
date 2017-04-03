@@ -61,8 +61,10 @@ class PlayersController extends Controller {
         if (Input::hasFile('profile_pic')) {
             $files = uploadInputs(Input::file('profile_pic'), 'player_pictures');
             $objplayer->profile_pic = $files;
+
         }
         $objplayer->save();
+
         $lastInsertId = $objplayer->id;
         $objPlayer = \App\Player::find($lastInsertId);
         $objPlayer->player_roles()->sync(array_filter(Input::get('player_roles')));

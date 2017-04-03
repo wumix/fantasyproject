@@ -53,8 +53,9 @@
 
                     @endif
                     @if(Auth::check())
-                    <a class="at" href="{{ route('signUp') }}">{{Auth::user()->name}} <span class="mhline">|</span></a>
-
+                    <a class="at" href="{{ route('userProfile') }}">
+                        {{Auth::user()->name}} <span class="mhline">|</span>
+                    </a>
                     @endif
 
                     @if(Auth::check())

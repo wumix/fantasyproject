@@ -45,7 +45,7 @@ use RegistersUsers;
      *
      * @var string
      */
-    protected $redirectTo = '/signup-confirmation';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.

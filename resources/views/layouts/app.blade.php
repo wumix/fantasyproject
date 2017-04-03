@@ -59,7 +59,8 @@
 
                     @if(Auth::check())
                     <a onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();" class="at" href="{{route('login')}}">Logout
+                            document.getElementById('logout-form').submit();" class="at" href="javacript:void(0)">
+                        Logout
                         <span class="mhline"></span>
                     </a>
                     @endif
@@ -172,7 +173,7 @@
         <!--/.......................... Footer End............................../ -->
 
 
-        <form id="logout-form" action="http://gamithon.dev/logout" method="POST" style="display: none;">
+        <form id="logout-form" action="{{Url::to('/logout')}}" method="POST" style="display: none;">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
             <input type="submit" value="logout" style="display: none;">

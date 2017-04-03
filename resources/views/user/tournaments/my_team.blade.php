@@ -76,7 +76,7 @@
                         <th class="border-r th1">PLAYERS</th>
                         <th class="border-r">ROLES</th>
                         <th class="border-r">POINTS</th>
-<!--                        <th class="th2">CHANGE PLAYER</th>-->
+                        <th class="th2">TRANSFER PLAYER</th>
                     </tr>
                 </thead>
                 <tbody id="selected-player" class="main-taible-body">
@@ -91,11 +91,11 @@
                         <td class="border-r1"><p class="myteamtt">{{$row['player_roles'][0]['name']}}</p></td>
                         <td class="border-r1"><p class="myteamtt">{{$val['pivot']['player_price']}}</p></td>
                         @endforeach
-<!--                        <td>
+                        <td>
 
                             <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"
                                class="btn btn-md bttor1">TRANSFER</a>
-                        </td>-->
+                        </td>
 
                     </tr>
                     @endforeach
@@ -262,7 +262,7 @@
                 url = url.replace('pid', obj.id);
                 url = url.replace('id', obj.team_id);
                 url = url.replace('tid', obj.tournament_id);
-                //t += '<td><a href="' + url + '" id="" class="btn btn-md bttor1">TRANSFER</a></td >';
+                t += '<td><a href="' + url + '" id="" class="btn btn-md bttor1">TRANSFER</a></td >';
                 t += '</tr>';
                 $('#selected-player').append(t);
                 t = "";

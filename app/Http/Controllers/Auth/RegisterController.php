@@ -63,7 +63,7 @@ use RegistersUsers;
      * @return type
      */
     public function postAddUserFromAdmin(Request $request) {
-       // dd($request);
+        // dd($request);
         $this->validator($request->all())->validate();
         if ($request->hasFile('profile_pic')) {
             $files = uploadInputs($request->profile_pic, 'profile_pics');

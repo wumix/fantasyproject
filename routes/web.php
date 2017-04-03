@@ -17,12 +17,18 @@
   }); */
 
 Route::group(['middleware' => ['web']], function () {
+    Route::get('signup-confirmation', function() {
+        return view('pages.signup-thankyou');
+    });
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('loginForm');
     Route::get('/signup', 'Auth\RegisterController@showUserRegistrationForm')->name('signUp');
     Route::get('/tournament-detail/{tournament_id}', 'User\TournamentsController@showTournamentDetails')->name('showTournament');
 
     Route::group(['middleware' => ['is_user']], function () {
+        Route::get('profile-user', function() {
+            return view('pages.page-to-design');
+        });
         Route::get('/profile', 'HomeController@profile')->name('profile');
         Route::group(['prefix' => 'tournaments'], function () {
             Route::get('/addteamname/{tournament_id}', 'User\TournamentsController@addTeam')->name('addTeam');

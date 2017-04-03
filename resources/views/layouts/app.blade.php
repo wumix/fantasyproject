@@ -88,7 +88,7 @@
 
                         <input type="text" class="form-control" id="afc1" placeholder="Search" name="q">
                         <div class="input-group-btn">
-                            <button id="serbtn" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            <button id="serbtn" class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
 
                         </div>
                     </div>

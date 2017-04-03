@@ -374,17 +374,17 @@
     @php
 
 
-if(!empty( $data['tournaments_list'])){
+//if(!empty( $data['tournaments_list'])){
         $timestamp=strtotime($tournaments_list[0]['start_date']);
         $php_date = getdate($timestamp);
         $date= date("Y/m/d", $timestamp);
-    }
-    else{
+  //  }
 
-    }
+
+
 
     @endphp
-    @if(!empty( $data['tournaments_list']))
+    {{--@if(!empty( $data['tournaments_list']))--}}
 
     <script type="text/javascript">
         $("#getting-started").countdown("{{$date}}", function (event) {
@@ -412,5 +412,5 @@ if(!empty( $data['tournaments_list'])){
             });
 
     </script>
-@endif
+{{--@endif--}}
 @stop

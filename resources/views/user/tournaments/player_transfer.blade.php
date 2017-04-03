@@ -216,8 +216,11 @@
                     if (data.success == true) {
                         $('.error').html(data.msg);
                         $('.error').fadeIn(400).delay(3000).fadeOut(400); //fade out after 3 seconds
+                        var url = '{{route("addPlayers", ['team_id'=>"id","tournament_id"=>'tid']) }}';
 
-
+                        url = url.replace('id', data.team_id);
+                        url = url.replace('tid', data.tournament_id);
+                        window.location.href = url;
 
                     } else {
                         $('.error').html(data.msg);

@@ -132,6 +132,7 @@ class TournamentsController extends Controller
         $data['team_name'] = $usersSelectedPlayers['name'];
         $data['user_team_player'] = $usersSelectedPlayers['user_team_player'];
         $data['tournament_detail'] = $usersSelectedPlayers['teamtournament'];
+        //dd($usersSelectedPlayers);
         //  dd($user_team_player);
         // dd($selectedPlayers);
         //   dd($user_team_player)
@@ -302,7 +303,9 @@ class TournamentsController extends Controller
 //                        $objResponse['player']['role_id'] = $request->role_id;
 //                        $objResponse['player']['role_name'] = $request->role_name;
 //                        $objResponse['player']['price'] = $request->player_in_price;
-//                        $objResponse['player']['team_id'] = $request->team_id;
+
+                  $objResponse['team_id'] = $request->team_id;
+                    $objResponse['tournament_id'] = $request->tournament_id;
 //                        $objResponse['user_score'] = getUserTotalScore(Auth::id());
 
 
@@ -315,7 +318,8 @@ class TournamentsController extends Controller
                     );
                     DB::table('user_team_players')->where(['team_id' =>$request->team_id, 'player_id' =>$request->player_out_id])->delete();
 
-
+                    $objResponse['team_id'] = $request->team_id;
+                    $objResponse['tournament_id'] = $request->tournament_id;
                     $objResponse['success'] = true;
                     $objResponse['msg'] = "Player transfered successfully";
                 }
@@ -364,12 +368,12 @@ class TournamentsController extends Controller
                         $objResponse['player']['price'] = $request->player_price;
                         $objResponse['player']['team_id'] = $request->team_id;
                         $objResponse['player']['tournament_id'] = $request->tournament_id;
-                        $objResponse['player']['player_score'] = getUserTotalScore(Auth::id());
+                        $objResponse['player_score'] = getUserTotalScore(Auth::id());
 
 
                     } else {
                         $objResponse['success'] = false;
-                        $objResponse['msg'] = "You cant have more " . $request->role_name;
+                        $objResponse['msg'] = "You cant have more than ".$this->giveanygoodname(Auth::id(), $request->team_id, $request->role_id)." " . $request->role_name." in this Tournament";
                     }
 
 

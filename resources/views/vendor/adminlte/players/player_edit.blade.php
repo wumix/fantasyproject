@@ -34,7 +34,8 @@
                             <div class="form-group">
                                 <label>Player Name</label>
                                 <input type="hidden" name="player_id" value="{{$player['id']}}"/>
-                                <input required class="form-control" name="player_name" value="{{$player['name']}}"
+                                <input
+                                        class="form-control" name="player_name" value="{{$player['name']}}"
                                        type="text" placeholder=""/>
                             </div>
                             <div class="form-group">
@@ -58,7 +59,7 @@
                                             <input
                                                     type="radio"
                                                     name="player_role[]"
-                                                    required
+
                                                     value="{{$val['id']}}"
                                             <?php echo (in_array($val['id'], $player['player_roles'])) ? 'checked' : '' ?>
                                             /> {{$val['name']}}</label><br/>
@@ -67,7 +68,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Profile Picture</label>
-                                <input required name="profile_pic" type="file"/>
+                                <input  name="profile_pic" type="file"/>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">

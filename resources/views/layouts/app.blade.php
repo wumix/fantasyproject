@@ -53,7 +53,7 @@
 
                     @endif
                     @if(Auth::check())
-                    <a class="at" href="{{ route('userProfile') }}">
+                    <a class="at" href="{{Url::to('profile')}}">
                         {{Auth::user()->name}} <span class="mhline">|</span>
                     </a>
                     @endif

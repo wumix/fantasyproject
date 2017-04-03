@@ -17,6 +17,9 @@
   }); */
 
 Route::group(['middleware' => ['web']], function () {
+    Route::get('signup-confirmation', function() {
+        return view('pages.signup-thankyou');
+    });
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('loginForm');
     Route::get('/signup', 'Auth\RegisterController@showUserRegistrationForm')->name('signUp');

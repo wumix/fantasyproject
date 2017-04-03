@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
       |--------------------------------------------------------------------------
       | Application Name
@@ -56,7 +55,7 @@ return [
       | ahead and set this to a sensible default for you out of the box.
       |
      */
-    'timezone' => 'UTC',
+    'timezone' => 'GMT',
     /*
       |--------------------------------------------------------------------------
       | Application Locale Configuration
@@ -116,7 +115,6 @@ return [
       |
      */
     'providers' => [
-
         /*
          * Laravel Framework Service Providers...
          */
@@ -154,13 +152,10 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        
         //Default routes
         App\Providers\RouteServiceProvider::class,
-        
         //Adminlte routes'
-                Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
-
+        Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
     ],
     /*
       |--------------------------------------------------------------------------

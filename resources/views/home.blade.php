@@ -15,9 +15,9 @@
                 <div class="container" id="uocming">
                     <h3 id="uph">UPCOMING TOURNAMENT</h3>
                     <h4 id="up4">
-                        @if( !empty($data['tournaments_list']))
+
                         {{$tournaments_list[0]['name']}}
-                        @endif
+                       
                     </h4>
                     <div class="perant row">
                         <div id="getting-started" class="child col-md-4">10</div>

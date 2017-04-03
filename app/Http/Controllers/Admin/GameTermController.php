@@ -68,14 +68,18 @@ class GameTermController extends Controller {
     }
 
     public function updateTermPoints() {
+        //dd(Input::all());
         $game_id = Input::get('game_id');
         $tournament_id = Input::get('tournament_id');
         //Delete all points b4 new inertion
-        \App\TournamentGameTermPoint::where('tournament_id', $tournament_id)->delete();
+
         foreach (Input::get('term_score_range') as $termId => $pointsDetail) {
             //Inserting terms 1 by 1
+            \App\TournamentGameTermPoint::where('tournament_id', $tournament_id)->where('game_term_id',$termId)->delete();
+
             foreach ($pointsDetail as $key => $val) {
-                $val['tournament_id'] = $tournament_id;
+
+                 $val['tournament_id'] = $tournament_id;
                 $val['game_term_id'] = $termId;
                 if (empty($val['qty_from'])) {
                     $val['qty_from'] = 1;

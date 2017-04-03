@@ -119,9 +119,7 @@
                             <th class="border-r th1">PLAYER NAME</th>
                             <th class="border-r">PLAYER ROLE</th>
 
-                            <th class="th2">PLAYERS
-
-                                POINTS NEEDED TO BUY</th>
+                            <th class="th2">POINTS NEEDED TO BUY</th>
                         </tr>
                     </thead>
                     <tbody class="main-taible-body">

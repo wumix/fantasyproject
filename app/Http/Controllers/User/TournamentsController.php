@@ -361,7 +361,7 @@ class TournamentsController extends Controller {
                         $objResponse['player_score'] = getUserTotalScore(Auth::id());
                     } else {
                         $objResponse['success'] = false;
-                        $objResponse['msg'] = "You cant have more than " . $this->giveanygoodname(Auth::id(), $request->team_id, $request->role_id) . " " . $request->role_name . " in this Tournament";
+                        $objResponse['msg'] = "You cant have more than " . $this->giveanygoodname(Auth::id(), $request->team_id, $request->role_id) . " " . $request->role_name . "s in this Tournament";
                     }
                 } else {
                     $objResponse['success'] = false;

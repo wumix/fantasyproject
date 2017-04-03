@@ -1,6 +1,6 @@
 @php
 
-dd($roles);
+//dd($roles);
 
 
         @endphp
@@ -276,7 +276,7 @@ dd($roles);
                         url = url.replace('pid', obj.id);
                         url = url.replace('id', obj.team_id);
                         url = url.replace('tid', obj.tournament_id);
-                        t += '<td><a href="' + url + '" id="" class="btn btn-md bttor1">TRANSFER</a></td >';
+                       // t += '<td><a href="' + url + '" id="" class="btn btn-md bttor1">TRANSFER</a></td >';
                         t += '</tr>';
                         $('#selected-player').append(t);
                         t = "";

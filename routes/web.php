@@ -20,7 +20,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('loginForm');
     Route::get('/signup', 'Auth\RegisterController@showUserRegistrationForm')->name('signUp');
-    Route::get('/show/{tournament_id}', 'User\TournamentsController@showTournamentDetails')->name('showTournament');
+    Route::get('/tournament-detail/{tournament_id}', 'User\TournamentsController@showTournamentDetails')->name('showTournament');
 
     Route::group(['middleware' => ['is_user']], function () {
         Route::get('/profile', 'HomeController@profile')->name('profile');

@@ -209,7 +209,7 @@
                     player_out_id:{{$player_info['id']}},
                     role_id: roleid,
                     role_name: rolename,
-                    player_out_price: player_price,
+                    player_out_price:{{$player_info['player_tournaments'][0]['pivot']['player_price']}},
                     team_id:{{$team_id}}, _token: '{{csrf_token()}}'
                 },
                 success: function (data) {

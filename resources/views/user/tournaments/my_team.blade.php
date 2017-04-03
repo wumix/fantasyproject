@@ -1,6 +1,6 @@
 @php
 
-
+dd($roles);
 
 
         @endphp
@@ -21,37 +21,37 @@
         </div>
     </section>
     <!-- .....................TeamStart............................... -->
-    <section class="myteam">
-        <div class="countaner">
-            <div class="col-md-3"></div>
-            <section>
-                <div id="mytl" class="text-center col-md-3">
-                    <h3 class="tnt">PLAYER ROLE LIMIT</h3>
-                    <h5 class="myt">You can select players within this limit</h5>
-                    <br>
-                    <h4 class="myt1">Batsmen: 4</h4>
-                    <h4 class="myt1">Bowler: 4</h4>
-                    <h4 class="myt1">Allrounders: 2</h4>
-                    <h4 class="myt1">Wicketkeeper: 1</h4>
+    {{--<section class="myteam">--}}
+        {{--<div class="countaner">--}}
+            {{--<div class="col-md-3"></div>--}}
+            {{--<section>--}}
+                {{--<div id="mytl" class="text-center col-md-3">--}}
+                    {{--<h3 class="tnt">PLAYER ROLE LIMIT</h3>--}}
+                    {{--<h5 class="myt">You can select players within this limit</h5>--}}
+                    {{--<br>--}}
+                    {{--<h4 class="myt1">Batsmen: 4</h4>--}}
+                    {{--<h4 class="myt1">Bowler: 4</h4>--}}
+                    {{--<h4 class="myt1">Allrounders: 2</h4>--}}
+                    {{--<h4 class="myt1">Wicketkeeper: 1</h4>--}}
 
-                </div>
-            </section>
+                {{--</div>--}}
+            {{--</section>--}}
 
-            <section>
-                <div id="myt2" class="text-center col-md-3">
-                    <h3 class="tnt1">PLAYER ROLE LIMIT</h3>
-                    <h5 class="myt">Selected team players</h5>
-                    <br>
-                    <h4 class="myt2">Batsmen: <span>4</span></h4>
-                    <h4 class="myt2">Bowler: <span>4</span></h4>
-                    <h4 class="myt2">Allrounders: <span>2</span></h4>
-                    <h4 class="myt2">Wicketkeeper: <span>1</span></h4>
+            {{--<section>--}}
+                {{--<div id="myt2" class="text-center col-md-3">--}}
+                    {{--<h3 class="tnt1">PLAYER ROLE LIMIT</h3>--}}
+                    {{--<h5 class="myt">Selected team players</h5>--}}
+                    {{--<br>--}}
+                    {{--<h4 class="myt2">Batsmen: <span>4</span></h4>--}}
+                    {{--<h4 class="myt2">Bowler: <span>4</span></h4>--}}
+                    {{--<h4 class="myt2">Allrounders: <span>2</span></h4>--}}
+                    {{--<h4 class="myt2">Wicketkeeper: <span>1</span></h4>--}}
 
-                </div>
+                {{--</div>--}}
 
-            </section>
-        </div>
-    </section>
+            {{--</section>--}}
+        {{--</div>--}}
+    {{--</section>--}}
     <!-- .....................Team End............................... -->
     <!-- ..............................Table Start................................... -->
     <section>
@@ -93,8 +93,8 @@
                             @endforeach
                             <td>
 
-                                <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"
-                                   class="btn btn-md bttor1">TRANSFER</a>
+                                {{--<a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"--}}
+                                   {{--class="btn btn-md bttor1">TRANSFER</a>--}}
                             </td>
 
                         </tr>
@@ -146,6 +146,7 @@
                     <div class="tab-content">
                         {{--first div--}}
                         @foreach($roles as $key=>$role)
+
                             <div class="tab-pane fade {!! ($key == 0) ? 'in active':'' !!}"
                                  id="tab{{$role['id']}}default">
                                 <div class="col-md-11 tcen ">
@@ -168,7 +169,12 @@
                                                 </td>
 
                                                 <td class=" point"><p
-                                                            class="myteamtt">{{$player['player_tournaments'][0]['pivot']['player_price']}}</p>
+                                                            class="myteamtt">
+
+                                                        {{   $player['player_tournaments'][0]['pivot']['player_price']
+
+                                                       }}
+                                                    </p>
                                                 </td>
 
                                                 <td class="add">
@@ -252,7 +258,7 @@
 
                         var obj = data.player;
                         $('.error').html(data.msg);
-                        $('.error').fadeIn(400).delay(3000).fadeOut(400); //fade out after 3 seconds
+                        $('.error').fadeIn(400).delay(2000).fadeOut(400); //fade out after 3 seconds
                         $('#btn-player-' + playerid).attr('disabled', true);
 
                         $('#btn-player-' + playerid).remove();
@@ -281,7 +287,7 @@
 
                     } else {
                         $('.error').html(data.msg);
-                        $('.error').fadeIn(400).delay(7000).fadeOut(400); //fade out after 3 seconds
+                        $('.error').fadeIn(200).delay(2000).fadeOut(400); //fade out after 3 seconds
 
 
                     }

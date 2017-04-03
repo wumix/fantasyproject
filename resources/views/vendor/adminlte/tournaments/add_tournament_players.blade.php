@@ -34,8 +34,7 @@
                                     }
                                     ?>
                                     <input type="checkbox" 
-                                           name="player_tournament[{{$counter}}][player_id]"  
-                                           {!! (in_array($row['id'], $players_in_tournament))?'checked':'' !!}
+                                           name="player_tournament[{{$counter}}][player_id]"  checked
                                            value="{{$row['id']}}"/>  
                                     <input type="hidden" name="player_tournament[{{$counter}}][tournament_id]" value="{{$players_list['id']}}" />
                                 </td>

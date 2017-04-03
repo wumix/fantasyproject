@@ -26,7 +26,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/tournament-detail/{tournament_id}', 'User\TournamentsController@showTournamentDetails')->name('showTournament');
 
     Route::group(['middleware' => ['is_user']], function () {
-        Route::get('profile', function() {
+        Route::get('profile-user', function() {
             return view('pages.page-to-design');
         });
         Route::get('/profile', 'HomeController@profile')->name('profile');

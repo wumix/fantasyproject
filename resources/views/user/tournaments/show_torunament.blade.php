@@ -171,7 +171,7 @@
                     <div class="panel-heading">
                         <ul class="nav nav-tabs">
                             @foreach($tournament['tournament_game']['game_actions'] as $key=>$row)
-                                <li id="tbbox" class="{!! ($key == 0) ? 'active':'' !!}">
+                                <li id="tbbox-{{$key}}" class="{!! ($key == 0) ? 'active':'' !!}">
                                     <a id="tabt-{{$key}}" href="#tab{{$row['id']}}default"
                                        data-toggle="tab">{{$row['name']}}</a>
                                 </li>
@@ -191,9 +191,8 @@
 
                                                 <th class=" th1">Rule</th>
 
-                                                <th class="th1">FROM</th>
-                                                <th class="th1">TO</th>
-                                                <th class="th1">Points</th>
+
+                                                <th class="point">Points</th>
                                             </tr>
                                             </thead>
                                             <tbody class="main-taible-body">
@@ -211,16 +210,13 @@
                                             @foreach($test as $z)
                                                 <tr  class="cwt">
 
-                                                    <td class="th1"><p class="myteamtt">{{$krow['name']}}
+                                                    <td class=" point"><p class="myteamtt">{{$krow['name']}}
+                                                            {{$z['qty_from']}} to {{$z['qty_to']}}
                                                         </p></td>
 
-                                                    <td class=" point"><p class="myteamtt">{{$z['qty_from']}}
-                                                        </p></td>
 
-                                                    <td class=" point"><p class="myteamtt">{{$z['qty_to']}}
-                                                        </p></td>
 
-                                                    <td class=" point"><p class="myteamtt">{{$z['points']}}
+                                                    <td class=" point"><p class="point">{{$z['points']}}
                                                         </p></td>
 
 

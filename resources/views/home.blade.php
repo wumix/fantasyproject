@@ -376,27 +376,27 @@
 @endif
 {{Html::script('js/moment.js')}}
 <script type="text/javascript">
-    var tournamentDateTime = moment('{{$date}}').add(-300, 'm');
+    var tournamentDateTime = moment('{{$date}}').add('m', -300).toDate();
     console.log(tournamentDateTime);
-    $("#getting-started").countdown("{{$date}}", function (event) {
+    $("#getting-started").countdown(tournamentDateTime, function (event) {
         $(this).text(
                 event.strftime('%D')
                 );
     });
     $("#getting-started1")
-            .countdown("{{$date}}", function (event) {
+            .countdown(tournamentDateTime, function (event) {
                 $(this).text(
                         event.strftime('%H')
                         );
             });
     $("#getting-started2")
-            .countdown("{{$date}}", function (event) {
+            .countdown(tournamentDateTime, function (event) {
                 $(this).text(
                         event.strftime('%M')
                         );
             });
     $("#getting-started3")
-            .countdown("{{$date}}", function (event) {
+            .countdown(tournamentDateTime, function (event) {
                 $(this).text(
                         event.strftime('%S')
                         );

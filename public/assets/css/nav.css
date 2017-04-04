@@ -425,13 +425,7 @@ ul.galeria > li img {
     width: 100%;
 }
 
-#mh{
 
-    margin-top: -20px;
-    text-align:right;
-
-
-}
 
 
 .no-gutter [class^="col-"] {
@@ -1565,7 +1559,7 @@ ul.galeria > li img {
 
 #mh{
 
-    margin-top: -20px;
+    padding-top: 5px;
     text-align:right;
 
 
@@ -1766,7 +1760,7 @@ h3{
     padding-left: 115px;
 }
 /* Previous button  */
-@media screen and (min-width: 1000px) and (max-width: 1500px) {
+@media screen and (min-width: 1000px) and (max-width: 2500px) {
     #prependTo { display: none; }
 }
 
@@ -2360,7 +2354,6 @@ input::-webkit-input-placeholder {
     padding-top: 10px;
 }
 .myteamtt{
-    text-align: left;
     margin-top: 30px;
 
 }
@@ -2522,4 +2515,18 @@ input::-webkit-input-placeholder {
 }
 #dashboardcordian{
     margin-top: 270px;
+}
+
+/*********************/
+@media screen and (min-width: 200px) and (max-width: 900px) {
+    #upcomingtime {
+        display: none;
+    }
+}
+@media screen and (min-width: 200px) and (max-width: 900px) {
+    #headtextmain { display: none; }
+
+}
+.maincontect{
+    margin-top: 0px;
 }

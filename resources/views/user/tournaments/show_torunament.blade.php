@@ -11,103 +11,103 @@
 
                 <div class='row'>
                     <div class='col-md-12'>
-                        <div class="carousel slide media-carousel" id="media">
-                            <div class="carousel-inner">
-                                <div class="item  active">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
+                        {{--<div class="carousel slide media-carousel" id="media">--}}
+                            {{--<div class="carousel-inner">--}}
+                                {{--<div class="item  active">--}}
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
 
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="item">--}}
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
 
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a class="img-rounded" href="#"><img alt=""
-                                                                                 src="http://placehold.it/150x150"></a>
-                                        </div>
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="item">--}}
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-2">--}}
+                                            {{--<a class="img-rounded" href="#"><img alt=""--}}
+                                                                                 {{--src="http://placehold.it/150x150"></a>--}}
+                                        {{--</div>--}}
 
-                                    </div>
-                                </div>
-                            </div>
-                            <a data-slide="prev" href="#media" class="left carousel-control">‹</a>
-                            <a data-slide="next" href="#media" class="right carousel-control">›</a>
-                        </div>
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<a data-slide="prev" href="#media" class="left carousel-control">‹</a>--}}
+                            {{--<a data-slide="next" href="#media" class="right carousel-control">›</a>--}}
+                        {{--</div>--}}
                     </div>
                 </div>
 
-                <hr class="hrt">
+                {{--<hr class="hrt">--}}
 
             </div>
         </section>
@@ -165,7 +165,13 @@
         <section>
 
             <div class="container">
+                <div class="row">
+                    <div class="text-center" >
+                        <h3 class="ah3" >TOURNAMENT POINT RULES</h3>
+                    </div>
 
+
+                </div>
 
                 <div class="panel with-nav-tabs panel">
                     <div class="panel-heading">
@@ -185,19 +191,19 @@
 
                                 <div class="tab-pane fade {!! ($key == 0) ? 'in active':'' !!}"
                                      id="tab{{$row['id']}}default">
-                                    <div class="col-md-11 tcen ">
+                                    <div class="table-responsive col-md-12">
                                         <table class="table " id="tortable">
-                                            <thead class="main-taible-head1">
+                                            <thead>
                                             <tr>
 
 
-                                                <th class=" th1">Rule</th>
+                                                <th>Rule</th>
 
 
-                                                <th class="point">Points</th>
+                                                <th>Points</th>
                                             </tr>
                                             </thead>
-                                            <tbody class="main-taible-body">
+                                            <tbody>
                                             @php
                                                 $test=[];
                                                 foreach($row['game_terms']  as $krow ){
@@ -212,13 +218,13 @@
                                             @foreach($test as $z)
                                                 <tr  class="cwt">
 
-                                                    <td class=" point"><p class="myteamtt">{{$krow['name']}}
+                                                    <td>{{$krow['name']}}
                                                             {{$z['qty_from']}} to {{$z['qty_to']}}
-                                                        </p></td>
+                                                        </td>
 
 
 
-                                                    <td class=" point">{{$z['points']}}
+                                                    <td>{{$z['points']}}
                                                         </td>
 
 
@@ -240,7 +246,6 @@
                     </div>
                 </div>
             </div>
-
         </section>
 
     </div>

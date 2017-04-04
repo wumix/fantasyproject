@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use DateTime;
 use DateTimeZone;
 use Illuminate\Support\Facades\App;
+use Validator;
 
 /**
  * Class HomeController
@@ -43,15 +44,51 @@ class HomeController extends Controller
         $objTourmament = \App\Tournament::all()->sortBy("start_date");;
         $data['tournaments_list'] = $objTourmament->toArray();
 
-       // dd($data['tournaments_list']);
+        // dd($data['tournaments_list']);
 
         return view('home', $data);
     }
 
-    public function profile()
+
+    public function contactPage()
     {
-        echo 'this is profile';
-        die;
+        return view('pages.contact');
     }
 
+    public function postContact(Request $request)
+    {
+        $this->validatorContact($request->all())->validate();
+        \Mail::send('emails.contact',
+            array(
+                'name' => $request->get('c_name'),
+                'email' => $request->get('c_email'),
+                'user_message' => $request->get('c_message')
+            ), function ($message) use ($request) {
+                $message->from($request->get('c_email'));
+                $message->to('umair_hamid100@yahoo.com', 'Admin')->subject('Gamithon Contact');
+            });
+
+        return \Redirect::route('contact')->with('status', 'Thanks for contacting us!');
+    }
+
+    /**
+     * Get a validator for an incoming request.
+     *
+     * @param  array $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validatorContact(array $data)
+    {
+        return Validator::make($data, [
+            'c_name' => 'required|max:255',
+            'c_email' => 'required',
+            'c_subject' => 'required',
+            'c_message' => 'required'
+        ]);
+    }
+
+    public function termsCon()
+    {
+return view('pages.t-c');
+    }
 }

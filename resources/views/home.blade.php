@@ -11,7 +11,7 @@
                     {{--<h1 class="ht1">Welcome</h1>--}}
                     {{--<h3 class="ht2">TO GAMITHON</h3>--}}
                 </div>
-                <div class="col-md-6" >
+                <div class="col-md-6" id="headtextmain" >
                     <div class="container" id="uocming">
                         <h3 id="uph">UPCOMING TOURNAMENT</h3>
                         <h4 id="up4">

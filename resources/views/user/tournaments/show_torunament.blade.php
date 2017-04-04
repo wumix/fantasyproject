@@ -10,7 +10,7 @@
             <div class="container mrg">
 
                 <div class='row'>
-                    <div class='col-md-12'>
+<!--                    <div class='col-md-12'>
                         <div class="carousel slide media-carousel" id="media">
                             <div class="carousel-inner">
                                 <div class="item  active">
@@ -104,7 +104,7 @@
                             <a data-slide="prev" href="#media" class="left carousel-control">‹</a>
                             <a data-slide="next" href="#media" class="right carousel-control">›</a>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
 
                 <hr class="hrt">

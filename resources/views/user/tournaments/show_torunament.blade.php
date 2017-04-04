@@ -175,169 +175,69 @@
                                     <a id="tabt-{{$key}}" href="#tab{{$row['id']}}default"
                                        data-toggle="tab">{{$row['name']}}</a>
                                 </li>
-                                @endforeach
+                            @endforeach
                         </ul>
                     </div>
                     <div class="panel-body">
                         <div class="tab-content">
-                            <div class="tab-pane fade in active " id="tab1default">
-                                <div class="col-md-11 tcen ">
-                                    <table class="table " id="tortable">
-                                        <thead class="main-taible-head1">
-                                        <tr>
-                                            <th class=" th1">PLAYERS</th>
-
-                                            <th class="point">POINTS</th>
-                                            <th class="add">ADD</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="main-taible-body">
-                                        <tr class="cwt">
-                                            <td class=" th11"><img id="myteamtimg" class="img-circle"
-                                                                   src="psl-images/aa.jpeg"> Cris Gayle
-                                            </td>
-
-                                            <td class=" point"><p class="myteamtt">40000</p></td>
-                                            <td class=" add">
-                                                <button class="btn btn-md bttor1">SELECT</button>
-                                            </td>
-
-                                        </tr>
-                                        <tr class="cwt">
-                                            <td class=" th11"><img id="myteamtimg" class="img-circle"
-                                                                   src="psl-images/aa.jpeg"> Cris Gayle
-                                            </td>
-
-                                            <td class=" point"><p class="myteamtt">40000</p></td>
-                                            <td class=" add">
-                                                <button class="btn btn-md bttor1">SELECT</button>
-                                            </td>
-
-                                        </tr>
-
-                                        <tr class="cwt">
-                                            <td class=" th11"><img id="myteamtimg" class="img-circle"
-                                                                   src="psl-images/aa.jpeg"> Cris Gayle
-                                            </td>
-
-                                            <td class=" point"><p class="myteamtt">40000</p></td>
-                                            <td class="add">
-                                                <button class="btn btn-md bttor1">SELECT</button>
-                                            </td>
+                            @foreach($tournament['tournament_game']['game_actions'] as $row)
+                                <div class="tab-pane fade {!! ($key == 0) ? 'in active':'' !!}"
+                                     id="tab{{$row['id']}}default">
+                                    <div class="col-md-11 tcen ">
+                                        <table class="table " id="tortable">
+                                            <thead class="main-taible-head1">
+                                            <tr>
 
 
-                                        </tr>
+                                                <th class=" th1">Rule</th>
 
-                                        </tbody>
-                                    </table>
+                                                <th class="point">To</th>
+                                                <th class="point">From</th>
+                                                <th class="add">Points</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="main-taible-body">
+                                            @php
+                                                $test=[];
+                                                foreach($row['game_terms']  as $krow ){
+                                                 foreach($tournament['game_term_points']  as $row ){
+                                                 if($row['game_term_id']==$krow['id']){
+                                                 $test[]=$row;
+                                                 }
+
+
+                                                }
+                                            @endphp
+                                            @foreach($test as $z)
+                                                <tr  class="cwt">
+
+                                                    <td class=" point"><p class="myteamtt">{{$krow['name']}}
+                                                        </p></td>
+
+                                                    <td class=" point"><p class="myteamtt">{{$z['qty_from']}}
+                                                        </p></td>
+
+                                                    <td class=" point"><p class="myteamtt">{{$z['qty_to']}}
+                                                        </p></td>
+
+                                                    <td class=" point"><p class="myteamtt">{{$z['points']}}
+                                                        </p></td>
+
+
+
+                                                </tr>
+                                            @endforeach
+
+                                            @php
+                                                }
+                                            @endphp
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="tab2default">
-                                <div class="col-md-11 tcen ">
-                                    <table class="table " id="tortable">
-                                        <thead class="main-taible-head1">
-                                        <tr>
-                                            <th class=" th1">PLAYERS</th>
-
-                                            <th class="point">POINTS</th>
-                                            <th class="add">ADD</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="main-taible-body">
-                                        <tr class="cwt">
-                                            <td class=" th11"><img id="myteamtimg" class="img-circle"
-                                                                   src="psl-images/aa.jpeg"> Cris Gayle
-                                            </td>
-
-                                            <td class=" point"><p class="myteamtt">40000</p></td>
-                                            <td class=" add">
-                                                <button class="btn btn-md bttor1">SELECT</button>
-                                            </td>
-
-                                        </tr>
-                                        <tr class="cwt">
-                                            <td class=" th11"><img id="myteamtimg" class="img-circle"
-                                                                   src="psl-images/aa.jpeg"> Cris Gayle
-                                            </td>
-
-                                            <td class=" point"><p class="myteamtt">40000</p></td>
-                                            <td class=" add">
-                                                <button class="btn btn-md bttor1">SELECT</button>
-                                            </td>
-
-                                        </tr>
-
-                                        <tr class="cwt">
-                                            <td class=" th11"><img id="myteamtimg" class="img-circle"
-                                                                   src="psl-images/aa.jpeg"> Cris Gayle
-                                            </td>
-
-                                            <td class=" point"><p class="myteamtt">40000</p></td>
-                                            <td class="add">
-                                                <button class="btn btn-md bttor1">SELECT</button>
-                                            </td>
-
-
-                                        </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="tab3default">
-                                <div class="col-md-11 tcen ">
-                                    <table class="table " id="tortable">
-                                        <thead class="main-taible-head1">
-                                        <tr>
-                                            <th class=" th1">PLAYERS</th>
-
-                                            <th class="point">POINTS</th>
-                                            <th class="add">ADD</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="main-taible-body">
-                                        <tr class="cwt">
-                                            <td class=" th11"><img id="myteamtimg" class="img-circle"
-                                                                   src="psl-images/aa.jpeg"> Cris Gayle
-                                            </td>
-
-                                            <td class=" point"><p class="myteamtt">40000</p></td>
-                                            <td class=" add">
-                                                <button class="btn btn-md bttor1">SELECT</button>
-                                            </td>
-
-                                        </tr>
-                                        <tr class="cwt">
-                                            <td class=" th11"><img id="myteamtimg" class="img-circle"
-                                                                   src="psl-images/aa.jpeg"> Cris Gayle
-                                            </td>
-
-                                            <td class=" point"><p class="myteamtt">40000</p></td>
-                                            <td class=" add">
-                                                <button class="btn btn-md bttor1">SELECT</button>
-                                            </td>
-
-                                        </tr>
-
-                                        <tr class="cwt">
-                                            <td class=" th11"><img id="myteamtimg" class="img-circle"
-                                                                   src="psl-images/aa.jpeg"> Cris Gayle
-                                            </td>
-
-                                            <td class=" point"><p class="myteamtt">40000</p></td>
-                                            <td class="add">
-                                                <button class="btn btn-md bttor1">SELECT</button>
-                                            </td>
-
-
-                                        </tr>
-
-                                        </tbody>
-                                    </table>
-                                    <div class="col-md-11 tcen "></div>
-
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

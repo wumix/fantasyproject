@@ -38,6 +38,9 @@ Route::group(['middleware' => ['web']], function () {
             Route::post('/transferplayerajax', 'User\TournamentsController@transferPlayerPost')->name('transferPlayerAjax');
             Route::get('/transfer/{team_id}/{player_id}/{tournament_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
         });
+        Route::group(['prefix' => 'dashboard'], function () {
+            Route::get('/}', 'User\TournamentsController@index')->name('UserDashboard');
+            });
     });
 });
 

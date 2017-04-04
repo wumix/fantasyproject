@@ -168,7 +168,8 @@
                                                 </td>
 
                                                 <td class=" point"><p
-                                                            class="myteamtt">{{$player['player_tournaments'][0]['pivot']['player_price']}}</p>
+                                                            class="myteamtt">{{$player['player_tournaments'][0]['pivot']['player_price']}}
+                                                    </p>
                                                 </td>
 
                                                 <td class="add">

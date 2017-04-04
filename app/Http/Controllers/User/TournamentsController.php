@@ -27,7 +27,7 @@ class TournamentsController extends Controller {
             ->with('tournament_game.game_actions.game_terms', 'game_term_points')
             ->firstOrFail()
             ->toArray();
-//       / dd($data);
+      //  dd($data);
 
         try {
             $data['players_in_tournament'] = [];

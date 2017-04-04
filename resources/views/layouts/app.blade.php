@@ -118,9 +118,12 @@
 
                                 </ul>
                             </li>
-                            <li>  <a  href="#">Gallery  <span class="spn">|</span></a></li>
-                            <li>  <a  href="#">Blog  <span class="spn">|</span></a></li>
-                            <li>  <a  href="#">Artical  <span class="spn">|</span></a></li>
+                            @if(Auth::check())
+                            <li><a href="{{route('UserDashboard')}}"/>DashBoard </a><span class="spn">|</span> </li>
+                            @endif
+                            {{--<li>  <a  href="#">Gallery  <span class="spn">|</span></a></li>--}}
+                            {{--<li>  <a  href="#">Blog  <span class="spn">|</span></a></li>--}}
+                            {{--<li>  <a  href="#">Artical  <span class="spn">|</span></a></li>--}}
                             <li>  <a  href="#">Teams  <span class="spn">|</span></a>
                                 <ul class="menwidth">
                                     <li ><a class="dropawidth" href="">Create Team</a></li>

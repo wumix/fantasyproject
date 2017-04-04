@@ -23,11 +23,11 @@ class TournamentsController extends Controller {
     }
 
     function showTournamentDetails($tournament_id) {
-//        $data['tournament'] = \App\Tournament::where('id', $tournament_id)
-//            ->with('tournament_game.game_actions.game_terms', 'game_term_points')
-//            ->firstOrFail()
-//            ->toArray();
-//        dd($data);
+        $data['tournament'] = \App\Tournament::where('id', $tournament_id)
+            ->with('tournament_game.game_actions.game_terms', 'game_term_points')
+            ->firstOrFail()
+            ->toArray();
+//       / dd($data);
 
         try {
             $data['players_in_tournament'] = [];

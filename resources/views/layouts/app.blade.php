@@ -114,12 +114,12 @@
                                     <li><a class="dropawidth" href="">Leagues</a></li>
                                     <li><a class="dropawidth" href="">Matches</a></li>
                                     <li><a class="dropawidth" href="">Trophies</a></li>
-                                    <li><a class="dropawidth" href="">Scadula</a></li>
+                                    <li><a class="dropawidth" href="">Schedule</a></li>
 
                                 </ul>
                             </li>
                             @if(Auth::check())
-                            <li><a href="{{route('UserDashboard')}}"/>DashBoard </a><span class="spn">|</span> </li>
+                            <li><a href="{{route('UserDashboard')}}"/>DashBoard <span class="spn">|</span></a> </li>
                             @endif
                             {{--<li>  <a  href="#">Gallery  <span class="spn">|</span></a></li>--}}
                             {{--<li>  <a  href="#">Blog  <span class="spn">|</span></a></li>--}}

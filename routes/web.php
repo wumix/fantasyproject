@@ -39,7 +39,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/transfer/{team_id}/{player_id}/{tournament_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
         });
         Route::group(['prefix' => 'dashboard'], function () {
-            Route::get('/}', 'User\TournamentsController@index')->name('UserDashboard');
+            Route::get('/', 'DashboardController@index')->name('UserDashboard');
             });
     });
 });

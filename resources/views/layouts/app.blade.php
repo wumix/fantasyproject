@@ -133,7 +133,7 @@
 
                     {{--</ul>--}}
                     {{--</li>--}}
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="{{route('contactPage')}}">Contact Us</a></li>
 
                 </ul>
 

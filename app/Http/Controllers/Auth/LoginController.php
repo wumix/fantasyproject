@@ -121,7 +121,7 @@ use AuthenticatesUsers {
         $socialProvider = 'facebook';
         $user = $userObj->createOrGetUser(Socialite::driver('facebook')->user(), $socialProvider);
         auth()->login($user);
-        return redirect()->to('/');
+        return redirect()->to(route('showTournament', ['tournament_id', 1]));
     }
 
 }

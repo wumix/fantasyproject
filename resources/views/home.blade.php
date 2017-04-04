@@ -381,8 +381,6 @@
     //Time zone is in negatinv i.e. forward from GMT
     userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : userTimeZone;
     var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
-
-    console.log(tournamentDateTime);
     $("#getting-started").countdown(tournamentDateTime, function (event) {
         $(this).text(
                 event.strftime('%D')

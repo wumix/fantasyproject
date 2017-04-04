@@ -34,6 +34,6 @@ return [
     'facebook' => [
         'client_id' => '712839212231397',
         'client_secret' => '35b5cd202c3ff91db3e53daf1257f710',
-        'redirect' => route('facebookLoginCallback'),
+        'redirect' => config('const.facebook_redirect'),
     ],
 ];

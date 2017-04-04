@@ -7,6 +7,9 @@
  * Time: 7:43 PM
  */
 return [
-    'sitewise_date_format' => 'D/m/y',
-    'email_from' => 'info@gamithonfantasy.com'
+    'sitewise_date_format' => 'd mm yyyy',
+    'email_from' => 'info@gamithonfantasy.com',
+    ///////
+    'facebook_redirect' => env('APP_ENV') == 'local' ? 'http://development.gamithonfantasy.com/login/facebook/callback' : 'http://gamithonfantasy.com/login/facebook/callback',
+        //'facebook_redirect' => env('APP_ENV') == 'local' ? 'http://gamithon.dev/login/facebook/callback' : 'http://gamithon.dev/login/facebook/callback'
 ];

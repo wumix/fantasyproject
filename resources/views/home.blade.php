@@ -370,6 +370,7 @@
 @endsection
 
 @section('js')
+<<<<<<< HEAD
     {{--@if(!empty( $data['tournaments_list']))--}}
     @php($date= '00-00-00 00:00:00')
     @if(!empty($tournaments_list[0]['start_date']))
@@ -384,6 +385,22 @@
         var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
         $("#getting-started").countdown(tournamentDateTime, function (event) {
             $(this).text(
+=======
+{{--@if(!empty( $data['tournaments_list']))--}}
+@php($date= '00-00-00 00:00:00')    
+@if(!empty($tournaments_list[0]['start_date']))
+@php($date= $tournaments_list[0]['start_date']);    
+@endif
+{{Html::script('js/moment.js')}}
+<script type="text/javascript">
+    var dateObj = new Date();
+    var userTimeZone = dateObj.getTimezoneOffset();
+    //Time zone is in negatinv i.e. forward from GMT
+    userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : userTimeZone;
+    var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
+    $("#getting-started").countdown(tournamentDateTime, function (event) {
+        $(this).text(
+>>>>>>> 65a04093dfba3dfcc10d1063873453a963fe9074
                 event.strftime('%D')
             );
         });
@@ -406,6 +423,7 @@
                 );
             });
 
+<<<<<<< HEAD
     </script>
     {{--@endif--}}
     <script>
@@ -415,4 +433,15 @@
             console.log(offset);
         });
     </script>
+=======
+</script>
+{{--@endif--}}
+<script>
+
+    $(document).ready(function () {
+        var offset = new Date().getTimezoneOffset();
+        console.log(offset);
+    });
+</script>
+>>>>>>> 65a04093dfba3dfcc10d1063873453a963fe9074
 @stop

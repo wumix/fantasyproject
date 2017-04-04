@@ -109,18 +109,21 @@
                                 <a href="{{route('home')}}" class="at">Home <span class="spn" style="padding-left:20px;">|</span></a>
 
                             </li>
-                            <li>  <a  href="#">Tournaments<span class="spn">|</span></a>
-                                <ul>
-                                    <li><a class="dropawidth" href="">Leagues</a></li>
-                                    <li><a class="dropawidth" href="">Matches</a></li>
-                                    <li><a class="dropawidth" href="">Trophies</a></li>
-                                    <li><a class="dropawidth" href="">Scadula</a></li>
+                            <li>  <a  href="{{route('usertournamenthome')}}">Tournaments<span class="spn">|</span></a>
+                                {{--<ul>--}}
+                                    {{--<li><a class="dropawidth" href="">Leagues</a></li>--}}
+                                    {{--<li><a class="dropawidth" href="">Matches</a></li>--}}
+                                    {{--<li><a class="dropawidth" href="">Trophies</a></li>--}}
+                                    {{--<li><a class="dropawidth" href="">Schedule</a></li>--}}
 
-                                </ul>
+                                {{--</ul>--}}
                             </li>
-                            <li>  <a  href="#">Gallery  <span class="spn">|</span></a></li>
-                            <li>  <a  href="#">Blog  <span class="spn">|</span></a></li>
-                            <li>  <a  href="#">Artical  <span class="spn">|</span></a></li>
+                            {{--@if(Auth::check())--}}
+                            {{--<li><a href="{{route('UserDashboard')}}"/>DashBoard <span class="spn">|</span></a> </li>--}}
+                            {{--@endif--}}
+                            {{--<li>  <a  href="#">Gallery  <span class="spn">|</span></a></li>--}}
+                            {{--<li>  <a  href="#">Blog  <span class="spn">|</span></a></li>--}}
+                            {{--<li>  <a  href="#">Artical  <span class="spn">|</span></a></li>--}}
                             <li>  <a  href="#">Teams  <span class="spn">|</span></a>
                                 <ul class="menwidth">
                                     <li ><a class="dropawidth" href="">Create Team</a></li>

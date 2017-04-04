@@ -21,13 +21,20 @@ class TournamentsController extends Controller {
     function __construct() {
         $this->objTourmament = new \App\Tournament;
     }
-
+   function index(){
+       $objTourmament = \App\Tournament::all()->sortBy("start_date");;
+       $data['tournaments_list'] = $objTourmament->toArray();
+      // dd( $data['tournaments_list']);
+        return view('user.tournaments.home', $data);
+   }
     function showTournamentDetails($tournament_id) {
         $data['tournament'] = \App\Tournament::where('id', $tournament_id)
-                ->with('tournament_game.game_actions.game_terms', 'game_term_points')
-                ->firstOrFail()
-                ->toArray();
-//       / dd($data);
+
+            ->with('tournament_game.game_actions.game_terms', 'game_term_points')
+            ->firstOrFail()
+            ->toArray();
+      //  dd($data);
+
 
         try {
             $data['players_in_tournament'] = [];

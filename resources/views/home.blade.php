@@ -376,7 +376,7 @@
 @endif
 {{Html::script('js/moment.js')}}
 <script type="text/javascript">
-    var tournamentDateTime = moment('{{$date}}').add('m', -300).format('YYYY/MM/DD h:mm:ss').toDate();
+    var tournamentDateTime = moment('{{$date}}').add('m', -300).format('YYYY/MM/DD h:mm:ss');
     console.log(tournamentDateTime);
     $("#getting-started").countdown(tournamentDateTime, function (event) {
         $(this).text(

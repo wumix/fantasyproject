@@ -48,6 +48,8 @@ class TournamentsController extends Controller {
     }
 
     function addTeam($tournament_id) {
+        $t=\App\GameAction::with('game_terms')->get();
+        dd($t->toArray());
 //        $tournamentPrice=\App\Tournament::find(1)->tournament_price;
 //
 //        if($tournamentPrice<getUserTotalScore(Auth::id())) echo"less";

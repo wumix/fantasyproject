@@ -17,7 +17,7 @@
                     <h4 id="up4">
 
                         {{$tournaments_list[0]['name']}}
-                       
+
                     </h4>
                     <div class="perant row">
                         <div id="getting-started" class="child col-md-4">10</div>
@@ -378,6 +378,7 @@
 $timestamp=strtotime($tournaments_list[0]['start_date']);
 $php_date = getdate($timestamp);
 $date= date("Y/m/d", $timestamp);
+
 //  }
 
 
@@ -413,4 +414,11 @@ $date= date("Y/m/d", $timestamp);
 
 </script>
 {{--@endif--}}
+    <script>
+
+        $( document ).ready(function() {
+            var offset = new Date().getTimezoneOffset();
+            console.log(offset);
+        });
+    </script>
 @stop

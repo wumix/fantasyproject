@@ -7,10 +7,12 @@
 
 namespace App\Http\Controllers;
 
+use App\GameAction;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use DateTime;
 use DateTimeZone;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class HomeController
@@ -42,6 +44,7 @@ class HomeController extends Controller
         $data['tournaments_list'] = $objTourmament->toArray();
 
        // dd($data['tournaments_list']);
+
         return view('home', $data);
     }
 

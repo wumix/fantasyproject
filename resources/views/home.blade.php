@@ -394,27 +394,30 @@ $date= date("Y/m/d", $timestamp);
 @endif
 {{Html::script('js/moment.js')}}
 <script type="text/javascript">
-    var tournamentDateTime = moment('{{$date}}').add(-300, 'm');
-    console.log(tournamentDateTime);
-    $("#getting-started").countdown("{{$date}}", function (event) {
+    var dateObj = new Date();
+    var userTimeZone = dateObj.getTimezoneOffset();
+    //Time zone is in negatinv i.e. forward from GMT
+    userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : userTimeZone;
+    var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
+    $("#getting-started").countdown(tournamentDateTime, function (event) {
         $(this).text(
                 event.strftime('%D')
                 );
     });
     $("#getting-started1")
-            .countdown("{{$date}}", function (event) {
+            .countdown(tournamentDateTime, function (event) {
                 $(this).text(
                         event.strftime('%H')
                         );
             });
     $("#getting-started2")
-            .countdown("{{$date}}", function (event) {
+            .countdown(tournamentDateTime, function (event) {
                 $(this).text(
                         event.strftime('%M')
                         );
             });
     $("#getting-started3")
-            .countdown("{{$date}}", function (event) {
+            .countdown(tournamentDateTime, function (event) {
                 $(this).text(
                         event.strftime('%S')
                         );

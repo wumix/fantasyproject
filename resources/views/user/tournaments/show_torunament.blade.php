@@ -171,8 +171,8 @@
                     <div class="panel-heading">
                         <ul class="nav nav-tabs">
                             @foreach($tournament['tournament_game']['game_actions'] as $key=>$row)
-                                <li id="tbbox-{{$key}}" class="{!! ($key == 0) ? 'active':'' !!}">
-                                    <a id="tabt-{{$key}}" href="#tab{{$row['id']}}default"
+                                <li id="tbbox" class="{!! ($key == 0) ? 'active':'' !!}">
+                                    <a id="tabt" href="#tab{{$row['id']}}default"
                                        data-toggle="tab">{{$row['name']}}</a>
                                 </li>
                             @endforeach
@@ -180,7 +180,9 @@
                     </div>
                     <div class="panel-body">
                         <div class="tab-content">
-                            @foreach($tournament['tournament_game']['game_actions'] as $row)
+
+                            @foreach($tournament['tournament_game']['game_actions'] as $key=>$row)
+
                                 <div class="tab-pane fade {!! ($key == 0) ? 'in active':'' !!}"
                                      id="tab{{$row['id']}}default">
                                     <div class="col-md-11 tcen ">
@@ -216,8 +218,8 @@
 
 
 
-                                                    <td class=" point"><p class="point">{{$z['points']}}
-                                                        </p></td>
+                                                    <td class=" point">{{$z['points']}}
+                                                        </td>
 
 
 

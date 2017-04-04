@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Socialite;
 
 class LoginController extends Controller {
     /*
@@ -35,8 +36,7 @@ use AuthenticatesUsers {
 
     /**
      * Show admin login form
-*/
-
+     */
     public function showAdminLoginForm() {
 
         return view('adminlte::auth.login');
@@ -100,6 +100,28 @@ use AuthenticatesUsers {
     protected function attempLoginUsingUsernameAsAnEmail(Request $request) {
         return $this->guard()->attempt(
                         ['email' => $request->input('username'), 'password' => $request->input('password')], $request->has('remember'));
+    }
+
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToFacebookProvider() {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return Response
+     */
+    public function handleFacebookProviderCallback() {
+        $userObj = new \App\User;
+        $socialProvider = 'facebook';
+        $user = $userObj->createOrGetUser(Socialite::driver('facebook')->user(), $socialProvider);
+        auth()->login($user);
+        return redirect()->to('/');
     }
 
 }

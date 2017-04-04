@@ -368,26 +368,9 @@
 
 <!-- /.....................footer Start......................../ -->
 @endsection
-<<<<<<< HEAD
+
 @section('js')
-@php
-
-
-//if(!empty( $data['tournaments_list'])){
-$timestamp=strtotime($tournaments_list[0]['start_date']);
-$php_date = getdate($timestamp);
-$date= date("Y/m/d", $timestamp);
-
-//  }
-
-
-
-
-@endphp
-=======
->>>>>>> d068d43c74e3de778ddabbd989232d3906b9503e
 {{--@if(!empty( $data['tournaments_list']))--}}
-@section('js')
 @php($date= '00-00-00 00:00:00')    
 @if(!empty($tournaments_list[0]['start_date']))
 @php($date= $tournaments_list[0]['start_date']);    
@@ -425,11 +408,11 @@ $date= date("Y/m/d", $timestamp);
 
 </script>
 {{--@endif--}}
-    <script>
+<script>
 
-        $( document ).ready(function() {
-            var offset = new Date().getTimezoneOffset();
-            console.log(offset);
-        });
-    </script>
+    $(document).ready(function () {
+        var offset = new Date().getTimezoneOffset();
+        console.log(offset);
+    });
+</script>
 @stop

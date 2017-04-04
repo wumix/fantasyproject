@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Socialite\Contracts\User as ProviderUser;
+use Laravel\Socialite\Facades\Socialite;
 
 class User extends Authenticatable {
 
@@ -16,7 +18,7 @@ class User extends Authenticatable {
      */
     protected $table = 'users';
     protected $fillable = [
-        'name', 'email', 'profile_pic', 'password', 'user_type'
+        'name', 'email', 'profile_pic', 'password', 'user_type', 'provider_user_id', 'remember_token', 'provider'
     ];
 
     /**
@@ -46,6 +48,44 @@ class User extends Authenticatable {
 
     public static function isUser() {
         return (\Auth::user()->user_type == 1) ? true : false;
+    }
+
+    /**
+     * Get user from social media logins
+     * @param \App\ProviderUser $providerUser
+     * @return type
+     */
+    public function createOrGetUser(ProviderUser $providerUser, $socialProvider) {
+        $account = User::where('email', $providerUser->getEmail())->first();
+
+        if ($account) {
+            return $account;
+        } else {
+
+            $user = User::whereEmail($providerUser->getEmail())->first();
+            if (!$user) {
+                $user = User::create([
+                            'email' => $providerUser->getEmail(),
+                            'name' => $providerUser->getName(),
+                            'user_type' => '1',
+                            'profile_pic' => $providerUser->getAvatar(),
+                            'provider_user_id' => $providerUser->getId(),
+                            'provider' => $socialProvider,
+                            'password' => bcrypt(str_random(8)),
+                            'remember_token' => bcrypt(str_random(16))
+                ]);
+                //adding user registration points
+                $userActionKey = 'user_signup';
+                $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
+                //Saving user points scored
+                $objPointsScored = new \App\UserPointsScored;
+                $objPointsScored->user_id = $user->id;
+                $objPointsScored->action_key = $userActionKey;
+                $objPointsScored->points_scored = $actionPoints;
+                $objPointsScored->save();
+            }
+            return $user;
+        }
     }
 
 }

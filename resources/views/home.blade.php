@@ -17,7 +17,7 @@
                     <h4 id="up4">
 
                         {{$tournaments_list[0]['name']}}
-                       
+
                     </h4>
                     <div class="perant row">
                         <div id="getting-started" class="child col-md-4">10</div>
@@ -367,26 +367,17 @@
 -->
 
 <!-- /.....................footer Start......................../ -->
-
-
 @endsection
-@section('js')
-@php
-
-
-//if(!empty( $data['tournaments_list'])){
-$timestamp=strtotime($tournaments_list[0]['start_date']);
-$php_date = getdate($timestamp);
-$date= date("Y/m/d", $timestamp);
-//  }
-
-
-
-
-@endphp
 {{--@if(!empty( $data['tournaments_list']))--}}
-
+@section('js')
+@php($date= '00-00-00 00:00:00')    
+@if(!empty($tournaments_list[0]['start_date']))
+@php($date= $tournaments_list[0]['start_date']);    
+@endif
+{{Html::script('js/moment.js')}}
 <script type="text/javascript">
+    var tournamentDateTime = moment('{{$date}}').add(-300, 'm');
+    console.log(tournamentDateTime);
     $("#getting-started").countdown("{{$date}}", function (event) {
         $(this).text(
                 event.strftime('%D')

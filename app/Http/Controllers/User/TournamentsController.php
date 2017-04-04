@@ -29,10 +29,12 @@ class TournamentsController extends Controller {
    }
     function showTournamentDetails($tournament_id) {
         $data['tournament'] = \App\Tournament::where('id', $tournament_id)
+
             ->with('tournament_game.game_actions.game_terms', 'game_term_points')
             ->firstOrFail()
             ->toArray();
       //  dd($data);
+
 
         try {
             $data['players_in_tournament'] = [];
@@ -42,7 +44,7 @@ class TournamentsController extends Controller {
                                 }, 'tournament_game.game_players' => function () {
                                     
                                 }, 'tournament_players' => function ($query) {
-                                    
+                                    $query->paginate(20);
                                 }]
                             )->firstOrFail()->toArray();
 
@@ -148,22 +150,24 @@ class TournamentsController extends Controller {
                 ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
                     $query->where('tournament_id', $tournament_id);
                 })->get()->toArray();
-        $data['roles']=$this->array_filter_recursive($roles);
+        $data['roles'] = $this->array_filter_recursive($roles);
 //       // $u= $this->array_filter_recursive( $roles[0]['players'],null);
 //        dd($u);
 //        $data['roles']= $this->array_filter_recursive( $roles['players'],null);
         //dd($roles);
-    //dd($data['roles']);
+        //dd($data['roles']);
         return view('user.tournaments.my_team', $data);
     }
-    function array_filter_recursive($input){
-        foreach ($input as &$value){
-            if (is_array($value)){
+
+    function array_filter_recursive($input) {
+        foreach ($input as &$value) {
+            if (is_array($value)) {
                 $value = $this->array_filter_recursive($value);
             }
         }
         return array_filter($input);
     }
+
     function transferPlayer($team_id, $player_id, $tournament_id) {
 
         // dd($test=$test->toArray());
@@ -274,7 +278,7 @@ class TournamentsController extends Controller {
                     }])->firstORFail();
 
         $player_in_price = $player_in_price['player_tournaments'][0]['pivot']['player_price'];
-       // dd($player_in_price);
+        // dd($player_in_price);
         // die;
 
         if ($difference > 15) {
@@ -287,12 +291,12 @@ class TournamentsController extends Controller {
 //                    $playertransfers->team_id = $request->team_id;
                     $transferDate = new \DateTime();
                     $transferDate = $transferDate->format('Y-m-d H:i:sP');
-                  //  $playertransfers->transfer_date = $transferDate;
+                    //  $playertransfers->transfer_date = $transferDate;
 //                    $playertransfers->save();
                     DB::table('player_transfer')->insert(
-                        ['player_in_id' => $request->player_in_id, 'player_out_id' => $request->player_out_id,'team_id'=>$request->team_id]
+                            ['player_in_id' => $request->player_in_id, 'player_out_id' => $request->player_out_id, 'team_id' => $request->team_id]
                     );
-                     $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => 0]);
+                    $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => 0]);
                     \App\UserPointsConsumed::insert($array);
                     $objResponse['success'] = true;
                     $objResponse['msg'] = "Player transfered successfully";
@@ -316,7 +320,7 @@ class TournamentsController extends Controller {
                 } else {
 
                     $netpoints = $player_in_price - $request->player_out_price;
-                //   dd($netpoints);
+                    //   dd($netpoints);
                     $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => $netpoints]);
                     \App\UserPointsConsumed::insert($array);
                     DB::table('user_team_players')->insert(

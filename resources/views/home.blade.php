@@ -367,9 +367,8 @@
 -->
 
 <!-- /.....................footer Start......................../ -->
-
-
 @endsection
+<<<<<<< HEAD
 @section('js')
 @php
 
@@ -385,9 +384,18 @@ $date= date("Y/m/d", $timestamp);
 
 
 @endphp
+=======
+>>>>>>> d068d43c74e3de778ddabbd989232d3906b9503e
 {{--@if(!empty( $data['tournaments_list']))--}}
-
+@section('js')
+@php($date= '00-00-00 00:00:00')    
+@if(!empty($tournaments_list[0]['start_date']))
+@php($date= $tournaments_list[0]['start_date']);    
+@endif
+{{Html::script('js/moment.js')}}
 <script type="text/javascript">
+    var tournamentDateTime = moment('{{$date}}').add(-300, 'm');
+    console.log(tournamentDateTime);
     $("#getting-started").countdown("{{$date}}", function (event) {
         $(this).text(
                 event.strftime('%D')

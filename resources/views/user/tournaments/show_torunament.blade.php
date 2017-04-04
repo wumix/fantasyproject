@@ -104,11 +104,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8" id="ah31">
-                        <h3 class="ah3" id="ah31">{{$tournament_detail['name']}}</h3>
+                        <h3 class="ah3" id="ah31"></h3>
                     </div>
                     <div class="btnbb col-md-4">
 
-                        <a href="{{route('addTeam', ['tournament_id'=>$tournament_detail['id']])}}" style="text-transform: uppercase" class="btn btn-md bttor">PLAY THIS TOURNAMENT IN  {{$tournament_detail['tournament_price']}} points</a>
+                        <a href="#" style="text-transform: uppercase" class="btn btn-md bttor">PLAY THIS TOURNAMENT IN   points</a>
                     </div>
 
                 </div>
@@ -124,14 +124,14 @@
                     </thead>
                     <tbody class="main-taible-body">
 
-                        @foreach($tournament_detail['tournament_players'] as $player)
+
                         <tr class="cwt">
-                            <td class="border-r" ><img id="timg" class="img-circle" src="{{ getUploadsPath($player['profile_pic']) }}"> {{$player['name']}}</td>
+                            <td class="border-r" ><img id="timg" class="img-circle" src="#">asdada</td>
                             <td class="border-r">Batsman</td>
-                            <td class="brr">{{$player['pivot']['player_price']}}</td>
+                            <td class="brr">adad</td>
 
                         </tr>
-                        @endforeach
+
 
                     </tbody>
                 </table>
@@ -140,108 +140,79 @@
     </section>
     <!-- ...............Table End.............................. -->
     <!-- ............................Show Hide Table Satrt........................... -->
-<!--    <section>
-        <div class="container">
-            <h3 class="ah3">COMPLETED MATCHES</h3>
-            <div class="text-center col-md-10 col-md-offset-1 mrgg">
-                <div class="accordian-table-header">
-                    <ul class="match-accordian-header row">
-                        <li class="col-md-3">Match</li>
-                        <li class="col-md-3">Mumbai</li>
-                        <li class="col-md-3">1 april  </li>
-                        <li class="col-md-2">3pm  </li>
-                        <li class="col-md-1"><span class="btn-toggle">+</span></li>
-                    </ul>
-                </div>
-                <div class=" col-md-11  mrgg">
-                    <div class="col-md-3 ftp">PLAYERS</div>
-                    <div class="col-md-3 ftp">ROLE</div>
-                    <div class="col-md-5 ftp">TOTAL POINTS IN THIS TOURNAMENT</div>
-                </div>
-                <div class=" col-md-11  mrgg11">
-                    <div class="col-md-3 ftp1"><img id="timg" class="img-circle" src="psl-images/aa.jpeg"> Cris Gayle</div>
-                    <div class="col-md-3 ftp11">Batsman</div>
-                    <div class="col-md-5 ftp11">40000</div>
-                    <div class="col-md-1 ftp11"><span class="btn-toggle">+</span></div>
-                </div>
-                <div class=" col-md-11  mrgg1">
-                    <div class="col-md-3 ftp1"><img id="timg" class="img-circle" src="psl-images/aa.jpeg"> Cris Gayle</div>
-                    <div class="col-md-3 ftp11">Batsman</div>
-                    <div class="col-md-5 ftp11">40000</div>
-                    <div class="col-md-1 ftp11"><span class="btn-toggle">+</span></div>
-                </div>
-                <div class=" col-md-11  mrgg1">
-                    <div class="col-md-3 ftp1"><img id="timg" class="img-circle" src="psl-images/aa.jpeg"> Cris Gayle</div>
-                    <div class="col-md-3 ftp11">Batsman</div>
-                    <div class="col-md-5 ftp11">40000</div>
-                    <div class="col-md-1 ftp11"><span class="btn-toggle">+</span></div>
-                </div>
-                <div class=" col-md-11  mrgg1">
-                    <div class="col-md-3 ftp1"><img id="timg" class="img-circle" src="psl-images/aa.jpeg"> Cris Gayle</div>
-                    <div class="col-md-3 ftp11">Batsman</div>
-                    <div class="col-md-5 ftp11">40000</div>
-                    <div class="col-md-1 ftp11"><span class="btn-toggle">+</span></div>
-                </div>
-                <div class="tablety"></div>
-                <div class="accordian-table-header">
-                    <ul class="match-accordian-header row">
-                        <li class="col-md-3">Match</li>
-                        <li class="col-md-3">Mumbai</li>
-                        <li class="col-md-3">1 april  </li>
-                        <li class="col-md-2">3pm  </li>
-                        <li class="col-md-1"><span class="btn-toggle">+</span></li>
-                    </ul>
+    <section>
 
-                </div>
-                <div class="accordian-table-header " id="matr">
-                    <ul class="match-accordian-header row">
-                        <li class="col-md-3">Match</li>
-                        <li class="col-md-3">Mumbai</li>
-                        <li class="col-md-3">1 april  </li>
-                        <li class="col-md-2">3pm  </li>
-                        <li class="col-md-1"><span class="btn-toggle">+</span></li>
+        <div class="container">
+            <span id="your_points">  Your Points: </span>
+
+            <div class="panel with-nav-tabs panel">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs">
+
+                        @foreach($roles as $key => $role)
+
+                            <li id="tbbox-{{$key}}" class="{!! ($key == 0) ? 'active':'' !!}">
+                                <a id="tabt-{{$key}}" href="#tab{{$role['id']}}default"
+                                   data-toggle="tab">{{$role['name']}}</a>
+                            </li>
+
+                        @endforeach
                     </ul>
                 </div>
-                <div class="tabletyg"></div>
+
+                <div class="panel-body">
+                    <div class="tab-content">
+                        {{--first div--}}
+                        @foreach($roles as $key=>$role)
+                            <div class="tab-pane fade {!! ($key == 0) ? 'in active':'' !!}"
+                                 id="tab{{$role['id']}}default">
+                                <div class="col-md-11 tcen ">
+                                    <table class="table " id="tortable">
+                                        <thead class="main-taible-head1">
+                                        <tr>
+                                            <th class=" th1">PLAYERS</th>
+
+                                            <th class="point">PRICE</th>
+                                            <th class="add">ADD</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="main-taible-body">
+
+                                        @foreach($role['players'] as $player)
+                                            <tr id="player_tr-{{$player['id']}}" class="cwt">
+                                                <td class=" th11"><img id="myteamtimg" class="img-circle"
+                                                                       src="{{getUploadsPath($player['profile_pic'])}}"/>
+                                                    <span class="selected-player-name"> {{$player['name']}}</span>
+                                                </td>
+
+                                                <td class=" point"><p
+                                                            class="myteamtt">{{$player['player_tournaments'][0]['pivot']['player_price']}}</p>
+                                                </td>
+
+                                                <td class="add">
+                                                    <a id="btn-player-{{$player['id']}}"
+                                                       href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$player['player_tournaments'][0]['pivot']['player_price']}}')"
+                                                       class="btn btn-md bttor1">Add To
+                                                        Team
+                                                    </a>
+                                                </td>
+
+
+                                            </tr>
+                                        @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        @endforeach
+
+
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="container">
-            <h3 class="ah3">UPCOMING MATCHES</h3>
-            <div class="text-center col-md-10 col-md-offset-1 mrgg">
-                <div class="accordian-table-header">
-                    <ul class="match-accordian-header row">
-                        <li class="col-md-3">Match</li>
-                        <li class="col-md-3">Mumbai</li>
-                        <li class="col-md-3">1 april  </li>
-                        <li class="col-md-2">3pm  </li>
-                        <li class="col-md-1"><span class="btn-toggle">+</span></li>
-                    </ul>
-                </div>
-
-                <div class="tablety"></div>
-                <div class="accordian-table-header">
-                    <ul class="match-accordian-header row">
-                        <li class="col-md-3">Match</li>
-                        <li class="col-md-3">Mumbai</li>
-                        <li class="col-md-3">1 april  </li>
-                        <li class="col-md-2">3pm  </li>
-                        <li class="col-md-1"><span class="btn-toggle">+</span></li>
-                    </ul>
-
-                </div>
-                <div class="accordian-table-header " id="matr">
-                    <ul class="match-accordian-header row">
-                        <li class="col-md-3">Match</li>
-                        <li class="col-md-3">Mumbai</li>
-                        <li class="col-md-3">1 april  </li>
-                        <li class="col-md-2">3pm  </li>
-                        <li class="col-md-1"><span class="btn-toggle">+</span></li>
-                    </ul>
-                </div>
-                <div class="tabletyg"></div>
-            </div>
-        </div>
-    </section>-->
+    </section>
     <!-- ............................Show Hide Table End........................... -->
 </div>
 <!-- ...............................News start......................... -->

@@ -45,12 +45,13 @@
                 <div id="mh" >
 
                     @if(!Auth::check())
-                    <a class="at" href="{{route('login')}}">Login <span class="mhline">|</span></a>
-
+                    <a class="at" href="{{route('login')}}">Login <span class="mhline">|</span>
+                    </a>
                     @endif
                     @if(!Auth::check())
-                    <a class="at" href="{{ route('signUp') }}">Sign Up <span class="mhline">|</span></a>
-
+                    <a class="at" href="{{ route('signUp') }}">
+                        Sign Up <span class="mhline">|</span>
+                    </a>
                     @endif
                     @if(Auth::check())
                     <a class="at" href="{{URL::to('profile-user')}}">

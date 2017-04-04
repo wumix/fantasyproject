@@ -114,7 +114,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <h1>1</h1>
-                        <i id="i1" class="fa fa-user-plus" aria-hidden="true"><h3>SIGN UP FOR A <br>FREE GAMITHONE<br>
+                        <i id="i1" class="fa fa-user-plus" aria-hidden="true"><h3>SIGN UP FOR A <br>FREE GAMITHON<br>
                                 ACCOUNT</h3></i>
 
                     </div>
@@ -124,7 +124,7 @@
 
                     <div id="i2" class="col-md-3">
                         <h1>2</h1>
-                        <i class="fa fa-users"><h3>CHOOSE A LEAGUE <br>FREE GAMITHONE<br> ACCOUNT</h3></i>
+                        <i class="fa fa-users"><h3>CHOOSE A LEAGUE <br>FREE GAMITHON<br> ACCOUNT</h3></i>
                     </div>
                     <div class="col-md-1">
                         <i id="arow" class="fa fa-arrow-right"></i>
@@ -370,8 +370,7 @@
 @endsection
 
 @section('js')
-<<<<<<< HEAD
-    {{--@if(!empty( $data['tournaments_list']))--}}
+
     @php($date= '00-00-00 00:00:00')
     @if(!empty($tournaments_list[0]['start_date']))
         @php($date= $tournaments_list[0]['start_date']);
@@ -385,8 +384,7 @@
         var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
         $("#getting-started").countdown(tournamentDateTime, function (event) {
             $(this).text(
-=======
-{{--@if(!empty( $data['tournaments_list']))--}}
+
 @php($date= '00-00-00 00:00:00')    
 @if(!empty($tournaments_list[0]['start_date']))
 @php($date= $tournaments_list[0]['start_date']);    
@@ -400,7 +398,7 @@
     var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
     $("#getting-started").countdown(tournamentDateTime, function (event) {
         $(this).text(
->>>>>>> 65a04093dfba3dfcc10d1063873453a963fe9074
+
                 event.strftime('%D')
             );
         });
@@ -423,7 +421,7 @@
                 );
             });
 
-<<<<<<< HEAD
+
     </script>
     {{--@endif--}}
     <script>
@@ -433,9 +431,8 @@
             console.log(offset);
         });
     </script>
-=======
-</script>
-{{--@endif--}}
+
+
 <script>
 
     $(document).ready(function () {
@@ -443,5 +440,4 @@
         console.log(offset);
     });
 </script>
->>>>>>> 65a04093dfba3dfcc10d1063873453a963fe9074
 @stop

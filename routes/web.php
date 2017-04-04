@@ -33,6 +33,7 @@ Route::group(['middleware' => ['web']], function () {
         });
         Route::get('/profile', 'HomeController@profile')->name('profile');
         Route::group(['prefix' => 'tournaments'], function () {
+            Route::get('/', 'User\TournamentsController@index')->name('usertournamenthome');
             Route::get('/addteamname/{tournament_id}', 'User\TournamentsController@addTeam')->name('addTeam');
             Route::get('/add-players/{team_id}/{tournament_id}', 'User\TournamentsController@playTournament')->name('addPlayers');
             Route::get('/addteam', 'User\TournamentsController@teamNamePostAjax')->name('teamNamePostAjax');

@@ -21,37 +21,37 @@
         </div>
     </section>
     <!-- .....................TeamStart............................... -->
-    <section class="myteam">
-        <div class="countaner">
-            <div class="col-md-3"></div>
-            <section>
-                <div id="mytl" class="text-center col-md-3">
-                    <h3 class="tnt">PLAYER ROLE LIMIT</h3>
-                    <h5 class="myt">You can select players within this limit</h5>
-                    <br>
-                    <h4 class="myt1">Batsmen: 4</h4>
-                    <h4 class="myt1">Bowler: 4</h4>
-                    <h4 class="myt1">Allrounders: 2</h4>
-                    <h4 class="myt1">Wicketkeeper: 1</h4>
+    {{--<section class="myteam">--}}
+        {{--<div class="countaner">--}}
+            {{--<div class="col-md-3"></div>--}}
+            {{--<section>--}}
+                {{--<div id="mytl" class="text-center col-md-3">--}}
+                    {{--<h3 class="tnt">PLAYER ROLE LIMIT</h3>--}}
+                    {{--<h5 class="myt">You can select players within this limit</h5>--}}
+                    {{--<br>--}}
+                    {{--<h4 class="myt1">Batsmen: 4</h4>--}}
+                    {{--<h4 class="myt1">Bowler: 4</h4>--}}
+                    {{--<h4 class="myt1">Allrounders: 2</h4>--}}
+                    {{--<h4 class="myt1">Wicketkeeper: 1</h4>--}}
 
-                </div>
-            </section>
+                {{--</div>--}}
+            {{--</section>--}}
 
-            <section>
-                <div id="myt2" class="text-center col-md-3">
-                    <h3 class="tnt1">PLAYER ROLE LIMIT</h3>
-                    <h5 class="myt">Selected team players</h5>
-                    <br>
-                    <h4 class="myt2">Batsmen: <span>4</span></h4>
-                    <h4 class="myt2">Bowler: <span>4</span></h4>
-                    <h4 class="myt2">Allrounders: <span>2</span></h4>
-                    <h4 class="myt2">Wicketkeeper: <span>1</span></h4>
+            {{--<section>--}}
+                {{--<div id="myt2" class="text-center col-md-3">--}}
+                    {{--<h3 class="tnt1">PLAYER ROLE LIMIT</h3>--}}
+                    {{--<h5 class="myt">Selected team players</h5>--}}
+                    {{--<br>--}}
+                    {{--<h4 class="myt2">Batsmen: <span>4</span></h4>--}}
+                    {{--<h4 class="myt2">Bowler: <span>4</span></h4>--}}
+                    {{--<h4 class="myt2">Allrounders: <span>2</span></h4>--}}
+                    {{--<h4 class="myt2">Wicketkeeper: <span>1</span></h4>--}}
 
-                </div>
+                {{--</div>--}}
 
-            </section>
-        </div>
-    </section>
+            {{--</section>--}}
+        {{--</div>--}}
+    {{--</section>--}}
     <!-- .....................Team End............................... -->
     <!-- ..............................Table Start................................... -->
     <section>
@@ -60,7 +60,7 @@
                 <div class="row">
                     <div>
                         <center>
-                            <h3 class="ah311">SELECTED PLAYERS</h3>
+                            <h3 class="ah311">YOUR TEAM PLAYERS</h3>
                         </center>
                     </div>
 
@@ -133,7 +133,7 @@
 
                         @foreach($roles as $key => $role)
 
-                            <li id="tbbox-{{$key}}" class="{!! ($key == 0) ? 'active':'' !!}">
+                            <li id="tbbox" class="{!! ($key == 0) ? 'active':'' !!}">
                                 <a id="tabt-{{$key}}" href="#tab{{$role['id']}}default"
                                    data-toggle="tab">{{$role['name']}}</a>
                             </li>
@@ -154,7 +154,7 @@
                                         <tr>
                                             <th class=" th1">PLAYERS</th>
 
-                                            <th class="point">PRICE</th>
+                                            <th class=" th1">PRICE</th>
                                             <th class="add">ADD</th>
                                         </tr>
                                         </thead>

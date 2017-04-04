@@ -17,9 +17,12 @@
   }); */
 Route::get('login/facebook', 'Auth\LoginController@redirectToFacebookProvider')->name('facebookLogin');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleFacebookProviderCallback')->name('facebookLoginCallback');
-
 Route::group(['middleware' => ['web']], function () {
-    Route::get('signup-confirmation', function() {
+    Route::get('contact', 'HomeController@contactPage')->name('contactPage');
+    Route::post('contact', 'HomeController@postContact')->name('postContact');
+    Route::get('terms', 'HomeController@termsCon')->name('TermsCon');
+
+    Route::get('signup-confirmation', function () {
         return view('pages.signup-thankyou');
     });
     Route::get('/', 'HomeController@index')->name('home');
@@ -28,10 +31,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/tournament-detail/{tournament_id}', 'User\TournamentsController@showTournamentDetails')->name('showTournament');
 
     Route::group(['middleware' => ['is_user']], function () {
-        Route::get('profile-user', function() {
+        Route::get('profile-user', function () {
             return view('pages.page-to-design');
         });
-        Route::get('/profile', 'HomeController@profile')->name('profile');
         Route::group(['prefix' => 'tournaments'], function () {
             Route::get('/', 'User\TournamentsController@index')->name('usertournamenthome');
             Route::get('/addteamname/{tournament_id}', 'User\TournamentsController@addTeam')->name('addTeam');
@@ -43,7 +45,7 @@ Route::group(['middleware' => ['web']], function () {
         });
         Route::group(['prefix' => 'dashboard'], function () {
             Route::get('/', 'DashboardController@index')->name('UserDashboard');
-            });
+        });
     });
 });
 

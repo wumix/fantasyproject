@@ -108,48 +108,44 @@
                             <label class="form-check-label">
 
                                 <input required type="checkbox" name="terms" class="form-check-input"/>
-                                <span  id="remberbox"> I agree </span> <a href="{{ route('password.request') }}" id="forgetlink"> Forget Your Password?</a>
+                                <span id="remberbox"> I agree with <a href="#" style="color:#92b712">Terms and conditions.</a> </span>
                             </label>
                         </div>
                         <div class="form-group " id="withbox">
-                            <a class="signuplink" href="{{ route('signUp') }}">Sign up for new account</a>
+                            <a class="signuplink" href="{{ route('signUp') }}">Login to your account</a>
                             <button type="submit" class="btn  btn-lg btn-block login-button">Sign Up</button>
                         </div>
 
 
                         {{--asdasda--}}
                         {{--<div class="row">--}}
-                            {{--<div class="col-lg-1">--}}
-                                {{--<div class="input-group">--}}
-                                    {{--<input type="checkbox" aria-label="Checkbox for following text input"/>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="col-lg-5">--}}
-                                {{--<div class="form-group">--}}
-                                    {{--<label>I Agree</label>--}}
-                                {{--</div>--}}
+                        {{--<div class="col-lg-1">--}}
+                        {{--<div class="input-group">--}}
+                        {{--<input type="checkbox" aria-label="Checkbox for following text input"/>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="col-lg-5">--}}
+                        {{--<div class="form-group">--}}
+                        {{--<label>I Agree</label>--}}
+                        {{--</div>--}}
 
-                            {{--</div>--}}
-                            {{--<div class="col-lg-5">--}}
-                                {{--<div class="form-group">--}}
-                                    {{--<button type="submit" class="btn btn-success">REGISTER</button>--}}
-                                {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="col-lg-5">--}}
+                        {{--<div class="form-group">--}}
+                        {{--<button type="submit" class="btn btn-success">REGISTER</button>--}}
+                        {{--</div>--}}
 
-                            {{--</div>--}}
+                        {{--</div>--}}
                         {{--</div>--}}
                         {{--<div class="form-group">--}}
-                            {{--<input id="terms" type="checkbox" name="terms" required class="form-check-input">--}}
-                            {{--<label>--}}
-                                {{--I agree--}}
+                        {{--<input id="terms" type="checkbox" name="terms" required class="form-check-input">--}}
+                        {{--<label>--}}
+                        {{--I agree--}}
 
-                            {{--</label>--}}
+                        {{--</label>--}}
 
-                            {{--<a href="" id="termlink"> Terms of Service Privacy Policy</a>--}}
+                        {{--<a href="" id="termlink"> Terms of Service Privacy Policy</a>--}}
                         {{--</div>--}}
-
-
-
-
 
 
                     </form>

@@ -2360,6 +2360,7 @@ input::-webkit-input-placeholder {
     padding-top: 10px;
 }
 .myteamtt{
+    text-align: left;
     margin-top: 30px;
 
 }
@@ -2471,21 +2472,6 @@ input::-webkit-input-placeholder {
     line-height:70px;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .error {
     width:200px;
     height:20px;
@@ -2505,4 +2491,35 @@ input::-webkit-input-placeholder {
     -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
     -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
     box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+}
+/*dashboard css*/
+.profileimg{
+    width: 150px;
+    height: 150px;
+    border: 1px solid;
+    border-radius: 75px;
+    align-items: center;
+
+}
+.nameu{
+    color :#92B713;
+}
+.nameu a{
+    color : #f8a120;
+}
+#dashboardtab{
+    background-color: transparent;
+}
+#tabdashboardmain{
+    width: 900px;
+}
+.tabletydashboard{
+    background-color: #EEEEEE;
+    height: auto;
+    margin-top: -10px;
+    padding: 20px 10px 10px 5px;
+
+}
+#dashboardcordian{
+    margin-top: 270px;
 }

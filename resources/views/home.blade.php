@@ -104,7 +104,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading">How to play at Gamithon Fantasy</h2>
+                <h2 class="section-heading">How to play Gamithon Fantasy</h2>
                 <hr class="light">
             </div>
         </div>
@@ -154,8 +154,9 @@
 <script type="text/javascript">
     var dateObj = new Date();
     var userTimeZone = dateObj.getTimezoneOffset();
+    console.log(userTimeZone);
     //Time zone is in negatinv i.e. forward from GMT
-    userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : userTimeZone;
+    userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : Math.abs(userTimeZone) * -1;
     var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
     $("#getting-started").countdown(tournamentDateTime, function (event) {
         $(this).text(
@@ -180,8 +181,6 @@
                         event.strftime('%S')
                         );
             });
-
-
 </script>
 
 @stop

@@ -25,7 +25,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('how-to-play', 'HomeController@howPlay')->name('howPlay');
     Route::get('/tournaments', 'User\TournamentsController@index')->name('usertournamenthome');
 
-
     Route::get('signup-confirmation', function () {
         return view('pages.signup-thankyou');
     });

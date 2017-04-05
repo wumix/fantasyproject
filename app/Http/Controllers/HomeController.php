@@ -84,7 +84,12 @@ class HomeController extends Controller {
     }
 
     public function howPlay() {
-        return view('pages.how-to-play');
+        $data['tournament'] = \App\Tournament::where('id', 1)
+                ->with('tournament_game.game_actions.game_terms', 'game_term_points')
+                ->firstOrFail()
+                ->toArray();
+        $data['game_actions'] = $data['tournament']['tournament_game']['game_actions'];
+        return view('pages.how-to-play', $data);
     }
 
 }

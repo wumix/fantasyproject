@@ -27,6 +27,6 @@ class DashboardController extends Controller
 
     }
     function postEditProfile(Request $request){
-
+        dd($request->all());
     }
 }

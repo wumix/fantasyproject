@@ -32,10 +32,14 @@
                                     <span id="fbg" class="input-group-addon">
                                         <i id="lgfico" class="fa fa-user fa-lg" aria-hidden="true"></i>
                                     </span>
-                                    <input value="{{$userprofileinfo['name']}}" id="fullname" 
-                                           type="text" 
-                                           class="form-control" name="name" placeholder="{{$userprofileinfo['name']}}"
-                                           >
+                                    <input 
+                                        value="{{$userprofileinfo['name']}}" 
+                                        id="fullname" 
+                                        type="text" 
+                                        class="form-control" 
+                                        name="name" 
+                                        placeholder="{{$userprofileinfo['name']}}"
+                                        >
                                 </div>
 
                                 @if ($errors->has('name'))

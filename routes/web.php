@@ -50,6 +50,8 @@ Route::group(['middleware' => ['web']], function () {
         });
         Route::group(['prefix' => 'dashboard'], function () {
             Route::get('/', 'DashboardController@index')->name('UserDashboard');
+            Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
+            Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('userProfileEdit');
         });
     });
 });

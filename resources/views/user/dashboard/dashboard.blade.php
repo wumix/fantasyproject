@@ -8,9 +8,9 @@
                 <div class="row">
                     <div class="text-center main-center">
 
-                        <img src="psl-images\BPL_OFFICIAL_LOGO.JPG" class="img-circle profileimg "
+                        <img src="#" class="img-circle profileimg "
                              alt="Responsive image">
-                        <h3 class="nameu">Ahmad</h3>
+                        <h3 class="nameu"> {{Auth::user()->name}}</h3>
                         <h5 class="nameu"><a href="{{route('userProfileEdit')}}">Edit Profile</a></h5>
 
                     </div>

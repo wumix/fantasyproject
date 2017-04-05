@@ -113,38 +113,48 @@
         <!---->
         <footer>
             <form id="logout-form" action="{{Url::to('/logout')}}" method="POST" style="display: none;">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <input type="submit" value="logout" style="display: none;">
-                                </form>
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="submit" value="logout" style="display: none;">
+            </form>
 
-                                <section class="bg-primary footer">
-                                    <div class="container">
-                                        <div class="row" id="final-footer">
-                                            <div class="col-sm-12 col-md-6 text-left">
-                                                Copyright © 2017 Gamithon Fantasy.<br/> All Rights Reserved
-                                            </div>
-                                            <div class="col-sm-12 col-md-6 text-right">
-                                                <a href="https://www.facebook.com/gamithonfantasy/" target="_blank">
-                                                    <span class="fa-stack fa-lg">
-                                                        <i class="fa fa-circle text-info fa-stack-2x"></i>
-                                                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                                    </span>    
-                                                </a>
-                                                <a href="https://twitter.com/GamithonFantasy" target="_blank">
-                                                    <span class="fa-stack fa-lg">
-                                                        <i class="fa fa-circle text-info fa-stack-2x"></i>
-                                                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                                </footer>
-                                <!-- jQuery -->
-                                {!! Html::script('assets-new/vendor/jquery/jquery.min.js') !!}
-                                {!! Html::script('assets-new/vendor/bootstrap/js/bootstrap.min.js') !!}
-                                @yield('js')
-                                @yield('addteamjs')
-                                </body>
-                                </html>
+            <section class="bg-primary footer">
+                <div class="container">
+                    <div class="row" id="final-footer">
+                        <div class="col-sm-12 col-md-4 text-left">
+                            Copyright © 2017 Gamithon Fantasy.<br/> All Rights Reserved
+                        </div>
+                        <div class="col-sm-12 col-md-4 text-center">
+                            <ul class="nav navbar-nav navbar-right " >
+                                <li>
+                                    <a class="page-scroll" href="{{route('TermsCon')}}">Terms and conditions</a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="{{route('contactPage')}}">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-12 col-md-4 text-right">
+                            <a href="https://www.facebook.com/gamithonfantasy/" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle text-info fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>    
+                            </a>
+                            <a href="https://twitter.com/GamithonFantasy" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle text-info fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
+        <!-- jQuery -->
+        {!! Html::script('assets-new/vendor/jquery/jquery.min.js') !!}
+        {!! Html::script('assets-new/vendor/bootstrap/js/bootstrap.min.js') !!}
+        @yield('js')
+        @yield('addteamjs')
+    </body>
+</html>

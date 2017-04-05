@@ -203,7 +203,28 @@ hr.light.full{
     width: 70px;
 
 }
+.error {
+    width:200px;
+    height:20px;
+    height:auto;
+    position:fixed;
+    left:0%;
+    margin-left:40%;
+    bottom:5%;
+    background-color: #ff0000;
+    color: #F0F0F0;
+    z-index: 1000;
+    font-family: Calibri;
+    font-size: 20px;
+    padding:10px;
+    text-align:center;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+    -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+    box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
 
+
+}
 
 .btn-orange{
     background: #F9960E;

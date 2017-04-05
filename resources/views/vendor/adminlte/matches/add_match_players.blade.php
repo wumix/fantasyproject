@@ -32,7 +32,7 @@
                                     <input
                                         <?php
                                         foreach ($existingPlayers as $row){
-                                        echo (in_array($val['id'],$row )) ? 'checked' : '';
+                                        echo (in_array($val['id'],$row)) ? 'checked' : '';
                                                 }
 
                                         ?>
@@ -40,12 +40,13 @@
                                            name="player[]" value="{{$val['id']}}">
 
 
+
                                 </div>
 
 
                                 </td>
                                 <td>
-                                    <input type="hidden" /> {{$val['name']}}
+                                  {{$val['name']}}
                                 </td>
 
                             </tr>

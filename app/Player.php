@@ -12,9 +12,14 @@ class Player extends Model
         'name', 'game_id', 'profile_pic', 'created_at', 'updated_at'
     ];
 
+
+
     public function player_games()
     {
         return $this->belongsTo('App\Game', 'game_id');
+    }
+    public function player_matches(){
+        return $this->belongsToMany('App\Match', 'player_matches','player_id', 'match_id');
     }
 
     public static function get_player($palyer_id)
@@ -32,10 +37,7 @@ class Player extends Model
         return $this->belongsToMany('App\Tournament', 'player_tournaments')->withPivot('player_price');
     }
 
-    public function player_matches()
-    {
 
-    }
 
     public function player_teams()
     {

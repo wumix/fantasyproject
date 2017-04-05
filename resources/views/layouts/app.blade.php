@@ -94,6 +94,10 @@
                                     How to play
                                 </a>
                             </li>
+
+                            <li>
+                                <a class="page-scroll" href="{{route('UserDashboard')}}">DashBoard</a>
+                            </li>
                             <li>
                                 <a class="page-scroll" href="{{route('contactPage')}}">Contact Us</a>
                             </li>

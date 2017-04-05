@@ -198,8 +198,12 @@ hr.light.full{
 }
 
 .main-taible-body .border-r img{
+
+    width: 200px;
     width: 70px;
+
 }
+
 
 .btn-orange{
     background: #F9960E;

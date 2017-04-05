@@ -9,7 +9,7 @@
                     Tournaments
                 </h1>
                 <hr class="light full">
-                <div class="page-content">
+                <div class="page-content" style="margin-bottom: 80px;">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
                             <thead class="main-taible-head">

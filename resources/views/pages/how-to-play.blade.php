@@ -1,14 +1,15 @@
 @extends('layouts.app')
+@section('content')
 <section>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-heading">
-                    TOURNAMENTS
+                    How to play
                 </h1>
                 <hr class="light full">
                 <div class="page-content">
-                    <ol>
+                    <ol class="how-play">
                         <li>
                             Sign up for an account & Login
                         </li>

@@ -22,7 +22,6 @@
                     </div>
                     <div class="row">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
                             <table class="table table-striped" id="tortable">
                                 <thead class="main-taible-head">
                                     <tr>
@@ -47,7 +46,6 @@
 
                                 </tbody>
                             </table>
-                        </table>
                     </div>
                     </div>
                     <div class="row">

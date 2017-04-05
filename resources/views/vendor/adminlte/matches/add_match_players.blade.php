@@ -24,7 +24,7 @@
                         <table class="table table-hover table-bordered">
 
                             <tr>
-                                <th>&nbsp;Pic</th>
+                                <th>&nbsp;Select</th>
                                 <th>Player</th>
 
                             </tr>

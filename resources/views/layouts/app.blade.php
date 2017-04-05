@@ -100,6 +100,11 @@
                                 </a>
                             </li>
                             <li>
+                                <a class="page-scroll" href="{{route('showTournament', ['tournament_id'=>1])}}">
+                                    Start playing
+                                </a>
+                            </li>
+                            <li>
                                 <a class="page-scroll" href="{{route('UserDashboard')}}">DashBoard</a>
                             </li>
                             <li>
@@ -131,7 +136,7 @@
                             <ul class="nav navbar-nav" >
                                 <li>
                                     <a class="page-scroll" href="{{route('privacyPolicy')}}">
-                                       Privacy policy
+                                        Privacy policy
                                     </a>
                                 </li>
                                 <li>

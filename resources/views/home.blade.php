@@ -104,7 +104,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading">How to play at Gamithon Fantasy</h2>
+                <h2 class="section-heading">How to play Gamithon Fantasy</h2>
                 <hr class="light">
             </div>
         </div>

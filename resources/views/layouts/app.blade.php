@@ -1,206 +1,141 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {!! Html::style('assets/font-awesome-4.7.0/css/font-awesome.css') !!}
-
-
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Gamithon Fantasy</title>
-    {!! Html::style('assets/css/bootstrap.css') !!}
-
-
-    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" href="psl-images/gf.ico" type="image/x-icon"/>
-{!! Html::style('assets/css/slicknav.css') !!}
-{!! Html::style('assets/css/nav.css') !!}
-
-
-
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-<body>
-<div class="container-fluid " id="mhead">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3" id="headtextmain">
-
-                <h6>Hello Welcomw To Gamithon Fantasy</h6>
-            </div>
-
-            <div class="col-md-9" id="mh">
-
-                @if(!Auth::check())
-                    <a class="at" href="{{route('login')}}">Login <span class="mhline">|</span>
-                    </a>
-                @endif
-                @if(!Auth::check())
-                    <a class="at" href="{{ route('signUp') }}">
-                        Sign Up <span class="mhline">|</span>
-                    </a>
-                @endif
-                @if(Auth::check())
-                    <a class="at" href="{{URL::to('profile-user')}}">
-                        {{Auth::user()->name}} <span class="mhline">|</span>
-                    </a>
-                @endif
-
-                @if(Auth::check())
-                    <a onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();" class="at" href="javacript:void(0)">
-                        Logout
-                        <span class="mhline"></span>
-                    </a>
-                @endif
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ..............................Nav Bar Start................................ -->
-<section>
-    <nav class="navbar navbar-default navbar-fixed-top" id="nav1">
-        <div class="container">
-            <div class="row">
-                <div class="navbar-header col-md-3">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Gamithon Fantasy</title>
+        <!-- Bootstrap Core CSS -->
+        {!! Html::style('assets-new/vendor/bootstrap/css/bootstrap.min.css') !!}
+        {!! Html::style('https://fonts.googleapis.com/css?family=Raleway') !!}
+        {!! Html::style('assets-new/vendor/font-awesome/css/font-awesome.min.css') !!}
+        {!! Html::style('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!}
+        {!! Html::style('https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic') !!}
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        {!! Html::style('assets-new/css/creative.css') !!}
+        {!! Html::style('assets-new/css/style.css') !!}
+    </head>
+    <body>
+        <nav class="bg-primary navbar navbar-default navbar-fixed-top">
+            <!--Menu-->
+            <div class="container-fluid menu-top1-1">
+                <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-top-1">
+                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand page-scroll">
+                            Hello Welcome To Gamithon Fantasy
+                        </a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-top-1">
+                        <ul class="nav navbar-nav navbar-right">
 
-                    <a class="navbar-brand " href="{{URL::to('/')}}">
-                        <img src="{{URL::asset('/assets/images/gamithon-logo1.png')}}">
-                    </a>
-
+                            @if(!Auth::check())
+                            <li>
+                                <a href="{{route('login')}}">
+                                    Login 
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('signUp') }}">
+                                    Sign Up
+                                </a>
+                            </li>
+                            @endif
+                            @if(Auth::check())
+                            <li>
+                                <a href="{{URL::to('profile-user')}}">
+                                    {{Auth::user()->name}}
+                                </a>
+                            </li>
+                            <li>
+                                <a onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();" href="javacript:void(0)">
+                                    Logout
+                                </a>
+                            </li>
+                            @endif
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
                 </div>
-                {{--<div class="perant1 row" >--}}
-                {{--<div class="child1 col-md-1"><a href="#"><i class="fa fa-facebook-square fa-icon fa-md" id="sz1"></i></a></div>--}}
-                {{--<div class="child1 col-md-1"><a href="#"><i class="fa fa-skype fa-icon fa-md" id="sz1"></i></a></div>--}}
-                {{--<div class="child1 col-md-1"><a href="#"><i class="fa fa-twitter-square fa-icon fa-md" id="sz1"></i></a></div>--}}
-                {{--<div class="input-group child1 col-md-8" id="afc1">--}}
-
-                {{--<input type="text" class="form-control" id="afc1" placeholder="Search" name="q">--}}
-                {{--<div class="input-group-btn">--}}
-                {{--<button id="serbtn" class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>--}}
-
-                {{--</div>--}}
-                {{--</div>--}}
-
-
-
-                {{--</div>--}}
             </div>
-            <div id="prependTo"></div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse col-md-7 mama" id="topFixedNavbar1">
-                <ul class="nav navbar-nav" style="color:white; " id="menubtn">
-                    <li>
-                        <a href="{{route('home')}}" class="at">Home <span class="spn"
-                                                                          style="padding-left:20px;">|</span></a>
-
-                    </li>
-                    <li><a href="{{route('usertournamenthome')}}">Tournaments<span class="spn">|</span></a>
-                        {{--<ul>--}}
-                        {{--<li><a class="dropawidth" href="">Leagues</a></li>--}}
-                        {{--<li><a class="dropawidth" href="">Matches</a></li>--}}
-                        {{--<li><a class="dropawidth" href="">Trophies</a></li>--}}
-                        {{--<li><a class="dropawidth" href="">Schedule</a></li>--}}
-
-                        {{--</ul>--}}
-                    </li>
-                    @if(Auth::check())
-                    <li><a href="{{route('UserDashboard')}}"/>DashBoard <span class="spn">|</span></a> </li>
-                    @endif
-                    {{--<li>  <a  href="#">Gallery  <span class="spn">|</span></a></li>--}}
-                    {{--<li>  <a  href="#">Blog  <span class="spn">|</span></a></li>--}}
-                    {{--<li>  <a  href="#">Artical  <span class="spn">|</span></a></li>--}}
-                    {{--<li>  <a  href="#">Teams  <span class="spn">|</span></a>--}}
-                    {{--<ul class="menwidth">--}}
-                    {{--<li ><a class="dropawidth" href="">Create Team</a></li>--}}
-                    {{--<li ><a class="dropawidth" href="">List Of Teams</a></li>--}}
-
-                    {{--</ul>--}}
-                    {{--</li>--}}
-                    <li><a href="{{route('contactPage')}}">Contact Us</a></li>
-
-                </ul>
-
-
-            </div>
-        </div>
-        <div class="clear clearfix"></div>
-        <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-</section>
-<!-- ..................Nav Bar End .................................-->
-@yield('content')
-<!-- /.....................footer Start......................../ -->
-
-
-<footer>
-    <div class="container-fluid">
-
-        <div class="row" style="background-color: black;opacity: 0.7;">
-
-            <div class="col-md-6 text-center cop">
-                <p> @2017 Gamithon Fantasy.All Reserved</p>
-            </div>
-
-
-            <div class="col-md-6 text-center">
-                <div id="sz">
-                    <a class="fnt" href="#"><i class="fa fa-facebook-square fa-icon " class="sz"></i></a>
-                    <a href="#"><i class="fa fa-skype fa-icon" class="sz"></i></a>
-                    <a href="#"><i class="fa fa-twitter-square fa-icon" class="sz"></i></a>
+            <!-------------->
+            <div class="container-fluid">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand page-scroll" href="#page-top">
+                            <img src="{{URL::to('assets-new/img/gamithon-logo1.png')}}" style="width: 250px;" />
+                        </a>
+                        <div class="clear clearfix"></div>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse logo-menu-container" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right nav-main-menu">
+                            <li>
+                                <a class="page-scroll" href="/">Home</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="/about">
+                                    How to play
+                                </a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="{{route('contactPage')}}">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
                 </div>
-                <img src="{{URL::asset('/assets/images/logo-footer.png')}}" class="logof">
             </div>
-
-        </div>
-    </div>
-    <div class="container-fluid fgreen"></div>
-</footer>
-<!--/.......................... Footer End............................../ -->
-
-
-<form id="logout-form" action="{{Url::to('/logout')}}" method="POST" style="display: none;">
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-    <input type="submit" value="logout" style="display: none;">
-</form>
-
-{!! Html::script('assets/js/jquery.min.js') !!}
-{!! Html::script('assets/js/googlejquery.min.js') !!}
-{!! Html::script('assets/js/bootstrap.min.js') !!}
-{!! Html::script('assets/js/jquery.slicknav.min.js') !!}
-{!! Html::script('assets/jquery.countdown-2.2.0/jquery.countdown.min.js') !!}
-
-<script type="text/javascript">
-
-    $(function () {
-        $('#menubtn').slicknav({
-            prependTo: '#prependTo'
-        });
-
-    });
-
-
-</script>
-@yield('js')
-@yield('addteamjs')
-</body>
+            <!-- /.container-fluid -->
+        </nav>
+        <!---->
+        @yield('content')
+        <!---->
+        <footer>
+            <section class="bg-primary footer">
+                <div class="container">
+                    <div class="row" id="final-footer">
+                        <div class="col-sm-12 col-md-6 text-left">
+                            Copyright © 2017 Gamithon Fantasy.<br/> All Rights Reserved
+                        </div>
+                        <div class="col-sm-12 col-md-6 text-right">
+                            <a href="https://www.facebook.com/gamithonfantasy/" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle text-info fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>    
+                            </a>
+                            <a href="https://twitter.com/GamithonFantasy" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle text-info fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
+        <!-- jQuery -->
+        {!! Html::script('assets-new/vendor/jquery/jquery.min.js') !!}
+        {!! Html::script('assets-new/vendor/bootstrap/js/bootstrap.min.js') !!}
+        @yield('js')
+        @yield('addteamjs')
+    </body>
 </html>

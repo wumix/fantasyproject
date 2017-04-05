@@ -124,12 +124,16 @@
                             Copyright © 2017 Gamithon Fantasy.<br/> All Rights Reserved
                         </div>
                         <div class="col-sm-12 col-md-4 text-center">
-                            <ul class="nav navbar-nav navbar-right " >
+                            <ul class="nav navbar-nav" >
                                 <li>
-                                    <a class="page-scroll" href="{{route('TermsCon')}}">Terms and conditions</a>
+                                    <a class="page-scroll" href="{{route('TermsCon')}}">
+                                        Terms and conditions
+                                    </a>
                                 </li>
                                 <li>
-                                    <a class="page-scroll" href="{{route('contactPage')}}">Contact</a>
+                                    <a class="page-scroll" href="{{route('contactPage')}}">
+                                        Contact
+                                    </a>
                                 </li>
                             </ul>
                         </div>

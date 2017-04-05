@@ -160,9 +160,6 @@ hr.light.full{
     color: #fff;
 }
 
-.table-images{
-    width: 200px;
-}
 
 .page-heading{
     color: #F8930E;
@@ -190,4 +187,16 @@ hr.light.full{
 .form-container{
     max-width: 800px;
     margin: 0 auto;
+}
+
+.footer .navbar-nav a{
+    color: #fff;
+}
+.footer .navbar-nav a:hover{
+    background-color: transparent !important;
+    text-decoration: underline;
+}
+
+.main-taible-body .border-r img{
+    width: 200px;
 }

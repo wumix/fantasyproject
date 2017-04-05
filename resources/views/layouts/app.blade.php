@@ -19,9 +19,10 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        {!! Html::style('assets/css/slicknav.css') !!}
         {!! Html::style('assets-new/css/creative.css') !!}
         {!! Html::style('assets-new/css/style.css') !!}
-        {!! Html::style('assets/css/slicknav.css') !!}
+        {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}
 
     </head>
     <body>
@@ -167,12 +168,16 @@
         <!-- jQuery -->
         {!! Html::script('assets-new/vendor/jquery/jquery.min.js') !!}
         {!! Html::script('assets-new/vendor/bootstrap/js/bootstrap.min.js') !!}
+        {!! Html::script('assets-new/vendor/basic-table/jquery.basictable.min.js') !!}
         {!! Html::script('assets/js/jquery.slicknav.min.js') !!}
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#bs-example-navbar-collapse-1').slicknav({
                     appendTo: '#top-menu-res',
-                    label:'Main Menu'
+                    label: 'Main Menu'
+                });
+                $('table').basictable({
+                  forceResponsive: false
                 });
             });
         </script>

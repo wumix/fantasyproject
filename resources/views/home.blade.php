@@ -72,10 +72,10 @@
                     <table class="table table-striped gen-table">
                         <thead class="main-taible-head" >
                             <tr>
-                                <th class="border-r th1">TOURNAMENT NAME</th>
-                                <th class="border-r">VENUE</th>
-                                <th class="border-r">STARTING DATE</th>
-                                <th class="th2">ENDING DATE</th>
+                                <th class="border-r th1">Name</th>
+                                <th class="border-r">Venue</th>
+                                <th class="border-r">Started At</th>
+                                <th class="th2">Ending At</th>
                             </tr>
                         </thead>
                         <tbody class="main-taible-body">

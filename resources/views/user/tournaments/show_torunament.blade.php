@@ -53,7 +53,7 @@
 
                     
                     <div class="col-md-12">
-                        
+                        <h3 class="text-center">Score rules</h3>
                         <div class="table-responsive">
                             <div class="panel with-nav-tabs panel">
                                 <div class="panel-heading">

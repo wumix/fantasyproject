@@ -154,6 +154,7 @@
 <script type="text/javascript">
     var dateObj = new Date();
     var userTimeZone = dateObj.getTimezoneOffset();
+    console.log(userTimeZone);
     //Time zone is in negatinv i.e. forward from GMT
     userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : userTimeZone;
     var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
@@ -180,8 +181,6 @@
                         event.strftime('%S')
                         );
             });
-
-
 </script>
 
 @stop

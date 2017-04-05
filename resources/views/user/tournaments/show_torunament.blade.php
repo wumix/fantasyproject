@@ -90,7 +90,7 @@
                                                             <td>
                                                                 @php($fromToText = ': '.$termPointVal['qty_from'].' - '.str_replace('99999999', 'Above', $termPointVal['qty_to']))
                                                                 @if($termPointVal['qty_from']-$termPointVal['qty_to'] == 0)
-                                                                    @php($fromToText = '')
+                                                                @php($fromToText = '')
                                                                 @endif
                                                                 {{$val['name']}} {{$fromToText}}
                                                             </td>

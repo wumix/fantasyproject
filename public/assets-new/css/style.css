@@ -23,11 +23,7 @@
 
 
 /*Remove this from mobile*/
-.nav-main-menu{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
+
 
 /**********Tables having green header********/
 .main-taible-head{
@@ -173,7 +169,7 @@ hr.light.full{
     line-height: 36px;
 }
 
-.navbar-brand.logo-site{
+.main-top-menu{
     position: relative;
     z-index: 1;
 }
@@ -263,4 +259,24 @@ hr.light.full{
 
 .table-has-player .player_pic{
     width: 80px;
+}
+
+/**Media queries**/
+.slicknav_btn{
+    width: 100%;
+}
+
+
+@media (min-width: 777px) {
+    .nav-main-menu{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }   
+    .jquerySlickNavContainer{
+        display: none
+    }
+}
+@media (max-width: 777px) {
+
 }

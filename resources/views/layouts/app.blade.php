@@ -21,6 +21,8 @@
         <![endif]-->
         {!! Html::style('assets-new/css/creative.css') !!}
         {!! Html::style('assets-new/css/style.css') !!}
+        {!! Html::style('assets/css/slicknav.css') !!}
+
     </head>
     <body>
         <nav class="bg-primary navbar navbar-default navbar-fixed-top">
@@ -30,7 +32,7 @@
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-top-1">
-                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                            <span class="sr-only">Toggle navigation</span> Useful Links <i class="fa fa-bars"></i>
                         </button>
                         <a class="navbar-brand page-scroll">
                             &nbsp;
@@ -74,13 +76,11 @@
             <div class="container-fluid">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                        </button>
+                    <div class="navbar-header main-top-menu">
                         <a class="navbar-brand logo-site page-scroll" href="/">
                             <img src="{{URL::to('assets-new/img/gamithon-logo1.png')}}" style="width: 250px;" />
                         </a>
+                        <div id="top-menu-res" class="jquerySlickNavContainer"></div>
                         <div class="clear clearfix"></div>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -167,6 +167,15 @@
         <!-- jQuery -->
         {!! Html::script('assets-new/vendor/jquery/jquery.min.js') !!}
         {!! Html::script('assets-new/vendor/bootstrap/js/bootstrap.min.js') !!}
+        {!! Html::script('assets/js/jquery.slicknav.min.js') !!}
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#bs-example-navbar-collapse-1').slicknav({
+                    appendTo: '#top-menu-res',
+                    label:'Main Menu'
+                });
+            });
+        </script>
         @yield('js')
         @yield('addteamjs')
     </body>

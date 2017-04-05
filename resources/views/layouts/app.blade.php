@@ -120,9 +120,9 @@
 
                         {{--</ul>--}}
                     </li>
-                    {{--@if(Auth::check())--}}
-                    {{--<li><a href="{{route('UserDashboard')}}"/>DashBoard <span class="spn">|</span></a> </li>--}}
-                    {{--@endif--}}
+                    @if(Auth::check())
+                    <li><a href="{{route('UserDashboard')}}"/>DashBoard <span class="spn">|</span></a> </li>
+                    @endif
                     {{--<li>  <a  href="#">Gallery  <span class="spn">|</span></a></li>--}}
                     {{--<li>  <a  href="#">Blog  <span class="spn">|</span></a></li>--}}
                     {{--<li>  <a  href="#">Artical  <span class="spn">|</span></a></li>--}}

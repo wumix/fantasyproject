@@ -46,6 +46,9 @@
                                     <a href="{{route('showAddPlayerForm1', ['match_id'=>$row['id']])}}" class="btn btn-danger">
                                         <i class="fa fa-times"></i>Player Score
                                     </a>
+                                    <a href="{{route('showAddMatchPlayerForm', ['match_id'=>$row['id']])}}" class="btn btn-success">
+                                        <i class="fa fa-thumbs-up"></i>Add Player To Tournamnet
+                                    </a>
 
                                 </td>
 

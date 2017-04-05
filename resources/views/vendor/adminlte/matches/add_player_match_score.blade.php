@@ -76,6 +76,7 @@
                                 @php($term_counter++)
                                 @endforeach
                             </div>
+
                             </tr>
                             @php($player_counter++)
                             <tr>

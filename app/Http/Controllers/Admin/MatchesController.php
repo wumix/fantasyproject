@@ -64,6 +64,23 @@ class MatchesController extends Controller {
         $match->save();
         return redirect()->route('editMatchForm', ['match_id' => $match_id])->with('status', 'Match Updated');
     }
+ function addMatchPlayerForm($matchid){
+     $matchTournamentPlayers=\App\Match::where('id',$matchid)->with('match_tournament.tournament_players')->firstOrFail();
+     $data['matchTournamentPlayers']=$matchTournamentPlayers->toArray();
+     //dd($data['matchTournamentPlayers']);
+     $existingMatchPlayer=\App\Match::where('id',$matchid)->with('match_players')->firstOrFail();
+     $data['existingPlayers']=$existingMatchPlayer->match_players->toArray();
+
+     return view('adminlte::matches.add_match_players',$data);
+
+ }
+ function postAddMatchPlayers($match_id,Request $request){
+     $objMatch=\App\Match::findORFail($match_id);
+     $objMatch->match_players()->sync(array_filter($request->player));
+     return redirect()->back()->with('status', 'Match player score updated.');
+
+
+ }
 
     function playerMatchScore($match_id) {
         //dd($match_id);

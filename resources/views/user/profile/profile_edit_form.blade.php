@@ -11,7 +11,8 @@
                 </h1>
                 <hr class="light full">
                 <div class="page-content col-md-12">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('postUserProfile') }}">
+                    {!! Form::open(['url' => route('postUserProfile'),'files' => true]) !!}
+                    {{--<form class="form-horizontal" role="form" method="POST" action="{{ route('postUserProfile') }}">--}}
                         {{ csrf_field() }}
 
                         <div class="form-group" id="sformbox">

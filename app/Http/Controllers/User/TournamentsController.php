@@ -36,7 +36,10 @@ class TournamentsController extends Controller {
                 ->firstOrFail()
                 ->toArray();
         $data['game_actions'] = $data['tournament']['tournament_game']['game_actions'];
-        //dd($data);
+        $data['tournament_matches']=\App\Tournament::where('id', $tournament_id)->with('tournament_matches')->firstOrFail()
+            ->toArray();
+       // dd($ko);
+
 
 
         try {
@@ -74,6 +77,7 @@ class TournamentsController extends Controller {
         if (empty($userteam)) {
             $data['team_name'] = NULL;
             $data['tournament_detail'] = \App\Tournament::where('id', $tournament_id)->firstOrFail()->toArray();
+
             return view('user.tournaments.add_user_team', $data);
         } else {
             $userteam = $userteam->toArray();

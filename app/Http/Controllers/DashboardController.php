@@ -15,7 +15,7 @@ class DashboardController extends Controller
     public function index()
     {
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->get()->toArray();
-        $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
+       // $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
         // dd($x->toArray());
         return view('user.dashboard.dashboard', $data);
 

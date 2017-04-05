@@ -29,7 +29,7 @@
                             <form id="team_submit">
                                 <input type="text" id="team_name" class="fw form-control"
                                        placeholder="Enter Your Team Name">
-                                <button id="save_button" type="submit" class="btn  btn-lg btn-block save-button">SAVE</button>
+                                <button id="save_button" type="submit" class="btn btn-green btn-lg btn-block">SAVE</button>
                             </form>
                             <br>
 

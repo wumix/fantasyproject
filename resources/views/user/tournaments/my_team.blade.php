@@ -1,25 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-heading">
-                    {{$team_name}}
-                </h1>
-                <hr class="light full">
-                <div class="page-content">
-                    <div class="row">
-                        <div class="col-md-12 no-padding">
-                            <div class="col-md-6">
-                                <img src="{{getUploadsPath($tournament_detail['t_logo'])}}" class="img-thumbnail" alt="Responsive image" id="mytimg">
-                            </div>
-                            <div class="col-md-6">
-                                <input id="team_id" type="hidden" value="{{$team_id}}">
-                                {{$tournament_detail['name']}}
-=======
     <section>
         <div class="container">
             <div class="row">
@@ -39,7 +20,6 @@
                                     <input id="team_id" type="hidden" value="{{$team_id}}">
                                     {{$tournament_detail['name']}}
                                 </div>
->>>>>>> 51a2cbe4b3da14d37fe27eb440e1f85584901ba8
                             </div>
                         </div>
                         <div class="row">
@@ -162,41 +142,10 @@
     <div class='error' style='display:none'></div>
 
 @endsection
-<<<<<<< HEAD
-@section('addteamjs')
-{{--<script>--}        }
-
-
-        {{--$("#team_submit").submit(function (event        ) {--}}
-        {{--event.preventDefault        ();--}}
-        {{--var teamName = $("#team_name").va        l()--}}
-        {{--var tournamentId =         '';--}}
-        {{--$.aja        x({--}}
-        {{--type: 'GE        T',--}}
-        {{--url: '{{route('teamNamePostAjax')}        }',--}}
-        {{--data: {tournament_id: tournamentId, name: teamNam        e},--}}
-        {{--success: function (data        ) {--}}
-        {{--if (data.status == "ok"        ) {--}}
-        {{--$("#team_name").attr('disabled', tru        e);--}}
-        {{--$("#addstatus").html("team added sucessfully        ");--}}
-        {{--$('<input type="hidden" id="team_id" value="' + data.team_id + '"/>').insertBefore("#addstatus");--}}
-        {{--}-        -}}
-        {{--else {--}}
-        {{--$("#addstatus").html("team Name Already Take        n")--}}
-        {{--}--}}        
-
-        {{--}--}}
-        {{--});--}}
-        {{--});--}}
-        {{--</script>--}}
-        <script>
-            fun    ction addplayertoteam(rolename, roleid, playerid, tournamentid, player_price) {
-=======
 @section('js')
 
     <script>
         function addplayertoteam(rolename, roleid, playerid, tournamentid, player_price) {
->>>>>>> 51a2cbe4b3da14d37fe27eb440e1f85584901ba8
 
             var arr_player_id = [];
             arr_player_id.push(playerid);

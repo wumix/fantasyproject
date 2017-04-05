@@ -8,11 +8,12 @@
         <div class="header-content-inner bg-primary col-md-5">
             <div class="row">
                 <div class="col-md-12 no-padding">
+
                     <h2>
-                        Next Match
+                        {{$tournaments_list[0]['name']}}
                     </h2>
                     <h3>
-                        {{$tournaments_list[0]['name']}}
+                        Next Match
                     </h3>
                     <h4>
                         {{$matches[0]['team_one']}}

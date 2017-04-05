@@ -104,6 +104,8 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/edit/{match_id}', 'Admin\MatchesController@postEditMatch')->name('editMatch');
             Route::get('/addplayers/{match_id}', 'Admin\MatchesController@playerMatchScore')->name('showAddPlayerForm1');
             Route::post('/addscores/{match_id}', 'Admin\MatchesController@postAddMatchScore')->name('postAddMatchScore');
+            Route::get('/add-match-players/{match_id}', 'Admin\MatchesController@addMatchPlayerForm')->name('showAddMatchPlayerForm');
+            Route::post('/add-match-players/{match_id}', 'Admin\MatchesController@postAddMatchPlayers')->name('postAddMatchPlayers');
         });
         //User routes
         Route::group(['prefix' => 'user'], function () {

@@ -19,5 +19,8 @@ class Match extends Model {
     public function player_scores() {
         return $this->hasMany('App\MatchPlayerScore');
     }
+    public function match_players(){
+        return $this->belongsToMany('App\Player', 'player_matches', 'player_id', 'match_id');
+    }
 
 }

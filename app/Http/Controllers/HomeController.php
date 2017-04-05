@@ -43,8 +43,7 @@ class HomeController extends Controller
 
         $objTourmament = \App\Tournament::all()->sortBy("start_date");;
         $data['tournaments_list'] = $objTourmament->toArray();
-
-        // dd($data['tournaments_list']);
+        //dd($data['tournaments_list']);
 
         return view('home', $data);
     }

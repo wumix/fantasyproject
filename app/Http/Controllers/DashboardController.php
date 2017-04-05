@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\UserTeam;
 
 class DashboardController extends Controller
 {
@@ -10,8 +11,12 @@ class DashboardController extends Controller
     {
         // $this->middleware('auth');
     }
-    public function index() {
 
-        return view('user.dashboard.dashboard');
+    public function index()
+    {
+        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->get()->toArray();
+        
+        return view('user.dashboard.dashboard',$data);
+
     }
 }

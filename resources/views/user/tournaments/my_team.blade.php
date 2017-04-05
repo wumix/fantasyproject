@@ -14,7 +14,7 @@
 
             <h3 class="slh">{{$team_name}}</h3>
             <hr class="signupline">
-            <img src="{{getUploadsPath($tournament_detail['t_logo'])}}" class="img-fluid" alt="Responsive image"
+            <img src="{{getUploadsPath($tournament_detail['t_logo'])}}" class="img-tournam" alt="Responsive image"
                  id="mytimg">
             <input id="team_id" type="hidden" value="{{$team_id}}">
             <h3 class="tnt">{{$tournament_detail['name']}}</h3>
@@ -123,7 +123,7 @@
     <br>
     <br>
     <section>
-
+<div id="error" class="hidden"></div>
         <div class="container">
             <span id="your_points">  Your Points: {{getUserTotalScore(Auth::id())}}</span>
 

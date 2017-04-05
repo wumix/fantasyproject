@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-md-12 no-padding">
                             <div class="col-md-6">
-                                <img src="{{getUploadsPath($tournament_detail['t_logo'])}}" class="img-fluid" alt="Responsive image" id="mytimg">
+                                <img src="{{getUploadsPath($tournament_detail['t_logo'])}}" class="img-thumbnail" alt="Responsive image" id="mytimg">
                             </div>
                             <div class="col-md-6">
                                 <input id="team_id" type="hidden" value="{{$team_id}}">
@@ -156,12 +156,12 @@
         {{--}-        -}}
         {{--else {--}}
         {{--$("#addstatus").html("team Name Already Take        n")--}}
-      {{--}--}}
+        {{--}--}}        
 
-          {{--}--}}
+        {{--}--}}
         {{--});--}}
         {{--});--}}
-              {{--</script>--}}
+        {{--</script>--}}
         <script>
             fun    ction addplayertoteam(rolename, roleid, playerid, tournamentid, player_price) {
 

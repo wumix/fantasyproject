@@ -37,13 +37,10 @@
                     <p>By using this Site, you signify your acceptance of this policy. If you do not agree to this policy, please do not use our Site</p>
                     <h2>Contacting us</h2>
                     <p>If you have any questions about our Privacy Policy, the practices of this site, or your dealings with this site, please contact us at: info@gamithonfantasy.com</p>
-                    <p>GAMITHON FANTASY</p>
-                    <p>&nbsp;</p>
-                    <p>&nbsp;</p>
-                    <p>&nbsp;</p>
-                    <p>&nbsp;</p>
-                    <p>&nbsp;</p>
-                    <p>.</p>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <p>GAMITHON FANTASY.</p>
                 </div>
             </div>
         </div>

@@ -37,8 +37,8 @@
                                     @foreach($tournament_detail['tournament_players'] as $player)
                                     <tr class="cwt">
                                         <td class="border-r">
-                                            <span class="text-left"><img id="timg" class="img-circle" src="{{ getUploadsPath($player['profile_pic']) }}"></span>
-                                            <span class="text-right">{{$player['name']}}</span>
+                                            <span class="text-left"><img id="timg" class="img-thumbnail" src="{{ getUploadsPath($player['profile_pic']) }}"></span>
+                                            <span class="text-right" style="margin-left: 10px;">{{$player['name']}}</span>
                                         </td>
                                         <td class="border-r">Batsman</td>
                                         <td class="brr">{{$player['pivot']['player_price']}}</td>

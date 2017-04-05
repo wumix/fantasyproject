@@ -78,7 +78,7 @@
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                             <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                         </button>
-                        <a class="navbar-brand page-scroll" href="#page-top">
+                        <a class="navbar-brand logo-site page-scroll" href="/">
                             <img src="{{URL::to('assets-new/img/gamithon-logo1.png')}}" style="width: 250px;" />
                         </a>
                         <div class="clear clearfix"></div>

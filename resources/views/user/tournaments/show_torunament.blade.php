@@ -59,70 +59,52 @@
                             <div class="panel with-nav-tabs panel">
                                 <div class="panel-heading">
                                     <ul class="nav nav-tabs">
-                                        @foreach($tournament['tournament_game']['game_actions'] as $key=>$row)
-                                        <li id="tbbox" class="{!! ($key == 0) ? 'active':'' !!}">
-                                            <a id="tabt" href="#tab{{$row['id']}}default"
-                                               data-toggle="tab">{{$row['name']}}</a>
+                                        @foreach($game_actions as $key => $val)
+                                        <li class="{!! ($key == 0) ? 'active':'' !!}">
+                                            <a href="#action-{{$val['id']}}" data-toggle="tab">
+                                                {{$val['name']}}
+                                            </a>
                                         </li>
                                         @endforeach
                                     </ul>
                                 </div>
                                 <div class="panel-body">
                                     <div class="tab-content">
-
-                                        @foreach($tournament['tournament_game']['game_actions'] as $key=>$row)
-
-                                        <div class="tab-pane fade {!! ($key == 0) ? 'in active':'' !!}"
-                                             id="tab{{$row['id']}}default">
+                                        @foreach($game_actions as $key => $val)
+                                        <div class="tab-pane {!! ($key == 0) ? 'active':'' !!}" id="action-{{$val['id']}}">
                                             <div class="table-responsive col-md-12">
-                                                <table class="table " id="tortable">
+                                                <table class="table table-striped table-bordered">
                                                     <thead>
                                                         <tr>
-
-
                                                             <th>Rule</th>
-
-
                                                             <th>Points</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @php
-                                                        $test=[];
-                                                        foreach($row['game_terms']  as $krow ){
-                                                        foreach($tournament['game_term_points']  as $row ){
-                                                        if($row['game_term_id']==$krow['id']){
-                                                        $test[]=$row;
-                                                        }
-
-
-                                                        }
-                                                        @endphp
-                                                        @foreach($test as $z)
+                                                        @foreach($val['game_terms'] as $key => $val)
+                                                        <?php
+                                                        $termFromToPoints = tapArray($tournament['game_term_points'], ['game_term_id' => $val['id']], false);
+                                                        ?>
+                                                        @foreach($termFromToPoints as $termPointIndex => $termPointVal)
                                                         <tr  class="cwt">
-
-                                                            <td>{{$krow['name']}}
-                                                                {{$z['qty_from']}} to {{$z['qty_to']}}
+                                                            <td>
+                                                                @php($fromToText = ': '.$termPointVal['qty_from'].' - '.str_replace('99999999', 'Above', $termPointVal['qty_to']))
+                                                                @if($termPointVal['qty_from']-$termPointVal['qty_to'] == 0)
+                                                                    @php($fromToText = '')
+                                                                @endif
+                                                                {{$val['name']}} {{$fromToText}}
                                                             </td>
-
-
-
-                                                            <td>{{$z['points']}}
+                                                            <td>
+                                                                {{$termPointVal['points']}}
                                                             </td>
-
-
-
                                                         </tr>
                                                         @endforeach
-                                                        @php
-                                                        }
-                                                        @endphp
-
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
-                                        @endforeach
+                                        @endforeach<!--Game actions outer loop-->
                                     </div>
                                 </div>
                             </div>

@@ -11,7 +11,11 @@
 
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Match Name:{{$matchTournamentPlayers['name']}} <br> Tournament Name:{{$matchTournamentPlayers['match_tournament']['name']}}   </h3>
+                    <h3 class="box-title">
+                        Add player to match: <small>{{$matchTournamentPlayers['name']}}</small>
+                        <br> 
+                        Tournament Name: <small>{{$matchTournamentPlayers['match_tournament']['name']}}</small>
+                    </h3>
                 </div>
                 <div class="box-body">
                     {!! Form::open(['url' => route('postAddMatchPlayers',['match_id'=>$matchTournamentPlayers['match_tournament']['id']]),'files' => true])
@@ -24,29 +28,28 @@
                                 <th>Player</th>
 
                             </tr>
-                         @foreach($matchTournamentPlayers['match_tournament']['tournament_players'] as $key=>$val)
+                            @foreach($matchTournamentPlayers['match_tournament']['tournament_players'] as $key=>$val)
                             <tr>
                                 <td>
-                                <div class="form-group">
+                                    <div class="form-group">
 
-                                    <input
+                                        <input
                                         <?php
-                                        foreach ($existingPlayers as $row){
-                                        echo (in_array($val['id'],$row)) ? 'checked' : '';
-                                                }
-
+                                        foreach ($existingPlayers as $row) {
+                                            echo (in_array($val['id'], $row)) ? 'checked' : '';
+                                        }
                                         ?>
                                             type="checkbox"
-                                           name="player[]" value="{{$val['id']}}">
+                                            name="player[]" value="{{$val['id']}}">
 
 
 
-                                </div>
+                                    </div>
 
 
                                 </td>
                                 <td>
-                                  {{$val['name']}}
+                                    {{$val['name']}}
                                 </td>
 
                             </tr>

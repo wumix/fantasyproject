@@ -46,9 +46,9 @@
                                     <a href="{{route('showAddMatchPlayerForm', ['match_id'=>$row['id']])}}" class="btn btn-success">
                                         Add Players
                                     </a>
-<!--                                    <a href="#" class="btn btn-danger">
-                                        <i class="fa fa-times"></i> Delete
-                                    </a>-->
+                                    <!--                                    <a href="#" class="btn btn-danger">
+                                                                            <i class="fa fa-times"></i> Delete
+                                                                        </a>-->
                                 </td>
 
 

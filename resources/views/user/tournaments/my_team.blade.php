@@ -51,8 +51,11 @@
                                         @endforeach
                                         <td>
 
-                                            <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"
-                                               class="btn btn-md bttor1">TRANSFER</a>
+                                            <!--                                            <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"
+                                                                                           class="btn btn-md bttor1">TRANSFER
+                                                                                        </a>-->
+                                            <a href="javascipt:alert('Player transfer is disabled by the end of today\'s match!')" class="btn btn-md bttor1 disabled">Transfer
+                                            </a>
                                         </td>
 
                                     </tr>
@@ -177,11 +180,12 @@
             t += '<td class="border-r1 text-left"><img id="myteamtimg" class="img-thumbnail" style="width: 80px"  src="' + obj.profile_pic + ' "><span class="selected-player-name">' + obj.name + '</span> </td>';
             t += '<td class="border-r1"><p class="myteamtt"></p> ' + obj.role_name + '</span></td>';
             t += '<td class="border-r1"><p class="myteamtt"></p>' + obj.price + '</td>';
-            var url = '{{ route("transferplayer", ["team_id"=>"id","player_id"=>'pid',"tournament_id"=>'tid']) }}';
+            //var url = '{{ route("transferplayer", ["team_id"=>"id","player_id"=>'pid',"tournament_id"=>'tid']) }}';
+            var url = '#';
             url = url.replace('pid', obj.id);
             url = url.replace('id', obj.team_id);
             url = url.replace('tid', obj.tournament_id);
-            t += '<td><a href="' + url + '" id="" class="btn btn-md bttor1">TRANSFER</a></td >';
+            t += '<td><a href="' + url + '" id="" class="btn disabled btn-md bttor1">TRANSFER</a></td >';
             t += '</tr>';
             $('#selected-player').append(t);
             t = "";

@@ -35,6 +35,63 @@
                             If you win you will be surprised with the Prize - <a href="{{route('TermsCon')}}">Terms &amp; Conditions</a> Apply
                         </li>
                     </ol>
+                    <div class="col-md-12">
+                        <h3 class="text-center">Score rules</h3>
+                        <div class="table-responsive">
+                            <div class="panel with-nav-tabs panel">
+                                <div class="panel-heading">
+                                    <ul class="nav nav-tabs">
+                                        @foreach($game_actions as $key => $val)
+                                        <li class="{!! ($key == 0) ? 'active':'' !!}">
+                                            <a href="#action-{{$val['id']}}" data-toggle="tab">
+                                                {{$val['name']}}
+                                            </a>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="tab-content">
+                                        @foreach($game_actions as $key => $val)
+                                        <div class="tab-pane {!! ($key == 0) ? 'active':'' !!}" id="action-{{$val['id']}}">
+                                            <div class="table-responsive col-md-12">
+                                                <table class="table table-striped table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Rule</th>
+                                                            <th>Points</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach($val['game_terms'] as $key => $val)
+                                                        <?php
+                                                        $termFromToPoints = tapArray($tournament['game_term_points'], ['game_term_id' => $val['id']], false);
+                                                        ?>
+                                                        @foreach($termFromToPoints as $termPointIndex => $termPointVal)
+                                                        <tr  class="cwt">
+                                                            <td>
+                                                                @php($fromToText = ': '.$termPointVal['qty_from'].' - '.str_replace('99999999', 'Above', $termPointVal['qty_to']))
+                                                                @if($termPointVal['qty_from']-$termPointVal['qty_to'] == 0)
+                                                                @php($fromToText = '')
+                                                                @endif
+                                                                {{$val['name']}} {{$fromToText}}
+                                                            </td>
+                                                            <td>
+                                                                {{$termPointVal['points']}}
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        @endforeach<!--Game actions outer loop-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

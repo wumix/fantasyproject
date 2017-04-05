@@ -37,8 +37,6 @@ class TournamentsController extends Controller {
                 ->toArray();
         $data['game_actions'] = $data['tournament']['tournament_game']['game_actions'];
         //dd($data);
-
-
         try {
             $data['players_in_tournament'] = [];
             $data['tournament_detail'] = \App\Tournament::where('id', $tournament_id)

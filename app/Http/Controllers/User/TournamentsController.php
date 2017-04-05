@@ -21,19 +21,21 @@ class TournamentsController extends Controller {
     function __construct() {
         $this->objTourmament = new \App\Tournament;
     }
-   function index(){
-       $objTourmament = \App\Tournament::all()->sortBy("start_date");;
-       $data['tournaments_list'] = $objTourmament->toArray();
-      // dd( $data['tournaments_list']);
+
+    function index() {
+        $objTourmament = \App\Tournament::all()->sortBy("start_date");
+        ;
+        $data['tournaments_list'] = $objTourmament->toArray();
+        // dd( $data['tournaments_list']);
         return view('user.tournaments.home', $data);
-   }
+    }
+
     function showTournamentDetails($tournament_id) {
         $data['tournament'] = \App\Tournament::where('id', $tournament_id)
-
-            ->with('tournament_game.game_actions.game_terms', 'game_term_points')
-            ->firstOrFail()
-            ->toArray();
-      //  dd($data);
+                ->with('tournament_game.game_actions.game_terms', 'game_term_points')
+                ->firstOrFail()
+                ->toArray();
+        //  dd($data);
 
 
         try {
@@ -354,7 +356,7 @@ class TournamentsController extends Controller {
         $objResponse = [];
         $objResponse['success'] = false;
         if ($tournamentMaxPlayers > $currentNoPlayers) {
-            if ($difference > 15) {
+            if ($difference > 15 || $difference < 15) {
                 if ($request->player_price < getUserTotalScore(Auth::id())) {
                     if ($this->giveanygoodname(Auth::id(), $request->team_id, $request->role_id) < $this->playerRoleLimit($request->tournament_id, $request->role_id)) {
 

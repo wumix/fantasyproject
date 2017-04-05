@@ -32,8 +32,10 @@
                                     <span id="fbg" class="input-group-addon">
                                         <i id="lgfico" class="fa fa-user fa-lg" aria-hidden="true"></i>
                                     </span>
-                                    <input id="fullname" type="text" class="form-control" name="name" placeholder="{{$userprofileinfo['name']}}"
-                                           autofocus>
+                                    <input value="{{$userprofileinfo['name']}}" id="fullname" 
+                                           type="text" 
+                                           class="form-control" name="name" placeholder="{{$userprofileinfo['name']}}"
+                                           >
                                 </div>
 
                                 @if ($errors->has('name'))
@@ -51,7 +53,7 @@
                                 <div class="input-group">
                                     <span id="fbg" class="input-group-addon"><i id="lgfico" class="fa fa-envelope fa-lg"
                                                                                 aria-hidden="true"></i></span>
-                                    <input id="email" type="email" class="form-control" name="email" placeholder="{{$userprofileinfo['email']}}" />
+                                    <input disabled value="{{Auth::user()->email}}" type="email" class="form-control"placeholder="{{$userprofileinfo['email']}}" />
                                 </div>
 
                                 @if ($errors->has('email'))
@@ -72,14 +74,11 @@
                                     <span id="fbg" class="input-group-addon"><i id="lgfico" class="fa fa-key fa-lg"
                                                                                 aria-hidden="true"></i></span>
                                     <input id="password" type="password" class="form-control" placeholder="Password"
-                                           name="old-password">
+                                           name="password">
                                 </div>
-
-                                @if ($errors->has('password'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('password') }}</strong>
+                                    Enter your password if you want to change yuor current password.
                                 </span>
-                                @endif
 
                             </div>
                         </div>
@@ -95,7 +94,7 @@
                                     <span id="fbg" class="input-group-addon"><i id="lgfico" class="fa fa-key fa-lg"
                                                                                 aria-hidden="true"></i></span>
                                     <input id="retypepassword" type="password" class="form-control"
-                                           placeholder="Retype Password" name="password_new">
+                                           placeholder="Retype Password" name="password_confirmation">
                                 </div>
                             </div>
                         </div>

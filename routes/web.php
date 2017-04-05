@@ -38,9 +38,6 @@ Route::group(['middleware' => ['web']], function () {
         Route::group(['prefix' => 'user'], function() {
             Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
             Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('postUserProfile');
-            Route::get('profile-user', function () {
-                return view('pages.page-to-design');
-            });
         });
         Route::group(['prefix' => 'tournaments'], function () {
             Route::get('/addteamname/{tournament_id}', 'User\TournamentsController@addTeam')->name('addTeam');

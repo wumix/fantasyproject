@@ -54,7 +54,7 @@
                             @endif
                             @if(Auth::check())
                             <li>
-                                <a href="{{URL::to('profile-user')}}">
+                                <a href="{{route('userProfileEdit')}}">
                                     {{Auth::user()->name}}
                                 </a>
                             </li>
@@ -104,9 +104,9 @@
                                     Start playing
                                 </a>
                             </li>
-<!--                            <li>
-                                <a class="page-scroll" href="{{route('UserDashboard')}}">DashBoard</a>
-                            </li>-->
+                            <!--                            <li>
+                                                            <a class="page-scroll" href="{{route('UserDashboard')}}">DashBoard</a>
+                                                        </li>-->
                             <li>
                                 <a class="page-scroll" href="{{route('contactPage')}}">Contact Us</a>
                             </li>

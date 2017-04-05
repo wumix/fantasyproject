@@ -256,3 +256,11 @@ hr.light.full{
     -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
     box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
 }
+
+.mlr10{
+    margin: 0 10px;
+}
+
+.table-has-player .player_pic{
+    width: 80px;
+}

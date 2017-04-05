@@ -8,12 +8,19 @@
         <div class="header-content-inner bg-primary col-md-5">
             <div class="row">
                 <div class="col-md-12 no-padding">
-                    <h2 id="homeHeading">
-                        Current Tournament
+                    <h2>
+                        Next Match
                     </h2>
                     <h3>
                         {{$tournaments_list[0]['name']}}
                     </h3>
+                    <h4>
+                        {{$matches[0]['team_one']}}
+                        <strong class="mlr10 Bold">
+                            <em>Vs</em>
+                        </strong>
+                        {{$matches[0]['team_two']}}
+                    </h4>
                 </div>
             </div>
             <div class="row">
@@ -147,17 +154,18 @@
 @section('js')
 {!! Html::script('assets/jquery.countdown-2.2.0/jquery.countdown.min.js') !!}
 @php($date= '00-00-00 00:00:00')    
-@if(!empty($tournaments_list[0]['start_date']))
-@php($date= $tournaments_list[0]['start_date']);    
+@if(!empty($matches[0]['start_date']))
+@php($date= $matches[0]['start_date']);    
 @endif
 {{Html::script('js/moment.js')}}
 <script type="text/javascript">
     var dateObj = new Date();
     var userTimeZone = dateObj.getTimezoneOffset();
-    console.log(userTimeZone);
     //Time zone is in negatinv i.e. forward from GMT
     userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : Math.abs(userTimeZone) * -1;
     var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
+    console.log(tournamentDateTime);
+
     $("#getting-started").countdown(tournamentDateTime, function (event) {
         $(this).text(
                 event.strftime('%D')

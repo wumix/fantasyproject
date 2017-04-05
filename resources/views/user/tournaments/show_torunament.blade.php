@@ -20,94 +20,73 @@
                             points
                         </a>
                     </div>
-               <!-- my code -->
-
                     <div class="col-md-12">
-                        <h3 class="text-center">Score rules</h3>
+                        <h3 class="text-center">Tournament players</h3>
                         <div class="table-responsive">
                             <div class="panel with-nav-tabs panel">
                                 <div class="panel-heading">
                                     <ul class="nav nav-tabs">
-                                        @foreach($game_actions as $key => $val)
-                                            <li class="{!! ($key == 0) ? 'active':'' !!}">
-                                                <a href="#action-{{$val['id']}}" data-toggle="tab">
-                                                    {{$val['name']}}
-                                                </a>
-                                            </li>
+                                        @foreach($game_roles as $key => $val)
+
+                                        @if(!$role_id)
+                                        <li class="active">
+                                            <a href="{{route('showTournament', ['tournament_id'=>$tournament['id']])}}?role-id={{$val['id']}}" data-toggle="link">
+                                                {{$val['name']}}
+                                            </a>
+                                        </li>
+                                        @else
+                                        <li class="{!! ($role_id == $val['id']) ? 'active':'' !!}">
+                                            <a href="{{route('showTournament', ['tournament_id'=>$tournament['id']])}}?role-id={{$val['id']}}" data-toggle="link">
+                                                {{$val['name']}}
+                                            </a>
+                                        </li>
+                                        @endif
+
+                                        <!--
+                                        Tabs with fadeawa
+                                        <li class="{!! ($key == 0) ? 'active':'' !!}">
+                                                                                    <a href="#action-{{$val['id']}}" data-toggle="tab">
+                                                                                        {{$val['name']}}
+                                                                                    </a>
+                                                                                </li>-->
                                         @endforeach
                                     </ul>
                                 </div>
                                 <div class="panel-body">
                                     <div class="tab-content">
-                                        @foreach($game_actions as $key => $val)
-                                            <div class="tab-pane {!! ($key == 0) ? 'active':'' !!}" id="action-{{$val['id']}}">
-                                                <div class="table-responsive col-md-12">
-                                                    <table class="table table-striped table-bordered">
-                                                        <thead>
+                                        <div class="tab-pane active">
+                                            <div class="table-responsive col-md-12">
+                                                <table class="table table-striped table-bordered">
+                                                    <thead>
                                                         <tr>
-                                                            <th>Rule</th>
-                                                            <th>Points</th>
+                                                            <th>Player</th>
+                                                            <th>Points to buy</th>
                                                         </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        @foreach($val['game_terms'] as $key => $val)
-                                                            <?php
-                                                            $termFromToPoints = tapArray($game_roles['game_term_points'], ['game_term_id' => $val['id']], false);
-                                                            ?>
-                                                            @foreach($termFromToPoints as $termPointIndex => $termPointVal)
-                                                                <tr  class="cwt">
-                                                                    <td>
-                                                                        @php($fromToText = ': '.$termPointVal['qty_from'].' - '.str_replace('99999999', 'Above', $termPointVal['qty_to']))
-                                                                        @if($termPointVal['qty_from']-$termPointVal['qty_to'] == 0)
-                                                                            @php($fromToText = '')
-                                                                        @endif
-                                                                        {{$val['name']}} {{$fromToText}}
-                                                                    </td>
-                                                                    <td>
-                                                                        {{$termPointVal['points']}}
-                                                                    </td>
-                                                                </tr>
-                                                            @endforeach
+                                                    </thead>
+                                                    <tbody class="table-has-player">
+                                                        @php($role_players = tapArray($game_roles, ['id' => $role_id]))
+                                                        @if(!empty($role_players['players']))
+                                                        @foreach($role_players['players'] as $key => $player)
+                                                        <tr  class="cwt">
+                                                            <td class="text-left">
+                                                                <img src="{{getUploadsPath($player['profile_pic'])}}" class="player_pic img-thumbnail" />
+                                                                {{$player['name']}}
+                                                            </td>
+                                                            <td>
+                                                                {{$player['player_tournaments'][0]['pivot']['player_price']}}
+                                                            </td>
+                                                        </tr>
                                                         @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                        @endif
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                    @endforeach<!--Game actions outer loop-->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- ned my code -->
-
-                    {{--<div class="col-md-12 mt26">--}}
-                        {{--<div class="table-responsive">--}}
-                            {{--<table class="table table-striped" id="tortable">--}}
-                                {{--<thead class="main-taible-head">--}}
-                                    {{--<tr>--}}
-                                        {{--<th class="border-r th1">PLAYER</th>--}}
-                                        {{--<th class="border-r">PLAYER ROLE</th>--}}
-                                        {{--<th class="th2">POINTS NEEDED TO BUY</th>--}}
-                                    {{--</tr>--}}
-                                {{--</thead>--}}
-                                {{--<tbody class="main-taible-body">--}}
-
-                                    {{--@foreach($tournament_detail['tournament_players'] as $player)--}}
-                                    {{--<tr class="cwt">--}}
-                                        {{--<td class="border-r text-left">--}}
-                                            {{--<span class="text-left"><img id="timg" class="img-thumbnail" src="{{ getUploadsPath($player['profile_pic']) }}"></span>--}}
-                                            {{--<span class="text-right" style="margin-left: 10px;">{{$player['name']}}</span>--}}
-                                        {{--</td>--}}
-                                        {{--<td class="border-r">Batsman</td>--}}
-                                        {{--<td class="brr">{{$player['pivot']['player_price']}}</td>--}}
-                                    {{--</tr>--}}
-                                    {{--@endforeach--}}
-                                {{--</tbody>--}}
-                            {{--</table>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-md-12 no-padding">
                     <h2 id="homeHeading">
-                        Upcoming Tournaments
+                        Current Tournament
                     </h2>
                     <h3>
                         {{$tournaments_list[0]['name']}}

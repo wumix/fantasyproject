@@ -177,3 +177,17 @@ hr.light.full{
     position: relative;
     z-index: 1;
 }
+
+.btn-fb-login{
+    background: #425aa4;
+    color: #fff;
+}
+
+.mt26{
+    margin-top: 26px;
+}
+
+.form-container{
+    max-width: 800px;
+    margin: 0 auto;
+}

@@ -40,16 +40,15 @@
                                     <a href="{{route('editMatchForm', ['match_id'=>$row['id']])}}" class="btn btn-warning">
                                         <i class="fa fa-pencil"></i> Edit
                                     </a>      
-                                    <a href="#" class="btn btn-danger">
-                                        <i class="fa fa-times"></i> Delete
-                                    </a>
-                                    <a href="{{route('showAddPlayerForm1', ['match_id'=>$row['id']])}}" class="btn btn-danger">
+                                    <a href="{{route('showAddPlayerForm1', ['match_id'=>$row['id']])}}" class="btn btn-primary">
                                         <i class="fa fa-times"></i>Player Score
                                     </a>
                                     <a href="{{route('showAddMatchPlayerForm', ['match_id'=>$row['id']])}}" class="btn btn-success">
-                                        <i class="fa fa-thumbs-up"></i>Add Player To Tournamnet
+                                        Add Players
                                     </a>
-
+<!--                                    <a href="#" class="btn btn-danger">
+                                        <i class="fa fa-times"></i> Delete
+                                    </a>-->
                                 </td>
 
 

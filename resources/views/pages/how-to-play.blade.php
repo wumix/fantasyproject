@@ -70,7 +70,10 @@
                                                         @foreach($termFromToPoints as $termPointIndex => $termPointVal)
                                                         <tr  class="cwt">
                                                             <td>
-                                                                @php($fromToText = ': '.$termPointVal['qty_from'].' - '. ($termPointVal['qty_to'] > 999) ? 'Above':$termPointVal['qty_to']))
+                                                                <?php 
+                                                                $qtyToTxt = ($termPointVal['qty_to'] > 999) ? 'Above':$termPointVal['qty_to'];
+                                                                ?>
+                                                                @php($fromToText = ': '.$termPointVal['qty_from'].' - '.$qtyToTxt)
                                                                 @if($termPointVal['qty_from']-$termPointVal['qty_to'] == 0)
                                                                 @php($fromToText = '')
                                                                 @endif

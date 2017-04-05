@@ -21,13 +21,13 @@
                         </a>
                     </div>
 
-                    
+
                     <div class="col-md-12 mt26">
                         <div class="table-responsive">
                             <table class="table table-striped" id="tortable">
                                 <thead class="main-taible-head">
                                     <tr>
-                                        <th class="border-r th1">PLAYER NAME</th>
+                                        <th class="border-r th1">PLAYER</th>
                                         <th class="border-r">PLAYER ROLE</th>
                                         <th class="th2">POINTS NEEDED TO BUY</th>
                                     </tr>
@@ -36,8 +36,9 @@
 
                                     @foreach($tournament_detail['tournament_players'] as $player)
                                     <tr class="cwt">
-                                        <td class="border-r"><img id="timg" class="img-circle"
-                                                                  src="{{ getUploadsPath($player['profile_pic']) }}"> {{$player['name']}}
+                                        <td class="border-r">
+                                            <span class="text-left"><img id="timg" class="img-circle" src="{{ getUploadsPath($player['profile_pic']) }}"></span>
+                                            <span class="text-right">{{$player['name']}}</span>
                                         </td>
                                         <td class="border-r">Batsman</td>
                                         <td class="brr">{{$player['pivot']['player_price']}}</td>
@@ -51,7 +52,7 @@
 
 
 
-                    
+
                     <div class="col-md-12">
                         <h3 class="text-center">Score rules</h3>
                         <div class="table-responsive">

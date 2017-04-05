@@ -20,14 +20,15 @@
                             points
                         </a>
                     </div>
-                    <div class="row">
-                    <div class="table-responsive">
+
+                    
+                    <div class="col-md-12 mt26">
+                        <div class="table-responsive">
                             <table class="table table-striped" id="tortable">
                                 <thead class="main-taible-head">
                                     <tr>
                                         <th class="border-r th1">PLAYER NAME</th>
                                         <th class="border-r">PLAYER ROLE</th>
-
                                         <th class="th2">POINTS NEEDED TO BUY</th>
                                     </tr>
                                 </thead>
@@ -43,12 +44,16 @@
 
                                     </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
+                        </div>
                     </div>
-                    </div>
-                    <div class="row">
+
+
+
+                    
+                    <div class="col-md-12">
+                        
                         <div class="table-responsive">
                             <div class="panel with-nav-tabs panel">
                                 <div class="panel-heading">

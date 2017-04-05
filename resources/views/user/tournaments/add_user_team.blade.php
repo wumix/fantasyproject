@@ -16,7 +16,7 @@
                 <hr class="light full">
                 <div class="page-content">
                     <div class=" col-md-6">
-                        <img src="{{getUploadsPath($tournament_detail['t_logo'])}}" class="img-fluid" alt="Responsive image" />
+                        <img style="width: 200px;" src="{{getUploadsPath($tournament_detail['t_logo'])}}" class="img-thumbnail" alt="Responsive image" />
                     </div>
                     <div class="col-md-6">
                         <h3>{{$tournament_detail['name']}}</h3>

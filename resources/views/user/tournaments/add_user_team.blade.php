@@ -24,16 +24,12 @@
                         <h4 class="tnt1">Tournament Cost:<span class="tnt2">{{$tournament_detail['tournament_price']}}</span></h4>
                         <br>
                         <h4 class="tnt1">Current Points:<span class="tnt2">{{getUserTotalScore(Auth::id())}}</span></h4>
-                        <div class="col-md-5 mt26">
-
+                        <div class="col-md-5">
                             <form id="team_submit">
                                 <input type="text" id="team_name" class="fw form-control"
                                        placeholder="Enter Your Team Name">
-                                <button id="save_button" type="submit" class="btn btn-green btn-lg btn-block">SAVE</button>
+                                <button id="save_button" type="submit" class="btn btn-green btn-lg btn-block mt26">SAVE</button>
                             </form>
-                            <br>
-
-
                         </div>
 
                     </div>

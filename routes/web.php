@@ -35,11 +35,12 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/tournament-detail/{tournament_id}', 'User\TournamentsController@showTournamentDetails')->name('showTournament');
 
     Route::group(['middleware' => ['is_user']], function () {
-        Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
-        Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('userProfileEdit');
-
-        Route::get('profile-user', function () {
-            return view('pages.page-to-design');
+        Route::group(['prefix' => 'user'], function() {
+            Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
+            Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('postUserProfile');
+            Route::get('profile-user', function () {
+                return view('pages.page-to-design');
+            });
         });
         Route::group(['prefix' => 'tournaments'], function () {
             Route::get('/addteamname/{tournament_id}', 'User\TournamentsController@addTeam')->name('addTeam');

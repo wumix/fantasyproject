@@ -58,5 +58,9 @@ function deleteFile($disk, $file) {
 }
 
 function getUploadsPath($fileName = NULL) {
-    return Illuminate\Support\Facades\URL::to('uploads/' . $fileName);
+    $image = Illuminate\Support\Facades\URL::to('uploads/' . $fileName);
+    if (empty($fileName)) {
+        return URL::to('assets-new/img/default-profile-pic.png');
+    }
+    return $image;
 }

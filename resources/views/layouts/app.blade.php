@@ -108,6 +108,11 @@
         @yield('content')
         <!---->
         <footer>
+            <form id="logout-form" action="{{Url::to('/logout')}}" method="POST" style="display: none;">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="submit" value="logout" style="display: none;">
+            </form>
+
             <section class="bg-primary footer">
                 <div class="container">
                     <div class="row" id="final-footer">

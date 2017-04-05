@@ -159,3 +159,12 @@ hr.light.full{
     background: #92B713;
     color: #fff;
 }
+
+.table-images{
+    width: 200px;
+}
+
+.page-heading{
+    color: #F8930E;
+    text-align: center;
+}

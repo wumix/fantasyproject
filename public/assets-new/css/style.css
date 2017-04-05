@@ -1,0 +1,167 @@
+.menu-top1-1{
+    background: #92B713;
+}
+#mainNav{
+
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.navbar-brand{
+    height: auto;
+}
+.logo-menu-container{
+    position: relative;
+}
+
+.how-to-play-summery{
+    color: #fff;
+}
+
+
+.nav-main-menu li a{
+    padding-bottom: 10px;
+}
+
+
+/*Remove this from mobile*/
+.nav-main-menu{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+/**********Tables having green header********/
+.main-taible-head{
+    background-color: #92b713;
+    color: white;
+    border-radius: 8px 0 0 0 ;
+}
+.main-taible-head th{
+    text-align: center;
+
+
+}
+.border-r a{
+    color: black;
+}
+.main-taible-body{
+    text-align: center;
+}
+.table-striped{
+    background-color: #ffffff;
+}
+.th1{
+    border-radius: 8px 0 0 0 ;
+}
+.th2{
+    border-radius: 0 8px 0 0 ;
+}
+.brr1{
+    border-radius:  0 0 0 8px;
+}
+.brr{
+    border-radius:  0 0 8px 0 ;
+}
+
+.border-r{
+    border-right: 2px solid #e4e4e2;
+}
+#bgcol
+{
+    background-color: #2e312e;
+    margin-top: 50px;
+
+}
+.main-t{
+
+    min-height: 500px;
+    background-color: #2e312e;
+    padding-bottom: 50px;
+
+}
+.ah3{
+    color: #94b810;
+    text-align: center;
+    padding-top: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+}
+.trr{
+    background-color: white;
+}
+.trr1{
+    background-color: #f8f8f7;
+}
+.gen-table tr td, .gen-table tr td a{
+    color: #000;
+}
+
+
+/********Footer********/
+section.footer{
+    padding: 20px 0;
+}
+.navbar{
+    position: relative;
+    margin-bottom: 0;
+}
+
+.page-heading{
+    text-align: left;
+    margin-top: 0;
+}
+
+hr.light.full{
+    width: 100%;
+}
+
+
+
+
+
+
+/*************/
+.circle {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    font-size: 50px;
+    color: #92B713;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+}
+
+
+.mtb10{
+    margin: 10px 0;
+}
+
+.mt30{
+    margin-top: 30px;
+}
+
+.nav-main-menu a{
+    color: #fff !important;
+}
+
+
+.how-to-play-summery a{
+    text-decoration: none;
+    color: #fff;
+}
+.how-to-play-summery a .fa{
+    color: #fff;
+}
+.how-to-play-summery a p{
+    margin-top: 20px;
+    color: #fff;
+}
+.how-to-play-summery a:hover{
+    color: #92B713 !important
+}
+
+.btn-green{
+    background: #92B713;
+    color: #fff;
+}

@@ -136,5 +136,6 @@
         {!! Html::script('assets-new/vendor/jquery/jquery.min.js') !!}
         {!! Html::script('assets-new/vendor/bootstrap/js/bootstrap.min.js') !!}
         @yield('js')
+        @yield('addteamjs')
     </body>
 </html>

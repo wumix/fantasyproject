@@ -156,7 +156,7 @@
     var userTimeZone = dateObj.getTimezoneOffset();
     console.log(userTimeZone);
     //Time zone is in negatinv i.e. forward from GMT
-    userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : userTimeZone;
+    userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : Math.abs(userTimeZone) * -1;
     var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
     $("#getting-started").countdown(tournamentDateTime, function (event) {
         $(this).text(

@@ -174,7 +174,7 @@
             $('#total-score-user').html(obj.player_score);
             var t = '<tr>';
             t += '<input type=hidden" name="player_id_t" value="' + obj.id + '"/>';
-            t += '<td class="border-r1"><img id="myteamtimg" class="img-circle"  src="' + obj.profile_pic + ' "><span class="selected-player-name">' + obj.name + '</span> </td>';
+            t += '<td class="border-r1"><img id="myteamtimg" class="img-thumbnail" style="width: 80px"  src="' + obj.profile_pic + ' "><span class="selected-player-name">' + obj.name + '</span> </td>';
             t += '<td class="border-r1"><p class="myteamtt"></p> ' + obj.role_name + '</span></td>';
             t += '<td class="border-r1"><p class="myteamtt"></p>' + obj.price + '</td>';
             var url = '{{ route("transferplayer", ["team_id"=>"id","player_id"=>'pid',"tournament_id"=>'tid']) }}';

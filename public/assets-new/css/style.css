@@ -172,3 +172,8 @@ hr.light.full{
 .how-play{
     line-height: 36px;
 }
+
+.navbar-brand.logo-site{
+    position: relative;
+    z-index: 1;
+}

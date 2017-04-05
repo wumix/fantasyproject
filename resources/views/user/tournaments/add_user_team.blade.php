@@ -64,7 +64,7 @@
 
 
 @endsection
-@section('addteamjs')
+@section('js')
 <script>
     $("#team_submit").submit(function (event) {
     event.preventDefault();
@@ -99,37 +99,4 @@
     });
     });
 </script>
-{{--<script>--}}
-            {{--function addp                                layertoteam(rolename, roleid, player                                id, tournamentid) {--}}
-        {{--var arr_pl                                ayer_id = [];--}}
-        {{--arr_player_id.push(p                                layerid);--}}
-        {{--var teamid = $("#team_id").val();--}}                                
-        {{--var player_p                                rice = $("#player_price").                                html();--}}
-
-        {{--$.ajax({--}}
-        {{--type: 'POST',                                --}}
-        {{--url: '{                                {route('addUserTeamPlayerAjax')}}',--}}
-        {{--data: {--}}
-        {{--tournament_                                id: tournamentid,--}}
-        {{-                                -player_id: arr_player_id,--}}
-        {{--role_id: roleid,--}}
-        {{--role_                                name: rolename,--}}
-        {{--player_price: player_price,-                                -}}
-        {{--tea                                m_id: teamid, _token: '{{csrf_token()}}'                                --}}
-            {{--},--}}
-            {{--success: func                              tion (data) {--}}
-
-        {{--if (data.success == true) {--}}
-        {{--$('#btn-                                player-' + playerid).a                                ttr('disabled',                                true);--}}
-        {{--$('#btn-pl                                ayer-' + playe                                rid).attr('class', 'btn                              btn-danger');--}}
-
-     {{--} else {--}}
-
-        {{--}--}}
-
-        {{--}--}}
-        {{--});--}}
-        {{--}--}}
-  {{--</script>--}}
-
-       @endsection
+@endsection

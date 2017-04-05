@@ -19,16 +19,14 @@ use Validator;
  * Class HomeController
  * @package App\Http\Controllers
  */
-class HomeController extends Controller
-{
+class HomeController extends Controller {
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         // $this->middleware('auth');
     }
 
@@ -37,35 +35,31 @@ class HomeController extends Controller
      *
      * @return Response
      */
-    public function index()
-    {
+    public function index() {
 
 
-        $objTourmament = \App\Tournament::all()->sortBy("start_date");;
+        $objTourmament = \App\Tournament::all()->sortBy("start_date");
+        ;
         $data['tournaments_list'] = $objTourmament->toArray();
         //dd($data['tournaments_list']);
 
         return view('home', $data);
     }
 
-
-    public function contactPage()
-    {
+    public function contactPage() {
         return view('pages.contact');
     }
 
-    public function postContact(Request $request)
-    {
+    public function postContact(Request $request) {
         $this->validatorContact($request->all())->validate();
-        \Mail::send('emails.contact',
-            array(
-                'name' => $request->get('c_name'),
-                'email' => $request->get('c_email'),
-                'user_message' => $request->get('c_message')
-            ), function ($message) use ($request) {
-                $message->from($request->get('c_email'));
-                $message->to('umair_hamid100@yahoo.com', 'Admin')->subject('Gamithon Contact');
-            });
+        \Mail::send('emails.contact', array(
+            'name' => $request->get('c_name'),
+            'email' => $request->get('c_email'),
+            'user_message' => $request->get('c_message')
+                ), function ($message) use ($request) {
+            $message->from($request->get('c_email'));
+            $message->to('umair_hamid100@yahoo.com', 'Admin')->subject('Gamithon Contact');
+        });
 
         return \Redirect::route('contact')->with('status', 'Thanks for contacting us!');
     }
@@ -76,18 +70,21 @@ class HomeController extends Controller
      * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validatorContact(array $data)
-    {
+    protected function validatorContact(array $data) {
         return Validator::make($data, [
-            'c_name' => 'required|max:255',
-            'c_email' => 'required',
-            'c_subject' => 'required',
-            'c_message' => 'required'
+                    'c_name' => 'required|max:255',
+                    'c_email' => 'required',
+                    'c_subject' => 'required',
+                    'c_message' => 'required'
         ]);
     }
 
-    public function termsCon()
-    {
-return view('pages.t-c');
+    public function termsCon() {
+        return view('pages.t-c');
     }
+
+    public function howPlay() {
+        return view('pages.how-to-play');
+    }
+
 }

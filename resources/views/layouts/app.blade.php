@@ -94,7 +94,16 @@
                                     How to play
                                 </a>
                             </li>
-
+                            <li>
+                                <a class="page-scroll" href="{{route('usertournamenthome')}}">
+                                    Tournaments
+                                </a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="{{route('showTournament', ['tournament_id'=>1])}}">
+                                    Start playing
+                                </a>
+                            </li>
                             <li>
                                 <a class="page-scroll" href="{{route('UserDashboard')}}">DashBoard</a>
                             </li>
@@ -126,8 +135,8 @@
                         <div class="col-sm-12 col-md-4 text-center">
                             <ul class="nav navbar-nav" >
                                 <li>
-                                    <a class="page-scroll" href="{{route('TermsCon')}}">
-                                        Terms and conditions
+                                    <a class="page-scroll" href="{{route('privacyPolicy')}}">
+                                        Privacy policy
                                     </a>
                                 </li>
                                 <li>

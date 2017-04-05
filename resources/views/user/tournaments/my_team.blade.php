@@ -54,8 +54,7 @@
                                             <!--                                            <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"
                                                                                            class="btn btn-md bttor1">TRANSFER
                                                                                         </a>-->
-                                            <a href="javascipt:alert('Player transfer is disabled by the end of today\'s match!')" class="btn btn-md bttor1">Transfer
-                                            </a>
+                                            Player transfer is disabled by the end of today's match!
                                         </td>
 
                                     </tr>
@@ -185,7 +184,8 @@
                     url = url.replace('pid', obj.id);
                     url = url.replace('id', obj.team_id);
                     url = url.replace('tid', obj.tournament_id);
-                    t += '<td><a href="' + url + '" id="" class="btn disabled btn-md bttor1">TRANSFER</a></td >';
+                    //t += '<td><a href="' + url + '" id="" class="btn disabled btn-md bttor1">TRANSFER</a></td >';
+                    t += '<td>Player transfer is disabled by the end of today\'s match!</td >';
                     t += '</tr>';
                     $('#selected-player').append(t);
                     t = "";

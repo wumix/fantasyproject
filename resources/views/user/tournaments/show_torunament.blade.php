@@ -73,7 +73,7 @@
                                                                 {{$player['name']}}
                                                             </td>
                                                             <td>
-                                                                {{$player['player_tournaments'][0]['pivot']['player_price']}}
+                                                                
                                                             </td>
                                                         </tr>
                                                         @endforeach

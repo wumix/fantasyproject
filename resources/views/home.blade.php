@@ -123,7 +123,7 @@
                 <div class="service-box">
                     <a href="#">
                         <i class="fa fa-4x fa-user-plus sr-icons"></i>
-                        <p class="text-muted">SIGN UP FOR A FREE GAMITHONE ACCOUNT</p>
+                        <p class="text-muted">SIGN UP FOR A FREE GAMITHON ACCOUNT</p>
                     </a>
                 </div>
             </div>
@@ -131,7 +131,7 @@
                 <div class="service-box">
                     <a href="#">
                         <i class="fa fa-4x fa-users sr-icons"></i>
-                        <p class="text-muted">CHOOSE A LEAGUE FREE GAMITHONE ACCOUNT</p>
+                        <p class="text-muted">CHOOSE A LEAGUE FREE GAMITHON ACCOUNT</p>
                     </a>
                 </div>
             </div>

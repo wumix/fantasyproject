@@ -13,7 +13,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">
                         Add player to match: <small>{{$matchTournamentPlayers['name']}}</small>
-                        <br> 
+                        <br>
                         Tournament Name: <small>{{$matchTournamentPlayers['match_tournament']['name']}}</small>
                     </h3>
                 </div>

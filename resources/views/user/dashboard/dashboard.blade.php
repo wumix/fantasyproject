@@ -16,31 +16,17 @@
                                 <div class="row">
                                     <div class="text-center col-md-2 col-md-offset-5">
 
-                                        <img src="psl-images\BPL_OFFICIAL_LOGO.JPG" class="img-circle profileimg " alt="Responsive image" >
-                                        <h3 class="nameu">Ahmad</h3>
+                                        <img height="200" width="200" src="{{getUploadsPath($userprofileinfo['profile_pic'])}}" class="img-circle profileimg " alt="Responsive image" >
+                                        <h3 class="nameu">{{$userprofileinfo['name']}}</h3>
                                         <h5 class="nameu"><a href="">Edit Profile</a></h5>
 
                                     </div>
 
 
+
                                     <div class="text-center col-md-6 col-md-offset-3">
 
-                                        <h3 class="slh">SELECT GAME</h3>
-
-                                        <select class="btn dropdown-toggle col-md-10 col-md-offset-1" data-toggle="dropdown" style="border:1px solid #9acc59; border-radius: 6px;">
-                                            <option id="dropdownbtn">Cricket</option>
-                                            <option id="dropdownbtn">Islamabad</option>
-                                            <option id="dropdownbtn">Karachi</option>
-                                            <option id="dropdownbtn">New York</option>
-                                            <option id="dropdownbtn">Faisalabad</option>
-                                            <option d="dropdownbtn">Pashawar</option>
-                                            <option d="dropdownbtn">Qoeta</option>
-
-                                        </select>
-                                    </div>
-                                    <div class="text-center col-md-6 col-md-offset-3">
-
-                                        <h3 class="slh">SELECT GAME</h3>
+                                        <h3 class="slh">Your Tournaments</h3>
 
                                         <select class="btn dropdown-toggle col-md-10 col-md-offset-1" data-toggle="dropdown" style="border:1px solid #9acc59; border-radius: 6px;">
                                             <option id="dropdownbtn">Cricket</option>

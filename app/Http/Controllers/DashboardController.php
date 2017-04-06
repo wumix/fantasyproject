@@ -15,12 +15,20 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->get()->toArray();
+        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())
+            ->with([
+                'teamtournament.tournament_matches.match_players' => function ($query) {
+                    $query->where('tournament_matches.start_date',' >=', '2017-04-05 18:00:00');
+                }
+            ])->whereHas('matches',function($query) {
+                $query->where('start_date', '>=','2017-04-05 18:00:00'); })
+            ->get()->toArray();
+        dd($data['user_teams']);
         $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
         $data['matches'] = \App\Match::all()->where('tournament_id', 1)
-           
+            ->where('matches', '>=', date("Y-m-d"))
             ->sortByDesc("start_date")->toArray();
-        dd($data['matches']);
+        // dd($data['matches']);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         return view('user.dashboard.dashboard', $data);
 

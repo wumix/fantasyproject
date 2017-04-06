@@ -41,7 +41,8 @@ class HomeController extends Controller {
         $data['matches'] = \App\Match::all()
                         ->sortByDesc("start_date")->toArray();
         $data['matches'] = array_values($data['matches']);
-        // dd($data['matches']);
+
+
         return view('home', $data);
     }
 

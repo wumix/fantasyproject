@@ -65,6 +65,8 @@ class MatchesController extends Controller {
         return redirect()->route('editMatchForm', ['match_id' => $match_id])->with('status', 'Match Updated');
     }
  function addMatchPlayerForm($matchid){
+    $data['match_id']=$matchid;
+
      $matchTournamentPlayers=\App\Match::where('id',$matchid)->with('match_tournament.tournament_players')->firstOrFail();
      $data['matchTournamentPlayers']=$matchTournamentPlayers->toArray();
      //dd($data['matchTournamentPlayers']);
@@ -75,6 +77,7 @@ class MatchesController extends Controller {
 
  }
  function postAddMatchPlayers($match_id,Request $request){
+
      $objMatch=\App\Match::findORFail($match_id);
      $objMatch->match_players()->sync(array_filter($request->player));
      return redirect()->back()->with('status', 'Match player score updated.');
@@ -105,6 +108,7 @@ class MatchesController extends Controller {
             \App\MatchPlayerScore::where('match_id', $match_id)
                     ->where('player_id', $val[0]['player_id'])
                     ->delete();
+//            /dd($val);
             \App\MatchPlayerScore::insert($val);
         }
         return redirect()->back()->with('status', 'Match player score updated.');

@@ -18,7 +18,7 @@
                     </h3>
                 </div>
                 <div class="box-body">
-                    {!! Form::open(['url' => route('postAddMatchPlayers',['match_id'=>$matchTournamentPlayers['match_tournament']['id']]),'files' => true])
+                    {!! Form::open(['url' => route('postAddMatchPlayers',['match_id'=>$match_id]),'files' => true])
                     !!}
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered">

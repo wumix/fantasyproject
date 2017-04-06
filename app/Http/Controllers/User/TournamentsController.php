@@ -364,7 +364,9 @@ class TournamentsController extends Controller {
         $difference = $this->getTImeDifference($tournamentDate);
         $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
         $currentNoPlayers = \App\UserTeam::find($request->team_id)->user_team_player()->count();
+        if($currentNoPlayers>=11){
 
+        }
         $data = [];
         $objResponse = [];
         $objResponse['success'] = false;

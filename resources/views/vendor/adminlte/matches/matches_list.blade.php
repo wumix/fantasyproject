@@ -40,8 +40,8 @@
                                     <a href="{{route('editMatchForm', ['match_id'=>$row['id']])}}" class="btn btn-warning">
                                         <i class="fa fa-pencil"></i> Edit
                                     </a>      
-                                    <a href="{{route('showAddPlayerForm1', ['match_id'=>$row['id']])}}" class="btn btn-primary">
-                                        <i class="fa fa-times"></i>Player Score
+                                    <a href="{{route('showMatchPlayers', ['match_id'=>$row['id']])}}" class="btn btn-primary">
+                                        Show players and update score
                                     </a>
                                     <a href="{{route('showAddMatchPlayerForm', ['match_id'=>$row['id']])}}" class="btn btn-success">
                                         Add Players

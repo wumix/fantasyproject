@@ -132,7 +132,7 @@ class TournamentsController extends Controller {
             
             //dd($totalPlayers);
             $offset = 0;
-            $data['page'] = (Input::get('page')) ? Input::get('page') : 0;
+            $data['page'] = (Input::get('page') && Input::get('page') > 1) ? Input::get('page') : 0;
             if ($data['page']) {
                 //$offset = $data['page'] + ($playersPerPage - 2);
                 $offset = ($data['page'] - 1) * $playersPerPage + 1;

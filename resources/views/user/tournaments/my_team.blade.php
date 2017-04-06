@@ -47,7 +47,15 @@
                                                 class="myteamtt">{{$row['player_roles'][0]['name']}}</p>
                                         </td>
                                         <td class="border-r1"><p
-                                                class="myteamtt">{{$val['pivot']['player_price']}}</p></td>
+                                                class="myteamtt">
+                                                    <?php
+                                                    $playerThisTournamnetPrice = 0;
+                                                    if (!empty($val['pivot'])) {
+                                                        $playerThisTournamnetPrice = $val['pivot']['player_price'];
+                                                    }
+                                                    ?>
+                                                {{$playerThisTournamnetPrice}}
+                                            </p></td>
                                         @endforeach
                                         <td>
 

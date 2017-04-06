@@ -73,7 +73,13 @@
                                                                 {{$player['name']}}
                                                             </td>
                                                             <td>
-                                                                
+                                                                <?php
+                                                                $playerThisTournamnetPrice = 0;
+                                                                if(!empty($player['player_tournaments'][0]['pivot'])){
+                                                                    $playerThisTournamnetPrice = $player['player_tournaments'][0]['pivot']['player_price'];
+                                                                }
+                                                                ?>
+                                                                {{$playerThisTournamnetPrice}}
                                                             </td>
                                                         </tr>
                                                         @endforeach

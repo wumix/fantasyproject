@@ -127,9 +127,9 @@ class TournamentsController extends Controller {
             $gameId = Tournament::find($tournament_id)->firstOrFail()->game_id;
 
             $data['totalPlayers'] = Player::where('game_id', $gameId)->count();
-            
+
             $data['totalPages'] = ceil($data['totalPlayers'] / $playersPerPage);
-            
+
             //dd($totalPlayers);
             $offset = 0;
             $data['page'] = (Input::get('page') && Input::get('page') > 1) ? Input::get('page') : 0;
@@ -168,7 +168,7 @@ class TournamentsController extends Controller {
         //   dd($postedData);
         \App\PlayerTournament::where('tournament_id', $postedData['tournament_id'])->delete();
         //dd($playerTournament);
-        dd($playerTournament);
+
         \App\PlayerTournament::insert($playerTournament);
         return redirect()
                         ->route('showAddPlayerForm', ['tournament_id' => Input::get('tournament_id')])

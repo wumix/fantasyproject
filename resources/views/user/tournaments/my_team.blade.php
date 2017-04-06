@@ -116,7 +116,14 @@
                                                     </td>
 
                                                     <td class=" text-left"><p
-                                                            class="myteamtt">{{$player['player_tournaments'][0]['pivot']['player_price']}}
+                                                            class="myteamtt">
+                                                            <?php
+                                                    $playerThisTournamnetPrice = 0;
+                                                    if (!empty($player['player_tournaments'][0])) {
+                                                        $playerThisTournamnetPrice = $player['player_tournaments'][0]['pivot']['player_price'];
+                                                    }
+                                                    ?>
+                                                            {{$playerThisTournamnetPrice}}
                                                         </p>
                                                     </td>
 

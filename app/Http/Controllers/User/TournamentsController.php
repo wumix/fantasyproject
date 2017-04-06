@@ -150,14 +150,7 @@ class TournamentsController extends Controller {
         $data['team_name'] = $usersSelectedPlayers['name'];
         $data['user_team_player'] = $usersSelectedPlayers['user_team_player'];
         $data['tournament_detail'] = $usersSelectedPlayers['teamtournament'];
-        //dd($usersSelectedPlayers);
-        //  dd($user_team_player);
-        // dd($selectedPlayers);
-        //   dd($user_team_player)
-        //dd( $data['user_team_player']);
-        //dd($selectedPlayers);
-        // $data['roles']=$selectedPlayers;
-        // $selectedPlayers=[1,2,3,4];
+
         $roles = GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
                         $q->where('tournament_id', $tournament_id);
                     },
@@ -168,11 +161,7 @@ class TournamentsController extends Controller {
                     $query->where('tournament_id', $tournament_id);
                 })->get()->toArray();
         $data['roles'] = $this->array_filter_recursive($roles);
-//       // $u= $this->array_filter_recursive( $roles[0]['players'],null);
-//        dd($u);
-//        $data['roles']= $this->array_filter_recursive( $roles['players'],null);
-        //dd($roles);
-        //dd($data['roles']);
+
         return view('user.tournaments.my_team', $data);
     }
 
@@ -364,8 +353,8 @@ class TournamentsController extends Controller {
         $difference = $this->getTImeDifference($tournamentDate);
         $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
         $currentNoPlayers = \App\UserTeam::find($request->team_id)->user_team_player()->count();
-        if($currentNoPlayers>=11){
-
+        if ($currentNoPlayers >= 11) {
+            
         }
         $data = [];
         $objResponse = [];
@@ -407,7 +396,14 @@ class TournamentsController extends Controller {
             $objResponse['success'] = false;
             $objResponse['msg'] = "You can't have more than $tournamentMaxPlayers in this tournament.";
         }
+        if ($currentNoPlayers >= 11) {
+            return redirect()->route('successteam');
+        }
         return response()->json($objResponse);
+    }
+
+    function successteam() {
+        return view('pages.successteam');
     }
 
     protected function validator(array $data) {

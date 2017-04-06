@@ -199,6 +199,14 @@
 
 
                 if (data.success == true) {
+                    if(data.team_complete=="ok"){
+                        var teamCompletedUrl = '{{ route("team-completed", ["team_id"=>"id"]) }}';
+                        teamCompletedUrl = teamCompletedUrl.replace('id', data.team_id);
+                        console.log(teamCompletedUrl);
+                        return;
+
+
+                    }
                     $("#your_points").html(' Your Points:' + data.player_score);
                     var obj = data.player;
                     $('.error').html(data.msg);

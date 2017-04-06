@@ -401,13 +401,19 @@ class TournamentsController extends Controller {
             $objResponse['msg'] = "You can't have more than $tournamentMaxPlayers in this tournament.";
         }
 
+
         if($currentNoPlayers>=11){
-            return redirect()->route('success');
+            $objResponse1['team_complete'] = 'ok';
+            $objResponse1['team_id']=$request->team_id;
+            return response()->json($objResponse1);
+
+
         }
         return response()->json($objResponse);
     }
-    public function sucessteam(){
-        return view('pages.teamconfirmation');
+    public function sucessteam($team_id){
+        echo $team_id;
+        echo 'team_complete';
     }
 
     protected function validator(array $data) {

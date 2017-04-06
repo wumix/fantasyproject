@@ -129,7 +129,7 @@
 
                                                     <td class="add">
                                                         <a id="btn-player-{{$player['id']}}"
-                                                           href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$player['player_tournaments'][0]['pivot']['player_price']}}')"
+                                                           href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$playerThisTournamnetPrice}}')"
                                                            class="btn btn-green">Add To
                                                             Team
                                                         </a>

@@ -107,8 +107,9 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/add', 'Admin\MatchesController@addMatch')->name('postAddMatch');
             Route::get('/edit/{match_id}', 'Admin\MatchesController@editMatchForm')->name('editMatchForm');
             Route::post('/edit/{match_id}', 'Admin\MatchesController@postEditMatch')->name('editMatch');
-            Route::get('/addplayers/{match_id}', 'Admin\MatchesController@playerMatchScore')->name('showAddPlayerForm1');
-            Route::post('/addscores/{match_id}', 'Admin\MatchesController@postAddMatchScore')->name('postAddMatchScore');
+            Route::get('/players/{match_id}', 'Admin\MatchesController@getMatchPlayers')->name('showMatchPlayers');
+            Route::get('/add-player-score/match/{match_id}/player/{player_id}', 'Admin\MatchesController@playerMatchScore')->name('addPlayerMatchScore');
+            Route::post('/addscores/{match_id}/{player_id}', 'Admin\MatchesController@postAddMatchScore')->name('postPlayerMatchScore');
             Route::get('/add-match-players/{match_id}', 'Admin\MatchesController@addMatchPlayerForm')->name('showAddMatchPlayerForm');
             Route::post('/add-match-players/{match_id}', 'Admin\MatchesController@postAddMatchPlayers')->name('postAddMatchPlayers');
         });

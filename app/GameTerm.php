@@ -19,9 +19,9 @@ class GameTerm extends Model {
     public function game_actions() {
         return $this->belongsTo('App\GameAction', 'game_action_id');
     }
-    function game_term_tournament_points(){
-  return $this->belongsToMany('App\Tournament','tournament_game_term_points','game_term_id')->withpivot('points','qty_to','qty_from');
-    }
 
+    function game_term_tournament_points() {
+        return $this->belongsToMany('App\Tournament', 'tournament_game_term_points', 'game_term_id')->withpivot('points', 'qty_to', 'qty_from');
+    }
 
 }

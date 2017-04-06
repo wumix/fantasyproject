@@ -11,15 +11,15 @@
                 <hr class="light full">
                 <div class="page-content">
                     <div class="row">
-                        <div class="col-md-12 no-padding">
-                            <div class="col-md-6">
-                                <img style="width: 200px;" src="{{getUploadsPath($tournament_detail['t_logo'])}}"
-                                     class="img-thumbnail " alt="Responsive image" id="mytimg">
-                            </div>
-                            <div class="col-md-6">
+                        <div class="col-md-12 no-padding text-center">
+                            <div class="col-md-6 text-left">
                                 <input id="team_id" type="hidden" value="{{$team_id}}">
-                                {{$tournament_detail['name']}}
+                                <h3>{{$tournament_detail['name']}}</h3>
                             </div>
+                            <div class="col-md-6 text-right">
+                                <h3 id=your_points">Your Points: {{getUserTotalScore(Auth::id())}}</h3>
+                            </div>
+
                         </div>
                     </div>
                     <div class="row mt26">
@@ -47,7 +47,15 @@
                                                 class="myteamtt">{{$row['player_roles'][0]['name']}}</p>
                                         </td>
                                         <td class="border-r1"><p
-                                                class="myteamtt">{{$val['pivot']['player_price']}}</p></td>
+                                                class="myteamtt">
+                                                    <?php
+                                                    $playerThisTournamnetPrice = 0;
+                                                    if (!empty($val['pivot'])) {
+                                                        $playerThisTournamnetPrice = $val['pivot']['player_price'];
+                                                    }
+                                                    ?>
+                                                {{$playerThisTournamnetPrice}}
+                                            </p></td>
                                         @endforeach
                                         <td>
 
@@ -63,7 +71,7 @@
                     </div>
 
                     <!--Choose player-->
-                    <h3 class="text-center"> Your Points: {{getUserTotalScore(Auth::id())}}</h3>
+
                     <div class="panel with-nav-tabs panel">
                         <div class="panel-heading">
                             <ul class="nav nav-tabs">
@@ -106,15 +114,21 @@
                                                     </td>
 
                                                     <td class=" text-left"><p
-                                                            class="myteamtt">{{$player['player_tournaments'][0]['pivot']['player_price']}}
+                                                            class="myteamtt">
+                                                                <?php
+                                                                $playerThisTournamnetPrice = 0;
+                                                                if (!empty($player['player_tournaments'][0]['pivot']['player_price'])) {
+                                                                    $playerThisTournamnetPrice = $player['player_tournaments'][0]['pivot']['player_price'];
+                                                                }
+                                                                ?>
+                                                            {{$playerThisTournamnetPrice}}
                                                         </p>
                                                     </td>
 
                                                     <td class="add">
                                                         <a id="btn-player-{{$player['id']}}"
-                                                           href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$player['player_tournaments'][0]['pivot']['player_price']}}')"
-                                                           class="btn btn-green">Add To
-                                                            Team
+                                                           href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$playerThisTournamnetPrice}}')"
+                                                           class="btn btn-green">Add To Team
                                                         </a>
                                                     </td>
 

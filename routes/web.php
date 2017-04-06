@@ -45,15 +45,22 @@ Route::group(['middleware' => ['web']], function () {
             Route::post('/addplayerajax', 'User\TournamentsController@addUserPlayer')->name('addUserTeamPlayerAjax');
             Route::post('/transferplayerajax', 'User\TournamentsController@transferPlayerPost')->name('transferPlayerAjax');
             Route::get('/transfer/{team_id}/{player_id}/{tournament_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
+
             Route::get('/congrats/', 'Admin\TournamentsController@sucessteam')->name('success');
 
         });
+
+             Route::get('/successteam', 'User\TournamentsController@successteam')->name('successteam');
+           
+            
+            });
+
         Route::group(['prefix' => 'dashboard'], function () {
             Route::get('/', 'DashboardController@index')->name('UserDashboard');
             Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
             Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('userProfileEdit');
         });
-    });
+
 });
 
 //Admin routes

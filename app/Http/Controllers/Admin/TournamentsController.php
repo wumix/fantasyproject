@@ -12,13 +12,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 
-class TournamentsController extends Controller
-{
+class TournamentsController extends Controller {
 
     protected $objTourmament;
 
-    function __construct()
-    {
+    function __construct() {
         $this->objTourmament = new \App\Tournament;
     }
 
@@ -28,8 +26,7 @@ class TournamentsController extends Controller
      * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
+    protected function validator(array $data) {
         return Validator::make($data, [
             'name' => 'required|max:255',
             'game_id' => 'required',
@@ -40,21 +37,18 @@ class TournamentsController extends Controller
         ]);
     }
 
-    public function index()
-    {
+    public function index() {
         $objTourmament = \App\Tournament::all()->toArray();
         $data['tournaments_list'] = $objTourmament; //list of tournaments
         return view('adminlte::tournaments.tournaments_list', $data);
     }
 
-    public function addTournamentForm()
-    {
+    public function addTournamentForm() {
         $data['result'] = Game::all()->toArray();
         return view('adminlte::tournaments.add_tournament', $data);
     }
 
-    function add(Request $request)
-    {
+    function add(Request $request) {
         $this->validator($request->all())->validate();
         $newTournament = new \App\Tournament;
         $newTournament->name = $request->name;
@@ -72,8 +66,7 @@ class TournamentsController extends Controller
         return redirect()->route('editTournamentForm', ['tournament_id' => $newTournament->id]);
     }
 
-    function editTournamentForm($tournament_id)
-    {
+    function editTournamentForm($tournament_id) {
         try {
 
             $data['tournament_games'] = \App\Tournament::where('id', $tournament_id)
@@ -87,8 +80,7 @@ class TournamentsController extends Controller
         }
     }
 
-    function postEditTournament()
-    {
+    function postEditTournament() {
 
         $tournamentId = Input::get('id');
         $tournament = \App\Tournament::find($tournamentId);
@@ -105,8 +97,7 @@ class TournamentsController extends Controller
             ->with('status', 'Tournament Updated');
     }
 
-    function addTournamentRolesLimit($tournament_id)
-    {
+    function addTournamentRolesLimit($tournament_id) {
         $data['tournament_info'] = \App\Tournament::with('tournament_game.game_roles', 'tournament_role_max')
             ->where('id', $tournament_id)
             ->firstOrFail()
@@ -119,8 +110,7 @@ class TournamentsController extends Controller
         return view('adminlte::tournaments.add_tournament_max_roles', $data);
     }
 
-    function postAddTournamentRolesLimit($tournamentId, Request $request)
-    {
+    function postAddTournamentRolesLimit($tournamentId, Request $request) {
         //dd( $request->all());
 
         $tour = \App\Tournament::find($tournamentId);
@@ -128,8 +118,7 @@ class TournamentsController extends Controller
         return redirect()->route('addMaxRoles', ['tournament_id' => $tournamentId]);
     }
 
-    function showAddPlayerForm($tournament_id)
-    {
+    function showAddPlayerForm($tournament_id) {
         try {
             $playersPerPage = 10;
 
@@ -139,12 +128,14 @@ class TournamentsController extends Controller
 
             $data['totalPlayers'] = Player::where('game_id', $gameId)->count();
 
+            $data['totalPages'] = ceil($data['totalPlayers'] / $playersPerPage);
+
             //dd($totalPlayers);
             $offset = 0;
-            $data['page'] = (Input::get('page')) ? Input::get('page') : 1;
+            $data['page'] = (Input::get('page') && Input::get('page') > 1) ? Input::get('page') : 0;
             if ($data['page']) {
                 //$offset = $data['page'] + ($playersPerPage - 2);
-                $offset = ($data['page'] - 1) * $playersPerPage + 1;
+                $offset = ($data['page'] - 1) * $playersPerPage + 0;
             }
             $data['players_list'] = \App\Tournament::where('id', $tournament_id)
                 ->with(['tournament_game' => function () {
@@ -168,20 +159,29 @@ class TournamentsController extends Controller
         }
     }
 
-    function postAddTournamentPlayers()
-    {
+    function postAddTournamentPlayers() {
         //  dd(Input::get('tournament_id'));
         //  dd(Input::all());
         $postedData = Input::all();
         //dd($postedData);
         $playerTournament = removeElementWithOutKey($postedData['player_tournament'], 'player_id');
-        //   dd($postedData);
-        \App\PlayerTournament::where('tournament_id', $postedData['tournament_id'])->delete();
-        //dd($playerTournament);
-      //  dd($playerTournament);
-        \App\PlayerTournament::insert($playerTournament);
-        return redirect()
-            ->route('showAddPlayerForm', ['tournament_id' => Input::get('tournament_id')])
+
+        foreach ($playerTournament as $key => $val) {
+
+            PlayerTournament::where('player_id', $val['player_id'])
+                ->where('tournament_id', $val['tournament_id'])
+                ->delete();
+
+
+            //dd($val);
+            $insertArr['tournament_id'] = $val['tournament_id'];
+            $insertArr['player_id'] = $val['player_id'];
+            $insertArr['player_price'] = $val['player_price'];
+            \App\PlayerTournament::insert($insertArr);
+
+        }
+
+        return redirect()->back()
             ->with('status', 'Player added to tournament');
     }
 

@@ -28,6 +28,7 @@
                             @foreach($players_list['tournament_game']['game_players'] as $row)
                             <tr>
                                 <td>
+                                    {{$row['id']}}
                                     <?php
                                     $playerPrice = 0;
                                     if (!empty(searchInMultiArray($row['id'], 'id', $players_list['tournament_players']))) {
@@ -46,10 +47,10 @@
                                 </td>
                                 <td>
                                     <input
-                                            type="text"
-                                            name="player_tournament[{{$counter}}][player_price]"
-                                            class="form-control"
-                                            value="{{$playerPrice}}"/>
+                                        type="text"
+                                        name="player_tournament[{{$counter}}][player_price]"
+                                        class="form-control"
+                                        value="{{$playerPrice}}"/>
                                 </td>
                             </tr>
                             @php($counter++)
@@ -64,10 +65,10 @@
                     {!! Form::close() !!}
                     <div class="pagination">
                         <ul class="pagination">
-                            @for($i=1; $i <= $totalPlayers; $i++)
-                                <li>
-                                    <a href="{{route('showAddPlayerForm', ['tournament_id'=>$tournament_id])}}?page={{$i}}">{{$i}}</a>
-                                </li>
+                            @for($i=1; $i <= $totalPages; $i++)
+                            <li>
+                                <a href="{{route('showAddPlayerForm', ['tournament_id'=>$tournament_id])}}?page={{$i}}">{{$i}}</a>
+                            </li>
                             @endfor
                         </ul>
                     </div>

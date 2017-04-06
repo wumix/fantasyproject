@@ -45,6 +45,8 @@ Route::group(['middleware' => ['web']], function () {
             Route::post('/addplayerajax', 'User\TournamentsController@addUserPlayer')->name('addUserTeamPlayerAjax');
             Route::post('/transferplayerajax', 'User\TournamentsController@transferPlayerPost')->name('transferPlayerAjax');
             Route::get('/transfer/{team_id}/{player_id}/{tournament_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
+            Route::get('/congrats/', 'Admin\TournamentsController@sucessteam')->name('success');
+
         });
         Route::group(['prefix' => 'dashboard'], function () {
             Route::get('/', 'DashboardController@index')->name('UserDashboard');
@@ -99,6 +101,8 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/addplayers/', 'Admin\TournamentsController@postAddTournamentPlayers')->name('postAddTournamentPlayers');
             Route::get('/add-max-roles/{tournament_id}', 'Admin\TournamentsController@addTournamentRolesLimit')->name('addMaxRoles');
             Route::post('/add-max-roles/{tournament_id}', 'Admin\TournamentsController@postAddTournamentRolesLimit')->name('postAddmaxRoles');
+
+
         });
         //Matches
         Route::group(['prefix' => 'match'], function () {

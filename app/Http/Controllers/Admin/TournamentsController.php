@@ -178,7 +178,7 @@ class TournamentsController extends Controller
         //   dd($postedData);
         \App\PlayerTournament::where('tournament_id', $postedData['tournament_id'])->delete();
         //dd($playerTournament);
-        dd($playerTournament);
+      //  dd($playerTournament);
         \App\PlayerTournament::insert($playerTournament);
         return redirect()
             ->route('showAddPlayerForm', ['tournament_id' => Input::get('tournament_id')])

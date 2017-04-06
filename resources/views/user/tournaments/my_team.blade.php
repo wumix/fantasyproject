@@ -51,9 +51,7 @@
                                         @endforeach
                                         <td>
 
-                                            <!--                                            <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"
-                                                                                           class="btn btn-md bttor1">TRANSFER
-                                                                                        </a>-->
+
                                             Player transfer is disabled by the end of today's match!
                                         </td>
 

@@ -165,11 +165,22 @@ class TournamentsController extends Controller {
         $postedData = Input::all();
         //dd($postedData);
         $playerTournament = removeElementWithOutKey($postedData['player_tournament'], 'player_id');
-        //   dd($postedData);
-        \App\PlayerTournament::where('tournament_id', $postedData['tournament_id'])->delete();
-        //dd($playerTournament);
 
-        \App\PlayerTournament::insert($playerTournament);
+        foreach ($playerTournament as $key => $val) {
+            
+            PlayerTournament::where('player_id', $val['player_id'])
+                    ->where('tournament_id', $val['tournament_id'])
+                    ->delete();
+
+
+            //dd($val);
+            $insertArr['tournament_id'] = $val['tournament_id'];
+            $insertArr['player_id'] = $val['player_id'];
+            $insertArr['player_price'] = $val['player_price'];
+            \App\PlayerTournament::insert($insertArr);
+           
+        }
+
         return redirect()->back()
                         ->with('status', 'Player added to tournament');
     }

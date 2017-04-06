@@ -119,7 +119,7 @@
                                                             class="myteamtt">
                                                             <?php
                                                     $playerThisTournamnetPrice = 0;
-                                                    if (!empty($player['player_tournaments'][0]['pivot'])) {
+                                                    if (!empty($player['player_tournaments'][0]['pivot']['player_price'])) {
                                                         $playerThisTournamnetPrice = $player['player_tournaments'][0]['pivot']['player_price'];
                                                     }
                                                     ?>

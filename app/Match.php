@@ -19,8 +19,21 @@ class Match extends Model {
     public function player_scores() {
         return $this->hasMany('App\MatchPlayerScore');
     }
-    public function match_players(){
-        return $this->belongsToMany('App\Player', 'player_matches', 'match_id','player_id');
+
+    public function match_players() {
+        return $this->belongsToMany('App\Player', 'player_matches', 'match_id', 'player_id');
+    }
+
+    public static function getNextMatch($tournament_id = NULL) {
+        $nextMatch = \App\Match::whereDate('start_date', '>', date('Y-m-d h:i:s'));
+        if (!empty($tournament_id)) {
+            $nextMatch = $nextMatch->where('tournament_id', $tournament_id);
+        }
+        $nextMatch = $nextMatch->get();
+        if (!$nextMatch->isEmpty()) {
+            return $nextMatch->toArray()[0];
+        }
+        return [];
     }
 
 }

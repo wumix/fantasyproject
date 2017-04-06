@@ -28,6 +28,7 @@
                             @foreach($players_list['tournament_game']['game_players'] as $row)
                             <tr>
                                 <td>
+                                    {{$row['id']}}
                                     <?php
                                     $playerPrice = 0;
                                     if (!empty(searchInMultiArray($row['id'], 'id', $players_list['tournament_players']))) {

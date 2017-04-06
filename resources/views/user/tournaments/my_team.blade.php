@@ -198,15 +198,20 @@
             success: function (data) {
 
 
+
                 if (data.success == true) {
-                    if(data.team_complete=="ok"){
-                        var teamCompletedUrl = '{{ route("team-completed", ["team_id"=>"id"]) }}';
+                    if(data.teamsuccess==true){
+
+
+                        var teamCompletedUrl = '{{route("team-completed", ['team_id'=>'id']) }}';
                         teamCompletedUrl = teamCompletedUrl.replace('id', data.team_id);
-                        console.log(teamCompletedUrl);
-                        return;
+                      //  alert(teamCompletedUrl);
+                       // console.log(teamCompletedUrl);
+                        window.location=teamCompletedUrl;
 
 
                     }
+
                     $("#your_points").html(' Your Points:' + data.player_score);
                     var obj = data.player;
                     $('.error').html(data.msg);

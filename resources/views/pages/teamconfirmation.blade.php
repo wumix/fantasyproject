@@ -10,6 +10,7 @@
                 <hr class="light full">
                 <div class="page-content">
                     <p>&nbsp;Your team is complete. Your score will be calculated from upcomming ipl match</p>
+                    you team id is {{$team_id}} and this is dynamically comming
 
                 </div>
             </div>

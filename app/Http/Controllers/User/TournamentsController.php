@@ -356,9 +356,6 @@ class TournamentsController extends Controller {
         $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
         $currentNoPlayers = \App\UserTeam::find($request->team_id)->user_team_player()->count();
 
-        if ($currentNoPlayers >= 11) {
-            
-        }
 
         $data = [];
         $objResponse = [];
@@ -401,19 +398,22 @@ class TournamentsController extends Controller {
             $objResponse['msg'] = "You can't have more than $tournamentMaxPlayers in this tournament.";
         }
 
-
+        $currentNoPlayers+=1;
         if($currentNoPlayers>=11){
-            $objResponse1['team_complete'] = 'ok';
-            $objResponse1['team_id']=$request->team_id;
-            return response()->json($objResponse1);
 
 
+            $objResponse['success'] = true;
+            $objResponse['teamsuccess']=true;
+            $objResponse['team_id']=$request->team_id;
+            return response()->json($objResponse);
+
+        }else {
+          return response()->json($objResponse);
         }
-        return response()->json($objResponse);
     }
     public function sucessteam($team_id){
-        echo $team_id;
-        echo 'team_complete';
+         $data['team_id']=$team_id;
+        return view('pages.teamconfirmation',$data);
     }
 
     protected function validator(array $data) {

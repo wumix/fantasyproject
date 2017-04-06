@@ -28,12 +28,12 @@ class TournamentsController extends Controller {
      */
     protected function validator(array $data) {
         return Validator::make($data, [
-                    'name' => 'required|max:255',
-                    'game_id' => 'required',
-                    'start_date' => 'required',
-                    'end_date' => 'required',
-                    'venue' => 'required|max:100',
-                    'max_players' => 'integer'
+            'name' => 'required|max:255',
+            'game_id' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'venue' => 'required|max:100',
+            'max_players' => 'integer'
         ]);
     }
 
@@ -70,8 +70,8 @@ class TournamentsController extends Controller {
         try {
 
             $data['tournament_games'] = \App\Tournament::where('id', $tournament_id)
-                            ->with('tournament_game', 'tournament_game.game_terms', 'game_term_points')
-                            ->firstOrFail()->toArray();
+                ->with('tournament_game', 'tournament_game.game_terms', 'game_term_points')
+                ->firstOrFail()->toArray();
             $data['games'] = Game::all()->toArray();
             //dd($data);
             return view('adminlte::tournaments.tournament_edit', $data);
@@ -94,14 +94,14 @@ class TournamentsController extends Controller {
         \App\TournamentGameTermPoint::where('tournament_id', $tournament->id)->delete(); //Deleting all game points
 
         return redirect()->route('editTournamentForm', ['tournament_id' => Input::get('id')])
-                        ->with('status', 'Tournament Updated');
+            ->with('status', 'Tournament Updated');
     }
 
     function addTournamentRolesLimit($tournament_id) {
         $data['tournament_info'] = \App\Tournament::with('tournament_game.game_roles', 'tournament_role_max')
-                ->where('id', $tournament_id)
-                ->firstOrFail()
-                ->toArray();
+            ->where('id', $tournament_id)
+            ->firstOrFail()
+            ->toArray();
         //dd($data['tournament_info']);
         $data['game_roles'] = $data['tournament_info']['tournament_game']['game_roles'];
 
@@ -138,14 +138,14 @@ class TournamentsController extends Controller {
                 $offset = ($data['page'] - 1) * $playersPerPage + 0;
             }
             $data['players_list'] = \App\Tournament::where('id', $tournament_id)
-                            ->with(['tournament_game' => function () {
-                                    
-                                }, 'tournament_game.game_players' => function ($query) use ($playersPerPage, $offset) {
-                                    $query->limit($playersPerPage)->offset($offset)->get();
-                                }, 'tournament_players' => function ($query) {
-                                    
-                                }]
-                            )->firstOrFail()->toArray();
+                ->with(['tournament_game' => function () {
+
+                    }, 'tournament_game.game_players' => function ($query) use ($playersPerPage, $offset) {
+                        $query->limit($playersPerPage)->offset($offset)->get();
+                    }, 'tournament_players' => function ($query) {
+
+                    }]
+                )->firstOrFail()->toArray();
 
             ////////Making player price
             //End making player price
@@ -167,10 +167,10 @@ class TournamentsController extends Controller {
         $playerTournament = removeElementWithOutKey($postedData['player_tournament'], 'player_id');
 
         foreach ($playerTournament as $key => $val) {
-            
+
             PlayerTournament::where('player_id', $val['player_id'])
-                    ->where('tournament_id', $val['tournament_id'])
-                    ->delete();
+                ->where('tournament_id', $val['tournament_id'])
+                ->delete();
 
 
             //dd($val);
@@ -178,11 +178,11 @@ class TournamentsController extends Controller {
             $insertArr['player_id'] = $val['player_id'];
             $insertArr['player_price'] = $val['player_price'];
             \App\PlayerTournament::insert($insertArr);
-           
+
         }
 
         return redirect()->back()
-                        ->with('status', 'Player added to tournament');
+            ->with('status', 'Player added to tournament');
     }
 
 }

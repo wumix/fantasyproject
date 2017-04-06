@@ -66,6 +66,7 @@ class MatchesController extends Controller {
     }
 
     function addMatchPlayerForm($matchid) {
+        $data['match_id'] = $matchid;
         $matchTournamentPlayers = \App\Match::where('id', $matchid)->with('match_tournament.tournament_players')->firstOrFail();
         $data['matchTournamentPlayers'] = $matchTournamentPlayers->toArray();
         //dd($data['matchTournamentPlayers']);

@@ -280,3 +280,108 @@ hr.light.full{
 @media (max-width: 777px) {
 
 }
+/*************Accordian header*************/
+.accordian-table-header{
+    background-color: #92B713;
+
+}
+.accordian-table-header ul li{
+    float: left;
+    padding: 20px 12px 20px;
+    font-size: 16pt;
+    font-weight: 100;
+    list-style: none;
+    color: #fff;
+
+}
+.mrgg{
+    margin-top: 20px;
+
+}
+.tablety{
+    background-color: #EEEEEE;
+    height: 300px;
+    margin-top: -10px;
+
+}
+#matr{
+    margin-top: -9px;
+}
+.tabletyg{
+    height: 10px;
+    margin-top: -9px;
+    margin-bottom: 50px;
+    background-color: #4A5E07;
+}
+.ftp{
+    font-weight: bold;
+    text-decoration: none;
+}
+.mrgg1{
+    margin-top: 2px;
+    background-color: #D2E1A0;
+    margin-left: 20px;
+    margin-bottom: 1px;
+}
+.mrgg11{
+    margin-top: 20px;
+    background-color: #D2E1A0;
+    margin-left: 20px;
+    margin-bottom: 1px;
+}
+.ftp1{
+    padding: 10px 0 10px 0;
+}
+.ftp11{
+    padding: 15px 0 15px 0;
+}
+.img-rounded{
+    margin-top: 50px;
+}
+#tblmarconten{
+    margin-top: 50px;
+}
+/*............................Show Hide Table Starts...........................*/
+#clickable1{
+    background-color: #92B713;
+    height: 50px;
+    color: #fff;
+
+
+}
+#tht{
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 16pt;
+    font-weight: 100;
+}
+
+.thti{
+    text-align: right;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 20pt;
+
+}
+#gg1{
+    font-size: 15pt;
+
+}
+#cols{
+    font-weight: bold;
+}
+#cols1{
+    font-weight: bold;
+    color: #fff;
+}
+#lefttable{
+    padding-left: 100px;
+}
+#bgren{
+    background-color: #D2E1A0;
+
+}
+
+/*............................Show Hide Table End...........................*/

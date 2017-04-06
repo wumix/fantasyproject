@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\UserTeam;
+use DateTime;
 
 class DashboardController extends Controller
 {
@@ -15,8 +16,12 @@ class DashboardController extends Controller
     public function index()
     {
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->get()->toArray();
-       // $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
-        // dd($x->toArray());
+        $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
+        $data['matches'] = \App\Match::all()->where('tournament_id', 1)
+           
+            ->sortByDesc("start_date")->toArray();
+        dd($data['matches']);
+        $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         return view('user.dashboard.dashboard', $data);
 
     }
@@ -24,14 +29,13 @@ class DashboardController extends Controller
     function editProfileform(Request $request)
     {
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
-        // dd($userprofileinfo->toArray());
+        //  dd($data['userprofileinfo']->toArray());
         return view('user.profile.profile_edit_form', $data);
 
     }
 
     function postEditProfile(Request $request)
     {
-
 
 
         $user = \App\USER::find(\Auth::id());
@@ -42,6 +46,6 @@ class DashboardController extends Controller
         }
         $user->save();
 
-        dd($request->all());
+
     }
 }

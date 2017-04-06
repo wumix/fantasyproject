@@ -46,7 +46,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::post('/transferplayerajax', 'User\TournamentsController@transferPlayerPost')->name('transferPlayerAjax');
             Route::get('/transfer/{team_id}/{player_id}/{tournament_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
 
-            Route::get('/congrats/', 'Admin\TournamentsController@sucessteam')->name('success');
+            Route::get('/congrats/', 'User\TournamentsController@sucessteam')->name('success');
 
         });
 

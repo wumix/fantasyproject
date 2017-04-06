@@ -176,9 +176,9 @@
                     appendTo: '#top-menu-res',
                     label: 'Main Menu'
                 });
-                $('table').basictable({
-                  forceResponsive: false
-                });
+//                $('table').basictable({
+//                  forceResponsive: false
+//                });
             });
         </script>
         @yield('js')

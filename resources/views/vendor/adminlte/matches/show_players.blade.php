@@ -20,12 +20,14 @@ Players of match
                     <div class="table-responsive">
                         <table class="table table-hover table-striped table-bordered">
                             <tr>
+                                <td>Sr</td>
                                 <td>Player</td>
                                 <td>Actions</td>
                             </tr>
 
                             @foreach($players['match_players'] as $key => $val)
                             <tr>
+                                <td>{{$key}}</td>
                                 <td>
                                     {{$val['name']}}
                                 </td>

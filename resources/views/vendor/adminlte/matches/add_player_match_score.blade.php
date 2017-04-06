@@ -37,6 +37,7 @@
                             @php($playerScore = $playerTermScore['player_term_count'])
                             @endif
                             <tr>
+                                
                                 <td>
                                     {{$term_val['name']}}
                                 </td>

@@ -135,7 +135,7 @@ class TournamentsController extends Controller {
             $data['page'] = (Input::get('page') && Input::get('page') > 1) ? Input::get('page') : 0;
             if ($data['page']) {
                 //$offset = $data['page'] + ($playersPerPage - 2);
-                $offset = ($data['page'] - 1) * $playersPerPage + 1;
+                $offset = ($data['page'] - 1) * $playersPerPage + 0;
             }
             $data['players_list'] = \App\Tournament::where('id', $tournament_id)
                             ->with(['tournament_game' => function () {

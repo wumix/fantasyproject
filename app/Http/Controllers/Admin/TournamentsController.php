@@ -170,8 +170,7 @@ class TournamentsController extends Controller {
         //dd($playerTournament);
 
         \App\PlayerTournament::insert($playerTournament);
-        return redirect()
-                        ->route('showAddPlayerForm', ['tournament_id' => Input::get('tournament_id')])
+        return redirect()->back()
                         ->with('status', 'Player added to tournament');
     }
 

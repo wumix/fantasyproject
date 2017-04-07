@@ -409,7 +409,7 @@ class TournamentsController extends Controller {
             $objResponse['msg'] = "You can't have more than $tournamentMaxPlayers in this tournament.";
         }
 
-        $currentNoPlayers += 1;
+        //$currentNoPlayers += 1;
         if ($currentNoPlayers >= 11) {
 
 

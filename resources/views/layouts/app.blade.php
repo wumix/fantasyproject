@@ -104,7 +104,7 @@
                                     Start playing
                                 </a>
                             </li>
-                            @if(!Auth::check())
+                            @if(Auth::check())
                             <li>
                                 <a href="{{route('addTeam', ['tournament_id'=>1])}}" class="page-scroll">
                                     My Team

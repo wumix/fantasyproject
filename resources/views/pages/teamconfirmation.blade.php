@@ -1,12 +1,5 @@
 @extends('layouts.app')
-@section('css')
-<style>
-    footer{
-        position: fixed;
-        bottom: 0;
-    }
-</style>
-@stop
+
 @section('content')
 <section>
     <div class="container">

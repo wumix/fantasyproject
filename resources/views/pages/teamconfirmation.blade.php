@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+<style>
+    footer{
+        position: fixed;
+        bottom: 0;
+    }
+</style>
 <section>
     <div class="container">
         <div class="row">
@@ -14,7 +20,7 @@
                     </p>
                     <p>
                         We will make you updated from your team performance by emails. 
-                        You can also see your team score go to your dashboard.
+                        You can also see your team score go to your <a href="{{UserDashboard}}">dashboard</a>.
                     </p>
                 </div>
             </div>

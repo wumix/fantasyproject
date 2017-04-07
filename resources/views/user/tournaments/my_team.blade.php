@@ -181,69 +181,62 @@
 <script>
     function addplayertoteam(rolename, roleid, playerid, tournamentid, player_price) {
 
-        var arr_player_id = [];
-        arr_player_id.push(playerid);
-        var teamid = $("#team_id").val();
-        $.ajax({
-            type: 'POST',
+    var arr_player_id = [];
+    arr_player_id.push(playerid);
+    var teamid = $("#team_id").val();
+    $.ajax({
+    type: 'POST',
             url: '{{route('addUserTeamPlayerAjax')}}',
             data: {
-                tournament_id: tournamentid,
-                player_id: arr_player_id,
-                role_id: roleid,
-                role_name: rolename,
-                player_price: player_price,
-                team_id: teamid, _token: '{{csrf_token()}}'
+            tournament_id: tournamentid,
+                    player_id: arr_player_id,
+                    role_id: roleid,
+                    role_name: rolename,
+                    player_price: player_price,
+                    team_id: teamid, _token: '{{csrf_token()}}'
             },
             success: function (data) {
+            if (data.success == true) {
+            if (data.teamsuccess == true){
+            var teamCompletedUrl = '{{route("team-completed", ['team_id'=>'id']) }}';
+            teamCompletedUrl = teamCompletedUrl.replace('id', data.team_id);
+            //  alert(teamCompletedUrl);
+            // console.log(teamCompletedUrl);
+            window.location = teamCompletedUrl;
+            }
 
+            $("#your_points").html(' Your Points:' + data.player_score);
+            var obj = data.player;
+            $('.error').html(data.msg);
+            $('.error').fadeIn(400).delay(2000).fadeOut(400); //fade out after 3 seconds
+            $('#btn-player-' + playerid).attr('disabled', true);
+            $('#btn-player-' + playerid).remove();
+            $('#total-score-user').html(obj.player_score);
+            var t = '<tr>';
+            t += '<input type=hidden" name="player_id_t" value="' + obj.id + '"/>';
+            t += '<td class="border-r1 text-left"><img id="myteamtimg" class="img-thumbnail" style="width: 80px"  src="' + obj.profile_pic + ' "><span class="selected-player-name">' + obj.name + '</span> </td>';
+            t += '<td class="border-r1"><p class="myteamtt"></p> ' + obj.role_name + '</span></td>';
+            t += '<td class="border-r1"><p class="myteamtt"></p>' + obj.price + '</td>';
+            //var url = '{{ route("transferplayer", ["team_id"=>"id","player_id"=>'pid',"tournament_id"=>'tid']) }}';
+            var url = '#';
+            url = url.replace('pid', obj.id);
+            url = url.replace('id', obj.team_id);
+            url = url.replace('tid', obj.tournament_id);
+            //t += '<td><a href="' + url + '" id="" class="btn disabled btn-md bttor1">TRANSFER</a></td >';
+            t += '<td>Player transfer is disabled by the end of today\'s match!</td >';
+            t += '</tr>';
+            $('#selected-player').append(t);
+            t = "";
+            $('#player_tr-' + obj.id).html(t);
+            } else {
+            $('.error').html(data.msg);
+            $('.error').fadeIn(400).delay(2000).fadeOut(400); //fade out after 3 seconds
 
-
-                if (data.success == true) {
-                    if(data.teamsuccess==true){
-
-
-                        var teamCompletedUrl = '{{route("team-completed", ['team_id'=>'id']) }}';
-                        teamCompletedUrl = teamCompletedUrl.replace('id', data.team_id);
-                      //  alert(teamCompletedUrl);
-                       // console.log(teamCompletedUrl);
-                        window.location=teamCompletedUrl;
-
-
-                    }
-
-                    $("#your_points").html(' Your Points:' + data.player_score);
-                    var obj = data.player;
-                    $('.error').html(data.msg);
-                    $('.error').fadeIn(400).delay(2000).fadeOut(400); //fade out after 3 seconds
-                    $('#btn-player-' + playerid).attr('disabled', true);
-                    $('#btn-player-' + playerid).remove();
-                    $('#total-score-user').html(obj.player_score);
-                    var t = '<tr>';
-                    t += '<input type=hidden" name="player_id_t" value="' + obj.id + '"/>';
-                    t += '<td class="border-r1 text-left"><img id="myteamtimg" class="img-thumbnail" style="width: 80px"  src="' + obj.profile_pic + ' "><span class="selected-player-name">' + obj.name + '</span> </td>';
-                    t += '<td class="border-r1"><p class="myteamtt"></p> ' + obj.role_name + '</span></td>';
-                    t += '<td class="border-r1"><p class="myteamtt"></p>' + obj.price + '</td>';
-                    //var url = '{{ route("transferplayer", ["team_id"=>"id","player_id"=>'pid',"tournament_id"=>'tid']) }}';
-                    var url = '#';
-                    url = url.replace('pid', obj.id);
-                    url = url.replace('id', obj.team_id);
-                    url = url.replace('tid', obj.tournament_id);
-                    //t += '<td><a href="' + url + '" id="" class="btn disabled btn-md bttor1">TRANSFER</a></td >';
-                    t += '<td>Player transfer is disabled by the end of today\'s match!</td >';
-                    t += '</tr>';
-                    $('#selected-player').append(t);
-                    t = "";
-                    $('#player_tr-' + obj.id).html(t);
-                } else {
-                    $('.error').html(data.msg);
-                    $('.error').fadeIn(400).delay(2000).fadeOut(400); //fade out after 3 seconds
-
-
-                }
 
             }
-        });
+
+            }
+    });
     }
 </script>
 

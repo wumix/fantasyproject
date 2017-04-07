@@ -105,6 +105,11 @@
                                     Start playing
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{}}" class="page-scroll">
+                                    My Team
+                                </a>
+                            </li>
                             <!--                            <li>
                                                             <a class="page-scroll" href="{{route('UserDashboard')}}">DashBoard</a>
                                                         </li>-->

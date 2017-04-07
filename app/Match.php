@@ -30,7 +30,7 @@ class Match extends Model {
         if (!empty($tournament_id)) {
             $nextMatch = $nextMatch->where('tournament_id', $tournament_id);
         }
-        $nextMatch = $nextMatch->get();
+        $nextMatch = $nextMatch->sortDesc('start_date')->get();
 
         if (!$nextMatch->isEmpty()) {
             return $nextMatch = $nextMatch->toArray()[0];

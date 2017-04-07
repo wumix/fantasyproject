@@ -3,7 +3,7 @@
 <section>
     <style>
         footer{
-            position: absolute;
+            position: fixed;
             bottom: 0;
         }
     </style>

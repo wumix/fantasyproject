@@ -35,12 +35,33 @@ class HomeController extends Controller {
      *
      * @return Response
      */
+    function getServerTimeAsGMT() {
+        $timestamp = localtime();
+        $timestamp[5] += 1900;
+        $timestamp[4] ++;
+        for ($i = 0; $i <= 9; $i++) {
+            if ($timestamp[0] == $i) {
+                $newValue = "0" . $i;
+                $timestamp[0] = $newValue;
+            }
+        }
+        for ($i = 0; $i <= 9; $i++) {
+            if ($timestamp[1] == $i) {
+                $newValue = "0" . $i;
+                $timestamp[1] = $newValue;
+            }
+        }
+
+        $this->timestamp = $timestamp[5] . "-" . $timestamp[4] . "-" . $timestamp[3] . " " . $timestamp[2] . ":" . $timestamp[1] . ":" . $timestamp[0];
+        $this->timestamp = strtotime($this->timestamp);
+        return $this->timestamp;
+    }
+
     public function index() {
+
         $objTourmament = \App\Tournament::all()->sortBy("start_date");
         $data['tournaments_list'] = $objTourmament->toArray();
-       // $data['matches'] = \App\Match::getNextMatch();
-
-                $data['matches'] = \App\Match::getNextMatch();
+        $data['matches'] = \App\Match::getNextMatch();
 
         return view('home', $data);
     }

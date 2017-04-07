@@ -134,7 +134,7 @@ class TournamentsController extends Controller {
 
 //        $tournamentPrice=\App\Tournament::find($tournament_id)->tournament_price;
 //        dd($tournamentPrice);
-        $usersSelectedPlayers = UserTeam::where('id', $team_id)
+        $usersSelectedPlayers = UserTeam::where('id', $team_id)->where('user_id', Auth::user()->id)
                         ->with([
                             'user_team_player',
                             'user_team_player.player_roles',

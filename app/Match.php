@@ -17,7 +17,7 @@ class Match extends Model {
     }
 
     public function player_scores() {
-        return $this->hasMany('App\MatchPlayerScore');
+        return $this->hasMany(MatchPlayerScore::class);
     }
 
     public function match_players() {
@@ -36,6 +36,10 @@ class Match extends Model {
             return $nextMatch = $nextMatch->toArray()[0];
         }
         return [];
+    }
+
+    public function getStartDateAttribute($startDate) {
+        return date('Y-m-d h:i:s', strtotime($startDate));
     }
 
 }

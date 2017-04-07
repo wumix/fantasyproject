@@ -72,7 +72,7 @@ class TournamentsController extends Controller {
                 $data['players_in_tournament'] = array_flatten(array_column(array_column($data['players_list']['tournament_players'], 'pivot'), 'player_id'));
             }
             $data['role_id'] = $role_id;
-         //  dd( $data['game_roles']);
+            //  dd( $data['game_roles']);
             return view('user.tournaments.show_torunament', $data);
         } catch (ModelNotFoundException $ex) {
             abort(404);
@@ -242,9 +242,20 @@ class TournamentsController extends Controller {
         }
 
         $tournamentPrice = \App\Tournament::find($tournament_id)->tournament_price;
+
         if ($tournamentPrice < (double) getUserTotalScore(Auth::id())) {
-            \App\UserTeam::updateOrCreate(['id' => $teamid['id']], ['tournament_id' => $tournament_id, 'user_id' => Auth::id(), 'name' => $userteam]);
-            $array = array(['action_key' => 'pusrchase_tournament', 'user_id' => Auth::id(), 'points_consumed' => $tournamentPrice]);
+            $tournamentData = [
+                'tournament_id' => $tournament_id,
+                'user_id' => Auth::id(),
+                'name' => $userteam,
+            ];
+            \App\UserTeam::updateOrCreate(
+                    ['id' => $teamid['id']], $tournamentData
+            );
+
+            $array = array(
+                ['action_key' => 'pusrchase_tournament', 'user_id' => Auth::id(), 'points_consumed' => $tournamentPrice]
+            );
             \App\UserPointsConsumed::insert($array);
             $userteam = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' => Auth::id()])->first()->toArray();
 
@@ -398,22 +409,23 @@ class TournamentsController extends Controller {
             $objResponse['msg'] = "You can't have more than $tournamentMaxPlayers in this tournament.";
         }
 
-        $currentNoPlayers+=1;
-        if($currentNoPlayers>=11){
+        $currentNoPlayers += 1;
+        if ($currentNoPlayers >= 11) {
 
 
             $objResponse['success'] = true;
-            $objResponse['teamsuccess']=true;
-            $objResponse['team_id']=$request->team_id;
+            $objResponse['teamsuccess'] = true;
+            $objResponse['team_id'] = $request->team_id;
+            //joined_from_match_date -- I guess update team here
             return response()->json($objResponse);
-
-        }else {
-          return response()->json($objResponse);
+        } else {
+            return response()->json($objResponse);
         }
     }
-    public function sucessteam($team_id){
-         $data['team_id']=$team_id;
-        return view('pages.teamconfirmation',$data);
+
+    public function sucessteam($team_id) {
+        $data['team_id'] = $team_id;
+        return view('pages.teamconfirmation', $data);
     }
 
     protected function validator(array $data) {

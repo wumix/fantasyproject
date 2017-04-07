@@ -24,4 +24,7 @@ class GameTerm extends Model {
         return $this->belongsToMany('App\Tournament', 'tournament_game_term_points', 'game_term_id')->withpivot('points', 'qty_to', 'qty_from');
     }
 
+    function match_gameTerm_score(){
+        return $this->hasMany(MatchPlayerScore::class, 'game_term_id');
+    }
 }

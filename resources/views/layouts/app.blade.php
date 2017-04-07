@@ -57,7 +57,7 @@
                             @endif
                             @if(Auth::check())
                             <li>
-                                <a href="{{route('userProfileEdit')}}">
+                                <a href="{{route('UserDashboard')}}">
                                     {{Auth::user()->name}}
                                 </a>
                             </li>

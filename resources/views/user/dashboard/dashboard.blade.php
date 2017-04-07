@@ -3,54 +3,58 @@
 @section('content')
 
 
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
 
-                    <hr class="light full">
-                    <div class="row page-content">
+                <hr class="light full">
+                <div class="row page-content">
 
-                        <div class="container-fluid">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="text-center col-md-2 col-md-offset-5">
+                    <div class="container-fluid">
+                        <div class="container">
+                            <div class="row">
+                                <div class="text-center col-md-2 col-md-offset-5">
 
-                                        <img height="200" width="200" src="{{getUploadsPath($userprofileinfo['profile_pic'])}}" class="img-circle profileimg " alt="Responsive image" >
-                                        <h3 class="nameu">{{$userprofileinfo['name']}}</h3>
-                                        <h5 class="nameu"><a href="">Edit Profile</a></h5>
+                                    <img height="200" width="200" src="{{getUploadsPath($userprofileinfo['profile_pic'])}}" class="img-circle profileimg " alt="Responsive image" >
+                                    <h3 class="nameu">{{$userprofileinfo['name']}}</h3>
+                                    <h5 class="nameu"><a href="{{route('userProfileEdit')}}">Edit Profile</a></h5>
+                                </div>
+                                <div class="text-center col-md-6 col-md-offset-3">
 
+                                    <h3 class="slh">Your Tournaments</h3>
+                                    @if(empty($user_teams))
+                                    <div class="alert alert-info">
+                                        You don't have any team yet. 
+                                        <a href="{{route('addTeam', ['tournament_id'=>1])}}">Make your team first.</a>
                                     </div>
+                                    @else
+                                    <select class="btn dropdown-toggle col-md-10 col-md-offset-1" data-toggle="dropdown" style="border:1px solid #9acc59; border-radius: 6px;">
+                                        <option id="dropdownbtn">Cricket</option>
+                                        <option id="dropdownbtn">Islamabad</option>
+                                        <option id="dropdownbtn">Karachi</option>
+                                        <option id="dropdownbtn">New York</option>
+                                        <option id="dropdownbtn">Faisalabad</option>
+                                        <option d="dropdownbtn">Pashawar</option>
+                                        <option d="dropdownbtn">Qoeta</option>
+                                    </select> 
+                                    @endif
 
-
-
-                                    <div class="text-center col-md-6 col-md-offset-3">
-
-                                        <h3 class="slh">Your Tournaments</h3>
-
-                                        <select class="btn dropdown-toggle col-md-10 col-md-offset-1" data-toggle="dropdown" style="border:1px solid #9acc59; border-radius: 6px;">
-                                            <option id="dropdownbtn">Cricket</option>
-                                            <option id="dropdownbtn">Islamabad</option>
-                                            <option id="dropdownbtn">Karachi</option>
-                                            <option id="dropdownbtn">New York</option>
-                                            <option id="dropdownbtn">Faisalabad</option>
-                                            <option d="dropdownbtn">Pashawar</option>
-                                            <option d="dropdownbtn">Qoeta</option>
-
-                                        </select>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
+
                 </div>
             </div>
         </div>
-    </section>
-    <!-- ............................Show Hide Table Satrt........................... -->
-    <section class="no-padding">
-        <div class="container" >
+    </div>
+</section>
+<!-- ............................Show Hide Table Satrt........................... -->
+<section class="no-padding">
+    <div class="container" >
+        @if(!empty($user_teams))
+        <div class="">
             <h3 class="ah3">COMPLETED MATCHES</h3>
             <div class="text-center col-md-10 col-md-offset-1">
                 <div class="accordian-table-header">
@@ -84,38 +88,38 @@
                                         <div class="col-md-11 table-responsive">
                                             <table class="table " >
                                                 <thead class="" >
-                                                <tr>
-                                                    <th class=" th1">PLAYERS</th>
-                                                    <th class="point">RUNS</th>
-                                                    <th class="point">S.R</th>
-                                                    <th class="add">POINTS</th>
-                                                </tr>
+                                                    <tr>
+                                                        <th class=" th1">PLAYERS</th>
+                                                        <th class="point">RUNS</th>
+                                                        <th class="point">S.R</th>
+                                                        <th class="add">POINTS</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody class="main-taible-body">
-                                                <tr class="cwt">
-                                                    <td  class=" th11"><img id="myteamtimg" class="img-circle" src="psl-images/aa.jpeg"> Cris Gayle</td>
+                                                    <tr class="cwt">
+                                                        <td  class=" th11"><img id="myteamtimg" class="img-circle" src="psl-images/aa.jpeg"> Cris Gayle</td>
 
-                                                    <td class=" point"><p class="myteamtt">40000</p></td>
-                                                    <td class=" point"><p class="myteamtt">40000</p></td>
-                                                    <td class=" add"><p class="myteamtt">40000</p></td>
+                                                        <td class=" point"><p class="myteamtt">40000</p></td>
+                                                        <td class=" point"><p class="myteamtt">40000</p></td>
+                                                        <td class=" add"><p class="myteamtt">40000</p></td>
 
-                                                </tr>
+                                                    </tr>
 
-                                                <tr class="cwt">
-                                                    <td  class=" th11"><img id="myteamtimg" class="img-circle" src="psl-images/aa.jpeg"> Cris Gayle</td>
+                                                    <tr class="cwt">
+                                                        <td  class=" th11"><img id="myteamtimg" class="img-circle" src="psl-images/aa.jpeg"> Cris Gayle</td>
 
-                                                    <td class=" point"><p class="myteamtt">40000</p></td>
-                                                    <td class=" point"><p class="myteamtt">40000</p></td>
-                                                    <td class=" add"><p class="myteamtt">40000</p></td>
+                                                        <td class=" point"><p class="myteamtt">40000</p></td>
+                                                        <td class=" point"><p class="myteamtt">40000</p></td>
+                                                        <td class=" add"><p class="myteamtt">40000</p></td>
 
-                                                </tr>  <tr class="cwt">
-                                                    <td  class=" th11"><img id="myteamtimg" class="img-circle" src="psl-images/aa.jpeg"> Cris Gayle</td>
+                                                    </tr>  <tr class="cwt">
+                                                        <td  class=" th11"><img id="myteamtimg" class="img-circle" src="psl-images/aa.jpeg"> Cris Gayle</td>
 
-                                                    <td class=" point"><p class="myteamtt">40000</p></td>
-                                                    <td class=" point"><p class="myteamtt">40000</p></td>
-                                                    <td class=" add"><p class="myteamtt">40000</p></td>
+                                                        <td class=" point"><p class="myteamtt">40000</p></td>
+                                                        <td class=" point"><p class="myteamtt">40000</p></td>
+                                                        <td class=" add"><p class="myteamtt">40000</p></td>
 
-                                                </tr>
+                                                    </tr>
 
                                                 </tbody>
                                             </table>
@@ -125,38 +129,38 @@
                                         <div class="col-md-11 table-responsive">
                                             <table class="table " >
                                                 <thead class="" >
-                                                <tr>
-                                                    <th class=" th1">PLAYERS</th>
-                                                    <th class="point">RUNS</th>
-                                                    <th class="point">S.R</th>
-                                                    <th class="add">POINTS</th>
-                                                </tr>
+                                                    <tr>
+                                                        <th class=" th1">PLAYERS</th>
+                                                        <th class="point">RUNS</th>
+                                                        <th class="point">S.R</th>
+                                                        <th class="add">POINTS</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody class="main-taible-body">
-                                                <tr class="cwt">
-                                                    <td  class=" th11"><img id="myteamtimg" class="img-circle" src="psl-images/aa.jpeg"> Cris Gayle</td>
+                                                    <tr class="cwt">
+                                                        <td  class=" th11"><img id="myteamtimg" class="img-circle" src="psl-images/aa.jpeg"> Cris Gayle</td>
 
-                                                    <td class=" point"><p class="myteamtt">40000</p></td>
-                                                    <td class=" point"><p class="myteamtt">40000</p></td>
-                                                    <td class=" add"><p class="myteamtt">40000</p></td>
+                                                        <td class=" point"><p class="myteamtt">40000</p></td>
+                                                        <td class=" point"><p class="myteamtt">40000</p></td>
+                                                        <td class=" add"><p class="myteamtt">40000</p></td>
 
-                                                </tr>
+                                                    </tr>
 
-                                                <tr class="cwt">
-                                                    <td  class=" th11"><img id="myteamtimg" class="img-circle" src="psl-images/aa.jpeg"> Cris Gayle</td>
+                                                    <tr class="cwt">
+                                                        <td  class=" th11"><img id="myteamtimg" class="img-circle" src="psl-images/aa.jpeg"> Cris Gayle</td>
 
-                                                    <td class=" point"><p class="myteamtt">40000</p></td>
-                                                    <td class=" point"><p class="myteamtt">40000</p></td>
-                                                    <td class=" add"><p class="myteamtt">40000</p></td>
+                                                        <td class=" point"><p class="myteamtt">40000</p></td>
+                                                        <td class=" point"><p class="myteamtt">40000</p></td>
+                                                        <td class=" add"><p class="myteamtt">40000</p></td>
 
-                                                </tr>  <tr class="cwt">
-                                                    <td  class=" th11"><img id="myteamtimg" class="img-circle" src="psl-images/aa.jpeg"> Cris Gayle</td>
+                                                    </tr>  <tr class="cwt">
+                                                        <td  class=" th11"><img id="myteamtimg" class="img-circle" src="psl-images/aa.jpeg"> Cris Gayle</td>
 
-                                                    <td class=" point"><p class="myteamtt">40000</p></td>
-                                                    <td class=" point"><p class="myteamtt">40000</p></td>
-                                                    <td class=" add"><p class="myteamtt">40000</p></td>
+                                                        <td class=" point"><p class="myteamtt">40000</p></td>
+                                                        <td class=" point"><p class="myteamtt">40000</p></td>
+                                                        <td class=" add"><p class="myteamtt">40000</p></td>
 
-                                                </tr>
+                                                    </tr>
 
                                                 </tbody>
                                             </table>
@@ -199,9 +203,11 @@
 
             </div>
         </div>
-    </section>
+        @endif
+    </div>
+</section>
 
-    <!-- ............................Show Hide Table End........................... -->
+<!-- ............................Show Hide Table End........................... -->
 
 
 

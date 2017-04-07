@@ -5,13 +5,17 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-heading">
-                    Congrats
+                    Team completed
                 </h1>
                 <hr class="light full">
                 <div class="page-content">
-                    <p>&nbsp;Your team is complete. Your score will be calculated from upcomming ipl match</p>
-                    you team id is {{$team_id}} and this is dynamically comming
-
+                    <p>
+                        Your team is complete. Your score will be calculated from upcoming IPL match.
+                    </p>
+                    <p>
+                        We will make you updated from your team performance by emails. 
+                        You can also see your team score go to your dashboard.
+                    </p>
                 </div>
             </div>
         </div>

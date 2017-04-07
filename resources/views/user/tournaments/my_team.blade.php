@@ -130,17 +130,17 @@
                                                         @foreach($role['players'] as $player)
                                                         <tr id="player_tr-{{$player['id']}}" class="cwt">
                                                             <td class=" th11 text-left">
-                                                                <img style="width: 80px;" class="img-thumbnail"
+                                                                <img style="width: 80px;float: left;margin-right: 24px;" class="img-thumbnail"
                                                                      src="{{getUploadsPath($player['profile_pic'])}}"/>
                                                                 <span class="selected-player-name"> {{$player['name']}}</span>
                                                             </td>
                                                             <td class="text-left">
                                                                 @if(!empty($player['player_actual_teams']))
-                                                                    @foreach($player['player_actual_teams'] as $palyeractualteam)
-                                                                     {{$palyeractualteam['name']}}
-                                                                    @endforeach
-                                                                    @else
-                                                                    N/A
+                                                                @foreach($player['player_actual_teams'] as $palyeractualteam)
+                                                                {{$palyeractualteam['name']}}
+                                                                @endforeach
+                                                                @else
+                                                                N/A
                                                                 @endif
                                                             </td>
 

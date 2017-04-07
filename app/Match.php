@@ -25,7 +25,15 @@ class Match extends Model {
     }
 
     public static function getNextMatch($tournament_id = NULL) {
-        $nextMatch = \App\Match::where('start_date', '>', date('Y-m-d h:i:s'));
+
+        $serverTime = config('app.timezone');
+        $dtz = new \DateTimeZone($serverTime);
+        $time_in_server = new \DateTime('now', $dtz);
+        $time_in_server = $time_in_server->add(date_interval_create_from_date_string("-300 minutes"));
+        $gmtDifference = $time_in_server->format('Y-m-d H:i:s');
+
+
+        $nextMatch = \App\Match::where('start_date', '>', "$gmtDifference");
         if (!empty($tournament_id)) {
             $nextMatch = $nextMatch->where('tournament_id', $tournament_id);
         }

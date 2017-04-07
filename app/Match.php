@@ -38,8 +38,8 @@ class Match extends Model {
         return [];
     }
 
-    public function getStartDateAttribute($startDate) {
-        return date('Y-m-d h:i:s', strtotime($startDate));
-    }
+//    public function getStartDateAttribute($startDate) {
+//        return date('Y-m-d h:i:s', strtotime($startDate));
+//    }
 
 }

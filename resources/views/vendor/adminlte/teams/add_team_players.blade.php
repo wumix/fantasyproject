@@ -37,7 +37,7 @@
 
                                             <input type="checkbox"
                                                    name="player_id[]"
-                                                   {!! in_array($player['id'], $players_in_team) ? 'checked':'' !!}
+                                                   {!! in_array($player['id'], $players_in_team) ? 'checked':'checked' !!}
                                                    value="{{$player['id']}}"/>
                                         </td>
                                         <td>

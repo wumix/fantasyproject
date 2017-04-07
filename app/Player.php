@@ -30,11 +30,19 @@ class Player extends Model {
     public function player_tournaments() {
         return $this->belongsToMany('App\Tournament', 'player_tournaments')->withPivot('player_price');
     }
+
+    /**
+     * Player team in IPL on actual tournament
+     * @return type
+     */
     public function player_actual_teams() {
-        return $this->belongsToMany('App\Team', 'player_team','player_id','team_id');
+        return $this->belongsToMany('App\Team');
     }
 
-
+    /**
+     * Users team
+     * @return type
+     */
     public function player_teams() {
         return $this->belongsToMany('App\UserTeam', 'user_team_players', 'player_id', 'team_id');
     }

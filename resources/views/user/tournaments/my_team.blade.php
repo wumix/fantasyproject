@@ -92,7 +92,7 @@
                             </ul>
                             </small>
                             <div class="alert alert-danger">
-                               You can make average team with in available points. i.e {{getUserTotalScore(Auth::id())}}
+                                You can make average team with in available points. i.e {{getUserTotalScore(Auth::id())}}
                             </div>
 
                             <div class="panel with-nav-tabs panel">
@@ -111,17 +111,17 @@
 
                                 <div class="panel-body">
                                     <div class="tab-content">
-                                        {{--first div--}}
                                         @foreach($roles as $key=>$role)
                                         <div class="tab-pane fade {!! ($key == 0) ? 'in active':'' !!}"
                                              id="tab{{$role['id']}}default">
                                             <div class="table-responsive ">
-                                                <table class="table " id="tortable">
+                                                <table class="table table-hover" id="tortable">
                                                     <thead class="main-taible-head1">
                                                         <tr>
                                                             <th class=" th1">PLAYERS</th>
+                                                            <th class=" th1">Belongs To</th>
 
-                                                            <th class=" th1" style="text-align: center">Points required to buy</th>
+                                                            <th class=" th1">Points required to buy</th>
                                                             <th class="add"></th>
                                                         </tr>
                                                     </thead>
@@ -134,8 +134,17 @@
                                                                      src="{{getUploadsPath($player['profile_pic'])}}"/>
                                                                 <span class="selected-player-name"> {{$player['name']}}</span>
                                                             </td>
+                                                            <td class="text-left">
+                                                                @if(!empty($player['player_actual_teams']))
+                                                                    @foreach($player['player_actual_teams'] as $palyeractualteam)
+                                                                     {{$palyeractualteam['name']}}
+                                                                    @endforeach
+                                                                    @else
+                                                                    N/A
+                                                                @endif
+                                                            </td>
 
-                                                            <td style="text-align: center" class=" text-left"><p
+                                                            <td class=" text-left"><p
                                                                     class="myteamtt">
                                                                         <?php
                                                                         $playerThisTournamnetPrice = 0;
@@ -147,7 +156,7 @@
                                                                 </p>
                                                             </td>
 
-                                                            <td class="add">
+                                                            <td class="add text-left">
                                                                 <a id="btn-player-{{$player['id']}}"
                                                                    href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$playerThisTournamnetPrice}}')"
                                                                    class="btn btn-green">Add To Team

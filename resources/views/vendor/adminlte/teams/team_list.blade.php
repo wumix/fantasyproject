@@ -31,8 +31,9 @@
                                             <a href="{{route('editTeam',['team_id'=>$row['id']])}}" class="btn btn-info">
                                                 <i class="fa fa-plus"></i> Edit
                                             </a>
-                                            <a href="#" class="btn btn-danger">
-                                                <i class="fa fa-times"></i> Delete
+
+                                            <a href="{{route('addplayerstoteam',['team_id'=>$row['id']])}}" class="btn btn-danger">
+                                                <i class="fa fa-times"></i> Add Players to Team
                                             </a>
                                         </td>
 

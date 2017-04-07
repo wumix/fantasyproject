@@ -84,13 +84,16 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::delete('delete-game-term-point', 'Admin\GameTermController@deleteGameTermPoint')->name('deleteGameTermPoint');
         });
 
-        //Team terms
+        //Teams
         Route::group(['prefix' => 'tournament-teams'], function () {
             Route::get('/', 'Admin\TeamsController@index')->name('teamsList');
             Route::get('addTeam', 'Admin\TeamsController@showAddTeamForm')->name('AddTeam');
             Route::post('postAddTeam', 'Admin\TeamsController@postAddTeam')->name('postAddTeam');
             Route::get('edit/{team_id}', 'Admin\TeamsController@editTeam')->name('editTeam');
             Route::post('edit/{team_id}', 'Admin\TeamsController@postEditTeam')->name('editTeam');
+            Route::get('edit/{team_id}', 'Admin\TeamsController@addplayerstoteam')->name('addplayerstoteam');
+
+             Route::post('add/{team_id}', 'Admin\TeamsController@postAddTeamPlayers')->name('postAddTeamPlayers');
         });
         //Players routes
         Route::group(['prefix' => 'palyers'], function () {

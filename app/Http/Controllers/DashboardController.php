@@ -12,15 +12,21 @@ class DashboardController extends Controller {
         // $this->middleware('auth');
     }
 
-    public function index() {
+    public function teamDetail(Request $request) {
+//        $tournamentid=$request->tournament_id;
+//        dd($tournamentid);
+//        die;
+        dd($request->all());
         $tournament_id = 1;
-        $teamId = 5;
+        $teamId = 1;
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())
                 ->where('tournament_id', $tournament_id)
                 ->get()
                 ->toArray();
         //Get matches after team making
-        $matcheIdsAfterThisTeamMade = \App\Match::select('id')->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])->get()->toArray();
+        $matcheIdsAfterThisTeamMade = \App\Match::select('id')
+            ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])
+            ->get()->toArray();
         if (!empty($matcheIdsAfterThisTeamMade)) {
             $matcheIdsAfterThisTeamMade = array_column($matcheIdsAfterThisTeamMade, 'id');
             $matcheIdsAfterThisTeamMade = [1];
@@ -33,7 +39,7 @@ class DashboardController extends Controller {
             $userTeamPlayerIds = array_column($data['user_team_players'], 'id');
         }
 
-        $data['team_score'] = \App\Player::whereIn('id', $userTeamPlayerIds)->with([
+        $data['team_score'] = \App\Player::whereIn('id', $userTeamPlayerIds)->with(['player_roles',
                     'player_gameTerm_score' => function($query) use ($matcheIdsAfterThisTeamMade) {
                         $query->whereIn('match_id', $matcheIdsAfterThisTeamMade);
                     },
@@ -45,13 +51,23 @@ class DashboardController extends Controller {
                     }
                 ])->get()->toArray();
 
-
+       dd($data);
         dd($data['team_score']);
         $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
         $data['matches'] = \App\Match::all()->where('tournament_id', 1)
                         ->where('matches', '>=', date("Y-m-d"))
                         ->sortByDesc("start_date")->toArray();
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
+        return view('user.dashboard.dashboard', $data);
+    }
+    function index(){
+        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())
+
+            ->get()
+            ->toArray();
+     //   dd($data);
+        $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
+
         return view('user.dashboard.dashboard', $data);
     }
 

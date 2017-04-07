@@ -91,6 +91,10 @@
                                 <li><strong>Wicket Keeper: </strong>1</li>
                             </ul>
                             </small>
+                            <div class="alert alert-danger">
+                               You can make average team with in available points. i.e {{getUserTotalScore(Auth::id())}}
+                            </div>
+
                             <div class="panel with-nav-tabs panel">
                                 <div class="panel-heading">
                                     <ul class="nav nav-tabs">
@@ -117,7 +121,7 @@
                                                         <tr>
                                                             <th class=" th1">PLAYERS</th>
 
-                                                            <th class=" th1">Points required to buy</th>
+                                                            <th class=" th1" style="text-align: center">Points required to buy</th>
                                                             <th class="add"></th>
                                                         </tr>
                                                     </thead>
@@ -131,7 +135,7 @@
                                                                 <span class="selected-player-name"> {{$player['name']}}</span>
                                                             </td>
 
-                                                            <td class=" text-left"><p
+                                                            <td style="text-align: center" class=" text-left"><p
                                                                     class="myteamtt">
                                                                         <?php
                                                                         $playerThisTournamnetPrice = 0;

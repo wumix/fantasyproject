@@ -74,6 +74,15 @@
                     <li><a href="{{route('addAction')}}">Add Action</a></li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class='fa fa-users'></i> <span>Team</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('AddTeam')}}">Add Team</a></li>
+                    <li><a href="{{route('teamsList')}}">Team List</a></li>
+
+                </ul>
+            </li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

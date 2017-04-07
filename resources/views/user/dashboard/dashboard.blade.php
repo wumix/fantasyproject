@@ -7,7 +7,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-
+<h1 class="page-heading">
+                   Dashboard
+                </h1>
                     <hr class="light full">
                     <div class="row page-content">
 
@@ -15,7 +17,6 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="text-center col-md-2 col-md-offset-5">
-
                                         <img height="200" width="200"
                                              src="{{getUploadsPath($userprofileinfo['profile_pic'])}}"
                                              class="img-circle profileimg " alt="Responsive image">

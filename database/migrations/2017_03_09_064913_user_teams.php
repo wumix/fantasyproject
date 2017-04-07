@@ -19,6 +19,7 @@ class UserTeams extends Migration {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('tournament_id')->unsigned();
             $table->foreign('tournament_id')->references('id')->on('tournaments')->onDelete('cascade');
+            $table->dateTime('joined_from_match_date')->comment = "User will start playing from this match";
             $table->timestamps();
             $table->softDeletes();
         });

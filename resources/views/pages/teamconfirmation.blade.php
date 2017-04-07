@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
 <section>
+    <style>
+        footer{
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

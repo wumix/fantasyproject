@@ -34,7 +34,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/tournament-detail/{tournament_id}', 'User\TournamentsController@showTournamentDetails')->name('showTournament');
 
     Route::group(['middleware' => ['is_user']], function () {
-        Route::group(['prefix' => 'user'], function() {
+        Route::group(['prefix' => 'user'], function () {
             Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
             Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('postUserProfile');
             Route::post('/team-detail', 'DashboardController@teamDetail')->name('teamdetail');
@@ -53,15 +53,13 @@ Route::group(['middleware' => ['web']], function () {
         });
 
 
-           
-            
-            });
+    });
 
-        Route::group(['prefix' => 'dashboard'], function () {
-            Route::get('/', 'DashboardController@index')->name('UserDashboard');
-            Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
-            Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('userProfileEdit');
-        });
+    Route::group(['prefix' => 'dashboard'], function () {
+        Route::get('/', 'DashboardController@index')->name('UserDashboard');
+        Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
+        Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('userProfileEdit');
+    });
 
 });
 
@@ -90,59 +88,87 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::delete('delete-game-term', 'Admin\GameTermController@deleteGameTerm')->name('deleteGameTerm');
             Route::delete('delete-game-term-point', 'Admin\GameTermController@deleteGameTermPoint')->name('deleteGameTermPoint');
         });
+
+        //Team terms
+        Route::group(['prefix' => 'tournament-teams'], function () {
+            Route::get('/', 'Admin\TeamsController@index')->name('teamsList');
+            Route::get('addTeam', 'Admin\TeamsController@showAddTeamForm')->name('AddTeam');
+            Route::post('postAddTeam', 'Admin\TeamsController@postAddTeam')->name('postAddTeam');
+            Route::get('edit/{team_id}', 'Admin\TeamsController@editTeam')->name('editTeam');
+            Route::post('edit/{team_id}', 'Admin\TeamsController@postEditTeam')->name('editTeam');
+        });
         //Players routes
         Route::group(['prefix' => 'palyers'], function () {
-            Route::get('/', 'Admin\PlayersController@index')->name('playerslist');
-            Route::get('/add', 'Admin\PlayersController@addPlayerForm')->name('addPlayer'); //shows add player form
-            Route::post('/postAddPlayer', 'Admin\PlayersController@addPlayer')->name('postAddPlayer');
-            Route::post('/edit', 'Admin\PlayersController@postEditPlayer')->name('editPlayer');
-            Route::get('/edit/{player_id}', 'Admin\PlayersController@editPlayerForm')->name('editPlayerForm'); //show player edit form
-            Route::get('/ajax_get_game_terms', 'Admin\PlayersController@get_game_roles')->name('ajax_get_game_terms');
+            Route::get(' / ', 'Admin\PlayersController@index')->name('playerslist');
+            Route::get(' / add', 'Admin\PlayersController@addPlayerForm')->name('addPlayer'); //shows add player form
+            Route::post(' / postAddPlayer', 'Admin\PlayersController@addPlayer')->name('postAddPlayer');
+            Route::post(' / edit', 'Admin\PlayersController@postEditPlayer')->name('editPlayer');
+            Route::get(' / edit /{player_id}', 'Admin\PlayersController@editPlayerForm')->name('editPlayerForm'); //show player edit form
+            Route::get(' / ajax_get_game_terms', 'Admin\PlayersController@get_game_roles')->name('ajax_get_game_terms');
         });
         //tournament routes
         Route::group(['prefix' => 'tournaments'], function () {
-            Route::get('/', 'Admin\TournamentsController@index')->name('Tournamentslist');
-            Route::get('/add', 'Admin\TournamentsController@addTournamentForm')->name('addTournament'); //shows add player form
-            Route::post('/add', 'Admin\TournamentsController@add')->name('postAddTournament');
-            Route::get('/edit/{tournament_id}', 'Admin\TournamentsController@editTournamentForm')->name('editTournamentForm');
-            Route::post('/edit', 'Admin\TournamentsController@postEditTournament')->name('editTournament');
-            Route::get('/addplayers/{tournament_id}', 'Admin\TournamentsController@showAddPlayerForm')->name('showAddPlayerForm');
-            Route::post('/addplayers/', 'Admin\TournamentsController@postAddTournamentPlayers')->name('postAddTournamentPlayers');
-            Route::get('/add-max-roles/{tournament_id}', 'Admin\TournamentsController@addTournamentRolesLimit')->name('addMaxRoles');
-            Route::post('/add-max-roles/{tournament_id}', 'Admin\TournamentsController@postAddTournamentRolesLimit')->name('postAddmaxRoles');
+            Route::get(' / ', 'Admin\TournamentsController@index')->name('Tournamentslist');
+            Route::get(' / add', 'Admin\TournamentsController@addTournamentForm')->name('addTournament'); //shows add player form
+            Route::post(' / add', 'Admin\TournamentsController@add')->name('postAddTournament');
+            Route::get(' / edit /{
+                tournament_id}', 'Admin\TournamentsController@editTournamentForm')->name('editTournamentForm');
+            Route::post(' / edit', 'Admin\TournamentsController@postEditTournament')->name('editTournament');
+            Route::get(' / addplayers /{
+                tournament_id}', 'Admin\TournamentsController@showAddPlayerForm')->name('showAddPlayerForm');
+            Route::post(' / addplayers / ', 'Admin\TournamentsController@postAddTournamentPlayers')->name('postAddTournamentPlayers');
+            Route::get(' / add - max - roles /{
+                tournament_id}', 'Admin\TournamentsController@addTournamentRolesLimit')->name('addMaxRoles');
+            Route::post(' / add - max - roles /{
+                tournament_id}', 'Admin\TournamentsController@postAddTournamentRolesLimit')->name('postAddmaxRoles');
 
 
         });
         //Matches
         Route::group(['prefix' => 'match'], function () {
-            Route::get('/', 'Admin\MatchesController@index')->name('Matcheslist');
-            Route::get('/add', 'Admin\MatchesController@addMatchForm')->name('addMatch'); //shows add player form
-            Route::post('/add', 'Admin\MatchesController@addMatch')->name('postAddMatch');
-            Route::get('/edit/{match_id}', 'Admin\MatchesController@editMatchForm')->name('editMatchForm');
-            Route::post('/edit/{match_id}', 'Admin\MatchesController@postEditMatch')->name('editMatch');
-            Route::get('/players/{match_id}', 'Admin\MatchesController@getMatchPlayers')->name('showMatchPlayers');
-            Route::get('/add-player-score/match/{match_id}/player/{player_id}', 'Admin\MatchesController@playerMatchScore')->name('addPlayerMatchScore');
-            Route::post('/addscores/{match_id}/{player_id}', 'Admin\MatchesController@postAddMatchScore')->name('postPlayerMatchScore');
-            Route::get('/add-match-players/{match_id}', 'Admin\MatchesController@addMatchPlayerForm')->name('showAddMatchPlayerForm');
-            Route::post('/add-match-players/{match_id}', 'Admin\MatchesController@postAddMatchPlayers')->name('postAddMatchPlayers');
+            Route::get(' / ', 'Admin\MatchesController@index')->name('Matcheslist');
+            Route::get(' / add', 'Admin\MatchesController@addMatchForm')->name('addMatch'); //shows add player form
+            Route::post(' / add', 'Admin\MatchesController@addMatch')->name('postAddMatch');
+            Route::get(' / edit /{
+                match_id}', 'Admin\MatchesController@editMatchForm')->name('editMatchForm');
+            Route::post(' / edit /{
+                match_id}', 'Admin\MatchesController@postEditMatch')->name('editMatch');
+            Route::get(' / players /{
+                match_id}', 'Admin\MatchesController@getMatchPlayers')->name('showMatchPlayers');
+            Route::get(' / add - player - score / match /{
+                match_id}/player /{
+                player_id}', 'Admin\MatchesController@playerMatchScore')->name('addPlayerMatchScore');
+            Route::post(' / addscores /{
+                match_id}/{
+                player_id}', 'Admin\MatchesController@postAddMatchScore')->name('postPlayerMatchScore');
+            Route::get(' / add - match - players /{
+                match_id}', 'Admin\MatchesController@addMatchPlayerForm')->name('showAddMatchPlayerForm');
+            Route::post(' / add - match - players /{
+                match_id}', 'Admin\MatchesController@postAddMatchPlayers')->name('postAddMatchPlayers');
         });
         //User routes
         Route::group(['prefix' => 'user'], function () {
-            Route::get('/', 'Admin\UsersController@index')->name('listUsers');
-            Route::get('/add', 'Admin\UsersController@addUser')->name('addUser');
-            Route::post('/add', 'Auth\RegisterController@postAddUserFromAdmin')->name('postAddUser');
-            Route::get('/edit/{user_id}', 'Admin\UsersController@userEditForm')->name('editUser');
-            Route::post('/edit/{user_id}', 'Admin\UsersController@postAddUserFromAdmin')->name('postEditUser');
-            Route::delete('/delete/{user_id}', 'Admin\UsersController@deleteUser')->name('deleteUser');
+            Route::get(' / ', 'Admin\UsersController@index')->name('listUsers');
+            Route::get(' / add', 'Admin\UsersController@addUser')->name('addUser');
+            Route::post(' / add', 'Auth\RegisterController@postAddUserFromAdmin')->name('postAddUser');
+            Route::get(' / edit /{
+                user_id}', 'Admin\UsersController@userEditForm')->name('editUser');
+            Route::post(' / edit /{
+                user_id}', 'Admin\UsersController@postAddUserFromAdmin')->name('postEditUser');
+            Route::delete(' / delete /{
+                user_id}', 'Admin\UsersController@deleteUser')->name('deleteUser');
         });
         //user action routes
         Route::group(['prefix' => 'actions'], function () {
-            Route::get('/', 'Admin\ActionsController@index')->name('listActions');
-            Route::get('/add', 'Admin\ActionsController@addActionForm')->name('addAction');
-            Route::post('/add', 'Admin\ActionsController@postAddAction')->name('postAddAction');
-            Route::get('/edit/{action_id}', 'Admin\ActionsController@actionEditForm')->name('editAction');
-            Route::post('/edit/{action_id}', 'Admin\ActionsController@postEditAction')->name('postEditAction');
-//            Route::delete('/delete/{user_id}', 'Admin\ActionsController@deleteUser')->name('deleteAction');
+            Route::get(' / ', 'Admin\ActionsController@index')->name('listActions');
+            Route::get(' / add', 'Admin\ActionsController@addActionForm')->name('addAction');
+            Route::post(' / add', 'Admin\ActionsController@postAddAction')->name('postAddAction');
+            Route::get(' / edit /{
+                action_id}', 'Admin\ActionsController@actionEditForm')->name('editAction');
+            Route::post(' / edit /{
+                action_id}', 'Admin\ActionsController@postEditAction')->name('postEditAction');
+        Route::delete(' / delete /{
+                user_id}', 'Admin\ActionsController@deleteUser')->name('deleteAction');
         });
     });
 });

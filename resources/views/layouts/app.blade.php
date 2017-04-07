@@ -23,7 +23,6 @@
         {!! Html::style('assets-new/css/creative.css') !!}
         {!! Html::style('assets-new/css/style.css') !!}
         {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}
-
     </head>
     <body>
         <nav class="bg-primary navbar navbar-default navbar-fixed-top">
@@ -105,6 +104,7 @@
                                     Start playing
                                 </a>
                             </li>
+
                             <!--                            <li>
                                                             <a class="page-scroll" href="{{route('UserDashboard')}}">DashBoard</a>
                                                         </li>-->

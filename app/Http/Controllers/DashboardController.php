@@ -25,8 +25,8 @@ class DashboardController extends Controller {
                 ->toArray();
         //Get matches after team making
         $matcheIdsAfterThisTeamMade = \App\Match::select('id')
-            ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])
-            ->get()->toArray();
+                        ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])
+                        ->get()->toArray();
         if (!empty($matcheIdsAfterThisTeamMade)) {
             $matcheIdsAfterThisTeamMade = array_column($matcheIdsAfterThisTeamMade, 'id');
             $matcheIdsAfterThisTeamMade = [1];
@@ -51,7 +51,7 @@ class DashboardController extends Controller {
                     }
                 ])->get()->toArray();
 
-       dd($data);
+        dd($data);
         dd($data['team_score']);
         $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
         $data['matches'] = \App\Match::all()->where('tournament_id', 1)
@@ -60,14 +60,13 @@ class DashboardController extends Controller {
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         return view('user.dashboard.dashboard', $data);
     }
-    function index(){
+
+    function index() {
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())
-
-            ->get()
-            ->toArray();
-     //   dd($data);
+                ->get()
+                ->toArray();
+        //   dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
-
         return view('user.dashboard.dashboard', $data);
     }
 
@@ -87,6 +86,7 @@ class DashboardController extends Controller {
             $user->profile_pic = $files;
         }
         $user->save();
+        return redirect()->back()->with('status', 'Profile successfully saved.');
     }
 
 }

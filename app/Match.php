@@ -25,13 +25,15 @@ class Match extends Model {
     }
 
     public static function getNextMatch($tournament_id = NULL) {
-        $nextMatch = \App\Match::whereDate('start_date', '>', date('Y-m-d h:i:s'));
+
+        $nextMatch = \App\Match::where('start_date', '>', date('Y-m-d h:i:s'));
         if (!empty($tournament_id)) {
             $nextMatch = $nextMatch->where('tournament_id', $tournament_id);
         }
         $nextMatch = $nextMatch->get();
+
         if (!$nextMatch->isEmpty()) {
-            return $nextMatch->toArray()[0];
+            return $nextMatch = $nextMatch->toArray()[0];
         }
         return [];
     }

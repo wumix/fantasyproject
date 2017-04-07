@@ -86,7 +86,7 @@ class DashboardController extends Controller {
             $user->profile_pic = $files;
         }
         $user->save();
-        return redirect()->back()->with('status', 'Profile successfully saved.')
+        return redirect()->back()->with('status', 'Profile successfully saved.');
     }
 
 }

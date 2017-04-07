@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <section>
     <div class="container">
@@ -15,10 +14,7 @@
                     </p>
                     <p>
                         We will make you updated from your team performance by emails. 
-                        You can also see your team score go to your 
-                        <a href="#">
-                            dashboard
-                        </a>.
+                        You can also see your team score go to your dashboard.
                     </p>
                 </div>
             </div>

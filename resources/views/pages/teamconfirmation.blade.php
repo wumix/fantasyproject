@@ -20,7 +20,9 @@
                     </p>
                     <p>
                         We will make you updated from your team performance by emails. 
-                        You can also see your team score go to your <a href="{{route('UserDashboard')}}">dashboard</a>.
+                        You can also see your team score go to your <a href="#">
+                            dashboard
+                        </a>.
                     </p>
                 </div>
             </div>

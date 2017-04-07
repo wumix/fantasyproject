@@ -16,11 +16,11 @@
                         Next Match
                     </h3>
                     <h4>
-                        {{$matches[0]['team_one']}}
+                        {{$matches['team_one']}}
                         <strong class="mlr10 Bold">
                             <em>Vs</em>
                         </strong>
-                        {{$matches[0]['team_two']}}
+                        {{$matches['team_two']}}
                     </h4>
                 </div>
             </div>
@@ -155,8 +155,8 @@
 @section('js')
 {!! Html::script('assets/jquery.countdown-2.2.0/jquery.countdown.min.js') !!}
 @php($date= '00-00-00 00:00:00')    
-@if(!empty($matches[0]['start_date']))
-@php($date= $matches[0]['start_date']);    
+@if(!empty($matches['start_date']))
+@php($date= $matches['start_date']);    
 @endif
 {{Html::script('js/moment.js')}}
 <script type="text/javascript">

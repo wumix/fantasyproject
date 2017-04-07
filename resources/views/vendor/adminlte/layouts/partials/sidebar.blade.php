@@ -81,6 +81,7 @@
                     <li><a href="{{route('AddTeam')}}">Add Team</a></li>
                     <li><a href="{{route('teamsList')}}">Team List</a></li>
 
+
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->

@@ -38,25 +38,22 @@
                                         <tr>
                                             <td class="border-r1 text-left"><img class="img-thumbnail"
                                                                                  src="{{getUploadsPath($row['profile_pic'])}}"
-                                                                                 style="width: 80px">
+                                                                                 style="width: 80px;float: left;margin-right: 24px;">
                                                 <span class="selected-player-name"> {{$row['name']}} </span>
                                             </td>
                                             @foreach($row['player_tournaments'] as $key=>$val)
                                             <td class="border-r1">
-                                                <p class="myteamtt">
-                                                    {{$row['player_roles'][0]['name']}}
-                                                </p>
+                                                {{$row['player_roles'][0]['name']}}
                                             </td>
-                                            <td class="border-r1"><p
-                                                    class="myteamtt">
-                                                        <?php
-                                                        $playerThisTournamnetPrice = 0;
-                                                        if (!empty($val['pivot'])) {
-                                                            $playerThisTournamnetPrice = $val['pivot']['player_price'];
-                                                        }
-                                                        ?>
-                                                    {{$playerThisTournamnetPrice}}
-                                                </p></td>
+                                            <td class="border-r1">
+                                                <?php
+                                                $playerThisTournamnetPrice = 0;
+                                                if (!empty($val['pivot'])) {
+                                                    $playerThisTournamnetPrice = $val['pivot']['player_price'];
+                                                }
+                                                ?>
+                                                {{$playerThisTournamnetPrice}}
+                                            </td>
                                             @endforeach
                                             <td>
 
@@ -227,7 +224,7 @@
             $('#total-score-user').html(obj.player_score);
             var t = '<tr>';
             t += '<input type=hidden" name="player_id_t" value="' + obj.id + '"/>';
-            t += '<td class="border-r1 text-left"><img id="myteamtimg" class="img-thumbnail" style="width: 80px"  src="' + obj.profile_pic + ' "><span class="selected-player-name">' + obj.name + '</span> </td>';
+            t += '<td class="border-r1 text-left"><img id="myteamtimg" class="img-thumbnail" style="width: 80px;float: left;margin-right: 24px;"  src="' + obj.profile_pic + ' "><span class="selected-player-name">' + obj.name + '</span> </td>';
             t += '<td class="border-r1"><p class="myteamtt"></p> ' + obj.role_name + '</span></td>';
             t += '<td class="border-r1"><p class="myteamtt"></p>' + obj.price + '</td>';
             //var url = '{{ route("transferplayer", ["team_id"=>"id","player_id"=>'pid',"tournament_id"=>'tid']) }}';

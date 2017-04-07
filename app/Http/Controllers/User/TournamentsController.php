@@ -130,10 +130,6 @@ class TournamentsController extends Controller {
     }
 
     function playTournament($team_id, $tournament_id) {
-
-
-//        $tournamentPrice=\App\Tournament::find($tournament_id)->tournament_price;
-//        dd($tournamentPrice);
         $usersSelectedPlayers = UserTeam::where('id', $team_id)->where('user_id', Auth::user()->id)
                         ->with([
                             'user_team_player',
@@ -158,12 +154,15 @@ class TournamentsController extends Controller {
                     },
                     'players' => function ($q) use ($selectedPlayers) {
                         $q->whereNotIn('players.id', $selectedPlayers);
-                    }
+                    },
+                    'players.player_actual_teams' => function($query) {
+                        $query->select('name', 'teams.id');
+                    },
                 ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
                     $query->where('tournament_id', $tournament_id);
                 })->get()->toArray();
+        //debugArr($roles);die;
         $data['roles'] = $this->array_filter_recursive($roles);
-
         return view('user.tournaments.my_team', $data);
     }
 

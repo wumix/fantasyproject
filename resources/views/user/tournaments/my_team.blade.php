@@ -89,7 +89,10 @@
                             </ul>
                             </small>
                             <div class="alert alert-danger">
-                                You can make average team with in available points. i.e {{getUserTotalScore(Auth::id())}}
+                                <ul>
+                                    <li>You can make average team with in available points. i.e {{getUserTotalScore(Auth::id())}}</li>
+                                    <li>You must have 11 players in your team to play this tournament.</li>
+                                </ul>
                             </div>
 
                             <div class="panel with-nav-tabs panel">
@@ -225,8 +228,8 @@
             var t = '<tr>';
             t += '<input type=hidden" name="player_id_t" value="' + obj.id + '"/>';
             t += '<td class="border-r1 text-left"><img id="myteamtimg" class="img-thumbnail" style="width: 80px;float: left;margin-right: 24px;"  src="' + obj.profile_pic + ' "><span class="selected-player-name">' + obj.name + '</span> </td>';
-            t += '<td class="border-r1"><p class="myteamtt"></p> ' + obj.role_name + '</span></td>';
-            t += '<td class="border-r1"><p class="myteamtt"></p>' + obj.price + '</td>';
+            t += '<td class="border-r1"> ' + obj.role_name + '</span></td>';
+            t += '<td class="border-r1">' + obj.price + '</td>';
             //var url = '{{ route("transferplayer", ["team_id"=>"id","player_id"=>'pid',"tournament_id"=>'tid']) }}';
             var url = '#';
             url = url.replace('pid', obj.id);

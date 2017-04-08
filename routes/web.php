@@ -116,8 +116,7 @@ Route::group(['middleware'=>['web'],'prefix'=>'admin'],function(){
             Route::post('/addplayers/','Admin\TournamentsController@postAddTournamentPlayers')->name('postAddTournamentPlayers');
             Route::get('/add-max-roles/{tournament_id}','Admin\TournamentsController@addTournamentRolesLimit')->name('addMaxRoles');
             Route::post('/add-max-roles/{tournament_id}','Admin\TournamentsController@postAddTournamentRolesLimit')->name('postAddmaxRoles');
-        });
-//Matches
+        }); //Matches
         Route::group(['prefix'=>'match'],function(){
             Route::get('/','Admin\MatchesController@index')->name('Matcheslist');
             Route::get('/add','Admin\MatchesController@addMatchForm')->name('addMatch');//showsaddplayerform

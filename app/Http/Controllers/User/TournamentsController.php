@@ -161,8 +161,9 @@ class TournamentsController extends Controller {
                 ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
                     $query->where('tournament_id', $tournament_id);
                 })->get()->toArray();
-        //debugArr($roles);die;
+       // dd($roles);die;
         $data['roles'] = $this->array_filter_recursive($roles);
+
         return view('user.tournaments.my_team', $data);
     }
 

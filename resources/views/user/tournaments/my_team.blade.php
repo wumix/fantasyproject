@@ -128,6 +128,10 @@
                                                     <tbody class="main-taible-body">
 
                                                         @foreach($role['players'] as $player)
+                                                        <?php
+                                                        if (empty($player['player_tournaments'][0]['id']))
+                                                            continue;
+                                                        ?>
                                                         <tr id="player_tr-{{$player['id']}}" class="cwt">
                                                             <td class=" th11 text-left">
                                                                 <img style="width: 80px;float: left;margin-right: 24px;" class="img-thumbnail"

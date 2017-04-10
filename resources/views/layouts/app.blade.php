@@ -55,11 +55,17 @@
                             </li>
                             @endif
                             @if(Auth::check())
+                                    <li>
+                                        <a href="{{route('UserDashboard')}}">
+                                            DashBoard
+                                        </a>
+                                    </li>
                             <li>
-                                <a href="{{route('UserDashboard')}}">
+                                <a href="#">
                                     {{Auth::user()->name}}
                                 </a>
                             </li>
+
                             <li>
                                 <a onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();" href="javacript:void(0)">
@@ -89,14 +95,15 @@
                             <li>
                                 <a class="page-scroll" href="/">Home</a>
                             </li>
-                            <li>
-                                <a class="page-scroll" href="{{route('showTournament', ['tournament_id'=>1])}}">
-                                    Create Team
-                                </a>
-                            </li>
+
                             <li>
                                 <a class="page-scroll" href="{{route('howPlay')}}">
                                     How to play
+                                </a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="{{route('showTournament', ['tournament_id'=>1])}}">
+                                    Create Team
                                 </a>
                             </li>
                             <li>

@@ -45,7 +45,7 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <input value="submit" type="submit">
+                                                <input value="Procedd" type="submit">
 
                                             </div>
 

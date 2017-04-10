@@ -32,64 +32,36 @@ foreach ($team_score as $teamplayers) {
                     </h1>
                     <hr class="light full">
                     <div class="page-content col-md-12">
-
-                        @foreach($team_score as $team_player)
-                            <h2>
-                                {{$team_player['name'] }}</h2>
-
-
-
-
+                        <table class="table table-striped" id="tortable">
+                     <?php $teamtotal=0;?>
+                        @foreach($team_score as $row )
+                              <tr>
+                                  <td><img style="width: 80px;float: left;margin-right: 24px;"  class="img-thumbnail" src=" {{getUploadsPath($row['profile_pic'])}}"></td>
+                                  <td>{{$row['name']}}</td>
 
 
-                            @foreach($z as $key=>$player_game_term_score)
-                                <h3>{{$key}}</h3>
+                                <?php $playertotal=0;?>
+                            @foreach($row['player_game_term_score'] as $termscore)
 
-                                <table class="table table-striped" id="tortable">
-                                    <?php  $matchpoints = 0 ?>
-                                    @foreach($player_game_term_score as $row)
+                                @foreach($termscore['points_devision_tournament'] as $points)
 
-                                        <tr>
-                                            <td colspan="3" style="background:green; color:#FFFFFF"> {{$row['game_terms']['name']}}</td>
-                                        </tr>
-                                        <tr>
+                                 <?php   $playertotal+=$points['points']*$termscore['player_term_count'];?>
 
-                                            <td>To</td>
-                                            <td> From</td>
-                                            <td> points</td>
-                                        </tr>
 
-                                        <?php  $totalpoints = 0 ?>
-                                        @foreach($row['points_devision_tournament'] as $scores )
-                                            <tr>
+                                @endforeach
 
-                                                <td>{{$scores['qty_to']}}</td>
-                                                <td>{{$scores['qty_from']}}</td>
-                                                <td>{{$scores['points']}}</td>
-                                                <?php $totalpoints += $scores['points'] ?>
-                                            </tr>
-                                        @endforeach
-
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td>{{$totalpoints}}</td>
-                                            <?php $matchpoints += $totalpoints;?>
-
-                                        </tr>
-                                    @endforeach
-                                    <tr>
-                                        <td colspan="2">Total Match points</td>
-
-                                        <td>{{$matchpoints}}</td>
-                                    </tr>
-                                </table>
                             @endforeach
 
-
+                                <?php $teamtotal+=$playertotal;?>
+                             <td>  {{$playertotal}}</td>
+                         </tr>
 
                         @endforeach
 
+
+
+                         </table>
+                         <h3>Total Team Score: {{$teamtotal}}</h3>
 
                     </div>
                 </div>

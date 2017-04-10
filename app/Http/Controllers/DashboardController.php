@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\UserTeam;
 use DateTime;
+use phpDocumentor\Reflection\Types\Null_;
 
 class DashboardController extends Controller {
 
@@ -13,8 +14,9 @@ class DashboardController extends Controller {
     }
 
     public function teamDetail(Request $request) {
-//        $tournamentid=$request->tournament_id;
-//        dd($tournamentid);
+
+//        $tournamentid=$request->tournament_id
+//dd($tournamentid);
 //        die;
 
         $tournament_id = 1;
@@ -24,14 +26,16 @@ class DashboardController extends Controller {
                 ->get()
                 ->toArray();
         //Get matches after team making
-        //dd($data);
+        if($data['user_teams'][0]['joined_from_match_date']==null){
+            return view('pages.team_incomplete');
+        }
         $matcheIdsAfterThisTeamMade = \App\Match::select('id')
                         ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])
                         ->get()->toArray();
-       //dd($matcheIdsAfterThisTeamMade);
+      //  dd($matcheIdsAfterThisTeamMade);
         if (!empty($matcheIdsAfterThisTeamMade)) {
             $matcheIdsAfterThisTeamMade = array_column($matcheIdsAfterThisTeamMade, 'id');
-            $matcheIdsAfterThisTeamMade = [1];
+          //  $matcheIdsAfterThisTeamMade = [1];
         }
         $data['user_team_players'] = \App\Player::whereHas('player_teams', function($query) use ($teamId) {
                     $query->where('team_id', $teamId);
@@ -40,9 +44,9 @@ class DashboardController extends Controller {
         if (!empty($data['user_team_players'])) {
             $userTeamPlayerIds = array_column($data['user_team_players'], 'id');
         }
-       $matcheIdsAfterThisTeamMade=[1,4];
-      // dd($matcheIdsAfterThisTeamMade);
-       // $userTeamPlayerIds=[1,4];
+      // $matcheIdsAfterThisTeamMade=[1,2,3,4,5,6,7,8,9,10];
+       //dd($matcheIdsAfterThisTeamMade);
+      //  $userTeamPlayerIds=[1,2,3,4,5,6,7,8,9,10];
        // dd($userTeamPlayerIds);
         $data['team_score'] = \App\Player::whereIn('id', $userTeamPlayerIds)->with(['player_roles','player_matches',
                     'player_gameTerm_score' => function($query) use ($matcheIdsAfterThisTeamMade) {
@@ -57,7 +61,7 @@ class DashboardController extends Controller {
                 ])->get()->toArray();
 
         //dd($data);
-//       dd($data['team_score']);
+ //dd($data['team_score']);
 //       debugArr($data['team_score']);
 //       die;
         $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();

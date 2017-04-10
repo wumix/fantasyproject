@@ -411,6 +411,9 @@ class TournamentsController extends Controller {
 
         //$currentNoPlayers += 1;
         if ($currentNoPlayers >= 11) {
+            $userteamsave=\App\UserTeam::find($request->team_id);
+            $userteamsave->joined_from_match_date=new DateTime();
+            $userteamsave->save();
 
 
             $objResponse['success'] = true;

@@ -90,6 +90,11 @@
                                 <a class="page-scroll" href="/">Home</a>
                             </li>
                             <li>
+                                <a class="page-scroll" href="{{route('showTournament', ['tournament_id'=>1])}}">
+                                    Create Team
+                                </a>
+                            </li>
+                            <li>
                                 <a class="page-scroll" href="{{route('howPlay')}}">
                                     How to play
                                 </a>
@@ -99,11 +104,7 @@
                                     Tournaments
                                 </a>
                             </li>
-                            <li>
-                                <a class="page-scroll" href="{{route('showTournament', ['tournament_id'=>1])}}">
-                                    Start playing
-                                </a>
-                            </li>
+
                             @if(Auth::check())
                             <li>
                                 <a href="{{route('addTeam', ['tournament_id'=>1])}}" class="page-scroll">

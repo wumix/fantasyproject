@@ -15,6 +15,11 @@ class DashboardController extends Controller {
 
     public function teamDetail(Request $request) {
 
+
+
+
+
+
 //        $tournamentid=$request->tournament_id
 //dd($tournamentid);
 //        die;
@@ -85,7 +90,7 @@ class DashboardController extends Controller {
     function editProfileform(Request $request) {
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         //  dd($data['userprofileinfo']->toArray());
-        dd($data);
+      //  dd($data);
         return view('user.profile.profile_edit_form', $data);
     }
 

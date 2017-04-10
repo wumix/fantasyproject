@@ -35,16 +35,17 @@
                                         @else
                                             {!! Form::open(['url' => route('teamdetail'),'files'=>true]) !!}
                                             <div class="form-group">
-                                                <select name="tournament_id" class="btn dropdown-toggle col-md-10 col-md-offset-1"
+                                                <select name="team_id" class="btn dropdown-toggle col-md-10 col-md-offset-1"
                                                         data-toggle="dropdown"
                                                         style="border:1px solid #9acc59; border-radius: 6px;">
                                                     @foreach($user_teams as $row)
-                                                        <option id="dropdownbtn">{{$row['name']}}</option>
+                                                        <option id="dropdownbtn" value="{{$row['id']}}">{{$row['name']}}</option>
 
                                                     @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group">
+                                                <input value="submit" type="submit">
 
                                             </div>
 

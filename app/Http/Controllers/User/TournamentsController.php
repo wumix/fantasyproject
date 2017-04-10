@@ -161,8 +161,9 @@ class TournamentsController extends Controller {
                 ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
                     $query->where('tournament_id', $tournament_id);
                 })->get()->toArray();
-        //debugArr($roles);die;
+       // dd($roles);die;
         $data['roles'] = $this->array_filter_recursive($roles);
+
         return view('user.tournaments.my_team', $data);
     }
 
@@ -410,6 +411,13 @@ class TournamentsController extends Controller {
 
         //$currentNoPlayers += 1;
         if ($currentNoPlayers >= 11) {
+            $date = new DateTime();
+            $date=$date->format('Y-m-j h:i:s');
+            $newdate = strtotime ( '-5 hour' , strtotime ( $date ) ) ;
+            $newdate = date ( 'Y-m-j h:i:s' , $newdate );
+            $userteamsave=\App\UserTeam::find($request->team_id);
+            $userteamsave->joined_from_match_date=$newdate;
+            $userteamsave->save();
 
 
             $objResponse['success'] = true;

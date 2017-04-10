@@ -152,9 +152,13 @@
                                                                     class="myteamtt">
                                                                         <?php
                                                                         $playerThisTournamnetPrice = 0;
+                                                                        $playerid=0;
                                                                         if (!empty($player['player_tournaments'][0]['pivot']['player_price'])) {
                                                                             $playerThisTournamnetPrice = $player['player_tournaments'][0]['pivot']['player_price'];
                                                                         }
+                                                                    if (!empty($player['player_tournaments'][0]['id'])) {
+                                                                        $playerid = $player['player_tournaments'][0]['id'];
+                                                                    }
                                                                         ?>
                                                                     {{$playerThisTournamnetPrice}}
                                                                 </p>
@@ -162,7 +166,7 @@
 
                                                             <td class="add text-left">
                                                                 <a id="btn-player-{{$player['id']}}"
-                                                                   href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$playerThisTournamnetPrice}}')"
+                                                                   href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$playerid}}','{{$playerThisTournamnetPrice}}')"
                                                                    class="btn btn-green">Add To Team
                                                                 </a>
                                                             </td>

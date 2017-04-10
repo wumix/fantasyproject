@@ -45,10 +45,21 @@ foreach ($team_score as $teamplayers) {
                                     @foreach($row['player_game_term_score'] as $termscore)
 
                                         @foreach($termscore['points_devision_tournament'] as $points)
-                                            <?php if(($points['qty_from']<=$termscore['player_term_count']) &&($points['qty_to']>=$termscore['player_term_count'])){
-                                         //  echo $points['qty_from']." ". $termscore['player_term_count']." ".$points['qty_to']."<br>";
+                                            <?php
+                                                if($points['qty_from']==$points['qty_to']){
+                                                 //   echo "yes";
+                                               //     echo $points['points'] * $termscore['player_term_count'];
+                                                    $playertotal += $points['points'] * $termscore['player_term_count'];
 
-                                           $playertotal += $points['points'] * $termscore['player_term_count'];
+                                                }
+                                                else{
+                                            if(($points['qty_from']<=$termscore['player_term_count']) &&($points['qty_to']>=$termscore['player_term_count']))
+                                            {
+                                        //  echo $points['qty_from']." ". $termscore['player_term_count']." ".$points['qty_to']."<br>";
+
+
+                                           $playertotal += $points['points'];
+                                              }
                                               }
                                             ?>
 

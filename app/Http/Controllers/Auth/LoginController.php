@@ -22,7 +22,7 @@ class LoginController extends Controller {
 use AuthenticatesUsers {
         attemptLogin as attemptLoginAtAuthenticatesUsers;
     }
-
+protected $userRedirect = '/dashboard';
     /**
      * Show the application's front-emd login form.
      *
@@ -56,7 +56,7 @@ use AuthenticatesUsers {
      */
     protected function redirectTo() {
        
-        return (\Auth::user()->user_type == 0) ? 'admin/dashboard' : '/';
+        return (\Auth::user()->user_type == 0) ? 'admin/dashboard' : $this->userRedirect;
     }
 
     /**
@@ -122,7 +122,7 @@ use AuthenticatesUsers {
         $socialProvider = 'facebook';
         $user = $userObj->createOrGetUser(Socialite::driver('facebook')->user(), $socialProvider);
         auth()->login($user);
-        return redirect()->to('tournament-detail/1');
+        return redirect()->to($this->userRedirect);
     }
 
 }

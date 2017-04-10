@@ -31,6 +31,7 @@ use AuthenticatesUsers {
     public function showLoginForm() {
         $objTourmament = \App\Tournament::all()->toArray();
         $data['tournaments_list'] = $objTourmament;
+
         return view('auth.login', $data);
     }
 
@@ -54,7 +55,7 @@ use AuthenticatesUsers {
      * @return type
      */
     protected function redirectTo() {
-
+       
         return (\Auth::user()->user_type == 0) ? 'admin/dashboard' : '/';
     }
 

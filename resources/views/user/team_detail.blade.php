@@ -33,35 +33,39 @@ foreach ($team_score as $teamplayers) {
                     <hr class="light full">
                     <div class="page-content col-md-12">
                         <table class="table table-striped" id="tortable">
-                     <?php $teamtotal=0;?>
-                        @foreach($team_score as $row )
-                              <tr>
-                                  <td><img style="width: 80px;float: left;margin-right: 24px;"  class="img-thumbnail" src=" {{getUploadsPath($row['profile_pic'])}}"></td>
-                                  <td>{{$row['name']}}</td>
+                            <?php $teamtotal = 0;?>
+                            @foreach($team_score as $row )
+                                <tr>
+                                    <td><img style="width: 80px;float: left;margin-right: 24px;" class="img-thumbnail"
+                                             src=" {{getUploadsPath($row['profile_pic'])}}"></td>
+                                    <td>{{$row['name']}}</td>
 
 
-                                <?php $playertotal=0;?>
-                            @foreach($row['player_game_term_score'] as $termscore)
+                                    <?php $playertotal = 0;?>
+                                    @foreach($row['player_game_term_score'] as $termscore)
 
-                                @foreach($termscore['points_devision_tournament'] as $points)
+                                        @foreach($termscore['points_devision_tournament'] as $points)
+                                            <?php if(($points['qty_from']<$termscore['player_term_count']) &&($points['qty_to']>$termscore['player_term_count'])){
+                                         //  echo $points['qty_from']." ". $termscore['player_term_count']." ".$points['qty_to']."<br>";
 
-                                 <?php   $playertotal+=$points['points']*$termscore['player_term_count'];?>
+                                           $playertotal += $points['points'] * $termscore['player_term_count'];
+                                              }
+                                            ?>
 
 
-                                @endforeach
+                                        @endforeach
+
+                                    @endforeach
+
+                                    <?php $teamtotal += $playertotal;?>
+                                    <td>  {{$playertotal}}</td>
+                                </tr>
 
                             @endforeach
 
-                                <?php $teamtotal+=$playertotal;?>
-                             <td>  {{$playertotal}}</td>
-                         </tr>
 
-                        @endforeach
-
-
-
-                         </table>
-                         <h3>Total Team Score: {{$teamtotal}}</h3>
+                        </table>
+                        <h3>Total Team Score: {{$teamtotal}}</h3>
 
                     </div>
                 </div>

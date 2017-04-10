@@ -20,8 +20,8 @@
                             You have not completed your team yet.
                         </p>
                         <p>
-                            You will be allowed to play when you will complete 11 playehrs in team
-                            <a href="{{route('UserDashboard')}}">dashboard</a>.
+                            You will be allowed to play when you will complete 11 players in team.
+                            <a href="{{route('addTeam', ['tournament_id'=>1])}}">Complete Team</a>.
                         </p>
                     </div>
                 </div>

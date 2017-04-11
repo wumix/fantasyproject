@@ -16,9 +16,11 @@
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
+
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        {!! Html::style('http://localhost/gamithon_html/vendor/magnific-popup/magnific-popup.css') !!}
         {!! Html::style('assets/css/slicknav.css') !!}
         {!! Html::style('assets-new/css/creative.css') !!}
         {!! Html::style('assets-new/css/style.css') !!}
@@ -45,7 +47,7 @@
                             @if(!Auth::check())
                             <li>
                                 <a href="{{route('login')}}">
-                                    Login 
+                                    Login
                                 </a>
                             </li>
                             <li>
@@ -166,7 +168,7 @@
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle text-info fa-stack-2x"></i>
                                     <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>    
+                                </span>
                             </a>
                             <a href="https://twitter.com/GamithonFantasy" target="_blank">
                                 <span class="fa-stack fa-lg">
@@ -184,18 +186,28 @@
         {!! Html::script('assets-new/vendor/bootstrap/js/bootstrap.min.js') !!}
         {!! Html::script('assets-new/vendor/basic-table/jquery.basictable.min.js') !!}
         {!! Html::script('assets/js/jquery.slicknav.min.js') !!}
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#bs-example-navbar-collapse-1').slicknav({
-                    appendTo: '#top-menu-res',
-                    label: 'Main Menu'
-                });
+
+
+
+
+<!-- Plugin JavaScript -->
+        {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}
+        {!! Html::script('assets-new/js/scrollreveal.min.js') !!}
+        {!! Html::script('assets-new/js/jquery.magnific-popup.min.js') !!}
+        {!! Html::script('assets-new/js/creative.js') !!}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#bs-example-navbar-collapse-1').slicknav({
+            appendTo: '#top-menu-res',
+            label: 'Main Menu'
+        });
 //                $('table').basictable({
 //                  forceResponsive: false
 //                });
-            });
-        </script>
-        @yield('js')
-        @yield('addteamjs')
-    </body>
+    });
+</script>
+@yield('js')
+@yield('addteamjs')
+</body>
 </html>

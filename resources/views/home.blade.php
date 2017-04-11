@@ -96,7 +96,7 @@
                             </tr>
                             @endif
                         </tbody>
-                    </table>                        
+                    </table>
                 </div>
                 <a href="{{route('usertournamenthome')}}" class="btn btn-green btn-xl">
                     View all tournaments
@@ -148,15 +148,161 @@
         </div>
     </div>
 </section>
+{{--.............................Gallry Start..............................................--}}
+<section class="no-padding" id="portfolio">
+    <div class="container-fluid">
+        <div class="row no-gutter popup-gallery">
+            <div class="col-lg-4 col-sm-6">
+                <a href="img/portfolio/fullsize/GALLERY-IMG5APR.jpg" class="portfolio-box">
+                    <img src="img/portfolio/thumbnails/GALLERY-IMG5APR.jpg" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                SRH vs RCB
+                            </div>
+                            <div class="project-name">
+                                SRH won by 7 wickets
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col-lg-4 col-sm-6">
+                <a href="img/portfolio/fullsize/GALLERY-IMG6APR1.jpg" class="portfolio-box">
+                    <img src="img/portfolio/thumbnails/GALLERY-IMG6APR1.jpg" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                GL vs KKR
+                            </div>
+                            <div class="project-name">
+                                KKR won by 11 wickets
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a href="img/portfolio/fullsize/GALLERY-IMG7APR2.jpg" class="portfolio-box">
+                    <img src="img/portfolio/thumbnails/GALLERY-IMG7APR2.jpg" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                KxiP vs RPS
+                            </div>
+                            <div class="project-name">
+                                KxiP won by 7 wickets
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a href="../img/portfolio/fullsize/GALLERY-IMG8APR1.jpg" class="portfolio-box">
+                    <img src="../img/portfolio/thumbnails/GALLERY-IMG8APR1.jpg" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                RPS vs MI
+                            </div>
+                            <div class="project-name">
+                                RPS won by 8 wickets
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a href="img/portfolio/fullsize/GALLERY-IMG8APR2ND.jpg" class="portfolio-box">
+                    <img src="img/portfolio/thumbnails/GALLERY-IMG8APR2ND.jpg" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                RCB vs DD
+                            </div>
+                            <div class="project-name">
+                                RCB won by 3 wickets
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a href="img/portfolio/fullsize/GALLERY-IMG9APR.jpg" class="portfolio-box">
+                    <img src="img/portfolio/thumbnails/GALLERY-IMG9APR.jpg" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                SRH vs GL
+                            </div>
+                            <div class="project-name">
+                                SRH won by 10 wickets
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a href="img/portfolio/fullsize/GALLERY-IMG92ND-2.jpg" class="portfolio-box">
+                    <img src="img/portfolio/thumbnails/GALLERY-IMG92ND-2.jpg" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                MI vs KKR
+                            </div>
+                            <div class="project-name">
+                                MI won by 5 wickets
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a href="img/portfolio/fullsize/GALLERY-IMG10APR1.jpg" class="portfolio-box">
+                    <img src="img/portfolio/thumbnails/GALLERY-IMG10APR1.jpg" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                KxiP vs RCB
+                            </div>
+                            <div class="project-name">
+                                KxiP won by 9 wickets
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a href="img/portfolio/fullsize/GALLERY-IMG10APR-2.jpg" class="portfolio-box">
+                    <img src="img/portfolio/thumbnails/GALLERY-IMG10APR-2.jpg" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                KxiP vs RCB
+                            </div>
+                            <div class="project-name">
+                                KxiP won by 9 wickets
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+</section>
 <!-- /.....................footer Start......................../ -->
 @endsection
 
 
 @section('js')
 {!! Html::script('assets/jquery.countdown-2.2.0/jquery.countdown.min.js') !!}
-@php($date= '00-00-00 00:00:00')    
+@php($date= '00-00-00 00:00:00')
 @if(!empty($matches['start_date']))
-@php($date= $matches['start_date']);    
+@php($date= $matches['start_date']);
 @endif
 {{Html::script('js/moment.js')}}
 <script type="text/javascript">

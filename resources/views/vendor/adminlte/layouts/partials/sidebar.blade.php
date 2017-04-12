@@ -84,6 +84,22 @@
 
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class='fa fa-users'></i> <span>Blog</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('AddTeam')}}">Add blog</a></li>
+                    <li><a href="{{route('blogList')}}">Blog list</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class='fa fa-users'></i> <span>Blog Categories</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('AddTeam')}}">Add category</a></li>
+                    <li><a href="{{route('blogCategoryList')}}">List categories</a></li>
+                </ul>
+            </li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

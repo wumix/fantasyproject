@@ -158,9 +158,7 @@ return [
         //Adminlte routes'
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
         //Social login
-        Laravel\Socialite\SocialiteServiceProvider::class,
-        'didcode\Blog\BlogServiceProvider',
-    ],
+        Laravel\Socialite\SocialiteServiceProvider::class,    ],
     /*
       |--------------------------------------------------------------------------
       | Class Aliases

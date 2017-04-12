@@ -45,6 +45,9 @@
 .table-striped{
     background-color: #ffffff;
 }
+.table-stripedhome{
+background-color: rgb(102, 102, 102);
+}
 .th1{
     border-radius: 8px 0 0 0 ;
 }
@@ -88,6 +91,7 @@
 .trr1{
     background-color: #f8f8f7;
 }
+
 .gen-table tr td, .gen-table tr td a{
     color: #000;
 }

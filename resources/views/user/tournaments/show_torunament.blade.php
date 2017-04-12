@@ -1,5 +1,6 @@
 @php
 //dd($tournament_detail);
+//dd($game_roles);
 @endphp
 @extends('layouts.app')
 
@@ -60,6 +61,7 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Player</th>
+                                                            <th>Player Team Name</th>
                                                             <th>Points to buy</th>
                                                         </tr>
                                                     </thead>
@@ -71,6 +73,16 @@
                                                             <td class="text-left">
                                                                 <img src="{{getUploadsPath($player['profile_pic'])}}" class="player_pic img-thumbnail" />
                                                                 {{$player['name']}}
+                                                            </td>
+
+                                                            <td>
+                                                                @if(!empty($player['player_actual_teams']))
+                                                                    @foreach($player['player_actual_teams'] as $palyeractualteam)
+                                                                        {{$palyeractualteam['name']}}
+                                                                    @endforeach
+                                                                @else
+                                                                    N/A
+                                                                @endif
                                                             </td>
                                                             <td>
                                                                 <?php

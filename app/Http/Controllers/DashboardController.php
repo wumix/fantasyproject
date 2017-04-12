@@ -14,6 +14,7 @@ class DashboardController extends Controller {
     }
 
     public function teamDetail(Request $request) {
+       // dd(get_individual_player_score(1,5,2));
 
 
 //        $date = new DateTime();
@@ -37,6 +38,9 @@ class DashboardController extends Controller {
                 ->where('tournament_id', $tournament_id)
                 ->get()
                 ->toArray();
+       $data['user_team_player_transfer']=\App\UserTeam::where('id', $request->team_id)->with('user_team_player_transfers')->get();
+
+
         //Get matches after team making
         if($data['user_teams'][0]['joined_from_match_date']==null){
             return view('pages.team_incomplete');

@@ -57,10 +57,10 @@
                                             @endforeach
                                             <td>
 
-                                                <!--                                            <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"
+                                                       <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"
                                                                                                class="btn btn-md bttor1">TRANSFER
-                                                                                            </a>-->
-                                                Player transfer is not available
+                                                                                            </a>
+
                                             </td>
 
                                         </tr>
@@ -165,7 +165,7 @@
                                                             </td>
 
                                                             <td class="add text-left">
-                                                                <a id="btn-player-{{$player['id']}}"
+                                                                <a onclick="return confirm('Are you sure you want to add this player')" id="btn-player-{{$player['id']}}"
                                                                    href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$playerid}}','{{$playerThisTournamnetPrice}}')"
                                                                    class="btn btn-green">Add To Team
                                                                 </a>

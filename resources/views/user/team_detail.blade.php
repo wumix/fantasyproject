@@ -1,7 +1,15 @@
 <?php
-// dd($team_score);
+//dd(user_team_player_transfer);
 //dd($team_score);
 //first loop on players
+///dd($user_team_player_transfer->toArray());
+if(empty($user_team_player_transfer->toArray())){
+    $user_team_player_transfer=null;
+}else{
+    $user_team_player_transfer=$user_team_player_transfer->toArray();
+    $user_team_player_transfer=$user_team_player_transfer[0];
+}
+//dd($user_team_player_transfer);
 $z = [];
 foreach ($team_score as $teamplayers) {
     $i = 0;
@@ -41,7 +49,15 @@ foreach ($team_score as $teamplayers) {
                                     <td>{{$row['name']}}</td>
 
 
-                                    <?php $playertotal = 0;?>
+                                    <?php $playertotal = 0;
+                                    foreach($user_team_player_transfer['user_team_player_transfers'] as $transfer){
+                                     if($transfer['id']==$row['id']){
+                                        $teamtotal+=$transfer['pivot']['player_out_score'];
+                                     }
+                                    }
+
+
+                                    ?>
                                     @foreach($row['player_game_term_score'] as $termscore)
 
                                         @foreach($termscore['points_devision_tournament'] as $points)

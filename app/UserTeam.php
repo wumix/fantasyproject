@@ -14,6 +14,9 @@ class UserTeam extends Model {
     function user_team_player() {
         return $this->belongsToMany('App\Player', 'user_team_players', 'team_id');
     }
+    function user_team_player_transfers() {
+        return $this->belongsToMany('App\Player', 'player_transfer','team_id','player_in_id')->withPivot('player_out_score');
+    }
 
     function teamtournament() {
         return $this->belongsTo('App\Tournament', 'tournament_id');

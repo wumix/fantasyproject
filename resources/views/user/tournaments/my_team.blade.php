@@ -117,13 +117,12 @@
                                             <div class="table-responsive ">
                                                 <table class="table table-hover" id="tortable">
                                                     <thead class="main-taible-head1">
-                                                        <tr>
-                                                            <th class=" th1">PLAYERS</th>
-                                                            <th class=" th1">Belongs To</th>
+                                                    <tr>
+                                                        <th class=" th1">PLAYERS</th>
 
-                                                            <th class=" th1">Points required to buy</th>
-                                                            <th class="add"></th>
-                                                        </tr>
+                                                        <th class="point">PRICE</th>
+                                                        <th class="add">ACTION</th>
+                                                    </tr>
                                                     </thead>
                                                     <tbody class="main-taible-body">
 

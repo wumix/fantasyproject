@@ -138,16 +138,18 @@
                                     <table class="table " id="tortable">
                                         <thead class="main-taible-head1">
                                         <tr>
+
                                             <th class=" th1">PLAYERS</th>
 
-                                            <th class="point">PRICE</th>
-                                            <th class="add">ACTION</th>
+                                            <th class="text-center">PRICE</th>
+                                            <th class="text-center">ACTION</th>
                                         </tr>
                                         </thead>
                                         <tbody class="main-taible-body">
 
                                         @foreach($role['players'] as $player)
                                             <tr id="player_tr-{{$player['id']}}" class="cwt">
+
                                                 <td class=" th11"><img id="myteamtimg" class="img-circle"
                                                   style="width: 80px;float: left;margin-right: 24px;" src="{{getUploadsPath($player['profile_pic'])}}"> {{$player['name']}}
                                                 </td>
@@ -156,7 +158,7 @@
                                                             class="myteamtt">{{$player['player_tournaments'][0]['pivot']['player_price']}}</p>
                                                 </td>
 
-                                                <td class="add">
+                                                <td>
                                                     <a onclick="return confirm('Are you sure you want to transfer');" style="text-transform: uppercase"  id="btn-player-{{$player['id']}}"href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$player['player_tournaments'][0]['pivot']['player_price']}}')" class="btn btn-md bttor1">
                                                         TRANSFER WITH {{$player_info['name']}}
                                                     </a>

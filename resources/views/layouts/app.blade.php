@@ -103,11 +103,14 @@
                                     How to play
                                 </a>
                             </li>
+                            @if(!has_user_team(Auth::id()))
                             <li>
+
                                 <a class="page-scroll" href="{{route('showTournament', ['tournament_id'=>1])}}">
                                     Create Team
                                 </a>
                             </li>
+                            @endif
                             <li>
                                 <a class="page-scroll" href="{{route('usertournamenthome')}}">
                                     Tournaments

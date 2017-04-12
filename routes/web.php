@@ -61,7 +61,21 @@ Route::group(['middleware' => ['web']], function () {
 //Adminroutes
 Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
     Route::get('/', 'Auth\LoginController@showAdminLoginForm');
+
     Route::group(['middleware' => ['is_admin']], function () {
+
+        //Route::group(['prefix' => 'blog'], function () {
+            Route::get('blog', '\didcode\Blog\AdminController@index');
+            Route::get('post/create', '\didcode\Blog\AdminController@createPost');
+            Route::get('post/{id}/edit', '\didcode\Blog\AdminController@editPost');
+            Route::post('post/{id}/image', '\didcode\Blog\AdminController@addImage');
+            Route::get('post/{id}/image', '\didcode\Blog\AdminController@formAddImage');
+            Route::post('blog/save_post', '\didcode\Blog\AdminController@ajax_post_save');
+            Route::post('blog/load_post', '\didcode\Blog\AdminController@ajax_post_load');
+            Route::post('blog/publish_post', '\didcode\Blog\AdminController@ajax_post_publish');
+            Route::post('blog/create_category', '\didcode\Blog\AdminController@ajax_category_create');
+            Route::post('blog/save_options', '\didcode\Blog\AdminController@ajax_options_save');
+        //});
         Route::get('/dashboard', 'Admin\DashboardController@index');//Gamesroutes
         Route::group(['prefix' => 'games'], function () {
             Route::get('/', 'Admin\GamesController@index')->name('gameslist');

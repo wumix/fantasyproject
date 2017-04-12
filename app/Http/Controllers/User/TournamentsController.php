@@ -62,9 +62,12 @@ class TournamentsController extends Controller {
                                 },
                                 'players.player_tournaments' => function ($query) use($tournament_id) {
                                     $query->where('tournament_id', $tournament_id);
+                                },'players.player_actual_teams' => function($query) {
+                                    $query->select('name', 'teams.id');
                                 }
                             ])
                             ->get()->toArray();
+
             //dd($data);
             ////////Making player price
             //End making player price
@@ -130,6 +133,10 @@ class TournamentsController extends Controller {
     }
 
     function playTournament($team_id, $tournament_id) {
+        $tournamentDate = \App\Tournament::getStartdate($tournament_id);
+        $difference = $this->getTImeDifference($tournamentDate);
+
+       // die;
         $usersSelectedPlayers = UserTeam::where('id', $team_id)->where('user_id', Auth::user()->id)
                         ->with([
                             'user_team_player',
@@ -298,7 +305,7 @@ class TournamentsController extends Controller {
         // dd($player_in_price);
         // die;
 
-        if ($difference > 15) {
+        if ($difference > 15 || $difference < 15) {
             if ($request->player_in_price < getUserTotalScore(Auth::id())) {
                 if ($request->player_out_price > $player_in_price) {
 
@@ -311,7 +318,9 @@ class TournamentsController extends Controller {
                     //  $playertransfers->transfer_date = $transferDate;
 //                    $playertransfers->save();
                     DB::table('player_transfer')->insert(
-                            ['player_in_id' => $request->player_in_id, 'player_out_id' => $request->player_out_id, 'team_id' => $request->team_id]
+                            ['player_in_id' => $request->player_in_id, 'player_out_id' => $request->player_out_id,
+                                'team_id' => $request->team_id,'transfer_date'=>new DateTime(),
+                                'player_out_score'=>get_individual_player_score($tournament_id,$request->team_id,$request->player_out_id)]
                     );
                     $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => 0]);
                     \App\UserPointsConsumed::insert($array);
@@ -340,10 +349,16 @@ class TournamentsController extends Controller {
                     //   dd($netpoints);
                     $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => $netpoints]);
                     \App\UserPointsConsumed::insert($array);
-                    DB::table('user_team_players')->insert(
-                            ['team_id' => $request->team_id, 'player_id' => $request->player_in_id]
+                    DB::table('player_transfer')->insert(
+                        ['player_in_id' => $request->player_in_id, 'player_out_id' => $request->player_out_id,
+                            'team_id' => $request->team_id,'transfer_date'=>new DateTime(),
+                            'player_out_score'=>get_individual_player_score($tournament_id,$request->team_id,$request->player_out_id)]
                     );
-                    DB::table('user_team_players')->where(['team_id' => $request->team_id, 'player_id' => $request->player_out_id])->delete();
+                    DB::table('user_team_players')->where(['team_id' => $request->team_id,
+                        'player_id' => $request->player_out_id])->delete();
+                    DB::table('user_team_players')->insert(
+                        ['team_id' => $request->team_id, 'player_id' => $request->player_in_id]
+                    );
 
                     $objResponse['team_id'] = $request->team_id;
                     $objResponse['tournament_id'] = $request->tournament_id;

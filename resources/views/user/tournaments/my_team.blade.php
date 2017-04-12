@@ -57,10 +57,10 @@
                                             @endforeach
                                             <td>
 
-                                                <!--                                            <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"
+                                                       <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"
                                                                                                class="btn btn-md bttor1">TRANSFER
-                                                                                            </a>-->
-                                                Player transfer is not available
+                                                                                            </a>
+
                                             </td>
 
                                         </tr>
@@ -117,13 +117,12 @@
                                             <div class="table-responsive ">
                                                 <table class="table table-hover" id="tortable">
                                                     <thead class="main-taible-head1">
-                                                        <tr>
-                                                            <th class=" th1">PLAYERS</th>
-                                                            <th class=" th1">Belongs To</th>
+                                                    <tr>
+                                                        <th class=" th1">PLAYERS</th>
 
-                                                            <th class=" th1">Points required to buy</th>
-                                                            <th class="add"></th>
-                                                        </tr>
+                                                        <th class="point">PRICE</th>
+                                                        <th class="add">ACTION</th>
+                                                    </tr>
                                                     </thead>
                                                     <tbody class="main-taible-body">
 
@@ -165,7 +164,7 @@
                                                             </td>
 
                                                             <td class="add text-left">
-                                                                <a id="btn-player-{{$player['id']}}"
+                                                                <a onclick="return confirm('Are you sure you want to add this player')" id="btn-player-{{$player['id']}}"
                                                                    href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$playerid}}','{{$playerThisTournamnetPrice}}')"
                                                                    class="btn btn-green">Add To Team
                                                                 </a>

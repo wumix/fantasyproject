@@ -21,37 +21,37 @@
         </div>
     </section>
     <!-- .....................TeamStart............................... -->
-    <section class="myteam">
-        <div class="countaner">
-            <div class="col-md-3"></div>
-            <section>
-                <div id="mytl" class="text-center col-md-3">
-                    <h3 class="tnt">PLAYER ROLE LIMIT</h3>
-                    <h5 class="myt">You can select players within this limit</h5>
-                    <br>
-                    <h4 class="myt1">Batsmen: 4</h4>
-                    <h4 class="myt1">Bowler: 4</h4>
-                    <h4 class="myt1">Allrounders: 2</h4>
-                    <h4 class="myt1">Wicketkeeper: 1</h4>
+    {{--<section class="myteam">--}}
+        {{--<div class="countaner">--}}
+            {{--<div class="col-md-3"></div>--}}
+            {{--<section>--}}
+                {{--<div id="mytl" class="text-center col-md-3">--}}
+                    {{--<h3 class="tnt">PLAYER ROLE LIMIT</h3>--}}
+                    {{--<h5 class="myt">You can select players within this limit</h5>--}}
+                    {{--<br>--}}
+                    {{--<h4 class="myt1">Batsmen: 4</h4>--}}
+                    {{--<h4 class="myt1">Bowler: 4</h4>--}}
+                    {{--<h4 class="myt1">Allrounders: 2</h4>--}}
+                    {{--<h4 class="myt1">Wicketkeeper: 1</h4>--}}
 
-                </div>
-            </section>
+                {{--</div>--}}
+            {{--</section>--}}
 
-            <section>
-                <div id="myt2" class="text-center col-md-3">
-                    <h3 class="tnt1">PLAYER ROLE LIMIT</h3>
-                    <h5 class="myt">Selected team players</h5>
-                    <br>
-                    <h4 class="myt2">Batsmen: <span>4</span></h4>
-                    <h4 class="myt2">Bowler: <span>4</span></h4>
-                    <h4 class="myt2">Allrounders: <span>2</span></h4>
-                    <h4 class="myt2">Wicketkeeper: <span>1</span></h4>
+            {{--<section>--}}
+                {{--<div id="myt2" class="text-center col-md-3">--}}
+                    {{--<h3 class="tnt1">PLAYER ROLE LIMIT</h3>--}}
+                    {{--<h5 class="myt">Selected team players</h5>--}}
+                    {{--<br>--}}
+                    {{--<h4 class="myt2">Batsmen: <span>4</span></h4>--}}
+                    {{--<h4 class="myt2">Bowler: <span>4</span></h4>--}}
+                    {{--<h4 class="myt2">Allrounders: <span>2</span></h4>--}}
+                    {{--<h4 class="myt2">Wicketkeeper: <span>1</span></h4>--}}
 
-                </div>
+                {{--</div>--}}
 
-            </section>
-        </div>
-    </section>
+            {{--</section>--}}
+        {{--</div>--}}
+    {{--</section>--}}
     <!-- .....................Team End............................... -->
     <!-- ..............................Table Start................................... -->
     <section>
@@ -59,9 +59,9 @@
             <div class="container">
                 <div class="row">
                     <div>
-                        <center>
-                            <h3 class="ah311">SELECTED PLAYERS</h3>
-                        </center>
+                        <div class="text-center">
+                            <h3 class="ah3">Player Transfer</h3>
+                        </div>
                     </div>
 
 
@@ -82,7 +82,9 @@
                     <tbody id="selected-player" class="main-taible-body">
 
                         <tr>
-                            <td class="border-r1"><img id="myteamtimg" class="img-circle" src="{{getUploadsPath($player_info['profile_pic'])}}">
+                            <td class="border-r1"><img
+                                        style="width: 80px;float: left;margin-right: 24px;"
+                                        id="myteamtimg" class="img-circle" src="{{getUploadsPath($player_info['profile_pic'])}}">
                                {{$player_info['name']}}
                             </td>
 
@@ -101,22 +103,12 @@
             </div>
         </div>
     </section>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
     <!-- ...............Table End.............................. -->
     <div class="text-center">
-        <h3 class="ah3">SELECT PLAYERS</h3>
+        <h3 class="ah3">Players Available For Transfer</h3>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
+
     <section>
 
         <div class="container">
@@ -146,25 +138,27 @@
                                     <table class="table " id="tortable">
                                         <thead class="main-taible-head1">
                                         <tr>
+
                                             <th class=" th1">PLAYERS</th>
 
-                                            <th class="point">PRICE</th>
-                                            <th class="add">ACTION</th>
+                                            <th class="text-center">PRICE</th>
+                                            <th class="text-center">ACTION</th>
                                         </tr>
                                         </thead>
                                         <tbody class="main-taible-body">
 
                                         @foreach($role['players'] as $player)
                                             <tr id="player_tr-{{$player['id']}}" class="cwt">
+
                                                 <td class=" th11"><img id="myteamtimg" class="img-circle"
-                                                                       src="{{getUploadsPath($player['profile_pic'])}}"> {{$player['name']}}
+                                                  style="width: 80px;float: left;margin-right: 24px;" src="{{getUploadsPath($player['profile_pic'])}}"> {{$player['name']}}
                                                 </td>
 
                                                 <td class=" point"><p
                                                             class="myteamtt">{{$player['player_tournaments'][0]['pivot']['player_price']}}</p>
                                                 </td>
 
-                                                <td class="add">
+                                                <td>
                                                     <a onclick="return confirm('Are you sure you want to transfer');" style="text-transform: uppercase"  id="btn-player-{{$player['id']}}"href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$player['player_tournaments'][0]['pivot']['player_price']}}')" class="btn btn-md bttor1">
                                                         TRANSFER WITH {{$player_info['name']}}
                                                     </a>

@@ -69,7 +69,7 @@
                 </h2>
                 <hr class="light">
                 <div class="table-responsive">
-                    <table class="table table-striped gen-table">
+                    <table class="table table-striped table-stripedhome gen-table">
                         <thead class="main-taible-head" >
                             <tr>
                                 <th class="border-r th1">Name</th>

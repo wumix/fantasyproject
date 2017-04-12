@@ -154,10 +154,12 @@ return [
         App\Providers\EventServiceProvider::class,
         //Default routes
         App\Providers\RouteServiceProvider::class,
+
         //Adminlte routes'
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
         //Social login
         Laravel\Socialite\SocialiteServiceProvider::class,
+        'didcode\Blog\BlogServiceProvider',
     ],
     /*
       |--------------------------------------------------------------------------

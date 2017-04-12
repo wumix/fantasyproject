@@ -57,11 +57,11 @@
                             </li>
                             @endif
                             @if(Auth::check())
-                                    <li>
-                                        <a href="{{route('UserDashboard')}}">
-                                            DashBoard
-                                        </a>
-                                    </li>
+                            <li>
+                                <a href="{{route('UserDashboard')}}">
+                                    DashBoard
+                                </a>
+                            </li>
                             <li>
                                 <a href="#">
                                     {{Auth::user()->name}}
@@ -190,24 +190,24 @@
 
 
 
-<!-- Plugin JavaScript -->
+        <!-- Plugin JavaScript -->
         {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}
         {!! Html::script('assets-new/js/scrollreveal.min.js') !!}
         {!! Html::script('assets-new/js/jquery.magnific-popup.min.js') !!}
         {!! Html::script('assets-new/js/creative.js') !!}
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#bs-example-navbar-collapse-1').slicknav({
-            appendTo: '#top-menu-res',
-            label: 'Main Menu'
-        });
-//                $('table').basictable({
-//                  forceResponsive: false
-//                });
-    });
-</script>
-@yield('js')
-@yield('addteamjs')
-</body>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#bs-example-navbar-collapse-1').slicknav({
+                    appendTo: '#top-menu-res',
+                    label: 'Main Menu'
+                });
+                //                $('table').basictable({
+                //                  forceResponsive: false
+                //                });
+            });
+        </script>
+        @yield('js')
+        @yield('addteamjs')
+    </body>
 </html>

@@ -57,10 +57,10 @@
                                             @endforeach
                                             <td>
 
-                                                <!--                                            <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"
-                                                                                               class="btn btn-md bttor1">TRANSFER
-                                                                                            </a>-->
-                                                Player transfer is not available
+                                                <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"
+                                                   class="btn btn-md bttor1">TRANSFER
+                                                </a>
+
                                             </td>
 
                                         </tr>
@@ -119,10 +119,9 @@
                                                     <thead class="main-taible-head1">
                                                         <tr>
                                                             <th class=" th1">PLAYERS</th>
-                                                            <th class=" th1">Belongs To</th>
 
-                                                            <th class=" th1">Points required to buy</th>
-                                                            <th class="add"></th>
+                                                            <th class="point">Belongs To</th>
+                                                            <th class="add">Points required to buy</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody class="main-taible-body">
@@ -152,20 +151,20 @@
                                                                     class="myteamtt">
                                                                         <?php
                                                                         $playerThisTournamnetPrice = 0;
-                                                                        $playerid=0;
+                                                                        $playerid = 0;
                                                                         if (!empty($player['player_tournaments'][0]['pivot']['player_price'])) {
                                                                             $playerThisTournamnetPrice = $player['player_tournaments'][0]['pivot']['player_price'];
                                                                         }
-                                                                    if (!empty($player['player_tournaments'][0]['id'])) {
-                                                                        $playerid = $player['player_tournaments'][0]['id'];
-                                                                    }
+                                                                        if (!empty($player['player_tournaments'][0]['id'])) {
+                                                                            $playerid = $player['player_tournaments'][0]['id'];
+                                                                        }
                                                                         ?>
                                                                     {{$playerThisTournamnetPrice}}
                                                                 </p>
                                                             </td>
 
                                                             <td class="add text-left">
-                                                                <a id="btn-player-{{$player['id']}}"
+                                                                <a onclick="return confirm('Are you sure you want to add this player')" id="btn-player-{{$player['id']}}"
                                                                    href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$playerid}}','{{$playerThisTournamnetPrice}}')"
                                                                    class="btn btn-green">Add To Team
                                                                 </a>

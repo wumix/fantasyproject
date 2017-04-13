@@ -141,6 +141,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::get('/edit/{user_id}', 'Admin\UsersController@userEditForm')->name('editUser');
             Route::post('/edit/{user_id}', 'Admin\UsersController@postAddUserFromAdmin')->name('postEditUser');
             Route::delete('/delete/{user_id}', 'Admin\UsersController@deleteUser')->name('deleteUser');
+            Route::get('team/{user_id}', 'Admin\UsersController@users_team')->name('usersTeam');
         });
 //useractionroutes
         Route::group(['prefix' => 'actions'], function () {

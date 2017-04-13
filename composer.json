@@ -10,9 +10,7 @@
         "laravel/framework": "5.4.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "^5.4",
-        "didcode/laravel-blog": "dev-master"
-
+        "laravelcollective/html": "^5.4"
     },
 
     "require-dev": {
@@ -26,8 +24,7 @@
             "database"
         ],
         "psr-4": {
-            "App\\": "app/",
-            "didcode\\Blog\\": "vendor/didcode/laravel-blog/src"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {

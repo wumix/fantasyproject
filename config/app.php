@@ -56,6 +56,7 @@ return [
       |
      */
     'timezone' => 'Asia/Karachi',
+    'timezone_difference' => '-300 minutes', //Difference in minutes from GMT
     /*
       |--------------------------------------------------------------------------
       | Application Locale Configuration
@@ -154,11 +155,10 @@ return [
         App\Providers\EventServiceProvider::class,
         //Default routes
         App\Providers\RouteServiceProvider::class,
-
         //Adminlte routes'
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
         //Social login
-        Laravel\Socialite\SocialiteServiceProvider::class,    ],
+        Laravel\Socialite\SocialiteServiceProvider::class,],
     /*
       |--------------------------------------------------------------------------
       | Class Aliases

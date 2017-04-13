@@ -27,6 +27,7 @@ class Match extends Model {
     public static function getNextMatch($tournament_id = NULL) {
 
         $serverTime = config('app.timezone');
+        $timeZoneDiff = config('app.timezone_difference');
         $dtz = new \DateTimeZone($serverTime);
         $time_in_server = new \DateTime('now', $dtz);
         $time_in_server = $time_in_server->add(date_interval_create_from_date_string("-300 minutes"));

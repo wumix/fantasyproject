@@ -63,7 +63,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{route('userProfileEdit')}}">
                                     {{Auth::user()->name}}
                                 </a>
                             </li>

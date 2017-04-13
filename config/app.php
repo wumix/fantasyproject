@@ -56,7 +56,7 @@ return [
       |
      */
     'timezone' => 'Asia/Karachi',
-    'timezone_difference' => '-300', //Difference in minutes from GMT
+    'timezone_difference' => '-300 minutes', //Difference in minutes from GMT
     /*
       |--------------------------------------------------------------------------
       | Application Locale Configuration

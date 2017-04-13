@@ -15,7 +15,7 @@
 
             <h3 class="slh">{{$team_name}}</h3>
             <hr class="signupline">
-            <img src="{{getUploadsPath($tournament_detail['t_logo'])}}" class="img-fluid" alt="Responsive image" id="mytimg">
+           
             <input id="team_id" type="hidden" value="{{$team_id}}">
             <h3 class="tnt">{{$tournament_detail['name']}}</h3>
         </div>
@@ -82,9 +82,7 @@
                     <tbody id="selected-player" class="main-taible-body">
 
                         <tr>
-                            <td class="border-r1"><img
-                                        style="width: 80px;float: left;margin-right: 24px;"
-                                        id="myteamtimg" class="img-circle" src="{{getUploadsPath($player_info['profile_pic'])}}">
+                            <td class="border-r1">
                                {{$player_info['name']}}
                             </td>
 

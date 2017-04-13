@@ -33,7 +33,7 @@ Games
                                     {{$row['email']}}
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-primary">
+                                    <a href="{{route('usersTeam', ['user_id'=>$row['id']])}}" class="btn btn-primary">
                                         Teams
                                     </a>
                                     <a href="{{route('editUser', ['user_id'=>$row['id']])}}" class="btn btn-warning">

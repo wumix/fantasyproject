@@ -70,6 +70,10 @@ class HomeController extends Controller {
 
     public function postContact(Request $request) {
         $this->validatorContact($request->all())->validate();
+        $emailRecievers = [
+            'umair_hamid100@yahoo.com',
+            'hassan@branchezconsulting.com'
+        ];
         \Mail::send('emails.contact', array(
             'name' => $request->get('name'),
             'email' => $request->get('email'),
@@ -78,7 +82,6 @@ class HomeController extends Controller {
             $message->from($request->get('email'));
             $message->to('umair_hamid100@yahoo.com', 'Admin')->subject('Gamithon Contact');
         });
-
         return redirect()->back()->with('status', 'Thanks for contacting us!');
     }
 

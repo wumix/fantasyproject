@@ -52,7 +52,9 @@ foreach ($team_score as $teamplayers) {
                                     <?php $playertotal = 0;
                                     foreach($user_team_player_transfer['user_team_player_transfers'] as $transfer){
                                      if($transfer['id']==$row['id']){
-                                        $teamtotal+=$transfer['pivot']['player_out_score'];
+
+                                         $playertotal+=$transfer['pivot']['player_out_score'];
+                                         $teamtotal-=$transfer['pivot']['player_in_score'];
                                      }
                                     }
 

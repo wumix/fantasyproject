@@ -61,7 +61,7 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Player</th>
-                                                            <th>Player Team Name</th>
+                                                            <th>Belongs To</th>
                                                             <th>Points to buy</th>
                                                         </tr>
                                                     </thead>

@@ -54,6 +54,7 @@ class UsersController extends Controller {
 
     public function users_team($user_id) {
         $tournament_id = 1;
+        $data['user_detail'] = \App\User::where('id', $user_id)->firstOrFail()->toArray();
         $data['user_team'] = \App\UserTeam::where('user_id', $user_id)->with('user_team_player')->firstOrFail()->toArray();
         return view('adminlte::users.user_team', $data);
     }

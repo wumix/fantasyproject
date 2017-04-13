@@ -22,6 +22,7 @@ class PlayerTransfer extends Migration
             $table->integer('team_id')->unsigned();
             $table->foreign('team_id')->references('id')->on('user_teams')->onDelete('cascade');
             $table->timestamp('transfer_date')->nullable();
+            $table->double('	player_out_score');
 
         });
     }

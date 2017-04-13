@@ -120,8 +120,8 @@
                                                         <tr>
                                                             <th class=" th1">PLAYERS</th>
 
-                                                            <th class="point">PRICE</th>
-                                                            <th class="add">ACTION</th>
+                                                            <th class="point">Belongs To</th>
+                                                            <th class="add">Points required to buy</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody class="main-taible-body">

@@ -98,6 +98,6 @@
       }
 
   }//end
-      return $playertotal;
+     return $playertotal;
 
   }

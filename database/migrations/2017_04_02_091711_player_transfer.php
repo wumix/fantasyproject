@@ -27,7 +27,7 @@ class PlayerTransfer extends Migration {
         });
     }
 
-    
+
     public function down() {
 
     }

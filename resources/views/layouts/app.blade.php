@@ -106,7 +106,7 @@
                             @if(!has_user_team(Auth::id()))
                             <li>
 
-                                <a class="page-scroll" href="{{route('showTournament', ['tournament_id'=>1])}}">
+                                <a class="page-scroll" href="{{route('addTeam', ['tournament_id'=>1])}}">
                                     Create Team
                                 </a>
                             </li>

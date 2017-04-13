@@ -8,7 +8,6 @@
         <div class="header-content-inner bg-primary col-md-5">
             <div class="row">
                 <div class="col-md-12 no-padding">
-
                     <h2>
                         {{$tournaments_list[0]['name']}}
                     </h2>
@@ -28,25 +27,25 @@
                 <div class="col-md-12 count-down no-padding mt30">
                     <div class="col-md-3 text-center">
                         <span id="getting-started" class="circle">
-                            10
+                            0
                         </span>
                         <p class="mtb10">Days</p>
                     </div>
                     <div class="col-md-3 text-center">
                         <span id="getting-started1" class="circle">
-                            10
+                            0
                         </span>
                         <p class="mtb10">Hours</p>
                     </div>
                     <div class="col-md-3 text-center">
                         <span id="getting-started2" class="circle">
-                            10
+                            0
                         </span>
                         <p class="mtb10">Minutes</p>
                     </div>
                     <div class="col-md-3 text-center">
                         <span id="getting-started3" class="circle">
-                            10
+                            0
                         </span>
                         <p class="mtb10">Seconds</p>
                     </div>
@@ -121,26 +120,32 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 text-center">
                 <div class="service-box">
-                    <a href="#">
+                    <a>
                         <i class="fa fa-4x fa-user-plus sr-icons"></i>
-                        <p class="text-muted">SIGN UP FOR A FREE GAMITHONE ACCOUNT</p>
+                        <p class="text-muted">
+                            SIGN UP TO PLAY AT GAMITHON
+                        </p>
                     </a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 text-center">
                 <div class="service-box">
-                    <a href="#">
+                    <a disabled='disabled'>
                         <i class="fa fa-4x fa-users sr-icons"></i>
-                        <p class="text-muted">CHOOSE A LEAGUE FREE GAMITHONE ACCOUNT</p>
+                        <p class="text-muted">
+                            CREATE YOUR TEAM
+                        </p>
                     </a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 text-center">
 
                 <div class="service-box">
-                    <a href="#">
+                   <a disabled="true">
                         <i class="fa fa-4x fa-trophy sr-icons"></i>
-                        <p class="text-muted">SELECT PLAYERS AND WIN!</p>
+                        <p class="text-muted">
+                            SELECT PLAYERS AND WIN PRIZES!
+                        </p>
                     </a>
                 </div>
 

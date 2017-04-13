@@ -61,7 +61,6 @@ class HomeController extends Controller {
         $objTourmament = \App\Tournament::all()->sortBy("start_date");
         $data['tournaments_list'] = $objTourmament->toArray();
         $data['matches'] = \App\Match::getNextMatch();
-
         return view('home', $data);
     }
 

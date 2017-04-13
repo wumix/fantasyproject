@@ -80,7 +80,7 @@ class HomeController extends Controller {
             $message->to('umair_hamid100@yahoo.com', 'Admin')->subject('Gamithon Contact');
         });
 
-        return \Redirect::route('contact')->with('status', 'Thanks for contacting us!');
+        return \Redirect::route('submitContactUs')->with('status', 'Thanks for contacting us!');
     }
 
     /**

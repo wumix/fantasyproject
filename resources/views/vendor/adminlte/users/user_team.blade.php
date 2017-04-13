@@ -16,33 +16,33 @@ User team
                     </h3>
                     <p>
                         Owner: {{$user_detail['name'].' - '. $user_detail['email']}}
-                                            </p>
+                    </p>
                 </div>
-                                            <div class="box-body">
-                                                <h4>Players</h4>
-                                                <div class="table-responsive">
+                <div class="box-body">
+                    <h4>Players</h4>
+                    <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover">
                             <tr>
                                 <th>Player image</th>
-                                                                                                        <th>Player name</th>
-                                                                                                    </tr>
-                                                                                                    @foreach($user_team['user_team_player'] as $row)
+                                <th>Player name</th>
+                            </tr>
+                            @foreach($user_team['user_team_player'] as $row)
                             <tr>
-                                                                                                                <td>
-                                                                                                                    <img src='{{getUploadsPath($row['profile_pic'])}}' />
-                                                                                                                </td>
-                                                                                                                <td>
-                                                                                                                    {{$row['name']}}
-                                                                                                                </td>
-                                                                                                            </tr>
-                                                                                                            @endforeach
-                                                                                                            </table>
-                                                                                                            </div>
-                                                                                                            </div>
-                                                                                                            <!-- /.box-body -->
-                                                                                                            </div>
-                                                                                                            <!-- /.box -->
-                                                                                                            </div>
-                                                                                                            </div>
-                                                                                                            </div>
-                                                                                                            @endsection
+                                <td>
+                                    <img src='{{getUploadsPath($row['profile_pic'])}}' />
+                                </td>
+                                <td>
+                                    {{$row['name']}}
+                                </td>
+                            </tr>
+                            @endforeach
+                        </table>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+</div>
+@endsection

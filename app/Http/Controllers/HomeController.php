@@ -72,11 +72,11 @@ class HomeController extends Controller {
     public function postContact(Request $request) {
         $this->validatorContact($request->all())->validate();
         \Mail::send('emails.contact', array(
-            'name' => $request->get('c_name'),
-            'email' => $request->get('c_email'),
-            'user_message' => $request->get('c_message')
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'user_message' => $request->get('message')
                 ), function ($message) use ($request) {
-            $message->from($request->get('c_email'));
+            $message->from($request->get('email'));
             $message->to('umair_hamid100@yahoo.com', 'Admin')->subject('Gamithon Contact');
         });
 
@@ -91,10 +91,10 @@ class HomeController extends Controller {
      */
     protected function validatorContact(array $data) {
         return Validator::make($data, [
-                    'c_name' => 'required|max:255',
-                    'c_email' => 'required',
-                    'c_subject' => 'required',
-                    'c_message' => 'required'
+                    'name' => 'required|max:255',
+                    'email' => 'required',
+                    'subject' => 'required',
+                    'message' => 'required'
         ]);
     }
 

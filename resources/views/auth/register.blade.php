@@ -12,6 +12,16 @@
                 <div class="page-content">
                     <div class="form-container">
                         <!--Form-->
+                        <div class="text-center col-md-12 col">
+                            <div class="gbtn">
+                                <a href="{{route('facebookLogin')}}" class="btn btn-fb-login">
+                                    Signup using Facebook
+                                </a>
+                            </div>
+                            <div class="lines mt26">
+                                <h4 class="linor">OR</h4>
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                                 {{ csrf_field() }}
@@ -111,12 +121,12 @@
                                 </div>
                                 <div class="col-md-6 no-padding text-right">
                                     <div class="form-group " id="withbox">
-                                    <a class="signuplink" href="/login">
-                                        Login to your account
-                                    </a>
+                                        <a class="signuplink" href="/login">
+                                            Login to your account
+                                        </a>
                                     </div>
                                 </div>
-                              
+
                                 <div class="form-group " id="withbox">
                                     <button type="submit" class="btn btn-block btn-lg btn-green">Sign Up</button>
                                 </div>

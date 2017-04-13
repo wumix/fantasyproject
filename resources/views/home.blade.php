@@ -141,7 +141,7 @@
             <div class="col-lg-4 col-md-6 text-center">
 
                 <div class="service-box">
-                   <a disabled="true">
+                    <a disabled="true">
                         <i class="fa fa-4x fa-trophy sr-icons"></i>
                         <p class="text-muted">
                             SELECT PLAYERS AND WIN PRIZES!

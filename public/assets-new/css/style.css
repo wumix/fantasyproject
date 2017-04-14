@@ -389,3 +389,19 @@ hr.light.full{
 }
 
 /*............................Show Hide Table End...........................*/
+.circle2 {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+
+}
+.possion{
+    font-size: 50px;
+    color: #92B713;
+    text-align: center;
+
+
+}
+.bg-primary1 {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+}

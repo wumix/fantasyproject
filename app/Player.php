@@ -14,6 +14,9 @@ class Player extends Model {
     public function player_games() {
         return $this->belongsTo('App\Game', 'game_id');
     }
+    public function player_transfer(){
+        return $this->hasMany('App\PlayerTransfer', 'player_in_id', 'id');
+    }
 
     public function player_matches() {
         return $this->belongsToMany(Match::class, 'player_matches', 'player_id', 'match_id');

@@ -15,7 +15,7 @@
 
             <h3 class="slh">{{$team_name}}</h3>
             <hr class="signupline">
-           
+
             <input id="team_id" type="hidden" value="{{$team_id}}">
             <h3 class="tnt">{{$tournament_detail['name']}}</h3>
         </div>

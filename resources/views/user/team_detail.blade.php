@@ -48,14 +48,18 @@ foreach ($team_score as $teamplayers) {
                                      $playertransferedname="";
                                     $playertransferedpic="";
                                     $playertransferedscore=0;
+                                    $playerinscore=0;
                                     foreach($user_team_player_transfer['user_team_player_transfers'] as $transfer){
                                         if($transfer['pivot']['player_in_id']==$row['id']){
                                             $playertransferedpic=$transfer['profile_pic'];
                                             $playertransferedname=$transfer['name'];
                                             $playertransferedscore=$transfer['pivot']['player_out_score'];
 
-                                            $playertotal+=$transfer['pivot']['player_out_score'];
+                                           // $playertotal+=$transfer['pivot']['player_out_score'];
+                                            $teamtotal+=$transfer['pivot']['player_out_score'];
                                             $teamtotal-=$transfer['pivot']['player_in_score'];
+                                            $playerinscore-=$transfer['pivot']['player_in_score'];
+
                                         }
                                     }
 
@@ -98,14 +102,20 @@ foreach ($team_score as $teamplayers) {
 
 
                                     </div>
-                                    <div class="col-md-2">{{$row['name']}}
+                                    <div class="col-md-2 ">{{$row['name']}}
+                                        <div class="col-md-12 ">
 
                                       {{$playertransferedname}}
-
+                                        </div>
 
                                     </div>
                                     <?php $teamtotal += $playertotal;?>
-                                    <div class="col-md-2">  {{$playertotal}}</div>
+                                    <div class="col-md-2">  {{$playertotal}}
+                                        <div class="col-md-12">
+
+                                            {{$playertransferedscore}}
+                                        </div>
+                                    </div>
 
                                 </div>
                                <hr>

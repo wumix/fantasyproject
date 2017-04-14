@@ -11,4 +11,9 @@ class PlayerTransfer extends Model
     protected $fillable = [
         'player_in_id', 'player_out_id', 'team_id', 'transfer_date'
     ];
+
+    public function players(){
+
+
+    }
 }

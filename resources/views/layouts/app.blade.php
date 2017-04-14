@@ -62,6 +62,7 @@
                                     DashBoard
                                 </a>
                             </li>
+
                             <li>
                                 <a href="{{route('userProfileEdit')}}">
                                     {{Auth::user()->name}}

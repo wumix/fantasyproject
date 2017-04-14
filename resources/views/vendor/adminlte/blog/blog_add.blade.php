@@ -1,7 +1,7 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-Add post
+
 @endsection
 
 @section('main-content')
@@ -13,7 +13,8 @@ Add post
                 <div class="box-header with-border">
                     <h3 class="box-title">Add post</h3>
                 </div>
-                {!! Form::open(['url' => route('postAddPost'),'id'=>'post-add-frm']) !!}
+                {{--{!! Form::open(['url' => route('postAddPost'),'id'=>'post-add-frm']) !!}--}}
+                {!! Form::open(['url' => route('postAddPost'),'files'=>true]) !!}
                 <div class="box-body">
                     <div class="col-md-8">
                         <div class="form-group">
@@ -26,7 +27,7 @@ Add post
                         </div>
                         <div class="form-group">
                             <label>Post Content</label>
-                            <textarea class="form-control wysiwyg textarea" name="content" id="content"></textarea>
+                            <textarea class="form-control wysiwyg textarea" name="postdata" id="content"></textarea>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -39,21 +40,14 @@ Add post
                                 </h3>
                             </div>
                             <div class="panel-body">
+                                @foreach($categories as $row)
                                 <div class="form-group">
                                     <label>
-                                        <input type="checkbox" /> Cat 1
+                                        <input name="category[]" value="{{$row['id']}}" type="checkbox" /> {{$row['name']}}
                                     </label>
                                 </div>
-                                <div class="form-group">
-                                    <label>
-                                        <input type="checkbox" /> Cat 1
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <label>
-                                        <input type="checkbox" /> Cat 1
-                                    </label>
-                                </div>
+                                @endforeach
+
 
                             </div>
                         </div>

@@ -96,7 +96,7 @@
                 <a href="#">
                     <i class='fa fa-users'></i> <span>Blog Categories</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('AddTeam')}}">Add category</a></li>
+                    <li><a href="{{route('addCategory')}}">Add category</a></li>
                     <li><a href="{{route('blogCategoryList')}}">List categories</a></li>
                 </ul>
             </li>

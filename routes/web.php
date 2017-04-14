@@ -68,11 +68,13 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
         Route::group(['prefix' => 'blog'], function () {
             Route::get('/', 'Admin\Blog\PostController@index')->name('blogList');
             Route::get('add', 'Admin\Blog\PostController@addBlogPost')->name('addPost');
-            Route::post('add', 'Admin\Blog\PostController@postAddBlogPost')->name('postAddPost');
-            Route::get('addCategory', 'Admin\Blog\CategoryController@addCategory')->name('addCategory');
-            Route::post('addCategory', 'Admin\Blog\CategoryController@postAddBlogCategory')->name('postAddBlogCategory');
+            Route::post('add/{blog_id?}', 'Admin\Blog\PostController@postAddBlogPost')->name('postAddPost');
+            Route::get('edit/{blog_id}', 'Admin\Blog\PostController@editBlogPost')->name('editPost');
+            Route::post('edit/{blog_id}', 'Admin\Blog\PostController@editBlogPost')->name('postEditPost');
             Route::group(['prefix' => 'category'], function () {
                 Route::get('/', 'Admin\Blog\CategoryController@index')->name('blogCategoryList');
+                Route::get('addCategory', 'Admin\Blog\CategoryController@addCategory')->name('addCategory');
+                Route::post('addCategory', 'Admin\Blog\CategoryController@postAddBlogCategory')->name('postAddBlogCategory');
             });
         });
         Route::group(['prefix' => 'games'], function () {
@@ -86,7 +88,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::delete('delete-game-role', 'Admin\GamesController@deleteGameRole')->name('deleteGameRole');
             Route::post('add-game-actions', 'Admin\GamesController@addGameActions')->name('addGameActions');
         });
-//Gameterms
+        //Gameterms
         Route::group(['prefix' => 'games-terms'], function () {
             Route::get('add-game-term/{action_id}', 'Admin\GameTermController@index')->name('addGameTermView');
             Route::get('game-term-points/{tournament_id}', 'Admin\GameTermController@gameTermPoints')->name('gameTermPoints');
@@ -96,7 +98,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::delete('delete-game-term-point', 'Admin\GameTermController@deleteGameTermPoint')->name('deleteGameTermPoint');
         });
 
-//Teams
+        //Teams
         Route::group(['prefix' => 'tournament-teams'], function () {
             Route::get('/', 'Admin\TeamsController@index')->name('teamsList');
             Route::get('addTeam', 'Admin\TeamsController@showAddTeamForm')->name('AddTeam');
@@ -107,7 +109,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
 
             Route::post('add/{team_id}', 'Admin\TeamsController@postAddTeamPlayers')->name('postAddTeamPlayers');
         });
-//Playersroutes
+        //Playersroutes
         Route::group(['prefix' => 'palyers'], function () {
             Route::get('/', 'Admin\PlayersController@index')->name('playerslist');
             Route::get('/add', 'Admin\PlayersController@addPlayerForm')->name('addPlayer'); //showsaddplayerform

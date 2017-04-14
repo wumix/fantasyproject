@@ -64,6 +64,8 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
         Route::get('/dashboard', 'Admin\DashboardController@index'); //Gamesroutes
         Route::group(['prefix' => 'blog'], function() {
             Route::get('/', 'Admin\Blog\PostController@index')->name('blogList');
+            Route::get('add', 'Admin\Blog\PostController@addBlogPost')->name('addPost');
+            Route::post('add', 'Admin\Blog\PostController@postAddBlogPost')->name('postAddPost');
             Route::group(['prefix' => 'category'], function() {
                 Route::get('/', 'Admin\Blog\CategoryController@index')->name('blogCategoryList');
             });
@@ -154,3 +156,4 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
         });
     });
 });
+//Media manager

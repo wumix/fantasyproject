@@ -16,4 +16,13 @@ class PostController extends Controller {
         return view('adminlte::blog.blog_list', $data);
     }
 
+    public function addBlogPost() {
+        $data = [];
+        return view('adminlte::blog.blog_add', $data);
+    }
+
+    public function postAddBlogPost() {
+        
+    }
+
 }

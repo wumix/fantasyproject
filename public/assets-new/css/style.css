@@ -237,7 +237,7 @@
     background-color: #ffffff;
 }
 .table-stripedhome{
-background-color: rgb(102, 102, 102);
+    background-color: rgb(102, 102, 102);
 }
 .th1{
     border-radius: 8px 0 0 0 ;
@@ -580,6 +580,22 @@ hr.light.full{
 }
 
 /*............................Show Hide Table End...........................*/
+.circle2 {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+
+}
+.possion{
+    font-size: 50px;
+    color: #92B713;
+    text-align: center;
+
+
+}
+.bg-primary1 {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+}
 /*///////////////////////////////Blog inner css/////////////////////////////////////////*/
 .textgreen{
     color: #92B713;

@@ -3,7 +3,7 @@
 //dd(user_team_player_transfer);
 //dd($team_score);
 //first loop on players
-dd($user_team_player_transfer->toArray());
+//dd($user_team_player_transfer->toArray());
 if(empty($user_team_player_transfer->toArray())){
     $user_team_player_transfer=null;
 }else{
@@ -44,20 +44,19 @@ foreach ($team_score as $teamplayers) {
                         <table class="table table-striped" id="tortable">
                             <?php $teamtotal = 0;?>
                             @foreach($team_score as $row )
-                                <tr>
-                                    <td><img style="width: 80px;float: left;margin-right: 24px;" class="img-thumbnail"
-                                             src=" {{getUploadsPath($row['profile_pic'])}}"></td>
-                                    <td>{{$row['name']}}
-
-
-
                                     <?php $playertotal = 0;
+                                     $playertransferedname="";
+                                    $playertransferedpic="";
+                                    $playertransferedscore=0;
                                     foreach($user_team_player_transfer['user_team_player_transfers'] as $transfer){
-                                     if($transfer['id']==$row['id']){
-                                     //    echo $transfer['name'];
-                                         $playertotal+=$transfer['pivot']['player_out_score'];
-                                         $teamtotal-=$transfer['pivot']['player_in_score'];
-                                     }
+                                        if($transfer['pivot']['player_in_id']==$row['id']){
+                                            $playertransferedpic=$transfer['profile_pic'];
+                                            $playertransferedname=$transfer['name'];
+                                            $playertransferedscore=$transfer['pivot']['player_out_score'];
+
+                                            $playertotal+=$transfer['pivot']['player_out_score'];
+                                            $teamtotal-=$transfer['pivot']['player_in_score'];
+                                        }
                                     }
 
 
@@ -66,32 +65,50 @@ foreach ($team_score as $teamplayers) {
 
                                         @foreach($termscore['points_devision_tournament'] as $points)
                                             <?php
-                                                if($points['qty_from']==$points['qty_to']){
-                                                 //   echo "yes";
-                                               //     echo $points['points'] * $termscore['player_term_count'];
-                                                    $playertotal += $points['points'] * $termscore['player_term_count'];
+                                            if($points['qty_from']==$points['qty_to']){
+                                                //   echo "yes";
+                                                //     echo $points['points'] * $termscore['player_term_count'];
+                                                $playertotal += $points['points'] * $termscore['player_term_count'];
 
+                                            }
+                                            else{
+                                                if(($points['qty_from']<=$termscore['player_term_count']) &&($points['qty_to']>=$termscore['player_term_count']))
+                                                {
+                                                    //  echo $points['qty_from']." ". $termscore['player_term_count']." ".$points['qty_to']."<br>";
+
+
+                                                    $playertotal += $points['points'];
                                                 }
-                                                else{
-                                            if(($points['qty_from']<=$termscore['player_term_count']) &&($points['qty_to']>=$termscore['player_term_count']))
-                                            {
-                                        //  echo $points['qty_from']." ". $termscore['player_term_count']." ".$points['qty_to']."<br>";
-
-
-                                           $playertotal += $points['points'];
-                                              }
-                                              }
+                                            }
                                             ?>
 
 
                                         @endforeach
 
                                     @endforeach
-                                    </td>
-                                    <?php $teamtotal += $playertotal;?>
-                                    <td>  {{$playertotal}}</td>
-                                </tr>
+                                <div class="row">
+                                    <div class="col-md-8"><img style="width: 80px;float: left;margin-right: 24px;" class="img-thumbnail"
+                                             src=" {{getUploadsPath($row['profile_pic'])}}">
+                                        <div class="col-md-6"></div>
+                                    <div class="col-md-6">
+                                        <img style="width: 80px;float: left;margin-right: 24px;" class="img-thumbnail"
+                                                               src=" {{getUploadsPath($playertransferedpic)}}">
+                                    </div>
 
+
+
+                                    </div>
+                                    <div class="col-md-2">{{$row['name']}}
+
+                                      {{$playertransferedname}}
+
+
+                                    </div>
+                                    <?php $teamtotal += $playertotal;?>
+                                    <div class="col-md-2">  {{$playertotal}}</div>
+
+                                </div>
+                               <hr>
                             @endforeach
 
 

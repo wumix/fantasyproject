@@ -7,7 +7,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Socialite;
 
-class LoginController extends Controller {
+class LoginController extends Controller
+{
     /*
       |--------------------------------------------------------------------------
       | Login Controller
@@ -19,16 +20,18 @@ class LoginController extends Controller {
       |
      */
 
-use AuthenticatesUsers {
+    use AuthenticatesUsers {
         attemptLogin as attemptLoginAtAuthenticatesUsers;
     }
-protected $userRedirect = '/dashboard';
+    protected $userRedirect = '/dashboard';
+
     /**
      * Show the application's front-emd login form.
      *
      * @return \Illuminate\Http\Response
      */
-    public function showLoginForm() {
+    public function showLoginForm()
+    {
         $objTourmament = \App\Tournament::all()->toArray();
         $data['tournaments_list'] = $objTourmament;
 
@@ -38,7 +41,8 @@ protected $userRedirect = '/dashboard';
     /**
      * Show admin login form
      */
-    public function showAdminLoginForm() {
+    public function showAdminLoginForm()
+    {
 
         return view('adminlte::auth.login');
     }
@@ -54,8 +58,9 @@ protected $userRedirect = '/dashboard';
      * Redirect user based upon condition
      * @return type
      */
-    protected function redirectTo() {
-       
+    protected function redirectTo()
+    {
+
         return (\Auth::user()->user_type == 0) ? 'admin/dashboard' : $this->userRedirect;
     }
 
@@ -64,7 +69,8 @@ protected $userRedirect = '/dashboard';
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('guest', ['except' => 'logout']);
     }
 
@@ -73,17 +79,19 @@ protected $userRedirect = '/dashboard';
      *
      * @return string
      */
-    public function username() {
+    public function username()
+    {
         return config('auth.providers.user.field', 'email');
     }
 
     /**
      * Attempt to log the user into the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return bool
      */
-    protected function attemptLogin(Request $request) {
+    protected function attemptLogin(Request $request)
+    {
         if ($this->username() === 'email')
             return $this->attemptLoginAtAuthenticatesUsers($request);
         if (!$this->attemptLoginAtAuthenticatesUsers($request)) {
@@ -98,9 +106,10 @@ protected $userRedirect = '/dashboard';
      * @param \Illuminate\Http\Request $request
      * @return bool
      */
-    protected function attempLoginUsingUsernameAsAnEmail(Request $request) {
+    protected function attempLoginUsingUsernameAsAnEmail(Request $request)
+    {
         return $this->guard()->attempt(
-                        ['email' => $request->input('username'), 'password' => $request->input('password')], $request->has('remember'));
+            ['email' => $request->input('username'), 'password' => $request->input('password')], $request->has('remember'));
     }
 
     /**
@@ -108,7 +117,8 @@ protected $userRedirect = '/dashboard';
      *
      * @return Response
      */
-    public function redirectToFacebookProvider() {
+    public function redirectToFacebookProvider()
+    {
         return Socialite::driver('facebook')->redirect();
     }
 
@@ -117,10 +127,15 @@ protected $userRedirect = '/dashboard';
      *
      * @return Response
      */
-    public function handleFacebookProviderCallback() {
+    public function handleFacebookProviderCallback()
+    {
         $userObj = new \App\User;
         $socialProvider = 'facebook';
         $user = $userObj->createOrGetUser(Socialite::driver('facebook')->user(), $socialProvider);
+//        if (empty($user)) {
+//            return redirect()->to(route('signUp'))
+//                ->withErrors(['We are not able to grab your facebook email due to some restrictions. Please signup from here.']);
+//        }
         auth()->login($user);
         return redirect()->to($this->userRedirect);
     }

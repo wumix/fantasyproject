@@ -65,6 +65,8 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
     Route::get('/', 'Auth\LoginController@showAdminLoginForm');
     Route::group(['middleware' => ['is_admin']], function () {
         Route::get('/dashboard', 'Admin\DashboardController@index'); //Gamesroutes
+        Route::get('/addheader', 'Admin\SettingsController@index')->name('headerbackground');
+        Route::post('/addheader', 'Admin\SettingsController@postAddHeader')->name('postAddHeader');
         Route::group(['prefix' => 'blog'], function () {
             Route::get('/', 'Admin\Blog\PostController@index')->name('blogList');
             Route::get('add', 'Admin\Blog\PostController@addBlogPost')->name('addPost');
@@ -72,9 +74,11 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::get('edit/{blog_id}', 'Admin\Blog\PostController@editBlogPost')->name('editPost');
             Route::post('edit/{blog_id}', 'Admin\Blog\PostController@editBlogPost')->name('postEditPost');
             Route::group(['prefix' => 'category'], function () {
-                Route::get('/', 'Admin\Blog\CategoryController@index')->name('blogCategoryList');
-                Route::get('addCategory', 'Admin\Blog\CategoryController@addCategory')->name('addCategory');
-                Route::post('addCategory', 'Admin\Blog\CategoryController@postAddBlogCategory')->name('postAddBlogCategory');
+            Route::get('/', 'Admin\Blog\CategoryController@index')->name('blogCategoryList');
+            Route::get('addCategory', 'Admin\Blog\CategoryController@addCategory')->name('addCategory');
+            Route::post('addCategory', 'Admin\Blog\CategoryController@postAddBlogCategory')->name('postAddBlogCategory');
+            
+            
             });
         });
         Route::group(['prefix' => 'games'], function () {

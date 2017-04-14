@@ -58,11 +58,9 @@ class HomeController extends Controller {
     }
 
     public function index() {
-
         $objTourmament = \App\Tournament::all()->sortBy("start_date");
         $data['tournaments_list'] = $objTourmament->toArray();
         $data['matches'] = \App\Match::getNextMatch();
-
         return view('home', $data);
     }
 
@@ -72,16 +70,19 @@ class HomeController extends Controller {
 
     public function postContact(Request $request) {
         $this->validatorContact($request->all())->validate();
+        $emailRecievers = [
+            'umair_hamid100@yahoo.com',
+            'hassan@branchezconsulting.com'
+        ];
         \Mail::send('emails.contact', array(
-            'name' => $request->get('c_name'),
-            'email' => $request->get('c_email'),
-            'user_message' => $request->get('c_message')
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'user_message' => $request->get('message')
                 ), function ($message) use ($request) {
-            $message->from($request->get('c_email'));
+            $message->from($request->get('email'));
             $message->to('umair_hamid100@yahoo.com', 'Admin')->subject('Gamithon Contact');
         });
-
-        return \Redirect::route('contact')->with('status', 'Thanks for contacting us!');
+        return redirect()->back()->with('status', 'Thanks for contacting us!');
     }
 
     /**
@@ -92,10 +93,10 @@ class HomeController extends Controller {
      */
     protected function validatorContact(array $data) {
         return Validator::make($data, [
-                    'c_name' => 'required|max:255',
-                    'c_email' => 'required',
-                    'c_subject' => 'required',
-                    'c_message' => 'required'
+                    'name' => 'required|max:255',
+                    'email' => 'required',
+                    'subject' => 'required',
+                    'message' => 'required'
         ]);
     }
 

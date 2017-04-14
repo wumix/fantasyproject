@@ -1,7 +1,16 @@
 <?php
-// dd($team_score);
+       // dd($user_team_player_transfer['user_team_player_transfers']);
+//dd(user_team_player_transfer);
 //dd($team_score);
 //first loop on players
+dd($user_team_player_transfer->toArray());
+if(empty($user_team_player_transfer->toArray())){
+    $user_team_player_transfer=null;
+}else{
+    $user_team_player_transfer=$user_team_player_transfer->toArray();
+    $user_team_player_transfer=$user_team_player_transfer[0];
+}
+//dd($user_team_player_transfer);
 $z = [];
 foreach ($team_score as $teamplayers) {
     $i = 0;
@@ -38,10 +47,21 @@ foreach ($team_score as $teamplayers) {
                                 <tr>
                                     <td><img style="width: 80px;float: left;margin-right: 24px;" class="img-thumbnail"
                                              src=" {{getUploadsPath($row['profile_pic'])}}"></td>
-                                    <td>{{$row['name']}}</td>
+                                    <td>{{$row['name']}}
 
 
-                                    <?php $playertotal = 0;?>
+
+                                    <?php $playertotal = 0;
+                                    foreach($user_team_player_transfer['user_team_player_transfers'] as $transfer){
+                                     if($transfer['id']==$row['id']){
+                                     //    echo $transfer['name'];
+                                         $playertotal+=$transfer['pivot']['player_out_score'];
+                                         $teamtotal-=$transfer['pivot']['player_in_score'];
+                                     }
+                                    }
+
+
+                                    ?>
                                     @foreach($row['player_game_term_score'] as $termscore)
 
                                         @foreach($termscore['points_devision_tournament'] as $points)
@@ -67,7 +87,7 @@ foreach ($team_score as $teamplayers) {
                                         @endforeach
 
                                     @endforeach
-
+                                    </td>
                                     <?php $teamtotal += $playertotal;?>
                                     <td>  {{$playertotal}}</td>
                                 </tr>

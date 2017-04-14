@@ -13,18 +13,13 @@ class UsersController extends Controller {
     }
 
     public function index() {
-        $objplayer = \App\User::all()->toArray();
-        $data['users_list'] = $objplayer; //list of games form games table   
+        $data['users_list'] = \App\User::paginate(10); //list of games form games table   
         return view('adminlte::users.users_list', $data);
     }
 
     public function userEditForm($user_id = NULL) {
-        $user = \App\User::where('id', $user_id)->first();
 
-        if (!empty($user)) {
-            $user = $user->toArray();
-        } // check this later give error when game id has no realted data ::handle exception
-        $data['user_edit'] = $user;
+        $data['user_edit'] = \App\User::where('id', $user_id)->firstOrFail();
         return view('adminlte::users.user_edit', $data);
     }
 
@@ -55,6 +50,13 @@ class UsersController extends Controller {
 
     public function deleteUser() {
         
+    }
+
+    public function users_team($user_id) {
+        $tournament_id = 1;
+        $data['user_detail'] = \App\User::where('id', $user_id)->firstOrFail()->toArray();
+        $data['user_team'] = \App\UserTeam::where('user_id', $user_id)->with('user_team_player')->firstOrFail()->toArray();
+        return view('adminlte::users.user_team', $data);
     }
 
 }

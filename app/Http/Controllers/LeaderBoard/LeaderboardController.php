@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class LeaderboardController extends Controller
 {
     //
-    
+
     function index()
     {
          $userid = \App\User::all()->toArray();

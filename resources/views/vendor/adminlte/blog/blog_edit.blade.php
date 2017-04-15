@@ -21,6 +21,7 @@
                             <label>Post title</label>
                             <input required class="form-control" value="{{$blog['title']}}" name="title" required />
                         </div>
+                       
                         <div class="form-group">
                             <label>Post description (This will be show in meta)</label>
                             <textarea class="form-control textarea" name="description">{{$blog['description']}}</textarea>

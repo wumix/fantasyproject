@@ -31,12 +31,12 @@ function make_dir($fileType) {
     $uploadRootPath = $fileType . '/' . date('Y') . '/' . date('m');
     $uploadDir = $uploadRootPath;
     if (!is_dir($uploadDir)) {
-        Illuminate\Support\Facades\File::makeDirectory($uploadDir, 0777, true, true);
+        Illuminate\Support\Facades\File::makeDirectory($uploadDir, 777, true, true);
     }
     return $uploadDir;
 }
 
-function uploadInputs($inputName, $type = 'image', $visibility = 'private') {
+function uploadInputs($inputName, $type = 'image', $visibility = 'public') {
     $files = $inputName;
     $uploadPath = [];
     if (is_array($files)) {

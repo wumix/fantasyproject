@@ -18,8 +18,8 @@
                         <div class="row">
                             <div class="col-md-12 count-down no-padding ">
             <?php for ($i = 1; $i < 4; $i++) { ?>
-                                        <div class="col-md-4 text-center">
-                                            <span class="possion">
+                                            <div class="col-md-4 text-center">
+                                                <span class="possion">
                 <?php
                 if ($i == 1) {
                     echo $i . "<p style='font-size:24px; display:inline;'>st<p>";
@@ -31,14 +31,14 @@
                     echo $i . "<p style='font-size:24px; display:inline;'>rd<p>";
                 }
                 ?>
-                                            </span>
-                                            <span class="circle2">
-                                                <img class="circle2" src="http://localhost/gamithon/public/img/user1-128x128.jpg">
-                                            </span>
-                                            <p title="Name" class="mtb10" style="font-size: 14px; margin-top: -40px;">Ahmad Mughal</p>
-                                            <p style="margin-top: -50px; font-size: 14px; color: #92B713;">Mughal Invensible</p>
-                                            <p style="margin-top: -50px;font-size: 14px;">100000</p>
-                                        </div>
+                                                </span>
+                                                <span class="circle2">
+                                                    <img class="circle2" src="http://localhost/gamithon/public/img/user1-128x128.jpg">
+                                                </span>
+                                                <p title="Name" class="mtb10" style="font-size: 14px; margin-top: -40px;">Ahmad Mughal</p>
+                                                <p style="margin-top: -50px; font-size: 14px; color: #92B713;">Mughal Invensible</p>
+                                                <p style="margin-top: -50px;font-size: 14px;">100000</p>
+                                            </div>
             <?php } ?>
                             </div>
                         </div>-->

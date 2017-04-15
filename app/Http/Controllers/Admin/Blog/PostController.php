@@ -27,6 +27,7 @@ class PostController extends Controller {
     }
 
     public function index() {
+        $data['blog_type'] = Input::get('post_type');
         $data['posts'] = \App\BlogPost::all()->toArray();
         return view('adminlte::blog.blog_list', $data);
     }

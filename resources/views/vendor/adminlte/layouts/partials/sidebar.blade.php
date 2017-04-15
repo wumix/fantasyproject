@@ -94,19 +94,27 @@
             </li>
             <li class="treeview">
                 <a href="#">
+                    <i class='fa fa-users'></i> <span>Menu pages</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('addPost')}}/?post_type=page">Add page</a></li>
+                    <li><a href="{{route('blogList')}}/?post_type=page">Page list</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
                     <i class='fa fa-users'></i> <span>Blog Categories</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('addCategory')}}">Add category</a></li>
                     <li><a href="{{route('blogCategoryList')}}">List categories</a></li>
                 </ul>
             </li>
-            
+
             <li class="treeview">
                 <a href="#">
                     <i class='fa fa-users'></i> <span>Settings</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('headerbackground')}}">Change Header Background</a></li>
-                    
+
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->

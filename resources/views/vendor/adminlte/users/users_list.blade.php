@@ -22,6 +22,7 @@ Games
                             <tr>
                                 <th>User name</th>
                                 <th>User email</th>
+                                <th>User from</th>
                                 <th>Actions</th>
                             </tr>
                             @foreach($users_list as $row)
@@ -31,6 +32,9 @@ Games
                                 </td>
                                 <td>
                                     {{$row['email']}}
+                                </td>
+                                <td>
+                                    {!! empty($row['provider']) ? 'Website Signup' ? '$row['provider']' !!}
                                 </td>
                                 <td>
                                     <a href="{{route('usersTeam', ['user_id'=>$row['id']])}}" class="btn btn-primary">

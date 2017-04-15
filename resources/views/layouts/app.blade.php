@@ -110,6 +110,11 @@
                                     How to play
                                 </a>
                             </li>
+                            {{--<li>--}}
+                                {{--<a href="{{route('leaderboard')}}">--}}
+                                    {{--LeaderBoard--}}
+                                {{--</a>--}}
+                            {{--</li>--}}
                             @if(!has_user_team(Auth::id()))
                             <li>
 

@@ -63,7 +63,8 @@ foreach ($team_score as $teamplayers) {
                     <div class="page-content no-padding col-md-12">
                         <?php $teamtotal = 0;?>
                         @foreach($team_score as $row )
-                            <?php $playertotal = 0;
+                            <?php
+                                $playertotal = 0;
                             $flag=0;
                             $playertransferedname = "";
                             $playertransferedpic = "";

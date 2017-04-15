@@ -26,5 +26,9 @@ class UserTeam extends Model {
     function teamtournament() {
         return $this->belongsTo('App\Tournament', 'tournament_id');
     }
+    public function user_leaderboard(){
+
+        return $this->hasMany('App\LeaderBoard', 'team_id', 'id');
+    }
 
 }

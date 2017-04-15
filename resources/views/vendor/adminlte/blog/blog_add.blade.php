@@ -24,6 +24,7 @@
                                 <label>Post description (This will be show in meta)</label>
                                 <textarea class="form-control textarea" name="description"></textarea>
                             </div>
+
                         <input type="hidden" name="post_type" value="{{$_GET['post_type']}}"/>
                             <div class="form-group">
                                 <label>Post Content</label>

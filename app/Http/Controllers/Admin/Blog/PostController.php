@@ -9,10 +9,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Validator;
 
-class PostController extends Controller {
+class PostController extends Controller
+{
 
-    public function __construct() {
-        
+    public function __construct()
+    {
+
     }
 
     /**
@@ -21,21 +23,29 @@ class PostController extends Controller {
      * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data, $postId = NULL) {
+    protected function validator(array $data, $postId = NULL)
+    {
         return Validator::make($data, [
-                    'title' => 'required|max:255|unique:blog_posts,id' . $postId,
-                    'image' => 'required'
+            'title' => 'required|max:255|unique:blog_posts,id' . $postId,
+            'image' => 'required'
         ]);
     }
 
-    public function index() {
+    public function index()
+    {
+        $data['blog_type'] = 'post';
+        if (Input::get('post_type')) {
+            $data['blog_type'] = Input::get('post_type');
 
-        $data['blog_type'] = Input::get('post_type');
-        $data['posts'] = \App\BlogPost::all()->toArray();
+        }
+
+        $data['posts'] = \App\BlogPost::where('post_type', $data['blog_type'])->get()->toArray();
+        
         return view('adminlte::blog.blog_list', $data);
     }
 
-    public function addBlogPost() {
+    public function addBlogPost()
+    {
         $data = [];
 
         $categories = \App\BlogCategory::all();
@@ -44,14 +54,15 @@ class PostController extends Controller {
         return view('adminlte::blog.blog_add', $data);
     }
 
-    public function postAddBlogPost(Request $request, $blog_id = NULL) {
-      //  dd(input::all());
+    public function postAddBlogPost(Request $request, $blog_id = NULL)
+    {
+        //  dd(input::all());
         $this->validator($request->all())->validate();
-        if($request->post_type=="page"){
+        if ($request->post_type == "page") {
             $blogPost = \App\BlogPost::updateOrCreate(
-                ['id' => $blog_id,'post_type'=>$request->post_type], $request->all()
+                ['id' => $blog_id, 'post_type' => $request->post_type], $request->all()
             );
-        }else{
+        } else {
             $blogPost = \App\BlogPost::updateOrCreate(
                 ['id' => $blog_id], $request->all()
             );
@@ -64,10 +75,11 @@ class PostController extends Controller {
 
         $flashMessage = (empty($blog_id)) ? 'Post added successfully.' : 'Post Updated';
         return redirect()->to(route('editPost', ['blog_id' => $blogPost->id]))
-                        ->with('status', $flashMessage);
+            ->with('status', $flashMessage);
     }
 
-    public function editBlogPost(Request $request, $blog_id) {
+    public function editBlogPost(Request $request, $blog_id)
+    {
         $data['categories'] = \App\BlogCategory::all()->toArray();
         $data['blog'] = \App\BlogPost::where('id', $blog_id)->with('post_category')->firstOrFail()->toArray();
 

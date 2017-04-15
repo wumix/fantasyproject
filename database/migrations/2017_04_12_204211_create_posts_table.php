@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration {
             $table->string('description');
             $table->longText('content');
             $table->string('image')->nullable();
-
+            $table->string('post_type', 50)->default('post');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();

@@ -110,11 +110,11 @@
                                     How to play
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{route('leaderboard')}}">
-                                    LeaderBoard
-                                </a>
-                            </li>
+                            {{--<li>--}}
+                                {{--<a href="{{route('leaderboard')}}">--}}
+                                    {{--LeaderBoard--}}
+                                {{--</a>--}}
+                            {{--</li>--}}
                             @if(!has_user_team(Auth::id()))
                             <li>
 
@@ -160,7 +160,7 @@
             <div class="clear clearfix"></div>
 
             <form id="logout-form" action="{{Url::to('/logout')}}" method="POST" style="display: none;">
-                <input type="hidden" name="_token" value            ="{{ csrf_token() }}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="submit" value="logout" style="display: none;">
             </form>
 
@@ -209,16 +209,11 @@
         {!! Html::script('assets-new/vendor/bootstrap/js/bootstrap.min.js') !!}
         {!! Html::script('assets-new/vendor/basic-table/jquery.basictable.min.js') !!}
         {!! Html::script('assets/js/jquery.slicknav.min.js') !!}
-
-
-
-
         <!-- Plugin JavaScript -->
         {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}
         {!! Html::script('assets-new/js/scrollreveal.min.js') !!}
         {!! Html::script('assets-new/js/jquery.magnific-popup.min.js') !!}
         {!! Html::script('assets-new/js/creative.js') !!}
-
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#bs-example-navbar-collapse-1').slicknav({

@@ -27,7 +27,7 @@
         {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}
         <style>
             header{
-                background-image: url('/assets-new/img/header.jpg');
+                background-image: url('{{URL::to("assets-new/img/header.jpg")}}');
             }
         </style>
     </head>

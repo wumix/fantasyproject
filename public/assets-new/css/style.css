@@ -683,3 +683,11 @@ hr.light.full{
 .blogheading2{
     padding-top: 30px;
 }
+.absolute{
+    position: absolute;
+
+}
+.relative{
+    position: relative;
+
+}

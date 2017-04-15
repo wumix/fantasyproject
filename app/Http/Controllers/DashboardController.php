@@ -42,8 +42,9 @@ class DashboardController extends Controller
             ->toArray();
 
         $data['user_team_player_transfer'] = \App\UserTeam::where('id', $request->team_id)
-            ->with('user_team_player_transfers')
+            ->with('user_team_player_transfers.player_transfer')
             ->get();
+       // dd($data['user_team_player_transfer']->toArray());
 
 
         //Get matches after team making

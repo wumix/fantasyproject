@@ -4,7 +4,7 @@
 <!--BASBB-->
 <header>
     <div class="header-content">
-        <div class="header-content-inner bg-primary1 col-md-6">
+        <div class="header-content-inner col-md-6">
             <!--            <div class="row">
                             <div class="col-md-12 no-padding">
                                 <h2 id="homeHeading" style="color: orange;">

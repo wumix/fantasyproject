@@ -10,7 +10,6 @@ body {
 }
 body {
     font-family: 'Raleway', sans-serif;
-    background: #666666;
 }
 hr {
     border-color: #F05F40;
@@ -46,7 +45,7 @@ p {
     background-color: #666666 !important;
 }
 .bg-primary-opacity{
-      background-color: rgba(0, 0, 0, 0.6) !important;
+    background-color: rgba(0, 0, 0, 0.6) !important;
 }
 .bg-dark {
     background-color: #000 !important;

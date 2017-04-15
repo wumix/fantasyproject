@@ -26,7 +26,7 @@
                         <li>To run a promotion, contest, survey or other Site feature</li>
                         <li>We may use the email address provided by the user to send them periodic emails about their inquires, questions and other request.<br /> if user would like to unsubscribe from future emails he may can at any time.</li>
                     </ul>
-                    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; How we protect your information</h2>
+                    <h2>How we protect your information</h2>
                     <p>Gamithon Fantasy do not Allow any unauthorized access to your personal identification information e.g. username, password and all kind of users data. We keep users data in secrecy and Privacy.</p>
                     <h2>Sharing your personal information</h2>
                     <p>Gamithon Fantasy do not share and sell users personal identity information. we may share users generic information not associated with your personal identification with our business partners and trust worthies. We may share your personal information for limited purposes to third parties on our behalf.</p>
@@ -37,10 +37,6 @@
                     <p>By using this Site, you signify your acceptance of this policy. If you do not agree to this policy, please do not use our Site</p>
                     <h2>Contacting us</h2>
                     <p>If you have any questions about our Privacy Policy, the practices of this site, or your dealings with this site, please contact us at: info@gamithonfantasy.com</p>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <p>GAMITHON FANTASY.</p>
                 </div>
             </div>
         </div>

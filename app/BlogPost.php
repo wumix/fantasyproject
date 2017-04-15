@@ -11,7 +11,7 @@ class BlogPost extends Model {
 
     protected $table = 'blog_posts';
     protected $fillable = [
-        'title', 'slug','description','content','image'
+        'title', 'slug','description','post_type','content','image'
     ];
     function post_category(){
         return $this->belongsToMany('\App\BlogPost','blog_category_post','post_id','category_id');

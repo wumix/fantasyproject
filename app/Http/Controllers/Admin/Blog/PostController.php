@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin\Blog;
 
 use App\BlogCategory;
+use function GuzzleHttp\Promise\all;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 use Validator;
 
 class PostController extends Controller {
@@ -27,6 +29,7 @@ class PostController extends Controller {
     }
 
     public function index() {
+
         $data['blog_type'] = Input::get('post_type');
         $data['posts'] = \App\BlogPost::all()->toArray();
         return view('adminlte::blog.blog_list', $data);
@@ -34,20 +37,31 @@ class PostController extends Controller {
 
     public function addBlogPost() {
         $data = [];
+
         $categories = \App\BlogCategory::all();
         $data['categories'] = $categories->toArray();
+
         return view('adminlte::blog.blog_add', $data);
     }
 
     public function postAddBlogPost(Request $request, $blog_id = NULL) {
+      //  dd(input::all());
         $this->validator($request->all())->validate();
-        $blogPost = \App\BlogPost::updateOrCreate(
-                        ['id' => $blog_id], $request->all()
-        );
+        if($request->post_type=="page"){
+            $blogPost = \App\BlogPost::updateOrCreate(
+                ['id' => $blog_id,'post_type'=>$request->post_type], $request->all()
+            );
+        }else{
+            $blogPost = \App\BlogPost::updateOrCreate(
+                ['id' => $blog_id], $request->all()
+            );
+        }
+
         if (!empty($request->category)) {
             $syncblog = \App\BlogPost::find($blogPost->id);
             $syncblog->post_category()->sync(array_filter($request->category));
         }
+
         $flashMessage = (empty($blog_id)) ? 'Post added successfully.' : 'Post Updated';
         return redirect()->to(route('editPost', ['blog_id' => $blogPost->id]))
                         ->with('status', $flashMessage);

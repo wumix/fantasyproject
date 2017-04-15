@@ -13,7 +13,7 @@ class UsersController extends Controller {
     }
 
     public function index() {
-        $data['users_list'] = \App\User::paginate(10); //list of games form games table   
+        $data['users_list'] = \App\User::paginate(15); //list of games form games table   
         return view('adminlte::users.users_list', $data);
     }
 

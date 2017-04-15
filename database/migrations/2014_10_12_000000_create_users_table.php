@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration {
             $table->string('name');
             $table->string('profile_pic')->nullable();
             $table->string('email')->unique();
-            $table->enum('user_type', [0, 1])->default(1)->comment = "0 for admin 1 normal user";
+            $table->tinyInteger('user_type')->default(1)->comment = "0 for admin 1 normal user 2 blogger";
             $table->string('password');
             $table->string('phone_number')->nullable();
             $table->string('referral_key')->unique()->nullable();

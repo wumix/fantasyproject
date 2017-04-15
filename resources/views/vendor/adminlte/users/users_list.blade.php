@@ -34,7 +34,7 @@ Games
                                     {{$row['email']}}
                                 </td>
                                 <td>
-                                    {!! empty($row['provider']) ? 'Website Signup' ? $row['provider'] !!}
+                                    {!! empty($row['provider']) ? 'Website Signup' : $row['provider'] !!}
                                 </td>
                                 <td>
                                     <a href="{{route('usersTeam', ['user_id'=>$row['id']])}}" class="btn btn-primary">

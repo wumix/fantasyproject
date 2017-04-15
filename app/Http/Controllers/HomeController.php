@@ -61,6 +61,7 @@ class HomeController extends Controller {
         $objTourmament = \App\Tournament::all()->sortBy("start_date");
         $data['tournaments_list'] = $objTourmament->toArray();
         $data['matches'] = \App\Match::getNextMatch();
+        $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
         return view('home', $data);
     }
 

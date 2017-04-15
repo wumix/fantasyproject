@@ -13,4 +13,5 @@ class Team extends Model
     public function team_players() {
         return $this->belongsToMany('App\Player', 'player_team','team_id','player_id');
     }
+
 }

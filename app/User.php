@@ -58,6 +58,11 @@ class User extends Authenticatable
      * @param \App\ProviderUser $providerUser
      * @return type
      */
+    public function leaderboard(){
+
+            return $this->hasMany('App\LeaderBoard', 'user_id', 'id');
+        }
+
     public function createOrGetUser(ProviderUser $providerUser, $socialProvider)
     {
         $account = User::where('email', $providerUser->getEmail())->first();

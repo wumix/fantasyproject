@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers\LeaderBoard;
 
+use App\Leaderboard;
+use App\UserTeam;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class LeaderboardController extends Controller
 {
     //
-    function index()
+    function index(){
+
+
+
+
+    }
+    function index1()
     {
          $userid = \App\User::all()->toArray();
         $userteams = [];
@@ -22,22 +30,35 @@ class LeaderboardController extends Controller
 
       if(!empty($userteam)){
           $userteams[]=$userteam->toArray();
-       //   dd($userteam);
-      // echo $this->get_user_team_score(1,$userteam['id'],$userteam['user_id']);
 
 
-      }
+       }
+
 
 
 
         }
 
 //dd($userteams);
+        \App\Leaderboard::truncate();
+
+        $leaderboard=new Leaderboard();
+
         foreach($userteams as $k){
-            echo $k['id']." ".$k['user_id']." ";
-           echo $this->get_user_team_score(1,$k['id'],$k['user_id'])." <br> ";
+         //   echo $k['id']." ".$k['user_id']." ".$k['name'];
+            $leaderboard=new Leaderboard();
+
+
+//
+           $score=$this->get_user_team_score(1,$k['id'],$k['user_id']);
+
+
+            $leaderboard->user_id=$k['user_id'];
+                $leaderboard->team_id=$k['id'];
+            $leaderboard->score=$score;
+            $leaderboard->save();
         }
-        die;
+
 
 
 
@@ -52,7 +73,7 @@ class LeaderboardController extends Controller
             ->get()
             ->toArray();
         if(empty($data['user_teams'][0]['joined_from_match_date'])){
-            return 'no score';
+            return 0;
         }
 
         $matcheIdsAfterThisTeamMade = \App\Match::select('id')

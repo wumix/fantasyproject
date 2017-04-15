@@ -7,8 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Socialite\Contracts\User as ProviderUser;
 use Laravel\Socialite\Facades\Socialite;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
 
     use Notifiable;
 
@@ -43,13 +42,19 @@ class User extends Authenticatable
      * Check if this is an admin
      * @return type
      */
-    public static function isAdmin()
-    {
+    public static function isAdmin() {
         return (\Auth::user()->user_type == 0) ? true : false;
     }
 
-    public static function isUser()
-    {
+    /**
+     * Check if this is an blogger
+     * @return type
+     */
+    public static function isBlogger() {
+        return (\Auth::user()->user_type == 0 || \Auth::user()->user_type == 2) ? true : false;
+    }
+
+    public static function isUser() {
         return (\Auth::user()->user_type == 1) ? true : false;
     }
 
@@ -58,33 +63,27 @@ class User extends Authenticatable
      * @param \App\ProviderUser $providerUser
      * @return type
      */
-    public function leaderboard(){
+    public function leaderboard() {
 
-            return $this->hasMany('App\LeaderBoard', 'user_id', 'id');
-        }
+        return $this->hasMany('App\LeaderBoard', 'user_id', 'id');
+    }
 
-    public function createOrGetUser(ProviderUser $providerUser, $socialProvider)
-    {
+    public function createOrGetUser(ProviderUser $providerUser, $socialProvider) {
         $account = User::where('email', $providerUser->getEmail())->first();
-
         if ($account) {
             return $account;
         } else {
-
             $user = User::whereEmail($providerUser->getEmail())->first();
             if (!$user) {
-//                if (empty($providerUser->getEmail())) {
-//                    return [];
-//                }
                 $user = User::create([
-                    'email' => $providerUser->getEmail(),
-                    'name' => $providerUser->getName(),
-                    'user_type' => '1',
-                    'profile_pic' => $providerUser->getAvatar(),
-                    'provider_user_id' => $providerUser->getId(),
-                    'provider' => $socialProvider,
-                    'password' => bcrypt(str_random(8)),
-                    'remember_token' => bcrypt(str_random(16))
+                            'email' => $providerUser->getEmail(),
+                            'name' => $providerUser->getName(),
+                            'user_type' => '1',
+                            'profile_pic' => $providerUser->getAvatar(),
+                            'provider_user_id' => $providerUser->getId(),
+                            'provider' => $socialProvider,
+                            'password' => bcrypt(str_random(8)),
+                            'remember_token' => bcrypt(str_random(16))
                 ]);
                 //adding user registration points
                 $userActionKey = 'user_signup';

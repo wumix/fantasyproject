@@ -32,7 +32,6 @@
                                     <?php $gameid = $row['id']; ?>
                                 @endforeach
                             </select>
-
                         </div>
                         <div class="form-group">
                             <label>Start Date Time

@@ -289,8 +289,12 @@
 
 
 /********Footer********/
+footer{
+    background-color: #666666;
+}
 section.footer{
     padding: 20px 0;
+    color: #fff;
 }
 .navbar{
     position: relative;

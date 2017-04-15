@@ -44,7 +44,7 @@
                         </div>-->
         </div>
         <div class="col-md-1"></div>
-        <div class="header-content-inner bg-primary col-md-5">
+        <div class="header-content-inner bg-primary-opacity col-md-5">
             <div class="row">
                 <div class="col-md-12 no-padding">
                     <h2>

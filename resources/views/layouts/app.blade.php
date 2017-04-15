@@ -29,6 +29,7 @@
             header{
                 background-image: url('{{URL::to("assets-new/img/header.jpg")}}');
             }
+
         </style>
     </head>
     <body>
@@ -134,6 +135,11 @@
                                                             <a class="page-scroll" href="{{route('UserDashboard')}}">DashBoard</a>
                                                         </li>-->
                             <li>
+                                <a href="{{URL::to('/#portfolio')}}" class="page-scroll">
+                                    Gallery
+                                </a>
+                            </li>
+                            <li>
                                 <a class="page-scroll" href="{{route('contactPage')}}">Contact Us</a>
                             </li>
                         </ul>
@@ -144,15 +150,17 @@
             <!-- /.container-fluid -->
         </nav>
         <!---->
-        @yield('content')
+        <div style="background-color: #fff; height: 100%;">
+            @yield('content')
+        </div>
         <!---->
         <footer>
             <form id="logout-form" action="{{Url::to('/logout')}}" method="POST" style="display: none;">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="_token" value            ="{{ csrf_token() }}">
                 <input type="submit" value="logout" style="display: none;">
             </form>
 
-            <section class="bg-primary footer">
+            <section class="footer">
                 <div class="container">
                     <div class="row" id="final-footer">
                         <div class="col-sm-12 col-md-4 text-left">

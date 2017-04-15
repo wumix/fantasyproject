@@ -7,8 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Socialite;
 
-class LoginController extends Controller
-{
+class LoginController extends Controller {
     /*
       |--------------------------------------------------------------------------
       | Login Controller
@@ -20,9 +19,10 @@ class LoginController extends Controller
       |
      */
 
-    use AuthenticatesUsers {
+use AuthenticatesUsers {
         attemptLogin as attemptLoginAtAuthenticatesUsers;
     }
+
     protected $userRedirect = '/dashboard';
 
     /**
@@ -30,8 +30,7 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showLoginForm()
-    {
+    public function showLoginForm() {
         $objTourmament = \App\Tournament::all()->toArray();
         $data['tournaments_list'] = $objTourmament;
 
@@ -41,8 +40,7 @@ class LoginController extends Controller
     /**
      * Show admin login form
      */
-    public function showAdminLoginForm()
-    {
+    public function showAdminLoginForm() {
 
         return view('adminlte::auth.login');
     }
@@ -58,8 +56,7 @@ class LoginController extends Controller
      * Redirect user based upon condition
      * @return type
      */
-    protected function redirectTo()
-    {
+    protected function redirectTo() {
 
         return (\Auth::user()->user_type == 0) ? 'admin/dashboard' : $this->userRedirect;
     }
@@ -69,8 +66,7 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest', ['except' => 'logout']);
     }
 
@@ -79,8 +75,7 @@ class LoginController extends Controller
      *
      * @return string
      */
-    public function username()
-    {
+    public function username() {
         return config('auth.providers.user.field', 'email');
     }
 
@@ -90,8 +85,7 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return bool
      */
-    protected function attemptLogin(Request $request)
-    {
+    protected function attemptLogin(Request $request) {
         if ($this->username() === 'email')
             return $this->attemptLoginAtAuthenticatesUsers($request);
         if (!$this->attemptLoginAtAuthenticatesUsers($request)) {
@@ -106,10 +100,9 @@ class LoginController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return bool
      */
-    protected function attempLoginUsingUsernameAsAnEmail(Request $request)
-    {
+    protected function attempLoginUsingUsernameAsAnEmail(Request $request) {
         return $this->guard()->attempt(
-            ['email' => $request->input('username'), 'password' => $request->input('password')], $request->has('remember'));
+                        ['email' => $request->input('username'), 'password' => $request->input('password')], $request->has('remember'));
     }
 
     /**
@@ -117,9 +110,10 @@ class LoginController extends Controller
      *
      * @return Response
      */
-    public function redirectToFacebookProvider()
-    {
-        return Socialite::driver('facebook')->redirect();
+    public function redirectToFacebookProvider() {
+        return Socialite::driver('facebook')
+                        ->scopes(['email', 'public_profile'])
+                        ->redirect();
     }
 
     /**
@@ -127,8 +121,7 @@ class LoginController extends Controller
      *
      * @return Response
      */
-    public function handleFacebookProviderCallback()
-    {
+    public function handleFacebookProviderCallback() {
         $userObj = new \App\User;
         $socialProvider = 'facebook';
         $user = $userObj->createOrGetUser(Socialite::driver('facebook')->user(), $socialProvider);

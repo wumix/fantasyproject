@@ -345,13 +345,11 @@
 </section>
 <!-- /.....................footer Start......................../ -->
 @endsection
-
-
 @section('js')
 {!! Html::script('assets/jquery.countdown-2.2.0/jquery.countdown.min.js') !!}
 @php($date= '00-00-00 00:00:00')
 @if(!empty($matches['start_date']))
-@php($date= $matches['start_date']);
+@php($date= $matches['start_date'])
 @endif
 {{Html::script('js/moment.js')}}
 <script type="text/javascript">

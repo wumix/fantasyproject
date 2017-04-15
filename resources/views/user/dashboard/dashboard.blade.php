@@ -37,7 +37,7 @@
                                                     first.</a>
                                             </div>
                                         @else
-                                            {!! Form::open(['url' => route('teamdetail'),'files'=>true]) !!}
+                                            {!! Form::open(['url' => route('teamdetail'),'method'=>'get']) !!}
                                             <div class="form-group" >
                                                 <select name="team_id" class="btn dropdown-toggle col-md-10 col-md-offset-1"
                                                         data-toggle="dropdown"

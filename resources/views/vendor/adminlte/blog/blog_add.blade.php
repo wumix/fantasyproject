@@ -25,7 +25,8 @@
                                 <textarea class="form-control textarea" name="description"></textarea>
                             </div>
 
-                        <input type="hidden" name="post_type" value="{{$_GET['post_type']}}"/>
+                        <input type="hidden" name="post_type" value="{{$blog_type}}"/>
+
                             <div class="form-group">
                                 <label>Post Content</label>
                                 <textarea class="form-control wysiwyg textarea" name="content" id="content"></textarea>

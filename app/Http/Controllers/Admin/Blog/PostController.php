@@ -40,13 +40,18 @@ class PostController extends Controller
         }
 
         $data['posts'] = \App\BlogPost::where('post_type', $data['blog_type'])->get()->toArray();
-        
+
         return view('adminlte::blog.blog_list', $data);
     }
 
     public function addBlogPost()
     {
         $data = [];
+        $data['blog_type'] = 'post';
+        if (Input::get('post_type')) {
+            $data['blog_type'] = Input::get('post_type');
+
+        }
 
         $categories = \App\BlogCategory::all();
         $data['categories'] = $categories->toArray();
@@ -56,7 +61,7 @@ class PostController extends Controller
 
     public function postAddBlogPost(Request $request, $blog_id = NULL)
     {
-        //  dd(input::all());
+         
         $this->validator($request->all())->validate();
         if ($request->post_type == "page") {
             $blogPost = \App\BlogPost::updateOrCreate(

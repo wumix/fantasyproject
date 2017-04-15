@@ -61,7 +61,7 @@ class PostController extends Controller
 
     public function postAddBlogPost(Request $request, $blog_id = NULL)
     {
-         
+
         $this->validator($request->all())->validate();
         if ($request->post_type == "page") {
             $blogPost = \App\BlogPost::updateOrCreate(

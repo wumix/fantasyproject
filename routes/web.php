@@ -171,7 +171,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
 });
 
 
-
+///Route for bloggers
 Route::group(['middleware' => ['is_blogger'], 'prefix' => 'admin/blog'], function () {
     Route::get('/', 'Admin\Blog\PostController@index')->name('blogList');
     Route::get('add', 'Admin\Blog\PostController@addBlogPost')->name('addPost');

@@ -10,13 +10,8 @@ use App\Http\Controllers\Controller;
 class LeaderboardController extends Controller
 {
     //
-    function index(){
-
-
-
-
-    }
-    function index1()
+    
+    function index()
     {
          $userid = \App\User::all()->toArray();
         $userteams = [];

@@ -72,11 +72,9 @@ class PostController extends Controller
                 ['id' => $blog_id], $request->all()
             );
         }
+        $syncblog = \App\BlogPost::find($blogPost->id);
+        $syncblog->post_category()->sync($request->category);
 
-        if (!empty($request->category)) {
-            $syncblog = \App\BlogPost::find($blogPost->id);
-            $syncblog->post_category()->sync(array_filter($request->category));
-        }
 
         $flashMessage = (empty($blog_id)) ? 'Post added successfully.' : 'Post Updated';
         return redirect()->to(route('editPost', ['blog_id' => $blogPost->id]))

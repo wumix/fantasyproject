@@ -147,7 +147,7 @@ foreach ($team_score as $teamplayers) {
 
                                         <label>{{$playertotal}}</label>
                                         @if($flag==1)
-                                        -( prevoise score: {{$playerinscore}})
+                                       <br> previous score: {{$playerinscore}}
                                         @endif
                                         @if($flag==1)
                                         <div class="absolute" style="bottom: 0;">

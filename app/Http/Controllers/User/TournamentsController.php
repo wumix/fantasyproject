@@ -135,6 +135,8 @@ class TournamentsController extends Controller {
     function playTournament($team_id, $tournament_id) {
 //        echo get_individual_player_score("1",'5','88');
 //       die;
+
+
         $tournamentDate = \App\Tournament::getStartdate($tournament_id);
         $difference = $this->getTImeDifference($tournamentDate);
 
@@ -292,7 +294,7 @@ class TournamentsController extends Controller {
     }
 
     function transferPlayerPost(Request $request) {
-//        dd($request->all());
+// dd($request->all());
         $tournamentDate = \App\Tournament::getStartdate($request->tournament_id);
         $difference = $this->getTImeDifference($tournamentDate);
 //        $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
@@ -383,7 +385,19 @@ class TournamentsController extends Controller {
         }
         return response()->json($objResponse);
     }
+         function deletePlayerPost(Request $request){
 
+             DB::table('user_team_players')->where('player_id',$request->player_id)->where('team_id',$request->team_id)->delete();
+             $objResponse['player_id'] = $request->player_id;
+             $objResponse['success']=true;
+             $objResponse['msg']="Player Deleted Successfully";
+             return response()->json($objResponse);
+
+
+
+
+
+        }
     function addUserPlayer(Request $request) {
         $tournamentDate = \App\Tournament::getStartdate($request->tournament_id);
         $difference = $this->getTImeDifference($tournamentDate);
@@ -434,12 +448,9 @@ class TournamentsController extends Controller {
 
         //$currentNoPlayers += 1;
         if ($currentNoPlayers >= 11) {
-            $date = new DateTime();
-            $date=$date->format('Y-m-j h:i:s');
-            $newdate = strtotime ( '-5 hour' , strtotime ( $date ) ) ;
-            $newdate = date ( 'Y-m-j h:i:s' , $newdate );
+
             $userteamsave=\App\UserTeam::find($request->team_id);
-            $userteamsave->joined_from_match_date=$newdate;
+            $userteamsave->joined_from_match_date=getGmtTime();
             $userteamsave->save();
 
 

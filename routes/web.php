@@ -41,9 +41,12 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['is_user']], function () {
         Route::group(['prefix' => 'user'], function () {
+
+             Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');
             Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
             Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('postUserProfile');
-            Route::any('/team-detail', 'DashboardController@teamDetail')->name('teamdetail');
+            Route::any('/team-detail/', 'DashboardController@teamDetail')->name('teamdetail');
+
         });
         Route::group(['prefix' => 'tournaments'], function () {
             Route::get('/addteamname/{tournament_id}', 'User\TournamentsController@addTeam')->name('addTeam');
@@ -51,6 +54,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/addteam', 'User\TournamentsController@teamNamePostAjax')->name('teamNamePostAjax');
             Route::post('/addplayerajax', 'User\TournamentsController@addUserPlayer')->name('addUserTeamPlayerAjax');
             Route::post('/transferplayerajax', 'User\TournamentsController@transferPlayerPost')->name('transferPlayerAjax');
+            Route::post('/deleteplayerajax', 'User\TournamentsController@deletePlayerPost')->name('deletePlayerAjax');
             Route::get('/transfer/{team_id}/{player_id}/{tournament_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
             Route::get('/congrats/{team_id}', 'User\TournamentsController@sucessteam')->name('team-completed');
         });

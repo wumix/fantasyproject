@@ -110,6 +110,7 @@
                                     How to play
                                 </a>
                             </li>
+
                             {{--<li>--}}
                                 {{--<a href="{{route('leaderboard')}}">--}}
                                     {{--LeaderBoard--}}
@@ -131,7 +132,7 @@
 
                             @if(Auth::check())
                             <li>
-                                <a href="{{route('addTeam', ['tournament_id'=>1])}}" class="page-scroll">
+                                <a href="{{route('teamHome')}}" class="page-scroll">
                                     My Team
                                 </a>
                             </li>

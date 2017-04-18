@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{--{{dd($user_team_player)}}--}}
 @section('content')
 <section>
     <div class="container">
@@ -27,16 +27,18 @@
                                 <table class="table table-striped" id="tortable">
                                     <thead class="main-taible-head">
                                         <tr>
-                                            <th class="border-r th1">PLAYERS</th>
+                                            <th class="border-r th1" style="min-width: 300px;
+">PLAYERS</th>
                                             <th class="border-r">ROLES</th>
                                             <th class="border-r">POINTS</th>
-                                            <th class="th2">TRANSFER PLAYER</th>
+                                            <th class="th2" colspan="2">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody id="selected-player" class="main-taible-body">
                                         @foreach($user_team_player as $row)
                                         <tr>
-                                            <td class="border-r1 text-left"><img class="img-thumbnail"
+                                            <td class="border-r1 text-left" style="min-width: 300px;
+"><img class="img-thumbnail"
                                                                                  src="{{getUploadsPath($row['profile_pic'])}}"
                                                                                  style="width: 80px;float: left;margin-right: 24px;">
                                                 <span class="selected-player-name"> {{$row['name']}} </span>
@@ -55,10 +57,19 @@
                                                 {{$playerThisTournamnetPrice}}
                                             </td>
                                             @endforeach
+
+                                            <td id="player_tr-del-{{$row['id']}}" class="cwt">
+
+                                                <a onclick="return confirm('Are you sure you want to delete this player')"
+                                                   href="javascript:deletePlayer('{{$row['id']}}','{{$playerThisTournamnetPrice}}')"
+                                                   class=" btn btn-md bttor1">Delete Player
+                                                </a>
+
+                                            </td>
                                             <td>
 
                                                 <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"
-                                                   class="btn btn-md bttor1">TRANSFER
+                                                   class="btn btn-green">Transfer Player
                                                 </a>
 
                                             </td>
@@ -118,7 +129,8 @@
                                                 <table class="table table-hover" id="tortable">
                                                     <thead class="main-taible-head1">
                                                         <tr>
-                                                            <th class=" th1">PLAYERS</th>
+                                                            <th class=" th1" style="min-width: 300px;
+">PLAYERS</th>
 
                                                             <th class="point">Belongs To</th>
                                                             <th class="add">Points required to buy</th>
@@ -132,7 +144,8 @@
                                                             continue;
                                                         ?>
                                                         <tr id="player_tr-{{$player['id']}}" class="cwt">
-                                                            <td class=" th11 text-left">
+                                                            <td class=" th11 text-left" style="min-width: 300px;
+">
                                                                 <img style="width: 80px;float: left;margin-right: 24px;" class="img-thumbnail"
                                                                      src="{{getUploadsPath($player['profile_pic'])}}"/>
                                                                 <span class="selected-player-name"> {{$player['name']}}</span>
@@ -199,6 +212,33 @@
 @section('js')
 
 <script>
+    function deletePlayer(playerid,player_price){
+
+        var teamid = $("#team_id").val();
+        $.ajax({
+            type: 'POST',
+            url: '{{route('deletePlayerAjax')}}',
+            data: {
+                player_id: playerid,
+                player_price: player_price,
+                team_id: teamid, _token: '{{csrf_token()}}'
+            },
+            success: function (data) {
+                if (data.success == true) {
+                    $('#player_tr-del-' + data.player_id).html('<span>Deleted</span>');
+                    $('.error').html(data.msg);
+                    $('.error').fadeIn(400).delay(2000).fadeOut(400); //fade out after 3 seconds
+                } else {
+                    $('.error').html(data.msg);
+                    $('.error').fadeIn(400).delay(2000).fadeOut(400); //fade out after 3 seconds
+
+
+                }
+
+            }
+        });
+    }
+
     function addplayertoteam(rolename, roleid, playerid, tournamentid, player_price) {
 
     var arr_player_id = [];
@@ -237,13 +277,15 @@
             t += '<td class="border-r1 text-left"><img id="myteamtimg" class="img-thumbnail" style="width: 80px;float: left;margin-right: 24px;"  src="' + obj.profile_pic + ' "><span class="selected-player-name">' + obj.name + '</span> </td>';
             t += '<td class="border-r1"> ' + obj.role_name + '</span></td>';
             t += '<td class="border-r1">' + obj.price + '</td>';
-            //var url = '{{ route("transferplayer", ["team_id"=>"id","player_id"=>'pid',"tournament_id"=>'tid']) }}';
-            var url = '#';
+            var url = '{{ route("transferplayer", ["team_id"=>"id","player_id"=>'pid',"tournament_id"=>'tid']) }}';
+          //  var url = '#';
             url = url.replace('pid', obj.id);
             url = url.replace('id', obj.team_id);
             url = url.replace('tid', obj.tournament_id);
-            t += '<td><a href="' + url + '" id="" class="btn disabled btn-md bttor1">TRANSFER</a></td >';
-           // t += '<td>Player transfer is disabled by the end of today\'s match!</td >';
+            t += '<td id="player_tr-del-'+obj.id+'" class="cwt"><a href="javascript:deletePlayer('+obj.id+','+obj.price+')" id="" class="btn btn-md bttor1">Delete Player</a></td >';
+            t += '<td><a href="' + url + '" class="btn btn-green">Transfer Player</a></td >';
+
+            // t += '<td>Player transfer is disabled by the end of today\'s match!</td >';
             t += '</tr>';
             $('#selected-player').append(t);
             t = "";

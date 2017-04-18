@@ -153,11 +153,26 @@
                                                 </td>
 
                                                 <td class=" point"><p
-                                                            class="myteamtt">{{$player['player_tournaments'][0]['pivot']['player_price']}}</p>
+                                                            class="myteamtt">
+                                                        <?php
+                                                        $playerids= 0;
+                                                        $playerThisTournamnetPrice = 0;
+                                                       // dd($player);
+                                                        if (!empty($player['player_tournaments'][0]['pivot']['player_price'])) {
+                                                        $playerThisTournamnetPrice = $player['player_tournaments'][0]['pivot']['player_price'];
+                                                        }
+
+                                                            if (!empty($player['player_tournaments'][0]['id'])) {
+                                                                $playerids = $player['player_tournaments'][0]['pivot']['player_price'];
+                                                            }
+                                                            ?>
+                                                           {{$playerThisTournamnetPrice}}
+
+                                                    </p>
                                                 </td>
 
                                                 <td>
-                                                    <a onclick="return confirm('Are you sure you want to transfer');" style="text-transform: uppercase"  id="btn-player-{{$player['id']}}"href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$player['player_tournaments'][0]['pivot']['player_price']}}')" class="btn btn-md bttor1">
+                                                    <a onclick="return confirm('Are you sure you want to transfer');" style="text-transform: uppercase"  id="btn-player-{{$player['id']}}"href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$playerids}}','{{$playerThisTournamnetPrice}}')" class="btn btn-md bttor1">
                                                         TRANSFER WITH {{$player_info['name']}}
                                                     </a>
                                                 </td>
@@ -208,11 +223,12 @@
                     if (data.success == true) {
                         $('.error').html(data.msg);
                         $('.error').fadeIn(400).delay(3000).fadeOut(400); //fade out after 3 seconds
-                        var url = '{{route("addPlayers", ['team_id'=>"id","tournament_id"=>'tid']) }}';
+                        var url = '{{route("teamdetail", ['team_id'=>'ttid']) }}';
 
-                        url = url.replace('id', data.team_id);
-                        url = url.replace('tid', data.tournament_id);
-                        window.location.href = url;
+                        url = url.replace('ttid', data.team_id);
+                     //   url = url.replace('tid', data.tournament_id);
+                       //alert(url);
+                  window.location.href = url;
 
                     } else {
                         $('.error').html(data.msg);

@@ -45,9 +45,7 @@ class DashboardController extends Controller
             ->with('user_team_player_transfers.player_transfer')
             ->get();
        // dd($data['user_team_player_transfer']->toArray());
-
-
-        //Get matches after team making
+        // //Get matches after team making
         if ($data['user_teams'][0]['joined_from_match_date'] == null) {
             return view('pages.team_incomplete');
         }
@@ -77,13 +75,14 @@ class DashboardController extends Controller
             'player_gameTerm_score.game_terms' => function ($query) {
                 $query->select('name', 'id');
             },
+
             'player_gameTerm_score.points_devision_tournament' => function ($query) use ($matcheIdsAfterThisTeamMade) {
 
-            }
+            },'player_actual_teams'
         ])->get()->toArray();
 
         //dd($data);
-        //dd($data['team_score']);
+       // dd($data['team_score']);
 //       debugArr($data['team_score']);
 //       die;
         $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
@@ -103,6 +102,15 @@ class DashboardController extends Controller
         //   dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         return view('user.dashboard.dashboard', $data);
+    }
+    function teamHome(){
+        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->with('teamtournament')
+            ->get()
+            ->toArray();
+        //   dd($data);
+        $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
+        return view('user.teamhome', $data);
+
     }
 
     function editProfileform(Request $request)

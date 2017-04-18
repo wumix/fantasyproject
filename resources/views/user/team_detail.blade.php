@@ -54,7 +54,7 @@ foreach ($team_score as $teamplayers) {
     </style>
     <section>
         <div class="container">
-            <div class="row">
+            <div class="row" >
                 <div class="col-lg-12">
                     <h1 class="page-heading">
                         {{$user_team_player_transfer['name']}}
@@ -64,13 +64,19 @@ foreach ($team_score as $teamplayers) {
                         <?php $teamtotal = 0;?>
                         @foreach($team_score as $row )
                             <?php
+
+                                $player_transfer_id=$row['id'];
+
                                 $playertotal = 0;
                             $flag=0;
                             $playertransferedname = "";
                             $playertransferedpic = "";
                             $playertransferedscore = 0;
                             $playerinscore = 0;
+                            $x=0;
                             foreach ($user_team_player_transfer['user_team_player_transfers'] as $transfer) {
+
+
                                 if ($transfer['pivot']['player_in_id'] == $row['id']) {
                                     $playertransferedpic = $transfer['profile_pic'];
                                     $playertransferedname = $transfer['name'];
@@ -79,7 +85,8 @@ foreach ($team_score as $teamplayers) {
                                     // $playertotal+=$transfer['pivot']['player_out_score'];
                                     $teamtotal += $transfer['pivot']['player_out_score'];
                                     $teamtotal -= $transfer['pivot']['player_in_score'];
-                                    $playerinscore -= $transfer['pivot']['player_in_score'];
+                                    $playerinscore = $transfer['pivot']['player_in_score'];
+                                    $x=$transfer['pivot']['player_in_score'];
 
                                 }
                             }
@@ -105,7 +112,7 @@ foreach ($team_score as $teamplayers) {
                             @endforeach
                             <div class="row">
                                 <div class="col-md-12" style="display: flex;">
-                                    <div class="col-md-8">
+                                    <div class="col-md-4">
                                         <div class="current_player">
                                             <img style="width: 80px;"
                                                  class="img-thumbnail"
@@ -124,19 +131,36 @@ foreach ($team_score as $teamplayers) {
                                       @endif
 
                                     </div>
+                                    <div class="col-md-2">
+                                        @foreach($row['player_actual_teams'] as $playerteam )
+                                        {{ $playerteam['name']}}
+                                            @endforeach
+                                    </div>
                                     <div class="col-md-2 relative">{{$row['name']}}
                                         <div class="absolute" style="bottom: 0;">
                                             {{$playertransferedname}}
                                         </div>
                                     </div>
                                     <?php $teamtotal += $playertotal;?>
+
                                     <div class="col-md-2">
-                                        {{$playertotal}}
+
+                                        <label>{{$playertotal}}</label>
+                                        @if($flag==1)
+                                        -( prevoise score: {{$playerinscore}})
+                                        @endif
                                         @if($flag==1)
                                         <div class="absolute" style="bottom: 0;">
+
                                             {{$playertransferedscore}}
                                         </div>
                                             @endif
+                                    </div>
+                                    <div class="col-md-2">
+
+                                        <a href="{{route('transferplayer', ['team_id'=>$user_team_player_transfer['id'],'player_id'=>$player_transfer_id,'tournament_id'=>$user_team_player_transfer['tournament_id']])}}"
+                                           class="btn btn-green">Transfer Player
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="clear clearfix"></div>

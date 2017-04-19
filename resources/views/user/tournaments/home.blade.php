@@ -23,7 +23,7 @@
                             <tbody id="selected-player" class="main-taible-body">
                                 @foreach($tournaments_list as $row)
                                 <tr>
-                                    <td class="border-r1">
+                                    <td class="border-r1"style="min-width: 305px;">
                                         <img id="myteamtimg" class="img-circle img-thumbnail" style="width: 100px;" src="{{getUploadsPath($row['t_logo'])}}" />
                                         {{$row['name']}}
                                     </td>

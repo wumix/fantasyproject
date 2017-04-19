@@ -35,61 +35,10 @@
     <body>
         <nav class="bg-primary navbar navbar-default navbar-fixed-top">
             <!--Menu-->
-            <div class="container-fluid menu-top1-1">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-top-1">
-                            <span class="sr-only">Toggle navigation</span> Useful Links <i class="fa fa-bars"></i>
-                        </button>
-                        <a class="navbar-brand page-scroll">
-                            &nbsp;
-                        </a>
-                    </div>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-top-1">
-                        <ul class="nav navbar-nav navbar-right">
 
-                            @if(!Auth::check())
-                            <li>
-                                <a href="{{route('login')}}">
-                                    Login
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('signUp') }}">
-                                    Sign Up
-                                </a>
-                            </li>
-                            @endif
-                            @if(Auth::check())
-                            <li>
-                                <a href="{{route('UserDashboard')}}">
-                                    DashBoard
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="{{route('userProfileEdit')}}">
-                                    {{Auth::user()->name}}
-                                </a>
-                            </li>
-
-                            <li>
-                                <a onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();" href="javacript:void(0)">
-                                    Logout
-                                </a>
-                            </li>
-                            @endif
-                        </ul>
-                    </div>
-                    <!-- /.navbar-collapse -->
-                </div>
-            </div>
             <!-------------->
-            <div class="container-fluid">
-                <div class="container">
+            <div class="container-fluid" >
+                <div class="container"  >
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header main-top-menu">
                         <a class="navbar-brand logo-site page-scroll" href="/">
@@ -99,8 +48,26 @@
                         <div class="clear clearfix"></div>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse logo-menu-container" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right nav-main-menu">
+
+
+                    <div   class="collapse navbar-collapse logo-menu-container"  id="bs-example-navbar-collapse-1">
+                        <div class="row signin">
+                            @if(!Auth::check())
+                            <i class="fa fa-sign-in sign-in-icon" aria-hidden="true"></i><span><a href="{{route('login')}}">Sign In</a></span>
+                            @endif
+                            @if(Auth::check())
+                            <a onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();" href="javacript:void(0)">
+                                <i class="fa fa-sign-out sign-in-icon" aria-hidden="true"></i> Logout
+                            </a>
+                                @endif
+                        </div>
+
+
+
+
+                    <div class="row" >
+                        <ul class="nav navbar-nav navbar-right nav-main-menu" >
                             <li>
                                 <a class="page-scroll" href="/">Home</a>
                             </li>
@@ -150,7 +117,12 @@
                             </li>
                         </ul>
                     </div>
+
+                    </div>
                     <!-- /.navbar-collapse -->
+
+
+
                 </div>
             </div>
             <!-- /.container-fluid -->

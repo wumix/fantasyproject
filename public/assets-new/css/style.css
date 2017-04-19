@@ -1,6 +1,7 @@
 .menu-top1-1{
-    background: #92B713;
+    background: #3b4034;
 }
+
 #mainNav{
 
     background-color: rgba(0, 0, 0, 0.6);
@@ -16,7 +17,13 @@
     color: #fff;
 }
 
-
+.signinforminputs{
+    background: transparent;
+    color:#c2c2c2;
+}
+.signinforminputs1{
+    border-left:none; height:40px;
+}
 .nav-main-menu li a{
     padding-bottom: 10px;
 }
@@ -356,6 +363,11 @@ hr.light.full{
 .btn-green{
     background: #92B713;
     color: #fff;
+}
+.btn-register{
+    background: #92B713;
+    color: #fff;
+
 }
 
 

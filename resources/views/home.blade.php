@@ -143,7 +143,7 @@
                         </tbody>
                     </table>
                 </div>
-                <a href="{{route('usertournamenthome')}}" class="btn btn-green btn-xl">
+                <a href="{{route('usertournamenthome')}}" class="btn btn-green ">
                     View all tournaments
                 </a>
             </div>

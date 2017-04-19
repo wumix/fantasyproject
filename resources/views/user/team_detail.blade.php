@@ -54,12 +54,37 @@ foreach ($team_score as $teamplayers) {
     </style>
     <section>
         <div class="container">
+
             <div class="row" >
                 <div class="col-lg-12">
                     <h1 class="page-heading">
                         {{$user_team_player_transfer['name']}}
                     </h1>
                     <hr class="light full">
+                    <div class="row">
+                        <div class="col-md-3 text-center" >
+
+
+                        </div>
+                        <div class="col-md-3 text-center" >
+                            Player Name
+
+                        </div>
+                        <div class="col-md-2 text-center" >
+                            Team Name
+
+                        </div>
+                        <div class="col-md-2 text-center" >
+                            Current Score
+
+                        </div>
+                        <div class="col-md-2 text-center" >
+
+
+                        </div>
+
+
+                    </div>
                     <div class="page-content no-padding col-md-12">
                         <?php $teamtotal = 0;?>
                         @foreach($team_score as $row )
@@ -112,6 +137,7 @@ foreach ($team_score as $teamplayers) {
                             @endforeach
                             <div class="row">
                                 <div class="col-md-12" style="display: flex;">
+
                                     <div class="col-md-4">
                                         <div class="current_player">
                                             <img style="width: 80px;"
@@ -131,15 +157,16 @@ foreach ($team_score as $teamplayers) {
                                       @endif
 
                                     </div>
-                                    <div class="col-md-2">
-                                        @foreach($row['player_actual_teams'] as $playerteam )
-                                        {{ $playerteam['name']}}
-                                            @endforeach
-                                    </div>
+
                                     <div class="col-md-2 relative">{{$row['name']}}
                                         <div class="absolute" style="bottom: 0;">
                                             {{$playertransferedname}}
                                         </div>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        @foreach($row['player_actual_teams'] as $playerteam )
+                                            {{ $playerteam['name']}}
+                                        @endforeach
                                     </div>
                                     <?php $teamtotal += $playertotal;?>
 

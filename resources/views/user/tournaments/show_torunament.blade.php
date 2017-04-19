@@ -70,7 +70,7 @@
                                                         @if(!empty($role_players['players']))
                                                         @foreach($role_players['players'] as $key => $player)
                                                         <tr  class="cwt">
-                                                            <td class="text-left">
+                                                            <td class="text-left" style="min-width: 250px;">
                                                                 <img src="{{getUploadsPath($player['profile_pic'])}}" class="player_pic img-thumbnail" />
                                                                 {{$player['name']}}
                                                             </td>

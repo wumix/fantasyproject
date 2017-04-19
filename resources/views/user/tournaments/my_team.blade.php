@@ -11,15 +11,15 @@
                 <hr class="light full">
                 <div class="page-content">
                     <div class="row">
-                        <div class="col-md-12 no-padding text-center">
-                            <div class="col-md-6 text-left">
+                        <div class="col-md-12">
+
                                 <input id="team_id" type="hidden" value="{{$team_id}}">
-                                <h3>{{$tournament_detail['name']}}</h3>
+                                <h3 style="color: blue;">{{$tournament_detail['name']}}</h3>
                             </div>
-                            <div class="col-md-6 text-right">
+                            <div class="col-md-12" style="color: orangered; font-family: Raleway">
                                 <h3>Your Points: <span id="your_points">{{getUserTotalScore(Auth::id())}}</span></h3>
                             </div>
-                        </div>
+
                     </div>
                     <div class="row mt26">
                         <div class="col-md-12">

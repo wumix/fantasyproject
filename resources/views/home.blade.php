@@ -205,14 +205,14 @@
         <div class="row no-gutter popup-gallery">
             <div class="col-lg-4 col-sm-6">
                 <a href="img/portfolio/fullsize/GALLERY-IMG5APR.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/GALLERY-IMG5APR.jpg" class="img-responsive" alt="">
+                    <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                SRH vs RCB
+                                RPS vs RCB
                             </div>
                             <div class="project-name">
-                                SRH won by 7 wickets
+                                RPS won by 3 wickets
                             </div>
                         </div>
                     </div>
@@ -222,14 +222,14 @@
 
             <div class="col-lg-4 col-sm-6">
                 <a href="img/portfolio/fullsize/GALLERY-IMG6APR1.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/GALLERY-IMG6APR1.jpg" class="img-responsive" alt="">
+                    <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                GL vs KKR
+                                RPS vs RCB
                             </div>
                             <div class="project-name">
-                                KKR won by 11 wickets
+                                RPS won by 3 wickets
                             </div>
                         </div>
                     </div>
@@ -237,14 +237,14 @@
             </div>
             <div class="col-lg-4 col-sm-6">
                 <a href="img/portfolio/fullsize/GALLERY-IMG7APR2.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/GALLERY-IMG7APR2.jpg" class="img-responsive" alt="">
+                    <img src="img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                KxiP vs RPS
+                                RPS vs RCB
                             </div>
                             <div class="project-name">
-                                KxiP won by 7 wickets
+                                RPS won by 3 wickets
                             </div>
                         </div>
                     </div>
@@ -252,44 +252,44 @@
             </div>
             <div class="col-lg-4 col-sm-6">
                 <a href="../img/portfolio/fullsize/GALLERY-IMG8APR1.jpg" class="portfolio-box">
-                    <img src="../img/portfolio/thumbnails/GALLERY-IMG8APR1.jpg" class="img-responsive" alt="">
+                    <img src="../img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                RPS vs MI
+                                DD vs KKR
                             </div>
                             <div class="project-name">
-                                RPS won by 8 wickets
+                                KKR won by 5 wickets
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/GALLERY-IMG8APR2ND.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/GALLERY-IMG8APR2ND.jpg" class="img-responsive" alt="">
+                <a href="img/portfolio/fullsize/202.jpg" class="portfolio-box">
+                    <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                RCB vs DD
+                                DD vs KKR
                             </div>
                             <div class="project-name">
-                                RCB won by 3 wickets
+                                KKR won by 5 wickets
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/GALLERY-IMG9APR.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/GALLERY-IMG9APR.jpg" class="img-responsive" alt="">
+                <a href="img/portfolio/fullsize/203.jpg" class="portfolio-box">
+                    <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                SRH vs GL
+                                DD vs KKR
                             </div>
                             <div class="project-name">
-                                SRH won by 10 wickets
+                                KKR won by 5 wickets
                             </div>
                         </div>
                     </div>
@@ -297,14 +297,14 @@
             </div>
             <div class="col-lg-4 col-sm-6">
                 <a href="img/portfolio/fullsize/GALLERY-IMG92ND-2.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/GALLERY-IMG92ND-2.jpg" class="img-responsive" alt="">
+                    <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                MI vs KKR
+                                SRH vs KXIP
                             </div>
                             <div class="project-name">
-                                MI won by 5 wickets
+                                SRH won by 5 wickets
                             </div>
                         </div>
                     </div>
@@ -312,14 +312,14 @@
             </div>
             <div class="col-lg-4 col-sm-6">
                 <a href="img/portfolio/fullsize/GALLERY-IMG10APR1.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/GALLERY-IMG10APR1.jpg" class="img-responsive" alt="">
+                    <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                KxiP vs RCB
+                                SRH vs KXIP
                             </div>
                             <div class="project-name">
-                                KxiP won by 9 wickets
+                                SRH won by 5 wickets
                             </div>
                         </div>
                     </div>
@@ -327,14 +327,14 @@
             </div>
             <div class="col-lg-4 col-sm-6">
                 <a href="img/portfolio/fullsize/GALLERY-IMG10APR-2.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/GALLERY-IMG10APR-2.jpg" class="img-responsive" alt="">
+                    <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                KxiP vs RCB
+                                SRH vs KXIP
                             </div>
                             <div class="project-name">
-                                KxiP won by 9 wickets
+                                SRH won by 5 wickets
                             </div>
                         </div>
                     </div>

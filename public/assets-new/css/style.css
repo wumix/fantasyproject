@@ -1,7 +1,21 @@
-.menu-top1-1{
+.menu-top1-1 {
     background: #3b4034;
 }
+.home-top-menu{
+padding-left: 15px;
 
+
+}
+
+.home-top-menu>span>a{
+    color: #FFFFFF;
+}
+.nav-main-menu-top a{
+   padding-right: 0 !important;
+}
+.nav-main-menu-top li{
+    padding-left: 8px;
+}
 #mainNav{
 
     background-color: rgba(0, 0, 0, 0.6);
@@ -27,7 +41,9 @@
 .nav-main-menu li a{
     padding-bottom: 10px;
 }
-
+.slicknav_nav .fa{
+    display: none;
+}
 
 /*Remove this from mobile*/
 /*////////////////////////////Blog CSS/////////////////////////////////////////*/

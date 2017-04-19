@@ -115,7 +115,7 @@
                     </ul>
 
                     <p style="padding-top: 10px;">
-                        <a class="btn btn-block btn-lg btn-register" href="#" role="button">Register</a>
+                        <a class="btn btn-block btn-lg btn-register" href="{{route('signUp')}}" role="button">Register</a>
                     </p>
                 </div>
             </div>

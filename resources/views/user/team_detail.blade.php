@@ -61,30 +61,7 @@ foreach ($team_score as $teamplayers) {
                         {{$user_team_player_transfer['name']}}
                     </h1>
                     <hr class="light full">
-                    <div class="row">
-                        <div class="col-md-3 text-center" >
 
-
-                        </div>
-                        <div class="col-md-3 text-center" >
-                            Player Name
-
-                        </div>
-                        <div class="col-md-2 text-center" >
-                            Team Name
-
-                        </div>
-                        <div class="col-md-2 text-center" >
-                            Current Score
-
-                        </div>
-                        <div class="col-md-2 text-center" >
-
-
-                        </div>
-
-
-                    </div>
                     <div class="page-content no-padding col-md-12">
                         <?php $teamtotal = 0;?>
                         @foreach($team_score as $row )

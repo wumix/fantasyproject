@@ -22,7 +22,7 @@
                                 <h4 class="linor">OR</h4>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-8 col-md-offset-2">
                             <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                                 {{ csrf_field() }}
 
@@ -31,10 +31,10 @@
 
                                     <div class="cols-md-12" id="withbox">
                                         <div class="input-group">
-                                            <span id="fbg" class="input-group-addon">
+                                            <span id="fbg" class="signinforminputs input-group-addon">
                                                 <i id="lgfico" class="fa fa-user fa-lg" aria-hidden="true"></i>
                                             </span>
-                                            <input id="fullname" type="text" class="form-control" name="name" placeholder="Name"
+                                            <input id="fullname" type="text" class="signinforminputs1 form-control" name="name" placeholder="Name"
                                                    required autofocus>
                                         </div>
 
@@ -51,9 +51,9 @@
 
                                     <div class="cols-md-12" id="withbox">
                                         <div class="input-group">
-                                            <span id="fbg" class="input-group-addon"><i id="lgfico" class="fa fa-envelope fa-lg"
+                                            <span id="fbg" class="signinforminputs input-group-addon"><i id="lgfico" class="fa fa-envelope fa-lg"
                                                                                         aria-hidden="true"></i></span>
-                                            <input id="email" type="email" class="form-control" name="email" placeholder="Email"
+                                            <input id="email" type="email" class="signinforminputs1 form-control" name="email" placeholder="Email"
                                                    required>
 
 
@@ -79,9 +79,9 @@
 
                                     <div class="cols-md-10" id="withbox">
                                         <div class="input-group">
-                                            <span id="fbg" class="input-group-addon"><i id="lgfico" class="fa fa-key fa-lg"
+                                            <span id="fbg" class="signinforminputs input-group-addon"><i id="lgfico" class="fa fa-key fa-lg"
                                                                                         aria-hidden="true"></i></span>
-                                            <input id="password" type="password" class="form-control" placeholder="Password"
+                                            <input id="password" type="password" class="signinforminputs1 form-control" placeholder="Password"
                                                    name="password" required>
                                         </div>
 
@@ -102,9 +102,9 @@
 
                                     <div class="cols-md-12" id="withbox">
                                         <div class="input-group">
-                                            <span id="fbg" class="input-group-addon"><i id="lgfico" class="fa fa-key fa-lg"
+                                            <span id="fbg" class="signinforminputs input-group-addon"><i id="lgfico" class="fa fa-key fa-lg"
                                                                                         aria-hidden="true"></i></span>
-                                            <input id="retypepassword" type="password" class="form-control"
+                                            <input id="retypepassword" type="password" class="signinforminputs1 form-control"
                                                    placeholder="Retype Password" name="password_confirmation" required>
                                         </div>
                                     </div>

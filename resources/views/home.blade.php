@@ -204,15 +204,15 @@
     <div class="container-fluid">
         <div class="row no-gutter popup-gallery">
             <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/GALLERY-IMG5APR.jpg" class="portfolio-box">
+                <a href="img/portfolio/fullsize/101.jpg" class="portfolio-box">
                     <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                RPS vs RCB
+                                GL vs RCB
                             </div>
                             <div class="project-name">
-                                RPS won by 3 wickets
+                                RCB won by 21 Runs
                             </div>
                         </div>
                     </div>
@@ -221,30 +221,30 @@
 
 
             <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/GALLERY-IMG6APR1.jpg" class="portfolio-box">
+                <a href="img/portfolio/fullsize/102.jpg" class="portfolio-box">
                     <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                RPS vs RCB
+                                GL vs RCB
                             </div>
                             <div class="project-name">
-                                RPS won by 3 wickets
+                                RCB won by 21 Runs
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/GALLERY-IMG7APR2.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="">
+                <a href="img/portfolio/fullsize/1003.jpg" class="portfolio-box">
+                    <img src="img/portfolio/thumbnails/1003.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                RPS vs RCB
+                                GL vs RCB
                             </div>
                             <div class="project-name">
-                                RPS won by 3 wickets
+                                RCB won by 21 Runs
                             </div>
                         </div>
                     </div>

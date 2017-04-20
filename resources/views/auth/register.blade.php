@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-heading">
-                    Get registered for free
+                    Get Registered For Free
                 </h1>
                 <hr class="light full">
                 <div class="page-content">
@@ -15,7 +15,7 @@
                         <div class="text-center col-md-12 col">
                             <div class="gbtn">
                                 <a href="{{route('facebookLogin')}}" class="btn btn-fb-login">
-                                    Signup using Facebook
+                                    Signup Using Facebook
                                 </a>
                             </div>
                             <div class="lines mt26">

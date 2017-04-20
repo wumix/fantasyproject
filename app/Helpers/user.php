@@ -112,3 +112,6 @@
     }
     return 'th';
 }
+function send_user_mail($email,$name){
+   Mail::to($email)->send(new \App\Mail\MyMail($name));
+}

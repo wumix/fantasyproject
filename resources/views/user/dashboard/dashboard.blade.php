@@ -27,7 +27,7 @@
 
                                     </div>
 
-                                    <div class="col-md-5 pull-left"> <!--- new div -->
+                                    <div class="col-md-5 pull-left" > <!--- new div -->
 
                                         <h3 class="slh text-center">Your Teams</h3>
                                         @if(empty($user_teams))
@@ -39,7 +39,7 @@
                                         @else
                                             {!! Form::open(['url' => route('teamdetail'),'method'=>'get']) !!}
                                             <div class="form-group" >
-                                                <select name="team_id" class="btn dropdown-toggle col-md-10 col-md-offset-1"
+                                                <select style="width:100%;" name="team_id" class="form-control dropdown-toggle col-md-12"
                                                         data-toggle="dropdown"
                                                         style="border:1px solid #9acc59; border-radius: 6px;">
                                                     @foreach($user_teams as $row)

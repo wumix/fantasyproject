@@ -54,10 +54,10 @@ class LeaderboardController extends Controller
             $leaderboard->save();
         }
         $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
+
         foreach($data['leaders']as $user){
 
-            send_user_mail('zulfiqar_tariq@hotmail.com',$user['user']['name']);
-            send_user_mail('umair_hamid100@yahoo.com',$user['user']['name']);
+            send_user_mail($user['user']['email'],$user['user']['name']);
 
 
 

@@ -10,8 +10,7 @@
            </p>
 
             Keep yourself pumped up for exciting prizes on your way! Good luck. <br><br>
-            Cheers,<br>
-            Team Gamithon.<br>
+
         </td>
     </tr>
 

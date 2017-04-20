@@ -99,7 +99,9 @@ p {
     background-color: #3b4034 !important;
 }
 .bg-primary-opacity{
-    background-color: rgba(0, 0, 0, 0.6) !important;
+    background-color: rgba(120, 147, 34, 0.7) !important;
+    border-radius: 25px;
+    height: auto;
 }
 .bg-dark {
     background-color: #000 !important;
@@ -225,17 +227,12 @@ aside {
     }
 }
 header {
-    position: relative;
-    width: 100%;
-    min-height: auto;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-    background-position: center;
+margin-bottom: 0px;
     background-image: url('../img/header.jpg');
-    text-align: center;
-    color: white;
+    background-repeat: no-repeat;
+
+
+    min-height: 500px;
 }
 
 header .header-content {

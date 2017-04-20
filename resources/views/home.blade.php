@@ -211,15 +211,15 @@
     <div class="container-fluid">
         <div class="row no-gutter popup-gallery">
             <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/GALLERY-IMG5APR.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt="">
+                <a href="img/portfolio/thumbnails/401.jpg" class="portfolio-box">
+                    <img src="img/portfolio/thumbnails/401.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                RPS vs RCB
+                                GL vs RCB
                             </div>
                             <div class="project-name">
-                                RPS won by 3 wickets
+                                RCB won by 9 wickets
                             </div>
                         </div>
                     </div>
@@ -228,37 +228,37 @@
 
 
             <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/GALLERY-IMG6APR1.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt="">
+                <a href="img/portfolio/thumbnails/402.jpg" class="portfolio-box">
+                    <img src="img/portfolio/thumbnails/402.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                RPS vs RCB
+                                GL vs RCB
                             </div>
                             <div class="project-name">
-                                RPS won by 3 wickets
+                                RCB won by 9 wickets
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/GALLERY-IMG7APR2.jpg" class="portfolio-box">
-                    <img src="img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="">
+                <a href="img/portfolio/thumbnails/403.jpg" class="portfolio-box">
+                    <img src="img/portfolio/thumbnails/403.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                RPS vs RCB
+                                GL vs RCB
                             </div>
                             <div class="project-name">
-                                RPS won by 3 wickets
+                                RCB won by 9 wickets
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <a href="../img/portfolio/fullsize/GALLERY-IMG8APR1.jpg" class="portfolio-box">
+                <a href="../img/portfolio/thumbnails/201.jpg" class="portfolio-box">
                     <img src="../img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
@@ -273,7 +273,7 @@
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/202.jpg" class="portfolio-box">
+                <a href="../img/portfolio/thumbnails/202.jpg" class="portfolio-box">
                     <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
@@ -288,7 +288,7 @@
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/203.jpg" class="portfolio-box">
+                <a href="img/portfolio/thumbnails/203.jpg" class="portfolio-box">
                     <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
@@ -303,7 +303,7 @@
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/GALLERY-IMG92ND-2.jpg" class="portfolio-box">
+                <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
                     <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
@@ -318,7 +318,7 @@
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/GALLERY-IMG10APR1.jpg" class="portfolio-box">
+                <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
                     <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
@@ -333,7 +333,7 @@
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <a href="img/portfolio/fullsize/GALLERY-IMG10APR-2.jpg" class="portfolio-box">
+                <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
                     <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">

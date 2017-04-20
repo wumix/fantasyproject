@@ -341,12 +341,12 @@ hr.light.full{
     color: #92B713;
     text-align: center;
     background: rgba(0, 0, 0, 0.7);
-    padding: 15px;
+    padding: 20px;
 }
 
 
 .mtb10{
-    margin: 10px 0;
+    margin: 15px 0;
 
 }
 .mt10{
@@ -621,7 +621,7 @@ width: 100%;
     color: #92B713;
     text-align: center;
     background: rgba(0, 0, 0, 0.7);
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 
 
 }

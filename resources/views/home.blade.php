@@ -24,7 +24,7 @@
                         </h6>
                     </div>
                 </div>
-                <div class="row col-md-10 col-md-offset-1" >
+                <div class="row col-md-12" >
                     <div class="col-md-12 count-down no-padding mt30">
                         <div class="col-md-3 text-center">
                         <span id="getting-started" class="circle">
@@ -75,8 +75,8 @@
 
 " src="{{getUploadsPath($leader['user']['profile_pic'])}}"/>
                         </span>
-                                <p class="no-mrg-in-home">{{$leader['user']['name']}}A</p>
-                                <p class="no-mrg-in-home1">{{$leader['score']}}</p>
+                                <p class="no-mrg-in-home ">{{$leader['user']['name']}}A</p>
+                                <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
                             </div>
                         </div>
                             @endforeach

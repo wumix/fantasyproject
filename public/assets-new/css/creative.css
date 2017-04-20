@@ -163,6 +163,23 @@ aside {
 .navbar-default .nav > li.active > a:focus:hover {
     background-color: transparent;
 }
+.leaderboardscore{
+    font-family: Sans-Serif;
+    color: #f98408 !important;
+}
+#getting-started{
+    color: #f98408 !important;
+}
+#getting-started1{
+    color: #f98408 !important;
+}
+#getting-started2{
+    color: #f98408 !important;
+}
+#getting-started3{
+    color: #f98408 !important;
+}
+
 
 
 @media (min-width: 768px) {
@@ -259,7 +276,7 @@ header .header-content .header-content-inner p {
     font-weight: 300;
     color: rgba(255, 255, 255, 0.7);
     font-size: 16px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 @media (min-width: 768px) {
     header {

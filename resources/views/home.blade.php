@@ -24,7 +24,7 @@
                     </h4>
                 </div>
             </div>
-            <div class="row col-md-8 col-md-offset-2" >
+            <div class="row col-md-10 col-md-offset-1" >
                 <div class="col-md-12 count-down no-padding mt30">
                     <div class="col-md-3 text-center">
                         <span id="getting-started" class="circle">
@@ -42,13 +42,13 @@
                         <span id="getting-started2" class="circle">
                             10
                         </span>
-                        <p class="mtb10">Min</p>
+                        <p class="mtb10" style="margin-left: 12px;">Min</p>
                     </div>
                     <div class="col-md-3 text-center">
                         <span id="getting-started3" class="circle">
                             10
                         </span>
-                        <p class="mtb10">Sec</p>
+                        <p class="mtb10" style="margin-left: 12px;">Sec</p>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                             1
                         </span>
                             <p class="no-mrg-in-home">Ahmad Qlandder</p>
-                            <p class="no-mrg-in-home">2410</p>
+                            <p class="no-mrg-in-home1">2410</p>
                         </div>
                     </div>
                     <div class="col-md-4 text-center">
@@ -87,7 +87,7 @@
                             1
                         </span>
                             <p class="no-mrg-in-home">Ahmad Qlandder</p>
-                            <p class="no-mrg-in-home">2410</p>
+                            <p class="no-mrg-in-home1">2410</p>
                         </div>
                     </div>
 

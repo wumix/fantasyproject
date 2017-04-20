@@ -78,7 +78,7 @@
                             1
                         </span>
                             <p class="no-mrg-in-home">Ahmad Qlandder</p>
-                            <p class="no-mrg-in-home">2410</p>
+                            <p class="no-mrg-in-home1" >2410</p>
                         </div>
                     </div>
                     <div class="col-md-4 text-center">
@@ -87,7 +87,7 @@
                             1
                         </span>
                             <p class="no-mrg-in-home">Ahmad Qlandder</p>
-                            <p class="no-mrg-in-home">2410</p>
+                            <p class="no-mrg-in-home1" >2410</p>
                         </div>
                     </div>
 

@@ -65,17 +65,7 @@ class HomeController extends Controller {
         $data['tournaments_list'] = $objTourmament->toArray();
         $data['matches'] = \App\Match::getNextMatch();
         $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
-       // dd($data['leaders']);
-//        foreach($data['leaders']as $user){
-//        //  dd($user);
-//
-//           //$mail->to($user['email'])->send(new MyMail($user['name']));
-//            //Mail::to($request->user())->send(new OrderShipped($order));
-//            send_user_mail($user['user']['email'],$user['user']['name']);
-//
-//
-//
-//        }
+
 
         return view('home', $data);
     }

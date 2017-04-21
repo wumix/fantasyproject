@@ -54,7 +54,7 @@ foreach ($team_score as $teamplayers) {
         <div class="row" >
             <div class="col-lg-12">
                 <h1 class="page-heading">
-                   {{$user_team_player_transfer['name']}}
+                    {{$user_team_player_transfer['name']}}
                 </h1>
                 <hr class="light full">
                 <div class="table-responsive">
@@ -70,34 +70,34 @@ foreach ($team_score as $teamplayers) {
                             </tr>
                         </thead>
                         <tbody id="selected-player" class="main-taible-body">
-<?php $teamtotal = 0; ?>
+                            <?php $teamtotal = 0; ?>
                             @foreach($team_score as $row )
-<?php
-$player_transfer_id = $row['id'];
+                            <?php
+                            $player_transfer_id = $row['id'];
 
-$playertotal = 0;
-$flag = 0;
-$playertransferedname = "";
-$playertransferedpic = "";
-$playertransferedscore = 0;
-$playerinscore = 0;
-$x = 0;
-foreach ($user_team_player_transfer['user_team_player_transfers'] as $transfer) {
+                            $playertotal = 0;
+                            $flag = 0;
+                            $playertransferedname = "";
+                            $playertransferedpic = "";
+                            $playertransferedscore = 0;
+                            $playerinscore = 0;
+                            $x = 0;
+                            foreach ($user_team_player_transfer['user_team_player_transfers'] as $transfer) {
 
 
-    if ($transfer['pivot']['player_in_id'] == $row['id']) {
-        $playertransferedpic = $transfer['profile_pic'];
-        $playertransferedname = $transfer['name'];
-        $playertransferedscore = $transfer['pivot']['player_out_score'];
-        $flag = 1;
-        // $playertotal+=$transfer['pivot']['player_out_score'];
-        $teamtotal += $transfer['pivot']['player_out_score'];
-        $teamtotal -= $transfer['pivot']['player_in_score'];
-        $playerinscore = $transfer['pivot']['player_in_score'];
-        $x = $transfer['pivot']['player_in_score'];
-    }
-}
-?>
+                                if ($transfer['pivot']['player_in_id'] == $row['id']) {
+                                    $playertransferedpic = $transfer['profile_pic'];
+                                    $playertransferedname = $transfer['name'];
+                                    $playertransferedscore = $transfer['pivot']['player_out_score'];
+                                    $flag = 1;
+                                    // $playertotal+=$transfer['pivot']['player_out_score'];
+                                    $teamtotal += $transfer['pivot']['player_out_score'];
+                                    $teamtotal -= $transfer['pivot']['player_in_score'];
+                                    $playerinscore = $transfer['pivot']['player_in_score'];
+                                    $x = $transfer['pivot']['player_in_score'];
+                                }
+                            }
+                            ?>
                             @foreach($row['player_game_term_score'] as $termscore)
                             @foreach($termscore['points_devision_tournament'] as $points)
                             <?php
@@ -145,7 +145,7 @@ foreach ($user_team_player_transfer['user_team_player_transfers'] as $transfer) 
                                     @foreach($row['player_actual_teams'] as $playerteam )
                                     {{ $playerteam['name']}}
                                     @endforeach
-<?php $teamtotal += $playertotal; ?>
+                                    <?php $teamtotal += $playertotal; ?>
                                     <br>
                                     <span style="position: absolute ;bottom: 23px; "></span>
                                 </td>

@@ -10,8 +10,10 @@
                 </h1>
                 <hr class="light full">
                 <div class="page-content" style="margin-bottom: 80px;">
+
+                    <div class="mCustomScrollbar" data-mcs-theme="dark">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
+                        <table class="table table-bordered table-striped ">
                             <thead class="main-taible-head">
                                 <tr>
 
@@ -38,9 +40,12 @@
                             </tbody>  
                         </table>
                     </div>
+                        <!-- your content -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <br> <br> <br> <br> <br> <br> <br>
 </section>
 @endsection

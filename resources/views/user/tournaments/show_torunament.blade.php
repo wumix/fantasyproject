@@ -23,6 +23,8 @@
                     </div>
                     <div class="col-md-12">
                         <h3 class="text-center">Tournament players</h3>
+                        <div class="mCustomScrollbar" data-mcs-theme="dark">
+
                         <div class="table-responsive">
                             <div class="panel with-nav-tabs panel">
                                 <div class="panel-heading">
@@ -104,6 +106,8 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
                     </div>
                 </div>
             </div>

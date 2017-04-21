@@ -3,8 +3,8 @@
 <head>
 
 
-    <link rel="icon" href="{{getUploadsPath('gamithon-fevi.ico')}}" type="image/x-icon"/>
-    <link rel="shortcut icon" href="{{getUploadsPath('gamithon-fevi.ico')}}" type="image/x-icon"/>
+    <link rel="icon" href="../img/gamithon-fevi.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../img/gamithon-fevi.ico" type="image/x-icon"/>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

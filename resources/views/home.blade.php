@@ -4,9 +4,12 @@
     <!--BASBB-->
     <header >
         <div id="abcd" class="header-content container" style="">
+        <div class="container">
+            <div class="col-md-12 no-padding">
 
-            <div class="col-md-7"></div>
-            <div class="header-content-inner bg-primary-opacity col-md-4">
+            <div class="col-md-8"></div>
+
+            <div class="header-content-inner bg-primary-opacity col-md-4 ">
                 <div class="row">
                     <div class="col-md-12 no-padding">
 
@@ -65,8 +68,8 @@
                     <div class="col-md-12 count-down no-padding">
 
                         @foreach($leaders as $leader)
-                        <div class="col-md-4 text-center">
-                            <div class="circle2">
+                            <div class="col-md-4 text-center">
+                                <div class="circle2">
                         <span id="getting-started1" >
                           <img style="width: 50px;
     height: 50px; border-radius: 50%;
@@ -75,11 +78,11 @@
 
 " src="{{getUploadsPath($leader['user']['profile_pic'])}}"/>
                         </span>
-                                <p class="no-mrg-in-home ">{{$leader['user']['name']}}A</p>
-                                <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
+                                    <p class="no-mrg-in-home ">{{$leader['user']['name']}}A</p>
+                                    <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
+                                </div>
                             </div>
-                        </div>
-                            @endforeach
+                        @endforeach
 
                     </div>
                 </div>
@@ -96,6 +99,8 @@
                 </div>
                 <div class="clear clearfix"></div>
             </div>
+        </div>
+        </div>
         </div>
     </header>
     <!--BASBB-->
@@ -387,4 +392,3 @@
 
 
 @stop
-

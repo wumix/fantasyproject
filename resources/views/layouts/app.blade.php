@@ -15,6 +15,7 @@
 
     <!-- Bootstrap Core CSS -->
 {!! Html::style('assets-new/vendor/bootstrap/css/bootstrap.min.css') !!}
+{!! Html::style('assets-new/css/bootstrap-tour.css') !!}
 {!! Html::style('https://fonts.googleapis.com/css?family=Raleway') !!}
 {!! Html::style('assets-new/vendor/font-awesome/css/font-awesome.min.css') !!}
 {!! Html::style('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!}
@@ -30,6 +31,8 @@
     {!! Html::style('assets/css/slicknav.css') !!}
     {!! Html::style('assets-new/css/creative.css') !!}
     {!! Html::style('assets-new/css/style.css') !!}
+
+
     {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}
     <style>
         header {
@@ -44,6 +47,7 @@
 
         }
     </style>
+
 
 </head>
 <body>
@@ -110,7 +114,7 @@
                         {{--</a>--}}
                         {{--</li>--}}
                         @if(!has_user_team(Auth::id()))
-                            <li>
+                            <li id="create-your-team">
 
                                 <a class="page-scroll" href="{{route('addTeam', ['tournament_id'=>1])}}">
                                     Create Team
@@ -204,12 +208,15 @@
 
 <!-- jQuery -->
 {!! Html::script('assets-new/vendor/jquery/jquery.min.js') !!}
+
 {!! Html::script('assets-new/vendor/bootstrap/js/bootstrap.min.js') !!}
+
 {!! Html::script('assets-new/vendor/basic-table/jquery.basictable.min.js') !!}
 {!! Html::script('assets/js/jquery.slicknav.min.js') !!}
 <!-- Plugin JavaScript -->
 {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}
 {!! Html::script('assets-new/js/scrollreveal.min.js') !!}
+{!! Html::script('assets-new/js/bootstrap-tour.js') !!}
 {!! Html::script('assets-new/js/jquery.magnific-popup.min.js') !!}
 {!! Html::script('assets-new/js/creative.js') !!}
 <script type="text/javascript">
@@ -223,6 +230,8 @@
         //                });
     });
 </script>
+
 @yield('js')
 @yield('addteamjs')
+
 </body>

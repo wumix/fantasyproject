@@ -4,9 +4,12 @@
     <!--BASBB-->
     <header >
         <div id="abcd" class="header-content container" style="">
+        <div class="container">
+            <div class="col-md-12 no-padding">
 
-            <div class="col-md-7"></div>
-            <div class="header-content-inner bg-primary-opacity col-md-4">
+            <div class="col-md-8"></div>
+
+            <div class="header-content-inner bg-primary-opacity col-md-4 ">
                 <div class="row">
                     <div class="col-md-12 no-padding">
 
@@ -96,6 +99,8 @@
                 </div>
                 <div class="clear clearfix"></div>
             </div>
+        </div>
+        </div>
         </div>
     </header>
     <!--BASBB-->

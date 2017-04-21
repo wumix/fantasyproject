@@ -18,198 +18,191 @@ foreach ($team_score as $teamplayers) {
 
         $z[$matches['name']] = array_filter($teamplayers['player_game_term_score'], function ($i) use ($matches) {
 
-            if ($i['match_id'] == $matches['id']) return $i;
-
-
+            if ($i['match_id'] == $matches['id'])
+                return $i;
         });
         $i++;
-
     }
 }
-
-
 ?>
 @extends('layouts.app')
 
 @section('content')
-    <style>
-        .transfered_player_img {
-            width: 50px;
-        }
+<style>
+    .transfered_player_img {
+        width: 50px;
+    }
 
-        .transfered_container {
-            float: left;
-        }
+    .transfered_container {
+        float: left;
+    }
 
-        .transfered_player_img {
-            left: 50%;
-        }
+    .transfered_player_img {
+        left: 50%;
+    }
 
-        .current_player {
-            float: left;
-        }
-        .thinkBorder{
-            border-width: 1px;
-        }
-    </style>
-    <section>
-        <div class="container">
+    .current_player {
+        float: left;
+    }
+    .thinkBorder{
+        border-width: 1px;
+    }
+</style>
+<section>
+    <div class="container">
 
-            <div class="row" >
-                <div class="col-lg-12">
-                    <h1 class="page-heading">
-                        Ahmad qlannder
-                    </h1>
-                    <hr class="light full">
-                    <div class="table-responsive">
-                        <table class="table table-striped" id="tortable">
-                            <thead class="main-taible-head">
+        <div class="row" >
+            <div class="col-lg-12">
+                <h1 class="page-heading">
+                   {{$user_team_player_transfer['name']}}
+                </h1>
+                <hr class="light full">
+                <div class="table-responsive">
+                    <table class="table table-striped" id="tortable">
+                        <thead class="main-taible-head">
                             <tr>
                                 <th class="border-r th1" style="min-width: 250px;
-">PLAYERS</th>
+                                    ">PLAYERS</th>
                                 <th class="border-r">PLAYERS</th>
                                 <th class="border-r" style="min-width: 150px;">Belongs To</th>
                                 <th class="border-r" style="min-width: 150px;">POINTS</th>
                                 <th class="th2" colspan="2">Actions</th>
                             </tr>
-                            </thead>
-                            <tbody id="selected-player" class="main-taible-body">
-                            <?php $teamtotal = 0;?>
+                        </thead>
+                        <tbody id="selected-player" class="main-taible-body">
+<?php $teamtotal = 0; ?>
                             @foreach($team_score as $row )
-                                <?php
+<?php
+$player_transfer_id = $row['id'];
 
-                                $player_transfer_id=$row['id'];
-
-                                $playertotal = 0;
-                                $flag=0;
-                                $playertransferedname = "";
-                                $playertransferedpic = "";
-                                $playertransferedscore = 0;
-                                $playerinscore = 0;
-                                $x=0;
-                                foreach ($user_team_player_transfer['user_team_player_transfers'] as $transfer) {
+$playertotal = 0;
+$flag = 0;
+$playertransferedname = "";
+$playertransferedpic = "";
+$playertransferedscore = 0;
+$playerinscore = 0;
+$x = 0;
+foreach ($user_team_player_transfer['user_team_player_transfers'] as $transfer) {
 
 
-                                    if ($transfer['pivot']['player_in_id'] == $row['id']) {
-                                        $playertransferedpic = $transfer['profile_pic'];
-                                        $playertransferedname = $transfer['name'];
-                                        $playertransferedscore = $transfer['pivot']['player_out_score'];
-                                        $flag=1;
-                                        // $playertotal+=$transfer['pivot']['player_out_score'];
-                                        $teamtotal += $transfer['pivot']['player_out_score'];
-                                        $teamtotal -= $transfer['pivot']['player_in_score'];
-                                        $playerinscore = $transfer['pivot']['player_in_score'];
-                                        $x=$transfer['pivot']['player_in_score'];
+    if ($transfer['pivot']['player_in_id'] == $row['id']) {
+        $playertransferedpic = $transfer['profile_pic'];
+        $playertransferedname = $transfer['name'];
+        $playertransferedscore = $transfer['pivot']['player_out_score'];
+        $flag = 1;
+        // $playertotal+=$transfer['pivot']['player_out_score'];
+        $teamtotal += $transfer['pivot']['player_out_score'];
+        $teamtotal -= $transfer['pivot']['player_in_score'];
+        $playerinscore = $transfer['pivot']['player_in_score'];
+        $x = $transfer['pivot']['player_in_score'];
+    }
+}
+?>
+                            @foreach($row['player_game_term_score'] as $termscore)
+                            @foreach($termscore['points_devision_tournament'] as $points)
+                            <?php
+                            if ($points['qty_from'] == $points['qty_to']) {
+                                //   echo "yes";
+                                //     echo $points['points'] * $termscore['player_term_count'];
+                                $playertotal += $points['points'] * $termscore['player_term_count'];
+                            } else {
+                                if (($points['qty_from'] <= $termscore['player_term_count']) && ($points['qty_to'] >= $termscore['player_term_count'])) {
+                                    //  echo $points['qty_from']." ". $termscore['player_term_count']." ".$points['qty_to']."<br>";
 
-                                    }
+
+                                    $playertotal += $points['points'];
                                 }
-                                ?>
-                                @foreach($row['player_game_term_score'] as $termscore)
-                                    @foreach($termscore['points_devision_tournament'] as $points)
-                                        <?php
-                                        if ($points['qty_from'] == $points['qty_to']) {
-                                            //   echo "yes";
-                                            //     echo $points['points'] * $termscore['player_term_count'];
-                                            $playertotal += $points['points'] * $termscore['player_term_count'];
+                            }
+                            ?>
+                            @endforeach
+                            @endforeach
+                            <tr>
+                                <td class="border-r1 text-left" style="min-width: 250px; position: relative;">
+                                    <div class="current_player">
+                                        <img style="width: 80px;" class="img-thumbnail" src="{{getUploadsPath($row['profile_pic'])}}">
+                                    </div>
+                                    @if($flag==1)
+                                    <div class="transfered_container relative">
+                                        <a href="#" data-toggle="tooltip" title="" data-original-title="Transferred">
+                                            <img src="{{URL::to('assets-new/img/transferred_arrow.png')}}">
+                                        </a>
+                                        <div class="absolute transfered_player_img">
+                                            <img class="img-thumbnail transfered_player_img" src=" {{getUploadsPath($playertransferedpic)}}">
+                                        </div>
+                                    </div>
+                                    @endif
 
-                                        } else {
-                                            if (($points['qty_from'] <= $termscore['player_term_count']) && ($points['qty_to'] >= $termscore['player_term_count'])) {
-                                                //  echo $points['qty_from']." ". $termscore['player_term_count']." ".$points['qty_to']."<br>";
 
 
-                                                $playertotal += $points['points'];
-                                            }
-                                        }
-                                        ?>
+                                </td>
+
+                                <td class="border-r1 " style="position: relative;" style="min-width: 150px; text-align: center;" >
+                                    {{$row['name']}}
+                                    <br>
+                                    <span style="position: absolute ;bottom: 23px; margin-right: 10px;text-align: center; " > {{$playertransferedname}}</span>
+                                </td>
+                                <td class="border-r1 " style="position: relative;" style="min-width: 150px;">
+                                    @foreach($row['player_actual_teams'] as $playerteam )
+                                    {{ $playerteam['name']}}
                                     @endforeach
-                                @endforeach
-                                <tr>
-                                    <td class="border-r1 text-left" style="min-width: 250px; position: relative;">
-                                        <div class="current_player">
-                                            <img style="width: 80px;" class="img-thumbnail" src="{{getUploadsPath($row['profile_pic'])}}">
-                                        </div>
+<?php $teamtotal += $playertotal; ?>
+                                    <br>
+                                    <span style="position: absolute ;bottom: 23px; "></span>
+                                </td>
+                                <td class="border-r1 " style="position: relative;" style="min-width: 150px;">
+                                    {{$playertotal}}
+                                    <br>
+                                    @if($flag==1)
+                                    -previous score: {{$playerinscore}}
+
+                                    @endif
+                                    <span style="position: absolute ;bottom: 23px;; ">
+
                                         @if($flag==1)
-                                        <div class="transfered_container relative">
-                                            <a href="#" data-toggle="tooltip" title="" data-original-title="Transferred">
-                                                <img src="{{URL::to('assets-new/img/transferred_arrow.png')}}">
-                                            </a>
-                                            <div class="absolute transfered_player_img">
-                                                <img class="img-thumbnail transfered_player_img" src=" {{getUploadsPath($playertransferedpic)}}">
-                                            </div>
-                                        </div>
-                                            @endif
-
-
-
-                                    </td>
-
-                                    <td class="border-r1 " style="position: relative;" style="min-width: 150px; text-align: center;" >
-                                        {{$row['name']}}
-                                        <br>
-                                        <span style="position: absolute ;bottom: 23px; margin-right: 10px;text-align: center; " > {{$playertransferedname}}</span>
-                                    </td>
-                                    <td class="border-r1 " style="position: relative;" style="min-width: 150px;">
-                                        @foreach($row['player_actual_teams'] as $playerteam )
-                                            {{ $playerteam['name']}}
-                                        @endforeach
-                                            <?php $teamtotal += $playertotal;?>
-                                        <br>
-                                        <span style="position: absolute ;bottom: 23px; "></span>
-                                    </td>
-                                    <td class="border-r1 " style="position: relative;" style="min-width: 150px;">
-                                        {{$playertotal}}
-                                        <br>
-                                        @if($flag==1)
-                                            -previous score: {{$playerinscore}}
+                                        {{$playertransferedscore}}
 
                                         @endif
-                                        <span style="position: absolute ;bottom: 23px;; ">
 
-                                            @if($flag==1)
-                                                {{$playertransferedscore}}
+                                    </span>
+                                </td>
 
-                                                @endif
-
-                                        </span>
-                                    </td>
-
-                                    <td id="player_tr-del-111" class="cwt">
+                                <td id="player_tr-del-111" class="cwt">
 
 
 
-                                    </td>
-                                    <td>
-                                        @if(!$flag==1)
+                                </td>
+                                <td>
+                                    @if(!$flag==1)
 
-                                        <a href="{{route('transferplayer', ['team_id'=>$user_team_player_transfer['id'],'player_id'=>$player_transfer_id,'tournament_id'=>$user_team_player_transfer['tournament_id']])}}"
-                                           class="btn btn-green">Transfer Player
-                                        </a>
-                                            @endif
+                                    <a href="{{route('transferplayer', ['team_id'=>$user_team_player_transfer['id'],'player_id'=>$player_transfer_id,'tournament_id'=>$user_team_player_transfer['tournament_id']])}}"
+                                       class="btn btn-green">Transfer Player
+                                    </a>
+                                    @endif
 
-                                    </td>
+                                </td>
 
-                                </tr>
+                            </tr>
                             @endforeach
 
-                           <tr>
-                              <td> <h3>Total Team Score: {{$teamtotal}}</h3></td>
-                           </tr>
+                            <tr>
+                                <td> <h3>Total Team Score: {{$teamtotal}}</h3></td>
+                            </tr>
 
-                            </tbody></table></div>
-                </div>
+                        </tbody></table></div>
             </div>
         </div>
-    </section>
-    <!-- .....................Login Form Start............................... -->
+    </div>
+</section>
+<!-- .....................Login Form Start............................... -->
 
-    <!-- .....................Login Form Start............................... -->
+<!-- .....................Login Form Start............................... -->
 @endsection
 
 @section('js')
-    <script>
-        $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 @stop
 

@@ -19,76 +19,74 @@
                         <div class="form-group">
                             <label>Post name</label>
                             <input class="form-control" name="title" required />
-                            </div>
-                            <div class="form-group">
-                                <label>Post description (This will be show in meta)</label>
-                                <textarea class="form-control textarea" name="description"></textarea>
-                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Post description (This will be show in meta)</label>
+                            <textarea class="form-control textarea" name="description"></textarea>
+                        </div>
 
                         <input type="hidden" name="post_type" value="{{$blog_type}}"/>
 
-                            <div class="form-group">
-                                <label>Post Content</label>
-                                <textarea class="form-control wysiwyg textarea" name="content" id="content"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">
-                                        Post Category
-                                    </h3>
-                                </div>
-                                <div class="panel-bod                                                                                y">
-                                    @foreach($categories as $row)
-                                    <div class="form-group">
-                                        <label>
-                                            <input name="category[]" value="{{$row['id']}}" type="checkbox" /> {{$row['name']}}
-                                        </label>
-                                    </div>
-                                    @endforeach
-
-
-                                </div>
-                            </div>
-
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">
-                                        Post image
-                                    </h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="form-group">
-                                        <div class="input-append">
-                                            <input class="form-control" id="post_image" value="" name="image" type="text">
-                                            <a data-toggle="modal" href="javascript:;" data-target="#galleryModal" class="btn btn-primary" type="button">
-                                                Select
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-primary" value="submit" />
-                            </div>
-
-
+                        <div class="form-group">
+                            <label>Post Content</label>
+                            <textarea class="form-control wysiwyg textarea" name="content" id="content"></textarea>
                         </div>
                     </div>
-                    {!! Form::close() !!}
+                    <div class="col-md-4">
 
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Post Category
+                                </h3>
+                            </div>
+                            <div class="panel-bod                                                                                y">
+                                @foreach($categories as $row)
+                                <div class="form-group">
+                                    <label>
+                                        <input name="category[]" value="{{$row['id']}}" type="checkbox" /> {{$row['name']}}
+                                    </label>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Post image
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div class="input-append">
+                                        <input class="form-control" id="post_image" value="" name="image" type="text">
+                                        <a data-toggle="modal" href="javascript:;" data-target="#galleryModal" class="btn btn-primary" type="button">
+                                            Select
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="submit" />
+                        </div>
+
+
+                    </div>
                 </div>
+                {!! Form::close() !!}
 
-                <!-- /.box-body -->
             </div>
-            <!-- /.box -->
+
+            <!-- /.box-body -->
         </div>
+        <!-- /.box -->
     </div>
+</div>
 </div>
 
 

@@ -33,7 +33,7 @@ class DashboardController extends Controller
 //        $tournamentid=$request->tournament_id
 //dd($tournamentid);
 //        die;
-
+ // dd($request->all());
         $tournament_id = 1;
         $teamId = $request->team_id;
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())

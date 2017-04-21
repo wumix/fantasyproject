@@ -41,7 +41,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['is_user']], function () {
         Route::group(['prefix' => 'user'], function () {
-
+            Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
              Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');
             Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
             Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('postUserProfile');

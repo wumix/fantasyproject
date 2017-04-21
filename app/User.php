@@ -18,7 +18,7 @@ class User extends Authenticatable {
      */
     protected $table = 'users';
     protected $fillable = [
-        'name', 'email', 'profile_pic', 'password', 'user_type', 'provider_user_id', 'remember_token', 'provider'
+        'name', 'email', 'profile_pic', 'password', 'user_type', 'provider_user_id', 'remember_token', 'provider','last_login'
     ];
 
     /**
@@ -84,6 +84,7 @@ class User extends Authenticatable {
                             'provider' => $socialProvider,
                             'password' => bcrypt(str_random(8)),
                             'remember_token' => bcrypt(str_random(16))
+
                 ]);
                 //adding user registration points
                 $userActionKey = 'user_signup';

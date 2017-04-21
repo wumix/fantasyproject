@@ -9,7 +9,10 @@ namespace App\Http\Controllers;
 
 use App\GameAction;
 use App\Http\Requests;
+use App\Mail\MyMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Mailer;
 use DateTime;
 use DateTimeZone;
 use Illuminate\Support\Facades\App;
@@ -62,6 +65,8 @@ class HomeController extends Controller {
         $data['tournaments_list'] = $objTourmament->toArray();
         $data['matches'] = \App\Match::getNextMatch();
         $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
+
+
         return view('home', $data);
     }
 

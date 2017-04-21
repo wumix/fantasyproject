@@ -113,7 +113,7 @@ foreach ($team_score as $teamplayers) {
                                 @endforeach
                             @endforeach
                             <div class="row">
-                                <div class="col-md-12" style="display: flex;">
+                                <div class="col-md-12" style=" height:150px;display: flex;">
 
                                     <div class="col-md-4">
                                         <div class="current_player">
@@ -170,7 +170,7 @@ foreach ($team_score as $teamplayers) {
                                 <div class="clear clearfix"></div>
                             </div>
                             <div class="clear clearfix"></div>
-                            <hr class="thinkBorder">
+                            <hr class="thickBorder">
                         @endforeach
                         <h3>Total Team Score: {{$teamtotal}}</h3>
                     </div>

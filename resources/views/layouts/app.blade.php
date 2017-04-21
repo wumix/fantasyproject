@@ -220,6 +220,18 @@
 {!! Html::script('assets-new/js/bootstrap-tour.js') !!}
 {!! Html::script('assets-new/js/jquery.magnific-popup.min.js') !!}
 {!! Html::script('assets-new/js/creative.js') !!}
+{!! Html::script('assets-new/js/jquery.mCustomScrollbar.min.js') !!}
+<script>
+    (function($){
+        $(window).on("load",function(){
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+    $(".content").mCustomScrollbar({
+        theme:"dark"
+    });
+</script>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('#bs-example-navbar-collapse-1').slicknav({

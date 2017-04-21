@@ -67,9 +67,9 @@ foreach ($team_score as $teamplayers) {
                         @foreach($team_score as $row )
                             <?php
 
-                                $player_transfer_id=$row['id'];
+                            $player_transfer_id=$row['id'];
 
-                                $playertotal = 0;
+                            $playertotal = 0;
                             $flag=0;
                             $playertransferedname = "";
                             $playertransferedpic = "";
@@ -121,17 +121,17 @@ foreach ($team_score as $teamplayers) {
                                                  class="img-thumbnail"
                                                  src=" {{getUploadsPath($row['profile_pic'])}}"/>
                                         </div>
-                                  @if($flag==1)
-                                        <div class="transfered_container relative">
-                                            <a href="#" data-toggle="tooltip" title="Transferred">
-                                                <img src="{{URL::to('assets-new/img/transferred_arrow.png')}}"/>
-                                            </a>
-                                            <div class="absolute transfered_player_img">
-                                                <img class="img-thumbnail transfered_player_img"
-                                                     src=" {{getUploadsPath($playertransferedpic)}}">
+                                        @if($flag==1)
+                                            <div class="transfered_container relative">
+                                                <a href="#" data-toggle="tooltip" title="Transferred">
+                                                    <img src="{{URL::to('assets-new/img/transferred_arrow.png')}}"/>
+                                                </a>
+                                                <div class="absolute transfered_player_img">
+                                                    <img class="img-thumbnail transfered_player_img"
+                                                         src=" {{getUploadsPath($playertransferedpic)}}">
+                                                </div>
                                             </div>
-                                        </div>
-                                      @endif
+                                        @endif
 
                                     </div>
 
@@ -151,14 +151,14 @@ foreach ($team_score as $teamplayers) {
 
                                         <label>{{$playertotal}}</label>
                                         @if($flag==1)
-                                       <br> previous score: {{$playerinscore}}
+                                            <br> previous score: {{$playerinscore}}
                                         @endif
                                         @if($flag==1)
-                                        <div class="absolute" style="bottom: 0;">
+                                            <div class="absolute" style="bottom: 0;">
 
-                                            {{$playertransferedscore}}
-                                        </div>
-                                            @endif
+                                                {{$playertransferedscore}}
+                                            </div>
+                                        @endif
                                     </div>
                                     <div class="col-md-2">
 

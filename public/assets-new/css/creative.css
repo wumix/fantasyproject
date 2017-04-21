@@ -7,7 +7,26 @@ html,
 body {
     height: 100%;
     width: 100%;
+    scrollbar-base-color: orange;
+    scrollbar-arrow-color: green;
+    scrollbar-DarkShadow-Color: blue;
+
 }
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track:horizontal {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,255,1,1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px red;
+}
+
 body {
     font-family: 'Raleway', sans-serif;
 }
@@ -163,6 +182,23 @@ aside {
 .navbar-default .nav > li.active > a:focus:hover {
     background-color: transparent;
 }
+.leaderboardscore{
+    font-family: Sans-Serif;
+    color: #f98408 !important;
+}
+#getting-started{
+    color: #f98408 !important;
+}
+#getting-started1{
+    color: #f98408 !important;
+}
+#getting-started2{
+    color: #f98408 !important;
+}
+#getting-started3{
+    color: #f98408 !important;
+}
+
 
 
 @media (min-width: 768px) {
@@ -259,7 +295,7 @@ header .header-content .header-content-inner p {
     font-weight: 300;
     color: rgba(255, 255, 255, 0.7);
     font-size: 16px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 @media (min-width: 768px) {
     header {

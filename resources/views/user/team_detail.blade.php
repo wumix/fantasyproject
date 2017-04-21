@@ -174,6 +174,7 @@ foreach ($team_score as $teamplayers) {
                         @endforeach
                         <h3>Total Team Score: {{$teamtotal}}</h3>
                     </div>
+
                 </div>
             </div>
         </div>

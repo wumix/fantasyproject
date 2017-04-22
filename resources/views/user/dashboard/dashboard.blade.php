@@ -17,13 +17,14 @@
                             <div class="container">
                                 <div class="row" >
 
-                                    <div class="col-md-4 pull-left">
-
+                                    <div class="col-md-4" style="padding-top: 5%">
+                                        <div class="text-center">
                                             <img height="200" width="200"
                                                  src="{{getUploadsPath($userprofileinfo['profile_pic'])}}"
                                                  class="img-circle profileimg " alt="Responsive image">
                                             <h3 class="nameu"></h3>
                                             <h5 class="nameu"><a href="{{route('userProfileEdit')}}">Edit Profile</a></h5>
+                                        </div>
 
                                     </div>
 

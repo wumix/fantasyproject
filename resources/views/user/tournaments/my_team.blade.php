@@ -204,6 +204,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 <div class='error' style='display:none'></div>
@@ -269,7 +270,7 @@
             $("#your_points").html(' Your Points:' + data.player_score);
             var obj = data.player;
             $('.error').html(data.msg);
-            $('.error').fadeIn(400).delay(2000).fadeOut(400); //fade out after 3 seconds
+            $('.error').fadeIn(200).delay(1000).fadeOut(200); //fade out after 3 seconds
             $('#btn-player-' + playerid).attr('disabled', true);
             $('#btn-player-' + playerid).remove();
             $('#total-score-user').html(obj.player_score);
@@ -293,7 +294,7 @@
             $('#player_tr-' + obj.id).html(t);
             } else {
             $('.error').html(data.msg);
-            $('.error').fadeIn(400).delay(2000).fadeOut(400); //fade out after 3 seconds
+            $('.error').fadeIn(200).delay(1500).fadeOut(200); //fade out after 3 seconds
 
 
             }

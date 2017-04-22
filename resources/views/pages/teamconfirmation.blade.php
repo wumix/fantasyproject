@@ -2,11 +2,7 @@
 @section('content')
     <section>
         <style>
-            footer{
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-            }
+
         </style>
         <div class="container">
             <div class="row">
@@ -28,5 +24,6 @@
                 </div>
             </div>
         </div>
+        <br><br><br><br><br><br><br><br><br><br>
     </section>
 @stop

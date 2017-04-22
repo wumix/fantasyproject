@@ -311,8 +311,12 @@ class TournamentsController extends Controller {
         // die;
 
         if ($difference > 15 || $difference < 15) {
-            if ($request->player_in_price < getUserTotalScore(Auth::id())) {
-                if ($request->player_out_price > $player_in_price) {
+//            echo $player_in_price." ". getUserTotalScore(Auth::id());
+//            die;
+            if ($player_in_price<= getUserTotalScore(Auth::id())) {
+
+
+                if ($request->player_out_price >= $player_in_price) {
 
 //                    $playertransfers = new \App\PlayerTransfer;
 //                    $playertransfers->player_in_id = $request->player_in_id;

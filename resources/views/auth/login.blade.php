@@ -69,18 +69,18 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 no-padding">
+                                <div class="col-md-6 signiinlink">
                                     <div class="form-group " id="withbox">
                                         <label class="form-check-label">
                                             <input type="checkbox" class="form-check-input"/>
-                                            <span  id="remberbox"> Rember Me</span> 
+                                            <span  id="remberbox"> Rember Me</span>
                                             <!--                                        <a href="{{ route('password.request') }}" id="forgetlink"> Forget Your Password?</a>-->
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-md-6 no-padding text-right">
-                                    <div class="form-group " id="withbox">
-                                        <a class="signuplink" href="{{ route('signUp') }}">Sign up for new account</a>
+                                <div class="col-md-6 signuplink">
+                                    <div class="form-group  " id="withbox">
+                                        <a  href="{{ route('signUp') }}">Sign up for new account</a>
                                     </div>
 
                                 </div>

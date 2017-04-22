@@ -192,6 +192,8 @@ foreach ($team_score as $teamplayers) {
             </div>
         </div>
     </div>
+    <br><br><br><br><br> <br><br>
+
 </section>
 <!-- .....................Login Form Start............................... -->
 

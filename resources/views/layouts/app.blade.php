@@ -221,14 +221,22 @@
 {!! Html::script('assets-new/js/jquery.magnific-popup.min.js') !!}
 {!! Html::script('assets-new/js/creative.js') !!}
 {!! Html::script('assets-new/js/jquery.mCustomScrollbar.min.js') !!}
+{!! Html::script('assets-new/js/jquery.mCustomScrollbar.concat.min.js') !!}
+
+
 <script>
+
     (function($){
         $(window).on("load",function(){
             $(".content").mCustomScrollbar();
         });
     })(jQuery);
     $(".content").mCustomScrollbar({
-        theme:"dark"
+        theme:"light-thin"
+    });
+    $(".content").mCustomScrollbar({
+        axis:"x" // horizontal scrollbar
+
     });
 </script>
 

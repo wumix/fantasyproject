@@ -66,13 +66,13 @@
                                                 </a>
 
                                             </td>
-                                            <td>
+                                            {{--<td>--}}
 
-                                                <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"
-                                                   class="btn btn-green">Transfer Player
-                                                </a>
+                                                {{--<a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"--}}
+                                                   {{--class="btn btn-green">Transfer Player--}}
+                                                {{--</a>--}}
 
-                                            </td>
+                                            {{--</td>--}}
 
                                         </tr>
                                         @endforeach
@@ -225,6 +225,7 @@
             },
             success: function (data) {
                 if (data.success == true) {
+                    $('#your_points').html(data.score);
                     $('#player_tr-del-' + data.player_id).html('<span>Deleted</span>');
                     $('.error').html(data.msg);
                     $('.error').fadeIn(400).delay(2000).fadeOut(400); //fade out after 3 seconds
@@ -283,7 +284,7 @@
             url = url.replace('id', obj.team_id);
             url = url.replace('tid', obj.tournament_id);
             t += '<td id="player_tr-del-'+obj.id+'" class="cwt"><a href="javascript:deletePlayer('+obj.id+','+obj.price+')" id="" class="btn btn-md bttor1">Delete Player</a></td >';
-            t += '<td><a href="' + url + '" class="btn btn-green">Transfer Player</a></td >';
+          //  t += '<td><a href="' + url + '" class="btn btn-green">Transfer Player</a></td >';
 
             // t += '<td>Player transfer is disabled by the end of today\'s match!</td >';
             t += '</tr>';

@@ -150,15 +150,15 @@ foreach ($team_score as $teamplayers) {
                                     <span style="position: absolute ;bottom: 23px; "></span>
                                 </td>
                                 <td class="border-r1 " style="position:  relative; text-align:left;width: 180px;">
-                                    <span style="position: absolute;left:8%;">  {{$playertotal}}  </span>
+                                    <span style="position: absolute;">{{ $playertotal}}  </span>
                                     <br>
                                     @if($flag==1)
-                                        <span style="position: absolute;left:8%;">
+                                        <span style="position: absolute;">
                                     -{{$playerinscore}}: (previous score)
                                             </span>
 
                                     @endif
-                                    <span style="position: absolute;bottom: 23px;left:8%; ">
+                                    <span style="position: absolute;bottom: 23px; ">
 
                                         @if($flag==1)
 

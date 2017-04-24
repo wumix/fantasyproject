@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use \App\Match;
 use App\Tournament;
+use Illuminate\Support\Facades\App;
 use Validator;
 use Illuminate\Support\Facades\Input;
 
@@ -32,7 +33,48 @@ class MatchesController extends Controller {
         $data['result'] = $this->objMatch;
         return view('adminlte::matches.add_match', $data);
     }
+    public function addTeamToMatchForm($matchid,$tournament_id){
+        $teams=\App\Team::where('tournament_id',$tournament_id)->get()->toArray();
+        $data=[];
+        if(empty($teams)){
+            abort(404);
+        }
+       $data['teams']=$teams;
+        $data['matchid']=$matchid;
+        $data['tournament_id']=$tournament_id;
+        return view('adminlte::teams.add_team_to_match',$data); //shows add team to match form
 
+
+
+
+    }
+    function addTeamToMatchPost(Request $request,$match_id,$tournament_id){
+
+
+   if(count($request->teams_id)!=2) {
+       return redirect()
+           ->route('addTeamToMatch', ['match_id' => $match_id,'tournament_id'=>$tournament_id])
+           ->with('status', 'You must choose only two teams');
+   }
+   $myplayers=[];
+   foreach($request->teams_id as $row) {
+       $players = \App\Team::where('id', $row)->with('team_players')->firstOrFail()->toArray();
+
+foreach ($players['team_players'] as $key=>$val){
+    $myplayers[]=$val['id'];
+
+
+}
+
+
+
+   }
+        $objMatch = \App\Match::findORFail($match_id);
+        $objMatch->match_players()->sync(array_filter($myplayers));
+        return redirect()
+            ->route('addTeamToMatch', ['match_id' => $match_id,'tournament_id'=>$tournament_id])
+            ->with('status', 'Teams Added sucessfully');
+    }
     public function addMatch(Request $request) {
         //dd($request->all());
         $this->objMatch->fill($request->all());

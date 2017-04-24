@@ -75,20 +75,20 @@
                 <div class="row">
                     <ul class="nav navbar-nav navbar-left nav-main-menu nav-main-menu-top" style="top:0;right: 0;">
                         @if(Auth::check())
-                            <li>
+                            <li class="menupadding">
                                 <a href="{{route('userdashboard')}}"> <i class="fa fa-tachometer" aria-hidden="true"></i>
                                     DashBoard</a>
                             </li>
                         @endif
                         @if(!Auth::check())
-                            <li>
+                            <li class="menupadding">
                                 <a href="{{route('login')}}"> <i class="fa fa-sign-in sign-in-icon"
                                                                  aria-hidden="true"></i>
                                     Sign In</a>
                             </li>
                         @endif
                         @if(Auth::check())
-                            <li>
+                            <li class="menupadding">
                                 <a onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();" href="javacript:void(0)">
                                     <i class="fa fa-sign-out sign-in-icon" aria-hidden="true"></i>

@@ -139,7 +139,7 @@ foreach ($team_score as $teamplayers) {
                                 <td class="border-r1 " style="position: relative; min-width: 150px; text-align: center;" >
                                     {{$row['name']}}
                                     <br>
-                                    <span style="position: absolute ;bottom: 23px; left:29%;text-align: center; " > {{$playertransferedname}}</span>
+                                    <span style="position: absolute ;bottom: 23px; left:19%;text-align: center; " > {{$playertransferedname}}</span>
                                 </td>
                                 <td class="border-r1 " style="position: relative;" style="min-width: 150px;">
                                     @foreach($row['player_actual_teams'] as $playerteam )

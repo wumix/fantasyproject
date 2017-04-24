@@ -210,7 +210,7 @@ foreach ($team_score as $teamplayers) {
             steps: [
                 {
                     element: "#guide",
-                    title: "Navigate",
+                    title: "Tip",
                     content: "Scroll Left and Right"
                 }
             ]});

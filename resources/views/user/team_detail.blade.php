@@ -136,10 +136,10 @@ foreach ($team_score as $teamplayers) {
 
                                 </td>
 
-                                <td class="border-r1 " style="position: relative;" style="min-width: 150px; text-align: center;" >
+                                <td class="border-r1 " style="position: relative; min-width: 150px; text-align: center;" >
                                     {{$row['name']}}
                                     <br>
-                                    <span style="position: absolute ;bottom: 23px; margin-right: 10px;text-align: center; " > {{$playertransferedname}}</span>
+                                    <span style="position: absolute ;bottom: 23px; left:29%;text-align: center; " > {{$playertransferedname}}</span>
                                 </td>
                                 <td class="border-r1 " style="position: relative;" style="min-width: 150px;">
                                     @foreach($row['player_actual_teams'] as $playerteam )
@@ -149,17 +149,21 @@ foreach ($team_score as $teamplayers) {
                                     <br>
                                     <span style="position: absolute ;bottom: 23px; "></span>
                                 </td>
-                                <td class="border-r1 " style="position: relative;" style="min-width: 150px;">
-                                    {{$playertotal}}
+                                <td class="border-r1 " style="position:  relative; text-align:left;width: 150px;">
+                                  <span>  {{$playertotal}}  </span>
                                     <br>
                                     @if($flag==1)
-                                    -previous score: {{$playerinscore}}
+                                        <span style="margin-left:0">
+                                    -{{$playerinscore}}: (previous score)
+                                            </span>
 
                                     @endif
-                                    <span style="position: absolute ;bottom: 23px;; ">
+                                    <span style="position: absolute;bottom: 23px;left:8%; ">
 
                                         @if($flag==1)
+
                                         {{$playertransferedscore}}
+
 
                                         @endif
 

@@ -56,7 +56,7 @@ foreach ($team_score as $teamplayers) {
                 <h1 class="page-heading">
                     {{$user_team_player_transfer['name']}}
                 </h1>
-                <hr class="light full">
+                <hr class="light full" id="guide">
                 <div class="table-responsive">
                     <table class="table table-striped" id="tortable">
                         <thead class="main-taible-head">
@@ -205,6 +205,22 @@ foreach ($team_score as $teamplayers) {
 @endsection
 
 @section('js')
+    <script>
+        var tour = new Tour({
+            steps: [
+                {
+                    element: "#guide",
+                    title: "Navigate",
+                    content: "Scroll Left and Right"
+                }
+            ]});
+
+        // Initialize the tour
+        tour.init();
+
+        // Start the tour
+        tour.start();
+    </script>
 <script>
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();

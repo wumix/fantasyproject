@@ -63,7 +63,7 @@ foreach ($team_score as $teamplayers) {
                             <tr>
                                 <th class="border-r th1" style="min-width: 250px;
                                     ">&nbsp;</th>
-                                <th class="border-r">Players</th>
+                                <th class="border-r">Player</th>
                                 <th class="border-r" style="min-width: 150px;">Belongs To</th>
                                 <th class="border-r" style="min-width: 150px;">Points</th>
                                 <th class="th2" colspan="2">Actions</th>

@@ -108,6 +108,12 @@
                                 How to play
                             </a>
                         </li>
+                        <li>
+
+                            <a class="page-scroll" href="{{route('showBlog')}}">
+                                Blog
+                            </a>
+                        </li>
 
                         {{--<li>--}}
                         {{--<a href="{{route('leaderboard')}}">--}}

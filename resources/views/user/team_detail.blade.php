@@ -206,20 +206,20 @@ foreach ($team_score as $teamplayers) {
 
 @section('js')
     <script>
-        var tour = new Tour({
+      /*  var tour = new Tour({
             steps: [
                 {
                     element: "#guide",
                     title: "Tip",
                     content: "Scroll Left and Right"
                 }
-            ]});
+            ]}); */
 
         // Initialize the tour
-        tour.init();
+        //tour.init();
 
         // Start the tour
-        tour.start();
+     //   tour.start();
     </script>
 <script>
     $(document).ready(function () {

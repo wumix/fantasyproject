@@ -28,7 +28,7 @@
 
 
                         <div class="contenido-publicacion-home">
-                            <img class="img-responsive" src="{{getUploadsPath($row['image'])}}">
+                            <img class="img-responsive" style="height: 200px;" src="{{getUploadsPath($row['image'])}}">
                             <a href="{{route('showBlogPostDetail',['post_id'=>$row['id']])}}" class="bloghead" >{{$row['title']}}</a>
                             <p class="blogtext">{!! $row['description'] !!} 
                         </div>

@@ -10,7 +10,21 @@ body {
 
 
 }
+::-webkit-scrollbar {
+    width: 12px;
+}
 
+
+
+
+
+::-webkit-scrollbar-thumb:horizontal {
+
+    background: #92b713;
+    -webkit-border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px #92b713;
+
+}
 
 
 body {
@@ -84,6 +98,9 @@ p {
     text-align: center;
     padding-top: 5px;
     padding-right: 10px;
+}
+.menupadding{
+    padding: 0 !important;
 }
 .signin>span{
 
@@ -184,13 +201,25 @@ aside {
 #getting-started3{
     color: #f98408 !important;
 }
-
+.signuplink{
+    text-align: center;
+}
+.signiinlink{
+    text-align: center;
+}
 
 
 @media (min-width: 768px) {
+    signiinlink{
+        text-align: left;
+    }
+    .signuplink{
+        text-align: right;
+    }
     .sign-in-icon{
         color: #92B713;
     }
+
     .signin{
         text-align: right;
     }
@@ -284,6 +313,10 @@ header .header-content .header-content-inner p {
     margin-bottom: 20px;
 }
 @media (min-width: 768px) {
+    .signiinlink{
+        text-align: left;
+    }
+
     header {
         min-height: 100%;
 
@@ -374,6 +407,12 @@ header .header-content .header-content-inner p {
 }
 
 @media (min-width: 768px) {
+    .signiinlink{
+        text-align: left;
+    }
+    .signuplink{
+        text-align: right;
+    }
     .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
         font-size: 16px;
     }

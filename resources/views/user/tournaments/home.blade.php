@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <section>
     <div class="container">
         <div class="row">
@@ -11,8 +12,11 @@
                 <hr class="light full">
                 <div class="page-content" style="margin-bottom: 80px;">
 
-                    <div class="mCustomScrollbar" data-mcs-theme="dark">
-                    <div class="table-responsive">
+
+                        <!-- your content -->
+
+                    <div class="table-responsive" >
+
                         <table class="table table-bordered table-striped ">
                             <thead class="main-taible-head">
                                 <tr>
@@ -25,7 +29,7 @@
                             <tbody id="selected-player" class="main-taible-body">
                                 @foreach($tournaments_list as $row)
                                 <tr>
-                                    <td class="border-r1"style="min-width: 305px;">
+                                    <td class="border-r1" style="min-width: 305px;">
                                         <img id="myteamtimg" class="img-circle img-thumbnail" style="width: 100px;" src="{{getUploadsPath($row['t_logo'])}}" />
                                         {{$row['name']}}
                                     </td>
@@ -39,9 +43,12 @@
                                 @endforeach
                             </tbody>  
                         </table>
+
+
                     </div>
                         <!-- your content -->
-                    </div>
+
+
                 </div>
             </div>
         </div>

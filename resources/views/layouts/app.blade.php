@@ -75,20 +75,20 @@
                 <div class="row">
                     <ul class="nav navbar-nav navbar-left nav-main-menu nav-main-menu-top" style="top:0;right: 0;">
                         @if(Auth::check())
-                            <li>
-                                <a href=""> <i class="fa fa-tachometer" aria-hidden="true"></i>
+                            <li class="menupadding">
+                                <a href="{{route('userdashboard')}}"> <i style="color: #F9970E" class="fa fa-tachometer sign-in-icon" aria-hidden="true"></i>
                                     DashBoard</a>
                             </li>
                         @endif
                         @if(!Auth::check())
-                            <li>
+                            <li class="menupadding">
                                 <a href="{{route('login')}}"> <i class="fa fa-sign-in sign-in-icon"
                                                                  aria-hidden="true"></i>
                                     Sign In</a>
                             </li>
                         @endif
                         @if(Auth::check())
-                            <li>
+                            <li class="menupadding">
                                 <a onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();" href="javacript:void(0)">
                                     <i class="fa fa-sign-out sign-in-icon" aria-hidden="true"></i>
@@ -220,6 +220,26 @@
 {!! Html::script('assets-new/js/bootstrap-tour.js') !!}
 {!! Html::script('assets-new/js/jquery.magnific-popup.min.js') !!}
 {!! Html::script('assets-new/js/creative.js') !!}
+{!! Html::script('assets-new/js/jquery.mCustomScrollbar.min.js') !!}
+{!! Html::script('assets-new/js/jquery.mCustomScrollbar.concat.min.js') !!}
+
+
+<script>
+
+    (function($){
+        $(window).on("load",function(){
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+    $(".content").mCustomScrollbar({
+        theme:"light-thin"
+    });
+    $(".content").mCustomScrollbar({
+        axis:"x" // horizontal scrollbar
+
+    });
+</script>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('#bs-example-navbar-collapse-1').slicknav({

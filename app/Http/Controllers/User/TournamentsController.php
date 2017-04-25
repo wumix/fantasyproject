@@ -311,8 +311,12 @@ class TournamentsController extends Controller {
         // die;
 
         if ($difference > 15 || $difference < 15) {
-            if ($request->player_in_price < getUserTotalScore(Auth::id())) {
-                if ($request->player_out_price > $player_in_price) {
+//            echo $player_in_price." ". getUserTotalScore(Auth::id());
+//            die;
+            if ($player_in_price<= getUserTotalScore(Auth::id())) {
+
+
+                if ($request->player_out_price >= $player_in_price) {
 
 //                    $playertransfers = new \App\PlayerTransfer;
 //                    $playertransfers->player_in_id = $request->player_in_id;
@@ -388,9 +392,13 @@ class TournamentsController extends Controller {
          function deletePlayerPost(Request $request){
 
              DB::table('user_team_players')->where('player_id',$request->player_id)->where('team_id',$request->team_id)->delete();
+             $array = array(['action_key' => 'delete_player', 'user_id' => Auth::id(), 'points_scored' => $request->player_price]);
+             \App\UserPointsScored::insert($array);
              $objResponse['player_id'] = $request->player_id;
              $objResponse['success']=true;
+             $objResponse['score']=getUserTotalScore(Auth::id());;
              $objResponse['msg']="Player Deleted Successfully";
+
              return response()->json($objResponse);
 
 
@@ -447,7 +455,7 @@ class TournamentsController extends Controller {
         }
 
         //$currentNoPlayers += 1;
-        if ($currentNoPlayers >= 11) {
+        if ($currentNoPlayers >= 10) {
 
             $userteamsave=\App\UserTeam::find($request->team_id);
             $userteamsave->joined_from_match_date=getGmtTime();

@@ -2,7 +2,7 @@
 {{--{{dd($matches->t)}}--}}
 @section('content')
     <!--BASBB-->
-    <header >
+    <header id="header" >
         <div id="abcd" class="header-content container" style="">
         <div class="container">
             <div class="col-md-12 no-padding">
@@ -390,7 +390,15 @@
                 );
             });
     </script>
+    <script>
+        $('#header').backstretch([
+            { url: '{{Url::to('assets-new/img/bg1.jpg')}}', fade: 1000 },
+            { url: '{{Url::to('assets-new/img/bj2.jpg')}}', fade: 1000 },
+            { url: '{{Url::to('assets-new/img/bj3.jpg')}}', fade: 1000 }
+        ]);
+       
 
+    </script>
 
 
 @stop

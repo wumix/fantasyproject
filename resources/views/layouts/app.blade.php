@@ -36,9 +36,7 @@
 
     {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}
     <style>
-        header {
-            background-image: url('{{URL::to("assets-new/img/header.jpg")}}');
-        }
+
 
         .slick_nav li {
             list-style: none;
@@ -257,8 +255,11 @@
         //                });
     });
 </script>
+{!! Html::script('assets-new/js/jquery.backstretch.min.js') !!}
 
 @yield('js')
 @yield('addteamjs')
+
+
 
 </body>

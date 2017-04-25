@@ -21,6 +21,7 @@
             <div class="row-page row no-padding">
 
                 @foreach($posts as $row)
+
                 <div class="col-page col-sm-4 col-md-3">
                     <div  class="fondo-publicacion-home">
 
@@ -33,7 +34,7 @@
                             <p class="blogtext">{!! $row['description'] !!} 
                         </div>
 
-                            <span style="padding-left: 10px;">Lorem and his option </span>
+                            <span style="padding-left: 10px;"></span>
                     </div>
                 </div>
                 @endforeach

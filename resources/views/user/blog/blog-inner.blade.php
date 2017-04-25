@@ -49,7 +49,8 @@
                     </section>
                     <section class="col-md-12 no-padding" style="padding-bottom: 20px;">
                         <p class="blogcontent">
-                            {{$postdetail['content']}}
+                            {!! $postdetail['content'] !!}
+                            
                         </p>
 
                     </section>

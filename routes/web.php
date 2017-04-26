@@ -25,8 +25,9 @@ Route::get('login/facebook/callback', 'Auth\LoginController@handleFacebookProvid
 Route::group(['middleware' => ['web']], function () {
     Route::get('contact', 'HomeController@contactPage')->name('contactPage');
     Route::post('contact', 'HomeController@postContact')->name('postContact');
+    Route::get('privacy', 'HomeController@privacyPolicy')->name('PrivacyPolicy');
     Route::get('terms', 'HomeController@termsCon')->name('TermsCon');
-    Route::get('privacy-policy', 'HomeController@termsCon')->name('privacyPolicy');
+
     Route::get('how-to-play', 'HomeController@howPlay')->name('howPlay');
     Route::get('/tournaments', 'User\TournamentsController@index')->name('usertournamenthome');
     Route::get('/blog', 'BlogController@index')->name('showBlog');

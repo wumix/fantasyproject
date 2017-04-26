@@ -36,9 +36,7 @@
 
     {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}
     <style>
-        header {
-            background-image: url('{{URL::to("assets-new/img/header.jpg")}}');
-        }
+
 
         .slick_nav li {
             list-style: none;
@@ -182,7 +180,7 @@
                 <div class="col-sm-12 col-md-4 text-center">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a class="page-scroll" href="{{route('privacyPolicy')}}">
+                            <a class="page-scroll" href="{{route('PrivacyPolicy')}}">
                                 Privacy policy
                             </a>
                         </li>
@@ -257,8 +255,11 @@
         //                });
     });
 </script>
+{!! Html::script('assets-new/js/jquery.backstretch.min.js') !!}
 
 @yield('js')
 @yield('addteamjs')
+
+
 
 </body>

@@ -109,6 +109,9 @@ class HomeController extends Controller {
     public function termsCon() {
         return view('pages.t-c');
     }
+    public function privacyPolicy() {
+        return view('pages.p-p');
+    }
 
     public function howPlay() {
         $data['tournament'] = \App\Tournament::where('id', 1)

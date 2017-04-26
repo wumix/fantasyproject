@@ -179,9 +179,15 @@
                 </div>
                 <div class="col-sm-12 col-md-4 text-center">
                     <ul class="nav navbar-nav">
+
+                        <li>
+                            <a class="page-scroll" href="{{route('TermsCon')}}">
+                               Terms & Conditions
+                            </a>
+                        </li>
                         <li>
                             <a class="page-scroll" href="{{route('PrivacyPolicy')}}">
-                                Privacy policy
+                                Privacy Policy
                             </a>
                         </li>
                         <li>

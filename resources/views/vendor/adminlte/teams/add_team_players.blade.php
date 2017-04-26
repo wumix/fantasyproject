@@ -28,7 +28,9 @@
                                     <th>Player</th>
                                     <th>Player Name</th>
                                 </tr>
+
                                 @foreach($players as $player)
+
 
                                     <tr>
 
@@ -37,7 +39,10 @@
 
                                             <input type="checkbox"
                                                    name="player_id[]"
-                                                   {!! in_array($player['id'], $players_in_team) ? 'checked':'checked' !!}
+                                                <?php
+
+                                                        if(in_array($player['id'],$players_in_team)) echo 'checked';
+                                                ?>
                                                    value="{{$player['id']}}"/>
                                         </td>
                                         <td>

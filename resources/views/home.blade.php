@@ -2,75 +2,75 @@
 {{--{{dd($matches->t)}}--}}
 @section('content')
     <!--BASBB-->
-    <header id="header" >
+    <header id="header">
         <div id="abcd" class="header-content container" style="">
-        <div class="container">
-            <div class="col-md-12 no-padding">
+            <div class="container">
+                <div class="col-md-12 no-padding">
 
-            <div class="col-md-8"></div>
+                    <div class="col-md-8"></div>
 
-            <div class="header-content-inner bg-primary-opacity col-md-4 ">
-                <div class="row">
-                    <div class="col-md-12 no-padding">
+                    <div class="header-content-inner bg-primary-opacity col-md-4 ">
+                        <div class="row">
+                            <div class="col-md-12 no-padding">
 
-                        <h3 style="font-weight: 500; color: #FFFFFF">
-                            NEXT MATCH COUNT DOWN
-                        </h3>
+                                <h3 style="font-weight: 500; color: #FFFFFF">
+                                    NEXT MATCH COUNT DOWN
+                                </h3>
 
 
-                        <h6 style="color: white;">
-                            {{$matches['team_one']}}
-                            <strong class="mlr10 Bold">
-                                <em>Vs</em>
-                            </strong>
-                            {{$matches['team_two']}}
-                        </h6>
-                    </div>
-                </div>
-                <div class="row col-md-12" >
-                    <div class="col-md-12 count-down no-padding mt30">
-                        <div class="col-md-3 text-center">
+                                <h6 style="color: white;">
+                                    {{$matches['team_one']}}
+                                    <strong class="mlr10 Bold">
+                                        <em>Vs</em>
+                                    </strong>
+                                    {{$matches['team_two']}}
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="col-md-12 count-down no-padding mt30">
+                                <div class="col-md-3 text-center">
                         <span id="getting-started" class="circle">
                             10
                         </span>
-                            <p class="mtb10">Days</p>
-                        </div>
-                        <div class="col-md-3 text-center">
+                                    <p class="mtb10">Days</p>
+                                </div>
+                                <div class="col-md-3 text-center">
                         <span id="getting-started1" class="circle">
                             10
                         </span>
-                            <p class="mtb10">Hours</p>
-                        </div>
-                        <div class="col-md-3 text-center">
+                                    <p class="mtb10">Hours</p>
+                                </div>
+                                <div class="col-md-3 text-center">
                         <span id="getting-started2" class="circle">
                             10
                         </span>
-                            <p class="mtb10" style="margin-left: 12px;">Min</p>
-                        </div>
-                        <div class="col-md-3 text-center">
+                                    <p class="mtb10" style="margin-left: 12px;">Min</p>
+                                </div>
+                                <div class="col-md-3 text-center">
                         <span id="getting-started3" class="circle">
                             10
                         </span>
-                            <p class="mtb10" style="margin-left: 12px;">Sec</p>
+                                    <p class="mtb10" style="margin-left: 12px;">Sec</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 no-padding" style="margin-top: -20px;">
+                        <div class="row">
+                            <div class="col-md-12 no-padding" style="margin-top: -20px;">
 
-                        <h3 style="font-weight: 500;color: #FFFFFF">
-                            Leader Board
-                        </h3>
+                                <h3 style="font-weight: 500;color: #FFFFFF">
+                                    Leader Board
+                                </h3>
 
-                    </div>
-                </div>
-                <div class="row" >
-                    <div class="col-md-12 count-down no-padding">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 count-down no-padding">
 
-                        @foreach($leaders as $leader)
-                            <div class="col-md-4 text-center">
-                                <div class="circle2">
-                        <span id="getting-started1" >
+                                @foreach($leaders as $leader)
+                                    <div class="col-md-4 text-center">
+                                        <div class="circle2">
+                        <span id="getting-started1">
                           <img style="width: 50px;
     height: 50px; border-radius: 50%;
     padding:5px;
@@ -78,46 +78,87 @@
 
 " src="{{getUploadsPath($leader['user']['profile_pic'])}}"/>
                         </span>
-                                    <p class="no-mrg-in-home ">{{$leader['user']['name']}}A</p>
-                                    <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
-                                </div>
+                                            <p class="no-mrg-in-home ">{{$leader['user']['name']}}A</p>
+                                            <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
+
                             </div>
-                        @endforeach
+                        </div>
 
+
+                        <div class="row">
+                            <div class="col-md-12 no-padding">
+
+                                <h2 style="font-weight: 600;">
+
+                                </h2>
+
+                            </div>
+                        </div>
+                        <div class="clear clearfix"></div>
                     </div>
                 </div>
-
-
-                <div class="row">
-                    <div class="col-md-12 no-padding">
-
-                        <h2 style="font-weight: 600;">
-
-                        </h2>
-
-                    </div>
-                </div>
-                <div class="clear clearfix"></div>
             </div>
-        </div>
-        </div>
         </div>
     </header>
     <!--BASBB-->
     <!-- ..........................Banner Start ............................-->
-    <!---------------------->
+    <!-----------    ----------->
+    <section class="bg-primary no-padding" id="about">
+        <div class="container-fluid">
+            <div class="col-lg-2 text-center no-padding" style="background: orange;">
+                <div class="table-responsive" style="padding: 5px;">
+                Latest News
+                </div>
+            </div>
+            <div class="col-lg-10 text-center no-padding">
+
+
+                <div class="table-responsive no-padding" style="background: #92B713;">
+                    <marquee style="padding: 5px; padding-bottom: 0;">
+                        <?php $ch = curl_init('http://www.espncricinfo.com/rss/content/story/feeds/1078425.xml');
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                        $result = curl_exec($ch);
+                        //$array = json_decode($result, true);
+                        $doc = new SimpleXmlElement($result, LIBXML_NOCDATA);
+
+                        $doc = $doc->channel;
+
+
+                        $doc = $doc->item;
+
+
+                        foreach ($doc as $row) {
+
+                            echo ' '.$row->description.'.';
+                            echo'&nbsp'; echo'&nbsp'; echo'&nbsp';
+
+                        }
+                        ?>
+
+                    </marquee>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
 
     <section class="bg-primary" id="about">
         <div class="container">
             <div class="row">
+
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">
                         Active Tournaments
+                        <hr class="light">
                     </h2>
-                    <hr class="light">
+
                     <div class="table-responsive">
                         <table class="table table-striped table-stripedhome gen-table">
-                            <thead class="main-taible-head" >
+                            <thead class="main-taible-head">
                             <tr>
                                 <th class="border-r th1">Name</th>
                                 <th class="border-r">Venue</th>
@@ -134,7 +175,7 @@
                                         </td>
                                         <td class="border-r">{{$row['venue']}}</td>
                                         <td class="border-r">{{$row['start_date']}}</td>
-                                        <td >{{$row['end_date']}}</td>
+                                        <td>{{$row['end_date']}}</td>
                                     </tr>
                                 @endforeach
                             @else
@@ -160,7 +201,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">How to play Gamithon Fantasy</h2>
-                    <hr class="light">
+
                 </div>
             </div>
         </div>
@@ -214,7 +255,7 @@
                                     MI vs RPS
                                 </div>
                                 <div class="project-name">
-                                    RPS  won by 5 wickets
+                                    RPS won by 5 wickets
                                 </div>
                             </div>
                         </div>
@@ -231,7 +272,7 @@
                                     MI vs RPS
                                 </div>
                                 <div class="project-name">
-                                    RPS  won by 5 wickets
+                                    RPS won by 5 wickets
                                 </div>
                             </div>
                         </div>
@@ -246,7 +287,7 @@
                                     MI vs RPS
                                 </div>
                                 <div class="project-name">
-                                    RPS  won by 5 wickets
+                                    RPS won by 5 wickets
                                 </div>
                             </div>
                         </div>
@@ -261,7 +302,7 @@
                                     KKR vs RCB
                                 </div>
                                 <div class="project-name">
-                                    KKR  won by 82 Runs
+                                    KKR won by 82 Runs
                                 </div>
                             </div>
                         </div>
@@ -276,7 +317,7 @@
                                     KKR vs RCB
                                 </div>
                                 <div class="project-name">
-                                    KKR  won by 82 Runs
+                                    KKR won by 82 Runs
                                 </div>
                             </div>
                         </div>
@@ -291,7 +332,7 @@
                                     KKR vs RCB
                                 </div>
                                 <div class="project-name">
-                                    KKR  won by 82 Runs
+                                    KKR won by 82 Runs
                                 </div>
                             </div>
                         </div>
@@ -307,7 +348,7 @@
                                     GL vs KXIP
                                 </div>
                                 <div class="project-name">
-                                    KXIP  won by 4 wickets
+                                    KXIP won by 4 wickets
                                 </div>
                             </div>
                         </div>
@@ -322,7 +363,7 @@
                                     GL vs KXIP
                                 </div>
                                 <div class="project-name">
-                                    KXIP  won by 4 wickets
+                                    KXIP won by 4 wickets
                                 </div>
                             </div>
                         </div>
@@ -337,7 +378,7 @@
                                     GL vs KXIP
                                 </div>
                                 <div class="project-name">
-                                    KXIP  won by 4 wickets
+                                    KXIP won by 4 wickets
                                 </div>
                             </div>
                         </div>
@@ -393,9 +434,9 @@
     <script>
         $('#header').backstretch([
 
-            { url: '{{Url::to('assets-new/img/bj2.jpg')}}', fade: 1000 },
-            { url: '{{Url::to('assets-new/img/bg1.jpg')}}', fade: 1000 },
-            { url: '{{Url::to('assets-new/img/bj3.jpg')}}', fade: 1000 }
+            {url: '{{Url::to('assets-new/img/bj2.jpg')}}', fade: 1000},
+            {url: '{{Url::to('assets-new/img/bg1.jpg')}}', fade: 1000},
+            {url: '{{Url::to('assets-new/img/bj3.jpg')}}', fade: 1000}
         ]);
 
 

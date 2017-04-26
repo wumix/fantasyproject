@@ -187,7 +187,7 @@
                         </li>
                         <li>
                             <a class="page-scroll" href="{{route('PrivacyPolicy')}}">
-                                Privacy policy
+                                Privacy Policy
                             </a>
                         </li>
                         <li>

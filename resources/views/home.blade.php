@@ -107,8 +107,8 @@
     <!-- ..........................Banner Start ............................-->
     <!-----------    ----------->
     <section class="bg-primary no-padding" id="about">
-        <div class="container-fluid">
-            <div class="col-lg-2 text-center no-padding" style="background: orange;">
+        <div class="container-fluid no-padding">
+            <div class="col-lg-2 text-center no-padding" style="background: orange; font-weight: bold;">
                 <div class="table-responsive" style="padding: 5px;">
                 Latest News
                 </div>
@@ -117,7 +117,7 @@
 
 
                 <div class="table-responsive no-padding" style="background: #92B713;">
-                    <marquee style="padding: 5px; padding-bottom: 0;">
+                    <marquee style="padding: 5px; padding-bottom: 0; font-weight: bold;">
                         <?php $ch = curl_init('http://www.espncricinfo.com/rss/content/story/feeds/1078425.xml');
                         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                         $result = curl_exec($ch);

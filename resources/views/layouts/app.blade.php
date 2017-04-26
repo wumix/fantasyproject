@@ -106,12 +106,12 @@
                                 How to play
                             </a>
                         </li>
-                        {{--<li>--}}
+                        <li>
 
-                            {{--<a class="page-scroll" href="{{route('showBlog')}}">--}}
-                                {{--Blog--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
+                            <a class="page-scroll" href="{{route('showBlog')}}">
+                                Gamithon Gossips
+                            </a>
+                        </li>
 
                         {{--<li>--}}
                         {{--<a href="{{route('leaderboard')}}">--}}

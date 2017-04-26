@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="text-center page-heading">
-                        BLOG
+                        Gamithon Gossips
                     </h1>
                     <hr class="light full">
 

@@ -180,7 +180,7 @@
                 <div class="col-sm-12 col-md-4 text-center">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a class="page-scroll" href="{{route('privacyPolicy')}}">
+                            <a class="page-scroll" href="{{route('PrivacyPolicy')}}">
                                 Privacy policy
                             </a>
                         </li>

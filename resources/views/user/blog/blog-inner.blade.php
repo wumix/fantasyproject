@@ -30,9 +30,9 @@
                         </h3>
                         <hr class="bloghr">
                         <div class="row" style="padding-right: 10px;">
-                            {{--<p class="bloginnertext col-md-7 col-md-offset-1">--}}
+                            <p class="bloginnertext col-md-7 col-md-offset-1">--}}
                                 {{--By Admin--}}
-                            {{--</p>--}}
+                            </p>
 
                             <p class="text-right bloginnertext chattextico col-md-2">
                             <div id="fb-root"></div>
@@ -43,7 +43,7 @@
                                     js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9&appId=1736071000056030";
                                     fjs.parentNode.insertBefore(js, fjs);
                                 }(document, 'script', 'facebook-jssdk'));</script>
-                            {{--<div class="fb-share-button" data-href="http://www.gamithonfantasy.com" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.gamithonfantasy.com%2F&amp;src=sdkpreparse">Share</a></div>--}}
+                            <div class="fb-share-button" data-href="http://www.gamithonfantasy.com" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.gamithonfantasy.com%2F&amp;src=sdkpreparse">Share</a></div>
 
                             </p>
 

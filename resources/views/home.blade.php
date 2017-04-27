@@ -109,15 +109,15 @@
     <section class="bg-primary no-padding" id="about">
         <div class="container-fluid no-padding">
             <div class="col-md-12 no-padding">
-            <div class="col-lg-2 text-center no-padding" style="background: orange; font-weight: bold; min-height: 30px;">
+            <div class="col-lg-2 text-center no-padding" style="background: orange; font-weight: bold; height: 30px;">
                 <div class="table-responsive" style="padding: 5px;">
                 Latest News
                 </div>
             </div>
-            <div class="col-lg-10 text-center no-padding" style="min-height: 30px;">
+            <div class="col-lg-10 text-center no-padding" style="height: 30px;">
 
 
-                <div class="table-responsive no-padding" style="background: #92B713; min-height: 30px;">
+                <div class="table-responsive no-padding" style="background: #92B713; height: 30px;">
                     <marquee style="padding: 5px; padding-bottom: 0; font-weight: bold;">
                         <?php $ch = curl_init('http://www.espncricinfo.com/rss/content/story/feeds/1078425.xml');
                         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

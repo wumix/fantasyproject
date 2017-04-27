@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    <meta property="og:url"                content="http://gamithonfantasy.com/" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="Welcome to gamithon" />
+    <meta property="og:description"        content="This is gamithon Fantasy" />
+    <meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" /> <link rel="icon" href="../img/gamithon-fevi.ico" type="image/x-icon"/>
 
 
     <section>

@@ -8,7 +8,7 @@ use Laravelista\Comments\Comments\Traits\Comments; //for gettings commentss
 
 
 class BlogPost extends Model {
-    use Comments; //use to get commets
+  
 
     use Sluggable;
 

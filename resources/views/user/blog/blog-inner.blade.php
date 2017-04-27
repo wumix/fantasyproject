@@ -64,6 +64,10 @@
                     </section>
 
                     <hr class="bloghr">
+                    @include('comments::comments-react', [
+    'content_type' => App\BlogPost::class,
+    'content_id' => $postdetail['id']
+])
                     {{--<section class="col-md-12 no-padding" style="padding-bottom: 20px;">--}}
 
                     {{--<h3 class="textgreen">--}}

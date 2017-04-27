@@ -30,7 +30,7 @@
                         </h3>
                         <hr class="bloghr">
                         <div class="row" style="padding-right: 10px;">
-                            <p class="bloginnertext col-md-7 col-md-offset-1">--}}
+                            <p class="bloginnertext col-md-7 col-md-offset-1">
                                 {{--By Admin--}}
                             </p>
 

@@ -16,6 +16,7 @@ function showBlogPostDetail($postid){
         $data['comments']=$comments->toArray();
        //dd($data['comments']);
            $data['posts'] = \App\BlogPost::where('post_type','post')->get()->toArray();
+
        $post=\App\BlogPost::findOrFail($postid);
        $data['postdetail']=$post->toArray();
 

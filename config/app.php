@@ -142,7 +142,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Laravelista\Comments\Providers\CommentsServiceProvider::class,
+
 
         /*
          * Package Service Providers...

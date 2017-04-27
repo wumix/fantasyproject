@@ -5,7 +5,8 @@
     <meta property="og:type"               content="article" />
     <meta property="og:title"              content=" {{$postdetail['title']}}" />
     <meta property="og:description"        content="This is gamithon Fantasy" />
-    <meta property="og:image"              content="{{getUploadsPath($postdetail['image'])}}"
+    <meta property="og:image"              content="{{getUploadsPath($postdetail['image'])}}"/>
+    <meta property="fb:app_id"             content="712839212231397"/>
 
     <section>
         <div class="container">

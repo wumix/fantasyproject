@@ -167,36 +167,28 @@
                 data: {content_id: '{{ $postdetail['id']}}', comment: comment},
                 success: function (data) {
                     if (data.success == true) {
-                        var content = "";
-                        content += "  <div class=\"row\" style=\"padding: 50px 0 20px 0;\">";
-                        content += "                            <div class=\"col-md-2\">";
-                        content += "                                <img src=\"" + data.profile_pic + " \" class=\"circle1\" style=\"padding: 0;\" alt=\"Cinque Terre\">";
+                        var content="";
+                        content += "<div class=\"row\">";
+                        content += "                                <div class=\"col-md-12\">";
+                        content += "                                    <div class=\"col-md-2\">";
+                        content += "                                        <img";
+                        content += "                                                src=\""+data.profile_pic+"\"";
+                        content += "                                                class=\"img-thumbnail\"";
+                        content += "                                                alt=\"Cinque Terre\"";
+                        content += "                                        >";
                         content += "";
-                        content += "                            <\/div>";
-                        content += "                            <div class=\"col-md-8 col-lg-offset-1\"  >";
-                        content += "                                <div class=\"row\"><h4 class=\"textgreen col-md-2\" >";
-                        content += "" + data.name + ""
-                        content += "                                       ";
-                        content += "                                    <\/h4>";
-                        content += "                                    <p class=\" bloginnertext  col-md-8\"><i class=\"fa fa-calendar\" aria-hidden=\"true\" style=\"color: #bbb8bf;padding-right: 10px;\"><\/i>";
+                        content += "                                    <\/div>";
                         content += "";
-                        content += "                                    <\/p>";
-                        content += "";
+                        content += "                                    <div class=\"col-md-10 comment-text\">";
+                        content += "                                        <h3 class=\"no-padding\" style=\"margin-top: 5px;\">"+data.name+"<\/h3>";
+                        content += "                                        <p class=\"blogcontent\">";
+                        content += "                                            "+data.comment+"";
+                        content += "                                        <\/p>";
+                        content += "                                    <\/div>";
                         content += "                                <\/div>";
                         content += "                            <\/div>";
-                        content += "                            <div class=\"col-md-8 col-lg-offset-1\"  >";
-                        content += "                                <div class=\"row\">";
-                        content += "                                    <p class=\"blogcontent\">";
-                        content += "" + comment + ""
-                        content += "                                       ";
-                        content += "                                           <\/p>";
-                        content += "";
-                        content += "                                <\/div>";
-                        content += "";
-                        content += "";
-                        content += "                            <\/div>";
-                        content += "";
-                        content += "                        <\/div>";
+                        content += "                            <hr \/>";
+
 
                         $("#add-comment-in").after(content);
 

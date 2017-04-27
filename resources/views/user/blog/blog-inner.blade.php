@@ -59,7 +59,7 @@
                                     </div>
 
                                     <div class="col-md-10 comment-text">
-                                        <h3 class="no-padding" style="margin-top: 5px;">Adil zohaib</h3>
+                                        <h3 class="no-padding" style="margin-top: 5px;">{{$comment['user']['name']}}</h3>
                                         <p class="blogcontent">
                                             {!! $comment['comment'] !!}
                                         </p>

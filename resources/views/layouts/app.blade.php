@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta property="og:url"                content="http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html" />
+    <meta property="og:url"                content="http://gamithonfantasy.com/" />
     <meta property="og:type"               content="article" />
     <meta property="og:title"              content="Welcome to gamithon" />
     <meta property="og:description"        content="This is gamithon Fantasy" />

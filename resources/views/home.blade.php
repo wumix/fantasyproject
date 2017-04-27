@@ -110,7 +110,7 @@
         <div class="container-fluid no-padding">
             <div class="col-lg-2 text-center no-padding" style="background: orange; font-weight: bold;">
                 <div class="table-responsive" style="padding: 5px;">
-                Latest News
+                    Latest News
                 </div>
             </div>
             <div class="col-lg-10 text-center no-padding">

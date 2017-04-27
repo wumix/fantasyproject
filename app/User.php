@@ -59,7 +59,7 @@ class User extends Authenticatable {
     }
     public function comments()
     {
-        return $this->hasMany(\Laravelista\Comments\Comments\Comment::class);
+        return $this->hasMany('\App\Comment');
     }
 
     /**

@@ -31,6 +31,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('how-to-play', 'HomeController@howPlay')->name('howPlay');
     Route::get('/tournaments', 'User\TournamentsController@index')->name('usertournamenthome');
     Route::get('/blog', 'BlogController@index')->name('showBlog');
+
     Route::get('/blog/{blog_slug}', 'BlogController@showBlogPostDetail')->name('showBlogPostDetail');
     Route::get('signup-confirmation', function () {
         returnview('pages.signup-thankyou');
@@ -42,6 +43,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['is_user']], function () {
         Route::group(['prefix' => 'user'], function () {
+            Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
             Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
              Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');
             Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');

@@ -108,7 +108,7 @@
     <!-----------    ----------->
     <section class="bg-primary no-padding" id="about">
         <div class="container-fluid no-padding">
-            <div class="col-md-12">
+            <div class="col-md-12 no-padding">
             <div class="col-lg-2 text-center no-padding" style="background: orange; font-weight: bold; min-height: 30px;">
                 <div class="table-responsive" style="padding: 5px;">
                 Latest News

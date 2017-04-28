@@ -53,7 +53,7 @@
                     We will only be liable for any personal injury or death caused by our negligence or any deliberate act. In no other case will we be held responsible for your use of our website.
                     </p> <p>
                    <strong> CONTACT</strong></p> <p class="jfont">
-                    For any further inquiry <a href="">Contact Us</a>
+                    For any further inquiry <a href="{{route('contactPage')}}">contact us</a>
                     </p>
                 </div>
             </div>

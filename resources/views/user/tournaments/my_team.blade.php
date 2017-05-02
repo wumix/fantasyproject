@@ -147,7 +147,13 @@
                                                             <td class=" th11 text-left" style="min-width: 300px;
 ">
                                                                 <img style="width: 80px;float: left;margin-right: 24px;" class="img-thumbnail"
-                                                                     src="{{getUploadsPath($player['profile_pic'])}}"/>
+                                                                     <?php $profilepic=null;
+                                                                     if(!empty($player['profile_pic'])){
+                                                                         $profilepic=$player['profile_pic'];
+                                                                     }
+
+                                                                     ?>
+                                                                     src="{{getUploadsPath($profilepic)}}"/>
                                                                 <span class="selected-player-name"> {{$player['name']}}</span>
                                                             </td>
                                                             <td class="text-left">

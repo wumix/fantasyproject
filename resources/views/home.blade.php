@@ -286,10 +286,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                   MI VS RCB
+                                    RPS VS GL
                                 </div>
                                 <div class="project-name">
-                                    Indians won by 5 wickets
+                                    Supergiant won by 5 wickets
                                 </div>
                             </div>
                         </div>

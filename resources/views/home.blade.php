@@ -254,10 +254,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    KKR vs DD
+                                    RPS VS GL
                                 </div>
                                 <div class="project-name">
-                                    KKR won by 7 wickets
+                                    Supergiant won by 5 wickets
                                 </div>
                             </div>
                         </div>
@@ -271,10 +271,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    KKR vs DD
+                                   RPS VS GL
                                 </div>
                                 <div class="project-name">
-                                    KKR won by 7 wickets
+                                    Supergiant won by 5 wickets
                                 </div>
                             </div>
                         </div>
@@ -286,10 +286,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    KKR vs DD
+                                   MI VS RCB
                                 </div>
                                 <div class="project-name">
-                                    KKR won by 7 wickets
+                                    Indians won by 5 wickets
                                 </div>
                             </div>
                         </div>
@@ -301,10 +301,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    GL vs RCB
+                                    SH VS KKR
                                 </div>
                                 <div class="project-name">
-                                    GL won by 7 wickets
+                                    Sunrisers won by 48 runs
                                 </div>
                             </div>
 
@@ -318,10 +318,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    GL vs RCB
+                                    SH VS KKR
                                 </div>
                                 <div class="project-name">
-                                    GL won by 7 wickets
+                                    Sunrisers won by 48 runs
                                 </div>
                             </div>
                         </div>
@@ -333,10 +333,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    GL vs RCB
+                                   SH VS KKR
                                 </div>
                                 <div class="project-name">
-                                    GL won by 7 wickets
+                                    Sunrisers won by 48 runs
                                 </div>
                             </div>
                         </div>

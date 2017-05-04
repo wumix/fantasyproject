@@ -249,6 +249,54 @@
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
+                    <a href="../img/portfolio/thumbnails/201.jpg" class="portfolio-box">
+                        <img src="../img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    RPS VS KKR
+                                </div>
+                                <div class="project-name">
+                                    Supergiant won by 4 wickets
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/fullsize/202.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    RPS VS KKR
+                                </div>
+                                <div class="project-name">
+                                    Supergiant won by 4 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/fullsize/203.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    RPS VS KKR
+                                </div>
+                                <div class="project-name">
+                                    Supergiant won by 4 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
@@ -338,53 +386,6 @@
                                 </div>
                                 <div class="project-name">
                                     Supergiant won by 5 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="../img/portfolio/thumbnails/201.jpg" class="portfolio-box">
-                        <img src="../img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    SRH VS KKR
-                                </div>
-                                <div class="project-name">
-                                    Sunrisers won by 48 runs
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/fullsize/202.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    SRH VS KKR
-                                </div>
-                                <div class="project-name">
-                                    Sunrisers won by 48 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/fullsize/203.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    SRH VS KKR
-                                </div>
-                                <div class="project-name">
-                                    Sunrisers won by 48 runs
                                 </div>
                             </div>
                         </div>

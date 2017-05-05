@@ -67,6 +67,30 @@
                 <a class="navbar-brand logo-site page-scroll" href="/">
                     <img src="{{URL::to('assets-new/img/gamithon-logo1.png')}}" style="width: 250px;"/>
                 </a>
+                <div class="text-left" id="signhide" style="padding-left: 10px;">
+                @if(Auth::check())
+
+                        <a href="{{route('userdashboard')}}" style="color: #ffffff;"> <i style="color: #F9970E" class="fa fa-tachometer sign-in-icon" aria-hidden="true"></i>
+                            My Account</a>
+
+                @endif
+                @if(!Auth::check())
+
+                        <a href="{{route('login')}}" style="color: #ffffff;"> <i class="fa fa-sign-in sign-in-icon"
+                                                         aria-hidden="true"></i>
+                            Sign In</a>
+
+                @endif
+                @if(Auth::check())
+
+                        <a onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();" href="javacript:void(0)" style="color: #ffffff;">
+                            <i class="fa fa-sign-out sign-in-icon" aria-hidden="true"></i>
+                            Logout
+                        </a>
+
+                @endif
+                </div>
                 <div id="top-menu-res" class="jquerySlickNavContainer"></div>
                 <div class="clear clearfix"></div>
             </div>

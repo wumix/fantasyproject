@@ -53,9 +53,14 @@ foreach ($team_score as $teamplayers) {
 
         <div class="row" >
             <div class="col-lg-12">
+
                 <h1 class="page-heading">
                     {{$user_team_player_transfer['name']}}
                 </h1>
+                <div class="row">
+                    <h3  class="page-heading">Your Team Score: <span id="team_score"></span></h3>
+                    <h3 class="page-heading">Points Remaining:<span id="remaining_score"></span></h3>
+                </div>
                 <hr class="light full" id="guide">
                 <div class="table-responsive">
                     <table class="table table-striped" id="tortable">
@@ -225,6 +230,8 @@ foreach ($team_score as $teamplayers) {
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
+    $('#team_score').html('{{$teamtotal}}')
+    $('#remaining_score').html('{{getUserTotalScore(Auth::id())}}')
 </script>
 @stop
 

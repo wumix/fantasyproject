@@ -81,7 +81,7 @@
                         @if(Auth::check())
                             <li class="menupadding">
                                 <a href="{{route('userdashboard')}}"> <i style="color: #F9970E" class="fa fa-tachometer sign-in-icon" aria-hidden="true"></i>
-                                    DashBoard</a>
+                                    My Account</a>
                             </li>
                         @endif
                         @if(!Auth::check())

@@ -20,8 +20,8 @@
 
                 <div class="page-content">
                     <div class="form-container">
-                        <div class="col-md-12">
-                        <div class="text-center col-md-12">
+                        <div class="col-lg-12">
+                        <div class="text-center col-lg-12">
                             <div class="gbtn">
                                 <a href="{{route('facebookLogin')}}" class="btn btn-fb-login">
                                     Login with Facebook
@@ -33,7 +33,7 @@
                         </div>
                         <!--Form-->
 
-                        <div class="col-md-10 col-md-offset-1">
+                        <div class="col-lg-10 col-lg-offset-1">
                             <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                                 {{ csrf_field() }}
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -45,7 +45,7 @@
                                     </span>
                                     @endif
 
-                                    <div class="cols-md-12" id="withbox">
+                                    <div class="cols-lg-12" id="withbox">
                                         <div class="input-group">
                                             <span  class="input-group-addon signinforminputs"><i id="lgfico" class="fa fa-envelope fa" aria-hidden="true"></i></span>
                                             <input type="text" class="form-control signinforminputs1" name="email" id="email"  placeholder="Email" required />
@@ -62,14 +62,14 @@
 
 
                                 <div class="form-group">
-                                    <div class="cols-md-10"  id="withbox">
+                                    <div class="cols-lg-10"  id="withbox">
                                         <div class="input-group">
                                             <span  class="input-group-addon signinforminputs"><i id="lgfico" class="fa fa-key" aria-hidden="true"></i></span>
                                             <input type="password" class="form-control signinforminputs1" name="password" id="password"  placeholder="Password"/>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 signiinlink">
+                                <div class="col-lg-6 signiinlink">
                                     <div class="form-group " id="withbox">
                                         <label class="form-check-label">
                                             <input type="checkbox" class="form-check-input"/>
@@ -78,13 +78,13 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-md-6 signuplink">
+                                <div class="col-lg-6 signuplink">
                                     <div class="form-group  " id="withbox">
                                         <a  href="{{ route('signUp') }}">Sign up for new account</a>
                                     </div>
 
                                 </div>
-                                <div class="col-md-12 text-center">
+                                <div class="col-lg-12 text-center">
                                         <div class="form-group" >
                                             <button type="submit" class="btn btn-green btn-lg ">Sign In</button>
                                         </div>

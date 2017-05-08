@@ -209,6 +209,104 @@
     <section class="no-padding" id="portfolio">
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
+
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" KXIP vs GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    KXIP vs GL
+                                </div>
+                                <div class="project-name">
+                                    Lions won by 6 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt=" KXIP vs GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    KXIP vs GL
+                                </div>
+                                <div class="project-name">
+                                    Lions won by 6 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/103.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/103.jpg" class="img-responsive" alt=" KXIP vs GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    KXIP vs GL
+                                </div>
+                                <div class="project-name">
+                                    Lions won by 6 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="../img/portfolio/thumbnails/201.jpg" class="portfolio-box">
+                        <img src="../img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="RCB VS KKR">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    RCB VS KKR
+                                </div>
+                                <div class="project-name">
+                                    Knight Riders won by 6 wickets
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="RCB VS KKR">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    RCB VS KKR
+                                </div>
+                                <div class="project-name">
+                                    Knight Riders won by 6 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/203.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="RCB VS KKR">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    RCB VS KKR
+                                </div>
+                                <div class="project-name">
+                                    Knight Riders won by 6 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="DD VS GL">
@@ -256,103 +354,6 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="../img/portfolio/thumbnails/201.jpg" class="portfolio-box">
-                        <img src="../img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="RPS VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    RPS VS KKR
-                                </div>
-                                <div class="project-name">
-                                    Supergiant won by 4 wickets
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="RPS VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    RPS VS KKR
-                                </div>
-                                <div class="project-name">
-                                    Supergiant won by 4 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/203.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="RPS VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    RPS VS KKR
-                                </div>
-                                <div class="project-name">
-                                    Supergiant won by 4 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt="DD vs SRH">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    DD vs SRH
-                                </div>
-                                <div class="project-name">
-                                    Daredevils won by 6 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt="DD vs SRH">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    DD vs SRH
-                                </div>
-                                <div class="project-name">
-                                    Daredevils won by 6 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/103.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="DD vs SRH">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    DD vs SRH
-                                </div>
-                                <div class="project-name">
-                                    Daredevils won by 6 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
 
 
 

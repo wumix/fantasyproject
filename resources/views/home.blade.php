@@ -261,14 +261,14 @@
 
                 <div class="col-lg-4 col-sm-6">
                     <a href="../img/portfolio/thumbnails/201.jpg" class="portfolio-box">
-                        <img src="../img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="RCB VS KKR">
+                        <img src="../img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="DD VS MI">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    RCB VS KKR
+                                    DD VS MI
                                 </div>
                                 <div class="project-name">
-                                    Knight Riders won by 6 wickets
+                                    Indians won by 146 runs
                                 </div>
                             </div>
 
@@ -278,14 +278,14 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="RCB VS KKR">
+                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="DD VS MI">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    RCB VS KKR
+                                    DD VS MI
                                 </div>
                                 <div class="project-name">
-                                    Knight Riders won by 6 wickets
+                                    Indians won by 146 runs
                                 </div>
                             </div>
                         </div>
@@ -293,14 +293,14 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/203.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="RCB VS KKR">
+                        <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="DD VS MI">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    RCB VS KKR
+                                    DD VS MI
                                 </div>
                                 <div class="project-name">
-                                    Knight Riders won by 6 wickets
+                                    Indians won by 146 runs
                                 </div>
                             </div>
                         </div>

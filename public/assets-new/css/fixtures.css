@@ -58,10 +58,11 @@ and open the template in the editor.
 .btn-sm.round {
     border-radius: 24px;
 }
-#mywebinar{
-    background-color: #eeeeee ;
-    margin-right: 10px;
+.mywebinar{
+    background-color: #92b713 ;
+    margin-right: 0px;
     padding: 0 0 5px 25px;
+    color: #ffffff;
 
 }
 #exploreop{
@@ -71,11 +72,11 @@ and open the template in the editor.
     box-shadow: 1px 1px 2px 2px #C0C0C0;
     align-content: center;
 }
-#adm{
+.adm{
     border:solid 1px #C0C0C0;
     box-shadow: 1px 1px 4px 4px #C0C0C0;
     margin: 20px 20px 20px 20px;
-    padding: 0 0 5px 25px;
+    padding: 0 0 5px 15px;
 }
 li{
     color: #C0C0C0;

@@ -83,15 +83,21 @@ class HomeController extends Controller
     {
         return view('pages.fixtures_c_trophy');
     }
-    public function rankings(){
-        return view('pages.rankings');
-
-    }
 
     public function upcommingTournamnets()
     {
         return view('pages.upccoming_tournaments');
     }
+
+    public function Rankings()
+    {
+        return view('pages.rankings');
+    }
+
+
+
+
+
 
     public function postContact(Request $request)
     {

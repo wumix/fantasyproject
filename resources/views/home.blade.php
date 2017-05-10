@@ -137,8 +137,20 @@
                                                     href="{{route('showTournament', ['tournament_id'=>$row['id']])}}">{{$row['name']}}</a>
                                         </td>
                                         <td class="border-r">{{$row['venue']}}</td>
-                                        <td class="border-r">{{$row['start_date']}}</td>
-                                        <td>{{$row['end_date']}}</td>
+                                        <td class="border-r">
+
+
+                                            <?php
+                                            $date = new DateTime($row['start_date']);
+                                            echo $date->format('d M Y');
+                                                ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            $date = new DateTime($row['end_date']);
+                                            echo $date->format('d M Y');
+                                            ?>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @else

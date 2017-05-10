@@ -761,3 +761,16 @@ width: 100%;
     font-size: 14px;
     text-align: justify;
 }
+@media screen and (min-width: 1000px) and (max-width: 2500px) {
+    #signhide { display: none; }
+}
+@media screen and (max-width: 1000px) and (min-width: 2500px) {
+    #signshow { display: none;}
+}
+/*@media screen and (min-width: 0px) and (max-width: 400px) {*/
+    /*#signshow{ display: none; }  !* show it on small screens *!*/
+/*}*/
+
+/*@media screen and (min-width: 401px) and (max-width: 1024px) {*/
+    /*#signshow { display: block; }   !* hide it elsewhere *!*/
+/*}*/

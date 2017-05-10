@@ -106,7 +106,7 @@
     <!--BASBB-->
     <!-- ..........................Banner Start ............................-->
     <!-----------    ----------->
-    
+
 
 
     <section class="bg-primary" id="about">
@@ -253,64 +253,18 @@
     <section class="no-padding" id="portfolio">
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
-                <div class="col-lg-4 col-sm-6">
-                    <a href="../img/portfolio/thumbnails/201.jpg" class="portfolio-box">
-                        <img src="../img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="RPS VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    RPS VS KKR
-                                </div>
-                                <div class="project-name">
-                                    Supergiant won by 4 wickets
-                                </div>
-                            </div>
 
-
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/fullsize/202.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="RPS VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    RPS VS KKR
-                                </div>
-                                <div class="project-name">
-                                    Supergiant won by 4 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/fullsize/203.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="RPS VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    RPS VS KKR
-                                </div>
-                                <div class="project-name">
-                                    Supergiant won by 4 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt="DD vs SRH">
+                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" KXIP vs GL">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD vs SRH
+                                    KXIP vs GL
                                 </div>
                                 <div class="project-name">
-                                    Daredevils won by 6 wickets
+                                    Lions won by 6 wickets
                                 </div>
                             </div>
                         </div>
@@ -320,14 +274,14 @@
 
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt="DD vs SRH">
+                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt=" KXIP vs GL">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD vs SRH
+                                    KXIP vs GL
                                 </div>
                                 <div class="project-name">
-                                    Daredevils won by 6 wickets
+                                    Lions won by 6 wickets
                                 </div>
                             </div>
                         </div>
@@ -335,14 +289,62 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/103.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="DD vs SRH">
+                        <img src="img/portfolio/thumbnails/103.jpg" class="img-responsive" alt=" KXIP vs GL">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD vs SRH
+                                    KXIP vs GL
                                 </div>
                                 <div class="project-name">
-                                    Daredevils won by 6 wickets
+                                    Lions won by 6 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="../img/portfolio/thumbnails/201.jpg" class="portfolio-box">
+                        <img src="../img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="DD VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    DD VS MI
+                                </div>
+                                <div class="project-name">
+                                    Indians won by 146 runs
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="DD VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    DD VS MI
+                                </div>
+                                <div class="project-name">
+                                    Indians won by 146 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/203.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="DD VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    DD VS MI
+                                </div>
+                                <div class="project-name">
+                                    Indians won by 146 runs
                                 </div>
                             </div>
                         </div>
@@ -351,14 +353,14 @@
 
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="RPS VS GL">
+                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="DD VS GL">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    RPS VS GL
+                                    DD VS GL
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 5 wickets
+                                    Daredevils won by 7 wickets
                                 </div>
                             </div>
                         </div>
@@ -368,14 +370,14 @@
 
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="RPS VS GL">
+                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="DD VS GL">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                   RPS VS GL
+                                    DD VS GL
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 5 wickets
+                                    Daredevils won by 7 wickets
                                 </div>
                             </div>
                         </div>
@@ -383,14 +385,14 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt="RPS VS GL">
+                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt="DD VS GL">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    RPS VS GL
+                                    DD VS GL
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 5 wickets
+                                    Daredevils won by 7 wickets
                                 </div>
                             </div>
                         </div>

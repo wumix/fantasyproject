@@ -79,6 +79,9 @@ public function fixturs(){
 public function upcommingTournamnets(){
     return view('pages.upccoming_tournaments');
 }
+    public function Rankings(){
+        return view('pages.rankings');
+    }
 
     public function postContact(Request $request) {
         $this->validatorContact($request->all())->validate();

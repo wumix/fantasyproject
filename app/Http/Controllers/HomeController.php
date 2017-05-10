@@ -79,7 +79,7 @@ public function fixturs(){
 public function upcommingTournamnets(){
     return view('pages.upccoming_tournaments');
 }
-    public function Rankings(){
+    public function rankings(){
         return view('pages.rankings');
     }
 

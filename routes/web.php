@@ -29,6 +29,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('terms', 'HomeController@termsCon')->name('TermsCon');
     Route::get('champions-trophy', 'HomeController@fixturs')->name('champion');
     Route::get('upcomming', 'HomeController@upcommingTournamnets')->name('upcommingTournamnets');
+    Route::get('Champions_trophy', 'HomeController@championTrophy')->name('championtrophy');
     Route::get('rankings', 'HomeController@rankings')->name('rankings');
 
     Route::get('how-to-play', 'HomeController@howPlay')->name('howPlay');

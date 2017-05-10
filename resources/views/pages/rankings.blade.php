@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-heading">
-                        Players Ranking
+                       Icc Player Rankings
                     </h1>
                     <hr class="light full">
 

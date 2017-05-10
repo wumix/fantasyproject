@@ -79,6 +79,9 @@ class HomeController extends Controller {
     public function upcommingTournamnets(){
         return view('pages.upccoming_tournaments');
     }
+public function championTrophy(){
+    return view('pages.fixtures_c_trophy');
+}
     public function rankings(){
         return view('pages.rankings');
     }

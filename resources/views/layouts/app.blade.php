@@ -139,11 +139,7 @@
                                 How to play
                             </a>
                         </li>
-                        <li>
-                            <a class="page-scroll" href="{{route('upcommingTournamnets')}}">
-                                UpComming Tournaments
-                            </a>
-                        </li>
+
                         <li>
 
                             <a class="page-scroll" href="{{route('showBlog')}}">
@@ -167,6 +163,11 @@
                         <li>
                             <a class="page-scroll" href="{{route('usertournamenthome')}}">
                                 Tournaments
+                            </a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="{{route('rankings')}}">
+                                Rankings
                             </a>
                         </li>
 

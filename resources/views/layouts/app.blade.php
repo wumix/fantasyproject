@@ -29,6 +29,7 @@
     {!! Html::style('assets/css/slicknav.css') !!}
     {!! Html::style('assets-new/css/creative.css') !!}
     {!! Html::style('assets-new/css/style.css') !!}
+    {!! Html::style('assets-new/css/fixtures.css') !!}
 
 
     {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}

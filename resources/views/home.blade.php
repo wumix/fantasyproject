@@ -157,6 +157,50 @@
         </div>
     </section>
 
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">
+                        Upcomming Tournaments
+                        <hr class="light">
+                    </h2>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped table-stripedhome gen-table">
+                            <thead class="main-taible-head">
+                            <tr>
+                                <th class="border-r th1">Name</th>
+                                <th class="border-r">Venue</th>
+                                <th class="border-r">Started At</th>
+                                <th class="th2">Ending At</th>
+                            </tr>
+                            </thead>
+                            <tbody class="main-taible-body">
+                            <tr class="trr">
+                                <td class="border-r">Champions Trophy
+                                </td>
+                                <td class="border-r">India</td>
+                                <td class="border-r">1 June 2017</td>
+                                <td>18 June 2017</td>
+                            </tr>
+                            <tr class="trr">
+                                <td class="border-r">Champions Trophy
+                                </td>
+                                <td class="border-r">India</td>
+                                <td class="border-r">2017-04-05 14:30:00</td>
+                                <td>2017-08-15 11:30:00</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!---------------------->
     <!-- LETS PLAY AT GAMITHON  Start-->
     <section id="services" class="bg-dark how-to-play-summery">

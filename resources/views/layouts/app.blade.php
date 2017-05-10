@@ -91,6 +91,7 @@
 
                 @endif
                 </div>
+
                 <div id="top-menu-res" class="jquerySlickNavContainer"></div>
                 <div class="clear clearfix"></div>
             </div>
@@ -101,7 +102,8 @@
 
 
                 <div class="row">
-                    <ul class="nav navbar-nav navbar-left nav-main-menu nav-main-menu-top" style="top:0;right: 0;">
+
+                    <ul class="nav navbar-nav navbar-left nav-main-menu nav-main-menu-top" id="signshow" style="top:0;right: 0;">
                         @if(Auth::check())
                             <li class="menupadding">
                                 <a href="{{route('userdashboard')}}"> <i style="color: #F9970E" class="fa fa-tachometer sign-in-icon" aria-hidden="true"></i>

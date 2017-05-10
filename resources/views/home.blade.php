@@ -202,6 +202,108 @@
     </section>
 
     <!---------------------->
+    <!-- ...............................News start......................... -->
+    {{--<section>--}}
+    {{--<div class="container-fluid lnews" >--}}
+        {{--<div class="row">--}}
+            {{--<div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
+                {{--<h3 class="gallery-title">LATEST NEWS</h3>--}}
+            {{--</div>--}}
+
+
+            {{--<br/>--}}
+            {{--<div class=" col-md-12">--}}
+                {{--<div class=" col-md-12 ">--}}
+
+                    {{--<div class="row">--}}
+
+                        {{--<div class="gallery_product col-md-3 ">--}}
+                            {{--<div class="col-md-6 ">--}}
+                                {{--<img src="http://fakeimg.pl/365x365/" class="img-responsive imgn">--}}
+                            {{--</div>--}}
+                            {{--<div class="col-md-6 nt">--}}
+                                {{--<span class="nt1">10 March 2017</span>--}}
+                                {{--<br>--}}
+
+                                {{--<span class="nt2">Ireland Tri-Nation</span>--}}
+                                {{--<br>--}}
+                                {{--<span class="nt2">Seriesf</span>--}}
+                                {{--<br>--}}
+                                {{--<br>--}}
+                                {{--<p class="nt3">--}}
+                                    {{--New-Zeeland premier fast bowler Wanger said he has worked on depth bowling and also worked on how to stay consistence.--}}
+                                {{--</p>--}}
+
+
+
+                            {{--</div>--}}
+
+                        {{--</div>--}}
+
+                        {{--<div class="gallery_product col-md-3 ">--}}
+
+                            {{----}}
+
+                        {{--</div>--}}
+                        {{--<div class="gallery_product col-md-3 ">--}}
+                            {{--<div class="col-md-6 ">--}}
+                                {{--<img src="http://fakeimg.pl/365x365/" class="img-responsive imgn">--}}
+                            {{--</div>--}}
+                            {{--<div class="col-md-6 nt">--}}
+                                {{--<span class="nt1">10 March 2017</span>--}}
+
+                                {{--<br>--}}
+                                {{--<span class="nt2">lidihflhaijf</span>--}}
+                                {{--<br>--}}
+                                {{--<span class="nt2">lidihflhaijf</span>--}}
+                                {{--<br>--}}
+                                {{--<br>--}}
+                                {{--<p class="nt3">--}}
+                                    {{--ishflkskfjksjkfjs;lfjs.--}}
+                                    {{--lkfjlsjflkjsdl;fkd.4--}}
+
+                                    {{--sfklsfjks--}}
+                                    {{--sfjsj--}}
+                                {{--</p>--}}
+
+
+
+                            {{--</div>--}}
+
+                        {{--</div>--}}
+
+                    {{--</div>--}}
+
+
+
+                {{--</div>--}}
+
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--</section>--}}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="..." alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Media heading</h4>
+                        New-Zeeland premier fast bowler Wanger said he has worked on depth bowling and also worked on how to stay consistence.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+</section>
+
     <!-- LETS PLAY AT GAMITHON  Start-->
     <section id="services" class="bg-dark how-to-play-summery">
         <div class="container">

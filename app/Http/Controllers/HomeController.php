@@ -73,6 +73,9 @@ class HomeController extends Controller {
     public function contactPage() {
         return view('pages.contact');
     }
+public function fixturs(){
+    return view('pages.fixtures');
+}
 
     public function postContact(Request $request) {
         $this->validatorContact($request->all())->validate();

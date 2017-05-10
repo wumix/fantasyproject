@@ -344,7 +344,7 @@
                         <div class="col-sm-1">
                             <i style="color:red;" class="fa fa-map-signs" aria-hidden="true"></i></div>
                         <div class="col-sm-10">
-                            <p style="color: #C0C0C0;"> Venue: &nbsp<b style="color: grey;">The Oval</b></p></div>
+                            <p style="color: #C0C0C0;"> Venue: &nbsp<b style="color: grey;">The Oval, London</b></p></div>
 
                     </div>
 
@@ -392,7 +392,7 @@
                             <i style="color:red;" class="fa fa-clock-o" aria-hidden="true"></i>
                         </div>
                         <div class="col-sm-11">
-                            <p style="color: #C0C0C0;"> Time:&nbsp<b style="color: grey;"> 12:30 GMT</b></p></div>
+                            <p style="color: #C0C0C0;"> Time:&nbsp<b style="color: grey;"> 09:30 GMT</b></p></div>
                     </div>
 
                 </div>
@@ -482,7 +482,7 @@
                         <div class="col-sm-1">
                             <i style="color:red;" class="fa fa-map-signs" aria-hidden="true"></i></div>
                         <div class="col-sm-10">
-                            <p style="color: #C0C0C0;"> Venue: &nbsp<b style="color: grey;">Cardiff Wales Stadium, Cardiff</b></p></div>
+                            <p style="color: #C0C0C0;"> Venue: &nbsp<b style="color: grey;">Edgbaston, Birmingham</b></p></div>
 
                     </div>
 
@@ -530,7 +530,7 @@
                             <i style="color:red;" class="fa fa-clock-o" aria-hidden="true"></i>
                         </div>
                         <div class="col-sm-11">
-                            <p style="color: #C0C0C0;"> Time:&nbsp<b style="color: grey;"> 12:30 GMT</b></p></div>
+                            <p style="color: #C0C0C0;"> Time:&nbsp<b style="color: grey;"> 09:30 GMT</b></p></div>
                     </div>
 
                 </div>

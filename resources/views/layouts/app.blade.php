@@ -140,6 +140,11 @@
                             </a>
                         </li>
                         <li>
+                            <a class="page-scroll" href="{{route('upcommingTournamnets')}}">
+                                UpComming Tournaments
+                            </a>
+                        </li>
+                        <li>
 
                             <a class="page-scroll" href="{{route('showBlog')}}">
                                 Gamithon Gossips
@@ -175,11 +180,11 @@
                     <!--                            <li>
                                                             <a class="page-scroll" href="{{route('UserDashboard')}}">DashBoard</a>
                                                         </li>-->
-                        <li>
-                            <a href="{{URL::to('/#portfolio')}}" class="page-scroll">
-                                Gallery
-                            </a>
-                        </li>
+                        {{--<li>--}}
+                            {{--<a href="{{URL::to('/#portfolio')}}" class="page-scroll">--}}
+                                {{--Gallery--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
                         <li>
                             <a class="page-scroll" href="{{route('contactPage')}}">Contact Us</a>
                         </li>

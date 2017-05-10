@@ -74,7 +74,7 @@ class HomeController extends Controller {
         return view('pages.contact');
     }
 public function fixturs(){
-    return view('pages.fixtures');
+    return view('pages.fixtures_c_trophy');
 }
 public function upcommingTournamnets(){
     return view('pages.upccoming_tournaments');

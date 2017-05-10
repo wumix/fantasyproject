@@ -65,7 +65,7 @@ class HomeController extends Controller {
         $data['tournaments_list'] = $objTourmament->toArray();
         $data['matches'] = \App\Match::getNextMatch();
         $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
-        
+
 
         return view('home', $data);
     }
@@ -73,11 +73,14 @@ class HomeController extends Controller {
     public function contactPage() {
         return view('pages.contact');
     }
-public function fixturs(){
+    public function fixturs(){
+        return view('pages.fixtures_c_trophy');
+    }
+    public function upcommingTournamnets(){
+        return view('pages.upccoming_tournaments');
+    }
+public function championTrophy(){
     return view('pages.fixtures_c_trophy');
-}
-public function upcommingTournamnets(){
-    return view('pages.upccoming_tournaments');
 }
     public function rankings(){
         return view('pages.rankings');
@@ -93,7 +96,7 @@ public function upcommingTournamnets(){
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'user_message' => $request->get('message')
-                ), function ($message) use ($request) {
+        ), function ($message) use ($request) {
             $message->from($request->get('email'));
             $message->to('umair_hamid100@yahoo.com', 'Admin')->subject('Gamithon Contact');
         });
@@ -108,10 +111,10 @@ public function upcommingTournamnets(){
      */
     protected function validatorContact(array $data) {
         return Validator::make($data, [
-                    'name' => 'required|max:255',
-                    'email' => 'required',
-                    'subject' => 'required',
-                    'message' => 'required'
+            'name' => 'required|max:255',
+            'email' => 'required',
+            'subject' => 'required',
+            'message' => 'required'
         ]);
     }
 
@@ -124,9 +127,9 @@ public function upcommingTournamnets(){
 
     public function howPlay() {
         $data['tournament'] = \App\Tournament::where('id', 1)
-                ->with('tournament_game.game_actions.game_terms', 'game_term_points')
-                ->firstOrFail()
-                ->toArray();
+            ->with('tournament_game.game_actions.game_terms', 'game_term_points')
+            ->firstOrFail()
+            ->toArray();
         $data['game_actions'] = $data['tournament']['tournament_game']['game_actions'];
         return view('pages.how-to-play', $data);
     }

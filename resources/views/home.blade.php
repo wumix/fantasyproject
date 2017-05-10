@@ -179,19 +179,13 @@
                             </thead>
                             <tbody class="main-taible-body">
                             <tr class="trr">
-                                <td class="border-r">Champions Trophy
+                                <td class="border-r"> <a href="{{route('championtrophy')}}">Champions Trophy</a>
                                 </td>
-                                <td class="border-r">India</td>
+                                <td class="border-r">England</td>
                                 <td class="border-r">1 June 2017</td>
                                 <td>18 June 2017</td>
                             </tr>
-                            <tr class="trr">
-                                <td class="border-r">Champions Trophy
-                                </td>
-                                <td class="border-r">India</td>
-                                <td class="border-r">2017-04-05 14:30:00</td>
-                                <td>2017-08-15 11:30:00</td>
-                            </tr>
+
                             </tbody>
                         </table>
                     </div>

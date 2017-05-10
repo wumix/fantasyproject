@@ -29,6 +29,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('terms', 'HomeController@termsCon')->name('TermsCon');
     Route::get('champions-trophy', 'HomeController@fixturs')->name('champion');
     Route::get('upcomming', 'HomeController@upcommingTournamnets')->name('upcommingTournamnets');
+    Route::get('Champions_trophy', 'HomeController@championTrophy')->name('championtrophy');
     Route::get('rankings', 'HomeController@rankings')->name('rankings');
 
     Route::get('how-to-play', 'HomeController@howPlay')->name('howPlay');
@@ -48,7 +49,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::group(['prefix' => 'user'], function () {
             Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
             Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
-             Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');
+            Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');
             Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
             Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('postUserProfile');
             Route::any('/team-detail/', 'DashboardController@teamDetail')->name('teamdetail');

@@ -76,6 +76,9 @@ class HomeController extends Controller {
 public function fixturs(){
     return view('pages.fixtures');
 }
+public function upcommingTournamnets(){
+    return view('pages.upccoming_tournaments');
+}
 
     public function postContact(Request $request) {
         $this->validatorContact($request->all())->validate();

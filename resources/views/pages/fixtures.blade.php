@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="text-center" style="color: #F9960E;">
-                    Gamithon Gossips
+                    Fixtures
                 </h1>
                 <hr class="light full">
 

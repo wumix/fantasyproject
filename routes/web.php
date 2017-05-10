@@ -28,6 +28,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('privacy', 'HomeController@privacyPolicy')->name('PrivacyPolicy');
     Route::get('terms', 'HomeController@termsCon')->name('TermsCon');
     Route::get('fixtures', 'HomeController@fixturs')->name('fixtures');
+    Route::get('upcomming', 'HomeController@upcommingTournamnets')->name('upcommingTournamnets');
 
     Route::get('how-to-play', 'HomeController@howPlay')->name('howPlay');
     Route::get('/tournaments', 'User\TournamentsController@index')->name('usertournamenthome');

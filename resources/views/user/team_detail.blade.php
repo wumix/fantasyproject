@@ -66,11 +66,11 @@ foreach ($team_score as $teamplayers) {
                     <table class="table table-striped" id="tortable">
                         <thead class="main-taible-head">
                             <tr>
-                                <th class="border-r th1" style="width: 200px;
+                                <th class="border-r th1" style="min-width: 250px;
                                     ">&nbsp;</th>
-                                <th class="border-r">Player</th>
+                                <th class="border-r" style="min-width: 250px;">Player</th>
                                 <th class="border-r" style="min-width: 150px;">Belongs To</th>
-                                <th class="border-r" style="width: 200px;">Points</th>
+                                <th class="border-r" style="min-width: 250px;">Points</th>
                                 <th class="th2" colspan="2">Actions</th>
                             </tr>
                         </thead>
@@ -122,7 +122,7 @@ foreach ($team_score as $teamplayers) {
                             @endforeach
                             @endforeach
                             <tr>
-                                <td class="border-r1 text-left" style="width: 200px; position: relative;">
+                                <td class="border-r1 text-left" style="min-width: 250px; position: relative;">
                                     <div class="current_player">
                                         <img style="width: 80px;" class="img-thumbnail" src="{{getUploadsPath($row['profile_pic'])}}">
                                     </div>
@@ -141,12 +141,12 @@ foreach ($team_score as $teamplayers) {
 
                                 </td>
 
-                                <td class="border-r1 " style="position: relative; min-width: 180px; text-align: center;" >
+                                <td class="border-r1 " style="position: relative; min-width: 250px; text-align: center;" >
                                     <span style="position: absolute ; left:50px;text-align: center; " >  {{$row['name']}}</span>
                                     <br>
                                     <span style="position: absolute ;bottom: 23px; left:50px;text-align: center; " > {{$playertransferedname}}</span>
                                 </td>
-                                <td class="border-r1 " style="position: relative;" style="width: 200px;">
+                                <td class="border-r1 " style="position: relative;" style="min-width: 150px;">
                                     @foreach($row['player_actual_teams'] as $playerteam )
                                     {{ $playerteam['name']}}
                                     @endforeach
@@ -154,7 +154,7 @@ foreach ($team_score as $teamplayers) {
                                     <br>
                                     <span style="position: absolute ;bottom: 23px; "></span>
                                 </td>
-                                <td class="border-r1 " style="position:  relative; text-align:center;width: 180px;">
+                                <td class="border-r1 " style="position:  relative; text-align:center;min-width: 250px;">
                                     <span style="position: absolute;"> {{ $playertotal}}  </span>
                                     <br>
                                     @if($flag==1)

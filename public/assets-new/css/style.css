@@ -868,5 +868,11 @@ width: 100%;
     font-size: 12px;
     margin-left: -15px;
 }
+.newsbackground{
+    background-color: #cccccc;
+}
+.newscolor{
+    background-color: #ffffff;
+}
 
 /*...................................News End........................................*/

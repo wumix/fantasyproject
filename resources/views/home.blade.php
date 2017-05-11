@@ -288,28 +288,30 @@
         {{--</div>--}}
     {{--</div>--}}
     {{--</section>--}}
-{{--<section>--}}
-    {{--<div class="container">--}}
+{{--<section class="newsbackground">--}}
+    {{--<div class="container " >--}}
         {{--<div class="row">--}}
         {{--<div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
         {{--<h3 class="gallery-title">LATEST NEWS</h3>--}}
         {{--</div>--}}
         {{--<div class="row">--}}
-            {{--<div class="col-md-4">--}}
-                {{--<div class="media">--}}
+            {{--<div class="col-md-4 ">--}}
+                {{--<div class="media newscolor">--}}
                     {{--<div class="media-left">--}}
                         {{--<a href="{{getUploadsPath('asdasd')}}">--}}
-                            {{--<img class="media-object" src="..." alt="...">--}}
+                            {{--<img class="media-object" src="http://gamithon.dev/assets-new/img/aaa.jpg" alt="...">--}}
                         {{--</a>--}}
                     {{--</div>--}}
                     {{--<div class="media-body">--}}
                         {{--<h4 class="media-heading">              Ireland Tri-Nation Series</h4>--}}
 
-                        {{--New-Zeeland premier fast bowler Wanger said he has worked on depth bowling and also worked on how to stay consistence. </div>--}}
+                        {{--New-Zeeland premier fast bowler Wanger said he has worked on depth bowling and also worked on how to stay consistence.--}}
+                    {{--<a href="">Read More...</a>--}}
+                    {{--</div>--}}
                 {{--</div>--}}
             {{--</div>--}}
-            {{--<div class="col-md-4">--}}
-                {{--<div class="media">--}}
+            {{--<div class="col-md-4 " >--}}
+                {{--<div class="media newscolor">--}}
                     {{--<div class="media-left">--}}
                         {{--<a href="{{getUploadsPath('asdasd')}}">--}}
                             {{--<img class="media-object" src="..." alt="...">--}}
@@ -321,8 +323,8 @@
                         {{--Misbah is hopeful that this occasion will give additional motivation to the team. He further added that emotions are flowing but he will stay focus. </div>--}}
                 {{--</div>--}}
             {{--</div>--}}
-            {{--<div class="col-md-4">--}}
-                {{--<div class="media">--}}
+            {{--<div class="col-md-4 " >--}}
+                {{--<div class="media newscolor">--}}
                     {{--<div class="media-left">--}}
                         {{--<a href="{{getUploadsPath('asdasd')}}">--}}
                             {{--<img class="media-object" src="..." alt="...">--}}
@@ -332,6 +334,7 @@
                         {{--<h4 class="media-heading">Perth Stadium Is Not Available For Ashes</h4>--}}
                         {{--The western Australian govt said, perth stadium will not host any match of ashes series between Australia and England. Stadium is under construction and will not be completed till mid decemeber.  </div>--}}
                 {{--</div>--}}
+            {{--</div>--}}
             {{--</div>--}}
         {{--</div>--}}
     {{--</div>--}}
@@ -392,14 +395,14 @@
 
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" KXIP vs GL">
+                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" DD VS GL">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    KXIP vs GL
+                                    DD VS GL
                                 </div>
                                 <div class="project-name">
-                                    Lions won by 6 wickets
+                                    Daredevils won by 2 wickets
                                 </div>
                             </div>
                         </div>
@@ -409,14 +412,14 @@
 
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt=" KXIP vs GL">
+                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt=" DD VS GL">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    KXIP vs GL
+                                    DD VS GL
                                 </div>
                                 <div class="project-name">
-                                    Lions won by 6 wickets
+                                    Daredevils won by 2 wickets
                                 </div>
                             </div>
                         </div>
@@ -424,14 +427,14 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/103.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/103.jpg" class="img-responsive" alt=" KXIP vs GL">
+                        <img src="img/portfolio/thumbnails/103.jpg" class="img-responsive" alt=" DD VS GL">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    KXIP vs GL
+                                    DD VS GL
                                 </div>
                                 <div class="project-name">
-                                    Lions won by 6 wickets
+                                    Daredevils won by 2 wickets
                                 </div>
                             </div>
                         </div>
@@ -440,14 +443,14 @@
 
                 <div class="col-lg-4 col-sm-6">
                     <a href="../img/portfolio/thumbnails/201.jpg" class="portfolio-box">
-                        <img src="../img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="DD VS MI">
+                        <img src="../img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="KXIP VS KKR">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS MI
+                                    KXIP VS KKR
                                 </div>
                                 <div class="project-name">
-                                    Indians won by 146 runs
+                                     Kings won by 14 runs
                                 </div>
                             </div>
 
@@ -457,14 +460,14 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="DD VS MI">
+                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="KXIP VS KKR">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS MI
+                                    KXIP VS KKR
                                 </div>
                                 <div class="project-name">
-                                    Indians won by 146 runs
+                                    Kings won by 14 runs
                                 </div>
                             </div>
                         </div>
@@ -472,14 +475,14 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/203.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="DD VS MI">
+                        <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="KXIP VS KKR">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS MI
+                                    KXIP VS KKR
                                 </div>
                                 <div class="project-name">
-                                    Indians won by 146 runs
+                                    Kings won by 14 runs
                                 </div>
                             </div>
                         </div>
@@ -488,14 +491,14 @@
 
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="DD VS GL">
+                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="SRH VS MI">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS GL
+                                    SRH VS MI
                                 </div>
                                 <div class="project-name">
-                                    Daredevils won by 7 wickets
+                                    Sunrisers won by 7 wickets
                                 </div>
                             </div>
                         </div>
@@ -505,14 +508,14 @@
 
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="DD VS GL">
+                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="SRH VS MI">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS GL
+                                    SRH VS MI
                                 </div>
                                 <div class="project-name">
-                                    Daredevils won by 7 wickets
+                                    Sunrisers won by 7 wickets
                                 </div>
                             </div>
                         </div>
@@ -520,14 +523,14 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt="DD VS GL">
+                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt="SRH VS MI">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS GL
+                                    SRH VS MI
                                 </div>
                                 <div class="project-name">
-                                    Daredevils won by 7 wickets
+                                    Sunrisers won by 7 wickets
                                 </div>
                             </div>
                         </div>

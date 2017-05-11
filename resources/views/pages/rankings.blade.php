@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-heading">
-                       Icc Player Rankings
+                       ICC Player Rankings
                     </h1>
                     <hr class="light full">
 
@@ -44,7 +44,7 @@
                                                         <th>Player</th>
                                                         <th>Belongs To</th>
 
-                                                        <th>Pints</th>
+                                                        <th>Points</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody class="table-has-player">
@@ -143,7 +143,7 @@
                                                         <th>Player</th>
                                                         <th>Belongs To</th>
 
-                                                        <th>Pints</th>
+                                                        <th>Points</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody class="table-has-player">
@@ -242,7 +242,7 @@
                                                         <th>Player</th>
                                                         <th>Belongs To</th>
 
-                                                        <th>Pints</th>
+                                                        <th>Points</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody class="table-has-player">
@@ -372,7 +372,7 @@
                                                         <th>Player</th>
                                                         <th>Belongs To</th>
 
-                                                        <th>Pints</th>
+                                                        <th>Points</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody class="table-has-player">
@@ -471,7 +471,7 @@
                                                         <th>Player</th>
                                                         <th>Belongs To</th>
 
-                                                        <th>Pints</th>
+                                                        <th>Points</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody class="table-has-player">
@@ -570,7 +570,7 @@
                                                         <th>Player</th>
                                                         <th>Belongs To</th>
 
-                                                        <th>Pints</th>
+                                                        <th>Points</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody class="table-has-player">
@@ -700,7 +700,7 @@
                                                         <th>Player</th>
                                                         <th>Belongs To</th>
 
-                                                        <th>Pints</th>
+                                                        <th>Points</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody class="table-has-player">
@@ -799,7 +799,7 @@
                                                         <th>Player</th>
                                                         <th>Belongs To</th>
 
-                                                        <th>Pints</th>
+                                                        <th>Points</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody class="table-has-player">
@@ -898,7 +898,7 @@
                                                         <th>Player</th>
                                                         <th>Belongs To</th>
 
-                                                        <th>Pints</th>
+                                                        <th>Points</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody class="table-has-player">

@@ -52,8 +52,8 @@ and open the template in the editor.
     color: #959595;
     /* margin: 1px 1px 0 1px;*/
 }
-.media{
-    padding: 5px 5px 5px 5px;
+.media1{
+    padding: 10px 5px 5px 0;
 }
 .btn-sm.round {
     border-radius: 24px;

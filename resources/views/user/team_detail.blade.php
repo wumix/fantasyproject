@@ -66,9 +66,9 @@ foreach ($team_score as $teamplayers) {
                     <table class="table table-striped" id="tortable">
                         <thead class="main-taible-head">
                             <tr>
-                                <th class="border-r th1" style="min-width: 200px;
+                                <th class="border-r th1" style="min-width: 100px;
                                     ">&nbsp;</th>
-                                <th class="border-r" style="min-width: 250px;">Player</th>
+                                <th class="border-r" style="min-width: 200px;">Player</th>
                                 <th class="border-r" style="min-width: 150px;">Belongs To</th>
                                 <th class="border-r" style="min-width: 250px;">Points</th>
                                 <th class="th2" colspan="2">Actions</th>

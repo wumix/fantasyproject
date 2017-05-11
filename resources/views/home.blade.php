@@ -291,9 +291,7 @@
 {{--<section class="newsbackground">--}}
     {{--<div class="container " >--}}
         {{--<div class="row">--}}
-        {{--<div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
-        {{--<h3 class="gallery-title">LATEST NEWS</h3>--}}
-        {{--</div>--}}
+
         {{--<div class="row">--}}
             {{--<div class="col-md-4 ">--}}
                 {{--<div class="media newscolor">--}}
@@ -302,11 +300,13 @@
                             {{--<img class="media-object" src="http://gamithon.dev/assets-new/img/aaa.jpg" alt="...">--}}
                         {{--</a>--}}
                     {{--</div>--}}
-                    {{--<div class="media-body">--}}
-                        {{--<h4 class="media-heading">              Ireland Tri-Nation Series</h4>--}}
+                    {{--<div class="media-body media1">--}}
+                        {{--<h4 class="media-heading mediah" >              Ireland Tri-Nation Series</h4>--}}
 
+                        {{--<span style="font-size: 12px;">--}}
                         {{--New-Zeeland premier fast bowler Wanger said he has worked on depth bowling and also worked on how to stay consistence.--}}
-                    {{--<a href="">Read More...</a>--}}
+                        {{--<a href="">Read More...</a>--}}
+    {{--</span>--}}
                     {{--</div>--}}
                 {{--</div>--}}
             {{--</div>--}}
@@ -314,25 +314,32 @@
                 {{--<div class="media newscolor">--}}
                     {{--<div class="media-left">--}}
                         {{--<a href="{{getUploadsPath('asdasd')}}">--}}
-                            {{--<img class="media-object" src="..." alt="...">--}}
+                            {{--<img class="media-object" src="http://gamithon.dev/assets-new/img/aaa.jpg" alt="...">--}}
                         {{--</a>--}}
                     {{--</div>--}}
-                    {{--<div class="media-body">--}}
-                        {{--<h4 class="media-heading">Misbah In His Last Appearance</h4>--}}
-
-                        {{--Misbah is hopeful that this occasion will give additional motivation to the team. He further added that emotions are flowing but he will stay focus. </div>--}}
+                    {{--<div class="media-body media1">--}}
+                        {{--<h4 class="media-heading mediah">              Ireland Tri-Nation Series</h4>--}}
+{{--<span style="font-size: 12px;">--}}
+                        {{--New-Zeeland premier fast bowler Wanger said he has worked on depth bowling and also worked on how to stay consistence.--}}
+                        {{--<a href="">Read More...</a>--}}
+    {{--</span>--}}
+                    {{--</div>--}}
                 {{--</div>--}}
             {{--</div>--}}
             {{--<div class="col-md-4 " >--}}
                 {{--<div class="media newscolor">--}}
                     {{--<div class="media-left">--}}
                         {{--<a href="{{getUploadsPath('asdasd')}}">--}}
-                            {{--<img class="media-object" src="..." alt="...">--}}
+                            {{--<img class="media-object" src="http://gamithon.dev/assets-new/img/aaa.jpg" alt="...">--}}
                         {{--</a>--}}
                     {{--</div>--}}
-                    {{--<div class="media-body">--}}
-                        {{--<h4 class="media-heading">Perth Stadium Is Not Available For Ashes</h4>--}}
-                        {{--The western Australian govt said, perth stadium will not host any match of ashes series between Australia and England. Stadium is under construction and will not be completed till mid decemeber.  </div>--}}
+                    {{--<div class="media-body media1">--}}
+                        {{--<h4 class="media-heading mediah">              Ireland Tri-Nation Series</h4>--}}
+                        {{--<span style="font-size: 12px;">--}}
+                        {{--New-Zeeland premier fast bowler Wanger said he has worked on depth bowling and also worked on how to stay consistence.--}}
+                        {{--<a href="">Read More...</a>--}}
+    {{--</span>--}}
+                    {{--</div>--}}
                 {{--</div>--}}
             {{--</div>--}}
             {{--</div>--}}

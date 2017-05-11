@@ -66,7 +66,7 @@ foreach ($team_score as $teamplayers) {
                     <table class="table table-striped" id="tortable">
                         <thead class="main-taible-head">
                             <tr>
-                                <th class="border-r th1" style="min-width: 250px;
+                                <th class="border-r th1" style="min-width: 200px;
                                     ">&nbsp;</th>
                                 <th class="border-r" style="min-width: 250px;">Player</th>
                                 <th class="border-r" style="min-width: 150px;">Belongs To</th>
@@ -122,7 +122,7 @@ foreach ($team_score as $teamplayers) {
                             @endforeach
                             @endforeach
                             <tr>
-                                <td class="border-r1 text-left" style="min-width: 250px; position: relative;">
+                                <td class="border-r1 text-left" style="min-width: 200px; position: relative;">
                                     <div class="current_player">
                                         <img style="width: 80px;" class="img-thumbnail" src="{{getUploadsPath($row['profile_pic'])}}">
                                     </div>

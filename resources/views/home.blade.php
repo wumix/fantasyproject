@@ -169,7 +169,7 @@
         </div>
     </section>
 
-    <section class="bg-primary" id="about">
+    <section class="bg-primary" id="about" style="margin-top: -40px;">
         <div class="container">
             <div class="row">
 

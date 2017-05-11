@@ -47,7 +47,7 @@
                                             <td class="border-r1">
                                                 {{$row['player_roles'][0]['name']}}
                                             </td>
-                                            <td class="border-r1">
+                                            <td class="border-r1 ">
                                                 <?php
                                                 $playerThisTournamnetPrice = 0;
                                                 if (!empty($val['pivot'])) {

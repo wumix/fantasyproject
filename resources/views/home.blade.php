@@ -338,64 +338,36 @@
     {{--</div>--}}
 {{--</section>--}}
 
-{{--<section class="newsbackground">--}}
-    {{--<div class="container " >--}}
-        {{--<div class="row">--}}
+<section class="newsbackground">
+    <div class="container " >
+        <div class="row">
 
-        {{--<div class="row">--}}
-            {{--<div class="col-md-4 " style="margin: 15px 0 15px 0;">--}}
-                {{--<div class="media newscolor">--}}
-                    {{--<div class="media-left">--}}
-                        {{--<a href="{{getUploadsPath('asdasd')}}">--}}
-                            {{--<img class="media-object" src="http://gamithon.dev/assets-new/img/aaa.jpg" alt="...">--}}
-                        {{--</a>--}}
-                    {{--</div>--}}
-                    {{--<div class="media-body media1">--}}
-                        {{--<h4 class="media-heading mediah" >              Ireland Tri-Nation Series</h4>--}}
+        <div class="row">
+            <!-- start news -->
+            @foreach($news as $key=>$val)
+            <div class="col-md-4 " style="margin: 15px 0 15px 0; outline: #efefef solid 1px; padding: 5px;">
+                <div class="media newscolor">
+                    <div class="media-left">
+                        <a href="{{getUploadsPath($val['image'])}}">
+                            <img class="media-object" src="http://gamithon.dev/assets-new/img/aaa.jpg" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body media1">
+                        <h4 class="media-heading mediah" > {{$val['title']}}</h4>
 
-                        {{--<span style="font-size: 12px;">--}}
-                        {{--New-Zeeland premier fast bowler Wanger said he has worked on--}}
-                        {{--<a href="">Read More...</a>--}}
-    {{--</span>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="col-md-4 " style="margin: 15px 0 15px 0;">--}}
-                {{--<div class="media newscolor">--}}
-                    {{--<div class="media-left">--}}
-                        {{--<a href="{{getUploadsPath('asdasd')}}">--}}
-                            {{--<img class="media-object" src="http://gamithon.dev/assets-new/img/aaa.jpg" alt="...">--}}
-                        {{--</a>--}}
-                    {{--</div>--}}
-                    {{--<div class="media-body media1">--}}
-                        {{--<h4 class="media-heading mediah">              Ireland Tri-Nation Series</h4>--}}
-{{--<span style="font-size: 12px;">--}}
-                        {{--New-Zeeland premier fast bowler Wanger said he has worked on depth bowling and also worked on how to stay consistence.--}}
-                        {{--<a href="">Read More...</a>--}}
-    {{--</span>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="col-md-4 " >--}}
-                {{--<div class="media newscolor">--}}
-                    {{--<div class="media-left">--}}
-                        {{--<a href="{{getUploadsPath('asdasd')}}">--}}
-                            {{--<img class="media-object" src="http://gamithon.dev/assets-new/img/aaa.jpg" alt="...">--}}
-                        {{--</a>--}}
-                    {{--</div>--}}
-                    {{--<div class="media-body media1">--}}
-                        {{--<h4 class="media-heading mediah">              Ireland Tri-Nation Series</h4>--}}
-                        {{--<span style="font-size: 12px;">--}}
-                        {{--New-Zeeland premier fast bowler Wanger said he has worked on depth bowling and also--}}
-                        {{--<a href="">Read More...</a>--}}
-    {{--</span>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</section>--}}
+                        <span style="font-size: 12px;">
+                       {{$val['description']}}
+                        <a href="{{route('newsdetail',['id'=>$val['id']])}}">Read More...</a>
+    </span>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            <!-- end news -->
+            </div>
+        </div>
+    </div>
+</section>
 
 
     <!-- LETS PLAY AT GAMITHON  Start-->

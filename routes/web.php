@@ -37,6 +37,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/blog', 'BlogController@index')->name('showBlog');
 
     Route::get('/blog/{blog_slug}', 'BlogController@showBlogPostDetail')->name('showBlogPostDetail');
+    Route::get('/news/{blog_slug}', 'NewsController@showNewsDetail')->name('newsdetail');
     Route::get('signup-confirmation', function () {
         returnview('pages.signup-thankyou');
     });

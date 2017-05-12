@@ -69,6 +69,8 @@ class HomeController extends Controller
         $data['tournaments_list'] = $objTourmament->toArray();
         $data['matches'] = \App\Match::getNextMatch();
         $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
+        $data['news'] = \App\BlogPost::where('post_type','news')->get()->toArray();
+       // dd( $data['news']);
 
 
         return view('home', $data);

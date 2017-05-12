@@ -51,6 +51,19 @@
                                 @endforeach
                             </div>
                         </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Post Type
+                                </h3>
+                            </div>
+                            <div class="panel-bod                                                                                y">
+                                <select class="form-control" name="post_type">
+                                    <option value="blog">post</option>
+                                    <option value="news">News</option>
+                                </select>
+                            </div>
+                        </div>
 
 
                         <div class="panel panel-default">

@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="text-center page-heading">
-                        BLOG
+                       {{$postdetail['title']}}
                     </h1>
                     <hr class="light full">
 
@@ -42,54 +42,54 @@
                         </p>
                     </section>
 
-                    <section class="no-padding">
-                        <h3 id="add-comment-in" class="textgreen">
-                            COMMENTS
-                        </h3>
-                        @foreach($comments as $comment)
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="col-md-2">
-                                        <img
-                                                src="{{getUploadsPath($comment['user']['profile_pic'])}}"
-                                                class="img-thumbnail"
-                                                alt="Cinque Terre"
-                                        >
+                    {{--<section class="no-padding">--}}
+                        {{--<h3 id="add-comment-in" class="textgreen">--}}
+                            {{--COMMENTS--}}
+                        {{--</h3>--}}
+                        {{--@foreach($comments as $comment)--}}
+                            {{--<div class="row">--}}
+                                {{--<div class="col-md-12">--}}
+                                    {{--<div class="col-md-2">--}}
+                                        {{--<img--}}
+                                                {{--src="{{getUploadsPath($comment['user']['profile_pic'])}}"--}}
+                                                {{--class="img-thumbnail"--}}
+                                                {{--alt="Cinque Terre"--}}
+                                        {{-->--}}
 
-                                    </div>
+                                    {{--</div>--}}
 
-                                    <div class="col-md-10 comment-text">
-                                        <h3 class="no-padding" style="margin-top: 5px;">{{$comment['user']['name']}}</h3>
-                                        <p class="blogcontent">
-                                            {!! $comment['comment'] !!}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr />
-                        @endforeach
+                                    {{--<div class="col-md-10 comment-text">--}}
+                                        {{--<h3 class="no-padding" style="margin-top: 5px;">{{$comment['user']['name']}}</h3>--}}
+                                        {{--<p class="blogcontent">--}}
+                                            {{--{!! $comment['comment'] !!}--}}
+                                        {{--</p>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<hr />--}}
+                        {{--@endforeach--}}
 
-                    </section>
+                    {{--</section>--}}
 
 
 
-                    <section class="col-md-12 no-padding" style="padding-bottom: 20px;">
+                    {{--<section class="col-md-12 no-padding" style="padding-bottom: 20px;">--}}
 
-                        <h3 class="textgreen">
-                            Leave a reply
-                        </h3>
+                        {{--<h3 class="textgreen">--}}
+                            {{--Leave a reply--}}
+                        {{--</h3>--}}
 
-                        <form id="add-comment" class="comment-form" novalidate="">
+                        {{--<form id="add-comment" class="comment-form" novalidate="">--}}
 
-                            <div class="col-md-12 paddingtextarea">
-                                @if(Auth::check())
-                                    <textarea id="comment" class="bordercolor" placeholder="Comment (required)"
-                                              name="comment" aria-required="true" rows="10" tabindex="4"
-                                              style="width: 100%"></textarea>
-                                @else
-                                    <a href="/login"> Login To comment</a>
-                                @endif
-                            </div>
+                            {{--<div class="col-md-12 paddingtextarea">--}}
+                                {{--@if(Auth::check())--}}
+                                    {{--<textarea id="comment" class="bordercolor" placeholder="Comment (required)"--}}
+                                              {{--name="comment" aria-required="true" rows="10" tabindex="4"--}}
+                                              {{--style="width: 100%"></textarea>--}}
+                                {{--@else--}}
+                                    {{--<a href="/login"> Login To comment</a>--}}
+                                {{--@endif--}}
+                            {{--</div>--}}
 
                             {{--<div class="row paddingtextarea">--}}
                             {{--<div class=" col-md-4">--}}
@@ -105,24 +105,24 @@
                             {{--<input type="text" class="form-control form-control1" name="url"   placeholder=" Website"/>--}}
                             {{--</div>--}}
                             {{--</div>--}}
-                            <div class="col-md-12 no-padding">
-                                @if(Auth::check())
-                                    <button name="submit" type="submit" class="btn btn-lg btn1"> Submit Comment</button>
-                                @endif
+                            {{--<div class="col-md-12 no-padding">--}}
+                                {{--@if(Auth::check())--}}
+                                    {{--<button name="submit" type="submit" class="btn btn-lg btn1"> Submit Comment</button>--}}
+                                {{--@endif--}}
 
-                            </div>
-                            <!-- <div class="ceckbox">
-                                <div class="form-group ceckbox">
-                                    <input type="checkbox" class="form-group">
-                                    <label class="bloginnertext " >
-                                        Notify me of follow-up comments by email.</label></div>
-                                <div class="form-group" style="margin-top: -10px;">
-                                    <input type="checkbox">
-                                    <label class="bloginnertext">
-                                        Notify me of follow-up comments by email.</label></div>
-                            </div> -->
-                        </form>
-                    </section>
+                            {{--</div>--}}
+                            {{--<!-- <div class="ceckbox">--}}
+                                {{--<div class="form-group ceckbox">--}}
+                                    {{--<input type="checkbox" class="form-group">--}}
+                                    {{--<label class="bloginnertext " >--}}
+                                        {{--Notify me of follow-up comments by email.</label></div>--}}
+                                {{--<div class="form-group" style="margin-top: -10px;">--}}
+                                    {{--<input type="checkbox">--}}
+                                    {{--<label class="bloginnertext">--}}
+                                        {{--Notify me of follow-up comments by email.</label></div>--}}
+                            {{--</div> -->--}}
+                        {{--</form>--}}
+                    {{--</section>--}}
 
 
                 </div>
@@ -134,17 +134,17 @@
 
                         </div>
 
-                        <div class="blogheading2"><h4 class="textgreen">Recent Post</h4>
-                            <hr class="bloghr">
-                            <ul class="nav navbd">
-                                @foreach($posts as $post)
-                                    <li>
-                                        <a href="{{route('showBlogPostDetail',['post_id'=>$post['id']])}}" class="bloglinkcolor ">{{$post['title']}}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
+                        {{--<div class="blogheading2"><h4 class="textgreen">Recent Post</h4>--}}
+                            {{--<hr class="bloghr">--}}
+                            {{--<ul class="nav navbd">--}}
+                                {{--@foreach($posts as $post)--}}
+                                    {{--<li>--}}
+                                        {{--<a href="{{route('showBlogPostDetail',['post_id'=>$post['id']])}}" class="bloglinkcolor ">{{$post['title']}}</a>--}}
+                                    {{--</li>--}}
+                                {{--@endforeach--}}
+                            {{--</ul>--}}
 
-                        </div>
+                        {{--</div>--}}
                     </div>
                 </div>
 

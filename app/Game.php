@@ -30,5 +30,8 @@ class Game extends Model {
     public function game_actions() {
         return $this->hasMany('App\GameAction');
     }
+    public function game_type(){
+       return $this->hasMany('App\GameType');
+    }
 
 }

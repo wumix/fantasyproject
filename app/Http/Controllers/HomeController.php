@@ -22,14 +22,16 @@ use Validator;
  * Class HomeController
  * @package App\Http\Controllers
  */
-class HomeController extends Controller {
+class HomeController extends Controller
+{
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         // $this->middleware('auth');
     }
 
@@ -38,10 +40,11 @@ class HomeController extends Controller {
      *
      * @return Response
      */
-    function getServerTimeAsGMT() {
+    function getServerTimeAsGMT()
+    {
         $timestamp = localtime();
         $timestamp[5] += 1900;
-        $timestamp[4] ++;
+        $timestamp[4]++;
         for ($i = 0; $i <= 9; $i++) {
             if ($timestamp[0] == $i) {
                 $newValue = "0" . $i;
@@ -60,7 +63,8 @@ class HomeController extends Controller {
         return $this->timestamp;
     }
 
-    public function index() {
+    public function index()
+    {
         $objTourmament = \App\Tournament::all()->sortBy("start_date");
         $data['tournaments_list'] = $objTourmament->toArray();
         $data['matches'] = \App\Match::getNextMatch();
@@ -70,23 +74,39 @@ class HomeController extends Controller {
         return view('home', $data);
     }
 
-    public function contactPage() {
+    public function contactPage()
+    {
         return view('pages.contact');
     }
-    public function fixturs(){
+
+    public function fixturs()
+    {
         return view('pages.fixtures_c_trophy');
     }
-    public function upcommingTournamnets(){
+
+    public function upcommingTournamnets()
+    {
         return view('pages.upccoming_tournaments');
     }
-public function championTrophy(){
-    return view('pages.fixtures_c_trophy');
-}
-    public function rankings(){
-        return view('pages.rankings');
+
+
+
+    public function championTrophy()
+    {
+        return view('pages.fixtures_c_trophy');
     }
 
-    public function postContact(Request $request) {
+    public function rankings()
+    {
+        $stats = \App\Game::where('id', '1')
+            ->with('game_roles','game_type.game_type_points.player_roles')->get()->toArray();
+        $data['rankings']=$stats;
+      //dd($stats);
+        return view('pages.rankings',$data);
+    }
+
+    public function postContact(Request $request)
+    {
         $this->validatorContact($request->all())->validate();
         $emailRecievers = [
             'umair_hamid100@yahoo.com',
@@ -109,7 +129,8 @@ public function championTrophy(){
      * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validatorContact(array $data) {
+    protected function validatorContact(array $data)
+    {
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required',
@@ -118,14 +139,18 @@ public function championTrophy(){
         ]);
     }
 
-    public function termsCon() {
+    public function termsCon()
+    {
         return view('pages.t-c');
     }
-    public function privacyPolicy() {
+
+    public function privacyPolicy()
+    {
         return view('pages.p-p');
     }
 
-    public function howPlay() {
+    public function howPlay()
+    {
         $data['tournament'] = \App\Tournament::where('id', 1)
             ->with('tournament_game.game_actions.game_terms', 'game_term_points')
             ->firstOrFail()

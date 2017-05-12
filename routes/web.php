@@ -53,7 +53,6 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
             Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('postUserProfile');
             Route::any('/team-detail/', 'DashboardController@teamDetail')->name('teamdetail');
-
         });
         Route::group(['prefix' => 'tournaments'], function () {
             Route::get('/addteamname/{tournament_id}', 'User\TournamentsController@addTeam')->name('addTeam');
@@ -94,6 +93,11 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
                 Route::get('addCategory', 'Admin\Blog\CategoryController@addCategory')->name('addCategory');
                 Route::post('addCategory', 'Admin\Blog\CategoryController@postAddBlogCategory')->name('postAddBlogCategory');
             });
+        });
+        Route::group(['prefix' => 'stats'], function () {
+            Route::get('/add/{id}', 'Admin\StatsController@addStatForm')->name('showAddStatForm');
+            Route::post('/add/{id}', 'Admin\StatsController@postAddStat')->name('postAddStat');
+
         });
         Route::group(['prefix' => 'games'], function () {
             Route::get('/', 'Admin\GamesController@index')->name('gameslist');

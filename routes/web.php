@@ -55,6 +55,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::any('/team-detail/', 'DashboardController@teamDetail')->name('teamdetail');
         });
         Route::group(['prefix' => 'tournaments'], function () {
+            Route::get('player-stats/{player_id}', 'User\TournamentsController@showPlayerState')->name('showPlayerStats');
             Route::get('/addteamname/{tournament_id}', 'User\TournamentsController@addTeam')->name('addTeam');
             Route::get('add-players/{team_id}/{tournament_id}', 'User\TournamentsController@playTournament')->name('addPlayers');
             Route::get('/addteam', 'User\TournamentsController@teamNamePostAjax')->name('teamNamePostAjax');

@@ -16,27 +16,30 @@ use App\Http\Controllers\Controller;
 use DateTime;
 use DateTimeZone;
 
-class TournamentsController extends Controller {
+class TournamentsController extends Controller
+{
 
-    function __construct() {
+    function __construct()
+    {
         $this->objTourmament = new \App\Tournament;
     }
 
-    function index() {
-        $objTourmament = \App\Tournament::all()->sortBy("start_date");
-        ;
+    function index()
+    {
+        $objTourmament = \App\Tournament::all()->sortBy("start_date");;
         $data['tournaments_list'] = $objTourmament->toArray();
         // dd( $data['tournaments_list']);
         return view('user.tournaments.home', $data);
     }
 
-    function showTournamentDetails($tournament_id) {
+    function showTournamentDetails($tournament_id)
+    {
 
 
         $data['tournament'] = \App\Tournament::where('id', $tournament_id)
-                ->with('tournament_game.game_actions.game_terms', 'game_term_points')
-                ->firstOrFail()
-                ->toArray();
+            ->with('tournament_game.game_actions.game_terms', 'game_term_points')
+            ->firstOrFail()
+            ->toArray();
         $data['game_actions'] = $data['tournament']['tournament_game']['game_actions'];
         //dd($data);
         try {
@@ -48,7 +51,7 @@ class TournamentsController extends Controller {
 //
 //                    }]
 //                )
-                            ->firstOrFail()->toArray();
+                ->firstOrFail()->toArray();
             //Getting firstRoleId
             $tournamentGameId = $data['tournament_detail']['game_id'];
             $role_id = Input::get('role-id');
@@ -56,17 +59,17 @@ class TournamentsController extends Controller {
                 $role_id = GameRole::where('game_id', $tournamentGameId)->first()->id;
             }
             $data['game_roles'] = GameRole::where('game_id', $tournamentGameId)
-                            ->with([
-                                'players' => function ($query) use ($role_id) {
-                                    $query->where('game_role_id', $role_id);
-                                },
-                                'players.player_tournaments' => function ($query) use($tournament_id) {
-                                    $query->where('tournament_id', $tournament_id);
-                                },'players.player_actual_teams' => function($query) {
-                                    $query->select('name', 'teams.id');
-                                }
-                            ])
-                            ->get()->toArray();
+                ->with([
+                    'players' => function ($query) use ($role_id) {
+                        $query->where('game_role_id', $role_id);
+                    },
+                    'players.player_tournaments' => function ($query) use ($tournament_id) {
+                        $query->where('tournament_id', $tournament_id);
+                    }, 'players.player_actual_teams' => function ($query) {
+                        $query->select('name', 'teams.id');
+                    }
+                ])
+                ->get()->toArray();
 
             //dd($data);
             ////////Making player price
@@ -82,7 +85,8 @@ class TournamentsController extends Controller {
         }
     }
 
-    function addTeam($tournament_id) {
+    function addTeam($tournament_id)
+    {
 
 //        $tournamentPrice=\App\Tournament::find(1)->tournament_price;
 //
@@ -101,7 +105,8 @@ class TournamentsController extends Controller {
         }
     }
 
-    function giveanygoodname($userid, $teamid, $roleid) {
+    function giveanygoodname($userid, $teamid, $roleid)
+    {
 
         $count = DB::select("SELECT COUNT(pr.game_role_id) as total FROM `user_team_players` utp
     INNER JOIN player_roles pr ON pr.player_id = utp.player_id
@@ -111,8 +116,8 @@ class TournamentsController extends Controller {
 
 //        returns no of players in user team against a specific role i.e no of batsmen
         $x = \App\UserTeam::where('user_id', $userid)
-                        ->where('tournament_id', $tournament_id)
-                        ->with('user_team_player.player_roles')->firstOrFail()->toArray();
+            ->where('tournament_id', $tournament_id)
+            ->with('user_team_player.player_roles')->firstOrFail()->toArray();
 
         $i = 0;
         foreach ($x['user_team_player'] as $row) {
@@ -122,7 +127,8 @@ class TournamentsController extends Controller {
         return $i;
     }
 
-    function playerRoleLimit($tournament_id, $roleid) {
+    function playerRoleLimit($tournament_id, $roleid)
+    {
         $max = DB::table('tournament_role_limit')->select('max_limit')->where('tournament_id', $tournament_id)->where('player_role_id', $roleid)->get();
 
         if (empty($max->toArray())) {
@@ -132,7 +138,8 @@ class TournamentsController extends Controller {
         }
     }
 
-    function playTournament($team_id, $tournament_id) {
+    function playTournament($team_id, $tournament_id)
+    {
 //        echo get_individual_player_score("1",'5','88');
 //       die;
 
@@ -140,16 +147,16 @@ class TournamentsController extends Controller {
         $tournamentDate = \App\Tournament::getStartdate($tournament_id);
         $difference = $this->getTImeDifference($tournamentDate);
 
-       // die;
+        // die;
         $usersSelectedPlayers = UserTeam::where('id', $team_id)->where('user_id', Auth::user()->id)
-                        ->with([
-                            'user_team_player',
-                            'user_team_player.player_roles',
-                            'user_team_player.player_tournaments' => function ($q) use ($tournament_id) {
-                                $q->where('tournaments.id', $tournament_id);
-                            },
-                            'teamtournament.tournament_players'
-                        ])->firstOrFail()->toArray();
+            ->with([
+                'user_team_player',
+                'user_team_player.player_roles',
+                'user_team_player.player_tournaments' => function ($q) use ($tournament_id) {
+                    $q->where('tournaments.id', $tournament_id);
+                },
+                'teamtournament.tournament_players'
+            ])->firstOrFail()->toArray();
         $tournament_id = $usersSelectedPlayers['tournament_id'];
         $selectedPlayers = [];
         if (!empty($usersSelectedPlayers['user_team_player'])) {
@@ -161,24 +168,25 @@ class TournamentsController extends Controller {
         $data['tournament_detail'] = $usersSelectedPlayers['teamtournament'];
 
         $roles = GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
-                        $q->where('tournament_id', $tournament_id);
-                    },
-                    'players' => function ($q) use ($selectedPlayers) {
-                        $q->whereNotIn('players.id', $selectedPlayers);
-                    },
-                    'players.player_actual_teams' => function($query) {
-                        $query->select('name', 'teams.id');
-                    },
-                ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
-                    $query->where('tournament_id', $tournament_id);
-                })->get()->toArray();
-       // dd($roles);die;
+            $q->where('tournament_id', $tournament_id);
+        },
+            'players' => function ($q) use ($selectedPlayers) {
+                $q->whereNotIn('players.id', $selectedPlayers);
+            },
+            'players.player_actual_teams' => function ($query) {
+                $query->select('name', 'teams.id');
+            },
+        ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
+            $query->where('tournament_id', $tournament_id);
+        })->get()->toArray();
+        // dd($roles);die;
         $data['roles'] = $this->array_filter_recursive($roles);
 
         return view('user.tournaments.my_team', $data);
     }
 
-    function array_filter_recursive($input) {
+    function array_filter_recursive($input)
+    {
         foreach ($input as &$value) {
             if (is_array($value)) {
                 $value = $this->array_filter_recursive($value);
@@ -187,21 +195,22 @@ class TournamentsController extends Controller {
         return array_filter($input);
     }
 
-    function transferPlayer($team_id, $player_id, $tournament_id) {
+    function transferPlayer($team_id, $player_id, $tournament_id)
+    {
 
 
         // dd($test=$test->toArray());
 
 
         $usersSelectedPlayers = UserTeam::where('id', $team_id)
-                        ->with([
-                            'user_team_player',
-                            'user_team_player.player_roles',
-                            'user_team_player.player_tournaments' => function ($q) use ($tournament_id) {
-                                $q->where('tournaments.id', $tournament_id);
-                            },
-                            'teamtournament.tournament_players'
-                        ])->firstOrFail()->toArray();
+            ->with([
+                'user_team_player',
+                'user_team_player.player_roles',
+                'user_team_player.player_tournaments' => function ($q) use ($tournament_id) {
+                    $q->where('tournaments.id', $tournament_id);
+                },
+                'teamtournament.tournament_players'
+            ])->firstOrFail()->toArray();
         $tournament_id = $usersSelectedPlayers['tournament_id'];
         $selectedPlayers = [];
         if (!empty($usersSelectedPlayers['user_team_player'])) {
@@ -228,20 +237,21 @@ class TournamentsController extends Controller {
         // $selectedPlayers=[1,2,3,4];
 
         $data['roles'] = GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
-                        $q->where('tournament_id', $tournament_id);
-                    },
-                    'players' => function ($q) use ($selectedPlayers) {
-                        $q->whereNotIn('players.id', $selectedPlayers);
-                    }
-                ])->where('id', $data['player_info']['player_roles'][0]['id'])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
-                    $query->where('tournament_id', $tournament_id);
-                })->get()->toArray();
+            $q->where('tournament_id', $tournament_id);
+        },
+            'players' => function ($q) use ($selectedPlayers) {
+                $q->whereNotIn('players.id', $selectedPlayers);
+            }
+        ])->where('id', $data['player_info']['player_roles'][0]['id'])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
+            $query->where('tournament_id', $tournament_id);
+        })->get()->toArray();
         // dd($data['roles']);
 
         return view('user.tournaments.player_transfer', $data);
     }
 
-    function teamNamePostAjax(Request $request) {
+    function teamNamePostAjax(Request $request)
+    {
         $tournament_id = Input::get('tournament_id');
         $userteam = Input::get('name');
         $this->validator($request->all())->validate();
@@ -255,14 +265,14 @@ class TournamentsController extends Controller {
 
         $tournamentPrice = \App\Tournament::find($tournament_id)->tournament_price;
 
-        if ($tournamentPrice < (double) getUserTotalScore(Auth::id())) {
+        if ($tournamentPrice < (double)getUserTotalScore(Auth::id())) {
             $tournamentData = [
                 'tournament_id' => $tournament_id,
                 'user_id' => Auth::id(),
                 'name' => $userteam,
             ];
             \App\UserTeam::updateOrCreate(
-                    ['id' => $teamid['id']], $tournamentData
+                ['id' => $teamid['id']], $tournamentData
             );
 
             $array = array(
@@ -283,7 +293,8 @@ class TournamentsController extends Controller {
         return response()->json($data);
     }
 
-    function getTImeDifference($tournamentDate) {
+    function getTImeDifference($tournamentDate)
+    {
         $datetime = new \DateTime($tournamentDate);
         $date = $datetime->format('Y-m-d H:i:sP');
         $dateint = strtotime($date);
@@ -293,7 +304,8 @@ class TournamentsController extends Controller {
         return $difference = round(($dateint - $date1int) / 60, 0);
     }
 
-    function transferPlayerPost(Request $request) {
+    function transferPlayerPost(Request $request)
+    {
 // dd($request->all());
         $tournamentDate = \App\Tournament::getStartdate($request->tournament_id);
         $difference = $this->getTImeDifference($tournamentDate);
@@ -303,8 +315,8 @@ class TournamentsController extends Controller {
         $objResponse['success'] = false;
         $tournament_id = $request->tournament_id;
         $player_in_price = \App\Player::where('id', $request->player_in_id)->with(['player_tournaments' => function ($k) use ($tournament_id) {
-                        $k->where('tournaments.id', $tournament_id);
-                    }])->firstORFail();
+            $k->where('tournaments.id', $tournament_id);
+        }])->firstORFail();
 
         $player_in_price = $player_in_price['player_tournaments'][0]['pivot']['player_price'];
         // dd($player_in_price);
@@ -313,7 +325,7 @@ class TournamentsController extends Controller {
         if ($difference > 15 || $difference < 15) {
 //            echo $player_in_price." ". getUserTotalScore(Auth::id());
 //            die;
-            if ($player_in_price<= getUserTotalScore(Auth::id())) {
+            if ($player_in_price <= getUserTotalScore(Auth::id())) {
 
 
                 if ($request->player_out_price >= $player_in_price) {
@@ -326,21 +338,21 @@ class TournamentsController extends Controller {
                     $transferDate = $transferDate->format('Y-m-d H:i:sP');
                     //  $playertransfers->transfer_date = $transferDate;
 //                    $playertransfers->save();
-                    $player_out_score=get_individual_player_score($tournament_id,$request->team_id,$request->player_out_id);
+                    $player_out_score = get_individual_player_score($tournament_id, $request->team_id, $request->player_out_id);
 
                     $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => 0]);
                     \App\UserPointsConsumed::insert($array);
                     $objResponse['success'] = true;
                     $objResponse['msg'] = "Player transfered successfully";
                     DB::table('user_team_players')->insert(
-                            ['team_id' => $request->team_id, 'player_id' => $request->player_in_id]
+                        ['team_id' => $request->team_id, 'player_id' => $request->player_in_id]
                     );
                     DB::table('user_team_players')->where(['team_id' => $request->team_id, 'player_id' => $request->player_out_id])->delete();
                     DB::table('player_transfer')->insert(
                         ['player_in_id' => $request->player_in_id, 'player_out_id' => $request->player_out_id,
-                            'team_id' => $request->team_id,'transfer_date'=>new DateTime(),
-                            'player_in_score'=>get_individual_player_score($tournament_id,$request->team_id, $request->player_in_id),
-                            'player_out_score'=>$player_out_score]
+                            'team_id' => $request->team_id, 'transfer_date' => new DateTime(),
+                            'player_in_score' => get_individual_player_score($tournament_id, $request->team_id, $request->player_in_id),
+                            'player_out_score' => $player_out_score]
                     );
 
 //                        $objResponse['player']['id'] = $request->player_in_id;
@@ -360,7 +372,7 @@ class TournamentsController extends Controller {
                     //   dd($netpoints);
                     $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => $netpoints]);
                     \App\UserPointsConsumed::insert($array);
-                    $player_out_score=get_individual_player_score($tournament_id,$request->team_id,$request->player_out_id);
+                    $player_out_score = get_individual_player_score($tournament_id, $request->team_id, $request->player_out_id);
 
                     DB::table('user_team_players')->where(['team_id' => $request->team_id,
                         'player_id' => $request->player_out_id])->delete();
@@ -369,9 +381,9 @@ class TournamentsController extends Controller {
                     );
                     DB::table('player_transfer')->insert(
                         ['player_in_id' => $request->player_in_id, 'player_out_id' => $request->player_out_id,
-                            'team_id' => $request->team_id,'transfer_date'=>new DateTime(),
-                            'player_in_score'=>get_individual_player_score($tournament_id,$request->team_id, $request->player_in_id),
-                            'player_out_score'=>$player_out_score]
+                            'team_id' => $request->team_id, 'transfer_date' => new DateTime(),
+                            'player_in_score' => get_individual_player_score($tournament_id, $request->team_id, $request->player_in_id),
+                            'player_out_score' => $player_out_score]
                     );
 
                     $objResponse['team_id'] = $request->team_id;
@@ -389,24 +401,25 @@ class TournamentsController extends Controller {
         }
         return response()->json($objResponse);
     }
-         function deletePlayerPost(Request $request){
 
-             DB::table('user_team_players')->where('player_id',$request->player_id)->where('team_id',$request->team_id)->delete();
-             $array = array(['action_key' => 'delete_player', 'user_id' => Auth::id(), 'points_scored' => $request->player_price]);
-             \App\UserPointsScored::insert($array);
-             $objResponse['player_id'] = $request->player_id;
-             $objResponse['success']=true;
-             $objResponse['score']=getUserTotalScore(Auth::id());;
-             $objResponse['msg']="Player Deleted Successfully";
+    function deletePlayerPost(Request $request)
+    {
 
-             return response()->json($objResponse);
+        DB::table('user_team_players')->where('player_id', $request->player_id)->where('team_id', $request->team_id)->delete();
+        $array = array(['action_key' => 'delete_player', 'user_id' => Auth::id(), 'points_scored' => $request->player_price]);
+        \App\UserPointsScored::insert($array);
+        $objResponse['player_id'] = $request->player_id;
+        $objResponse['success'] = true;
+        $objResponse['score'] = getUserTotalScore(Auth::id());;
+        $objResponse['msg'] = "Player Deleted Successfully";
+
+        return response()->json($objResponse);
 
 
+    }
 
-
-
-        }
-    function addUserPlayer(Request $request) {
+    function addUserPlayer(Request $request)
+    {
         $tournamentDate = \App\Tournament::getStartdate($request->tournament_id);
         $difference = $this->getTImeDifference($tournamentDate);
         $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
@@ -457,8 +470,8 @@ class TournamentsController extends Controller {
         //$currentNoPlayers += 1;
         if ($currentNoPlayers >= 10) {
 
-            $userteamsave=\App\UserTeam::find($request->team_id);
-            $userteamsave->joined_from_match_date=getGmtTime();
+            $userteamsave = \App\UserTeam::find($request->team_id);
+            $userteamsave->joined_from_match_date = getGmtTime();
             $userteamsave->save();
 
 
@@ -472,15 +485,21 @@ class TournamentsController extends Controller {
         }
     }
 
-    public function sucessteam($team_id) {
+    public function sucessteam($team_id)
+    {
         $data['team_id'] = $team_id;
         return view('pages.teamconfirmation', $data);
     }
 
-    protected function validator(array $data) {
+    protected function validator(array $data)
+    {
         return Validator::make($data, [
-                    'name' => 'unique:user_teams'
+            'name' => 'unique:user_teams'
         ]);
     }
 
+    public function showPlayerState()
+    {
+        return view('player.states');
+    }
 }

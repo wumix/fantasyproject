@@ -23,8 +23,8 @@
                                    placeholder="Add Category Name" type="text" name="name">
                         </div>
                         <div class="form-group">
-                            <label>Select Tournament Game</label>
-                            <textarea name="description" class="form-control" type="description"></textarea>
+                            <label>Add Category Description</label>
+                            <textarea placeholder="Add Category Description" name="description" class="form-control" type="description"></textarea>
                         </div>
 
 

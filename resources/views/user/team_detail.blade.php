@@ -53,19 +53,24 @@ foreach ($team_score as $teamplayers) {
 
         <div class="row" >
             <div class="col-lg-12">
+
                 <h1 class="page-heading">
                     {{$user_team_player_transfer['name']}}
                 </h1>
-                <hr class="light full">
+                <div class="row">
+                    <h3  class="page-heading">Your Team Score: <span id="team_score"></span></h3>
+                    <h3 class="page-heading">Points Remaining:<span id="remaining_score"></span></h3>
+                </div>
+                <hr class="light full" id="guide">
                 <div class="table-responsive">
                     <table class="table table-striped" id="tortable">
                         <thead class="main-taible-head">
                             <tr>
-                                <th class="border-r th1" style="min-width: 250px;
+                                <th class="border-r th1" style="min-width: 100px;
                                     ">&nbsp;</th>
-                                <th class="border-r">Players</th>
+                                <th class="border-r" style="min-width: 200px;">Player</th>
                                 <th class="border-r" style="min-width: 150px;">Belongs To</th>
-                                <th class="border-r" style="min-width: 150px;">Points</th>
+                                <th class="border-r" style="min-width: 250px;">Points</th>
                                 <th class="th2" colspan="2">Actions</th>
                             </tr>
                         </thead>
@@ -83,8 +88,6 @@ foreach ($team_score as $teamplayers) {
                             $playerinscore = 0;
                             $x = 0;
                             foreach ($user_team_player_transfer['user_team_player_transfers'] as $transfer) {
-
-
                                 if ($transfer['pivot']['player_in_id'] == $row['id']) {
                                     $playertransferedpic = $transfer['profile_pic'];
                                     $playertransferedname = $transfer['name'];
@@ -107,9 +110,6 @@ foreach ($team_score as $teamplayers) {
                                 $playertotal += $points['points'] * $termscore['player_term_count'];
                             } else {
                                 if (($points['qty_from'] <= $termscore['player_term_count']) && ($points['qty_to'] >= $termscore['player_term_count'])) {
-                                    //  echo $points['qty_from']." ". $termscore['player_term_count']." ".$points['qty_to']."<br>";
-
-
                                     $playertotal += $points['points'];
                                 }
                             }
@@ -117,7 +117,7 @@ foreach ($team_score as $teamplayers) {
                             @endforeach
                             @endforeach
                             <tr>
-                                <td class="border-r1 text-left" style="min-width: 250px; position: relative;">
+                                <td class="border-r1 text-left" style="min-width: 200px; position: relative;">
                                     <div class="current_player">
                                         <img style="width: 80px;" class="img-thumbnail" src="{{getUploadsPath($row['profile_pic'])}}">
                                     </div>
@@ -136,12 +136,13 @@ foreach ($team_score as $teamplayers) {
 
                                 </td>
 
-                                <td class="border-r1 " style="position: relative;" style="min-width: 150px; text-align: center;" >
-                                    {{$row['name']}}
+                                <td class="border-r1 " style="position: relative; min-width: 250px; text-align: center;" >
+                                    <span style="position: absolute ; left:50px;text-align: center; " >  {{$row['name']}}</span>
                                     <br>
-                                    <span style="position: absolute ;bottom: 23px; margin-right: 10px;text-align: center; " > {{$playertransferedname}}</span>
+                                    <span style="position: absolute ;bottom: 23px; left:50px;text-align: center; " > {{$playertransferedname}}</span>
                                 </td>
                                 <td class="border-r1 " style="position: relative;" style="min-width: 150px;">
+                                    <?php $teamtotal = 0; ?>
                                     @foreach($row['player_actual_teams'] as $playerteam )
                                     {{ $playerteam['name']}}
                                     @endforeach
@@ -149,17 +150,21 @@ foreach ($team_score as $teamplayers) {
                                     <br>
                                     <span style="position: absolute ;bottom: 23px; "></span>
                                 </td>
-                                <td class="border-r1 " style="position: relative;" style="min-width: 150px;">
-                                    {{$playertotal}}
+                                <td class="border-r1 " style="position:  relative; text-align:center;min-width: 250px;">
+                                    <span style="position: absolute;"> {{ $playertotal}}  </span>
                                     <br>
                                     @if($flag==1)
-                                    -previous score: {{$playerinscore}}
+                                    <span style="position: absolute;">
+                                        {{$playerinscore}}: <strong>previous score</strong>
+                                    </span>
 
                                     @endif
-                                    <span style="position: absolute ;bottom: 23px;; ">
+                                    <span style="position: absolute;bottom: 23px; ">
 
                                         @if($flag==1)
+
                                         {{$playertransferedscore}}
+
 
                                         @endif
 
@@ -192,6 +197,8 @@ foreach ($team_score as $teamplayers) {
             </div>
         </div>
     </div>
+    <br><br><br><br><br> <br><br>
+
 </section>
 <!-- .....................Login Form Start............................... -->
 
@@ -200,9 +207,28 @@ foreach ($team_score as $teamplayers) {
 
 @section('js')
 <script>
+    /*  var tour = new Tour({
+     steps: [
+     {
+     element: "#guide",
+     title: "Tip",
+     content: "Scroll Left and Right"
+     }
+     ]}); */
+
+    // Initialize the tour
+    //tour.init();
+
+    // Start the tour
+    //   tour.start();
+</script>
+<script>
+
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
+    $('#team_score').html('{{$teamtotal}}')
+    $('#remaining_score').html('{{getUserTotalScore(\Auth::id())}}')
 </script>
 @stop
 

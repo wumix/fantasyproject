@@ -22,7 +22,7 @@ class TeamsController extends Controller
     {
         $tournaments = \App\Tournament::all();
         $data['tournaments_list'] = $tournaments->toArray();
-        //  dd( $data['tournaments_list']);
+        // dd( $data['tournaments_list']);
         return view('adminlte::teams.add_team', $data);
     }
 
@@ -56,6 +56,7 @@ class TeamsController extends Controller
     public function addPlayersToTeam(Request $request, $team_id)
 
     {
+
         $data['selected_players'] = Team::where('id', $team_id)->with([
             'team_players'=>function($query){
                 $query->select('players.id');
@@ -65,11 +66,15 @@ class TeamsController extends Controller
         if(!empty($data['selected_players'])){
             $data['players_in_team'] = array_column($data['selected_players'], 'id');
         }
-
+        //dd($data['players_in_team']);
 
         $data['tournament_team'] = Team::where('id', $team_id)->firstOrFail()->toArray();
         $data['team_id'] = $team_id;
         $data['players'] = \App\Player::all();
+        $data['players']=$data['players']->toArray();
+       // dd($data['players_in_team']);
+//        $a=array('0'=>1,'1'=>3);
+//       dd( in_array(3,$a));
         return view('adminlte::teams.add_team_players', $data);
     }
 

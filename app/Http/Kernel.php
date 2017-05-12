@@ -17,7 +17,8 @@ class Kernel extends HttpKernel {
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
-        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class
+
     ];
 
     /**
@@ -57,7 +58,8 @@ class Kernel extends HttpKernel {
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'is_admin' => \App\Http\Middleware\CheckAdmin::class,
         'is_user' => \App\Http\Middleware\CheckUser::class,
-        'is_blogger' => \App\Http\Middleware\CheckBlogger::class
+        'is_blogger' => \App\Http\Middleware\CheckBlogger::class,
+
     ];
 
 }

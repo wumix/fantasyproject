@@ -1,0 +1,80 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : Feb 8, 2017, 3:00:16 PM
+    Author     : zulfiqar
+*/
+
+#first{
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+}
+.login-form{
+    margin:0 auto;
+    padding: 2%;
+    border:solid 1px #C0C0C0;
+    box-shadow: 5px 5px 5px #888888;
+}
+.form-input-padding{
+    padding: 2%;
+}
+.menu-text{
+    padding-top: 17px;
+    padding-left: 21px;
+}
+.media-body-padding{
+    padding-top: 10px;
+
+
+
+}
+.media-body-styling{
+    padding-top:7%;
+    background-color: #f4f4f4 !important;
+    margin: 2px 2px 0 2px;
+}
+.main-nav-bar{
+    border-bottom:solid 1px #C0C0C0;
+}
+#sop div ul li :hover{
+    background-color: blue;
+}
+#total{
+    margin: 30px 10px 0 10px;
+    background-color:#27ab15;
+    color: white;
+}
+.rs{
+    color: #959595;
+    /* margin: 1px 1px 0 1px;*/
+}
+.media1{
+    padding: 10px 5px 5px 0;
+}
+.btn-sm.round {
+    border-radius: 24px;
+}
+.mywebinar{
+    background-color: #92b713 ;
+    margin-right: 0px;
+    padding: 0 0 5px 25px;
+    color: #ffffff;
+
+}
+#exploreop{
+    border:solid 1px #C0C0C0;
+    margin: 30px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 1px 1px 2px 2px #C0C0C0;
+    align-content: center;
+}
+.adm{
+    border:solid 1px #C0C0C0;
+    box-shadow: 1px 1px 4px 4px #C0C0C0;
+    margin: 20px 20px 20px 20px;
+    padding: 0 0 5px 15px;
+}

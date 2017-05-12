@@ -2,10 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
 
-
-    <link rel="icon" href="../img/gamithon-fevi.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" href="../img/gamithon-fevi.ico" type="image/x-icon"/>
-
+     <link rel="shortcut icon" href="../img/gamithon-fevi.ico" type="image/x-icon"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
@@ -32,13 +29,12 @@
     {!! Html::style('assets/css/slicknav.css') !!}
     {!! Html::style('assets-new/css/creative.css') !!}
     {!! Html::style('assets-new/css/style.css') !!}
+    {!! Html::style('assets-new/css/fixtures.css') !!}
 
 
     {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}
     <style>
-        header {
-            background-image: url('{{URL::to("assets-new/img/header.jpg")}}');
-        }
+
 
         .slick_nav li {
             list-style: none;
@@ -48,7 +44,16 @@
 
         }
     </style>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+        ga('create', 'UA-98453424-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
 
 </head>
 <body>
@@ -63,6 +68,31 @@
                 <a class="navbar-brand logo-site page-scroll" href="/">
                     <img src="{{URL::to('assets-new/img/gamithon-logo1.png')}}" style="width: 250px;"/>
                 </a>
+                <div class="text-left" id="signhide" style="padding-left: 10px;">
+                @if(Auth::check())
+
+                        <a href="{{route('userdashboard')}}" style="color: #ffffff;"> <i style="color: #F9970E" class="fa fa-tachometer sign-in-icon" aria-hidden="true"></i>
+                            My Account</a>
+
+                @endif
+                @if(!Auth::check())
+
+                        <a href="{{route('login')}}" style="color: #ffffff;"> <i class="fa fa-sign-in sign-in-icon"
+                                                         aria-hidden="true"></i>
+                            Sign In</a>
+
+                @endif
+                @if(Auth::check())
+
+                        <a onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();" href="javacript:void(0)" style="color: #ffffff;">
+                            <i class="fa fa-sign-out sign-in-icon" aria-hidden="true"></i>
+                            Logout
+                        </a>
+
+                @endif
+                </div>
+
                 <div id="top-menu-res" class="jquerySlickNavContainer"></div>
                 <div class="clear clearfix"></div>
             </div>
@@ -70,23 +100,26 @@
 
 
             <div class="collapse navbar-collapse logo-menu-container" id="bs-example-navbar-collapse-1">
+
+
                 <div class="row">
-                    <ul class="nav navbar-nav navbar-left nav-main-menu nav-main-menu-top" style="top:0;right: 0;">
+
+                    <ul class="nav navbar-nav navbar-left nav-main-menu nav-main-menu-top"  style="top:0;right: 0;">
                         @if(Auth::check())
-                            <li>
-                                <a href="{{route('userdashboard')}}"> <i class="fa fa-tachometer" aria-hidden="true"></i>
-                                    DashBoard</a>
+                            <li class="menupadding">
+                                <a href="{{route('userdashboard')}}"> <i style="color: #F9970E" class="fa fa-tachometer sign-in-icon" aria-hidden="true"></i>
+                                    My Account</a>
                             </li>
                         @endif
                         @if(!Auth::check())
-                            <li>
+                            <li class="menupadding">
                                 <a href="{{route('login')}}"> <i class="fa fa-sign-in sign-in-icon"
                                                                  aria-hidden="true"></i>
                                     Sign In</a>
                             </li>
                         @endif
                         @if(Auth::check())
-                            <li>
+                            <li class="menupadding">
                                 <a onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();" href="javacript:void(0)">
                                     <i class="fa fa-sign-out sign-in-icon" aria-hidden="true"></i>
@@ -107,6 +140,13 @@
                             </a>
                         </li>
 
+                        <li>
+
+                            <a class="page-scroll" href="{{route('showBlog')}}">
+                                Gamithon Gossips
+                            </a>
+                        </li>
+
                         {{--<li>--}}
                         {{--<a href="{{route('leaderboard')}}">--}}
                         {{--LeaderBoard--}}
@@ -114,6 +154,7 @@
                         {{--</li>--}}
                         @if(!has_user_team(Auth::id()))
                             <li id="create-your-team">
+
                                 <a class="page-scroll" href="{{route('addTeam', ['tournament_id'=>1])}}">
                                     Create Team
                                 </a>
@@ -122,6 +163,11 @@
                         <li>
                             <a class="page-scroll" href="{{route('usertournamenthome')}}">
                                 Tournaments
+                            </a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="{{route('rankings')}}">
+                                Rankings
                             </a>
                         </li>
 
@@ -135,11 +181,11 @@
                     <!--                            <li>
                                                             <a class="page-scroll" href="{{route('UserDashboard')}}">DashBoard</a>
                                                         </li>-->
-                        <li>
-                            <a href="{{URL::to('/#portfolio')}}" class="page-scroll">
-                                Gallery
-                            </a>
-                        </li>
+                        {{--<li>--}}
+                            {{--<a href="{{URL::to('/#portfolio')}}" class="page-scroll">--}}
+                                {{--Gallery--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
                         <li>
                             <a class="page-scroll" href="{{route('contactPage')}}">Contact Us</a>
                         </li>
@@ -172,9 +218,15 @@
                 </div>
                 <div class="col-sm-12 col-md-4 text-center">
                     <ul class="nav navbar-nav">
+
                         <li>
-                            <a class="page-scroll" href="{{route('privacyPolicy')}}">
-                                Privacy policy
+                            <a class="page-scroll" href="{{route('TermsCon')}}">
+                               Terms & Conditions
+                            </a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="{{route('PrivacyPolicy')}}">
+                                Privacy Policy
                             </a>
                         </li>
                         <li>
@@ -216,24 +268,44 @@
 {!! Html::script('assets-new/js/scrollreveal.min.js') !!}
 {!! Html::script('assets-new/js/bootstrap-tour.js') !!}
 {!! Html::script('assets-new/js/jquery.magnific-popup.min.js') !!}
-{!! Html::script('js/camera.min.js') !!}
 {!! Html::script('assets-new/js/creative.js') !!}
 {!! Html::script('assets-new/js/jquery.mCustomScrollbar.min.js') !!}
+{!! Html::script('assets-new/js/jquery.mCustomScrollbar.concat.min.js') !!}
+
+
 <script>
-     $(document).ready(function () {
-      $(window).on("load",function(){
+
+    (function($){
+        $(window).on("load",function(){
             $(".content").mCustomScrollbar();
         });
+    })(jQuery);
+    $(".content").mCustomScrollbar({
+        theme:"light-thin"
+    });
+    $(".content").mCustomScrollbar({
+        axis:"x" // horizontal scrollbar
+
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
         $('#bs-example-navbar-collapse-1').slicknav({
             appendTo: '#top-menu-res',
             label: 'Main Menu'
         });
-        $(".content").mCustomScrollbar({
-        theme:"dark"
-    });
+        //                $('table').basictable({
+        //                  forceResponsive: false
+        //                });
     });
 </script>
+{!! Html::script('assets-new/js/jquery.backstretch.min.js') !!}
+
 @yield('js')
 @yield('addteamjs')
 
+
+
 </body>
+

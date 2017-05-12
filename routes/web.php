@@ -25,11 +25,17 @@ Route::get('login/facebook/callback', 'Auth\LoginController@handleFacebookProvid
 Route::group(['middleware' => ['web']], function () {
     Route::get('contact', 'HomeController@contactPage')->name('contactPage');
     Route::post('contact', 'HomeController@postContact')->name('postContact');
+    Route::get('privacy', 'HomeController@privacyPolicy')->name('PrivacyPolicy');
     Route::get('terms', 'HomeController@termsCon')->name('TermsCon');
-    Route::get('privacy-policy', 'HomeController@termsCon')->name('privacyPolicy');
+    Route::get('champions-trophy', 'HomeController@fixturs')->name('champion');
+    Route::get('upcomming', 'HomeController@upcommingTournamnets')->name('upcommingTournamnets');
+    Route::get('Champions_trophy', 'HomeController@championTrophy')->name('championtrophy');
+    Route::get('rankings', 'HomeController@rankings')->name('rankings');
+
     Route::get('how-to-play', 'HomeController@howPlay')->name('howPlay');
     Route::get('/tournaments', 'User\TournamentsController@index')->name('usertournamenthome');
     Route::get('/blog', 'BlogController@index')->name('showBlog');
+
     Route::get('/blog/{blog_slug}', 'BlogController@showBlogPostDetail')->name('showBlogPostDetail');
     Route::get('signup-confirmation', function () {
         returnview('pages.signup-thankyou');
@@ -41,6 +47,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['is_user']], function () {
         Route::group(['prefix' => 'user'], function () {
+            Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
             Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
             Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');
             Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
@@ -86,6 +93,11 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
                 Route::get('addCategory', 'Admin\Blog\CategoryController@addCategory')->name('addCategory');
                 Route::post('addCategory', 'Admin\Blog\CategoryController@postAddBlogCategory')->name('postAddBlogCategory');
             });
+        });
+        Route::group(['prefix' => 'stats'], function () {
+            Route::get('/add/{id}', 'Admin\StatsController@addStatForm')->name('showAddStatForm');
+            Route::post('/add/{id}', 'Admin\StatsController@postAddStat')->name('postAddStat');
+
         });
         Route::group(['prefix' => 'games'], function () {
             Route::get('/', 'Admin\GamesController@index')->name('gameslist');
@@ -151,6 +163,9 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/addscores/{match_id}/{player_id}', 'Admin\MatchesController@postAddMatchScore')->name('postPlayerMatchScore');
             Route::get('/add-match-players/{match_id}', 'Admin\MatchesController@addMatchPlayerForm')->name('showAddMatchPlayerForm');
             Route::post('/add-match-players/{match_id}', 'Admin\MatchesController@postAddMatchPlayers')->name('postAddMatchPlayers');
+            Route::get('/addTeamtoMatch/{match_id}/{tournament_id}', 'Admin\MatchesController@addTeamToMatchForm')->name('addTeamToMatch');
+            Route::post('/addTeamtoMatch/{match_id}/{tournament_id}', 'Admin\MatchesController@addTeamToMatchPost')->name('addTeamToMatchPost');
+
         });
 //Userroutes
         Route::group(['prefix' => 'user'], function () {

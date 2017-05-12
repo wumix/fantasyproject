@@ -115,7 +115,7 @@
                                     <div class="form-group " id="withbox">
                                         <label class="form-check-label">
                                             <input required type="checkbox" name="terms" class="form-check-input"/>
-                                            <span id="remberbox"> I agree with <a target="_blank" href="{{route('privacyPolicy')}}" style="color:#92b712">Terms and conditions.</a> </span>
+                                            <span id="remberbox"> I agree with <a target="_blank" href="{{route('PrivacyPolicy')}}" style="color:#92b712">Terms and conditions.</a> </span>
                                         </label>
                                     </div>
                                 </div>

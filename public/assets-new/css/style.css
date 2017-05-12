@@ -224,6 +224,7 @@ padding-left: 15px;
 .bloghead{
     color:rgb(146, 183, 19);
     font-size: 16px;
+    text-transform: capitalize !important;
 
 }
 .blogtext{
@@ -395,6 +396,7 @@ hr.light.full{
 
 .how-play{
     line-height: 36px;
+
 }
 
 .main-top-menu{
@@ -754,3 +756,127 @@ width: 100%;
 .ttt{
     min-width: 300px;
 }
+
+
+.jfont{
+    font-size: 14px;
+    text-align: justify;
+}
+@media screen and (min-width: 1000px) and (max-width: 2500px) {
+    #signhide { display: none; }
+}
+@media screen and (min-width: 200px) and (min-width: 500px) {
+    #signshow { display: none;}
+}
+/*@media screen and (min-width: 0px) and (max-width: 400px) {*/
+    /*#signshow{ display: none; }  !* show it on small screens *!*/
+/*}*/
+
+/*@media screen and (min-width: 401px) and (max-width: 1024px) {*/
+    /*#signshow { display: block; }   !* hide it elsewhere *!*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*..................................News Start..................................*/
+
+.gallery-title
+{
+
+    color: #94b810;
+    text-align: center;
+
+    margin-bottom: 70px;
+}
+
+
+
+
+
+
+.port-image
+{
+    width: 100%;
+}
+
+.gallery_product
+{
+    margin: 0 30px 30px 50px;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    height: 200px !important;
+
+
+
+}
+.imgn{
+    width: 200px;
+    height: 200px;
+    margin-left: -30px
+
+}
+.lnews{
+    background-color: #e6e6e6;
+}
+#nbton{
+
+    background-color: transparent;
+    color: #94b810;
+    border: solid 1px  #94b810 ;
+    border-radius: 0 0 0 0;
+    min-width: 250px;
+
+    margin-bottom: 50px;
+}
+.nt{
+    padding-top: 25px;
+    margin-left: -20px;
+}
+.nt1{
+
+    color: #968B8B;
+
+    font-size: 14pt;
+    margin-left: -20px;
+}
+.nt2{
+    font-size: 16px;
+    font-weight: bolder;
+    margin-left: -15px;
+}
+.nt3{
+    color: #cccccc;
+    font-size: 12px;
+    margin-left: -15px;
+}
+.newsbackground{
+    background-color: #fafafa;
+}
+.newscolor{
+    background-color: #ffffff;
+}
+.mediah{
+    font-weight: bolder;
+}
+
+/*...................................News End........................................*/

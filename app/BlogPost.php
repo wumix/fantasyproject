@@ -4,8 +4,11 @@ namespace App;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Laravelista\Comments\Comments\Traits\Comments; //for gettings commentss
+
 
 class BlogPost extends Model {
+
 
     use Sluggable;
 

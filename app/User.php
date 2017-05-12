@@ -57,6 +57,10 @@ class User extends Authenticatable {
     public static function isUser() {
         return (\Auth::user()->user_type == 1) ? true : false;
     }
+    public function comments()
+    {
+        return $this->hasMany('\App\Comment');
+    }
 
     /**
      * Get user from social media logins

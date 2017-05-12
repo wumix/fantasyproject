@@ -53,5 +53,9 @@ class Player extends Model {
     public function player_gameTerm_score() {
         return $this->hasMany(MatchPlayerScore::class, 'player_id');
     }
+    public function game_types(){
+    return $this->belongsToMany('App\GameType','game_type_points','player_id','game_type_id')
+        ->withPivot('points')->orderBy('points', 'ASC');
+}
 
 }

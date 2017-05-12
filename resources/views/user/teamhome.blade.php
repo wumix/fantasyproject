@@ -33,14 +33,18 @@
                                              {{$teams['teamtournament']['name']}}
                                         </div>
                                     </div>
+
                                 @endforeach
+
                             </div>
                         </div>
 
                     </div>
+
                 </div>
             </div>
         </div>
+       
     </section>
     <!-- ............................Show Hide Table Satrt........................... -->
     {{--<section class="no-padding">--}}

@@ -47,7 +47,7 @@
                                             <td class="border-r1">
                                                 {{$row['player_roles'][0]['name']}}
                                             </td>
-                                            <td class="border-r1">
+                                            <td class="border-r1 ">
                                                 <?php
                                                 $playerThisTournamnetPrice = 0;
                                                 if (!empty($val['pivot'])) {
@@ -66,13 +66,13 @@
                                                 </a>
 
                                             </td>
-                                            <td>
+                                            {{--<td>--}}
 
-                                                <a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"
-                                                   class="btn btn-green">Transfer Player
-                                                </a>
+                                                {{--<a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"--}}
+                                                   {{--class="btn btn-green">Transfer Player--}}
+                                                {{--</a>--}}
 
-                                            </td>
+                                            {{--</td>--}}
 
                                         </tr>
                                         @endforeach
@@ -147,7 +147,13 @@
                                                             <td class=" th11 text-left" style="min-width: 300px;
 ">
                                                                 <img style="width: 80px;float: left;margin-right: 24px;" class="img-thumbnail"
-                                                                     src="{{getUploadsPath($player['profile_pic'])}}"/>
+                                                                     <?php $profilepic=null;
+                                                                     if(!empty($player['profile_pic'])){
+                                                                         $profilepic=$player['profile_pic'];
+                                                                     }
+
+                                                                     ?>
+                                                                     src="{{getUploadsPath($profilepic)}}"/>
                                                                 <span class="selected-player-name"> {{$player['name']}}</span>
                                                             </td>
                                                             <td class="text-left">
@@ -204,6 +210,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 <div class='error' style='display:none'></div>
@@ -225,6 +232,7 @@
             },
             success: function (data) {
                 if (data.success == true) {
+                    $('#your_points').html(data.score);
                     $('#player_tr-del-' + data.player_id).html('<span>Deleted</span>');
                     $('.error').html(data.msg);
                     $('.error').fadeIn(400).delay(2000).fadeOut(400); //fade out after 3 seconds
@@ -268,7 +276,7 @@
             $("#your_points").html(' Your Points:' + data.player_score);
             var obj = data.player;
             $('.error').html(data.msg);
-            $('.error').fadeIn(400).delay(2000).fadeOut(400); //fade out after 3 seconds
+            $('.error').fadeIn(200).delay(1000).fadeOut(200); //fade out after 3 seconds
             $('#btn-player-' + playerid).attr('disabled', true);
             $('#btn-player-' + playerid).remove();
             $('#total-score-user').html(obj.player_score);
@@ -283,7 +291,7 @@
             url = url.replace('id', obj.team_id);
             url = url.replace('tid', obj.tournament_id);
             t += '<td id="player_tr-del-'+obj.id+'" class="cwt"><a href="javascript:deletePlayer('+obj.id+','+obj.price+')" id="" class="btn btn-md bttor1">Delete Player</a></td >';
-            t += '<td><a href="' + url + '" class="btn btn-green">Transfer Player</a></td >';
+          //  t += '<td><a href="' + url + '" class="btn btn-green">Transfer Player</a></td >';
 
             // t += '<td>Player transfer is disabled by the end of today\'s match!</td >';
             t += '</tr>';
@@ -292,7 +300,7 @@
             $('#player_tr-' + obj.id).html(t);
             } else {
             $('.error').html(data.msg);
-            $('.error').fadeIn(400).delay(2000).fadeOut(400); //fade out after 3 seconds
+            $('.error').fadeIn(200).delay(1500).fadeOut(200); //fade out after 3 seconds
 
 
             }

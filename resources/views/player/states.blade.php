@@ -56,41 +56,16 @@
     </script>
 <style>
 /******************************************************/
-/*.black_screen{
-	width:100%;
-	display:block;
-	height:100%;
-	position:fixed;
-	top:0;
-	left:0;
-	background:rgba(0,0,0,0.5);
-}*/
-.back-ground{
-display:inline-block;
-background:rgba(0,0,0,0.5);
-width:100%;
-height:auto;
-
-}
 .pop_up_one{
-	max-width: 824px;
-/*	position:absolute;*/
-	height: 545px;
-/*	top:20%;
-	left:50%;
-*/	background: #2c2c2c url("{{URL::to('/img/gamithon-back-img.png')}}") no-repeat right center;
-/*	margin-left:-412px;
-*/	border-radius:10px;
-	margin-top: 44px;
+	background: #2c2c2c url("{{URL::to('/img/gamithon-back-img.png')}}") no-repeat right center;
 	background-position: 83% 2%;
-	margin-left:20%;
+	height:660px;
 }
 .plyer_name{  
 	width:100%;
     font-family: 'Raleway', sans-serif;
 	font-size:15px;
 	color:#92b713;
-	margin-top:46px;
 	display:inline-block;
 }
 .plyer_name span{	
@@ -122,14 +97,6 @@ height:auto;
 	font-size:15px;
 	text-transform:uppercase;
 	padding:10px 0 19px 0;
-}
-.col-md-4{
-padding-left:5px !important;
-padding-right:5px !important;
-}
-.col-md-12{
-padding-left:0 !important;
-padding-right:0 !important;
 }
 .match_detail{
 	width:100%;
@@ -166,23 +133,86 @@ margin-bottom:7px;
 display:inline-block;
 margin-top:32px;
 }
+/**********************************************************/
+@media all and (min-width: 961px) and (max-width: 1200px) {
+.orange_outline{
+margin-bottom:20px !important;
+}
+.responcve_type{
+	width:100%;
+	text-align:center;
+}
+.equal_locate{
+	width:100%;
+	text-align:center;
+}
+.pop_up_one{
+	height:auto !important;
+}
+.plyer_name{
+	margin-top:23px;
+}
+}
+
+@media all and (min-width: 768px) and (max-width: 960px) {
+.orange_outline{
+margin-bottom:20px !important;
+}
+.plyer_name{
+	margin-top:23px;
+}
+.responcve_type{
+	width:100%;
+	text-align:center;
+}
+.pop_up_one{
+	height:auto !important;
+}
+.equal_locate{
+	width:100%;
+	text-align:center;
+}
+}
+@media all and (min-width: 100px) and (max-width: 768px) {
+.orange_outline{
+margin-bottom:20px !important;
+}
+.plyer_name{
+	margin-top:23px;
+}
+.pop_up_one{
+	height:auto !important;
+}
+.responcve_type{
+	width:100%;
+	text-align:center;
+}
+.equal_locate{
+	width:100%;
+	text-align:center;
+}
+.pop_up_one{
+	height:auto !important;
+}
+}
+
 </style>
 
 </head>
 <body>
-		<div class="black_screen"></div>
-		<div class="col-md-12">
-		<div class="back-ground">
     <div class="pop_up_one">
-			<div class="col-md-3">
-				<span class="shahid_img"><img src="/img/khan's-pic.png" alt="no-img"></span>
+<div class="container">
+		<div class="back-ground clearfix" style="padding-top:32px;">
+
+			<div class="col-md-3 responcve_type">
+				<img src="/img/khan's-pic.png" alt="no-img">
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-9 equal_locate">
 				<span class="plyer_name">Name: <span>Shahid Khan Afridi</span></span>
 				<span class="plyer_name2">Born: <span>March 1, 1980</span></span>
 				<span class="plyer_name2">Player Role: <span>Allrounder</span></span>
 				<span class="plyer_name2">Batting Statistics</span>
-				<div class="col-md-12 no_padding">
+				<div class="" style="margin-top:20px;">
 					<div class="col-md-4">
 						<div class="orange_outline">
 							<span class="test_text">Tests</span>
@@ -208,15 +238,8 @@ margin-top:32px;
 						</div>
 					</div>
 					<span class="plyer_name3">Bowling Statistics</span>
-					<div class="col-md-4">
-						<div class="orange_outline">
-							<span class="test_text">Tests</span>
-							<span class="match_detail">Wkts: 48</span>
-							<span class="match_detail">Econ: 3.21</span>
-								<span class="match_detail_sec">SR: 66.5</span>
-						</div>
-					</div>
-					<div class="col-md-4">
+					<div style="margin-top:20px">
+						<div class="col-md-4">
 						<div class="orange_outline">
 							<span class="test_text">ODIs</span>
 							<span class="match_detail">Wkts: 395</span>
@@ -224,7 +247,7 @@ margin-top:32px;
 								<span class="match_detail_sec">SR: 44.7</span>
 						</div>
 					</div>
-					<div class="col-md-4">
+						<div class="col-md-4">
 						<div class="orange_outline">
 							<span class="test_text">Tests</span>
 							<span class="match_detail">Wkts: 97</span>
@@ -232,11 +255,23 @@ margin-top:32px;
 								<span class="match_detail_sec">SR: 22.1</span>
 						</div>
 					</div>
+						<div class="col-md-4">
+						<div class="orange_outline">
+							<span class="test_text">T20Is</span>
+							<span class="match_detail">Matches: 97</span>
+							<span class="match_detail">Ave: 6.61</span>
+							<span class="match_detail_sec">SR: 22.1</span>
+						</div>
+					</div>	
+					</div>
+					
+					
 				</div>
 			</div>
 			
         </div>
-		</div>
+		<div class="clearfix clear"></div>
 	</div>	
+</div>
 </body>
 </html>

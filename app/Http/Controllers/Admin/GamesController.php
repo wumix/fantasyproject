@@ -64,7 +64,7 @@ class GamesController extends Controller
         $data['game_types']=$game_types;
         return view('adminlte::games.game_type_form', $data);
 
-        dd($request->all());
+
 
 
 
@@ -76,7 +76,8 @@ class GamesController extends Controller
         $stats->stat_form=$request->stat_form;
         $stats->game_type=$request->game_type;
         $stats->save();
-        dd($request->all());
+        return redirect()->back()->with('status','Stat Added Successfully');
+
 
 
     }

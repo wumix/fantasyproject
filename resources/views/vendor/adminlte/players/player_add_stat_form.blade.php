@@ -26,7 +26,7 @@
                                         <label>{{$val['stat_form']}}</label>
                                         <div class="form-group">
                                             <label></label>
-                                            <input name="game_type_stat_id[{{$val['id']}}]" placeholder="{{$val['name']}}" type="text">
+                                            <input required name="game_type_stat_id[{{$val['id']}}]" placeholder="{{$val['name']}}" type="text">
                                         </div>
                                     </div>
 

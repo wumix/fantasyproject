@@ -11,9 +11,10 @@
                 <!-- Default box -->
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Add Game Stat NAme</h3>
+                        <h3 class="box-title">Add Game Stat Name</h3>
                     </div>
                     <div class="box-body">
+                        @include('adminlte::layouts.form_errors')
                         {!! Form::open(['url' => route('postAddGameStat',['game_id'=>$game_id,'game_type'=>$game_type])]) !!}
 
                         <div class="form-group">

@@ -107,7 +107,7 @@ class PlayersController extends Controller
 
         }
         \App\PlayerStatistics::insert($stats);
-        dd($stats);
+        return redirect()->back()->with('status','Carrear Stats Added Sucessfully');
 
 
 //        $data = array(

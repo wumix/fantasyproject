@@ -105,8 +105,6 @@ foreach ($team_score as $teamplayers) {
                             @foreach($termscore['points_devision_tournament'] as $points)
                             <?php
                             if ($points['qty_from'] == $points['qty_to']) {
-                                //   echo "yes";
-                                //     echo $points['points'] * $termscore['player_term_count'];
                                 $playertotal += $points['points'] * $termscore['player_term_count'];
                             } else {
                                 if (($points['qty_from'] <= $termscore['player_term_count']) && ($points['qty_to'] >= $termscore['player_term_count'])) {
@@ -131,9 +129,6 @@ foreach ($team_score as $teamplayers) {
                                         </div>
                                     </div>
                                     @endif
-
-
-
                                 </td>
 
                                 <td class="border-r1 " style="position: relative; min-width: 250px; text-align: center;" >
@@ -142,7 +137,6 @@ foreach ($team_score as $teamplayers) {
                                     <span style="position: absolute ;bottom: 23px; left:50px;text-align: center; " > {{$playertransferedname}}</span>
                                 </td>
                                 <td class="border-r1 " style="position: relative;" style="min-width: 150px;">
-                                    <?php $teamtotal = 0; ?>
                                     @foreach($row['player_actual_teams'] as $playerteam )
                                     {{ $playerteam['name']}}
                                     @endforeach
@@ -226,9 +220,10 @@ foreach ($team_score as $teamplayers) {
 
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
+        $('#team_score').html('{{$teamtotal}}')
+        $('#remaining_score').html('{{getUserTotalScore(\Auth::id())}}');
     });
-    $('#team_score').html('{{$teamtotal}}')
-    $('#remaining_score').html('{{getUserTotalScore(\Auth::id())}}')
+
 </script>
 @stop
 

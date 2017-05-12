@@ -337,7 +337,7 @@
         {{--</div>--}}
     {{--</div>--}}
 {{--</section>--}}
-
+@if(!empty($news))
 <section class="newsbackground">
     <div class="container " >
         <div class="row">
@@ -368,6 +368,7 @@
         </div>
     </div>
 </section>
+@endif
 
 
     <!-- LETS PLAY AT GAMITHON  Start-->

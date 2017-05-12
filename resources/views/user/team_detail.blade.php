@@ -111,6 +111,7 @@ foreach ($team_score as $teamplayers) {
                                     $playertotal += $points['points'];
                                 }
                             }
+                            $teamtotal += $playertotal;
                             ?>
                             @endforeach
                             @endforeach
@@ -140,7 +141,7 @@ foreach ($team_score as $teamplayers) {
                                     @foreach($row['player_actual_teams'] as $playerteam )
                                     {{ $playerteam['name']}}
                                     @endforeach
-                                    <?php $teamtotal += $playertotal; ?>
+
                                     <br>
                                     <span style="position: absolute ;bottom: 23px; "></span>
                                 </td>

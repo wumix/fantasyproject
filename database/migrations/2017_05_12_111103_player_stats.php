@@ -15,10 +15,12 @@ class PlayerStats extends Migration
     {
         Schema::create('player_stats', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',30);
-            $table->integer('game_type');
-            $table->foreign('game_type')->references('id')->on('game_type');
-            $table->enum('is_active', [0, 1])->default(1);
+            $table->integer('game_type_stat_id');
+            $table->foreign('game_type_stat_id')->references('id')->on('game_type_stats');
+            $table->integer('player_id')->unsigned();
+            $table->foreign('player_id')->references('id')->on('players');
+            $table->integer('points')->unsigned();
+            
 
         });
 

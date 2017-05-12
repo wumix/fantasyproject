@@ -16,8 +16,8 @@ class GameTypeStats extends Migration
         Schema::create('game_type_stats', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',30);
-            $table->integer('game_type');
-            $table->foreign('game_type')->references('id')->on('game_type');
+            //$table->integer('game_type');
+            $table->enum('stat_form', ['bowling', 'fielding','batting'])->default('batting');
 
 
         });

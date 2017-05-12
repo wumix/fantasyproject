@@ -88,6 +88,8 @@ foreach ($team_score as $teamplayers) {
                             $playerinscore = 0;
                             $x = 0;
                             foreach ($user_team_player_transfer['user_team_player_transfers'] as $transfer) {
+
+
                                 if ($transfer['pivot']['player_in_id'] == $row['id']) {
                                     $playertransferedpic = $transfer['profile_pic'];
                                     $playertransferedname = $transfer['name'];
@@ -105,13 +107,17 @@ foreach ($team_score as $teamplayers) {
                             @foreach($termscore['points_devision_tournament'] as $points)
                             <?php
                             if ($points['qty_from'] == $points['qty_to']) {
+                                //   echo "yes";
+                                //     echo $points['points'] * $termscore['player_term_count'];
                                 $playertotal += $points['points'] * $termscore['player_term_count'];
                             } else {
                                 if (($points['qty_from'] <= $termscore['player_term_count']) && ($points['qty_to'] >= $termscore['player_term_count'])) {
+                                    //  echo $points['qty_from']." ". $termscore['player_term_count']." ".$points['qty_to']."<br>";
+
+
                                     $playertotal += $points['points'];
                                 }
                             }
-                            $teamtotal += $playertotal;
                             ?>
                             @endforeach
                             @endforeach
@@ -130,6 +136,9 @@ foreach ($team_score as $teamplayers) {
                                         </div>
                                     </div>
                                     @endif
+
+
+
                                 </td>
 
                                 <td class="border-r1 " style="position: relative; min-width: 250px; text-align: center;" >
@@ -141,7 +150,7 @@ foreach ($team_score as $teamplayers) {
                                     @foreach($row['player_actual_teams'] as $playerteam )
                                     {{ $playerteam['name']}}
                                     @endforeach
-
+                                    <?php $teamtotal += $playertotal; ?>
                                     <br>
                                     <span style="position: absolute ;bottom: 23px; "></span>
                                 </td>
@@ -149,9 +158,9 @@ foreach ($team_score as $teamplayers) {
                                     <span style="position: absolute;"> {{ $playertotal}}  </span>
                                     <br>
                                     @if($flag==1)
-                                    <span style="position: absolute;">
-                                        {{$playerinscore}}: <strong>previous score</strong>
-                                    </span>
+                                        <span style="position: absolute;">
+                                            {{$playerinscore}}: <strong>previous score</strong>
+                                            </span>
 
                                     @endif
                                     <span style="position: absolute;bottom: 23px; ">
@@ -201,30 +210,29 @@ foreach ($team_score as $teamplayers) {
 @endsection
 
 @section('js')
-<script>
-    /*  var tour = new Tour({
-     steps: [
-     {
-     element: "#guide",
-     title: "Tip",
-     content: "Scroll Left and Right"
-     }
-     ]}); */
+    <script>
+      /*  var tour = new Tour({
+            steps: [
+                {
+                    element: "#guide",
+                    title: "Tip",
+                    content: "Scroll Left and Right"
+                }
+            ]}); */
 
-    // Initialize the tour
-    //tour.init();
+        // Initialize the tour
+        //tour.init();
 
-    // Start the tour
-    //   tour.start();
-</script>
+        // Start the tour
+     //   tour.start();
+    </script>
 <script>
 
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
-        $('#team_score').html('{{$teamtotal}}')
-        $('#remaining_score').html('{{getUserTotalScore(\Auth::id())}}');
     });
-
+    $('#team_score').html('{{$teamtotal}}')
+    $('#remaining_score').html('{{getUserTotalScore(\Auth::id())}}')
 </script>
 @stop
 

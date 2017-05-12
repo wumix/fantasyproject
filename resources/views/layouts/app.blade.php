@@ -70,8 +70,6 @@
 
 
             <div class="collapse navbar-collapse logo-menu-container" id="bs-example-navbar-collapse-1">
-
-
                 <div class="row">
                     <ul class="nav navbar-nav navbar-left nav-main-menu nav-main-menu-top" style="top:0;right: 0;">
                         @if(Auth::check())
@@ -116,7 +114,6 @@
                         {{--</li>--}}
                         @if(!has_user_team(Auth::id()))
                             <li id="create-your-team">
-
                                 <a class="page-scroll" href="{{route('addTeam', ['tournament_id'=>1])}}">
                                     Create Team
                                 </a>
@@ -219,31 +216,23 @@
 {!! Html::script('assets-new/js/scrollreveal.min.js') !!}
 {!! Html::script('assets-new/js/bootstrap-tour.js') !!}
 {!! Html::script('assets-new/js/jquery.magnific-popup.min.js') !!}
+{!! Html::script('js/camera.min.js') !!}
 {!! Html::script('assets-new/js/creative.js') !!}
 {!! Html::script('assets-new/js/jquery.mCustomScrollbar.min.js') !!}
 <script>
-    (function($){
-        $(window).on("load",function(){
+     $(document).ready(function () {
+      $(window).on("load",function(){
             $(".content").mCustomScrollbar();
         });
-    })(jQuery);
-    $(".content").mCustomScrollbar({
-        theme:"dark"
-    });
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
         $('#bs-example-navbar-collapse-1').slicknav({
             appendTo: '#top-menu-res',
             label: 'Main Menu'
         });
-        //                $('table').basictable({
-        //                  forceResponsive: false
-        //                });
+        $(".content").mCustomScrollbar({
+        theme:"dark"
+    });
     });
 </script>
-
 @yield('js')
 @yield('addteamjs')
 

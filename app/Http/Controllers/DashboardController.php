@@ -14,8 +14,8 @@ class DashboardController extends Controller {
     }
 
     public function teamDetail(Request $request) {
-       $stats=\App\Player::with('game_types')->firstOrFail()->toArray();
-        dd($stats);
+      // $stats=\App\Player::with('game_types')->firstOrFail()->toArray();
+
         // dd(get_individual_player_score(1,5,2));
 //        $date = new DateTime();
 //        $date=$date->format('Y-m-j h:i:s');

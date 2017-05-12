@@ -95,6 +95,11 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
                 Route::post('addCategory', 'Admin\Blog\CategoryController@postAddBlogCategory')->name('postAddBlogCategory');
             });
         });
+        Route::group(['prefix' => 'stats'], function () {
+            Route::get('/add/{id}', 'Admin\StatsController@addStatForm')->name('showAddStatForm');
+            Route::post('/add/{id}', 'Admin\StatsController@postAddStat')->name('postAddStat');
+
+        });
         Route::group(['prefix' => 'games'], function () {
             Route::get('/', 'Admin\GamesController@index')->name('gameslist');
             Route::get('/add', 'Admin\GamesController@showAddView')->name('addGame'); //showsaddgameform

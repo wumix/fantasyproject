@@ -73,7 +73,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('userProfileEdit');
     });
 });
-            Route::get('player-stats/{player_id}', 'User\TournamentsController@showPlayerState')->name('showPlayerStats');
+Route::get('player-stats/{player_id}', 'User\TournamentsController@showPlayerState')->name('showPlayerStats');
+
 
 //Adminroutes
 Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {

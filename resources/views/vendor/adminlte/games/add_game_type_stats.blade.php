@@ -18,12 +18,13 @@
                         {!! Form::open(['url' => route('postAddGameStat',['game_id'=>$game_id,'game_type'=>$game_type])]) !!}
 
                         <div class="form-group">
-                            <input placeholder="enter stat name i.e wickets runs" name="name" class="form-control" type="text"/>
+                            <input placeholder="enter stat name i.e wickets runs" name="name" class="form-control"
+                                   type="text"/>
                         </div>
                         <div class="form-group">
                             <select name="stat_form" class="custom-select form-control">
 
-                                    <option value="Batting">Batting</option>
+                                <option value="Batting">Batting</option>
                                 <option value="Batting">Bowling</option>
                                 <option value="Batting">Fielding</option>
 
@@ -37,6 +38,17 @@
 
                     </div>
                     <!-- /.box-body -->
+                    @foreach($game_types as $row)
+                        @foreach($row['game_type_stats'] as $key=>$val)
+                        <div class="form-group">
+                            <label>{{$val['name']}}</label>
+                            <label>{{$val['stat_form']}}</label>
+
+
+
+                        </div>
+                            @endforeach
+                    @endforeach
                 </div>
                 <!-- /.box -->
             </div>

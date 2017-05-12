@@ -498,8 +498,11 @@ class TournamentsController extends Controller
         ]);
     }
 
-    public function showPlayerState()
+    public function showPlayerState($player_id)
     {
+       $player_stats=\App\Player::where('id',$player_id)->with('game_types.game_type_stats')->firstORFail()->toArray();
+       dd($player_stats);
+
         return view('player.states');
     }
 }

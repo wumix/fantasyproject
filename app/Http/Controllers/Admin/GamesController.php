@@ -51,8 +51,11 @@ class GamesController extends Controller
         $data['game_type']=$request->game_type;
 
 
-        $game_types= \App\GameType::where('game_id',$game_id)->get()->toArray();
+        $game_types= \App\GameType::where('game_id',$game_id)->where('id',$request->game_type)->with('game_type_stats')->get()->toArray();
+
         $data['game_types']=$game_types;
+
+        //dd($game_types);
 
         return view('adminlte::games.add_game_type_stats', $data);
 

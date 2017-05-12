@@ -19,7 +19,7 @@ class GameType extends Migration
             $table->integer('game_id')->unsigned();
             $table->foreign('game_id')->references('id')->on('games');
             $table->string('type_name,30')->unique();
-            $table->timestamps()->nullable();
+            $table->timestamps();
         });
     }
 

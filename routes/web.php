@@ -109,6 +109,11 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/post-game-role', 'Admin\GamesController@addRolePost')->name('addGameRole');
             Route::delete('delete-game-role', 'Admin\GamesController@deleteGameRole')->name('deleteGameRole');
             Route::post('add-game-actions', 'Admin\GamesController@addGameActions')->name('addGameActions');
+            Route::get('/showGameType/{game_id}', 'Admin\GamesController@showGameTypeForm')->name('showGameTypeForm');
+            Route::get('/addStat/{game_id}', 'Admin\GamesController@addGameTypeStat')->name('showGameAddStatForm');
+            Route::post('/addStat/{game_id}', 'Admin\GamesController@postAddGameStat')->name('postAddGameStat');
+
+
         });
 //Gameterms
         Route::group(['prefix' => 'games-terms'], function () {
@@ -139,6 +144,8 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/edit', 'Admin\PlayersController@postEditPlayer')->name('editPlayer');
             Route::get('/edit/{player_id}', 'Admin\PlayersController@editPlayerForm')->name('editPlayerForm'); //showplayereditform
             Route::get('/ajax_get_game_terms', 'Admin\PlayersController@get_game_roles')->name('ajax_get_game_terms');
+            Route::get('/addStats/{player_id}', 'Admin\PlayersController@addPlayerStats')->name('addPlayerStats');
+            Route::post('/addStats/{player_id}', 'Admin\PlayersController@postPlayerStats')->name('postPlayerStats');
         });
 //tournamentroutes
         Route::group(['prefix' => 'tournaments'], function () {

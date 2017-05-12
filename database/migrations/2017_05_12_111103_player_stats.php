@@ -13,14 +13,14 @@ class PlayerStats extends Migration
      */
     public function up()
     {
-        Schema::create('player_stats', function (Blueprint $table) {
+        Schema::create('player_statistics', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('game_type_stat_id');
             $table->foreign('game_type_stat_id')->references('id')->on('game_type_stats');
             $table->integer('player_id')->unsigned();
             $table->foreign('player_id')->references('id')->on('players');
             $table->integer('points')->unsigned();
-            
+
 
         });
 
@@ -33,6 +33,6 @@ class PlayerStats extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('player_statistics');
     }
 }

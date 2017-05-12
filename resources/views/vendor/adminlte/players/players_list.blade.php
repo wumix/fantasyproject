@@ -34,7 +34,10 @@ Games
                                         <i class="fa fa-times"></i> Delete
                                     </a>
                                     <a href="{{route('showAddStatForm', ['player_id'=>$row['id']])}}" class="btn btn-danger">
-                                        <i class="fa fa-times"></i> Add Stats
+                                        <i class="fa fa-times"></i> Player Rankings
+                                    </a>
+                                    <a href="{{route('addPlayerStats', ['player_id'=>$row['id']])}}" class="btn btn-danger">
+                                        <i class="fa fa-times"></i> Player Stats
                                     </a>
 
                                 </td>

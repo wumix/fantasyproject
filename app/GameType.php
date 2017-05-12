@@ -15,5 +15,8 @@ class GameType extends Model
     public function game_type_points(){
         return $this->belongsToMany('App\Player','game_type_points','game_type_id','player_id')->withPivot('points');
     }
+    public function game_type_stats(){
+        return $this->hasMany('\App\GameTypeStats','game_type','id');
+    }
 
 }

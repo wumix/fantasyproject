@@ -32,7 +32,11 @@ Games
                                     </a>      
                                     <a href="{{route('deleteGame', ['game_id'=>$row['id']])}}" class="btn btn-danger">
                                         <i class="fa fa-times"></i> Delete
-                                    </a>  
+                                    </a>
+                                    <a href="{{route('showGameTypeForm', ['game_id'=>$row['id']])}}" class="btn btn-danger">
+                                        <i class="fa fa-times"></i> Add Stat Names
+                                    </a>
+
                                     
                                 </td>
                                 

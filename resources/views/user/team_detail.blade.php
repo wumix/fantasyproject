@@ -125,6 +125,9 @@ foreach ($team_score as $teamplayers) {
                                 <td class="border-r1 text-left" style="min-width: 200px; position: relative;">
                                     <div class="current_player">
                                         <img style="width: 80px;" class="img-thumbnail" src="{{getUploadsPath($row['profile_pic'])}}">
+<!--                                        <a class="colorbox" href="{{route('showPlayerStats', ['player_id'=>$row['id']])}}">
+                                            <img style="width: 80px;" class="img-thumbnail" src="{{getUploadsPath($row['profile_pic'])}}">
+                                        </a>-->
                                     </div>
                                     @if($flag==1)
                                     <div class="transfered_container relative">
@@ -158,9 +161,9 @@ foreach ($team_score as $teamplayers) {
                                     <span style="position: absolute;"> {{ $playertotal}}  </span>
                                     <br>
                                     @if($flag==1)
-                                        <span style="position: absolute;">
-                                            {{$playerinscore}}: <strong>previous score</strong>
-                                            </span>
+                                    <span style="position: absolute;">
+                                        {{$playerinscore}}: <strong>previous score</strong>
+                                    </span>
 
                                     @endif
                                     <span style="position: absolute;bottom: 23px; ">
@@ -210,29 +213,12 @@ foreach ($team_score as $teamplayers) {
 @endsection
 
 @section('js')
-    <script>
-      /*  var tour = new Tour({
-            steps: [
-                {
-                    element: "#guide",
-                    title: "Tip",
-                    content: "Scroll Left and Right"
-                }
-            ]}); */
-
-        // Initialize the tour
-        //tour.init();
-
-        // Start the tour
-     //   tour.start();
-    </script>
 <script>
-
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
+        $('#team_score').html('{{$teamtotal}}')
+        $('#remaining_score').html('{{getUserTotalScore(\Auth::id())}}');
     });
-    $('#team_score').html('{{$teamtotal}}')
-    $('#remaining_score').html('{{getUserTotalScore(\Auth::id())}}')
 </script>
 @stop
 

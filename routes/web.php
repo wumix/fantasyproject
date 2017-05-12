@@ -73,7 +73,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('userProfileEdit');
     });
 });
-            Route::get('player-stats/{player_id}', 'User\TournamentsController@showPlayerState')->name('showPlayerStats');
+Route::get('player-stats/{player_id}', 'User\TournamentsController@showPlayerState')->name('showPlayerStats');
 
 //Adminroutes
 Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
@@ -99,7 +99,6 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
         Route::group(['prefix' => 'stats'], function () {
             Route::get('/add/{id}', 'Admin\StatsController@addStatForm')->name('showAddStatForm');
             Route::post('/add/{id}', 'Admin\StatsController@postAddStat')->name('postAddStat');
-
         });
         Route::group(['prefix' => 'games'], function () {
             Route::get('/', 'Admin\GamesController@index')->name('gameslist');
@@ -114,8 +113,6 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::get('/showGameType/{game_id}', 'Admin\GamesController@showGameTypeForm')->name('showGameTypeForm');
             Route::get('/addStat/{game_id}', 'Admin\GamesController@addGameTypeStat')->name('showGameAddStatForm');
             Route::post('/addStat/{game_id}', 'Admin\GamesController@postAddGameStat')->name('postAddGameStat');
-
-
         });
 //Gameterms
         Route::group(['prefix' => 'games-terms'], function () {
@@ -174,7 +171,6 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/add-match-players/{match_id}', 'Admin\MatchesController@postAddMatchPlayers')->name('postAddMatchPlayers');
             Route::get('/addTeamtoMatch/{match_id}/{tournament_id}', 'Admin\MatchesController@addTeamToMatchForm')->name('addTeamToMatch');
             Route::post('/addTeamtoMatch/{match_id}/{tournament_id}', 'Admin\MatchesController@addTeamToMatchPost')->name('addTeamToMatchPost');
-
         });
 //Userroutes
         Route::group(['prefix' => 'user'], function () {

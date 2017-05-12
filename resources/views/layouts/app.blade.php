@@ -25,6 +25,8 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    {!! Html::style('js/colorbox-master/example1/colorbox.css') !!}
+    {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}
     {!! Html::style('assets-new/vendor/magnific-popup/magnific-popup.css') !!}
     {!! Html::style('assets/css/slicknav.css') !!}
     {!! Html::style('assets-new/css/creative.css') !!}
@@ -32,7 +34,7 @@
     {!! Html::style('assets-new/css/fixtures.css') !!}
 
 
-    {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}
+    @yield('css')
     <style>
 
 
@@ -274,33 +276,30 @@
 
 
 <script>
+  
 
-    (function($){
-        $(window).on("load",function(){
-            $(".content").mCustomScrollbar();
-        });
-    })(jQuery);
-    $(".content").mCustomScrollbar({
-        theme:"light-thin"
-    });
-    $(".content").mCustomScrollbar({
-        axis:"x" // horizontal scrollbar
-
-    });
-</script>
-
-<script type="text/javascript">
     $(document).ready(function () {
+     $(window).on('load', function(){
+            $('.content').mCustomScrollbar();
+        });
         $('#bs-example-navbar-collapse-1').slicknav({
             appendTo: '#top-menu-res',
             label: 'Main Menu'
         });
-        //                $('table').basictable({
-        //                  forceResponsive: false
-        //                });
+         jQuery(".colorbox1").colorbox({
+            iframe: true,
+            innerWidth: '90%', innerHeight: '70%',
+            opacity: 0.3,
+            speed:'700'
+        });
+            $('.content').mCustomScrollbar({
+        theme:"light-thin",
+                axis:"x"
+    });
     });
 </script>
 {!! Html::script('assets-new/js/jquery.backstretch.min.js') !!}
+{!! Html::script('js/colorbox-master/jquery.colorbox-min.js') !!}
 
 @yield('js')
 @yield('addteamjs')
@@ -308,4 +307,3 @@
 
 
 </body>
-

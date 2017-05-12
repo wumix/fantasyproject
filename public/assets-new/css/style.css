@@ -396,6 +396,7 @@ hr.light.full{
 
 .how-play{
     line-height: 36px;
+
 }
 
 .main-top-menu{
@@ -867,6 +868,15 @@ width: 100%;
     color: #cccccc;
     font-size: 12px;
     margin-left: -15px;
+}
+.newsbackground{
+    background-color: #fafafa;
+}
+.newscolor{
+    background-color: #ffffff;
+}
+.mediah{
+    font-weight: bolder;
 }
 
 /*...................................News End........................................*/

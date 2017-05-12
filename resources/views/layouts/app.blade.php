@@ -165,11 +165,11 @@
                                 Tournaments
                             </a>
                         </li>
-                        <li>
-                            <a class="page-scroll" href="{{route('rankings')}}">
-                                Rankings
-                            </a>
-                        </li>
+                        {{--<li>--}}
+                            {{--<a class="page-scroll" href="{{route('rankings')}}">--}}
+                                {{--Rankings--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
 
                         @if(Auth::check())
                             <li>

@@ -55,7 +55,7 @@ class GamesController extends Controller
 
         $data['game_types'] = $game_types;
 
-       // dd($game_types);
+       //dd($game_types);
 
         return view('adminlte::games.add_game_type_stats', $data);
 

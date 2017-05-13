@@ -43,24 +43,7 @@ class GamesController extends Controller
 //
 //
 //    }
-    function addGameTypeStat(Request $request, $game_id)
-    {
 
-
-        $data['game_id'] = $game_id;
-        $data['game_type'] = $request->game_type;
-
-
-        $game_types = \App\GameType::where('game_id', $game_id)->where('id', $request->game_type)->with('game_type_stats')->firstOrFail()->toArray();
-
-        $data['game_types'] = $game_types;
-
-       //dd($game_types);
-
-        return view('adminlte::games.add_game_type_stats', $data);
-
-
-    }
 
     function addGameFormat(Request $request, $game_id)
     {
@@ -71,36 +54,11 @@ class GamesController extends Controller
 
     }
 
-    function postAddGameFormat(Request $request, $game_id)
-    {
-        $flight = \App\GameType::updateOrCreate(
-            ['game_id' => $game_id, 'type_name' => $request->name],
-            ['type_name' => $request->name]
-        );
-        return redirect()->back()->with('status','Type Added Successfully');
-
-    }
-
-    function showGameTypeForm(Request $request, $game_id)
-    {
-        $data['game_id'] = $game_id;
-        $game_types = \App\GameType::where('game_id', $game_id)->get()->toArray();
-        $data['game_types'] = $game_types;
-        return view('adminlte::games.game_type_form', $data);
-    }
-
-    function postAddGameStat(Request $request)
-    {
-
-        $stats = new \App\GameTypeStats;
-        $stats->name = $request->name;
-        $stats->stat_form = $request->stat_form;
-        $stats->game_type = $request->game_type;
-        $stats->save();
-        return redirect()->back()->with('status', 'Stat Added Successfully');
 
 
-    }
+
+
+
 
     public function showAddView()
     {

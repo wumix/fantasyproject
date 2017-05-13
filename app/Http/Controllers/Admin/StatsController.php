@@ -14,6 +14,58 @@ class StatsController extends Controller
     {
 
     }
+    function addGameTypeStat(Request $request, $game_id)
+    {
+
+        $data['game_id'] = $game_id;
+        $data['game_type'] = $request->game_type;
+
+
+        $game_types = \App\GameType::where('game_id', $game_id)->with('game_type_stats_category.game_type_stats')->firstOrFail()->toArray();
+
+        $data['game_types'] = $game_types;
+
+         //dd($game_types);
+
+        return view('adminlte::games.add_game_type_stats', $data);
+    }
+    function postAddGameStat(Request $request)
+    {
+  dd($request->all());
+//        $flight = App\Flight::updateOrCreate(
+//            ['departure' => 'Oakland', 'destination' => 'San Diego'],
+//            ['price' => 99]
+//        );
+        $t=$request->name;
+
+
+        foreach ($request->name as $key=>$val){
+            dd($val);
+
+        }
+        die;
+
+        return redirect()->back()->with('status', 'Values Updated');
+
+
+    }
+
+    function showGameTypeForm(Request $request, $game_id)
+    {
+        $data['game_id'] = $game_id;
+        $game_types = \App\GameType::where('game_id', $game_id)->get()->toArray();
+        $data['game_types'] = $game_types;
+        return view('adminlte::games.game_type_form', $data);
+    }
+    function postAddGameFormat(Request $request, $game_id)
+    {
+        $flight = \App\GameType::updateOrCreate(
+            ['game_id' => $game_id, 'type_name' => $request->name],
+            ['type_name' => $request->name]
+        );
+        return redirect()->back()->with('status','Type Added Successfully');
+
+    }
 
     public function addStatForm($id)
     {
@@ -33,7 +85,7 @@ class StatsController extends Controller
     public function postAddStat(Request $request, $id)
     {
         $player = \App\Player::find($id);
-        $arrz=[];
+        $arrz = [];
         foreach ($request->game_type_id as $key => $val) {
             //   $arrz[]=$key;
             $arrz[$key]['points'] = $val;
@@ -48,8 +100,8 @@ class StatsController extends Controller
 //
 //                )
 //            );
-       // }
-      // dd($arrz);
+        // }
+        // dd($arrz);
         //array($key => array('points' =>$val))
 //        dd($request->all());
 //

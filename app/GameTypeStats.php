@@ -11,7 +11,11 @@ class GameTypeStats extends Model
     protected $guarded = ['id'];
     public function game()
     {
-        $this->belongsTo('App\Game');
+       return $this->belongsTo('App\Game');
+    }
+    public function game_type_category()
+    {
+        return $this->belongsTo('App\GameTypeStatCategory');
     }
 
 }

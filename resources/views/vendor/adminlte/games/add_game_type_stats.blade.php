@@ -15,41 +15,61 @@
                     </div>
                     <div class="box-body">
                         @include('adminlte::layouts.form_errors')
-                        {!! Form::open(['url' => route('postAddGameStat',['game_id'=>$game_id,'game_type'=>$game_type])]) !!}
+                        {!! Form::open(['url' => route('postAddGameStat',['game_id'=>$game_id])]) !!}
+                        <?php $cat_id = 0; ?>
 
-                        <div class="form-group">
-                            <input placeholder="enter stat name i.e wickets runs" name="name" class="form-control"
-                                   type="text"/>
-                        </div>
-                        <div class="form-group">
-                            <select name="stat_form" class="custom-select form-control">
 
-                                <option value="bat">Batting</option>
-                                <option value="bow">Bowling</option>
-                                <option value="bowbat">Fielding and Batting</option>
+                       <?php $i=0;?>
+                        @foreach($game_types['game_type_stats_category'] as $key=>$category)
+                            <h3 class="box-title">{{$category['name']}}</h3>
+                            @foreach($category['game_type_stats'] as $key=>$names)
+                                <div class="form-group">
 
-                            </select>
+                                    <input name="name[{{$i}}][id]" value="{{$names['id']}}" type="text"/>
+                                    <input type="hidden" name="name[{{$i}}][name]" value="{{$names['name']}}" type="text"/>
 
-                        </div>
+
+                                </div>
+                                <?php $i++;?>
+                            @endforeach
+                            <div class="form-group">
+                                <input id="{{$category['id']}}" type="hidden" value="{{$category['id']}}"/>
+                                <input onclick="test(this.id)" id="{{$category['id']}}" class="btn btn-success" type="button"
+                                       value="add_more"/>
+                            </div>
+
+                        @endforeach
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                         {!! Form::close() !!}
 
                     </div>
+                    <input type="hidden" id="valueofi" value="{{$i}}">
                     <!-- /.box-body -->
 
-                        @foreach($game_types['game_type_stats'] as $key=>$val)
-                        <ul class="list-group">
 
-                            <label>{{$val['stat_form']}}</label>
-                            <li class="list-group-item">{{$val['name']}}</li>
-                        </ul>
-
-                    @endforeach
                 </div>
                 <!-- /.box -->
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        function test(id) {
+            var valueofi=('$valueofi').val();
+            var html="";
+               html+= '<input type="text" name="name['+valueofi+'][name]" placeholder="Enter Term name" "/>';
+            html+= '<input type="text" name="name[' + valueofi+ '][id]" placeholder="Enter Term name" "/>';
+            ()
+
+            alert(id);
+            $(html).insertBefore('#' + id);
+
+
+            return false;
+        }
+
+    </script>
 @endsection

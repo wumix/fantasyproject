@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class GameType extends Model
+class GameType extends Model //table Name is game format
 {
     //
     protected $table = 'game_type';
@@ -16,8 +16,8 @@ class GameType extends Model
     public function game_type_points(){
         return $this->belongsToMany('App\Player','game_type_points','game_type_id','player_id')->withPivot('points');
     }
-    public function game_type_stats(){
-        return $this->hasMany('\App\GameTypeStats','game_type','id');
+    public function game_type_stats_category(){ //batting bowling fielding etc
+        return $this->hasMany('\App\GameTypeStatCategory','game_type_id','id');
     }
 
 }

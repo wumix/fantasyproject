@@ -19,18 +19,23 @@
 
                         @foreach($gametypestats as $key=>$stats)
 
-
+                            @if(!empty($stats['game_type_stats']))
                                 <label> {{$stats['type_name']}}</label>
-                                @foreach($stats['game_type_stats'] as $key=>$val)
-                                    <div class="form-group">
-                                        <label>{{$val['stat_form']}}</label>
-                                        <div class="form-group">
-                                            <label></label>
-                                            <input required name="game_type_stat_id[{{$val['id']}}]" placeholder="{{$val['name']}}" type="text">
-                                        </div>
-                                    </div>
+                            @endif
+                            @foreach($stats['game_type_stats'] as $key=>$val)
+                                <div class="form-group">
+                                    {{--@if($val['stat_form']=="bat")--}}
+                                    <label>{{$val['stat_form']}}</label>
 
-                                @endforeach
+                                    <div class="form-group">
+                                        <label></label>
+                                        <input required name="game_type_stat_id[{{$val['id']}}]"
+                                               placeholder="{{$val['name']}}" type="text">
+                                    </div>
+                                    {{--@endif--}}
+                                </div>
+
+                            @endforeach
 
 
                         @endforeach

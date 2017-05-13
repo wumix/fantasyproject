@@ -11,26 +11,32 @@
                 <!-- Default box -->
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Choose Format To Add Stats i.e wicktets battng bolwing</h3>
+                        <h3 class="box-title">Ad Game Format</h3>
                     </div>
                     <div class="box-body">
-
-                        {!! Form::open(['url' => route('showGameAddStatForm',['game_id'=>$game_id]),'method'=>'get','files'=>true]) !!}
-
-
-
+                        {!! Form::open(['url' => route('postAddGameFormat',['game_id'=>$game_id])]) !!}
                         <div class="form-group">
-                            <select name="game_type" class="custom-select form-control">
-                                @foreach($game_types as $row)
-                                    <option value="{{$row['id']}}">{{$row['type_name']}}</option>
-                                @endforeach
-                            </select>
-
+                            <label>Name</label>
+                            <input required value="{!! old('name') !!}" class="form-control" id="name"
+                                   placeholder="Enter Game Name" type="text" name="name">
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                         {!! Form::close() !!}
+
+                         <label></label>
+
+
+
+                            <ul class="list-group">
+                            @foreach($game_types as $row)
+                                    <li class="list-group-item">{{$row['type_name']}}</li>
+
+
+                            @endforeach
+                            </ul>
+
 
                     </div>
                     <!-- /.box-body -->

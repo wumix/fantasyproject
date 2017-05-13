@@ -500,9 +500,11 @@ class TournamentsController extends Controller
 
     public function showPlayerState($player_id)
     {
+//        dd('asd');
        $player_stats=\App\Player::where('id',$player_id)
-           ->with('game_types.game_type_stats')
+           ->with('player_stats.game_type')
            ->firstORFail()->toArray();
+     //  debugArr($player_stats);
        dd($player_stats);
         return view('player.states');
     }

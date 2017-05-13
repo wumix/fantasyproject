@@ -11,7 +11,7 @@
                 <!-- Default box -->
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Add Game Stat Name</h3>
+                        <h3 class="box-title">{{$game_types['type_name']}} Stats</h3>
                     </div>
                     <div class="box-body">
                         @include('adminlte::layouts.form_errors')
@@ -24,9 +24,9 @@
                         <div class="form-group">
                             <select name="stat_form" class="custom-select form-control">
 
-                                <option value="Batting">Batting</option>
-                                <option value="Batting">Bowling</option>
-                                <option value="Batting">Fielding</option>
+                                <option value="bat">Batting</option>
+                                <option value="bow">Bowling</option>
+                                <option value="bowbat">Fielding and Batting</option>
 
                             </select>
 
@@ -38,16 +38,14 @@
 
                     </div>
                     <!-- /.box-body -->
-                    @foreach($game_types as $row)
-                        @foreach($row['game_type_stats'] as $key=>$val)
-                        <div class="form-group">
-                            <label>{{$val['name']}}</label>
+
+                        @foreach($game_types['game_type_stats'] as $key=>$val)
+                        <ul class="list-group">
+
                             <label>{{$val['stat_form']}}</label>
+                            <li class="list-group-item">{{$val['name']}}</li>
+                        </ul>
 
-
-
-                        </div>
-                            @endforeach
                     @endforeach
                 </div>
                 <!-- /.box -->

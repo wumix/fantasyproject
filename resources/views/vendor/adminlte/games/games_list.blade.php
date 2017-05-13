@@ -33,8 +33,11 @@ Games
                                     <a href="{{route('deleteGame', ['game_id'=>$row['id']])}}" class="btn btn-danger">
                                         <i class="fa fa-times"></i> Delete
                                     </a>
-                                    <a href="{{route('showGameTypeForm', ['game_id'=>$row['id']])}}" class="btn btn-danger">
-                                        <i class="fa fa-times"></i> Add Stat Names
+                                    <a href="{{route('showGameFormats', ['game_id'=>$row['id']])}}" class="btn btn-danger">
+                                        <i class="fa fa-times"></i> Add Format Stat Names(i.e match,inns)
+                                    </a>
+                                    <a href="{{route('addGameFormat', ['game_id'=>$row['id']])}}" class="btn btn-danger">
+                                        <i class="fa fa-times"></i> Add Game Format (i.e T20,Test)
                                     </a>
 
                                     

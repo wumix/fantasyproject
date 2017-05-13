@@ -75,7 +75,6 @@ Route::group(['middleware' => ['web']], function () {
 });
 Route::get('player-stats/{player_id}', 'User\TournamentsController@showPlayerState')->name('showPlayerStats');
 
-
 //Adminroutes
 Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
 
@@ -97,10 +96,16 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
                 Route::post('addCategory', 'Admin\Blog\CategoryController@postAddBlogCategory')->name('postAddBlogCategory');
             });
         });
-        Route::group(['prefix' => 'stats'], function () {
+        Route::group(['prefix' => 'rankings'], function () {
             Route::get('/add/{id}', 'Admin\StatsController@addStatForm')->name('showAddStatForm');
             Route::post('/add/{id}', 'Admin\StatsController@postAddStat')->name('postAddStat');
-
+        });
+        Route::group(['prefix' => 'stats'], function () {
+            Route::get('/formats/{game_id}', 'Admin\GamesController@showGameTypeForm')->name('showGameFormats');
+            Route::get('/add-stat/{game_id}', 'Admin\GamesController@addGameTypeStat')->name('showGameAddStatForm');
+            Route::post('/addStat/{game_id}', 'Admin\GamesController@postAddGameStat')->name('postAddGameStat');
+            Route::get('/add-game-format/{game_id}', 'Admin\GamesController@addGameFormat')->name('addGameFormat');
+            Route::post('/add-game-format/{game_id}', 'Admin\GamesController@postAddGameFormat')->name('postAddGameFormat');
         });
         Route::group(['prefix' => 'games'], function () {
             Route::get('/', 'Admin\GamesController@index')->name('gameslist');
@@ -112,9 +117,6 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/post-game-role', 'Admin\GamesController@addRolePost')->name('addGameRole');
             Route::delete('delete-game-role', 'Admin\GamesController@deleteGameRole')->name('deleteGameRole');
             Route::post('add-game-actions', 'Admin\GamesController@addGameActions')->name('addGameActions');
-            Route::get('/showGameType/{game_id}', 'Admin\GamesController@showGameTypeForm')->name('showGameTypeForm');
-            Route::get('/addStat/{game_id}', 'Admin\GamesController@addGameTypeStat')->name('showGameAddStatForm');
-            Route::post('/addStat/{game_id}', 'Admin\GamesController@postAddGameStat')->name('postAddGameStat');
 
 
         });
@@ -175,7 +177,6 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/add-match-players/{match_id}', 'Admin\MatchesController@postAddMatchPlayers')->name('postAddMatchPlayers');
             Route::get('/addTeamtoMatch/{match_id}/{tournament_id}', 'Admin\MatchesController@addTeamToMatchForm')->name('addTeamToMatch');
             Route::post('/addTeamtoMatch/{match_id}/{tournament_id}', 'Admin\MatchesController@addTeamToMatchPost')->name('addTeamToMatchPost');
-
         });
 //Userroutes
         Route::group(['prefix' => 'user'], function () {

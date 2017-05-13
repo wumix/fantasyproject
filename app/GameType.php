@@ -8,6 +8,7 @@ class GameType extends Model
 {
     //
     protected $table = 'game_type';
+    public $timestamps = false;
     protected $guarded = ['id'];
     public function game(){
         $this->belongsTo('App\Game');

@@ -14,16 +14,56 @@ class StatsController extends Controller
     {
 
     }
+    function postPlayerStats(Request $request, $player_id)
+    {
+    //dd($request->all());
+       // $user->roles()->sync( array( 1 => array( 'expires' => true ) ) );
+        $syncdata=[];
+        foreach ($request->stats as $key=>$val){
+            $syncdata[]=$key;
+            $syncdata[$key]=$val;
+
+        }
+       dd($syncdata);
+       $player= \App\Player::find($player_id);
+       $player->player_stats()->sync(array( 5 => array( 'stat_points' => 11 ) ) );
+
+        return redirect()->back()->with('status','Carrear Stats Added Sucessfully');
+
+
+//        $data = array(
+//            array('name'=>'Coder 1', 'rep'=>'4096'),
+//            array('name'=>'Coder 2', 'rep'=>'2048'),
+//            //...
+//        );
+//
+//        Coder::insert($data);
+
+
+    }
+
+    function addPlayerStats(Request $request, $player_id)
+    {
+
+        $player = \App\Player::where('id', $player_id)->with('player_stats')->get()->toArray();
+        $data['player_info'] = $player;
+       // dd($player);
+        $game_types = \App\GameType::where('game_id',1)->with('game_type_stats_category.game_type_stats')->get()->toArray();
+        $data['game_types'] = $game_types;
+        //dd($game_types);
+
+
+        return view('adminlte::players.player_add_stat_form', $data);
+
+
+    }
 
     function addGameTypeStat(Request $request, $game_id)
     {
 
         $data['game_id'] = $game_id;
         $data['game_type'] = $request->game_type;
-
-
-        $game_types = \App\GameType::where('game_id', $game_id)->where('id',$request->game_type)->with('game_type_stats_category.game_type_stats')->firstOrFail()->toArray();
-
+        $game_types = \App\GameType::where('game_id', $game_id)->where('id', $request->game_type)->with('game_type_stats_category.game_type_stats')->firstOrFail()->toArray();
         $data['game_types'] = $game_types;
 
         //dd($game_types);
@@ -38,7 +78,7 @@ class StatsController extends Controller
         foreach ($request->name as $row) {
             \App\GameTypeStats::updateOrCreate(
                 ['id' => $row['prime_id']],
-                ['name' => $row['name'],'game_type_stat_category_id'=>$row['id']]
+                ['name' => $row['name'], 'game_type_stat_category_id' => $row['id']]
             );
         }
 

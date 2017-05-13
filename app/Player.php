@@ -71,7 +71,7 @@ class Player extends Model
             ->withPivot('points')->orderBy('points', 'ASC');
     }
     public function player_stats() {
-        return $this->belongsToMany('App\GameTypeStats', 'player_statistics','player_id','game_type_stat_category_id')->withPivot('stat_points');
+        return $this->belongsToMany('App\GameTypeStats', 'player_statistics','player_id','game_type_stat_id')->withPivot('stat_points');
     }
 
 }

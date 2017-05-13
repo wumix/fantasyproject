@@ -17,5 +17,8 @@ class GameTypeStats extends Model
     {
         return $this->belongsTo('App\GameTypeStatCategory');
     }
+    public function player() {
+        return $this->belongsToMany('App\Player', 'player_statistics','game_type_stat_id','player_id')->withPivot('stat_points');
+    }
 
 }

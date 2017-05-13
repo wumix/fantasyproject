@@ -79,47 +79,9 @@ class PlayersController extends Controller
         //return redirect()->route('editPlayerForm', ['player_id' => $lastInsertId]);
     }
 
-    function addPlayerStats(Request $request, $player_id)
-    {
-        $player = \App\Player::where('id', $player_id)->with('player_stats')->get()->toArray();
-        $data['player_info'] = $player;
-        //dd($player);
-        $gametypestats = \App\GameType::with('game_type_stats')->get()->toArray();
-        $data['gametypestats'] = $gametypestats;
-        //dd($gametypestats);
 
 
-        return view('adminlte::players.player_add_stat_form', $data);
 
-
-    }
-
-    function postPlayerStats(Request $request, $player_id)
-    {
-        \App\PlayerStatistics::where('player_id', $player_id)->delete();
-        $stats = [];
-        foreach ($request->game_type_stat_id as $key => $val) {
-            $stats[] = array(
-                'game_type_stat_id' =>$key,
-                'player_id' =>$player_id,
-                'stat_points' =>$val,
-            );
-
-        }
-        \App\PlayerStatistics::insert($stats);
-        return redirect()->back()->with('status','Carrear Stats Added Sucessfully');
-
-
-//        $data = array(
-//            array('name'=>'Coder 1', 'rep'=>'4096'),
-//            array('name'=>'Coder 2', 'rep'=>'2048'),
-//            //...
-//        );
-//
-//        Coder::insert($data);
-
-
-    }
 
     function editPlayerForm($player_id)
     { //shows player edit form

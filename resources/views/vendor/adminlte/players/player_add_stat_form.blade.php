@@ -17,27 +17,22 @@
                         @include('adminlte::layouts.form_errors')
                         {!! Form::open(['url' => route('postPlayerStats',['player_id'=>$player_info[0]['id']]),'files'=>true]) !!}
 
-                        @foreach($gametypestats as $key=>$stats)
+                        @foreach($game_types as $row)
 
-                            @if(!empty($stats['game_type_stats']))
-                                <label> {{$stats['type_name']}}</label>
+                            @if(!empty($row['game_type_stats_category']))
+                                <label>{{$row['type_name']}}</label>
+                                @foreach($row['game_type_stats_category'] as $row1)
+                                    @foreach($row1['game_type_stats'] as $row2 )
+
+                                        <div class="form-group">
+
+                                            <input class="form-control" name="stats[]{{$row2['id']}}"
+                                                   placeholder="{{$row2['name']}}"/>
+
+                                        </div>
+                                    @endforeach
+                                @endforeach
                             @endif
-                            @foreach($stats['game_type_stats'] as $key=>$val)
-                                <div class="form-group">
-                                    {{--@if($val['stat_form']=="bat")--}}
-                                    <label>{{$val['stat_form']}}</label>
-
-                                    <div class="form-group">
-                                        <label></label>
-                                        <input required name="game_type_stat_id[{{$val['id']}}]"
-                                               placeholder="{{$val['name']}}" type="text">
-                                    </div>
-                                    {{--@endif--}}
-                                </div>
-
-                            @endforeach
-
-
                         @endforeach
                         <div class="form-group">
                             <input type="submit" class="btn btn-success"/>

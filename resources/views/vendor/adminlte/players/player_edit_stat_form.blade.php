@@ -16,7 +16,7 @@
                     <div class="box-body">
                         @include('adminlte::layouts.form_errors')
                         {!! Form::open(['url' => route('postPlayerStats',['player_id'=>$player['id']]),'files'=>true]) !!}
-                        <?php $i=0;?>
+                        <?php $i=0;?> asd
                         @foreach($player['player_games']['game_type'] as $row)
 
                             @if(!empty($row['game_type_stats_category']))

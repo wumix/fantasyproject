@@ -28,7 +28,7 @@ class StatsController extends Controller
 
     function postPlayerStats(Request $request, $player_id)
     {
-   
+
         \App\PlayerStatistics::where('player_id', $player_id)->delete();
 
 

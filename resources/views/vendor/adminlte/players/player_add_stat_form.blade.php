@@ -30,7 +30,7 @@
                                         <div class="form-group">
                                             <input type="hidden" class="form-control" name="stats[{{$i}}][id]"
                                                    placeholder="{{$row2['id']}}" value="{{$row2['id']}}"/>
-                                            <input class="form-control" name="stats[{{$i}}][name]"
+                                            <input required class="form-control" name="stats[{{$i}}][name]"
                                                    placeholder="{{$row2['name']}}"/>
 
                                         </div>

@@ -41,7 +41,7 @@
 
                                             <input type="hidden" class="form-control" name="stats[{{$i}}][id]"
                                                    placeholder="{{$row2['id']}}" value="{{$row2['id']}}"/>
-                                            <input class="form-control" name="stats[{{$i}}][name]"
+                                            <input required class="form-control" name="stats[{{$i}}][name]"
                                                    value="{{$playerpoints}}"/>
 
                                         </div>

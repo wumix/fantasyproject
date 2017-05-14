@@ -26,7 +26,7 @@
                                 <div class="form-group">
                                     <input  type="hidden" name="name[{{$i}}][prime_id]" value="{{$names['id']}}" type="text"/>
                                     <input  type="hidden" name="name[{{$i}}][id]" value="{{$category['id']}}" type="text"/>
-                                    <input name="name[{{$i}}][name]" value="{{$names['name']}}" type="text"/>
+                                    <input required name="name[{{$i}}][name]" value="{{$names['name']}}" type="text"/>
 
 
                                 </div>
@@ -63,7 +63,7 @@
 
             var html="";
             html+= '<input type="hidden" name="name['+valueofi+'][prime_id]" placeholder="Enter Term name" "/>';
-               html+= '<input type="text" name="name['+valueofi+'][name]" placeholder="Enter Term name" "/>';
+               html+= '<input required type="text" name="name['+valueofi+'][name]" placeholder="Enter Term name" "/>';
             html+= '<input type="hidden" name="name[' + valueofi+ '][id]" value="'+id+'" placeholder="Enter Term name" "/>';
             valueofi++;
             $('#valueofi').val(valueofi);

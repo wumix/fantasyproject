@@ -103,7 +103,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
         Route::group(['prefix' => 'stats'], function () {
             Route::get('/formats/{game_id}', 'Admin\StatsController@showGameTypeForm')->name('showGameFormats');
             //Route::get('/formats/{game_id}', 'Admin\GamesController@showGameTypeForm')->name('showGameFormats');
-            Route::get('/add-stat/{game_id}', 'Admin\statsController@addGameTypeStat')->name('showGameAddStatForm');
+            Route::get('/add-stat/{game_id}', 'Admin\StatsController@addGameTypeStat')->name('showGameAddStatForm');
             Route::post('/addStat/{game_id}', 'Admin\StatsController@postAddGameStat')->name('postAddGameStat');
             Route::get('/add-game-format/{game_id}', 'Admin\GamesController@addGameFormat')->name('addGameFormat');
             Route::post('/add-game-format/{game_id}', 'Admin\StatsController@postAddGameFormat')->name('postAddGameFormat');

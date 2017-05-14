@@ -14,30 +14,37 @@ class StatsController extends Controller
     {
 
     }
+
+    function editPlayerStatForm(Request $request, $player_id)
+    {
+        $data['player'] = \App\Player::where('id', $player_id)->
+        with(['player_games.game_type.game_type_stats_category.game_type_stats.player' =>
+            function ($k) use ($player_id) {
+                $k->where('player_id', $player_id);            }
+        ])->firstOrFail()->toArray();
+        // dd($data['player']);
+        return view('adminlte::players.player_edit_stat_form', $data);
+    }
+
     function postPlayerStats(Request $request, $player_id)
     {
-    //dd($request->all());
-       // $user->roles()->sync( array( 1 => array( 'expires' => true ) ) );
-        $syncdata=[];
-        foreach ($request->stats as $key=>$val){
-            $syncdata[]=$key;
-            $syncdata[$key]=$val;
+
+        \App\PlayerStatistics::where('player_id', $player_id)->delete();
+
+
+        $syncdata = [];
+        foreach ($request->stats as $key => $val) {
+            $syncdata = array(
+                array('stat_points' => $val['name'], 'game_type_stat_id' => $val['id'], 'player_id' => $player_id)
+
+
+            );
+            \App\PlayerStatistics::insert($syncdata);
 
         }
-       dd($syncdata);
-       $player= \App\Player::find($player_id);
-       $player->player_stats()->sync(array( 5 => array( 'stat_points' => 11 ) ) );
+//        dd($request->all());
 
-        return redirect()->back()->with('status','Carrear Stats Added Sucessfully');
-
-
-//        $data = array(
-//            array('name'=>'Coder 1', 'rep'=>'4096'),
-//            array('name'=>'Coder 2', 'rep'=>'2048'),
-//            //...
-//        );
-//
-//        Coder::insert($data);
+        return redirect()->back()->with('status', 'Stats Updated Sucessfully');
 
 
     }
@@ -47,8 +54,9 @@ class StatsController extends Controller
 
         $player = \App\Player::where('id', $player_id)->with('player_stats')->get()->toArray();
         $data['player_info'] = $player;
-       // dd($player);
-        $game_types = \App\GameType::where('game_id',1)->with('game_type_stats_category.game_type_stats')->get()->toArray();
+        // dd($player);
+        $game_types = \App\GameType::where('game_id', 1)->
+        with('game_type_stats_category.game_type_stats')->get()->toArray();
         $data['game_types'] = $game_types;
         //dd($game_types);
 

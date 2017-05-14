@@ -1,5 +1,5 @@
 @extends('adminlte::layouts.app')
-
+{{--{{dd($game_types)}}--}}
 @section('htmlheader_title')
     Games
 @endsection
@@ -21,15 +21,20 @@
 
                             @if(!empty($row['game_type_stats_category']))
                                 <label>{{$row['type_name']}}</label>
+                                <?php $i=0;?>
                                 @foreach($row['game_type_stats_category'] as $row1)
+
+                                    {{$row1['name']}}
                                     @foreach($row1['game_type_stats'] as $row2 )
 
                                         <div class="form-group">
-
-                                            <input class="form-control" name="stats[]{{$row2['id']}}"
+                                            <input type="hidden" class="form-control" name="stats[{{$i}}][id]"
+                                                   placeholder="{{$row2['id']}}" value="{{$row2['id']}}"/>
+                                            <input class="form-control" name="stats[{{$i}}][name]"
                                                    placeholder="{{$row2['name']}}"/>
 
                                         </div>
+                                        <?php $i++?>
                                     @endforeach
                                 @endforeach
                             @endif

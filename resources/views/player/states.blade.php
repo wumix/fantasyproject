@@ -1,3 +1,4 @@
+{{--{{dd($player)}}--}}
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -205,65 +206,82 @@ margin-bottom:20px !important;
 		<div class="back-ground clearfix" style="padding-top:32px;">
 
 			<div class="col-md-3 responcve_type">
-				<img src="/img/khan's-pic.png" alt="no-img">
+				<img src="{{getUploadsPath($player['profile_pic'])}}" alt="no-img">
 			</div>
 			<div class="col-md-9 equal_locate">
-				<span class="plyer_name">Name: <span>Shahid Khan Afridi</span></span>
+				<span class="plyer_name">Name: <span>{{$player['name']}}</span></span>
 				<span class="plyer_name2">Born: <span>March 1, 1980</span></span>
 				<span class="plyer_name2">Player Role: <span>Allrounder</span></span>
-				<span class="plyer_name2">Batting Statistics</span>
+				@foreach($player['player_games']['game_type'] as $row)
+				<span class="plyer_name2">{{$row['type_name']}}</span>
+					@foreach($row['game_type_stats_category'] as $row1)
+
 				<div class="" style="margin-top:20px;">
 					<div class="col-md-4">
 						<div class="orange_outline">
-							<span class="test_text">Tests</span>
-							<span class="match_detail">Matches: 27</span>
-							<span class="match_detail">Ave: 36.51</span>
-							<span class="match_detail_sec">SR: 86.97</span>
+							<span class="test_text">{{$row1['name']}}</span>
+							@foreach($row1['game_type_stats'] as $row2 )
+							<span class="match_detail">{{$row2['name']}}:
+                                <?php
+                                $player=0;
+                                if(!empty($row2['player'])){
+                                    $player=$row2['player'][0]['pivot']['stat_points'];
+                                }
+
+                                ?>
+							{{$player}}
+
+							</span>
+							@endforeach
+							{{--<span class="match_detail">Ave: 36.51</span>--}}
+							{{--<span class="match_detail_sec">SR: 86.97</span>--}}
 						</div>
 					</div>
-					<div class="col-md-4">
-						<div class="orange_outline">
-							<span class="test_text">ODIs</span>
-							<span class="match_detail">Matches: 398</span>
-							<span class="match_detail">Ave: 23.57</span>
-							<span class="match_detail_sec">SR: 117.00</span>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="orange_outline">
-							<span class="test_text">T20Is</span>
-							<span class="match_detail">Matches: 98</span>
-							<span class="match_detail">Ave: 18.01</span>
-							<span class="match_detail_sec">SR: 150.75</span>
-						</div>
-					</div>
-					<span class="plyer_name3">Bowling Statistics</span>
-					<div style="margin-top:20px">
-						<div class="col-md-4">
-						<div class="orange_outline">
-							<span class="test_text">ODIs</span>
-							<span class="match_detail">Wkts: 395</span>
-							<span class="match_detail">Econ: 4.62</span>
-								<span class="match_detail_sec">SR: 44.7</span>
-						</div>
-					</div>
-						<div class="col-md-4">
-						<div class="orange_outline">
-							<span class="test_text">Tests</span>
-							<span class="match_detail">Wkts: 97</span>
-							<span class="match_detail">Econ: 6.61</span>
-								<span class="match_detail_sec">SR: 22.1</span>
-						</div>
-					</div>
-						<div class="col-md-4">
-						<div class="orange_outline">
-							<span class="test_text">T20Is</span>
-							<span class="match_detail">Matches: 97</span>
-							<span class="match_detail">Ave: 6.61</span>
-							<span class="match_detail_sec">SR: 22.1</span>
-						</div>
-					</div>	
-					</div>
+					@endforeach
+					{{--<div class="col-md-4">--}}
+						{{--<div class="orange_outline">--}}
+							{{--<span class="test_text">ODIs</span>--}}
+							{{--<span class="match_detail">Matches: 398</span>--}}
+							{{--<span class="match_detail">Ave: 23.57</span>--}}
+							{{--<span class="match_detail_sec">SR: 117.00</span>--}}
+						{{--</div>--}}
+					{{--</div>--}}
+					{{--<div class="col-md-4">--}}
+						{{--<div class="orange_outline">--}}
+							{{--<span class="test_text">T20Is</span>--}}
+							{{--<span class="match_detail">Matches: 98</span>--}}
+							{{--<span class="match_detail">Ave: 18.01</span>--}}
+							{{--<span class="match_detail_sec">SR: 150.75</span>--}}
+						{{--</div>--}}
+					{{--</div>--}}
+					@endforeach
+					{{--<span class="plyer_name3">Bowling Statistics</span>--}}
+					{{--<div style="margin-top:20px">--}}
+						{{--<div class="col-md-4">--}}
+						{{--<div class="orange_outline">--}}
+							{{--<span class="test_text">ODIs</span>--}}
+							{{--<span class="match_detail">Wkts: 395</span>--}}
+							{{--<span class="match_detail">Econ: 4.62</span>--}}
+								{{--<span class="match_detail_sec">SR: 44.7</span>--}}
+						{{--</div>--}}
+					{{--</div>--}}
+						{{--<div class="col-md-4">--}}
+						{{--<div class="orange_outline">--}}
+							{{--<span class="test_text">Tests</span>--}}
+							{{--<span class="match_detail">Wkts: 97</span>--}}
+							{{--<span class="match_detail">Econ: 6.61</span>--}}
+								{{--<span class="match_detail_sec">SR: 22.1</span>--}}
+						{{--</div>--}}
+					{{--</div>--}}
+						{{--<div class="col-md-4">--}}
+						{{--<div class="orange_outline">--}}
+							{{--<span class="test_text">T20Is</span>--}}
+							{{--<span class="match_detail">Matches: 97</span>--}}
+							{{--<span class="match_detail">Ave: 6.61</span>--}}
+							{{--<span class="match_detail_sec">SR: 22.1</span>--}}
+						{{--</div>--}}
+					{{--</div>	--}}
+					{{--</div>--}}
 					
 					
 				</div>

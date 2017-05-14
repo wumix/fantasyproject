@@ -36,9 +36,13 @@ Games
                                     <a href="{{route('showAddStatForm', ['player_id'=>$row['id']])}}" class="btn btn-danger">
                                         <i class="fa fa-times"></i> Player Rankings
                                     </a>
-                                    <a href="{{route('addPlayerStats', ['player_id'=>$row['id']])}}" class="btn btn-danger">
+                                    <a href="{{route('addPlayerStats', ['player_id'=>$row['id']])}}" class="btn btn-success">
                                         <i class="fa fa-times"></i> Player Stats
                                     </a>
+                                    <a href="{{route('editPlayerStats', ['player_id'=>$row['id']])}}" class="btn btn-success">
+                                        <i class="fa fa-times"></i> Edit Stats
+                                    </a>
+
 
                                 </td>
 

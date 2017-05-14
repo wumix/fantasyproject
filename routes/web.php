@@ -107,8 +107,11 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/addStat/{game_id}', 'Admin\StatsController@postAddGameStat')->name('postAddGameStat');
             Route::get('/add-game-format/{game_id}', 'Admin\GamesController@addGameFormat')->name('addGameFormat');
             Route::post('/add-game-format/{game_id}', 'Admin\StatsController@postAddGameFormat')->name('postAddGameFormat');
-            Route::get('/addStats/{player_id}', 'Admin\StatsController@addPlayerStats')->name('addPlayerStats');
-            Route::post('/addStats/{player_id}', 'Admin\StatsController@postPlayerStats')->name('postPlayerStats');
+            Route::get('/add-stats/{player_id}', 'Admin\StatsController@addPlayerStats')->name('addPlayerStats');
+            Route::post('/add-stats/{player_id}', 'Admin\StatsController@postPlayerStats')->name('postPlayerStats');
+            Route::get('/edit-stat/{player_id}', 'Admin\StatsController@editPlayerStatForm')->name('editPlayerStats');
+            Route::post('/edit-stat/{player_id}', 'Admin\StatsController@editPlayerStats')->name('postPlayerEditStats');
+
 
         });
         Route::group(['prefix' => 'games'], function () {

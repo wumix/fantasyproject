@@ -314,7 +314,8 @@ class TournamentsController extends Controller
         $objResponse = [];
         $objResponse['success'] = false;
         $tournament_id = $request->tournament_id;
-        $player_in_price = \App\Player::where('id', $request->player_in_id)->with(['player_tournaments' => function ($k) use ($tournament_id) {
+        $player_in_price = \App\Player::where('id', $request->player_in_id)->with(
+            ['player_tournaments' => function ($k) use ($tournament_id) {
             $k->where('tournaments.id', $tournament_id);
         }])->firstORFail();
 
@@ -500,12 +501,11 @@ class TournamentsController extends Controller
 
     public function showPlayerState($player_id)
     {
-//        dd('asd');
-       $player_stats=\App\Player::where('id',$player_id)
-           ->with('player_stats.game_type')
-           ->firstORFail()->toArray();
-     //  debugArr($player_stats);
-       dd($player_stats);
-        return view('player.states');
+        $data['player'] = \App\Player::where('id', $player_id)->
+        with(['player_games.game_type.game_type_stats_category.game_type_stats.player' =>
+            function ($k) use ($player_id) {
+                $k->where('player_id', $player_id);            }
+        ])->firstOrFail()->toArray();
+        return view('player.states',$data);
     }
 }

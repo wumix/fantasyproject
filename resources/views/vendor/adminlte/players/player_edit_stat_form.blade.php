@@ -11,17 +11,17 @@
                 <!-- Default box -->
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Add {{$player['name']}} Stats</h3>
+                        <h3 class="box-title">Add {{$player['name']}} Statss</h3>
                     </div>
                     <div class="box-body">
                         @include('adminlte::layouts.form_errors')
                         {!! Form::open(['url' => route('postPlayerStats',['player_id'=>$player['id']]),'files'=>true]) !!}
-
+                        <?php $i=0;?>
                         @foreach($player['player_games']['game_type'] as $row)
 
                             @if(!empty($row['game_type_stats_category']))
-                                <label>{{$row['type_name']}}</label>
-                                <?php $i=0;?>
+                                <label><strong>{{$row['type_name']}}</strong><br></label>
+
                                 @foreach($row['game_type_stats_category'] as $row1)
                                     {{$row1['name']}}
                                     @foreach($row1['game_type_stats'] as $row2 )

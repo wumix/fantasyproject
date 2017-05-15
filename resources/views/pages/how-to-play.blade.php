@@ -32,7 +32,7 @@
                             After every Live match the scores will be updated on the system and it will create your results
                         </li>
                         <li>
-                            If you win you will be surprised with the Prize - <a href="{{route('TermsCon')}}">Terms &amp; Conditions</a> Apply
+                            If you win you will be surprised with the Prize -<strong><a style="color: black" href="{{route('TermsCon')}}">Terms &amp; Conditions</a></strong>  Apply
                         </li>
                     </ol>
                     <div class="col-md-12">

@@ -9,7 +9,7 @@ class NewsController extends Controller
 {
 
 public function showNewsDetail($id){
-    $data['postdetail'] = \App\BlogPost::where('id',$id)->firstOrFail()->toArray();
+    $data['postdetail'] = \App\BlogPost::where('slug',$id)->firstOrFail()->toArray();
 
     return view('user.news.newsinner', $data);
 

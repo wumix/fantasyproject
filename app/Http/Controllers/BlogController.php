@@ -12,6 +12,7 @@ class BlogController extends Controller
         return view('user.blog.blog', $data);
     }
 function showBlogPostDetail($postid){
+
         $comments=\App\Comment::with('user')->get();
         $data['comments']=$comments->toArray();
        //dd($data['comments']);

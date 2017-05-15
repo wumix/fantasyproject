@@ -59,7 +59,7 @@
                             </div>
                             <div class="panel-bod                                                                                y">
                                 <select class="form-control" name="post_type">
-                                    <option value="blog">post</option>
+                                    <option value="post">post</option>
                                     <option value="news">News</option>
                                 </select>
                             </div>

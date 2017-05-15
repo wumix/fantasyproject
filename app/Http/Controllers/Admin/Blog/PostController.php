@@ -39,7 +39,7 @@ class PostController extends Controller
 
         }
 
-        $data['posts'] = \App\BlogPost::where('post_type', $data['blog_type'])->get()->toArray();
+        $data['posts'] = \App\BlogPost::where('post_type', $data['blog_type'])->orWhere('post_type','news')->get()->toArray();
 
         return view('adminlte::blog.blog_list', $data);
     }

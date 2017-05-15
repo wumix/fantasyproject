@@ -67,7 +67,7 @@
                                                                                @if(!$player['pivot']['points']==0)
                                                                                 <tr class="cwt">
                                                                                     <td style="min-width: 50px;">
-                                                                                       {{$i++;}}
+                                                                                       {{$i++}}
                                                                                     </td>
                                                                                     <td class="text-left"
                                                                                         style="min-width: 250px;">

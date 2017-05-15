@@ -126,8 +126,8 @@ foreach ($team_score as $teamplayers) {
                                 <tr>
                                     <td class="border-r1 text-left" style="min-width: 200px; position: relative;">
                                         <div class="current_player">
-                                            <img style="width: 80px;" class="img-thumbnail"
-                                                 src="{{getUploadsPath($row['profile_pic'])}}">
+                                            {{--<img style="width: 80px;" class="img-thumbnail"--}}
+                                                 {{--src="{{getUploadsPath($row['profile_pic'])}}">--}}
                                             <a class="colorbox"
                                                href="{{route('showPlayerStats', ['player_id'=>$row['id']])}}">
                                                 <img style="width: 80px;" class="img-thumbnail"

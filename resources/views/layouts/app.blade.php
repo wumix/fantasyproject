@@ -286,7 +286,7 @@
             appendTo: '#top-menu-res',
             label: 'Main Menu'
         });
-         jQuery(".colorbox1").colorbox({
+         jQuery(".colorbox").colorbox({
             iframe: true,
             innerWidth: '90%', innerHeight: '70%',
             opacity: 0.3,

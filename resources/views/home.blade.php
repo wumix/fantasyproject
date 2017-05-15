@@ -141,14 +141,12 @@
 
 
                                             <?php
-                                            $date = new DateTime($row['start_date']);
-                                            echo $date->format('d M Y');
+                                            echo formatDate($row['start_date']);
                                                 ?>
                                         </td>
                                         <td>
                                             <?php
-                                            $date = new DateTime($row['end_date']);
-                                            echo $date->format('d M Y');
+                                            echo formatDate($row['end_date']);
                                             ?>
                                         </td>
                                     </tr>
@@ -194,8 +192,12 @@
                                 <td class="border-r"> <a href="{{route('championtrophy')}}">Champions Trophy</a>
                                 </td>
                                 <td class="border-r">England</td>
-                                <td class="border-r">1 June 2017</td>
-                                <td>18 June 2017</td>
+                                <td class="border-r">
+                                    {{formatDate('2017-06-01')}}
+                                </td>
+                                <td>
+                                    {{formatDate('2017-06-18')}}
+                                </td>
                             </tr>
 
                             </tbody>
@@ -345,7 +347,7 @@
         <div class="row">
             <!-- start news -->
             @foreach($news as $key=>$val)
-            <div class="col-md-4 " style="margin: 15px 0 15px 0; outline: #efefef solid 1px; padding: 15px;">
+            <div class="col-md-4 " style="margin: 15px 0 15px 0;  padding: 15px;">
                 <div class="media newscolor">
                     <div class="media-left">
                         <a href="{{getUploadsPath($val['image'])}}">

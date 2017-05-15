@@ -354,7 +354,7 @@
                     </div>
                     <div class="media-body media1">
                         <h4 class="media-heading mediah" >
-                            <a class="text-transform-capatalize" href="{{route('newsdetail',['id'=>$val['id']])}}">
+                            <a class="home-news-headings" href="{{route('newsdetail',['id'=>$val['id']])}}">
                             {{$val['title']}}
                             </a>
                         </h4>

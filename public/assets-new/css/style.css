@@ -6,9 +6,18 @@ padding-left: 15px;
 
 
 }
-.text-transform-capatalize{
+.home-news-headings{
     text-transform: capitalize;
     font-size: 14px;
+    color:orange;
+
+}
+.home-news-headings a:hover{
+    text-transform: capitalize;
+    font-size: 14px;
+    text-decoration: underline;
+    color:orange;
+
 }
 
 .home-top-menu>span>a{

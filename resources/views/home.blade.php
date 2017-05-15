@@ -362,7 +362,7 @@
                         <span style="font-size: 12px;">
                        {{$val['description']}}
                             <br>
-                        <a href="{{route('newsdetail',['id'=>$val['id']])}}">Read More...</a>
+                        <a href="{{route('newsdetail',['id'=>$val['slug']])}}">Read More...</a>
     </span>
                     </div>
                 </div>

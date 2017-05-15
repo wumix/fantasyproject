@@ -6,6 +6,9 @@ padding-left: 15px;
 
 
 }
+.text-transform-capatalize{
+    text-transform: capitalize;
+}
 
 .home-top-menu>span>a{
     color: #FFFFFF;

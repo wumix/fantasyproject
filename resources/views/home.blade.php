@@ -349,7 +349,7 @@
                 <div class="media newscolor">
                     <div class="media-left">
                         <a href="{{getUploadsPath($val['image'])}}">
-                            <img class="media-object" src="http://gamithon.dev/assets-new/img/aaa.jpg" alt="...">
+                            <img class="media-object" src="{{getUploadsPath($val['image'])}}" alt="...">
                         </a>
                     </div>
                     <div class="media-body media1">

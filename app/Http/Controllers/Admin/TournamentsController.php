@@ -91,9 +91,7 @@ class TournamentsController extends Controller {
             $tournament->t_logo = $files;
         }
         $tournament->save();
-       // \App\TournamentGameTermPoint::where('tournament_id', $tournament->id)->delete(); //Deleting all game points
-
-        return redirect()->route('editTournamentForm', ['tournament_id' => Input::get('id')])
+         return redirect()->route('editTournamentForm', ['tournament_id' => Input::get('id')])
             ->with('status', 'Tournament Updated');
     }
 

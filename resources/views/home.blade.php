@@ -338,7 +338,7 @@
     {{--</div>--}}
 {{--</section>--}}
 @if(!empty($news))
-<section class="newsbackground">
+<section class="newsbackground no-padding">
     <div class="container " >
         <div class="row">
 

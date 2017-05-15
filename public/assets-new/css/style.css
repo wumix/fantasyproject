@@ -8,6 +8,7 @@ padding-left: 15px;
 }
 .text-transform-capatalize{
     text-transform: capitalize;
+    font-size: 14px;
 }
 
 .home-top-menu>span>a{

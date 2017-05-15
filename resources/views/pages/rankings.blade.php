@@ -46,7 +46,7 @@
 
                                                                  id="action-{{$gametype['type_name']}}-{{$gameroles['id']}}">
                                                                 @endif
-                                                                <?php $i++;?>
+                                                                <?php $i=0;?>
                                                                 <div class="table-responsive col-md-12">
 
                                                                     <table class="table table-striped table-bordered">

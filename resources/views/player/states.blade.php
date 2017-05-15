@@ -60,7 +60,7 @@
 .pop_up_one{
 	background: #2c2c2c url("{{URL::to('/img/gamithon-back-img.png')}}") no-repeat right center;
 	background-position: 83% 2%;
-	height:660px;
+	height:680px;
 }
 .plyer_name{  
 	width:100%;

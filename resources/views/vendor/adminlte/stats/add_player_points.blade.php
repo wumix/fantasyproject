@@ -21,7 +21,7 @@
                             <div class="form-group">
                                 <label>{{$game_type['type_name']}}</label>
                                 <input required name="game_type_id[{{$game_type['id']}}]" type="hidden" class="form-control" value="{{$game_type['id']}}">
-                                <input required name="game_type_id[{{$game_type['id']}}]points[]" type="text" class="form-control" placeholder="Add Score">
+                                <input required name="game_type_id[{{$game_type['id']}}]points[]" type="text" class="form-control" value="0" placeholder="Add Score">
                             </div>
                         @endforeach
 

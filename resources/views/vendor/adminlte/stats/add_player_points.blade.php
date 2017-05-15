@@ -20,8 +20,8 @@
                         @foreach($game_types as $game_type)
                             <div class="form-group">
                                 <label>{{$game_type['type_name']}}</label>
-                                <input name="game_type_id[{{$game_type['id']}}]" type="hidden" class="form-control" value="{{$game_type['id']}}">
-                                <input name="game_type_id[{{$game_type['id']}}]points[]" type="text" class="form-control" placeholder="Add Score">
+                                <input required name="game_type_id[{{$game_type['id']}}]" type="hidden" class="form-control" value="{{$game_type['id']}}">
+                                <input required name="game_type_id[{{$game_type['id']}}]points[]" type="text" class="form-control" placeholder="Add Score">
                             </div>
                         @endforeach
 

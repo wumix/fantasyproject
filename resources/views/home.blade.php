@@ -428,10 +428,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS GL
+                                    DD VS RCB
                                 </div>
                                 <div class="project-name">
-                                    Daredevils won by 2 wickets
+                                   RCB won by 10 runs
                                 </div>
                             </div>
                         </div>
@@ -445,10 +445,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS GL
+                                    DD VS RCB
                                 </div>
                                 <div class="project-name">
-                                    Daredevils won by 2 wickets
+                                    RCB won by 10 runs
                                 </div>
                             </div>
                         </div>
@@ -461,10 +461,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    KXIP VS KKR
+                                    DD VS RCB
                                 </div>
                                 <div class="project-name">
-                                    Kings won by 14 runs
+                                    RCB won by 10 runs
                                 </div>
                             </div>
 
@@ -478,10 +478,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    KXIP VS KKR
+                                    DD VS KKR
                                 </div>
                                 <div class="project-name">
-                                    Kings won by 14 runs
+                                    KKR won by 14 runs
                                 </div>
                             </div>
                         </div>
@@ -493,10 +493,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    KXIP VS KKR
+                                    DD VS KKR
                                 </div>
                                 <div class="project-name">
-                                    Kings won by 14 runs
+                                    KKR won by 14 runs
                                 </div>
                             </div>
                         </div>
@@ -508,10 +508,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    KXIP VS MI
+                                    DD VS KKR
                                 </div>
                                 <div class="project-name">
-                                    Kings XI won by 7 runs
+                                    KKR won by 14 runs
                                 </div>
                             </div>
                         </div>
@@ -524,10 +524,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    KXIP VS MI
+                                    DD VS RPS
                                 </div>
                                 <div class="project-name">
-                                    Kings XI won by 7 runs
+                                    Daredevils won by 7 runs
                                 </div>
                             </div>
                         </div>
@@ -539,10 +539,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    KXIP VS MI
+                                    DD VS RPS
                                 </div>
                                 <div class="project-name">
-                                    Kings XI won by 7 runs
+                                    Daredevils won by 7 runs
                                 </div>
                             </div>
                         </div>
@@ -555,10 +555,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS GL
+                                    DD VS RPS
                                 </div>
                                 <div class="project-name">
-                                    Daredevils won by 2 wickets
+                                    Daredevils won by 7 runs
                                 </div>
                             </div>
                         </div>

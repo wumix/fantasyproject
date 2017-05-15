@@ -353,7 +353,11 @@
                         </a>
                     </div>
                     <div class="media-body media1">
-                        <h4 class="media-heading mediah" > {{$val['title']}}</h4>
+                        <h4 class="media-heading mediah" >
+                            <a href="{{route('newsdetail',['id'=>$val['id']])}}">
+                            {{$val['title']}}
+                            </a>
+                        </h4>
 
                         <span style="font-size: 12px;">
                        {{$val['description']}}

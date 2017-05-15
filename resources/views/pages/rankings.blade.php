@@ -63,6 +63,7 @@
                                                                         <tbody class="table-has-player">
                                                                         @foreach($gametype['game_type_points'] as $key2=>$player)
                                                                             @if($player['player_roles'][0]['id']==$gameroles['id'])
+                                                                               @if(!$player['pivot']['points']==0)
                                                                                 <tr class="cwt">
                                                                                     <td style="min-width: 50px;">
                                                                                         1
@@ -79,6 +80,7 @@
 
                                                                                     <td>{{$player['pivot']['points']}}</td>
                                                                                 </tr>
+                                                                                @endif
                                                                             @endif
                                                                         @endforeach
 

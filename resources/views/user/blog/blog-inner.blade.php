@@ -24,7 +24,7 @@
             <div class="row col-md-10 col-lg-offset-1">
                 <div class="col-md-8">
                     <div class="blogimg">
-                        <img src="http://localhost/gamithon/public/img/portfolio/thumbnails/GALLERY-IMG6APR2.jpg"
+                        <img src="{{getUploadsPath($postdetail['image'])}}"
                              class="img-responsive" alt="Cinque Terre">
                     </div>
                     <section class="col-md-12 no-padding" style="padding-bottom: 20px;">

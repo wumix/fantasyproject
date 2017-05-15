@@ -345,7 +345,7 @@
         <div class="row">
             <!-- start news -->
             @foreach($news as $key=>$val)
-            <div class="col-md-4 " style="margin: 15px 0 15px 0; outline: #efefef solid 1px; padding: 5px;">
+            <div class="col-md-4 " style="margin: 15px 0 15px 0; outline: #efefef solid 1px; padding: 15px;">
                 <div class="media newscolor">
                     <div class="media-left">
                         <a href="{{getUploadsPath($val['image'])}}">

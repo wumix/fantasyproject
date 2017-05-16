@@ -210,8 +210,8 @@ margin-bottom:20px !important;
 			</div>
 			<div class="col-md-9 equal_locate">
 				<span class="plyer_name">Name: <span>{{$player['name']}}</span></span>
-				<span class="plyer_name2">Born: <span>March 1, 1980</span></span>
-				<span class="plyer_name2">Player Role: <span>Allrounder</span></span>
+
+				<!-- <span class="plyer_name2">Player Role: <span>Allrounder</span></span> -->
 				@foreach($player['player_games']['game_type'] as $row)
 				<span class="plyer_name2">{{$row['type_name']}}</span>
 					@foreach($row['game_type_stats_category'] as $row1)

@@ -634,7 +634,7 @@
     <script>
         $('#header').backstretch([
 
-            {url: '{{Url::to('assets-new/img/bj2.jpg')}}', fade: 1000},
+            {url: '{{Url::to('assets-new/img/champions-trophy.png')}}', fade: 1000},
             {url: '{{Url::to('assets-new/img/bg1.jpg')}}', fade: 1000},
             {url: '{{Url::to('assets-new/img/bj3.jpg')}}', fade: 1000}
         ]);

@@ -635,7 +635,7 @@
         $('#header').backstretch([
 
 
-
+            {url: '{{Url::to('assets-new/img/gamithon-final.jpg')}}', fade: 1000},
             {url: '{{Url::to('assets-new/img/yp.jpg')}}', fade: 1000},
             {url: '{{Url::to('assets-new/img/bg1.jpg')}}', fade: 1000},
 

@@ -198,7 +198,7 @@
                                     {{formatDate($tournament['start_date'])}}
                                 </td>
                                 <td>
-                                    {{formatDate($tournament['end_date'])}}
+                                    June 8th 2017
                                 </td>
                             </tr>
                                 @endforeach

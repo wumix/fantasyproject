@@ -889,9 +889,10 @@ width: 100%;
 .newscolor{
 
     background-color: #ffffff;
+    color: #000;
 }
 .itemsz{
-    background: white;
+    background: #ffffff;
 }
 .mediah{
     font-weight: bolder;

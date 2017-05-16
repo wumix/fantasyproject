@@ -213,142 +213,11 @@
     </section>
   @endif
 
-    <!---------------------->
-    <!-- ...............................News start......................... -->
-    {{--<section>--}}
-    {{--<div class="container-fluid lnews" >--}}
-        {{--<div class="row">--}}
-            {{--<div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
-                {{--<h3 class="gallery-title">LATEST NEWS</h3>--}}
-            {{--</div>--}}
-
-
-            {{--<br/>--}}
-            {{--<div class=" col-md-12">--}}
-                {{--<div class=" col-md-12 ">--}}
-
-                    {{--<div class="row">--}}
-
-                        {{--<div class="gallery_product col-md-3 ">--}}
-                            {{--<div class="col-md-6 ">--}}
-                                {{--<img src="http://fakeimg.pl/365x365/" class="img-responsive imgn">--}}
-                            {{--</div>--}}
-                            {{--<div class="col-md-6 nt">--}}
-                                {{--<span class="nt1">10 March 2017</span>--}}
-                                {{--<br>--}}
-
-                                {{--<span class="nt2">Ireland Tri-Nation</span>--}}
-                                {{--<br>--}}
-                                {{--<span class="nt2">Seriesf</span>--}}
-                                {{--<br>--}}
-                                {{--<br>--}}
-                                {{--<p class="nt3">--}}
-                                    {{--New-Zeeland premier fast bowler Wanger said he has worked on depth bowling and also worked on how to stay consistence.--}}
-                                {{--</p>--}}
-
-
-
-                            {{--</div>--}}
-
-                        {{--</div>--}}
-
-                        {{--<div class="gallery_product col-md-3 ">--}}
-
-                            {{----}}
-
-                        {{--</div>--}}
-                        {{--<div class="gallery_product col-md-3 ">--}}
-                            {{--<div class="col-md-6 ">--}}
-                                {{--<img src="http://fakeimg.pl/365x365/" class="img-responsive imgn">--}}
-                            {{--</div>--}}
-                            {{--<div class="col-md-6 nt">--}}
-                                {{--<span class="nt1">10 March 2017</span>--}}
-
-                                {{--<br>--}}
-                                {{--<span class="nt2">lidihflhaijf</span>--}}
-                                {{--<br>--}}
-                                {{--<span class="nt2">lidihflhaijf</span>--}}
-                                {{--<br>--}}
-                                {{--<br>--}}
-                                {{--<p class="nt3">--}}
-                                    {{--ishflkskfjksjkfjs;lfjs.--}}
-                                    {{--lkfjlsjflkjsdl;fkd.4--}}
-
-                                    {{--sfklsfjks--}}
-                                    {{--sfjsj--}}
-                                {{--</p>--}}
-
-
-
-                            {{--</div>--}}
-
-                        {{--</div>--}}
-
-                    {{--</div>--}}
-
-
-
-                {{--</div>--}}
-
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-    {{--</section>--}}
-
-{{--<section>--}}
-    {{--<div class="container">--}}
-        {{--<div class="row">--}}
-        {{--<div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
-        {{--<h3 class="gallery-title">LATEST NEWS</h3>--}}
-        {{--</div>--}}
-        {{--<div class="row">--}}
-            {{--<div class="col-md-4">--}}
-                {{--<div class="media">--}}
-                    {{--<div class="media-left">--}}
-                        {{--<a href="http://gamithon.dev/assets-new/img/default-profile-pic.png">--}}
-                            {{--<img class="media-object" src="..." alt="...">--}}
-                        {{--</a>--}}
-                    {{--</div>--}}
-                    {{--<div class="media-body">--}}
-                        {{--<h4 class="media-heading">              Ireland Tri-Nation Series</h4>--}}
-
-                        {{--New-Zeeland premier fast bowler Wanger said he has worked on depth bowling and also worked on how to stay consistence. </div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="col-md-4">--}}
-                {{--<div class="media">--}}
-                    {{--<div class="media-left">--}}
-                        {{--<a href="http://gamithon.dev/assets-new/img/default-profile-pic.png">--}}
-                            {{--<img class="media-object" src="..." alt="...">--}}
-                        {{--</a>--}}
-                    {{--</div>--}}
-                    {{--<div class="media-body">--}}
-                        {{--<h4 class="media-heading">Misbah In His Last Appearance</h4>--}}
-
-                        {{--Misbah is hopeful that this occasion will give additional motivation to the team. He further added that emotions are flowing but he will stay focus. </div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="col-md-4">--}}
-                {{--<div class="media">--}}
-                    {{--<div class="media-left">--}}
-                        {{--<a href="http://gamithon.dev/assets-new/img/default-profile-pic.png">--}}
-                            {{--<img class="media-object" src="..." alt="...">--}}
-                        {{--</a>--}}
-                    {{--</div>--}}
-                    {{--<div class="media-body">--}}
-                        {{--<h4 class="media-heading">Perth Stadium Is Not Available For Ashes</h4>--}}
-                        {{--The western Australian govt said, perth stadium will not host any match of ashes series between Australia and England. Stadium is under construction and will not be completed till mid decemeber.  </div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</section>--}}
 @if(!empty($news))
-<section class="newsbackground no-padding">
-    <div class="container " >
-        <div class="row">
+<section class="bg-primary" style="padding-bottom: 20px;">
+    <div class="container">
 
-        <div class="row">
+        <div class="" >
             <!-- start news -->
             @foreach($news as $key=>$val)
             <div class="col-md-4 itemsz " style="margin: 15px 0 15px 0;  padding: 15px;">
@@ -358,7 +227,7 @@
                             <img class="media-object" src="{{getUploadsPath($val['image'])}}" alt="...">
                         </a>
                     </div>
-                    <div class="media-body media1">
+                    <div class="media-body">
                         <h4 class="media-heading mediah" >
                             <a class="home-news-headings" href="{{route('newsdetail',['id'=>$val['slug']])}}">
                             {{$val['title']}}
@@ -375,8 +244,7 @@
             </div>
             @endforeach
             <!-- end news -->
-            </div>
-        </div>
+    </div>
     </div>
 </section>
 @endif

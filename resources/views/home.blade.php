@@ -3,7 +3,7 @@
 @section('content')
     <!--BASBB-->
     <header id="header">
-        <div id="abcd" class="header-content container" style="">
+        <div id="abcd" class="header-content container" >
             <div class="container">
                 <div class="col-md-12 no-padding">
 
@@ -168,7 +168,7 @@
     </section>
     @if(!empty($upcomming_tournaments_list))
 
-    <section class="bg-primary" id="about" style="margin-top: -40px;">
+    <section class="bg-primary" id="about" >
         <div class="container">
             <div class="row">
 

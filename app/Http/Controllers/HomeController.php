@@ -65,16 +65,27 @@ class HomeController extends Controller
 
     public function index()
     {
-        $objTourmament = \App\Tournament::all()->sortBy("start_date");
-        $data['tournaments_list'] = $objTourmament->toArray();
+        $datetime = new \DateTime();
+        $date = $datetime->format('Y-m-d H:i:s');
+        $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', $date)->Where('end_date', '>=', $date);;
+        $data['tournaments_list'] = $objTourmament->toArray(); //list of active
+        $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', $date);
+        $data['upcomming_tournaments_list'] = $upcommingTour->toArray(); //upcomming tournament of active
         $data['matches'] = \App\Match::getNextMatch();
         $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
-        $data['news'] = \App\BlogPost::where('post_type','news')->get()->toArray();
-
-       //dd( $data['news']);
-
+        $data['news'] = \App\BlogPost::where('post_type', 'news')->get()->toArray();
+       //dd( $data['leaders']);
+        //dd($xmy);
 
         return view('home', $data);
+    }
+
+    public function fixturesDetial($tournament_id)
+    {
+        $data['fixture_details'] = \App\Tournament::where('id', $tournament_id)->with('tournament_matches')->firstOrFail()->toArray();
+
+        return view('pages.fixtures_c_trophy',$data);
+
     }
 
     public function contactPage()
@@ -82,16 +93,11 @@ class HomeController extends Controller
         return view('pages.contact');
     }
 
-    public function fixturs()
-    {
-        return view('pages.fixtures_c_trophy');
-    }
 
     public function upcommingTournamnets()
     {
         return view('pages.upccoming_tournaments');
     }
-
 
 
     public function championTrophy()
@@ -102,10 +108,10 @@ class HomeController extends Controller
     public function rankings()
     {
         $stats = \App\Game::where('id', '1')
-            ->with('game_roles','game_type.game_type_points.player_roles')->get()->toArray();
-        $data['rankings']=$stats;
-      //dd($stats);
-        return view('pages.rankings',$data);
+            ->with('game_roles', 'game_type.game_type_points.player_roles')->get()->toArray();
+        $data['rankings'] = $stats;
+        //dd($stats);
+        return view('pages.rankings', $data);
     }
 
     public function postContact(Request $request)

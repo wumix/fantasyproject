@@ -29,8 +29,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('terms', 'HomeController@termsCon')->name('TermsCon');
     Route::get('champions-trophy', 'HomeController@fixturs')->name('champion');
     Route::get('upcomming', 'HomeController@upcommingTournamnets')->name('upcommingTournamnets');
-    Route::get('Champions_trophy', 'HomeController@championTrophy')->name('championtrophy');
     Route::get('rankings', 'HomeController@rankings')->name('rankings');
+    Route::group(['prefix' => 'tournament'], function () {
+        Route::get('/fixtures/{tournament_id}', 'HomeController@fixturesDetial')->name('fixturesdetail');
+    });
 
     Route::get('how-to-play', 'HomeController@howPlay')->name('howPlay');
     Route::get('/tournaments', 'User\TournamentsController@index')->name('usertournamenthome');

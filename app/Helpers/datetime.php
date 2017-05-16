@@ -9,6 +9,12 @@
 function formatDate($date) {
     return date(config('const.sitewise_date_format'), strtotime($date));
 }
+function formatTime($date) {
+    return date(config('const.sitewise_time_format'), strtotime($date));
+}
+
+
+
 
 function getGmtTime() {
     $serverTime = config('app.timezone');

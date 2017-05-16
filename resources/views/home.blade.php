@@ -383,7 +383,7 @@
 
 
     <!-- LETS PLAY AT GAMITHON  Start-->
-    <section id="services" class="bg-dark how-to-play-summery">
+    <section id="services" class=" services-padding-bottom bg-dark how-to-play-summery">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -430,7 +430,7 @@
         </div>
     </section>
     {{--.............................Gallry Start..............................................--}}
-    <section class="no-padding" id="portfolio">
+    <section id="portfolio">
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">

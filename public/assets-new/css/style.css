@@ -339,6 +339,7 @@ section.footer{
 }
 
 .page-heading{
+    padding-top: 10px;
     text-align: left;
     margin-top: 0;
 }

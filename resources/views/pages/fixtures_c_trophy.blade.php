@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="text-center" style="color: #F9960E;">
-                        Champions Trophy Fixtures
+                        ICC Champions Trophy Fixtures
                     </h1>
                     <hr class="light full">
 

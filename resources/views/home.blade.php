@@ -195,10 +195,10 @@
                                 </td>
                                 <td class="border-r">{{$tournament['venue']}}</td>
                                 <td class="border-r">
-                                    {{formatTime($tournament['start_date'])}}
+                                    {{formatDate($tournament['start_date'])}}
                                 </td>
                                 <td>
-                                    {{formatTime($tournament['end_date'])}}
+                                    {{formatDate($tournament['end_date'])}}
                                 </td>
                             </tr>
                                 @endforeach

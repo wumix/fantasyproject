@@ -73,10 +73,7 @@ class HomeController extends Controller
         $data['upcomming_tournaments_list'] = $upcommingTour->toArray(); //upcomming tournament of active
         $data['matches'] = \App\Match::getNextMatch();
         $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
-        $data['news'] = \App\BlogPost::where('post_type', 'news')->get()->toArray();
-       //dd( $data['leaders']);
-        //dd($xmy);
-
+        $data['news'] = \App\BlogPost::where('post_type', 'news')->take(3)->orderBy('id', 'DESC')->get()->toArray();
         return view('home', $data);
     }
 
@@ -84,7 +81,7 @@ class HomeController extends Controller
     {
         $data['fixture_details'] = \App\Tournament::where('id', $tournament_id)->with('tournament_matches')->firstOrFail()->toArray();
 
-        return view('pages.fixtures_c_trophy',$data);
+        return view('pages.fixtures_c_trophy', $data);
 
     }
 

@@ -279,6 +279,7 @@
   
 
     $(document).ready(function () {
+        $('.itemsz').matchHeight();
      $(window).on('load', function(){
             $('.content').mCustomScrollbar();
         });
@@ -298,6 +299,7 @@
     });
     });
 </script>
+{!! Html::script('assets-new/js/jquery.matchHeight-min.js') !!}
 {!! Html::script('assets-new/js/jquery.backstretch.min.js') !!}
 {!! Html::script('js/colorbox-master/jquery.colorbox-min.js') !!}
 

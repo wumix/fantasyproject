@@ -166,6 +166,7 @@
             </div>
         </div>
     </section>
+    @if(!empty($upcomming_tournaments_list))
 
     <section class="bg-primary" id="about" style="margin-top: -40px;">
         <div class="container">
@@ -188,17 +189,19 @@
                             </tr>
                             </thead>
                             <tbody class="main-taible-body">
+                            @foreach($upcomming_tournaments_list as $tournament)
                             <tr class="trr">
-                                <td class="border-r"> <a href="#">Champions Trophy</a>
+                                <td class="border-r"> <a href="{{route('fixturesdetail',['ac'=>$tournament['id']])}}">{{$tournament['name']}} </a>
                                 </td>
-                                <td class="border-r">England</td>
+                                <td class="border-r">{{$tournament['venue']}}</td>
                                 <td class="border-r">
-                                    {{formatDate('2017-06-01')}}
+                                    {{formatTime($tournament['start_date'])}}
                                 </td>
                                 <td>
-                                    {{formatDate('2017-06-18')}}
+                                    {{formatTime($tournament['end_date'])}}
                                 </td>
                             </tr>
+                                @endforeach
 
                             </tbody>
                         </table>
@@ -208,6 +211,7 @@
             </div>
         </div>
     </section>
+  @endif
 
     <!---------------------->
     <!-- ...............................News start......................... -->
@@ -347,7 +351,7 @@
         <div class="row">
             <!-- start news -->
             @foreach($news as $key=>$val)
-            <div class="col-md-4 " style="margin: 15px 0 15px 0;  padding: 15px;">
+            <div class="col-md-4 itemsz " style="margin: 15px 0 15px 0;  padding: 15px;">
                 <div class="media newscolor">
                     <div class="media-left">
                         <a href="{{getUploadsPath($val['image'])}}">

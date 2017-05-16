@@ -28,10 +28,10 @@
                              class="img-responsive" alt="Cinque Terre">
                     </div>
                     <section class="col-md-12 no-padding" style="padding-bottom: 20px;">
-                        <h3 class="textgreen">
+                      <!--  <h3 class="textgreen">
                             {!! $postdetail['title'] !!}
                         </h3>
-                        <hr class="bloghr">
+                        <hr class="bloghr"> -->
 
 
                     </section>

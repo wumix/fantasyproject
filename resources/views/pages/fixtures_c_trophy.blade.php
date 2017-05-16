@@ -26,7 +26,7 @@
 
                         <h5 class="mywebinar text-capitalize"> {{$fixture['team_one']}} 1 {{$fixture['team_two']}}</h5>
 
-                        <div class="col-md-12">
+                        <div class="col-md-12 fixtures-content-padding">
                             <p style="font-size: 15px">
                           <span class="text-left "><i class="fa fa-venus" aria-hidden="true">
                               </i> Venue :</span>{{$fixture['venue']}}

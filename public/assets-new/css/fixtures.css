@@ -65,6 +65,10 @@ and open the template in the editor.
     color: #ffffff;
 
 }
+.fixtures-content-padding{
+    padding-top:16px ;
+
+}
 .venuefont{
     font-size: 14px;
 }

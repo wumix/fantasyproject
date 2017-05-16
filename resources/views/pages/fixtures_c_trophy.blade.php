@@ -26,18 +26,20 @@
 
                         <h5 class="mywebinar"> {{$fixture['team_one']}} 1 {{$fixture['team_two']}}</h5>
 
-                        <div>
+                        <div class="col-md-12">
                             <p style="font-size: 15px">
                           <span class="text-left "><i class="fa fa-venus" aria-hidden="true">
                               </i> Venue :</span>{{$fixture['venue']}}
                             </p>
+                            <p>
 
-                        </div>
-
-
-                        <div>
-                            <span style="font-size: 15px" class="text-left"><i class="fa fa-calendar" aria-hidden="true"></i> Date :</span> {{formatDate($fixture['start_date'])}}
-
+                                <span style="font-size: 15px" class="text-left"><i class="fa fa-calendar"
+                                                                                   aria-hidden="true"></i> Date :</span> {{formatDate($fixture['start_date'])}}
+                            </p>
+                            <p><span style="font-size: 15px" class="text-left"><i
+                                            class="fa fa-clock-o"
+                                            aria-hidden="true"></i> Date :</span> {{formatTime($fixture['start_date'])}} GMT
+                            </p>
                         </div>
 
 

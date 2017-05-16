@@ -10,9 +10,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="text-center page-heading">
+                    <h2 class="text-center page-heading">
                        {{$postdetail['title']}}
-                    </h1>
+                    </h2>
                     <hr class="light full">
 
                 </div>

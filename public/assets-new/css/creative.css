@@ -400,7 +400,7 @@ header .header-content .header-content-inner p {
 }
 
 .section-heading {
-    margin-top: 0;
+   padding-top: 4px;
 }
 
 .service-box {

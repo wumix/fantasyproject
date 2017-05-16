@@ -24,7 +24,7 @@
                 @foreach($fixture_details['tournament_matches'] as $fixture)
                     <div class="col-md-6 venuefont">
 
-                        <h5 class="mywebinar text-capitalize"> {{$fixture['team_one']}} 1 {{$fixture['team_two']}}</h5>
+                        <h5 class="mywebinar text-capitalize"> {{$fixture['team_one']}} VS {{$fixture['team_two']}}</h5>
 
                         <div class="col-md-12 fixtures-content-padding">
                             <p style="font-size: 15px">

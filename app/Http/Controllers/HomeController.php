@@ -67,7 +67,7 @@ class HomeController extends Controller
     {
         $datetime = new \DateTime();
         $date = $datetime->format('Y-m-d H:i:s');
-        $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', $date)->Where('end_date', '>=', $date);;
+        $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', $date)->Where('end_date', '>=', $date);
         $data['tournaments_list'] = $objTourmament->toArray(); //list of active
         $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', $date);
         $data['upcomming_tournaments_list'] = $upcommingTour->toArray(); //upcomming tournament of active

@@ -30,7 +30,6 @@ class TournamentsController extends Controller
         $date = $datetime->format('Y-m-d H:i:s');
         $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', $date)->Where('end_date', '>=', $date);
         $data['tournaments_list'] = $objTourmament->toArray();
-        // dd( $data['tournaments_list']);
         return view('user.tournaments.home', $data);
     }
 

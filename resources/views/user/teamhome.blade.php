@@ -17,10 +17,10 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-4">
-                                      <h4>Team Name</h4>
+                                        <h4>Team Name</h4>
                                     </div>
                                     <div class="col-md-4 ">
-                                       <h4>Tournament Name</h4>
+                                        <h4>Tournament Name</h4>
                                     </div>
                                 </div>
                                 <hr class="light full">
@@ -30,7 +30,7 @@
                                             <a href="{{route('teamdetail',['team_id'=>$teams['id']])}}"> {{$teams['name']}}</a>
                                         </div>
                                         <div class="col-md-6" style="height: 250px">
-                                             {{$teams['teamtournament']['name']}}
+                                            {{$teams['teamtournament']['name']}}
                                         </div>
                                     </div>
 
@@ -44,9 +44,9 @@
                 </div>
             </div>
         </div>
-       
+
     </section>
-    <br><br><br>
+
     <!-- ............................Show Hide Table Satrt........................... -->
     {{--<section class="no-padding">--}}
     {{--<div class="container">--}}
@@ -225,6 +225,6 @@
 
 
 
-
+<br><br><br><br>
 
 @endsection

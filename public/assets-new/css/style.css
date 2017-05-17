@@ -897,7 +897,7 @@ hr.light.full{
     font-weight: bolder;
 }
 .blog-img-thumb{
-    height: 300px;
+    max-height: 300px;
     overflow: hidden;
 }
 .blog-img-thumb img{

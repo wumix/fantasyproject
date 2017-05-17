@@ -904,10 +904,14 @@ hr.light.full{
     width: 100%;
 }
 .blog-grid{
-    border: 1px solid #CECECE;
-    border-radius: 20px;
+   
 }
 .blog-grid p{
     line-height: 22px;
+}
+.grid-content-container{
+    margin-right: 20px;
+     border: 1px solid #CECECE;
+    border-radius: 20px;
 }
 /*...................................News End........................................*/

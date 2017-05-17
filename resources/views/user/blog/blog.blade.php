@@ -20,21 +20,24 @@
         <div class="">
             <div class="row-page col-md-12 no-padding">
                 @foreach($posts as $row)
-                <div class="blog-grid itemsz col-sm-12 col-md-3 no-padding" style="margin-top: 20px;">
-                    <div class="blog-img-thumb">
-                        <img class="img-responsive" src="{{getUploadsPath($row['image'])}}">
-                    </div>
-                    <div class="col-md-12">
-                        <h4>
-                            <a href="{{route('newsdetail',['post_id'=>$row['slug']])}}"
-                               class="bloghead">{{$row['title']}}</a>
-                        </h4>
-                        <p>
-                            {!! str_limit($row['description'], 100) !!}...
-                        </p>
-                        <p>
-                            <a href="{{route('newsdetail',['id'=>$row['slug']])}}">Read More</a>
-                        </p>
+                <div class=" col-sm-12 col-md-3 no-padding" style="margin-top: 20px;">
+                    <div class="itemsz grid-content-container">
+                        <div class="blog-img-thumb">
+                            <img class="img-responsive" src="{{getUploadsPath($row['image'])}}">
+                        </div>
+                        <div class="col-md-12">
+                            <h4>
+                                <a href="{{route('newsdetail',['post_id'=>$row['slug']])}}"
+                                   class="bloghead">{{$row['title']}}</a>
+                            </h4>
+                            <p>
+                                {!! str_limit($row['description'], 100) !!}...
+                            </p>
+                            <p>
+                                <a href="{{route('newsdetail',['id'=>$row['slug']])}}">Read More</a>
+                            </p>
+                        </div>
+                        <div class="clear clearfix"></div>
                     </div>
                 </div>
                 @endforeach

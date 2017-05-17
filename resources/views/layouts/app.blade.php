@@ -8,7 +8,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gamithon Fantasy</title>
+    @yield('title')
+    @yield('facbook-og-tags')
+
 
     <!-- Bootstrap Core CSS -->
 {!! Html::style('assets-new/vendor/bootstrap/css/bootstrap.min.css') !!}
@@ -59,6 +61,7 @@
 
 </head>
 <body>
+@yield('facebook-share-div-code')
 <nav class="bg-primary navbar navbar-default navbar-fixed-top">
     <!--Menu-->
 

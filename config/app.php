@@ -162,6 +162,7 @@ return [
         //Social login
         Laravel\Socialite\SocialiteServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
+        'Bkwld\Croppa\ServiceProvider'
     ],
     /*
       |--------------------------------------------------------------------------
@@ -211,5 +212,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Croppa' => 'Bkwld\Croppa\Facade',
     ],
 ];

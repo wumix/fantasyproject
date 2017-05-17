@@ -1,5 +1,8 @@
 @extends('layouts.app')
 {{--{{dd($matches->t)}}--}}
+@section('title')
+    <title>Gamithon Fantasy</title>
+@stop
 @section('content')
     <!--BASBB-->
     <header id="header">
@@ -142,7 +145,7 @@
 
                                             <?php
                                             echo formatDate($row['start_date']);
-                                                ?>
+                                            ?>
                                         </td>
                                         <td>
                                             <?php
@@ -168,85 +171,87 @@
     </section>
     @if(!empty($upcomming_tournaments_list))
 
-    <section class="bg-primary" id="about" >
-        <div class="container">
-            <div class="row">
+        <section class="bg-primary" id="about" >
+            <div class="container">
+                <div class="row">
 
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">
-                        Upcomming Tournaments
-                        <hr class="light">
-                    </h2>
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">
+                            Upcomming Tournaments
+                            <hr class="light">
+                        </h2>
 
-                    <div class="table-responsive">
-                        <table class="table table-striped table-stripedhome gen-table">
-                            <thead class="main-taible-head">
-                            <tr>
-                                <th class="border-r th1">Name</th>
-                                <th class="border-r">Venue</th>
-                                <th class="border-r">Started At</th>
-                                <th class="th2">Ending At</th>
-                            </tr>
-                            </thead>
-                            <tbody class="main-taible-body">
-                            @foreach($upcomming_tournaments_list as $tournament)
-                            <tr class="trr">
-                                <td class="border-r"> <a href="{{route('fixturesdetail',['tournament_id'=>$tournament['id']])}}">{{$tournament['name']}} </a>
-                                </td>
-                                <td class="border-r">{{$tournament['venue']}}</td>
-                                <td class="border-r">
-                                    {{formatDate($tournament['start_date'])}}
-                                </td>
-                                <td>
-                                    {{formatDate($tournament['end_date'])}}
-                                </td>
-                            </tr>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-stripedhome gen-table">
+                                <thead class="main-taible-head">
+                                <tr>
+                                    <th class="border-r th1">Name</th>
+                                    <th class="border-r">Venue</th>
+                                    <th class="border-r">Started At</th>
+                                    <th class="th2">Ending At</th>
+                                </tr>
+                                </thead>
+                                <tbody class="main-taible-body">
+                                @foreach($upcomming_tournaments_list as $tournament)
+                                    <tr class="trr">
+                                        <td class="border-r"> <a href="{{route('fixturesdetail',['tournament_id'=>$tournament['id']])}}">{{$tournament['name']}} </a>
+                                        </td>
+                                        <td class="border-r">{{$tournament['venue']}}</td>
+                                        <td class="border-r">
+                                            {{formatDate($tournament['start_date'])}}
+                                        </td>
+                                        <td>
+                                            {{formatDate($tournament['end_date'])}}
+                                        </td>
+                                    </tr>
                                 @endforeach
 
-                            </tbody>
-                        </table>
-                    </div>
+                                </tbody>
+                            </table>
+                        </div>
 
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-  @endif
+        </section>
+    @endif
 
-@if(!empty($news))
-<section class="bg-primary" style="padding-bottom: 20px;">
-    <div class="container">
-        <div class="" >
-            <!-- start news -->
-            @foreach($news as $key=>$val)
-            <div class="col-md-4 itemsz " style="margin: 15px 0 15px 0;  padding: 15px;">
-                <div class="media newscolor">
-                    <div class="media-left">
-                        <a href="{{getUploadsPath($val['image'])}}">
-                            <img class="media-object" src="{{getUploadsPath($val['image'])}}" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading mediah" >
-                            <a class="home-news-headings" href="{{route('newsdetail',['id'=>$val['slug']])}}">
-                            {{$val['title']}}
-                            </a>
-                        </h4>
+    @if(!empty($news))
+        <section class="bg-primary" style="padding-bottom: 20px;">
+            <div class="container">
+                <div class="" >
+                    <!-- start news -->
+                    @foreach($news as $key=>$val)
+                        <div class="col-md-4 itemsz " style="margin: 15px 0 15px 0;  padding: 15px;">
+                            <div class="media newscolor">
+                                <div class="media-left">
+                                    <a href="{{getUploadsPath($val['image'])}}">
 
-                        <span style="font-size: 12px;">
+                                        <img class="media-object"
+                                             src="{{Croppa::url($val['image'],160,160)}}" alt="...">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading mediah" >
+                                        <a class="home-news-headings" href="{{route('newsdetail',['id'=>$val['slug']])}}">
+                                            {{$val['title']}}
+                                        </a>
+                                    </h4>
+
+                                    <span style="font-size: 12px;">
                        {!! str_limit($val['description'], 100) !!}...
                             <br>
                         <a href="{{route('newsdetail',['id'=>$val['slug']])}}">Read More</a>
     </span>
-                    </div>
+                                </div>
+                            </div>
+                        </div>
+                @endforeach
+                <!-- end news -->
                 </div>
             </div>
-            @endforeach
-            <!-- end news -->
-    </div>
-    </div>
-</section>
-@endif
+        </section>
+    @endif
 
 
     <!-- LETS PLAY AT GAMITHON  Start-->
@@ -301,15 +306,61 @@
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    MI VS RPS
+                                </div>
+                                <div class="project-name">
+                                    Supergiant won by 20 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    MI VS RPS
+                                </div>
+                                <div class="project-name">
+                                    Supergiant won by 20 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt=" DD VS GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    MI VS RPS
+                                </div>
+                                <div class="project-name">
+                                    Supergiant won by 20 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" DD VS GL">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS RCB
+                                    MI VS RPS
                                 </div>
                                 <div class="project-name">
-                                   RCB won by 10 runs
+                                    Supergiant won by 20 runs
                                 </div>
                             </div>
                         </div>
@@ -323,10 +374,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS RCB
+                                    MI VS RPS
                                 </div>
                                 <div class="project-name">
-                                    RCB won by 10 runs
+                                    Supergiant won by 20 runs
                                 </div>
                             </div>
                         </div>
@@ -339,10 +390,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS RCB
+                                    MI VS RPS
                                 </div>
                                 <div class="project-name">
-                                    RCB won by 10 runs
+                                    Supergiant won by 20 runs
                                 </div>
                             </div>
 
@@ -356,10 +407,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS KKR
+                                    MI VS RPS
                                 </div>
                                 <div class="project-name">
-                                    KKR won by 14 runs
+                                    Supergiant won by 20 runs
                                 </div>
                             </div>
                         </div>
@@ -371,10 +422,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS KKR
+                                    MI VS RPS
                                 </div>
                                 <div class="project-name">
-                                    KKR won by 14 runs
+                                    Supergiant won by 20 runs
                                 </div>
                             </div>
                         </div>
@@ -386,62 +437,17 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS KKR
+                                    MI VS RPS
                                 </div>
                                 <div class="project-name">
-                                    KKR won by 14 runs
+                                    Supergiant won by 20 runs
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
 
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    DD VS RPS
-                                </div>
-                                <div class="project-name">
-                                    Daredevils won by 7 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    DD VS RPS
-                                </div>
-                                <div class="project-name">
-                                    Daredevils won by 7 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    DD VS RPS
-                                </div>
-                                <div class="project-name">
-                                    Daredevils won by 7 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
 
 
@@ -502,7 +508,7 @@
         $('#header').backstretch([
 
 
-            {url: '{{Url::to('assets-new/img/gamithon-final.jpg')}}', fade: 1000},
+            {url: '{{Url::to('assets-new/img/gamithon-final-1.jpg')}}', fade: 1000},
             {url: '{{Url::to('assets-new/img/yp.jpg')}}', fade: 1000},
             {url: '{{Url::to('assets-new/img/bg1.jpg')}}', fade: 1000},
 

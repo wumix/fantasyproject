@@ -309,7 +309,7 @@
                                     MI VS RPS
                                 </div>
                                 <div class="project-name">
-                                   Supergiant won by 20 runs
+                                    Supergiant won by 20 runs
                                 </div>
                             </div>
                         </div>
@@ -352,10 +352,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS RCB
+                                    MI VS RPS
                                 </div>
                                 <div class="project-name">
-                                    RCB won by 10 runs
+                                    Supergiant won by 20 runs
                                 </div>
                             </div>
                         </div>
@@ -369,10 +369,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS RCB
+                                    MI VS RPS
                                 </div>
                                 <div class="project-name">
-                                    RCB won by 10 runs
+                                    Supergiant won by 20 runs
                                 </div>
                             </div>
                         </div>
@@ -385,10 +385,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS RCB
+                                    MI VS RPS
                                 </div>
                                 <div class="project-name">
-                                    RCB won by 10 runs
+                                    Supergiant won by 20 runs
                                 </div>
                             </div>
 
@@ -402,10 +402,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS KKR
+                                    MI VS RPS
                                 </div>
                                 <div class="project-name">
-                                    KKR won by 14 runs
+                                    Supergiant won by 20 runs
                                 </div>
                             </div>
                         </div>
@@ -417,10 +417,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS KKR
+                                    MI VS RPS
                                 </div>
                                 <div class="project-name">
-                                    KKR won by 14 runs
+                                    Supergiant won by 20 runs
                                 </div>
                             </div>
                         </div>
@@ -432,10 +432,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    DD VS KKR
+                                    MI VS RPS
                                 </div>
                                 <div class="project-name">
-                                    KKR won by 14 runs
+                                    Supergiant won by 20 runs
                                 </div>
                             </div>
                         </div>

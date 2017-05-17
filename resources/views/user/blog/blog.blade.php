@@ -30,7 +30,7 @@
                            class="bloghead">{{$row['title']}}</a>
                     </h4>
                     <p>
-                        {!! $row['description'] !!}
+                        {!! $row['description'] !!}...
                     </p>
                     </div>
                 </div>

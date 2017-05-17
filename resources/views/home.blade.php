@@ -216,7 +216,6 @@
 @if(!empty($news))
 <section class="bg-primary" style="padding-bottom: 20px;">
     <div class="container">
-
         <div class="" >
             <!-- start news -->
             @foreach($news as $key=>$val)
@@ -235,9 +234,9 @@
                         </h4>
 
                         <span style="font-size: 12px;">
-                       {{$val['description']}}
+                       {!! str_limit($val['description'], 100) !!}...
                             <br>
-                        <a href="{{route('newsdetail',['id'=>$val['slug']])}}">Read More...</a>
+                        <a href="{{route('newsdetail',['id'=>$val['slug']])}}">Read More</a>
     </span>
                     </div>
                 </div>

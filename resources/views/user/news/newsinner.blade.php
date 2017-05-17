@@ -90,7 +90,7 @@
 
                 </div>
                 <div class='error' style='display:none'></div>
-                <div id="sidebar" class="col-md-4 alt">
+                <div id="sidebar" class="col-md-4 alt" style="margin-bottom: 40px;">
 
                         <div class="cols-md-12 ">
                             @foreach($news as $new)

@@ -1,16 +1,27 @@
 @extends('layouts.app')
 @section('facbook-og-tags')
 
-    <meta property="og:url"                content="{{Request::url()}}" />
-    <meta property="og:type"               content="article" />
-    <meta property="og:title"              content="{{$postdetail['title']}}" />
-    <meta property="og:description"        content="{!! str_limit($postdetail['description'], 100) !!}" />
-    <meta property="og:image"              content="{{$postdetail['image']}}" />
-    <meta property ="og:image:width" content="400"/>
-    <meta property ="og:image:height" content="400"/>
+    <meta property="og:url" content="{{Request::url()}}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{$postdetail['title']}}"/>
+    <meta property="og:description" content="{!! str_limit($postdetail['description'], 100) !!}"/>
+    <meta property="og:image" content="{{$postdetail['image']}}"/>
+    <meta property="og:image:width" content="400"/>
+    <meta property="og:image:height" content="400"/>
 @stop
 @section('title')
     <title>{{$postdetail['title']}}</title>
+@stop
+@section('facebook-share-div-code')
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9&appId=1736071000056030";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 @stop
 @section('content')
     <style>
@@ -31,7 +42,7 @@
             </div>
         </div>
     </section>
-    <section class="no-padding">
+     <section class="no-padding">
         <div class="container ">
             <div class="row col-md-10 col-lg-offset-1">
                 <div class="col-md-8">
@@ -40,101 +51,38 @@
                              class="img-responsive" alt="Cinque Terre">
                     </div>
                     <section class="col-md-12 no-padding" style="padding-bottom: 20px;">
+
                     <!--  <h3 class="textgreen">
                             {!! $postdetail['title'] !!}
+
                             </h3>
                             <hr class="bloghr"> -->
 
 
                     </section>
+                    <section>
+                        <div class="fb-share-button"
+                             data-href="{{Request::url()}}"
+                             data-layout="button" data-size="small"
+                             data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore"
+                                                          target="_blank"
+                                                          href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::url())}}&amp;src=sdkpreparse">Share</a></div>
+
+                    </section>
+
                     <section class="col-md-12 no-padding" style="padding-bottom: 20px;">
+
                         <p class="blogcontent">
 
                             {!! $postdetail['content'] !!}
+
                         </p>
+
+
+
                     </section>
 
-                    {{--<section class="no-padding">--}}
-                    {{--<h3 id="add-comment-in" class="textgreen">--}}
-                    {{--COMMENTS--}}
-                    {{--</h3>--}}
-                    {{--@foreach($comments as $comment)--}}
-                    {{--<div class="row">--}}
-                    {{--<div class="col-md-12">--}}
-                    {{--<div class="col-md-2">--}}
-                    {{--<img--}}
-                    {{--src="{{getUploadsPath($comment['user']['profile_pic'])}}"--}}
-                    {{--class="img-thumbnail"--}}
-                    {{--alt="Cinque Terre"--}}
-                    {{-->--}}
 
-                    {{--</div>--}}
-
-                    {{--<div class="col-md-10 comment-text">--}}
-                    {{--<h3 class="no-padding" style="margin-top: 5px;">{{$comment['user']['name']}}</h3>--}}
-                    {{--<p class="blogcontent">--}}
-                    {{--{!! $comment['comment'] !!}--}}
-                    {{--</p>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<hr />--}}
-                    {{--@endforeach--}}
-
-                    {{--</section>--}}
-
-
-
-                    {{--<section class="col-md-12 no-padding" style="padding-bottom: 20px;">--}}
-
-                    {{--<h3 class="textgreen">--}}
-                    {{--Leave a reply--}}
-                    {{--</h3>--}}
-
-                    {{--<form id="add-comment" class="comment-form" novalidate="">--}}
-
-                    {{--<div class="col-md-12 paddingtextarea">--}}
-                    {{--@if(Auth::check())--}}
-                    {{--<textarea id="comment" class="bordercolor" placeholder="Comment (required)"--}}
-                    {{--name="comment" aria-required="true" rows="10" tabindex="4"--}}
-                    {{--style="width: 100%"></textarea>--}}
-                    {{--@else--}}
-                    {{--<a href="/login"> Login To comment</a>--}}
-                    {{--@endif--}}
-                    {{--</div>--}}
-
-                    {{--<div class="row paddingtextarea">--}}
-                    {{--<div class=" col-md-4">--}}
-
-                    {{--<input type="text" class="form-control form-control1" name="name"  placeholder="Name (required)"/>--}}
-                    {{--</div>--}}
-                    {{--<div class=" col-md-4">--}}
-
-                    {{--<input type="text" class="form-control form-control1" name="email"   placeholder=" Email (required)"/>--}}
-                    {{--</div>--}}
-                    {{--<div class=" col-md-4">--}}
-
-                    {{--<input type="text" class="form-control form-control1" name="url"   placeholder=" Website"/>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="col-md-12 no-padding">--}}
-                    {{--@if(Auth::check())--}}
-                    {{--<button name="submit" type="submit" class="btn btn-lg btn1"> Submit Comment</button>--}}
-                    {{--@endif--}}
-
-                    {{--</div>--}}
-                    {{--<!-- <div class="ceckbox">--}}
-                    {{--<div class="form-group ceckbox">--}}
-                    {{--<input type="checkbox" class="form-group">--}}
-                    {{--<label class="bloginnertext " >--}}
-                    {{--Notify me of follow-up comments by email.</label></div>--}}
-                    {{--<div class="form-group" style="margin-top: -10px;">--}}
-                    {{--<input type="checkbox">--}}
-                    {{--<label class="bloginnertext">--}}
-                    {{--Notify me of follow-up comments by email.</label></div>--}}
-                    {{--</div> -->--}}
-                    {{--</form>--}}
-                    {{--</section>--}}
 
 
                 </div>
@@ -146,17 +94,7 @@
 
                         </div>
 
-                        {{--<div class="blogheading2"><h4 class="textgreen">Recent Post</h4>--}}
-                        {{--<hr class="bloghr">--}}
-                        {{--<ul class="nav navbd">--}}
-                        {{--@foreach($posts as $post)--}}
-                        {{--<li>--}}
-                        {{--<a href="{{route('showBlogPostDetail',['post_id'=>$post['id']])}}" class="bloglinkcolor ">{{$post['title']}}</a>--}}
-                        {{--</li>--}}
-                        {{--@endforeach--}}
-                        {{--</ul>--}}
 
-                        {{--</div>--}}
                     </div>
                 </div>
 

@@ -6,8 +6,8 @@
     <meta property="og:title"              content="{{$postdetail['title']}}" />
     <meta property="og:description"        content="{!! str_limit($postdetail['description'], 100) !!}" />
     <meta property="og:image"              content="{{$postdetail['image']}}" />
-    <meta property ="og:image:width" content="200px"/>
-    <meta property ="og:image:height" content="200px"/>
+    <meta property ="og:image:width" content="200"/>
+    <meta property ="og:image:height" content="200"/>
 @stop
 @section('title')
     <title>{{$postdetail['title']}}</title>

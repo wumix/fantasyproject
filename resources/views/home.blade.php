@@ -194,7 +194,8 @@
                                 <tbody class="main-taible-body">
                                 @foreach($upcomming_tournaments_list as $tournament)
                                     <tr class="trr">
-                                        <td class="border-r"> <a href="{{route('fixturesdetail',['tournament_id'=>$tournament['id']])}}">{{$tournament['name']}} </a>
+                                        <td class="border-r">
+                                            <a href="#">{{$tournament['name']}} </a>
                                         </td>
                                         <td class="border-r">{{$tournament['venue']}}</td>
                                         <td class="border-r">

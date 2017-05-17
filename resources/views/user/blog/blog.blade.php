@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="text-center" style="color: #F9960E;">
-                    Gamithon Gossips
+                    {!! $blogTitle !!}
                 </h1>
                 <hr class="light full">
 
@@ -20,7 +20,7 @@
         <div class="">
             <div class="row-page col-md-12 no-padding">
                 @foreach($posts as $row)
-                <div class="blog-grid itemsz col-sm-12 col-md-3 no-padding" style="margin-right: 16px;">
+                <div class="blog-grid itemsz col-sm-12 col-md-3 no-padding" style="margin-top: 20px; margin-right: 16px;">
                     <div class="blog-img-thumb">
                         <img class="img-responsive" src="{{getUploadsPath($row['image'])}}">
                     </div>

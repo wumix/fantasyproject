@@ -30,7 +30,7 @@
                                class="bloghead">{{$row['title']}}</a>
                         </h4>
                         <p>
-                            {!! str_limit($val['description'], 100) !!}...
+                            {!! str_limit($row['description'], 100) !!}...
                         </p>
                     </div>
                 </div>

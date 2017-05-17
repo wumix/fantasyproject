@@ -100,6 +100,7 @@
                                         <img class="media-object" src="{{Croppa::url($new['image'],160,160,array('pad' => array(45,168,147)))}}" alt="...">
                                     </a>
                                 </div>
+
                                 <div class="media-body">
                                     <h4 class="media-heading">
                                         <a href="{{route('newsdetail',['id'=>$new['slug']])}}">{{$new['title']}}</a>

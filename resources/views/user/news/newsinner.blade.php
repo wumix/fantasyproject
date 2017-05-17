@@ -97,7 +97,7 @@
                             <div class="media">
                                 <div class="media-left media-middle">
                                     <a href="#">
-                                        <img class="media-object" src="{{$new['image']}}" alt="...">
+                                        <img class="media-object" src="{{Croppa::url($new['image'],160,160,array('pad' => array(45,168,147)))}}" alt="...">
                                     </a>
                                 </div>
                                 <div class="media-body">

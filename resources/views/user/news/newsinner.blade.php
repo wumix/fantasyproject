@@ -44,7 +44,7 @@
     </section>
      <section class="no-padding">
         <div class="container ">
-            <div class="row col-md-10 col-lg-offset-1">
+            <div class="row col-md-12">
                 <div class="col-md-8">
                     <div class="blogimg">
                         <img src="{{$postdetail['image']}}"
@@ -87,15 +87,32 @@
 
                 </div>
                 <div class='error' style='display:none'></div>
-                <div id="sidebar" class="pull-right col-md-3 alt">
-                    <div id="sidebar-widgets" class="four columns">
-                        <div class="cols-md-12 form-group" id="sformbox">
+                <div id="sidebar" class="col-md-4 alt">
+
+                        <div class="cols-md-12 ">
+                            @foreach($news as $new)
+                            <div class="media">
+                                <div class="media-left media-middle">
+                                    <a href="#">
+                                        <img class="media-object" src="{{$new['image']}}" alt="...">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="{{route('newsdetail',['id'=>$new['slug']])}}">{{$new['title']}}</a>
+
+                                    </h4>
+                                    {!! str_limit($new['description'], 50) !!}...
+                                </div>
+                            </div>
+                                @endforeach
 
 
                         </div>
 
 
-                    </div>
+
+
                 </div>
 
             </div>

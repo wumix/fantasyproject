@@ -20,7 +20,7 @@
         <div class="">
             <div class="row-page col-md-12 no-padding">
                 @foreach($posts as $row)
-                <div class="blog-grid itemsz col-sm-12 col-md-3 no-padding" style="margin-top: 20px; margin-right: 16px;">
+                <div class="blog-grid itemsz col-sm-12 col-md-3 no-padding" style="margin-top: 20px;">
                     <div class="blog-img-thumb">
                         <img class="img-responsive" src="{{getUploadsPath($row['image'])}}">
                     </div>

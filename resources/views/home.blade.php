@@ -1,5 +1,8 @@
 @extends('layouts.app')
 {{--{{dd($matches->t)}}--}}
+@section('title')
+    <title>Gamithon Fantasy</title>
+@stop
 @section('content')
     <!--BASBB-->
     <header id="header">
@@ -503,7 +506,7 @@
         $('#header').backstretch([
 
 
-            {url: '{{Url::to('assets-new/img/gamithon-final.jpg')}}', fade: 1000},
+            {url: '{{Url::to('assets-new/img/gamithon-final-1.jpg')}}', fade: 1000},
             {url: '{{Url::to('assets-new/img/yp.jpg')}}', fade: 1000},
             {url: '{{Url::to('assets-new/img/bg1.jpg')}}', fade: 1000},
 

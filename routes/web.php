@@ -37,6 +37,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('how-to-play', 'HomeController@howPlay')->name('howPlay');
     Route::get('/tournaments', 'User\TournamentsController@index')->name('usertournamenthome');
     Route::get('/blog', 'BlogController@index')->name('showBlog');
+    Route::get('/news', 'BlogController@getNews')->name('showNews');
 
     Route::get('/blog/{blog_slug}', 'BlogController@showBlogPostDetail')->name('showBlogPostDetail');
     Route::get('/news/{blog_slug}', 'NewsController@showNewsDetail')->name('newsdetail');

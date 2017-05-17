@@ -148,7 +148,11 @@
                                 Gamithon Gossips
                             </a>
                         </li>
-
+                        <li>
+                            <a class="page-scroll" href="{{route('showNews')}}">
+                                News
+                            </a>
+                        </li>
                         {{--<li>--}}
                         {{--<a href="{{route('leaderboard')}}">--}}
                         {{--LeaderBoard--}}

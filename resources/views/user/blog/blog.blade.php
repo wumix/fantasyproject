@@ -2,54 +2,48 @@
 
 @section('content')
 
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="text-center" style="color: #F9960E;">
-                        Gamithon Gossips
-                    </h1>
-                    <hr class="light full">
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="text-center" style="color: #F9960E;">
+                    Gamithon Gossips
+                </h1>
+                <hr class="light full">
 
-                </div>
             </div>
         </div>
-    </section>
-    <section class="publicaciones-blog-home no-padding">
-        <div class="container">
-            <div class="">
-                <div class="row-page row no-padding">
-
-                    @foreach($posts as $row)
-
-                        <div class="col-page col-sm-4 col-md-3">
-                            <div class="fondo-publicacion-home">
-
-
-                                <div class="contenido-publicacion-home">
-
-                                    <img class="img-responsive" style="height: 200px;"
-                                         src="{{getUploadsPath($row['image'])}}">
-                                    <span>
-                            <a href="{{route('showBlogPostDetail',['post_id'=>$row['id']])}}"
-                               class="bloghead">{{$row['title']}}</a>
-                                </span>
-                                    <p class="blogtext">{!! $row['description'] !!}
-                                </div>
-
-                                <span style="padding-left: 10px;"></span>
-                            </div>
-                        </div>
-                    @endforeach
+    </div>
+</section>
+<section class="publicaciones-blog-home no-padding">
+    <div class="container">
+        <div class="">
+            <div class="row-page col-md-12 no-padding">
+                @foreach($posts as $row)
+                <div class="blog-grid itemsz col-sm-12 col-md-3 no-padding" style="margin-right: 16px;">
+                    <div class="blog-img-thumb">
+                        <img class="img-responsive" src="{{getUploadsPath($row['image'])}}">
+                    </div>
+                    <div class="col-md-12">
+                    <h4>
+                        <a href="{{route('showBlogPostDetail',['post_id'=>$row['id']])}}"
+                           class="bloghead">{{$row['title']}}</a>
+                    </h4>
+                    <p>
+                        {!! $row['description'] !!}
+                    </p>
+                    </div>
                 </div>
+                @endforeach
             </div>
         </div>
-    </section>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    </div>
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 @endsection

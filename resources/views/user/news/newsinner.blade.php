@@ -8,6 +8,9 @@
     <meta property="og:image:width" content="400"/>
     <meta property="og:image:height" content="400"/>
     <meta property="og:image" content="{{$postdetail['image']}}"/>
+    <meta property="fb:app_id" content="712839212231397" />
+
+
 @stop
 @section('title')
     <title>{{$postdetail['title']}}</title>

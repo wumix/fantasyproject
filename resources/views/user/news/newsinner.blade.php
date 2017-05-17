@@ -50,7 +50,7 @@
             <div class="row col-md-12">
                 <div class="col-md-8">
                     <div class="blogimg">
-                        <img src="{{Croppa::url(getUploadsPath($postdetail['image']), 160, 160)}}"
+                        <img src="{{getUploadsPath($postdetail['image'])}}"
                              class="img-responsive" alt="Cinque Terre">
                     </div>
                     <section class="col-md-12 no-padding" style="padding-bottom: 20px;">
@@ -97,7 +97,7 @@
                             <div class="media">
                                 <div class="media-left media-middle">
                                     <a href="#">
-                                        <img class="media-object" src="{{Croppa::url($new['image'],160,160,array('pad' => array(45,168,147)))}}" alt="...">
+                                        <img class="media-object" src="{{Croppa::url(getUploadsPath($new['image']),160,160)}}" alt="...">
                                     </a>
                                 </div>
                                 <div class="media-body">

@@ -25,13 +25,13 @@
                         <img class="img-responsive" src="{{getUploadsPath($row['image'])}}">
                     </div>
                     <div class="col-md-12">
-                    <h4>
-                        <a href="{{route('showBlogPostDetail',['post_id'=>$row['id']])}}"
-                           class="bloghead">{{$row['title']}}</a>
-                    </h4>
-                    <p>
-                        {!! $row['description'] !!}...
-                    </p>
+                        <h4>
+                            <a href="{{route('showBlogPostDetail',['post_id'=>$row['id']])}}"
+                               class="bloghead">{{$row['title']}}</a>
+                        </h4>
+                        <p>
+                            {!! str_limit($val['description'], 100) !!}...
+                        </p>
                     </div>
                 </div>
                 @endforeach
@@ -39,11 +39,4 @@
         </div>
     </div>
 </section>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
 @endsection

@@ -312,10 +312,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    MI VS RPS
+                                    SR VS KKR
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 20 runs
+                                   Knight Riders won by 7 wickets
                                 </div>
                             </div>
                         </div>
@@ -327,10 +327,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    MI VS RPS
+                                    SR VS KKR
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 20 runs
+                                   Knight Riders won by 7 wickets
                                 </div>
                             </div>
                         </div>
@@ -343,10 +343,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    MI VS RPS
+                                    SR VS KKR
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 20 runs
+                                   Knight Riders won by 7 wickets
                                 </div>
                             </div>
                         </div>

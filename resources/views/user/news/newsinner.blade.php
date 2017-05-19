@@ -5,8 +5,8 @@
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="{{$postdetail['title']}}"/>
     <meta property="og:description" content="{!! str_limit($postdetail['description'], 100) !!}"/>
-    <meta property="og:image:width" content="400"/>
-    <meta property="og:image:height" content="400"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
     <meta property="og:image" content="{{$postdetail['image']}}"/>
     <meta property="fb:app_id" content="712839212231397" />
 

@@ -61,13 +61,13 @@
                                                                         </thead>
 
                                                                         <tbody class="table-has-player">
-                                                                        <?php $i=0; ?>
+                                                                        <?php $i=0; $k=0;?>
                                                                         @foreach($gametype['game_type_points'] as $key2=>$player)
                                                                             @if($player['player_roles'][0]['id']==$gameroles['id'])
                                                                                @if(!$player['pivot']['points']==0)
                                                                                 <tr class="cwt">
                                                                                     <td style="min-width: 50px;">
-                                                                                       {{$i}}
+                                                                                       {{$k}}
                                                                                     </td>
                                                                                     <td class="text-left"
                                                                                         style="min-width: 250px;">
@@ -81,6 +81,7 @@
 
                                                                                     <td>{{$player['pivot']['points']}}</td>
                                                                                 </tr>
+                                                                                   <?php $k++ ?>
                                                                                 @endif
                                                                             @endif
                                                                             <?php $i++; ?>

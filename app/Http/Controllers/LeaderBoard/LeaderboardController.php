@@ -46,7 +46,8 @@ class LeaderboardController extends Controller {
             $leaderboard->score = $score;
             $leaderboard->save();
         }
-        $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
+        $data['leaders'] = \App\Leaderboard::with('user', 'user_team')
+            ->take(3)->orderBy('score', 'DESC')->get()->toArray();
 
         foreach ($data['leaders']as $user) {
             send_user_mail($user['user']['email'], $user['user']['name']);

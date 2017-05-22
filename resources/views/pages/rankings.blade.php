@@ -68,6 +68,7 @@
                                                                                 <tr class="cwt">
                                                                                     <td style="min-width: 50px;">
                                                                                        {{$k}}
+
                                                                                     </td>
                                                                                     <td class="text-left"
                                                                                         style="min-width: 250px;">

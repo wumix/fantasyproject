@@ -195,7 +195,7 @@
                                 @foreach($upcomming_tournaments_list as $tournament)
                                     <tr class="trr">
                                         <td class="border-r">
-                                            <a href="#">{{$tournament['name']}} </a>
+                                            <a href="{{route('fixturesdetail',['tournament_id'=>$tournament['id']])}}">{{$tournament['name']}} </a>
                                         </td>
                                         <td class="border-r">{{$tournament['venue']}}</td>
                                         <td class="border-r">
@@ -307,6 +307,56 @@
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" DD VS GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    MI VS RPS
+                                </div>
+                                <div class="project-name">
+                                    Mumbai Indians won by 1 run
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt=" DD VS GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    MI VS RPS
+                                </div>
+                                <div class="project-name">
+                                    Mumbai Indians won by 1 run
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="../img/portfolio/thumbnails/103.jpg" class="portfolio-box">
+                        <img src="../img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS KKR">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    MI VS RPS
+                                </div>
+                                <div class="project-name">
+                                    Mumbai Indians won by 1 run
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="KXIP VS KKR">
                         <div class="portfolio-box-caption">
@@ -397,56 +447,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    MI VS RPS
-                                </div>
-                                <div class="project-name">
-                                    Supergiant won by 20 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    MI VS RPS
-                                </div>
-                                <div class="project-name">
-                                    Supergiant won by 20 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="../img/portfolio/thumbnails/103.jpg" class="portfolio-box">
-                        <img src="../img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    MI VS RPS
-                                </div>
-                                <div class="project-name">
-                                    Supergiant won by 20 runs
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </a>
-                </div>
 
 
 

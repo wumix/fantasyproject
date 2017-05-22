@@ -17,6 +17,7 @@
                                     <div class="panel-heading">
                                         <ul class="nav nav-tabs">
                                             @foreach($rankings[0]['game_roles'] as $key1=>$gameroles)
+                                                <?php if($gameroles['id']==8) continue; ?>
                                                 @if(0)
                                                     <li class="active">
                                                 @else
@@ -36,6 +37,7 @@
                                         <div class="tab-content">
                                             <?php $i = 0;?>
                                             @foreach($rankings[0]['game_roles'] as $key1=>$gameroles)
+
 
                                                 @if($i==0)
                                                     <div class="tab-pane active"

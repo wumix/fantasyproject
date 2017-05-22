@@ -61,7 +61,7 @@
                                                                         </thead>
 
                                                                         <tbody class="table-has-player">
-                                                                        <?php $i=0; $k=0;?>
+                                                                        <?php $i=0; $k=1;?>
                                                                         @foreach($gametype['game_type_points'] as $key2=>$player)
                                                                             @if($player['player_roles'][0]['id']==$gameroles['id'])
                                                                                @if(!$player['pivot']['points']==0)

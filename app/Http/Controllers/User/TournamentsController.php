@@ -37,6 +37,7 @@ class TournamentsController extends Controller
     {
 
 
+
         $data['tournament'] = \App\Tournament::where('id', $tournament_id)
             ->with('tournament_game.game_actions.game_terms', 'game_term_points')
             ->firstOrFail()
@@ -72,7 +73,7 @@ class TournamentsController extends Controller
                 ])
                 ->get()->toArray();
 
-            //dd($data);
+            //dd( $data['game_roles']);
             ////////Making player price
             //End making player price
             if (!empty($data['players_list']['tournament_players'])) {

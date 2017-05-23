@@ -36,7 +36,7 @@
 
                                     <td class="border-r1">
                                         <p class="myteamtt" style="padding-top:34px;">{{$row['tournament_price']}}</p></td>
-                                    <td class="border-r1">
+                                    <td class="border-r1" style="padding-top:34px">
                                         <a  href="{{route('showTournament', ['tournament_id'=>$row['id']])}}" class="btn btn-green">
                                             Play this tournament
                                         </a>

@@ -24,6 +24,7 @@
                                     <th class="border-r"></th>
                                     <th class="border-r">Points Required To Play</th>
                                     {{--<th class="th2"></th>--}}
+
                                 </tr>
                             </thead>
                             <tbody id="selected-player" class="main-taible-body">

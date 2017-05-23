@@ -33,6 +33,7 @@
                                         <img id="myteamtimg" class="img-circle img-thumbnail" style="width: 100px;" src="{{getUploadsPath($row['t_logo'])}}" />
                                         {{$row['name']}}
                                     </td>
+
                                     <td class="border-r1">
                                         <p class="myteamtt" style="padding-top:34px;">{{$row['tournament_price']}}</p></td>
                                     <td class="border-r1">

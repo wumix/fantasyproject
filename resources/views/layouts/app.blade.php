@@ -278,12 +278,12 @@
 {!! Html::script('assets-new/js/bootstrap-tour.js') !!}
 {!! Html::script('assets-new/js/jquery.magnific-popup.min.js') !!}
 {!! Html::script('assets-new/js/creative.js') !!}
-{!! Html::script('assets-new/js/jquery.mCustomScrollbar.min.js') !!}
-{!! Html::script('assets-new/js/jquery.mCustomScrollbar.concat.min.js') !!}
+{{--{!! Html::script('assets-new/js/jquery.mCustomScrollbar.min.js') !!}--}}
+{{--{!! Html::script('assets-new/js/jquery.mCustomScrollbar.concat.min.js') !!}--}}
 
 
 <script>
-  
+
 
     $(document).ready(function () {
         $('.itemsz').matchHeight();

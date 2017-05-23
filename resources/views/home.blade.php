@@ -111,14 +111,14 @@
     <!-----------    ----------->
 
 
-
-    <section class="bg-primary" id="about">
+    @if(!empty($tournaments_list))
+    <section class="bg-primary" id="about" >
         <div class="container">
             <div class="row">
 
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">
-                        Active Tournaments
+                        Upcomming Tournaments
                         <hr class="light">
                     </h2>
 
@@ -169,6 +169,7 @@
             </div>
         </div>
     </section>
+    @endif
     @if(!empty($upcomming_tournaments_list))
 
         <section class="bg-primary" id="about" >

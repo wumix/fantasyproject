@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+How to play Gamithon Fantasy
+@stop
 @section('content')
 <section>
     <div class="container">

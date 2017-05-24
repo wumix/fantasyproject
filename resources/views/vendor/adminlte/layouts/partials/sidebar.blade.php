@@ -33,9 +33,20 @@
                 <a href="#"><i class='fa fa-link'></i> <span>Player</span> <i
                         class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-
                     <li><a href="{{route('addPlayer')}}">Add Player</a></li>
                     <li><a href="{{route('playerslist')}}">Players List</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class='fa fa-link'></i> 
+                    <span>Ranking</span> 
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{{route('adminListRanking')}}">Rankings</a>
+                    </li>
                 </ul>
             </li>
             <li class="treeview">

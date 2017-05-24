@@ -48,7 +48,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('loginForm');
     Route::get('/signup', 'Auth\RegisterController@showUserRegistrationForm')->name('signUp');
     Route::get('/tournament-detail/{tournament_id}', 'User\TournamentsController@showTournamentDetails')->name('showTournament');
-
     Route::group(['middleware' => ['is_user']], function () {
         Route::group(['prefix' => 'user'], function () {
             Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
@@ -69,7 +68,6 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/congrats/{team_id}', 'User\TournamentsController@sucessteam')->name('team-completed');
         });
     });
-
     Route::group(['prefix' => 'dashboard'], function () {
         Route::get('/', 'DashboardController@index')->name('UserDashboard');
         Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
@@ -99,7 +97,16 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
                 Route::post('addCategory', 'Admin\Blog\CategoryController@postAddBlogCategory')->name('postAddBlogCategory');
             });
         });
-        Route::group(['prefix' => 'rankings'], function () {
+        Route::group(['prefix' => 'ranking'], function () {
+            Route::get('/', 'Admin\RankingController@index')->name('adminListRanking');
+            Route::get('add/{cat_id}', 'Admin\RankingController@add')->name('addRankingAdmin');
+            Route::get('edit/{ranking_id}', 'Admin\RankingController@edit')->name('editRankingAdmin');
+            Route::post('edit/{ranking_id}', 'Admin\RankingController@editPost')->name('editPostRankingAdmin');
+            Route::post('add', 'Admin\RankingController@addPost')->name('addPostRankingAdmin');
+            Route::get('players/{cat_id}', 'Admin\RankingController@playerRankings')->name('playerRankingsAdmin');
+            Route::get('delete/{ranking_id}', 'Admin\RankingController@deleteRanking')->name('deleteRanking');
+        });
+        Route::group(['prefix' => 'stats'], function () {
             Route::get('/add/{id}', 'Admin\StatsController@addStatForm')->name('showAddStatForm');
             Route::post('/add/{id}', 'Admin\StatsController@postAddStat')->name('postAddStat');
         });
@@ -114,8 +121,6 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/add-stats/{player_id}', 'Admin\StatsController@postPlayerStats')->name('postPlayerStats');
             Route::get('/edit-stat/{player_id}', 'Admin\StatsController@editPlayerStatForm')->name('editPlayerStats');
             Route::post('/edit-stat/{player_id}', 'Admin\StatsController@editPlayerStats')->name('postPlayerEditStats');
-
-
         });
         Route::group(['prefix' => 'games'], function () {
             Route::get('/', 'Admin\GamesController@index')->name('gameslist');
@@ -127,8 +132,6 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/post-game-role', 'Admin\GamesController@addRolePost')->name('addGameRole');
             Route::delete('delete-game-role', 'Admin\GamesController@deleteGameRole')->name('deleteGameRole');
             Route::post('add-game-actions', 'Admin\GamesController@addGameActions')->name('addGameActions');
-
-
         });
 //Gameterms
         Route::group(['prefix' => 'games-terms'], function () {
@@ -159,7 +162,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/edit', 'Admin\PlayersController@postEditPlayer')->name('editPlayer');
             Route::get('/edit/{player_id}', 'Admin\PlayersController@editPlayerForm')->name('editPlayerForm'); //showplayereditform
             Route::get('/ajax_get_game_terms', 'Admin\PlayersController@get_game_roles')->name('ajax_get_game_terms');
-           });
+        });
 //tournamentroutes
         Route::group(['prefix' => 'tournaments'], function () {
             Route::get('/', 'Admin\TournamentsController@index')->name('Tournamentslist');

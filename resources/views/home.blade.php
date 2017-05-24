@@ -111,14 +111,14 @@
     <!-----------    ----------->
 
 
-
-    <section class="bg-primary" id="about">
+    @if(!empty($tournaments_list))
+    <section class="bg-primary" id="about" >
         <div class="container">
             <div class="row">
 
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">
-                        Active Tournaments
+                        Upcomming Tournaments
                         <hr class="light">
                     </h2>
 
@@ -169,6 +169,7 @@
             </div>
         </div>
     </section>
+    @endif
     @if(!empty($upcomming_tournaments_list))
 
         <section class="bg-primary" id="about" >
@@ -455,17 +456,10 @@
 
 
 
-
-
-
-
-
-
-
             </div>
         </div>
     </section>
-    <!-- /.....................footer Start......................../ -->
+    <!-- /.....................footer Start here......................../ -->
 @endsection
 @section('js')
     {!! Html::script('assets/jquery.countdown-2.2.0/jquery.countdown.min.js') !!}
@@ -511,9 +505,9 @@
         $('#header').backstretch([
 
 
-            {url: '{{Url::to('assets-new/img/icc-banner.jpg')}}', fade: 1000},
-            {url: '{{Url::to('assets-new/img/yp-1.jpg')}}', fade: 1000},
-            {url: '{{Url::to('assets-new/img/bg1.jpg')}}', fade: 1000},
+            {url: '{{Url::to('assets-new/img/icc-banner.jpg')}}', fade: 500},
+            {url: '{{Url::to('assets-new/img/yp-1.jpg')}}', fade: 500},
+            {url: '{{Url::to('assets-new/img/3rd-banner.jpg')}}', fade: 500},
 
 
         ]);

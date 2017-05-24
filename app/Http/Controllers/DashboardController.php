@@ -73,8 +73,8 @@ class DashboardController extends Controller {
                     }, 'player_actual_teams'
                 ])->get()->toArray();
 
-        //dd($data);
-         //dd($data['team_score']);
+
+        // dd($data['team_score']);
 //       debugArr($data['team_score']);
 //       die;
         $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();

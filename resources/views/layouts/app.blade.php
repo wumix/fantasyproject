@@ -8,9 +8,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @yield('title')
     @yield('facbook-og-tags')
-
+    <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
 {!! Html::style('assets-new/vendor/bootstrap/css/bootstrap.min.css') !!}

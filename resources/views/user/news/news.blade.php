@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Gamithon Gossips
+News
 @stop
 @section('content')
 
@@ -29,8 +29,9 @@ Gamithon Gossips
                         </div>
                         <div class="col-md-12">
                             <h4>
-                                <a href="{{route('showBlogPostDetail',['post_id'=>$row['slug']])}}"
-                                   class="bloghead">{{$row['title']}}</a>
+                                <a href="{{route('newsdetail',['post_id'=>$row['slug']])}}"
+                                   class="bloghead">{{$row['title']}}
+                                </a>
                             </h4>
                             <p>
                                 {!! str_limit($row['description'], 100) !!}...

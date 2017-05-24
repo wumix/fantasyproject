@@ -49,13 +49,12 @@ class MatchesController extends Controller {
 
     }
     function addTeamToMatchPost(Request $request,$match_id,$tournament_id){
-
-
    if(count($request->teams_id)!=2) {
        return redirect()
            ->route('addTeamToMatch', ['match_id' => $match_id,'tournament_id'=>$tournament_id])
            ->with('status', 'You must choose only two teams');
    }
+
    $myplayers=[];
    foreach($request->teams_id as $row) {
        $players = \App\Team::where('id', $row)->with('team_players')->firstOrFail()->toArray();

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('facbook-og-tags')
 
+<<<<<<< HEAD
 <meta property="og:url" content="{{Request::url()}}"/>
 <meta property="og:type" content="article"/>
 <meta property="og:title" content="{{$postdetail['title']}}"/>
@@ -9,6 +10,16 @@
 <meta property="og:image:height" content="400"/>
 <meta property="og:image" content="{{$postdetail['image']}}"/>
 <meta property="fb:app_id" content="712839212231397" />
+=======
+    <meta property="og:url" content="{{Request::url()}}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{$postdetail['title']}}"/>
+    <meta property="og:description" content="{!! str_limit($postdetail['description'], 100) !!}"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
+    <meta property="og:image" content="{{$postdetail['image']}}"/>
+    <meta property="fb:app_id" content="712839212231397" />
+>>>>>>> 4600f4f1e7487ea639f3cfb7e97cca8452db781c
 
 
 @stop
@@ -88,6 +99,7 @@
 
 
 
+<<<<<<< HEAD
             </div>
             <div id="sidebar" class="col-md-4 alt">
                 <div class="cols-md-12 ">
@@ -97,6 +109,32 @@
                             <a href="#">
                                 <img class="media-object" src="{{Croppa::url(getUploadsPath($new['image']),160,160)}}" alt="...">
                             </a>
+=======
+                </div>
+                <div class='error' style='display:none'></div>
+                <div id="sidebar" class="col-md-4 alt" style="margin-bottom: 40px;">
+
+                        <div class="cols-md-12 ">
+                            @foreach($news as $new)
+                            <div class="media">
+                                <div class="media-left media-middle">
+                                    <a href="#">
+                                        <img class="media-object" src="{{Croppa::url(getUploadsPath($new['image']),160,160)}}" alt="...">
+                                    </a>
+                                </div>
+
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="{{route('newsdetail',['id'=>$new['slug']])}}">{{$new['title']}}</a>
+
+                                    </h4>
+                                    {!! str_limit($new['description'], 50) !!}...
+                                </div>
+                            </div>
+                                @endforeach
+
+
+>>>>>>> 4600f4f1e7487ea639f3cfb7e97cca8452db781c
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading">

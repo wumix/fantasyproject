@@ -194,7 +194,8 @@
                                 <tbody class="main-taible-body">
                                 @foreach($upcomming_tournaments_list as $tournament)
                                     <tr class="trr">
-                                        <td class="border-r"> <a href="{{route('fixturesdetail',['tournament_id'=>$tournament['id']])}}">{{$tournament['name']}} </a>
+                                        <td class="border-r">
+                                            <a href="{{route('fixturesdetail',['tournament_id'=>$tournament['id']])}}">{{$tournament['name']}} </a>
                                         </td>
                                         <td class="border-r">{{$tournament['venue']}}</td>
                                         <td class="border-r">
@@ -306,52 +307,6 @@
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    MI VS RPS
-                                </div>
-                                <div class="project-name">
-                                    Supergiant won by 20 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    MI VS RPS
-                                </div>
-                                <div class="project-name">
-                                    Supergiant won by 20 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    MI VS RPS
-                                </div>
-                                <div class="project-name">
-                                    Supergiant won by 20 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" DD VS GL">
                         <div class="portfolio-box-caption">
@@ -360,7 +315,7 @@
                                     MI VS RPS
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 20 runs
+                                    Mumbai Indians won by 1 run
                                 </div>
                             </div>
                         </div>
@@ -377,7 +332,7 @@
                                     MI VS RPS
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 20 runs
+                                    Mumbai Indians won by 1 run
                                 </div>
                             </div>
                         </div>
@@ -393,7 +348,7 @@
                                     MI VS RPS
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 20 runs
+                                    Mumbai Indians won by 1 run
                                 </div>
                             </div>
 
@@ -407,10 +362,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    MI VS RPS
+                                    MI VS KKR
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 20 runs
+                                    Indian  won by 6 wickets
                                 </div>
                             </div>
                         </div>
@@ -422,10 +377,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    MI VS RPS
+                                    MI VS KKR
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 20 runs
+                                    Indian  won by 6 wickets
                                 </div>
                             </div>
                         </div>
@@ -437,15 +392,63 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    MI VS RPS
+                                    MI VS KKR
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 20 runs
+                                    Indian  won by 6 wickets
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    SR VS KKR
+                                </div>
+                                <div class="project-name">
+                                   Knight Riders won by 7 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    SR VS KKR
+                                </div>
+                                <div class="project-name">
+                                   Knight Riders won by 7 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt=" DD VS GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    SR VS KKR
+                                </div>
+                                <div class="project-name">
+                                   Knight Riders won by 7 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
 
 
 
@@ -508,8 +511,8 @@
         $('#header').backstretch([
 
 
-            {url: '{{Url::to('assets-new/img/gamithon-final-1.jpg')}}', fade: 1000},
-            {url: '{{Url::to('assets-new/img/yp.jpg')}}', fade: 1000},
+            {url: '{{Url::to('assets-new/img/icc-banner.jpg')}}', fade: 1000},
+            {url: '{{Url::to('assets-new/img/yp-1.jpg')}}', fade: 1000},
             {url: '{{Url::to('assets-new/img/bg1.jpg')}}', fade: 1000},
 
 

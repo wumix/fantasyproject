@@ -28,13 +28,14 @@ class TournamentsController extends Controller
     {
         $datetime = new \DateTime();
         $date = $datetime->format('Y-m-d H:i:s');
-        $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', $date)->Where('end_date', '>=', $date);
+        $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', $date)->Where('end_date', '>=', $date);
         $data['tournaments_list'] = $objTourmament->toArray();
         return view('user.tournaments.home', $data);
     }
 
     function showTournamentDetails($tournament_id)
     {
+
 
 
         $data['tournament'] = \App\Tournament::where('id', $tournament_id)
@@ -72,7 +73,7 @@ class TournamentsController extends Controller
                 ])
                 ->get()->toArray();
 
-            //dd($data);
+            //dd( $data['game_roles']);
             ////////Making player price
             //End making player price
             if (!empty($data['players_list']['tournament_players'])) {

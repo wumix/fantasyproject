@@ -456,17 +456,10 @@
 
 
 
-
-
-
-
-
-
-
             </div>
         </div>
     </section>
-    <!-- /.....................footer Start......................../ -->
+    <!-- /.....................footer Start here......................../ -->
 @endsection
 @section('js')
     {!! Html::script('assets/jquery.countdown-2.2.0/jquery.countdown.min.js') !!}

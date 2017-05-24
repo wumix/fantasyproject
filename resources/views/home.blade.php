@@ -505,9 +505,9 @@
         $('#header').backstretch([
 
 
-            {url: '{{Url::to('assets-new/img/icc-banner.jpg')}}', fade: 500},
-            {url: '{{Url::to('assets-new/img/yp-1.jpg')}}', fade: 500},
             {url: '{{Url::to('assets-new/img/icc-banner-1.jpg')}}', fade: 500},
+            {url: '{{Url::to('assets-new/img/yp-1.jpg')}}', fade: 500},
+            {url: '{{Url::to('assets-new/img/3rd-banner.jpg')}}', fade: 500},
 
 
         ]);

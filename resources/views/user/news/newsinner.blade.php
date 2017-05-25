@@ -105,3 +105,8 @@
     </div>
 </section>
 @endsection
+@section('js')
+    <script>
+        $(".fb-comments").attr("data-href", window.location.href);
+    </script>
+    @endsection

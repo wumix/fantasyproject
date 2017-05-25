@@ -23,6 +23,7 @@
                                 <th>&nbsp;</th>
                                 <th>Player</th>
                                 <th>Player price for this tournament</th>
+                                <th>Delete</th>
                             </tr>
                             @php($counter = 0)
                             @foreach($players_list['tournament_game']['game_players'] as $row)
@@ -31,13 +32,27 @@
                                     {{$row['id']}}
                                     <?php
                                     $playerPrice = 0;
+                                    $check=0;
                                     if (!empty(searchInMultiArray($row['id'], 'id', $players_list['tournament_players']))) {
                                         $playerPrice = searchInMultiArray($row['id'], 'id', $players_list['tournament_players'])['pivot']['player_price'];
                                     }
+
+
+                                    if (searchInMultiArray($row['id'], 'id', $players_list['tournament_players'])) {
+                                        $check=1;
+
+
+                                       }
                                     ?>
                                     <input type="checkbox"
-                                           name="player_tournament[{{$counter}}][player_id]" checked
-                                           value="{{$row['id']}}"/>
+                                           name="player_tournament[{{$counter}}][player_id]"
+                                           @if($check==1)
+                                                  checked
+                                           @endif
+
+                                           value="{{$row['id']}}"
+
+                                    />
                                     <input type="hidden" name="player_tournament[{{$counter}}][tournament_id]"
                                            value="{{$players_list['id']}}"/>
                                 </td>
@@ -52,6 +67,7 @@
                                         class="form-control"
                                         value="{{$playerPrice}}"/>
                                 </td>
+                                <td><a href="{{route('deletePlayerFromTournament',['tournament_id'=>$players_list['id'],'player_id'=>$row['id']])}}" class="btn btn-danger">Delete</a></td>
                             </tr>
                             @php($counter++)
                             @endforeach

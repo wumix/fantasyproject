@@ -105,3 +105,9 @@
     </div>
 </section>
 @endsection
+@section('js')
+    <script>
+        /* go nawaz */
+        $(".fb-comments").attr("data-href", window.location.href);
+    </script>
+@stop

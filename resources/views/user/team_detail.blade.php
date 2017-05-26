@@ -222,6 +222,7 @@ foreach ($team_score as $teamplayers) {
 @endsection
 
 @section('js')
+
     <script>
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();

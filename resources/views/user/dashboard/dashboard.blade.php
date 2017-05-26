@@ -72,7 +72,7 @@
 
                                     </div> <!--new div-->
                                     <div class="col-md-3"  style="margin-top: 45px;">
-                                        <h5 style="font-weight:600; padding: 10px;background: #449d44; color: #ffffff;">  Your IPL score : <span id="game_lame"><ul><li>Calculating Score</li></ul></span></h5>
+                                        <h5 style="font-weight:600; padding: 10px;background: #449d44; color: #ffffff;">  Your IPL score : <span id="game_lame">Calculating Score</span></h5>
                                     </div>
 
 

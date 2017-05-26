@@ -71,7 +71,7 @@
                             <div class="col-md-12 count-down no-padding">
 
                                 @foreach($leaders as $leader)
-                                    <div class="col-md-4 text-center">
+                                    <div class="col-md-12 text-center">
                                         <div class="circle2">
                         <span id="getting-started1">
                           <img style="width: 50px;

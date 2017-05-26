@@ -256,6 +256,7 @@ class TournamentsController extends Controller
 
     function teamNamePostAjax(Request $request)
     {
+
         $tournament_id = Input::get('tournament_id');
         $userteam = Input::get('name');
         $this->validator($request->all())->validate();

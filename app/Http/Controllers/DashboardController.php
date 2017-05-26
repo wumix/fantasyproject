@@ -29,11 +29,20 @@ class DashboardController extends Controller {
 //        die;
         // dd($request->all());
 
-        $tournament_id=2;
+        //$tournament_id=2;
+        $transferflag=0;
         $teamId = $request->team_id;
         $data['user_teams'] = \App\UserTeam::where('id',$teamId)->where('user_id', \Auth::id())->get()->toArray();
-      // dd($data['user_teams']);
+        //dd($data['user_teams']);
         $tournament_id=$data['user_teams'][0]['tournament_id'];
+        $date_end=\App\Tournament::where('id',$tournament_id)->firstOrFail()->end_date;
+        $datetime = new \DateTime();
+        $datenow = $datetime->format('Y-m-d H:i:s');
+
+        if($datenow>$date_end){
+            $transferflag=1;
+        }
+         $data['transferflag']=$transferflag;
         $data['user_team_player_transfer'] = \App\UserTeam::where('id', $request->team_id)
                 ->with('user_team_player_transfers.player_transfer')
                 ->get();

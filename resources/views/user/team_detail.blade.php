@@ -73,7 +73,9 @@ foreach ($team_score as $teamplayers) {
                                 <th class="border-r" style="min-width: 200px;">Player</th>
                                 <th class="border-r" style="min-width: 150px;">Belongs To</th>
                                 <th class="border-r" style="min-width: 250px;">Points</th>
+                                @if($transferflag==0)
                                 <th class="th2" colspan="2">Actions</th>
+                                    @endif
                             </tr>
                             </thead>
                             <tbody id="selected-player" class="main-taible-body">
@@ -192,10 +194,12 @@ foreach ($team_score as $teamplayers) {
                                     </td>
                                     <td>
                                         @if(!$flag==1)
+                                            @if($transferflag==0)
 
                                             <a href="{{route('transferplayer', ['team_id'=>$user_team_player_transfer['id'],'player_id'=>$player_transfer_id,'tournament_id'=>$user_team_player_transfer['tournament_id']])}}"
                                                class="btn btn-green">Transfer Player
                                             </a>
+                                                @endif
                                         @endif
 
                                     </td>
@@ -204,7 +208,7 @@ foreach ($team_score as $teamplayers) {
                             @endforeach
 
                             <tr>
-                                <td><h3>Total Team Score: {{$teamtotal}}</h3></td>
+                                <td><h3>Total Team Score: <span id="total_team_score"> {{$teamtotal}}</span></h3></td>
                             </tr>
 
                             </tbody>

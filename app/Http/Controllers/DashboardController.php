@@ -31,8 +31,8 @@ class DashboardController extends Controller {
 
         $tournament_id=2;
         $teamId = $request->team_id;
-        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->get()->toArray();
-
+        $data['user_teams'] = \App\UserTeam::where('id',$teamId)->where('user_id', \Auth::id())->get()->toArray();
+      // dd($data['user_teams']);
         $tournament_id=$data['user_teams'][0]['tournament_id'];
         $data['user_team_player_transfer'] = \App\UserTeam::where('id', $request->team_id)
                 ->with('user_team_player_transfers.player_transfer')
@@ -70,7 +70,9 @@ class DashboardController extends Controller {
                     },
                     'player_gameTerm_score.points_devision_tournament' => function ($query) use ($matcheIdsAfterThisTeamMade,$tournament_id) {
                         $query->where('tournament_id',$tournament_id);
-                    }, 'player_actual_teams'
+                    }, 'player_actual_teams'=>function ($query) use($tournament_id) {
+                $query->where('tournament_id',$tournament_id);
+            }
                 ])->get()->toArray();
 
 

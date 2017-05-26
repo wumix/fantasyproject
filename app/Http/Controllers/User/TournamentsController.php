@@ -67,8 +67,9 @@ class TournamentsController extends Controller
                     },
                     'players.player_tournaments' => function ($query) use ($tournament_id) {
                         $query->where('tournament_id', $tournament_id);
-                    }, 'players.player_actual_teams' => function ($query) {
-                        $query->select('name', 'teams.id');
+                    }, 'players.player_actual_teams' => function ($query) use($tournament_id) {
+                       // $query->select('name', 'teams.id');
+                        $query->where('tournament_id',$tournament_id);
                     }
                 ])
                 ->get()->toArray();
@@ -240,7 +241,7 @@ class TournamentsController extends Controller
         // $selectedPlayers=[1,2,3,4];
 
         $data['roles'] = GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
-            $q->where('tournament_id', $tournament_id);
+            $q->where('tournament_id',$tournament_id);
         },
             'players' => function ($q) use ($selectedPlayers) {
                 $q->whereNotIn('players.id', $selectedPlayers);
@@ -248,7 +249,7 @@ class TournamentsController extends Controller
         ])->where('id', $data['player_info']['player_roles'][0]['id'])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
             $query->where('tournament_id', $tournament_id);
         })->get()->toArray();
-        // dd($data['roles']);
+       // dd($data['roles']);
 
         return view('user.tournaments.player_transfer', $data);
     }

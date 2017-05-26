@@ -163,7 +163,7 @@
                         @if(!has_user_team(Auth::id()))
                             <li id="create-your-team">
 
-                                <a class="page-scroll" href="{{route('addTeam', ['tournament_id'=>1])}}">
+                                <a class="page-scroll" href="{{route('addTeam', ['tournament_id'=>2])}}">
                                     Create Team
                                 </a>
                             </li>
@@ -309,7 +309,7 @@
 {!! Html::script('assets-new/js/jquery.backstretch.min.js') !!}
 {!! Html::script('js/colorbox-master/jquery.colorbox-min.js') !!}
 
-@yield('js')
+@yield('jsjs')
 @yield('addteamjs')
 
 

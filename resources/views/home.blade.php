@@ -81,8 +81,8 @@
 
 " src="{{getUploadsPath($leader['user']['profile_pic'])}}"/>
                         </span>
-                                            <p class="no-mrg-in-home ">{{$leader['user']['name']}}</p>
-                                            <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
+                                            <p class="no-mrg-in-home " style="font-size:20px !important">{{$leader['user']['name']}}</p>
+                                            <p class="no-mrg-in-home1 leaderboardscore"  style="font-size:16px !important">{{$leader['score']}}</p>
                                         </div>
                                     </div>
                                 @endforeach

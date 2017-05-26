@@ -99,7 +99,7 @@
             {
 
 
-                $("#game_lame" ).load( "http://gamithon.dev/user/team-detail?team_id="+$(this).val()+" #total_team_score");
+                $("#game_lame" ).load( "{{URL::to('/')}}"+"/user/team-detail?team_id="+$(this).val()+" #total_team_score");
             });
 
 

@@ -36,6 +36,7 @@
                                     </thead>
                                     <tbody id="selected-player" class="main-taible-body">
                                         @foreach($user_team_player as $row)
+                                           {{--{{ dd($user_team_player)}}--}}
                                         <tr>
                                             <td class="border-r1 text-left" style="min-width: 300px;
 "><img class="img-thumbnail"

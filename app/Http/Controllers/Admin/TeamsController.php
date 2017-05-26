@@ -69,9 +69,13 @@ class TeamsController extends Controller
         //dd($data['players_in_team']);
 
         $data['tournament_team'] = Team::where('id', $team_id)->firstOrFail()->toArray();
+       // dd($data['tournament_team']);
         $data['team_id'] = $team_id;
-        $data['players'] = \App\Player::all();
-        $data['players']=$data['players']->toArray();
+        $tournament_id= $data['tournament_team']['tournament_id'];
+      //  dd($tournament_id);
+        $data['players'] = \App\Tournament::where('id',$tournament_id)->with('tournament_players')->firstOrFail();
+        $data['players']=$data['players']['tournament_players']->toArray();
+        //dd( $data['players']);
        // dd($data['players_in_team']);
 //        $a=array('0'=>1,'1'=>3);
 //       dd( in_array(3,$a));

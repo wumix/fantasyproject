@@ -23,7 +23,7 @@
 
                                     <th class="border-r"></th>
                                     <th class="border-r">Points Required To Play</th>
-                                    {{--<th class="th2"></th>--}}
+                                    <th class="th2"></th>
 
                                 </tr>
                             </thead>
@@ -37,11 +37,11 @@
 
                                     <td class="border-r1">
                                         <p class="myteamtt" style="padding-top:34px;">{{$row['tournament_price']}}</p></td>
-                                    {{--<td class="border-r1" style="padding-top:38px">--}}
-                                        {{--<a  href="{{route('showTournament', ['tournament_id'=>$row['id']])}}" class="btn btn-green">--}}
-                                            {{--Play this tournament--}}
-                                        {{--</a>--}}
-                                    {{--</td>--}}
+                                    <td class="border-r1" style="padding-top:38px">
+                                        <a  href="{{route('showTournament', ['tournament_id'=>$row['id']])}}" class="btn btn-green">
+                                            Play this tournament
+                                        </a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>  

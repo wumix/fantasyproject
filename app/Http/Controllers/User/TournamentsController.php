@@ -175,13 +175,14 @@ class TournamentsController extends Controller
             'players' => function ($q) use ($selectedPlayers) {
                 $q->whereNotIn('players.id', $selectedPlayers);
             },
-            'players.player_actual_teams' => function ($query) {
-                $query->select('name', 'teams.id');
+            'players.player_actual_teams' => function ($query) use($tournament_id) {
+                $query->where('tournament_id',$tournament_id);
             },
         ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
             $query->where('tournament_id', $tournament_id);
         })->get()->toArray();
-        // dd($roles);die;
+        //debugArr($roles);
+        //die;
         $data['roles'] = $this->array_filter_recursive($roles);
 
         return view('user.tournaments.my_team', $data);

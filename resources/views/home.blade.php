@@ -228,9 +228,13 @@
                             <div class="media newscolor">
                                 <div class="media-left">
                                     <a href="{{getUploadsPath($val['image'])}}">
+                                       <?php
+                                        $arr=explode('/',$val['image']);
 
+
+                                            ?>
                                         <img class="media-object"
-                                             src="{{Croppa::url($val['image'],160,160)}}" alt="...">
+                                             src="{{Croppa::url($val['image'],160,160)}}" alt="{{end($arr)}}">
                                     </a>
                                 </div>
                                 <div class="media-body">

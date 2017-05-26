@@ -75,7 +75,7 @@ foreach ($team_score as $teamplayers) {
                                 <th class="border-r" style="min-width: 250px;">Points</th>
 
                                 <th class="th2" colspan="2">Actions</th>
-                                    
+
                             </tr>
                             </thead>
                             <tbody id="selected-player" class="main-taible-body">

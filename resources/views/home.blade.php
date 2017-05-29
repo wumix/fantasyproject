@@ -522,6 +522,7 @@
         $(function() {
             $('.itemsz').matchHeight('col-md-4');
         });
+
     </script>
 
 

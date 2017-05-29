@@ -518,6 +518,12 @@
 
 
     </script>
+    <script>
+        $(function() {
+            $('.itemsz').matchHeight('col-md-4');
+        });
+    </script>
+
 
 
 @stop

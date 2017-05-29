@@ -370,7 +370,7 @@
                                     MI VS KKR
                                 </div>
                                 <div class="project-name">
-                                    Indian  won by 6 wickets
+                                    Mumbai Indians  won by 6 wickets
                                 </div>
                             </div>
                         </div>
@@ -385,7 +385,7 @@
                                     MI VS KKR
                                 </div>
                                 <div class="project-name">
-                                    Indian  won by 6 wickets
+                                    Mumbai Indians  won by 6 wickets
                                 </div>
                             </div>
                         </div>
@@ -400,7 +400,7 @@
                                     MI VS KKR
                                 </div>
                                 <div class="project-name">
-                                    Indian  won by 6 wickets
+                                    Mumbai Indians  won by 6 wickets
                                 </div>
                             </div>
                         </div>

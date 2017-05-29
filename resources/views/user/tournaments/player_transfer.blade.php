@@ -122,6 +122,7 @@
                                                             <tbody class="main-taible-body">
 
                                                             @foreach($role['players'] as $player)
+                                                                <?php if(empty($player['player_tournaments'])) continue;   ?>
                                                                 <tr id="player_tr-{{$player['id']}}" class="cwt">
 
                                                                     <td class=" th11"><img id="myteamtimg" class="img-circle"
@@ -148,7 +149,7 @@
                                                                     </td>
 
                                                                     <td>
-                                                                        <a onclick="return confirm('Are you sure you want to transfer');" style="text-transform: uppercase"  id="btn-player-{{$player['id']}}"href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','1','{{$playerThisTournamnetPrice}}')" class="btn btn-md bttor1">
+                                                                        <a onclick="return confirm('Are you sure you want to transfer');" style="text-transform: uppercase"  id="btn-player-{{$player['id']}}"href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$playerThisTournamnetPrice}}')" class="btn btn-md bttor1">
                                                                             TRANSFER WITH {{$player_info['name']}}
                                                                         </a>
                                                                     </td>

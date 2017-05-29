@@ -133,7 +133,7 @@
                                                             <th class=" th1" style="min-width: 300px;
 ">PLAYERS</th>
 
-                                                            <th class="point">Belongs To</th>
+                                                            <th class="point">Team</th>
                                                             <th class="add">Points required to buy</th>
                                                         </tr>
                                                     </thead>

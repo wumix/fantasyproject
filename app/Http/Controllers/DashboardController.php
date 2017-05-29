@@ -30,7 +30,8 @@ class DashboardController extends Controller {
         // dd($request->all());
 
         //$tournament_id=2;
-        $transferflag=0;
+        $transferflag=0; // if tournament over hides transfer button
+
         $teamId = $request->team_id;
         $data['user_teams'] = \App\UserTeam::where('id',$teamId)->where('user_id', \Auth::id())->get()->toArray();
         //dd($data['user_teams']);

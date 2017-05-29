@@ -102,7 +102,9 @@ use AuthenticatesUsers {
      */
     protected function attempLoginUsingUsernameAsAnEmail(Request $request) {
         return $this->guard()->attempt(
-                        ['email' => $request->input('username'), 'password' => $request->input('password')], $request->has('remember'));
+                        ['email' => $request->input('username'),
+                            'password' => $request->input('password')],
+                $request->has('remember'));
     }
 
     /**

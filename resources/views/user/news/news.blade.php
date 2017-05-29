@@ -27,7 +27,7 @@
                                 <div class="blog-img-thumb">
                                     <img class="img-responsive" src="{{getUploadsPath($row['image'])}}">
                                 </div>
-                                <div class="col-md-12" >
+                                <div class="col-md-12" style="min-height:80px;">
                                     <h4>
                                         <a href="{{route('newsdetail',['post_id'=>$row['slug']])}}"
                                            class="bloghead">{{$row['title']}}

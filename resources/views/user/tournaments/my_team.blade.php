@@ -153,7 +153,7 @@
 
 
                                                                 <a class="colorbox"
-                                                                   href="{{route('showPlayerStats', ['player_id'=>$row['id']])}}">
+                                                                   href="{{route('showPlayerStats', ['player_id'=>$player['id']])}}">
 
                                                                 <img style="width: 80px;float: left;margin-right: 24px;" class="img-thumbnail"
                                                                      <?php $profilepic=null;

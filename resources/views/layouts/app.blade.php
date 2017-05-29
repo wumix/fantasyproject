@@ -147,7 +147,7 @@
                         <li>
 
                             <a class="page-scroll" href="{{route('showBlog')}}">
-                                Gamithon Gossips
+                               Gossips
                             </a>
                         </li>
                         <li>
@@ -168,12 +168,12 @@
                                 </a>
                             </li>
                         @endif
-                        <li>
+                    <!--    <li>
                             <a class="page-scroll" href="{{route('usertournamenthome')}}">
                                 Tournaments
                             </a>
                         </li>
-                       <!-- <li>
+                       <li>
                             <a class="page-scroll" href="{{route('rankings')}}">
                                 Rankings
                             </a>

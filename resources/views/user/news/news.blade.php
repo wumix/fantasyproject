@@ -33,7 +33,7 @@
                                            class="bloghead">{{$row['title']}}
                                         </a>
                                     </h4>
-                                    <p class="games thrones" >
+                                    <p >
                                         {!! str_limit($row['description'], 100) !!}...
                                     </p>
                                     <p>

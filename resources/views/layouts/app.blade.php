@@ -282,7 +282,26 @@
 
 
 <script>
-
+    $(document).ready(function () {
+        $('.itemsz').matchHeight();
+        $(window).on('load', function(){
+            $('.content').mCustomScrollbar();
+        });
+        $('#bs-example-navbar-collapse-1').slicknav({
+            appendTo: '#top-menu-res',
+            label: 'Main Menu'
+        });
+        jQuery(".colorbox").colorbox({
+            iframe: true,
+            innerWidth: '90%', innerHeight: '70%',
+            opacity: 0.3,
+            speed:'700'
+        });
+        $('.content').mCustomScrollbar({
+            theme:"light-thin",
+            axis:"x"
+        });
+    });
 
 
 </script>

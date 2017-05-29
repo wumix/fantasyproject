@@ -147,6 +147,14 @@
                                                         <tr id="player_tr-{{$player['id']}}" class="cwt">
                                                             <td class=" th11 text-left" style="min-width: 300px;
 ">
+
+
+
+
+
+                                                                <a class="colorbox"
+                                                                   href="{{route('showPlayerStats', ['player_id'=>$row['id']])}}">
+
                                                                 <img style="width: 80px;float: left;margin-right: 24px;" class="img-thumbnail"
                                                                      <?php $profilepic=null;
                                                                      if(!empty($player['profile_pic'])){
@@ -154,7 +162,7 @@
                                                                      }
 
                                                                      ?>
-                                                                     src="{{getUploadsPath($profilepic)}}"/>
+                                                                     src="{{getUploadsPath($profilepic)}}"/>   </a>
                                                                 <span class="selected-player-name"> {{$player['name']}}</span>
                                                             </td>
                                                             <td class="text-left">

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class BlogController extends Controller {
 
     public function index() {
-        $data['blogTitle'] = 'Gamithon Gossips';
+        $data['blogTitle'] = 'Gossips';
         $data['posts'] = \App\BlogPost::where('post_type', 'post')->get()->toArray();
         return view('user.blog.blog', $data);
     }

@@ -22,21 +22,21 @@ News
         <div class="">
             <div class="row-page col-md-12 no-padding">
                 @foreach($posts as $row)
-                <div class=" col-sm-12 col-md-3 no-padding" style="margin-top: 20px;">
+                <div class=" col-sm-12 col-md-3 no-padding" style="margin-top: 20px;min-height:0px">
                     <div class="itemsz grid-content-container">
                         <div class="blog-img-thumb">
                             <img class="img-responsive" src="{{getUploadsPath($row['image'])}}">
                         </div>
                         <div class="col-md-12">
-                            <h4>
+                            <h4 style="min-height:70px;">
                                 <a href="{{route('newsdetail',['post_id'=>$row['slug']])}}"
                                    class="bloghead">{{$row['title']}}
                                 </a>
                             </h4>
-                            <p>
+                            <p style="min-height:110px;">
                                 {!! str_limit($row['description'], 100) !!}...
                             </p>
-                            <p>
+                            <p >
                                 <a href="{{route('newsdetail',['id'=>$row['slug']])}}">Read More</a>
                             </p>
                         </div>

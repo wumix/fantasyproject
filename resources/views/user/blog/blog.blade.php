@@ -36,7 +36,7 @@ Gamithon Gossips
                                 {!! str_limit($row['description'], 100) !!}...
                             </p>
                             <p>
-                                <a href="{{route('newsdetail',['id'=>$row['slug']])}}">Read More</a>
+                                <a href="{{route('showBlogPostDetail',['post_id'=>$row['slug']])}}">Read More</a>
                             </p>
                         </div>
                         <div class="clear clearfix"></div>

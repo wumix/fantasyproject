@@ -14,7 +14,8 @@ class BlogController extends Controller {
     }
 
     function showBlogPostDetail($postid) {
-        $data['news'] = \App\BlogPost::where('post_type', 'post')->where('slug')->take(3)->get()->toArray();
+        $data['news'] = \App\BlogPost::where('post_type', 'post')->take(3)->get()->toArray();
+//        dd( $data['news']);
         $data['postdetail'] = \App\BlogPost::where('slug', $postid)->firstOrFail()->toArray();
         return view('user.blog.blog-inner', $data);
     }

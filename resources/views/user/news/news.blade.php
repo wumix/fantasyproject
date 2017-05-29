@@ -33,7 +33,7 @@
                                            class="bloghead">{{$row['title']}}
                                         </a>
                                     </h4>
-                                    <p style="min-height:80px;>
+                                    <p >
                                         {!! str_limit($row['description'], 100) !!}...
                                     </p>
                                     <p>

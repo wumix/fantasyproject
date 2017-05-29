@@ -33,7 +33,7 @@
                                            class="bloghead">{{$row['title']}}
                                         </a>
                                     </h4>
-                                    <p >
+                                    <p class="games thrones" >
                                         {!! str_limit($row['description'], 100) !!}...
                                     </p>
                                     <p>
@@ -52,7 +52,7 @@
 @section('js')
     <script>
         $(function() {
-            $('.itemsz').matchHeight('col-md-4');
+            $('.games').matchHeight('thrones');
         });
     </script>
 

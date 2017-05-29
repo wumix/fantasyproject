@@ -229,10 +229,11 @@ foreach ($team_score as $teamplayers) {
 
 @section('js')
     <script>
+        $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
         $('#team_score').html('{{$teamtotal}}')
         $('#remaining_score').html('{{getUserTotalScore(\Auth::id())}}');
-
+        });
     </script>
 @stop
 

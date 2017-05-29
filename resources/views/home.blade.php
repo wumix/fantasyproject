@@ -62,7 +62,7 @@
                             <div class="col-md-12 no-padding" style="margin-top: -20px;">
 
                                 <h3 style="font-weight: 500;color: #FFFFFF">
-                                    Leader Board
+                                   WINNER OF IPL
                                 </h3>
 
                             </div>

@@ -33,7 +33,7 @@
                                            class="bloghead">{{$row['title']}}
                                         </a>
                                     </h4>
-                                    <p >
+                                    <p class="kill">
                                         {!! str_limit($row['description'], 100) !!}...
                                     </p>
                                     <p>
@@ -53,6 +53,7 @@
     <script>
         $(function() {
             $('.itemsz').matchHeight('col-md-4');
+            $('.kill').matchHeight('kill');
         });
     </script>
 

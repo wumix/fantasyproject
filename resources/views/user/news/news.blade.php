@@ -27,13 +27,13 @@
                                 <div class="blog-img-thumb">
                                     <img class="img-responsive" src="{{getUploadsPath($row['image'])}}">
                                 </div>
-                                <div class="col-md-12" style="min-height:80px;">
+                                <div class="col-md-12">
                                     <h4>
                                         <a href="{{route('newsdetail',['post_id'=>$row['slug']])}}"
                                            class="bloghead">{{$row['title']}}
                                         </a>
                                     </h4>
-                                    <p>
+                                    <p style="min-height:80px;>
                                         {!! str_limit($row['description'], 100) !!}...
                                     </p>
                                     <p>

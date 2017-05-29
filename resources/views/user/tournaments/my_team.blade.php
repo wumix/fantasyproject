@@ -227,7 +227,13 @@
 @endsection
 @section('js')
 
+
+
 <script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+
+    });
     function deletePlayer(playerid,player_price){
 
         var teamid = $("#team_id").val();

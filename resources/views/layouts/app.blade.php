@@ -177,7 +177,7 @@
                             <a class="page-scroll" href="{{route('rankings')}}">
                                 Rankings
                             </a>
-                        </li> 
+                        </li>
 
                         @if(Auth::check())
                             <li>

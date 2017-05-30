@@ -18,21 +18,25 @@
                                     <table class="table table-striped table-stripedhome gen-table">
                                         <thead class="main-taible-head">
                                         <tr>
-                                            <th colspan="2" class="border-r th1"> {{$cat['name']}}</th>
+                                            <th colspan="3" class="border-r th1"> {{$cat['name']}}</th>
                                         </tr>
                                         <tr>
-                                            <th class="border-r th1">Name</th>
 
-                                            <th class="th2">Rating</th>
+                                            <th class="border-r th1">Ranking</th>
+                                            <th class="border-r th1">Name</th>
+                                            <th class="border-r th1">Rating</th>
                                         </tr>
                                         </thead>
                                         <tbody class="main-taible-body">
-
+                                        <?php $i=1;?>
                                         @foreach($cat['category_players'] as $row)
                                             <tr class="trr">
+                                                <td class="border-r">{{$i}}</td>
                                                 <td class="border-r">{{$row['player_name']}}</td>
+
                                                 <td class="border-r">{{$row['rating']}}</td>
                                             </tr>
+                                            <?php $i++;?>
                                         @endforeach
                                         </tbody>
 

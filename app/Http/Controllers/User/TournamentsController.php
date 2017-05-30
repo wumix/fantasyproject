@@ -259,10 +259,11 @@ class TournamentsController extends Controller
 
     function teamNamePostAjax(Request $request)
     {
+       // dd('asd');
 
         $tournament_id = Input::get('tournament_id');
         $userteam = Input::get('name');
-        $this->validator($request->all())->validate();
+       // $this->validator($request->all())->validate();
         $teamid = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' => Auth::id()])->first();
         $data = [];
         if ($teamid == null) {

@@ -12,31 +12,39 @@
 
                     <div class="col-md-12">
 
-                            @foreach($rankings as $cat)
+                        @foreach($rankings as $cat)
                             <div class="col-md-4">
-                                <table>
-                                    <thead>
-                                    <tr>
-                                    <th colspan="2">{{$cat['name']}}</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($cat['category_players'] as $row)
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-stripedhome gen-table">
+                                        <thead class="main-taible-head">
                                         <tr>
-                                        <td>{{$row['player_name']}}</td>
-                                        <td>{{$row['rating']}}</td>
+                                            <th colspan="2" class="border-r th1"> {{$cat['name']}}</th>
                                         </tr>
-                                    @endforeach
-                                    </tbody>
+                                        <tr>
+                                            <th class="border-r th1">Name</th>
+
+                                            <th class="th2">Rating</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="main-taible-body">
+
+                                        @foreach($cat['category_players'] as $row)
+                                            <tr class="trr">
+                                                <td class="border-r">{{$row['player_name']}}</td>
+                                                <td class="border-r">{{$row['rating']}}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
 
 
-                                </table>
+                                    </table>
+                                </div>
                             </div>
-                            @endforeach
+                    @endforeach
 
 
 
-                        <!--
+                    <!--
 
                                            <div class="col-md-12">
                                            <h3 class="text-center">ODI Players</h3>

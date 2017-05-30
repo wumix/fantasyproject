@@ -103,10 +103,16 @@ class HomeController extends Controller
 
     public function rankings()
     {
-        $stats = \App\Game::where('id', '1')
-            ->with('game_roles', 'game_type.game_type_points.player_roles')->get()->toArray();
-        $data['rankings'] = $stats;
-        //dd($stats);
+//        $stats = \App\Game::where('id', '1')
+//            ->with('game_roles', 'game_type.game_type_points.player_roles')->get()->toArray();
+//        $data['rankings'] = $stats;
+//        //dd($stats);
+        $data['rankings'] = \App\RankingCategory::with(['category_players' => function ($query) {
+            $query->orderBy('rating', 'DESC');
+
+        }])->get()->toArray();
+        //dd($data['rankings']);
+
         return view('pages.rankings', $data);
     }
 

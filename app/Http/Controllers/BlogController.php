@@ -38,7 +38,7 @@ class BlogController extends Controller {
 
     public function getNews() {
         $data['blogTitle'] = 'News';
-        $data['posts'] = \App\BlogPost::where('post_type', 'news')->orderBy('id', 'DESC')->get()->toArray();
+        $data['posts'] = \App\BlogPost::where('post_type', 'news')->orderBy('id', 'DESC')->paginate('8');
         return view('user.news.news', $data);
     }
 

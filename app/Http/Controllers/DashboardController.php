@@ -112,7 +112,7 @@ class DashboardController extends Controller {
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->with('teamtournament')
                 ->get()
                 ->toArray();
-        //   dd($data);
+        //dd($data['user_teams']);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         return view('user.teamhome', $data);
     }

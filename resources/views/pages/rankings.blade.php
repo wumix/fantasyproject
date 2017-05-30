@@ -46,7 +46,7 @@
                             </div>
                         <?php $k++;?>
                         @if($k%3==0)
-                                    <hr class="light full">
+                                    {{--<hr class="light full">--}}
                         @endif
 
                     @endforeach

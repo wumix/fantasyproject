@@ -15,16 +15,16 @@
                         @foreach($rankings as $cat)
                             <div class="col-md-4">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-stripedhome gen-table">
+                                    <table class="table table-striped table-stripedhome-1 gen-table">
                                         <thead class="main-taible-head">
                                         <tr>
-                                            <th colspan="3" class="border-r th1"> {{$cat['name']}}</th>
+                                            <th colspan="3" class="border-r th11"> {{$cat['name']}}</th>
                                         </tr>
                                         <tr>
 
-                                            <th class="border-r th1">Ranking</th>
-                                            <th class="border-r th1">Name</th>
-                                            <th class="border-r th1">Rating</th>
+                                            <th class="border-r th11">Ranking</th>
+                                            <th class="border-r th11">Name</th>
+                                            <th class="border-r th11">Rating</th>
                                         </tr>
                                         </thead>
                                         <tbody class="main-taible-body">

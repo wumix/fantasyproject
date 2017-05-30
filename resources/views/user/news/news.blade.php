@@ -45,7 +45,7 @@
                         </div>
 
                     @endforeach
-                    <div class="text-center">   {{$posts->links()}} </div>
+                    <div class="text-center"> {{$posts->links()}} </div>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
 @endsection
 @section('js')
     <script>
-        $(function() {
+        $(function () {
             $('.itemsz').matchHeight('col-md-4');
             $('.kill').matchHeight('kill');
         });

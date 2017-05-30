@@ -1,5 +1,8 @@
 @extends('layouts.app')
 {{--{{dd($rankings)}}--}}
+@section('title')
+    ICC Player Rankings
+@stop
 @section('content')
     <section>
         <div class="container">

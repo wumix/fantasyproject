@@ -61,9 +61,9 @@
                         <div class="row">
                             <div class="col-md-12 no-padding" style="margin-top: -20px;">
 
-                                <h3 style="font-weight: 500;color: #FFFFFF">
-                                   WINNER OF IPL
-                                </h3>
+                                <h4 style="font-weight: 500;color: #FFFFFF">
+                                   WINNER OF LAST TOURNAMENT
+                                </h4>
 
                             </div>
                         </div>

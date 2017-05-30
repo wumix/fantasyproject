@@ -121,7 +121,9 @@ class HomeController extends Controller
         $this->validatorContact($request->all())->validate();
         $emailRecievers = [
             'umair_hamid100@yahoo.com',
-            'hassan@branchezconsulting.com'
+            'hassan@branchezconsulting.com',
+            'jahangir.yousaf@branchezconsulting.com',
+            'adeel@branchezconsulting.com'
         ];
         \Mail::send('emails.contact', array(
             'name' => $request->get('name'),

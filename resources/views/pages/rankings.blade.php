@@ -11,7 +11,7 @@
                     <hr class="light full">
 
                     <div class="col-md-12">
-
+                        <?php $k = 0;?>
                         @foreach($rankings as $cat)
                             <div class="col-md-4">
                                 <div class="table-responsive">
@@ -28,7 +28,7 @@
                                         </tr>
                                         </thead>
                                         <tbody class="main-taible-body">
-                                        <?php $i=1;?>
+                                        <?php $i = 1;?>
                                         @foreach($cat['category_players'] as $row)
                                             <tr class="trr">
                                                 <td class="border-r">{{$i}}</td>
@@ -44,7 +44,10 @@
                                     </table>
                                 </div>
                             </div>
-
+                        <?php $k++;?>
+                        @if($k%3==0)
+                                    <hr class="light full">
+                        @endif
 
                     @endforeach
 

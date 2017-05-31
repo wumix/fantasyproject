@@ -8,13 +8,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @yield('title')
     @yield('facbook-og-tags')
-
+    <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
 {!! Html::style('assets-new/vendor/bootstrap/css/bootstrap.min.css') !!}
 {!! Html::style('assets-new/css/bootstrap-tour.css') !!}
+{!! Html::style('assets-new/css/jquery.mCustomScrollbar.css') !!}
 {!! Html::style('https://fonts.googleapis.com/css?family=Raleway') !!}
 {!! Html::style('assets-new/vendor/font-awesome/css/font-awesome.min.css') !!}
 {!! Html::style('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!}
@@ -46,14 +46,10 @@
             margin: 0 0 0 0;
 
         }
-
-
-
-
     </style>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o)
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
@@ -151,7 +147,7 @@
                         <li>
 
                             <a class="page-scroll" href="{{route('showBlog')}}">
-                                Gamithon Gossips
+                               Gossips
                             </a>
                         </li>
                         <li>
@@ -167,21 +163,21 @@
                         @if(!has_user_team(Auth::id()))
                             <li id="create-your-team">
 
-                                <a class="page-scroll" href="{{route('addTeam', ['tournament_id'=>1])}}">
+                                <a class="page-scroll" href="{{route('addTeam', ['tournament_id'=>2])}}">
                                     Create Team
                                 </a>
                             </li>
                         @endif
-                        <li>
+                    <!--    <li>
                             <a class="page-scroll" href="{{route('usertournamenthome')}}">
                                 Tournaments
                             </a>
+                        </li> -->
+                       <li>
+                            <a class="page-scroll" href="{{route('rankings')}}">
+                                Rankings
+                            </a>
                         </li>
-                        {{--<li>--}}
-                            {{--<a class="page-scroll" href="{{route('rankings')}}">--}}
-                                {{--Rankings--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
 
                         @if(Auth::check())
                             <li>
@@ -281,29 +277,33 @@
 {!! Html::script('assets-new/js/bootstrap-tour.js') !!}
 {!! Html::script('assets-new/js/jquery.magnific-popup.min.js') !!}
 {!! Html::script('assets-new/js/creative.js') !!}
-{!! Html::script('assets-new/js/jquery.mCustomScrollbar.min.js') !!}
-{!! Html::script('assets-new/js/jquery.mCustomScrollbar.concat.min.js') !!}
-
+{{--{!! Html::script('assets-new/js/jquery.mCustomScrollbar.min.js') !!}--}}
+{{--{!! Html::script('assets-new/js/jquery.mCustomScrollbar.concat.min.js') !!}--}}
 
 
 <script>
-  
-
     $(document).ready(function () {
         $('.itemsz').matchHeight();
-//    $('.content').mCustomScrollbar();
-        $('#bs-example-navbar-collapse-1').slicknav({
-            appendTo: '#top-menu-res',
-            label: 'Main Menu'
-        });
-         jQuery(".colorbox").colorbox({
+//        $(window).on('load', function(){
+//            $('.content').mCustomScrollbar();
+//        });
+//        $('#bs-example-navbar-collapse-1').slicknav({
+//            appendTo: '#top-menu-res',
+//            label: 'Main Menu'
+//        });
+        jQuery(".colorbox").colorbox({
             iframe: true,
             innerWidth: '90%', innerHeight: '70%',
             opacity: 0.3,
             speed:'700'
         });
-
+//        $('.content').mCustomScrollbar({
+//            theme:"light-thin",
+//            axis:"x"
+//        });
     });
+
+
 </script>
 {!! Html::script('assets-new/js/jquery.matchHeight-min.js') !!}
 {!! Html::script('assets-new/js/jquery.backstretch.min.js') !!}

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 {{--{{dd($matches->t)}}--}}
 @section('title')
-    <title>Gamithon Fantasy</title>
+    Gamithon Fantasy
 @stop
 @section('content')
     <!--BASBB-->
@@ -61,9 +61,9 @@
                         <div class="row">
                             <div class="col-md-12 no-padding" style="margin-top: -20px;">
 
-                                <h3 style="font-weight: 500;color: #FFFFFF">
-                                    Leader Board
-                                </h3>
+                                <h4 style="font-weight: 500;color: #FFFFFF">
+                                   WINNER OF LAST TOURNAMENT
+                                </h4>
 
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                             <div class="col-md-12 count-down no-padding">
 
                                 @foreach($leaders as $leader)
-                                    <div class="col-md-4 text-center">
+                                    <div class="col-md-12 text-center">
                                         <div class="circle2">
                         <span id="getting-started1">
                           <img style="width: 50px;
@@ -81,8 +81,8 @@
 
 " src="{{getUploadsPath($leader['user']['profile_pic'])}}"/>
                         </span>
-                                            <p class="no-mrg-in-home ">{{$leader['user']['name']}}</p>
-                                            <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
+                                            <p class="no-mrg-in-home " style="font-size:20px !important">{{$leader['user']['name']}}</p>
+                                            <p class="no-mrg-in-home1 leaderboardscore"  style="font-size:16px !important">{{$leader['score']}}</p>
                                         </div>
                                     </div>
                                 @endforeach
@@ -111,14 +111,14 @@
     <!-----------    ----------->
 
 
-
-    <section class="bg-primary" id="about">
+    @if(!empty($tournaments_list))
+    <section class="bg-primary" id="about" >
         <div class="container">
             <div class="row">
 
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">
-                        Active Tournaments
+                        Upcomming Tournaments
                         <hr class="light">
                     </h2>
 
@@ -169,6 +169,7 @@
             </div>
         </div>
     </section>
+    @endif
     @if(!empty($upcomming_tournaments_list))
 
         <section class="bg-primary" id="about" >
@@ -195,7 +196,7 @@
                                 @foreach($upcomming_tournaments_list as $tournament)
                                     <tr class="trr">
                                         <td class="border-r">
-                                            <a href="#">{{$tournament['name']}} </a>
+                                            <a href="{{route('fixturesdetail',['tournament_id'=>$tournament['slug']])}}">{{$tournament['name']}} </a>
                                         </td>
                                         <td class="border-r">{{$tournament['venue']}}</td>
                                         <td class="border-r">
@@ -227,9 +228,13 @@
                             <div class="media newscolor">
                                 <div class="media-left">
                                     <a href="{{getUploadsPath($val['image'])}}">
+                                       <?php
+                                        $arr=explode('/',$val['image']);
 
+
+                                            ?>
                                         <img class="media-object"
-                                             src="{{Croppa::url($val['image'],160,160)}}" alt="...">
+                                             src="{{Croppa::url($val['image'],160,160)}}" alt="{{end($arr)}}">
                                     </a>
                                 </div>
                                 <div class="media-body">
@@ -307,61 +312,15 @@
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    SR VS KKR
-                                </div>
-                                <div class="project-name">
-                                   Knight Riders won by 7 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    SR VS KKR
-                                </div>
-                                <div class="project-name">
-                                   Knight Riders won by 7 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    SR VS KKR
-                                </div>
-                                <div class="project-name">
-                                   Knight Riders won by 7 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" DD VS GL">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    MI VS RPS
+                                    INDIA VS NEW ZEALAND
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 20 runs
+                                   India won by 45 Runs
                                 </div>
                             </div>
                         </div>
@@ -375,10 +334,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    MI VS RPS
+                                    INDIA VS NEW ZEALAND
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 20 runs
+                                    India won by 45 Runs
                                 </div>
                             </div>
                         </div>
@@ -391,10 +350,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    MI VS RPS
+                                    INDIA VS NEW ZEALAND
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 20 runs
+                                    India won by 45 Runs
                                 </div>
                             </div>
 
@@ -408,10 +367,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    MI VS RPS
+                                   England Vs South Africa
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 20 runs
+                                    South Africa won by 7 wickets
                                 </div>
                             </div>
                         </div>
@@ -423,10 +382,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    MI VS RPS
+                                    England Vs South Africa
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 20 runs
+                                    South Africa won by 7 wickets
                                 </div>
                             </div>
                         </div>
@@ -438,10 +397,56 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    MI VS RPS
+                                    England Vs South Africa
                                 </div>
                                 <div class="project-name">
-                                    Supergiant won by 20 runs
+                                    South Africa won by 7 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                   Bangladesh Vs Paksitan
+                                </div>
+                                <div class="project-name">
+                                   Pakistan won by 2 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Bangladesh Vs Paksitan
+                                </div>
+                                <div class="project-name">
+                                    Pakistan won by 2 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt=" DD VS GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Bangladesh Vs Paksitan
+                                </div>
+                                <div class="project-name">
+                                    Pakistan won by 2 wickets
                                 </div>
                             </div>
                         </div>
@@ -455,15 +460,10 @@
 
 
 
-
-
-
-
-
             </div>
         </div>
     </section>
-    <!-- /.....................footer Start......................../ -->
+    <!-- /.....................footer Start here......................../ -->
 @endsection
 @section('js')
     {!! Html::script('assets/jquery.countdown-2.2.0/jquery.countdown.min.js') !!}
@@ -509,15 +509,22 @@
         $('#header').backstretch([
 
 
-            {url: '{{Url::to('assets-new/img/gamithon-actual-cover-size-1.jpg')}}', fade: 1000},
-            {url: '{{Url::to('assets-new/img/yp-1.jpg')}}', fade: 1000},
-            {url: '{{Url::to('assets-new/img/bg1.jpg')}}', fade: 1000},
+            {url: '{{URL::to('assets-new/img/icc-banner-1.jpg')}}', fade: 500},
+            {url: '{{URL::to('assets-new/img/yp-1.jpg')}}', fade: 500},
+            {url: '{{URL::to('assets-new/img/3rd-banner.jpg')}}', fade: 500},
 
 
         ]);
 
 
     </script>
+    <script>
+        $(function() {
+            $('.itemsz').matchHeight('col-md-4');
+        });
+
+    </script>
+
 
 
 @stop

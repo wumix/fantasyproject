@@ -8,7 +8,7 @@
       return 0;
   }
   function has_user_team($user_id){
-      $userteam=\App\UserTeam::where('user_id',$user_id)->first();
+      $userteam=\App\UserTeam::where('user_id',$user_id)->where('tournament_id',2)->first();
       if($userteam==NULL){
           return FALSE;
       }else{
@@ -18,14 +18,19 @@
   function get_individual_player_score($tournament_id,$teamId,$playerid)
   {
 
-      $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())
-          ->where('tournament_id', $tournament_id)
-          ->get()
-          ->toArray();
-      $matcheIdsAfterThisTeamMade = \App\Match::select('id')
-          ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])
+
+//      $data['user_teams'] = \App\UserTeam::where('user_id', 46)->where('tournament_id', $tournament_id)
+//          ->get()
+//          ->toArray();
+      //dd($tournament_id);die;
+      $data['user_teams'] = \App\UserTeam::where('user_id',\Auth::id())->where('tournament_id', 2)
+       ->get()
+         ->toArray();
+  //dd($data['user_teams'][0]['joined_from_match_date']);
+      $matcheIdsAfterThisTeamMade = \App\Match::select('id')->where('start_date', '>',$data['user_teams'][0]['joined_from_match_date'])
+
           ->get()->toArray();
-      //  dd($matcheIdsAfterThisTeamMade);
+      // dd($matcheIdsAfterThisTeamMade);
       if (!empty($matcheIdsAfterThisTeamMade)) {
           $matcheIdsAfterThisTeamMade = array_column($matcheIdsAfterThisTeamMade, 'id');
           //  $matcheIdsAfterThisTeamMade = [1];
@@ -38,7 +43,7 @@
           $userTeamPlayerIds = array_column($data['user_team_players'], 'id');
       }
       // $matcheIdsAfterThisTeamMade=[1,2,3,4,5,6,7,8,9,10];
-      //dd($matcheIdsAfterThisTeamMade);
+    // dd($matcheIdsAfterThisTeamMade);
       //  $userTeamPlayerIds=[1,2,3,4,5,6,7,8,9,10];
       //dd($userTeamPlayerIds);
       $data['team_score'] = \App\Player::whereIn('id', $userTeamPlayerIds)->with(['player_roles', 'player_matches',
@@ -48,13 +53,15 @@
           'player_gameTerm_score.game_terms' => function ($query) {
               $query->select('name', 'id');
           },
-          'player_gameTerm_score.points_devision_tournament' => function ($query) use ($matcheIdsAfterThisTeamMade) {
+          'player_gameTerm_score.points_devision_tournament' => function ($query) use ($matcheIdsAfterThisTeamMade,$tournament_id) {
+              $query->where('tournament_id',$tournament_id);
 
           }
       ])->get()->toArray();
 
+
       //dd($data);
-      //dd($data['team_score']);
+     //dd($data['team_score']);
 //       debugArr($data['team_score']);
 //       die;
       $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
@@ -99,6 +106,7 @@
 
   }//end
      return $playertotal;
+//      dd($playertotal);
 
   }
    function ordinal_suffix($num){

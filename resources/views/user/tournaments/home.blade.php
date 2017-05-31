@@ -23,7 +23,8 @@
 
                                     <th class="border-r"></th>
                                     <th class="border-r">Points Required To Play</th>
-                                    <th class="th2"></th>
+                                   <!-- <th class="th2"></th>-->
+
                                 </tr>
                             </thead>
                             <tbody id="selected-player" class="main-taible-body">
@@ -33,9 +34,11 @@
                                         <img id="myteamtimg" class="img-circle img-thumbnail" style="width: 100px;" src="{{getUploadsPath($row['t_logo'])}}" />
                                         {{$row['name']}}
                                     </td>
-                                    <td class="border-r1"><p class="myteamtt">{{$row['tournament_price']}}</p></td>
+
                                     <td class="border-r1">
-                                        <a href="{{route('showTournament', ['tournament_id'=>$row['id']])}}" class="btn btn-green">
+                                        <p class="myteamtt" style="padding-top:34px;">{{$row['tournament_price']}}</p></td>
+                                    <td class="border-r1" style="padding-top:38px">
+                                        <a  href="{{route('showTournament', ['tournament_id'=>$row['id']])}}" class="btn btn-green">
                                             Play this tournament
                                         </a>
                                     </td>

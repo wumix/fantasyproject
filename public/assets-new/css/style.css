@@ -274,9 +274,17 @@
 }
 .table-stripedhome{
     background-color: rgb(102, 102, 102);
+
+}
+.table-stripedhome-1{
+
+    border: 2px solid #ddd;
 }
 .th1{
     border-radius: 8px 0 0 0 ;
+}
+.th11{
+    border-radius: 0px 0 0 0 ;
 }
 .th2{
     border-radius: 0 8px 0 0 ;
@@ -912,6 +920,6 @@ hr.light.full{
 .grid-content-container{
     margin-right: 20px;
      border: 1px solid #CECECE;
-    border-radius: 20px;
+    border-radius: 0 0 20px 20px;
 }
 /*...................................News End........................................*/

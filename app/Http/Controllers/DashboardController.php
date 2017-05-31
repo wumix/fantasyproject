@@ -28,13 +28,22 @@ class DashboardController extends Controller {
 //dd($tournamentid);
 //        die;
         // dd($request->all());
-        $tournament_id = 1;
-        $teamId = $request->team_id;
-        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())
-                ->where('tournament_id', $tournament_id)
-                ->get()
-                ->toArray();
 
+        //$tournament_id=2;
+        $transferflag=0; // if tournament over hides transfer button
+
+        $teamId = $request->team_id;
+        $data['user_teams'] = \App\UserTeam::where('id',$teamId)->where('user_id', \Auth::id())->get()->toArray();
+        //dd($data['user_teams']);
+        $tournament_id=$data['user_teams'][0]['tournament_id'];
+        $date_end=\App\Tournament::where('id',$tournament_id)->firstOrFail()->end_date;
+        $datetime = new \DateTime();
+        $datenow = $datetime->format('Y-m-d H:i:s');
+
+        if($datenow>$date_end){
+            $transferflag=1;
+        }
+         $data['transferflag']=$transferflag;
         $data['user_team_player_transfer'] = \App\UserTeam::where('id', $request->team_id)
                 ->with('user_team_player_transfers.player_transfer')
                 ->get();
@@ -69,19 +78,22 @@ class DashboardController extends Controller {
                     'player_gameTerm_score.game_terms' => function ($query) {
                         $query->select('name', 'id');
                     },
-                    'player_gameTerm_score.points_devision_tournament' => function ($query) use ($matcheIdsAfterThisTeamMade) {
-                        
-                    }, 'player_actual_teams'
+                    'player_gameTerm_score.points_devision_tournament' => function ($query) use ($matcheIdsAfterThisTeamMade,$tournament_id) {
+                        $query->where('tournament_id',$tournament_id);
+                    }, 'player_actual_teams'=>function ($query) use($tournament_id) {
+                $query->where('tournament_id',$tournament_id);
+            }
                 ])->get()->toArray();
 
-        //dd($data);
+
         // dd($data['team_score']);
 //       debugArr($data['team_score']);
 //       die;
         $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
-        $data['matches'] = \App\Match::all()->where('tournament_id', 1)
+        $data['matches'] = \App\Match::all()->where('tournament_id', $tournament_id)
                         ->where('matches', '>=', date("Y-m-d"))
                         ->sortByDesc("start_date")->toArray();
+
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         // dd($data['user_team_player_transfer']->toArray());
         return view('user.team_detail', $data);
@@ -100,7 +112,7 @@ class DashboardController extends Controller {
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->with('teamtournament')
                 ->get()
                 ->toArray();
-        //   dd($data);
+        //dd($data['user_teams']);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         return view('user.teamhome', $data);
     }

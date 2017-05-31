@@ -60,7 +60,9 @@ foreach ($team_score as $teamplayers) {
                     </h1>
                     <div class="row">
                         <h3 class="page-heading">Your Team Score: <span id="team_score"></span></h3>
-                        <h3 class="page-heading">Points Remaining:<span id="remaining_score"></span></h3>
+                        @if($transferflag==0)
+                            <h3 class="page-heading">Points Remaining:<span id="remaining_score"></span></h3>
+                        @endif
                     </div>
                     <hr class="light full" id="guide">
                     <div class="table-responsive">
@@ -71,9 +73,11 @@ foreach ($team_score as $teamplayers) {
                                     ">&nbsp;
                                 </th>
                                 <th class="border-r" style="min-width: 200px;">Player</th>
-                                <th class="border-r" style="min-width: 150px;">Belongs To</th>
+                                <th class="border-r" style="min-width: 150px;">Team</th>
                                 <th class="border-r" style="min-width: 250px;">Points</th>
+
                                 <th class="th2" colspan="2">Actions</th>
+
                             </tr>
                             </thead>
                             <tbody id="selected-player" class="main-taible-body">
@@ -127,7 +131,7 @@ foreach ($team_score as $teamplayers) {
                                     <td class="border-r1 text-left" style="min-width: 200px; position: relative;">
                                         <div class="current_player">
                                             {{--<img style="width: 80px;" class="img-thumbnail"--}}
-                                                 {{--src="{{getUploadsPath($row['profile_pic'])}}">--}}
+                                            {{--src="{{getUploadsPath($row['profile_pic'])}}">--}}
                                             <a class="colorbox"
                                                href="{{route('showPlayerStats', ['player_id'=>$row['id']])}}">
                                                 <img style="width: 80px;" class="img-thumbnail"
@@ -192,10 +196,12 @@ foreach ($team_score as $teamplayers) {
                                     </td>
                                     <td>
                                         @if(!$flag==1)
+                                            @if($transferflag==0)
 
-                                            <a href="{{route('transferplayer', ['team_id'=>$user_team_player_transfer['id'],'player_id'=>$player_transfer_id,'tournament_id'=>$user_team_player_transfer['tournament_id']])}}"
-                                               class="btn btn-green">Transfer Player
-                                            </a>
+                                                <a href="{{route('transferplayer', ['team_id'=>$user_team_player_transfer['id'],'player_id'=>$player_transfer_id,'tournament_id'=>$user_team_player_transfer['tournament_id']])}}"
+                                                   class="btn btn-green">Transfer Player
+                                                </a>
+                                            @endif
                                         @endif
 
                                     </td>
@@ -204,7 +210,7 @@ foreach ($team_score as $teamplayers) {
                             @endforeach
 
                             <tr>
-                                <td><h3>Total Team Score: {{$teamtotal}}</h3></td>
+                                <td><h3>Total Team Score: <span id="total_team_score"> {{$teamtotal}}</span></h3></td>
                             </tr>
 
                             </tbody>
@@ -223,11 +229,11 @@ foreach ($team_score as $teamplayers) {
 
 @section('js')
     <script>
-        $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-            $('#team_score').html('{{$teamtotal}}')
-            $('#remaining_score').html('{{getUserTotalScore(\Auth::id())}}');
-        });
+
+        $('[data-toggle="tooltip"]').tooltip();
+        $('#team_score').html('{{$teamtotal}}')
+        $('#remaining_score').html('{{getUserTotalScore(\Auth::id())}}');
+
     </script>
 @stop
 

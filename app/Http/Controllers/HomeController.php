@@ -75,14 +75,14 @@ class HomeController extends Controller
         $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', $date);
         $data['upcomming_tournaments_list'] = $upcommingTour->toArray(); //upcomming tournament of active
         $data['matches'] = \App\Match::getNextMatch();
-        $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
+        $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(1)->orderBy('score', 'DESC')->get()->toArray();
         $data['news'] = \App\BlogPost::where('post_type', 'news')->take(3)->orderBy('id', 'DESC')->get()->toArray();
         return view('home', $data);
     }
 
     public function fixturesDetial($tournament_id)
     {
-        $data['fixture_details'] = \App\Tournament::where('id', $tournament_id)->with('tournament_matches')->firstOrFail()->toArray();
+        $data['fixture_details'] = \App\Tournament::where('slug', $tournament_id)->with('tournament_matches')->firstOrFail()->toArray();
         return view('pages.fixtures_c_trophy', $data);
 
     }
@@ -106,10 +106,16 @@ class HomeController extends Controller
 
     public function rankings()
     {
-        $stats = \App\Game::where('id', '1')
-            ->with('game_roles', 'game_type.game_type_points.player_roles')->get()->toArray();
-        $data['rankings'] = $stats;
-        //dd($stats);
+//        $stats = \App\Game::where('id', '1')
+//            ->with('game_roles', 'game_type.game_type_points.player_roles')->get()->toArray();
+//        $data['rankings'] = $stats;
+//        //dd($stats);
+        $data['rankings'] = \App\RankingCategory::with(['category_players' => function ($query) {
+            $query->orderBy('rating', 'DESC');
+
+        }])->get()->toArray();
+        //dd($data['rankings']);
+
         return view('pages.rankings', $data);
     }
 
@@ -118,7 +124,9 @@ class HomeController extends Controller
         $this->validatorContact($request->all())->validate();
         $emailRecievers = [
             'umair_hamid100@yahoo.com',
-            'hassan@branchezconsulting.com'
+            'hassan@branchezconsulting.com',
+            'jahangir.yousaf@branchezconsulting.com',
+            'adeel@branchezconsulting.com'
         ];
         \Mail::send('emails.contact', array(
             'name' => $request->get('name'),
@@ -159,7 +167,7 @@ class HomeController extends Controller
 
     public function howPlay()
     {
-        $data['tournament'] = \App\Tournament::where('id', 1)
+        $data['tournament'] = \App\Tournament::where('id', 2)
             ->with('tournament_game.game_actions.game_terms', 'game_term_points')
             ->firstOrFail()
             ->toArray();

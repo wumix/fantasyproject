@@ -36,6 +36,7 @@
                                     </thead>
                                     <tbody id="selected-player" class="main-taible-body">
                                         @foreach($user_team_player as $row)
+                                           {{--{{ dd($user_team_player)}}--}}
                                         <tr>
                                             <td class="border-r1 text-left" style="min-width: 300px;
 "><img class="img-thumbnail"
@@ -132,7 +133,7 @@
                                                             <th class=" th1" style="min-width: 300px;
 ">PLAYERS</th>
 
-                                                            <th class="point">Belongs To</th>
+                                                            <th class="point">Team</th>
                                                             <th class="add">Points required to buy</th>
                                                         </tr>
                                                     </thead>
@@ -146,6 +147,14 @@
                                                         <tr id="player_tr-{{$player['id']}}" class="cwt">
                                                             <td class=" th11 text-left" style="min-width: 300px;
 ">
+
+
+
+
+
+                                                                <a class="colorbox"
+                                                                   href="{{route('showPlayerStats', ['player_id'=>$player['id']])}}">
+
                                                                 <img style="width: 80px;float: left;margin-right: 24px;" class="img-thumbnail"
                                                                      <?php $profilepic=null;
                                                                      if(!empty($player['profile_pic'])){
@@ -153,7 +162,7 @@
                                                                      }
 
                                                                      ?>
-                                                                     src="{{getUploadsPath($profilepic)}}"/>
+                                                                     src="{{getUploadsPath($profilepic)}}"/>   </a>
                                                                 <span class="selected-player-name"> {{$player['name']}}</span>
                                                             </td>
                                                             <td class="text-left">
@@ -218,7 +227,13 @@
 @endsection
 @section('js')
 
+
+
 <script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+
+    });
     function deletePlayer(playerid,player_price){
 
         var teamid = $("#team_id").val();

@@ -13,7 +13,7 @@
                     <hr class="light full">
                     <div class="page-content">
                         <p>
-                            Your team is complete. Your score will be calculated from upcoming IPL match.
+                            Your team is complete. Your score will be calculated from upcoming tournament match.
                         </p>
                         <p>
                             We will make you updated from your team performance by emails.

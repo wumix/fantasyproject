@@ -263,7 +263,8 @@ class TournamentsController extends Controller
 
         $tournament_id = Input::get('tournament_id');
         $userteam = Input::get('name');
-       // $this->validator($request->all())->validate();
+      // $this->validator($request->all())->validate();
+      // dd('stop');
         $teamid = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' => Auth::id()])->first();
         $data = [];
         if ($teamid == null) {
@@ -452,7 +453,7 @@ class TournamentsController extends Controller
         $objResponse['success'] = false;
         if ($tournamentMaxPlayers > $currentNoPlayers) {
             if ($difference > 15 || $difference < 15) {
-                if ($request->player_price < getUserTotalScore(Auth::id())) {
+                if ($request->player_price <= getUserTotalScore(Auth::id())) {
                     if ($this->giveanygoodname(Auth::id(), $request->team_id, $request->role_id) < $this->playerRoleLimit($request->tournament_id, $request->role_id)) {
 
                         $objteam = \App\UserTeam::find($request->team_id);
@@ -514,8 +515,11 @@ class TournamentsController extends Controller
 
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
-            'name' => 'unique:user_teams'
+            'name' => 'uniqueteamname:name,tournament_id'
+
+
         ]);
     }
 

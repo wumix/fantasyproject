@@ -512,7 +512,7 @@
                             <span class="trophies">Trophies</span>
                             <img src={{URL::to('/img/star.png')}} alt=""/>
                             <span class="plyer_one">Level 1 Player</span>
-                            <span id="game_lame_1" class="number_sec"></span>
+                            <span id="game_lame_1" class="number_sec">1</span>
                         </div>
                         <div class="col-md-6">
                             <ul class="medal">
@@ -644,7 +644,7 @@
 
 
                 $("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + $(this).val() + " #total_team_score");
-                $("#game_lame_1").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + $(this).val() + " #total_team_score");
+              //  $("#game_lame_1").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + $(this).val() + " #total_team_score");
 
 
 
@@ -652,23 +652,7 @@
 
 
         });
-        setTimeout(function(){
 
-            var score=$('#game_lame_1').val();
-            alert(score);
-            if(score<1000) {
-                $("#exp").remove();
-                $("#exp1").remove();
-            }
-            if(2000<score<3000) {
-                $("#exp").remove();
-                $("#exp2").remove();
-            }
-            if(score>3000) {
-                $("#exp1").remove();
-                $("#exp2").remove();
-            }
-        }, 900);
 
 
 

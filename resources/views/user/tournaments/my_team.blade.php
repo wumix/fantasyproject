@@ -102,7 +102,7 @@
                             </small>
                             <div class="alert alert-danger">
                                 <ul>
-                                    <li>You can make average team with in available points. i.e {{getUserTotalScore(Auth::id())}}</li>
+                                    <li>You can make a team with in available points. i.e {{getUserTotalScore(Auth::id())}}</li>
                                     <li>You must have 11 players in your team to play this tournament.</li>
                                 </ul>
                             </div>

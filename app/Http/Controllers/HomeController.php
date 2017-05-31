@@ -30,9 +30,21 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function newdash(){
-         return view('newdash');
+    public function newdash()
+    {
+        $datetime = new \DateTime();
+        $date = $datetime->format('Y-m-d H:i:s');
+        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())
+            ->get()
+            ->toArray();
+        //dd($data);
+        $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
+        $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', $date);
+ //dd($data['upcommingTour']->toArray());
+       //dd($data['upcommingTour']->toArray());
+        return view('user.dashboard.newdash', $data);
     }
+
     public function __construct()
     {
         // $this->middleware('auth');

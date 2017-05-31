@@ -1,7 +1,7 @@
 @extends('layouts.app')
 {{--{{dd($matches->t)}}--}}
 @section('title')
-    Gamithon Fantasy
+    <title>Gamithon Fantasy</title>
 @stop
 @section('css')
     <style>
@@ -445,7 +445,7 @@
             <div class="row">
 
         <span class="circle_area_for">
-            <img src="{{getUploadsPath($userprofileinfo['profile_pic'])}}" alt=""/>
+            <img src="{{route('userProfileEdit')}}" alt=""/>
         </span>
 
             </div>
@@ -462,34 +462,32 @@
                         A Little about me
                     </span>
                         <p class="parah_abot">
-                            @if(empty($userprofileinfo['about_me']))
-                                Nothing About You yet
-                            @else
-                                {{$userprofileinfo['about_me']}}
-                            @endif
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore ma
+
+                            gna aliqua. Ut enim ad minim veniam, quis
                         </p>
                         {{--<span class="friends">--}}
                         {{--Friends</span>--}}
                         {{--<div class="img_area">--}}
-                        {{--<span class="small_circle">--}}
-                        {{--<img src={{URL::to('/img/small_circle.png')}} alt=""/>--}}
-                        {{--<span class="jhone">Jhon Doe</span>--}}
-                        {{--</span>--}}
+                         {{--<span class="small_circle">--}}
+            {{--<img src={{URL::to('/img/small_circle.png')}} alt=""/>--}}
+            {{--<span class="jhone">Jhon Doe</span>--}}
+        {{--</span>--}}
 
-                        {{--<span class="small_circle">--}}
-                        {{--<img src={{URL::to('/img/small_circle.png')}} alt=""/>--}}
-                        {{--<span class="jhone">Jhon Doe</span>--}}
-                        {{--</span>--}}
-                        {{--<span class="small_circle">--}}
-                        {{--<img src={{URL::to('/img/small_circle.png')}} alt=""/>--}}
-                        {{--<span class="jhone">Jhon Doe</span>--}}
-                        {{--</span>--}}
-                        {{--<span class="small_circle">--}}
-                        {{--<img src={{URL::to('/img/small_circle.png')}} alt=""/>--}}
-                        {{--<span class="jhone">Jhon Doe</span>--}}
-                        {{--</span>--}}
+                            {{--<span class="small_circle">--}}
+            {{--<img src={{URL::to('/img/small_circle.png')}} alt=""/>--}}
+            {{--<span class="jhone">Jhon Doe</span>--}}
+        {{--</span>--}}
+                            {{--<span class="small_circle">--}}
+            {{--<img src={{URL::to('/img/small_circle.png')}} alt=""/>--}}
+            {{--<span class="jhone">Jhon Doe</span>--}}
+        {{--</span>--}}
+                            {{--<span class="small_circle">--}}
+            {{--<img src={{URL::to('/img/small_circle.png')}} alt=""/>--}}
+            {{--<span class="jhone">Jhon Doe</span>--}}
+        {{--</span>--}}
                         {{--</div>--}}
-                        <a href="{{route('userProfileEdit')}}" class="btn_club">Edit</a>
+                        <a href="{{route('userProfileEdit')}}" class="btn_club">View more</a>
                     </div>
                     <div class="abot_me_sec">
                     <span class="text_abot_me">
@@ -499,7 +497,7 @@
                         <ul class="img_area_area">
                             <li>
 
-                                IPL Score <span id="game_lame"> Calulating...</span>
+                                IPL Score <span id="game_lame"> 2000</span>
                             </li>
 
                         </ul>
@@ -512,19 +510,19 @@
                             <span class="trophies">Trophies</span>
                             <img src={{URL::to('/img/star.png')}} alt=""/>
                             <span class="plyer_one">Level 1 Player</span>
-                            <span id="game_lame_1" class="number_sec"></span>
+                            <span class="number_sec">30</span>
                         </div>
                         <div class="col-md-6">
                             <ul class="medal">
-                                <li id="exp">
+                                <li>
                                     <img src={{URL::to('/img/gold-medal.png')}} alt=""/>
                                     <span>20</span>
                                 </li>
-                                <li id="exp1">
+                                <li>
                                     <img src={{URL::to('/img/gold-medal1.png')}} alt=""/>
                                     <span>10</span>
                                 </li>
-                                <li id="exp2">
+                                <li>
                                     <img src={{URL::to('/img/gold-medal2.png')}} alt=""/>
                                     <span>00</span>
                                 </li>
@@ -536,53 +534,45 @@
                     <div class="right_sec_second">
 
                         <div class="col-md-12">
-                            <div class="col-md-3">
-                            </div>
-                            <div class="col-md-6">
-                                <span class="trophies text-center">Your's Team</span>
-                                {!! Form::open(['url' => route('teamdetail'),'method'=>'get']) !!}
-                                <div class="form-group">
-                                    <select id="team_id" style="width:100%;" name="team_id"
-                                            class="form-control dropdown-toggle col-md-12"
-                                            data-toggle="dropdown"
-                                            style="border:1px solid #9acc59; border-radius: 6px;">
 
-                                        @foreach($user_teams as $row)
-                                            <option id="dropdownbtn"
-                                                    value="{{$row['id']}}">{{$row['name']}}</option>
+                            <span class="trophies">Your's Team</span>
+                            {!! Form::open(['url' => route('teamdetail'),'method'=>'get']) !!}
+                            <div class="form-group">
+                                <select id="team_id" style="width:100%;" name="team_id"
+                                        class="form-control dropdown-toggle col-md-12"
+                                        data-toggle="dropdown"
+                                        style="border:1px solid #9acc59; border-radius: 6px;">
+                                    @foreach($user_teams as $row)
+                                        <option id="dropdownbtn"
+                                                value="{{$row['id']}}">{{$row['name']}}</option>
 
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="form-group text-center">
-                                    <button style="margin-top:10px;  " class="btn btn-success"
-                                            type="submit">
-                                        Go
-                                    </button>
-                                </div>
-
-                                </form>
-                            </div>
-                            <div class="col-md-3">
+                                    @endforeach
+                                </select>
                             </div>
 
-                                </div>
+                            <div class="form-group text-center">
+                                <button style="margin-top:10px;  " class="btn btn-success"
+                                        type="submit">
+                                    Go
+                                </button>
+                            </div>
+
+                            </form>                        </div>
                         {{--<div class="col-md-6">--}}
-                        {{--<ul class="medal">--}}
-                        {{--<li>--}}
-                        {{--<img src={{URL::to('/img/gold-medal.png')}} alt=""/>--}}
-                        {{--<span>20</span>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                        {{--<img src={{URL::to('/img/gold-medal1.png')}} alt=""/>--}}
-                        {{--<span>10</span>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                        {{--<img src={{URL::to('/img/gold-medal2.png')}} alt=""/>--}}
-                        {{--<span>00</span>--}}
-                        {{--</li>--}}
-                        {{--</ul>--}}
+                            {{--<ul class="medal">--}}
+                                {{--<li>--}}
+                                    {{--<img src={{URL::to('/img/gold-medal.png')}} alt=""/>--}}
+                                    {{--<span>20</span>--}}
+                                {{--</li>--}}
+                                {{--<li>--}}
+                                    {{--<img src={{URL::to('/img/gold-medal1.png')}} alt=""/>--}}
+                                    {{--<span>10</span>--}}
+                                {{--</li>--}}
+                                {{--<li>--}}
+                                    {{--<img src={{URL::to('/img/gold-medal2.png')}} alt=""/>--}}
+                                    {{--<span>00</span>--}}
+                                {{--</li>--}}
+                            {{--</ul>--}}
 
                         {{--</div>--}}
                     </div>
@@ -591,40 +581,40 @@
                         <div class="col-md-12">
                             <ul class="upcomin_list">
                                 @foreach($upcommingTour as $tour)
-                                    <li>
-                                        <div class="left_upcoming">
-                                            <span ><img src="{{URL::to('/img/upcomin_img.png')}}" alt=""/></span>
-                                            <div class="sect">
-                                                <span class="text_abot_me_upcome_tour">{{$tour['name']}}</span>
-                                                <span class="clor_text">{{  formatDate($tour['start_date'])}}</span>
-                                                <span class="time_area">{{formatDate($tour['start_date'])}}</span>
-                                                <a href="{{route('fixturesdetail',['tournament_id'=>$tour['slug']])}}" class="more_btn">More Info  ></a>
-                                            </div>
+                                <li>
+                                    <div class="left_upcoming">
+                                        <span ><img src="{{URL::to('/img/upcomin_img.png')}}" alt=""/></span>
+                                        <div class="sect">
+                                            <span class="text_abot_me_upcome_tour">{{$tour['name']}}</span>
+                                            <span class="clor_text">{{  formatDate($tour['start_date'])}}</span>
+                                            <span class="time_area">{{formatDate($tour['start_date'])}}</span>
+                                            <a href="#" class="more_btn">More Info  ></a>
                                         </div>
-                                        <div class="right_upcoming">
+                                    </div>
+                                    <div class="right_upcoming">
                              <span class="nine_area">
-                           01
-                            <span> June</span>
+                            09
+                            <span>APR</span>
                         </span>
-                                        </div>
-                                    </li>
+                                    </div>
+                                </li>
                                 @endforeach
                                 {{--<li>--}}
-                                {{--<div class="left_upcoming">--}}
-                                {{--<span ><img src="{{getUploadsPath($userprofileinfo['profile_pic'])}}" alt=""/></span>--}}
-                                {{--<div class="sect">--}}
-                                {{--<span class="text_abot_me_upcome_tour">Tournament of Football</span>--}}
-                                {{--<span class="clor_text">Asghar Mall Scheme, Satellite Town, Rawalpindi</span>--}}
-                                {{--<span class="time_area">09:00 - 10:45 pm</span>--}}
-                                {{--<a href="#" class="more_btn">More Info  ></a>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="right_upcoming">--}}
-                                {{--<span class="nine_area">--}}
-                                {{--09--}}
-                                {{--<span>APR</span>--}}
-                                {{--</span>--}}
-                                {{--</div>--}}
+                                    {{--<div class="left_upcoming">--}}
+                                        {{--<span ><img src="{{getUploadsPath($userprofileinfo['profile_pic'])}}" alt=""/></span>--}}
+                                        {{--<div class="sect">--}}
+                                            {{--<span class="text_abot_me_upcome_tour">Tournament of Football</span>--}}
+                                            {{--<span class="clor_text">Asghar Mall Scheme, Satellite Town, Rawalpindi</span>--}}
+                                            {{--<span class="time_area">09:00 - 10:45 pm</span>--}}
+                                            {{--<a href="#" class="more_btn">More Info  ></a>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="right_upcoming">--}}
+                             {{--<span class="nine_area">--}}
+                            {{--09--}}
+                            {{--<span>APR</span>--}}
+                        {{--</span>--}}
+                                    {{--</div>--}}
                                 {{--</li>--}}
 
                             </ul>
@@ -644,34 +634,10 @@
 
 
                 $("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + $(this).val() + " #total_team_score");
-                $("#game_lame_1").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + $(this).val() + " #total_team_score");
-
-
-
             });
 
 
         });
-        setTimeout(function(){
-
-            var score=$('#game_lame_1').val();
-            alert(score);
-            if(score<1000) {
-                $("#exp").remove();
-                $("#exp1").remove();
-            }
-            if(2000<score<3000) {
-                $("#exp").remove();
-                $("#exp2").remove();
-            }
-            if(score>3000) {
-                $("#exp1").remove();
-                $("#exp2").remove();
-            }
-        }, 900);
-
-
-
 
     </script>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Validator::extend('uniqueteamname', function ($attribute, $value, $parameters, $validator) {
+         dd($parameters);
             if (!empty($value) && (strlen($value) % 2) == 0) {
                 return true;
             }

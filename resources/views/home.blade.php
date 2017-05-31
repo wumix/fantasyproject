@@ -234,7 +234,7 @@
 
                                             ?>
                                         <img class="media-object"
-                                             src="{{Croppa::url($val['image'],160,160)}}" alt="{{end($arr)}}">
+                                             src="{{Croppa::url($val['image'],177,105)}}" alt="{{end($arr)}}">
                                     </a>
                                 </div>
                                 <div class="media-body">

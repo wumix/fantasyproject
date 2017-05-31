@@ -100,11 +100,15 @@ class DashboardController extends Controller {
     }
 
     function index() {
+        $datetime = new \DateTime();
+        $date = $datetime->format('Y-m-d H:i:s');
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())
                 ->get()
                 ->toArray();
         //   dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
+        $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', $date);
+
         return view('user.dashboard.dashboard', $data);
     }
 
@@ -128,6 +132,8 @@ class DashboardController extends Controller {
 
 
         $user = \App\USER::find(\Auth::id());
+        $user->about_me=$request->about_me;
+        $user->name=$request->name;
         if ($request->hasFile('profile_pic')) {
 
             $files = uploadInputs($request->profile_pic, 'user_profile_pics');

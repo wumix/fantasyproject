@@ -65,7 +65,7 @@
 //       debugArr($data['team_score']);
 //       die;
       $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
-      $data['matches'] = \App\Match::all()->where('tournament_id', 1)
+      $data['matches'] = \App\Match::all()->where('tournament_id', 2)
           ->where('matches', '>=', date("Y-m-d"))
           ->sortByDesc("start_date")->toArray();
       $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());

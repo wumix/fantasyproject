@@ -288,7 +288,7 @@
             window.location = teamCompletedUrl;
             }
 
-            $("#your_points").html(' Your Points:' + data.player_score);
+            $("#your_points").html(data.player_score);
             var obj = data.player;
             $('.error').html(data.msg);
             $('.error').fadeIn(200).delay(1000).fadeOut(200); //fade out after 3 seconds

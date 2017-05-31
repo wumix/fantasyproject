@@ -16,9 +16,8 @@
                             Your team is complete. Your score will be calculated from upcoming tournament match.
                         </p>
                         <p>
-                            We will make you updated from your team performance by emails.
-                            You can also see your team score go to your
-                            <a href="{{route('UserDashboard')}}">dashboard</a>.
+                            You can see your team score by clicking
+                            <a href="{{route('UserDashboard')}}">My Account</a>
                         </p>
                     </div>
                 </div>

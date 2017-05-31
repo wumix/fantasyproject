@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @section('title')
+        Fixtures
+        @endsection
 
     <section>
         <div class="container">

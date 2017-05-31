@@ -13,7 +13,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Validator::extend('uniqueteamname', function ($attribute, $value, $parameters, $validator) {
+            if (!empty($value) && (strlen($value) % 2) == 0) {
+                return true;
+            }
+            return false;
+        });
     }
 
     /**

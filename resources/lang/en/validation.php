@@ -85,6 +85,8 @@ return [
     'unique'               => 'The :attribute has already been taken.',
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
+    'uniqueteamname' => "The :attribute must be even string lenght.",
+    'accepted'             => 'The :attribute must be accepted.',
 
     /*
     |--------------------------------------------------------------------------

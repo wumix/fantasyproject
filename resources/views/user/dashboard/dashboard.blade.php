@@ -512,7 +512,7 @@
                             <span class="trophies">Trophies</span>
                             <img src={{URL::to('/img/star.png')}} alt=""/>
                             <span class="plyer_one">Player Level</span>
-
+                            <span id="game_lame_1" class="number_sec">1</span>
                         </div>
                         <div class="col-md-6">
                             <ul class="medal">

@@ -518,16 +518,16 @@
                             <ul class="medal">
                                 <li id="exp">
                                     <img src={{URL::to('/img/gold-medal.png')}} alt=""/>
-                                    <span>20</span>
+                                    {{--<span>20</span>--}}
                                 </li>
-                                <li id="exp1">
-                                    <img src={{URL::to('/img/gold-medal1.png')}} alt=""/>
-                                    <span>10</span>
-                                </li>
-                                <li id="exp2">
-                                    <img src={{URL::to('/img/gold-medal2.png')}} alt=""/>
-                                    <span>00</span>
-                                </li>
+                                {{--<li id="exp1">--}}
+                                    {{--<img src={{URL::to('/img/gold-medal1.png')}} alt=""/>--}}
+                                    {{--<span>10</span>--}}
+                                {{--</li>--}}
+                                {{--<li id="exp2">--}}
+                                    {{--<img src={{URL::to('/img/gold-medal2.png')}} alt=""/>--}}
+                                    {{--<span>00</span>--}}
+                                {{--</li>--}}
                             </ul>
 
                         </div>

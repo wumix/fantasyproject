@@ -492,8 +492,8 @@
                         <a href="{{route('userProfileEdit')}}" class="btn_club">Edit</a>
                     </div>
                     <div class="abot_me_sec">
-                    <span class="text_abot_me">
-                        Privious Tournament Score
+                    <span class="text_abot_me text-center">
+                        Previous Tournament Score
                     </span>
 
                         <ul class="img_area_area">

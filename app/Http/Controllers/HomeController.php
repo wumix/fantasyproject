@@ -30,6 +30,9 @@ class HomeController extends Controller
      *
      * @return void
      */
+    public function newdash(){
+         return view('newdash');
+    }
     public function __construct()
     {
         // $this->middleware('auth');

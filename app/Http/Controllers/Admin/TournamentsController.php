@@ -63,6 +63,7 @@ class TournamentsController extends Controller
         $newTournament->start_date = $request->start_date;
         $newTournament->end_date = $request->end_date;
         $newTournament->venue = $request->venue;
+        $newTournament->slug=slugify($request->name);
         if (Input::hasFile('t_logo')) {
             $files = uploadInputs(Input::file('t_logo'), 'tournament_logos');
             $newTournament->t_logo = $files;
@@ -125,6 +126,7 @@ class TournamentsController extends Controller
         $tour->tournament_role_limit()->sync(array_filter($request->player_role_id)); //can also user insert here
         return redirect()->route('addMaxRoles', ['tournament_id' => $tournamentId]);
     }
+
 
     function showAddPlayerForm($tournament_id)
     {

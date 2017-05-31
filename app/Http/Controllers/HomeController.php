@@ -79,7 +79,7 @@ class HomeController extends Controller
 
     public function fixturesDetial($tournament_id)
     {
-        $data['fixture_details'] = \App\Tournament::where('id', $tournament_id)->with('tournament_matches')->firstOrFail()->toArray();
+        $data['fixture_details'] = \App\Tournament::where('slug', $tournament_id)->with('tournament_matches')->firstOrFail()->toArray();
         return view('pages.fixtures_c_trophy', $data);
 
     }

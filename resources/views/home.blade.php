@@ -196,7 +196,7 @@
                                 @foreach($upcomming_tournaments_list as $tournament)
                                     <tr class="trr">
                                         <td class="border-r">
-                                            <a href="{{route('fixturesdetail',['tournament_id'=>$tournament['id']])}}">{{$tournament['name']}} </a>
+                                            <a href="{{route('fixturesdetail',['tournament_id'=>$tournament['slug']])}}">{{$tournament['name']}} </a>
                                         </td>
                                         <td class="border-r">{{$tournament['venue']}}</td>
                                         <td class="border-r">

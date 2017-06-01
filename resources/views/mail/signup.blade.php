@@ -1,178 +1,184 @@
-{!! Html::style('https://fonts.googleapis.com/css?family=Raleway') !!}
-{!! Html::style('assets-new/vendor/font-awesome/css/font-awesome.min.css') !!}
-{!! Html::style('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!}
-{!! Html::style('https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic') !!}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Welcome to GamithonFantasy</title>
+    {!! Html::style('https://fonts.googleapis.com/css?family=Raleway') !!}
+    {!! Html::style('assets-new/vendor/font-awesome/css/font-awesome.min.css') !!}
+    {!! Html::style('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!}
+    {!! Html::style('https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic') !!}
 
-<style type="text/css">
-    .whole_setio_news {
-        width: 800px;
-        display: block;
-        margin: 0 auto;
-    }
+    <style type="text/css">
+        .whole_setio_news {
+            width: 800px;
+            display: block;
+            margin: 0 auto;
+        }
 
-    .black_area {
-        width: 100%;
-        display: inline-block;
-        background: #000;
-        padding: 10px 10px;
-        float: left;
-    }
+        .black_area {
+            width: 100%;
+            display: inline-block;
+            background: #000;
+            padding: 10px 10px;
+            float: left;
+        }
 
-    .text {
-        float: left;
-        color: #fff;
-    }
+        .text {
+            float: left;
+            color: #fff;
+        }
 
-    .link_hello {
-        float: right;
-        display: inline-block;
-        color: greenyellow;
-    }
+        .link_hello {
+            float: right;
+            display: inline-block;
+            color: greenyellow;
+        }
 
-    .banner_area {
-        width: 100%;
-        display: inline-block;
-    }
+        .banner_area {
+            width: 100%;
+            display: inline-block;
+        }
 
-    .logo {
-        width: 100%;
-        display: inline-block;
-        padding: 30px 0;
-    }
+        .logo {
+            width: 100%;
+            display: inline-block;
+            padding: 30px 0;
+        }
 
-    .logo img {
-        width: 24%;
-        display: inline-block;
-        margin-left: 15px;
-    }
+        .logo img {
+            width: 24%;
+            display: inline-block;
+            margin-left: 15px;
+        }
 
-    .parah_section {
-        width: 100%;
-        display: inline-block;
-        padding: 20px 30px;
-    }
+        .parah_section {
+            width: 100%;
+            display: inline-block;
+            padding: 20px 30px;
+        }
 
-    .text_news {
-        width: 100%;
-        display: inline-block;
-        font-size: 18px;
-        color: #000;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
+        .text_news {
+            width: 100%;
+            display: inline-block;
+            font-size: 18px;
+            color: #000;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
 
-    .parah_new {
-        width: 100%;
-        display: inline-block;
-        font-size: 16px;
-        color: #000;
-    }
+        .parah_new {
+            width: 100%;
+            display: inline-block;
+            font-size: 16px;
+            color: #000;
+        }
 
-    .free_roll_text {
-        width: 100%;
-        display: inline-block;
-        text-align: center;
-        font-size: 18px;
-        color: #000;
-        font-weight: bold;
-    }
+        .free_roll_text {
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+            font-size: 18px;
+            color: #000;
+            font-weight: bold;
+        }
 
-    .paly_btn {
-        width: 150px;
-        background: green;
-        color: #fff;
-        border-radius: 5px;
-        padding: 10px 0;
-        display: block;
-        margin: 15px auto;
-        text-align: center;
-    }
+        .paly_btn {
+            width: 150px;
+            background: green;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px 0;
+            display: block;
+            margin: 15px auto;
+            text-align: center;
+        }
 
-    .how_to_play_sec {
-        width: 100%;
-        display: inline-block;
-        background: #000;
+        .how_to_play_sec {
+            width: 100%;
+            display: inline-block;
+            background: #000;
 
-    }
+        }
 
-    .section_heading {
-        width: 100%;
-        display: inline-block;
-        color: #fff;
-        font-size: 25px;
-        font-weight: bold;
-        padding: 10px 30px;
-        text-align: center;
-    }
+        .section_heading {
+            width: 100%;
+            display: inline-block;
+            color: #fff;
+            font-size: 25px;
+            font-weight: bold;
+            padding: 10px 30px;
+            text-align: center;
+        }
 
-    .service_list {
-        width: 100%;
-        display: inline-block;
-        float: left;
-        text-align: center;
-    }
+        .service_list {
+            width: 100%;
+            display: inline-block;
+            float: left;
+            text-align: center;
+        }
 
-    .service_list li {
-        width: 33%;
-        display: inline-block;
-        float: left;
-    }
+        .service_list li {
+            width: 33%;
+            display: inline-block;
+            float: left;
+        }
 
-    .service_list li a {
-        color: #fff;
-    }
+        .service_list li a {
+            color: #fff;
+        }
 
-    .footer_section {
-        width: 100%;
-        display: inline-block;
-        background: #333;
-        text-align: center;
+        .footer_section {
+            width: 100%;
+            display: inline-block;
+            background: #333;
+            text-align: center;
 
-    }
+        }
 
-    .footer_logo {
-        width: 100%;
-        display: inline-block;
-        padding: 30px 0;
-    }
+        .footer_logo {
+            width: 100%;
+            display: inline-block;
+            padding: 30px 0;
+        }
 
-    .footer_logo img {
-        width: 40%;
-        display: inline-block;
-    }
+        .footer_logo img {
+            width: 40%;
+            display: inline-block;
+        }
 
-    .social_list {
-        width: 100%;
-        display: inline-block;
-        text-align: center;
-        padding: 0;
-        margin-bottom: 20px !important;
-    }
+        .social_list {
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+            padding: 0;
+            margin-bottom: 20px !important;
+        }
 
-    .social_list li {
-        width: 7%;
-        display: inline-block;
-        padding-right: 20px;
-    }
+        .social_list li {
+            width: 7%;
+            display: inline-block;
+            padding-right: 20px;
+        }
 
-    .links_list {
-        width: 100%;
-        display: inline-block;
-        border-top: 1px solid #eee;
-        text-align: center;
-        padding: 10px 0;
-    }
+        .links_list {
+            width: 100%;
+            display: inline-block;
+            border-top: 1px solid #eee;
+            text-align: center;
+            padding: 10px 0;
+        }
 
-    .links_list li {
-        width: 16%;
-        display: inline-block;
-        padding-right: 20px;
-    }
+        .links_list li {
+            width: 16%;
+            display: inline-block;
+            padding-right: 20px;
+        }
 
-    .links_list li a {
-        color: rgb(168, 176, 182);
-    }
-</style>
+        .links_list li a {
+            color: rgb(168, 176, 182);
+        }
+    </style>
+</head>
+<body>
 
 <div class="whole_setio_news">
     <div class="black_area">
@@ -257,3 +263,7 @@
         </ul>
     </div>
 </div>
+</body>
+</html>
+
+

@@ -167,11 +167,10 @@
         </div>
         <div class="parah_section">
         <span class="text_news">
-            Hello Branches Consulting
+            Hi {{$name}}
         </span>
             <p class="parah_new">
-                Thank you for registering at Daily Fantasy Cricket � the world�s premier fantasy cricket platform � where lakhs of cash are given away every day!
-            </p>
+                Thank you for your registration at Gamithon fantasy. Here a lot of exciting prizes are waiting for you every day!  You can win these prizes just by making your favorite squad and let it play! </p>
             <p class="parah_new">
                 To help you get started on DFC, I wanted to share a video with you (Watch it here!) that explains how we work and help you win cash and prizes easily � just by choosing your favorite cricketers and playing against your friends!
             </p>

@@ -5,6 +5,10 @@
 @stop
 @section('css')
     <style>
+        .highlight-badge{
+            border:2px solid #F98709;
+            padding: 2px;
+        }
         .btn-gamithon-default {
             background: #92B713 !important;
         }
@@ -574,10 +578,10 @@
                                     <span>20</span>
                                 </li>
                                 <li id="exp1">
-                                    <img src={{URL::to('/img/gold-medal1.png')}} alt=""/>
+                                    <img class="" src={{URL::to('/img/gold-medal1.png')}} alt=""/>
                                     <span>10</span>
                                 </li>
-                                <li id="exp2">
+                                <li id="exp2" class="highlight-badge" title="Your current badge" >
                                     <img src={{URL::to('/img/gold-medal2.png')}} alt=""/>
                                     <span>00</span>
                                 </li>

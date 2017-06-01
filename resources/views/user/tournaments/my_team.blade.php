@@ -76,14 +76,12 @@
 ">
                                                     <a class="colorbox"
                                                        href="{{route('showPlayerStats', ['player_id'=>$row['id']])}}">
-
-
                                                         <img class="img-thumbnail"
                                                              src="{{getUploadsPath($row['profile_pic'])}}"
                                                              style="width: 80px;float: left;margin-right: 24px;">
                                                     </a>
 
-                                                    <span class="selected-player-name"> {{$row['name']}} </span>
+                                                    <span class="selected-player-name"> {{ucwords($row['name'])}} </span>
                                                 </td>
                                                 @foreach($row['player_tournaments'] as $key=>$val)
                                                     <td class="border-r1">

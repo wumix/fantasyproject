@@ -34,6 +34,11 @@
             margin-top: 41px;
         }
 
+        .lvl-text {
+            font-size: 24px;
+            color: #F9980E;
+        }
+
         .circle_area_for img {
             width: 175px;
             height: 175px;
@@ -185,7 +190,7 @@
             display: inline-block;
             background: #fff;
             box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
-            padding: 22px 10px 0px 10px;
+            padding: 16px 0;
             margin-bottom: 30px;
         }
 
@@ -565,25 +570,30 @@
                     <div class="right_sec">
                         <div class="col-md-6">
                             <span class="trophies">Trophies</span>
-                            {{--<img src={{URL::to('/img/gold-medal2.png')}} alt=""/>--}}
-                            {{--<span class="plyer_one">Your level</span>--}}
-                            {{--<span id="game_lame_1" class="number_sec">--}}
-                            {{--Beginner--}}
-                            {{--</span>--}}
+                            <img src={{URL::to('/img/star.png')}} alt=""/>
+                            <span class="plyer_one">
+                                Your level is <span class="lvl-text">Beginner</span>
+                            </span>
                         </div>
                         <div class="col-md-6">
                             <ul class="medal">
-                                <li id="exp">
+                                <li id="exp" class="<?php $user_ranking == 1 ? 'highlight-badge' : '' ?>">
                                     <img src={{URL::to('/img/gold-medal.png')}} alt=""/>
-                                    <span>20</span>
+                                    <span>
+                                        <?php echo $user_ranking == 1 ? '01' : '00' ?>
+                                    </span>
                                 </li>
-                                <li id="exp1">
+                                <li class="<?php $user_ranking == 2 ? 'highlight-badge' : '' ?>">
                                     <img class="" src={{URL::to('/img/gold-medal1.png')}} alt=""/>
-                                    <span>10</span>
+                                    <span>
+                                         <?php echo $user_ranking == 2 ? '01' : '00' ?>
+                                    </span>
                                 </li>
-                                <li id="exp2" class="highlight-badge" title="Your current badge">
+                                <li id="exp2" class="<?php $user_ranking == 3 ? 'highlight-badge' : '' ?>">
                                     <img src={{URL::to('/img/gold-medal2.png')}} alt=""/>
-                                    <span>00</span>
+                                    <span>
+                                        <?php echo $user_ranking == 3 ? '01' : '00' ?>
+                                    </span>
                                 </li>
                             </ul>
 
@@ -634,25 +644,7 @@
                             </div>
                             <div class="col-md-3">
                             </div>
-
                         </div>
-                        {{--<div class="col-md-6">--}}
-                        {{--<ul class="medal">--}}
-                        {{--<li>--}}
-                        {{--<img src={{URL::to('/img/gold-medal.png')}} alt=""/>--}}
-                        {{--<span>20</span>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                        {{--<img src={{URL::to('/img/gold-medal1.png')}} alt=""/>--}}
-                        {{--<span>10</span>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                        {{--<img src={{URL::to('/img/gold-medal2.png')}} alt=""/>--}}
-                        {{--<span>00</span>--}}
-                        {{--</li>--}}
-                        {{--</ul>--}}
-
-                        {{--</div>--}}
                     </div>
                     <div class="upcoming_sec">
                         <span class="text_abot_me_upcome">Active Tournaments</span>
@@ -665,7 +657,7 @@
                                             <div class="sect">
                                                 <span class="text_abot_me_upcome_tour">{{$tour['name']}}</span>
                                                 <span class="clor_text">
-                                                   
+
                                                 </span>
                                                 <span class="time_area">{{formatDate($tour['start_date'])}}</span>
                                                 <a href="{{route('fixturesdetail',['tournament_id'=>$tour['slug']])}}"

@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="row mt26">
-                            <div class="col-md-9">
+                            <div class="col-md-12">
                                 <div class="table-responsive">
                                     <table class="table table-striped" id="tortable">
                                         <thead class="main-taible-head">
@@ -252,9 +252,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="point-summery col-md-3" id="point-summery">
+                            <div class="point-summery col-md-3 hide"  id="point-summery">
                                 <h4 class="small-sec-heading">
-                                    Remaining points <span class="pull-right" id="current-points">9000</span>
+                                    Remaining points <span class="pull-right" id="your_points1">{{getUserTotalScore(Auth::id())}}</span>
                                 </h4>
                                 <hr class="light"/>
                                 <h5 style="color: #92B713;">
@@ -264,25 +264,25 @@
                                     <li>
                                         Batsman
                                         <span class="pull-right">
-                                            4/<span id="remaining-batsman">4</span>
+                                            4/<span id="remaining-batsman">0</span>
                                         </span>
                                     </li>
                                     <li>
                                         Bowler
                                         <span class="pull-right">
-                                            4/<span id="remaining-bowler">4</span>
+                                            4/<span id="remaining-bowler">0</span>
                                         </span>
                                     </li>
                                     <li>
                                         All Rounder
                                         <span class="pull-right">
-                                            4/<span id="remaining-ar">4</span>
+                                            2/<span id="remaining-ar">0</span>
                                         </span>
                                     </li>
                                     <li>
                                         Wicket Keeper
                                         <span class="pull-right">
-                                            4/<span id="remaining-wk">4</span>
+                                            1/<span id="remaining-wk">0</span>
                                         </span>
                                     </li>
                                 </ul>
@@ -368,6 +368,11 @@
                             // console.log(teamCompletedUrl);
                             window.location = teamCompletedUrl;
                         }
+                        $("#remaining-batsman").html(data.batsmen);
+                        $("#remaining-bowler").html(data.bowler);
+                        $("#remaining-ar").html(data.allrounder);
+                        $("#remaining-wk").html(data.wicketkeeper);
+
 
                         $("#your_points").html(data.player_score);
                         $("#your_points1").html(data.player_score);

@@ -191,13 +191,8 @@
             Hi {{$name}}
         </span>
             <p class="parah_new">
-                Thank you for your registration at Gamithon fantasy. Here a lot of exciting prizes are waiting for you
-                every day! You can win these prizes just by making your favorite squad and let it play! </p>
-            <p class="parah_new">
-                To help you get started on DFC, I wanted to share a video with you (Watch it here!) that explains how we
-                work and help you win cash and prizes easily &amp; just by choosing your favorite cricketers and playing
-                against your friends!
-            </p>
+                Thank you for your registration at Gamithon fantasy. Lots of exciting prizes are waiting for you every day!  You can win these prizes just by making your favorite squad. </p>
+            
             <span class="free_roll_text">I'd like to invite you to play today's Free-Roll</span>
             <a href="" class="paly_btn">Play Now</a>
         </div>

@@ -125,8 +125,15 @@
                                                                 <?php if(empty($player['player_tournaments'])) continue;   ?>
                                                                 <tr id="player_tr-{{$player['id']}}" class="cwt">
 
-                                                                    <td class=" th11"><img id="myteamtimg" class="img-circle"
-                                                                                           style="width: 80px;float: left;margin-right: 24px;" src="{{getUploadsPath($player['profile_pic'])}}"> {{$player['name']}}
+                                                                    <td class=" th11">
+                                                                        <a class="colorbox"
+                                                                           href="{{route('showPlayerStats', ['player_id'=>$player['id']])}}">
+                                                                        <img id="myteamtimg" class="img-circle"
+                                                                                           style="width: 80px;float: left;margin-right: 24px;" src="{{getUploadsPath($player['profile_pic'])}}">
+                                                                        </a>
+
+
+                                                                        {{$player['name']}}
                                                                     </td>
 
                                                                     <td class=" point"><p
@@ -228,3 +235,13 @@
     </script>
 
 @endsection
+@section('js')
+    <script>
+
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+
+        });
+
+    </script>
+@stop

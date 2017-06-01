@@ -688,8 +688,17 @@
     <script>
 
         $(document).ready(function () {
+            myList = [];
+            $('#team_id option').each(function() {
+                myList.push($(this).val())
+            });
+
+
             $("#team_id").each(function () {
-                $("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + $(this).val() + " #total_team_score");
+                var l=$("#team_id :selected").text();
+
+
+                $("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[2] + " #total_team_score");
                 //  $("#game_lame_1").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + $(this).val() + " #total_team_score");
             });
         });

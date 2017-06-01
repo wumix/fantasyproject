@@ -207,7 +207,7 @@
             Thank you for your registration at Gamithon fantasy. Lots of exciting prizes are waiting for you every day!
             You can win these prizes just by making your favorite squad. </p>
 
-        <span class="free_roll_text">I'd like to invite you to play today's Free-Roll</span>
+        <span class="free_roll_text"></span>
         <a href="http://www.gamithonfantasy.com/login/" class="paly_btn">Play Now</a>
     </div>
     <div class="how_to_play_sec">

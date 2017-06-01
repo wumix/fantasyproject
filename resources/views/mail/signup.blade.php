@@ -183,8 +183,8 @@
             padding: 10px 10px;
         }
 
-        .anchor-htp a{
-        color: #5DBE19;
+        .anchor-htp a {
+            color: #5DBE19;
         }
     </style>
 </head>
@@ -195,12 +195,6 @@
     <span class="text">
     WELCOME TO Gamithon Fantasy!
     </span>
-        <span class="anchor-htp">
-           <a href="{{URL::to('how-to-play')}}">
-            How to play
-         </a>
-        </span>
-
     </div>
     <div class="banner_area">
         <img src={{URL::to('/img/icc-champ-banner.jpg')}} alt=""/>
@@ -270,10 +264,10 @@
         </ul>
         <ul class="links_list">
             <li>
-                <a href="" class="">How to play</a>
+                <a href="http://www.gamithonfantasy.com/how-to-play" class="">How to play</a>
             </li>
             <li>
-                <a href="" class="">Contact Us</a>
+                <a href="http://www.gamithonfantasy.com/contact" class="">Contact Us</a>
             </li>
         </ul>
     </div>

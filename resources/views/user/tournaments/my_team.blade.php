@@ -39,9 +39,16 @@
                                            {{--{{ dd($user_team_player)}}--}}
                                         <tr>
                                             <td class="border-r1 text-left" style="min-width: 300px;
-"><img class="img-thumbnail"
+">
+                                                <a class="colorbox"
+                                                   href="{{route('showPlayerStats', ['player_id'=>$row['id']])}}">
+
+
+                                                <img class="img-thumbnail"
                                                                                  src="{{getUploadsPath($row['profile_pic'])}}"
                                                                                  style="width: 80px;float: left;margin-right: 24px;">
+                                                </a>
+
                                                 <span class="selected-player-name"> {{$row['name']}} </span>
                                             </td>
                                             @foreach($row['player_tournaments'] as $key=>$val)
@@ -223,8 +230,7 @@
 </section>
 
 <div class='error' style='display:none'></div>
-{{--<div id="wait_overlay"  style="opacity: 0.5;--}}
-{{--height: 100%; width: 100%; position: fixed; left: 0px; top: 0px; z-index: 1001;display:none;">&nbsp;</div>--}}
+
 @endsection
 @section('js')
 
@@ -265,7 +271,6 @@
 
     function addplayertoteam(rolename, roleid, playerid, tournamentid, player_price) {
 
-
     var arr_player_id = [];
     arr_player_id.push(playerid);
     var teamid = $("#team_id").val();
@@ -298,8 +303,11 @@
             $('#btn-player-' + playerid).remove();
             $('#total-score-user').html(obj.player_score);
             var t = '<tr>';
+            var staturl = '{{ route("showPlayerStats", ["player_id"=>'pid']) }}';
+                staturl = staturl.replace('pid', obj.id);
             t += '<input type=hidden" name="player_id_t" value="' + obj.id + '"/>';
-            t += '<td class="border-r1 text-left"><img id="myteamtimg" class="img-thumbnail" style="width: 80px;float: left;margin-right: 24px;"  src="' + obj.profile_pic + ' "><span class="selected-player-name">' + obj.name + '</span> </td>';
+            t += '<td class="border-r1 text-left"><a href="' + staturl + '" class="colorbox cboxElement">' +
+                '<img id="myteamtimg" class="img-thumbnail" style="width: 80px;float: left;margin-right: 24px;"  src="' + obj.profile_pic + ' "></a><span class="selected-player-name">' + obj.name + '</span> </td>';
             t += '<td class="border-r1"> ' + obj.role_name + '</span></td>';
             t += '<td class="border-r1">' + obj.price + '</td>';
             var url = '{{ route("transferplayer", ["team_id"=>"id","player_id"=>'pid',"tournament_id"=>'tid']) }}';

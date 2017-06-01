@@ -195,7 +195,7 @@
     WELCOME TO Gamithon Fantasy!
     </span>
         <span class="anchor-htp">
-           <a href="{{Url::to('how-to-play')}}">
+           <a href="{{URL::to('how-to-play')}}">
             How to play
          </a>
         </span>

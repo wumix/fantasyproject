@@ -140,7 +140,7 @@
                                     @foreach ($tournaments_list as $row)
                                         <tr class="trr">
                                             <td class="border-r"><a
-                                                        href="">{{$row['name']}}</a>
+                                                        href="{{route('fixturesdetail',['tournament_id'=>$row['slug']])}}">{{$row['name']}}</a>
                                             </td>
                                             <td class="border-r">{{$row['venue']}}</td>
                                             <td class="border-r">

@@ -5,10 +5,11 @@
 @stop
 @section('css')
     <style>
-        .highlight-badge{
-            border:2px solid #F98709;
+        .highlight-badge {
+            border: 2px solid #F98709;
             padding: 2px;
         }
+
         .btn-gamithon-default {
             background: #92B713 !important;
         }
@@ -40,6 +41,7 @@
             display: inline-block;
             border-radius: 50%;
             border: 8px solid #fff;
+            box-shadow: 2px 5px 10px 0px #CECECE;
         }
 
         .whole_area_section {
@@ -554,7 +556,7 @@
                                 @if(has_user_team_ipl(Auth::id()))
                                     IPL Score <span id="game_lame"> Calulating...</span>
                                 @else
-                                    You haven't played any tournament yet.
+                                    You haven't played any tournament yet
                                 @endif
                             </li>
                         </ul>
@@ -567,7 +569,7 @@
                             {{--<img src={{URL::to('/img/gold-medal2.png')}} alt=""/>--}}
                             {{--<span class="plyer_one">Your level</span>--}}
                             {{--<span id="game_lame_1" class="number_sec">--}}
-                                {{--Beginner--}}
+                            {{--Beginner--}}
                             {{--</span>--}}
                         </div>
                         <div class="col-md-6">
@@ -580,7 +582,7 @@
                                     <img class="" src={{URL::to('/img/gold-medal1.png')}} alt=""/>
                                     <span>10</span>
                                 </li>
-                                <li id="exp2" class="highlight-badge" title="Your current badge" >
+                                <li id="exp2" class="highlight-badge" title="Your current badge">
                                     <img src={{URL::to('/img/gold-medal2.png')}} alt=""/>
                                     <span>00</span>
                                 </li>

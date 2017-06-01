@@ -40,8 +40,8 @@ class HomeController extends Controller
         //dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', $date);
- //dd($data['upcommingTour']->toArray());
-       //dd($data['upcommingTour']->toArray());
+        //dd($data['upcommingTour']->toArray());
+        //dd($data['upcommingTour']->toArray());
         return view('user.dashboard.newdash', $data);
     }
 
@@ -80,7 +80,7 @@ class HomeController extends Controller
 
     public function index()
     {
-       // dd($this->getServerTimeAsGMT());
+        // dd($this->getServerTimeAsGMT());
         $datetime = new \DateTime();
         $date = $datetime->format('Y-m-d H:i:s');
         $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', $date)->Where('end_date', '>=', $date);

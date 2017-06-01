@@ -5,10 +5,11 @@
 @stop
 @section('css')
     <style>
-        .highlight-badge{
-            border:2px solid #F98709;
+        .highlight-badge {
+            border: 2px solid #F98709;
             padding: 2px;
         }
+
         .btn-gamithon-default {
             background: #92B713 !important;
         }
@@ -33,6 +34,11 @@
             margin-top: 41px;
         }
 
+        .lvl-text {
+            font-size: 24px;
+            color: #F9980E;
+        }
+
         .circle_area_for img {
             width: 175px;
             height: 175px;
@@ -40,6 +46,7 @@
             display: inline-block;
             border-radius: 50%;
             border: 8px solid #fff;
+            box-shadow: 2px 5px 10px 0px #CECECE;
         }
 
         .whole_area_section {
@@ -183,7 +190,7 @@
             display: inline-block;
             background: #fff;
             box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
-            padding: 22px 10px 0px 10px;
+            padding: 16px 0;
             margin-bottom: 30px;
         }
 
@@ -509,7 +516,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-
                     <div class="abot_me">
                     <span class="text_abot_me">
                         A Little about me
@@ -554,7 +560,7 @@
                                 @if(has_user_team_ipl(Auth::id()))
                                     IPL Score <span id="game_lame"> Calulating...</span>
                                 @else
-                                    You haven't played any tournament yet.
+                                    You haven't played any tournament yet
                                 @endif
                             </li>
                         </ul>
@@ -564,25 +570,30 @@
                     <div class="right_sec">
                         <div class="col-md-6">
                             <span class="trophies">Trophies</span>
-                            {{--<img src={{URL::to('/img/gold-medal2.png')}} alt=""/>--}}
-                            {{--<span class="plyer_one">Your level</span>--}}
-                            {{--<span id="game_lame_1" class="number_sec">--}}
-                                {{--Beginner--}}
-                            {{--</span>--}}
+                            <img src={{URL::to('/img/star.png')}} alt=""/>
+                            <span class="plyer_one">
+                                Your level is <span class="lvl-text">Beginner</span>
+                            </span>
                         </div>
                         <div class="col-md-6">
                             <ul class="medal">
-                                <li id="exp">
+                                <li id="exp" class="<?php $user_ranking == 1 ? 'highlight-badge' : '' ?>">
                                     <img src={{URL::to('/img/gold-medal.png')}} alt=""/>
-                                    <span>20</span>
+                                    <span>
+                                        <?php echo $user_ranking == 1 ? '01' : '00' ?>
+                                    </span>
                                 </li>
-                                <li id="exp1">
+                                <li class="<?php $user_ranking == 2 ? 'highlight-badge' : '' ?>">
                                     <img class="" src={{URL::to('/img/gold-medal1.png')}} alt=""/>
-                                    <span>10</span>
+                                    <span>
+                                         <?php echo $user_ranking == 2 ? '01' : '00' ?>
+                                    </span>
                                 </li>
-                                <li id="exp2" class="highlight-badge" title="Your current badge" >
+                                <li id="exp2" class="<?php $user_ranking == 3 ? 'highlight-badge' : '' ?>">
                                     <img src={{URL::to('/img/gold-medal2.png')}} alt=""/>
-                                    <span>00</span>
+                                    <span>
+                                        <?php echo $user_ranking == 3 ? '01' : '00' ?>
+                                    </span>
                                 </li>
                             </ul>
 
@@ -606,24 +617,23 @@
                                         </p>
                                     </div>
                                 @else
-                                    <span class="trophies text-center">Your's Team</span>
+                                    <span class="trophies text-center">Your Teams</span>
                                     {!! Form::open(['url' => route('teamdetail'),'method'=>'get']) !!}
                                     <div class="form-group">
                                         <select id="team_id" style="width:100%;" name="team_id"
                                                 class="form-control dropdown-toggle col-md-12"
                                                 data-toggle="dropdown"
                                                 style="border:1px solid #9acc59; border-radius: 6px;">
-
+                                            <option value="">Please select your team</option>
                                             @foreach($user_teams as $row)
                                                 <option id="dropdownbtn"
                                                         value="{{$row['id']}}">{{$row['name']}}</option>
-
                                             @endforeach
                                         </select>
                                     </div>
-
-                                    <div class="form-group text-center">
-                                        <button style="margin-top:10px;  " class="btn btn-success"
+                                    <div class="clear clearfix" style="margin-top:10px;"></div>
+                                    <div style="margin-top:10px;" class="form-group text-center">
+                                        <button class="btn btn-block btn-gamithon-default btn-success"
                                                 type="submit">
                                             Go
                                         </button>
@@ -634,25 +644,7 @@
                             </div>
                             <div class="col-md-3">
                             </div>
-
                         </div>
-                        {{--<div class="col-md-6">--}}
-                        {{--<ul class="medal">--}}
-                        {{--<li>--}}
-                        {{--<img src={{URL::to('/img/gold-medal.png')}} alt=""/>--}}
-                        {{--<span>20</span>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                        {{--<img src={{URL::to('/img/gold-medal1.png')}} alt=""/>--}}
-                        {{--<span>10</span>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                        {{--<img src={{URL::to('/img/gold-medal2.png')}} alt=""/>--}}
-                        {{--<span>00</span>--}}
-                        {{--</li>--}}
-                        {{--</ul>--}}
-
-                        {{--</div>--}}
                     </div>
                     <div class="upcoming_sec">
                         <span class="text_abot_me_upcome">Active Tournaments</span>
@@ -664,7 +656,9 @@
                                             <span><img src="{{URL::to('/img/upcomin_img.png')}}" alt=""/></span>
                                             <div class="sect">
                                                 <span class="text_abot_me_upcome_tour">{{$tour['name']}}</span>
-                                                <span class="clor_text">{{  formatDate($tour['start_date'])}}</span>
+                                                <span class="clor_text">
+
+                                                </span>
                                                 <span class="time_area">{{formatDate($tour['start_date'])}}</span>
                                                 <a href="{{route('fixturesdetail',['tournament_id'=>$tour['slug']])}}"
                                                    class="more_btn">

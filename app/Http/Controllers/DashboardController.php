@@ -7,13 +7,16 @@ use \App\UserTeam;
 use DateTime;
 use phpDocumentor\Reflection\Types\Null_;
 
-class DashboardController extends Controller {
+class DashboardController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         // $this->middleware('auth');
     }
 
-    public function teamDetail(Request $request) {
+    public function teamDetail(Request $request)
+    {
         // $stats=\App\Player::with('game_types')->firstOrFail()->toArray();
         // dd(get_individual_player_score(1,5,2));
 //        $date = new DateTime();
@@ -30,40 +33,40 @@ class DashboardController extends Controller {
         // dd($request->all());
 
         //$tournament_id=2;
-        $transferflag=0; // if tournament over hides transfer button
+        $transferflag = 0; // if tournament over hides transfer button
 
         $teamId = $request->team_id;
-        $data['user_teams'] = \App\UserTeam::where('id',$teamId)->where('user_id', \Auth::id())->get()->toArray();
+        $data['user_teams'] = \App\UserTeam::where('id', $teamId)->where('user_id', \Auth::id())->get()->toArray();
 
-        $tournament_id=$data['user_teams'][0]['tournament_id'];
-        $date_end=\App\Tournament::where('id',$tournament_id)->firstOrFail()->end_date;
+        $tournament_id = $data['user_teams'][0]['tournament_id'];
+        $date_end = \App\Tournament::where('id', $tournament_id)->firstOrFail()->end_date;
         $datetime = new \DateTime();
         $datenow = $datetime->format('Y-m-d H:i:s');
 
-        if($datenow>$date_end){
-            $transferflag=1;
+        if ($datenow > $date_end) {
+            $transferflag = 1;
         }
-         $data['transferflag']=$transferflag;
+        $data['transferflag'] = $transferflag;
         $data['user_team_player_transfer'] = \App\UserTeam::where('id', $request->team_id)
-                ->with('user_team_player_transfers.player_transfer')
-                ->get();
+            ->with('user_team_player_transfers.player_transfer')
+            ->get();
         // dd($data['user_team_player_transfer']->toArray());
         // //Get matches after team making
         if ($data['user_teams'][0]['joined_from_match_date'] == null) {
-            $dataArray['tournament_id']=$data['user_teams'][0]['tournament_id'];
-            return view('pages.team_incomplete',$dataArray);
+            $dataArray['tournament_id'] = $data['user_teams'][0]['tournament_id'];
+            return view('pages.team_incomplete', $dataArray);
         }
         $matcheIdsAfterThisTeamMade = \App\Match::select('id')
-                        ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])
-                        ->get()->toArray();
+            ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])
+            ->get()->toArray();
         //  dd($matcheIdsAfterThisTeamMade);
         if (!empty($matcheIdsAfterThisTeamMade)) {
             $matcheIdsAfterThisTeamMade = array_column($matcheIdsAfterThisTeamMade, 'id');
             //  $matcheIdsAfterThisTeamMade = [1];
         }
         $data['user_team_players'] = \App\Player::whereHas('player_teams', function ($query) use ($teamId) {
-                    $query->where('team_id', $teamId);
-                })->get()->toArray();
+            $query->where('team_id', $teamId);
+        })->get()->toArray();
         $userTeamPlayerIds = [0];
         if (!empty($data['user_team_players'])) {
             $userTeamPlayerIds = array_column($data['user_team_players'], 'id');
@@ -73,18 +76,18 @@ class DashboardController extends Controller {
         //  $userTeamPlayerIds=[1,2,3,4,5,6,7,8,9,10];
         //dd($userTeamPlayerIds);
         $data['team_score'] = \App\Player::whereIn('id', $userTeamPlayerIds)->with(['player_roles', 'player_matches',
-                    'player_gameTerm_score' => function ($query) use ($matcheIdsAfterThisTeamMade) {
-                        $query->whereIn('match_id', $matcheIdsAfterThisTeamMade);
-                    },
-                    'player_gameTerm_score.game_terms' => function ($query) {
-                        $query->select('name', 'id');
-                    },
-                    'player_gameTerm_score.points_devision_tournament' => function ($query) use ($matcheIdsAfterThisTeamMade,$tournament_id) {
-                        $query->where('tournament_id',$tournament_id);
-                    }, 'player_actual_teams'=>function ($query) use($tournament_id) {
-                $query->where('tournament_id',$tournament_id);
+            'player_gameTerm_score' => function ($query) use ($matcheIdsAfterThisTeamMade) {
+                $query->whereIn('match_id', $matcheIdsAfterThisTeamMade);
+            },
+            'player_gameTerm_score.game_terms' => function ($query) {
+                $query->select('name', 'id');
+            },
+            'player_gameTerm_score.points_devision_tournament' => function ($query) use ($matcheIdsAfterThisTeamMade, $tournament_id) {
+                $query->where('tournament_id', $tournament_id);
+            }, 'player_actual_teams' => function ($query) use ($tournament_id) {
+                $query->where('tournament_id', $tournament_id);
             }
-                ])->get()->toArray();
+        ])->get()->toArray();
 
 
         // dd($data['team_score']);
@@ -92,50 +95,62 @@ class DashboardController extends Controller {
 //       die;
         $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
         $data['matches'] = \App\Match::all()->where('tournament_id', $tournament_id)
-                        ->where('matches', '>=', date("Y-m-d"))
-                        ->sortByDesc("start_date")->toArray();
+            ->where('matches', '>=', date("Y-m-d"))
+            ->sortByDesc("start_date")->toArray();
 
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         // dd($data['user_team_player_transfer']->toArray());
         return view('user.team_detail', $data);
     }
 
-    function index() {
-      //  dd(getServerTimeAsGMT());
+    function index()
+    {
+        //  dd(getServerTimeAsGMT());
         $datetime = new \DateTime();
         $date = $datetime->format('Y-m-d H:i:s');
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())
-                ->get()
-                ->toArray();
+            ->get()
+            ->toArray();
         //   dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', $date)->Where('end_date', '>=', $date);
-
+        $data['leaders'] = \App\Leaderboard::take(3)->select(['user_id', 'score'])->orderBy('score', 'DESC')->get()->toArray();
+        //dd($data['leaders']);
+        $data['user_ranking'] = 0;
+        foreach ($data['leaders'] as $key => $val){
+            if($val['user_id'] == \Auth::id()){
+                $data['user_ranking'] = $key+1;
+            }
+        }
+        //echo $data['user_ranking']; die;
         return view('user.dashboard.dashboard', $data);
     }
 
-    function teamHome() {
+    function teamHome()
+    {
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->with('teamtournament')
-                ->get()
-                ->toArray();
+            ->get()
+            ->toArray();
         //dd($data['user_teams']);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         return view('user.teamhome', $data);
     }
 
-    function editProfileform(Request $request) {
+    function editProfileform(Request $request)
+    {
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         //  dd($data['userprofileinfo']->toArray());
         //  dd($data);
         return view('user.profile.profile_edit_form', $data);
     }
 
-    function postEditProfile(Request $request) {
+    function postEditProfile(Request $request)
+    {
 
 
         $user = \App\USER::find(\Auth::id());
-        $user->about_me=$request->about_me;
-        $user->name=$request->name;
+        $user->about_me = $request->about_me;
+        $user->name = $request->name;
         if ($request->hasFile('profile_pic')) {
 
             $files = uploadInputs($request->profile_pic, 'user_profile_pics');

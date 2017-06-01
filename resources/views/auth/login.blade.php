@@ -90,9 +90,9 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6 signuplink">
-                                            <div class="form-group  " id="withbox">
-                                                <a href="{{ route('signUp') }}">Sign up for new account</a>
-                                            </div>
+                                            {{--<div class="form-group  " id="withbox">--}}
+                                                {{--<a href="{{ route('signUp') }}">Sign up for new account</a>--}}
+                                            {{--</div>--}}
 
                                         </div>
                                         <div class="col-lg-12 text-center">

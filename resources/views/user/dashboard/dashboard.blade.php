@@ -56,6 +56,7 @@
             box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
             padding: 0 29px;
             position: relative;
+            margin-bottom: 40px;
         }
 
         .abot_me_sec {
@@ -64,8 +65,6 @@
             background: #fff;
             box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
             padding: 0 29px;
-            margin-top: 50px;
-
         }
 
         .text_abot_me {

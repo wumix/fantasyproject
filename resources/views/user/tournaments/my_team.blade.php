@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="row mt26">
-                            <div class="col-md-12">
+                            <div class="col-md-9">
                                 <div class="table-responsive">
                                     <table class="table table-striped" id="tortable">
                                         <thead class="main-taible-head">
@@ -127,6 +127,7 @@
                                         For playing tournament you will need:
                                         <ul>
                                             <li>
+
                                                 <strong>Batsman: </strong>4
                                             </li>
                                             <li><strong>Bowler: </strong>4</li>
@@ -252,7 +253,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="point-summery col-md-3 hide"  id="point-summery">
+                            <div class="point-summery col-md-3"  id="point-summery">
                                 <h4 class="small-sec-heading">
                                     Remaining points <span class="pull-right" id="your_points1">{{getUserTotalScore(Auth::id())}}</span>
                                 </h4>
@@ -264,25 +265,25 @@
                                     <li>
                                         Batsman
                                         <span class="pull-right">
-                                            4/<span id="remaining-batsman">0</span>
+                                            4/<span id="remaining-batsman">{{getPlayerNoInTeam(\Auth::id(),$team_id,5)}}</span>
                                         </span>
                                     </li>
                                     <li>
                                         Bowler
                                         <span class="pull-right">
-                                            4/<span id="remaining-bowler">0</span>
+                                            4/<span id="remaining-bowler">{{getPlayerNoInTeam(\Auth::id(),$team_id,6)}}</span>
                                         </span>
                                     </li>
                                     <li>
                                         All Rounder
                                         <span class="pull-right">
-                                            2/<span id="remaining-ar">0</span>
+                                            2/<span id="remaining-ar">{{getPlayerNoInTeam(\Auth::id(),$team_id,7)}}</span>
                                         </span>
                                     </li>
                                     <li>
                                         Wicket Keeper
                                         <span class="pull-right">
-                                            1/<span id="remaining-wk">0</span>
+                                            1/<span id="remaining-wk">{{getPlayerNoInTeam(\Auth::id(),$team_id,8)}}</span>
                                         </span>
                                     </li>
                                 </ul>

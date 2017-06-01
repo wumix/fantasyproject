@@ -199,7 +199,7 @@
                 against your friends!
             </p>
             <span class="free_roll_text">I'd like to invite you to play today's Free-Roll</span>
-            <a href="{{route('loginForm')}}" class="paly_btn">Play Now</a>
+            <a href="" class="paly_btn">Play Now</a>
         </div>
         <div class="how_to_play_sec">
             <span class="section_heading">How to play Gamithon Fantasy</span>
@@ -244,21 +244,21 @@
             <ul class="social_list">
                 <li>
                     <a href="https://www.facebook.com/gamithonfantasy" class="">
-                        <img src={{URL::to('/img/fb.png')}} alt=""/>
+                        <img src="{{URL::to('/img/fb.png')}}" alt=""/>
                     </a>
                 </li>
                 <li>
                     <a href="https://twitter.com/GamithonFantasy" class="">
-                        <img src={{URL::to('/img/tw.png')}} alt=""/>
+                        <img src="{{URL::to('/img/tw.png')}}" alt=""/>
                     </a>
                 </li>
             </ul>
             <ul class="links_list">
                 <li>
-                    <a href="{{route('howPlay')}}" class="">How to play</a>
+                    <a href="" class="">How to play</a>
                 </li>
                 <li>
-                    <a href="{{route('contactPage')}}" class="">Contact Us</a>
+                    <a href="" class="">Contact Us</a>
                 </li>
             </ul>
         </div>

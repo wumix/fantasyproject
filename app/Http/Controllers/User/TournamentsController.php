@@ -123,7 +123,7 @@ class TournamentsController extends Controller
 
        // returns no of players in user team against a specific role i.e no of batsmen
         $x = \App\UserTeam::where('user_id', $userid)
-            ->where('tournament_id', $tournament_id)
+            ->where('id', $teamid)
             ->with('user_team_player.player_roles')->firstOrFail()->toArray();
 //        $x = \App\UserTeam::where('user_id', $userid)
 //           ->where('tournament_id', $tournament_id)

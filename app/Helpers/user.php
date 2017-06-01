@@ -31,27 +31,30 @@ function has_user_team_ipl($user_id)
     }
 }
 
-//function getTeamPlayerNo($userid, $teamid, $roleid)
-//{
-//
-//    $count = DB::select("SELECT COUNT(pr.game_role_id) as total FROM `user_team_players` utp
-//    INNER JOIN player_roles pr ON pr.player_id = utp.player_id
-//    INNER JOIN user_teams ut ON ut.id = utp.team_id
-//    where utp.team_id = '$teamid' AND pr.game_role_id = '$roleid' AND ut.user_id = '$userid'");
-//    return ($count[0]->total);
-//
-////        returns no of players in user team against a specific role i.e no of batsmen
-//    $x = \App\UserTeam::where('user_id', $userid)
-//        ->where('tournament_id', $tournament_id)
-//        ->with('user_team_player.player_roles')->firstOrFail()->toArray();
-//
-//    $i = 0;
-//    foreach ($x['user_team_player'] as $row) {
-//        if ($row['player_roles'][0]['id'] == $roleid)
-//            $i++;
-//    }
-//    return $i;
-//}
+function getPlayerNoInTeam($userid, $teamid, $roleid)
+{
+
+    $count = DB::select("SELECT COUNT(pr.game_role_id) as total FROM `user_team_players` utp
+    INNER JOIN player_roles pr ON pr.player_id = utp.player_id
+    INNER JOIN user_teams ut ON ut.id = utp.team_id
+    where utp.team_id = '$teamid' AND pr.game_role_id = '$roleid' AND ut.user_id = '$userid'");
+    return ($count[0]->total);
+
+    // returns no of players in user team against a specific role i.e no of batsmen
+    $x = \App\UserTeam::where('user_id', $userid)
+        ->where('id', $teamid)
+        ->with('user_team_player.player_roles')->firstOrFail()->toArray();
+//        $x = \App\UserTeam::where('user_id', $userid)
+//           ->where('tournament_id', $tournament_id)
+//          ->with('user_team_player.player_roles')->firstOrFail()->toArray();
+
+    $i = 0;
+    foreach ($x['user_team_player'] as $row) {
+        if ($row['player_roles'][0]['id'] == $roleid)
+            $i++;
+    }
+    return $i;
+}
 
 function get_individual_player_score($tournament_id, $teamId, $playerid)
 {

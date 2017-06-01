@@ -6,7 +6,7 @@
 @section('content')
     <!--BASBB-->
     <header id="header">
-        <div id="abcd" class="header-content container" >
+        <div id="abcd" class="header-content container">
             <div class="container">
                 <div class="col-md-12 no-padding">
 
@@ -63,19 +63,17 @@
 
                                 <h4 style="font-weight: 500;color: #FFFFFF">
                                     @if(!empty($leaders))
-                                  Leader Board
-                                        @endif
+                                        Leader Board
+                                    @endif
                                 </h4>
 
                             </div>
                         </div>
                         <div class="row">
-
                             <div class="col-md-12 count-down no-padding">
-                                @if(empty($leaders))
+               @if(!empty($leaders))
                                 @foreach($leaders as $leader)
-
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 text-center">
                                         <div class="circle2">
                         <span id="getting-started1">
                           <img style="width: 50px;
@@ -85,18 +83,14 @@
 
 " src="{{getUploadsPath($leader['user']['profile_pic'])}}"/>
                         </span>
-                                            <p class="no-mrg-in-home " style="font-size:20px !important">{{$leader['user']['name']}}</p>
-                                            <p class="no-mrg-in-home1 leaderboardscore"  style="font-size:16px !important">{{$leader['score']}}</p>
+                                            <p class="no-mrg-in-home ">{{$leader['user']['name']}}</p>
+                                            <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
                                         </div>
                                     </div>
-
                                 @endforeach
-                                    @endif
+                   @endif
 
                             </div>
-
-
-
                         </div>
 
 
@@ -121,67 +115,67 @@
 
 
     @if(!empty($tournaments_list))
-    <section class="bg-primary" id="about" >
-        <div class="container">
-            <div class="row">
+        <section class="bg-primary" id="about">
+            <div class="container">
+                <div class="row">
 
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">
-                        Upcomming Tournaments
-                        <hr class="light">
-                    </h2>
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">
+                            Upcomming Tournaments
+                            <hr class="light">
+                        </h2>
 
-                    <div class="table-responsive">
-                        <table class="table table-striped table-stripedhome gen-table">
-                            <thead class="main-taible-head">
-                            <tr>
-                                <th class="border-r th1">Name</th>
-                                <th class="border-r">Venue</th>
-                                <th class="border-r">Started At</th>
-                                <th class="th2">Ending At</th>
-                            </tr>
-                            </thead>
-                            <tbody class="main-taible-body">
-                            @if(!empty($tournaments_list))
-                                @foreach ($tournaments_list as $row)
-                                    <tr class="trr">
-                                        <td class="border-r"><a
-                                                    href="{{route('showTournament', ['tournament_id'=>$row['id']])}}">{{$row['name']}}</a>
-                                        </td>
-                                        <td class="border-r">{{$row['venue']}}</td>
-                                        <td class="border-r">
-
-
-                                            <?php
-                                            echo formatDate($row['start_date']);
-                                            ?>
-                                        </td>
-                                        <td>
-                                            <?php
-                                            echo formatDate($row['end_date']);
-                                            ?>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @else
-                                <tr class="trr">
-                                    <td class="border-r" colspan="4">NO LISTING YET</td>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-stripedhome gen-table">
+                                <thead class="main-taible-head">
+                                <tr>
+                                    <th class="border-r th1">Name</th>
+                                    <th class="border-r">Venue</th>
+                                    <th class="border-r">Started At</th>
+                                    <th class="th2">Ending At</th>
                                 </tr>
-                            @endif
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody class="main-taible-body">
+                                @if(!empty($tournaments_list))
+                                    @foreach ($tournaments_list as $row)
+                                        <tr class="trr">
+                                            <td class="border-r"><a
+                                                        href="{{route('showTournament', ['tournament_id'=>$row['id']])}}">{{$row['name']}}</a>
+                                            </td>
+                                            <td class="border-r">{{$row['venue']}}</td>
+                                            <td class="border-r">
+
+
+                                                <?php
+                                                echo formatDate($row['start_date']);
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                echo formatDate($row['end_date']);
+                                                ?>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr class="trr">
+                                        <td class="border-r" colspan="4">NO LISTING YET</td>
+                                    </tr>
+                                @endif
+                                </tbody>
+                            </table>
+                        </div>
+                        <a href="{{route('usertournamenthome')}}" class="btn btn-green ">
+                            View all tournaments
+                        </a>
                     </div>
-                    <a href="{{route('usertournamenthome')}}" class="btn btn-green ">
-                        View all tournaments
-                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     @endif
     @if(!empty($upcomming_tournaments_list))
 
-        <section class="bg-primary" id="about" >
+        <section class="bg-primary" id="about">
             <div class="container">
                 <div class="row">
 
@@ -230,25 +224,26 @@
     @if(!empty($news))
         <section class="bg-primary" style="padding-bottom: 20px;">
             <div class="container">
-                <div class="" >
+                <div class="">
                     <!-- start news -->
                     @foreach($news as $key=>$val)
                         <div class="col-md-4 itemsz " style="margin: 15px 0 15px 0;  padding: 15px;">
                             <div class="media newscolor">
                                 <div class="media-left">
                                     <a href="{{getUploadsPath($val['image'])}}">
-                                       <?php
-                                        $arr=explode('/',$val['image']);
+                                        <?php
+                                        $arr = explode('/', $val['image']);
 
 
-                                            ?>
+                                        ?>
                                         <img class="media-object"
                                              src="{{Croppa::url($val['image'],177,105)}}" alt="{{end($arr)}}">
                                     </a>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="media-heading mediah" >
-                                        <a class="home-news-headings" href="{{route('newsdetail',['id'=>$val['slug']])}}">
+                                    <h4 class="media-heading mediah">
+                                        <a class="home-news-headings"
+                                           href="{{route('newsdetail',['id'=>$val['slug']])}}">
                                             {{$val['title']}}
                                         </a>
                                     </h4>
@@ -329,7 +324,7 @@
                                     INDIA VS NEW ZEALAND
                                 </div>
                                 <div class="project-name">
-                                   India won by 45 Runs
+                                    India won by 45 Runs
                                 </div>
                             </div>
                         </div>
@@ -376,7 +371,7 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                   England Vs South Africa
+                                    England Vs South Africa
                                 </div>
                                 <div class="project-name">
                                     South Africa won by 7 wickets
@@ -421,10 +416,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                   Bangladesh Vs Paksitan
+                                    Bangladesh Vs Paksitan
                                 </div>
                                 <div class="project-name">
-                                   Pakistan won by 2 wickets
+                                    Pakistan won by 2 wickets
                                 </div>
                             </div>
                         </div>
@@ -461,12 +456,6 @@
                         </div>
                     </a>
                 </div>
-
-
-
-
-
-
 
 
             </div>
@@ -528,7 +517,7 @@
 
     </script>
     <script>
-        $(function() {
+        $(function () {
             $('.itemsz').matchHeight('col-md-4');
         });
 

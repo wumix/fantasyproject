@@ -223,7 +223,8 @@
 </section>
 
 <div class='error' style='display:none'></div>
-
+{{--<div id="wait_overlay"  style="opacity: 0.5;--}}
+{{--height: 100%; width: 100%; position: fixed; left: 0px; top: 0px; z-index: 1001;display:none;">&nbsp;</div>--}}
 @endsection
 @section('js')
 
@@ -263,6 +264,7 @@
     }
 
     function addplayertoteam(rolename, roleid, playerid, tournamentid, player_price) {
+
 
     var arr_player_id = [];
     arr_player_id.push(playerid);

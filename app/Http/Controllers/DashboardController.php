@@ -109,7 +109,7 @@ class DashboardController extends Controller {
                 ->toArray();
         //   dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
-        $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', $date);
+        $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', $date)->Where('end_date', '>=', $date);
 
         return view('user.dashboard.dashboard', $data);
     }

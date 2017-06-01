@@ -9,12 +9,22 @@
   }
   function has_user_team($user_id){
       $userteam=\App\UserTeam::where('user_id',$user_id)->where('tournament_id',2)->first();
+     ///dd($userteam);
       if($userteam==NULL){
           return FALSE;
       }else{
           return TRUE;
       }
   }
+function has_user_team_ipl($user_id){
+    $userteam=\App\UserTeam::where('user_id',$user_id)->where('tournament_id',1)->first();
+    ///dd($userteam);
+    if($userteam==NULL){
+        return FALSE;
+    }else{
+        return TRUE;
+    }
+}
   function get_individual_player_score($tournament_id,$teamId,$playerid)
   {
 

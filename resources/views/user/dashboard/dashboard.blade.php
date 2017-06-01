@@ -11,8 +11,8 @@
             position: relative;
         }
         .circle_area_for{
-            width: 279px;
-            height: 279px;
+            width: 175px;
+            height: 175px;
             line-height: 279px;
             display: inline-block;
             border-radius: 50%;
@@ -498,11 +498,15 @@
 
                         <ul class="img_area_area">
                             <li>
-
+                                @if(has_user_team_ipl(Auth::id()))
                                 IPL Score <span id="game_lame"> Calulating...</span>
+                                @else
+                                    You havent played any tournament yet.
+                                @endif
                             </li>
 
                         </ul>
+
 
                     </div>
                 </div>
@@ -595,7 +599,7 @@
                         {{--</div>--}}
                     </div>
                     <div class="upcoming_sec">
-                        <span class="text_abot_me_upcome">Upcoming Matches</span>
+                        <span class="text_abot_me_upcome">Active Tournaments</span>
                         <div class="col-md-12">
                             <ul class="upcomin_list">
                                 @foreach($upcommingTour as $tour)

@@ -460,6 +460,10 @@ class TournamentsController extends Controller
         $objResponse['success'] = true;
         $objResponse['score'] = getUserTotalScore(Auth::id());;
         $objResponse['msg'] = "Player Deleted Successfully";
+        $objResponse['batsmen']=$this->giveanygoodname(Auth::id(), $request->team_id, 5);
+        $objResponse['bowler']=$this->giveanygoodname(Auth::id(), $request->team_id, 6);
+        $objResponse['wicketkeeper']=$this->giveanygoodname(Auth::id(), $request->team_id, 8);
+        $objResponse['allrounder']=$this->giveanygoodname(Auth::id(), $request->team_id, 7);
 
         return response()->json($objResponse);
 

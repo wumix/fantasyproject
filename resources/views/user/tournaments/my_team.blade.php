@@ -265,25 +265,25 @@
                                     <li>
                                         Batsman
                                         <span class="pull-right">
-                                            4/<span id="remaining-batsman">{{getPlayerNoInTeam(\Auth::id(),$team_id,5)}}</span>
+                                           <span id="remaining-batsman">{{getPlayerNoInTeam(\Auth::id(),$team_id,5)}}</span>/4
                                         </span>
                                     </li>
                                     <li>
                                         Bowler
                                         <span class="pull-right">
-                                            4/<span id="remaining-bowler">{{getPlayerNoInTeam(\Auth::id(),$team_id,6)}}</span>
+                                            <span id="remaining-bowler">{{getPlayerNoInTeam(\Auth::id(),$team_id,6)}}</span>/4
                                         </span>
                                     </li>
                                     <li>
                                         All Rounder
                                         <span class="pull-right">
-                                            2/<span id="remaining-ar">{{getPlayerNoInTeam(\Auth::id(),$team_id,7)}}</span>
+                                            <span id="remaining-ar">{{getPlayerNoInTeam(\Auth::id(),$team_id,7)}}</span>/2
                                         </span>
                                     </li>
                                     <li>
                                         Wicket Keeper
                                         <span class="pull-right">
-                                            1/<span id="remaining-wk">{{getPlayerNoInTeam(\Auth::id(),$team_id,8)}}</span>
+                                            <span id="remaining-wk">{{getPlayerNoInTeam(\Auth::id(),$team_id,8)}}</span>/1
                                         </span>
                                     </li>
                                 </ul>
@@ -334,6 +334,10 @@
                 },
                 success: function (data) {
                     if (data.success == true) {
+                        $("#remaining-batsman").html(data.batsmen);
+                        $("#remaining-bowler").html(data.bowler);
+                        $("#remaining-ar").html(data.allrounder);
+                        $("#remaining-wk").html(data.wicketkeeper);
                         $('#your_points').html(data.score);
                         $('#your_points1').html(data.score);
                         $('#player_tr-del-' + data.player_id).html('<span>Deleted</span>');

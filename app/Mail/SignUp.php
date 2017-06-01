@@ -18,9 +18,10 @@ class SignUp extends Mailable
      */
     //all public properties will be publically availble
     public $name;
+
     public function __construct($name)
     {
-        $this->name=$name;
+        $this->name = $name;
     }
 
     /**
@@ -30,6 +31,6 @@ class SignUp extends Mailable
      */
     public function build()
     {
-        return $this->from('gamithonfantasy@gmail.com')->view('mail.signup');
+        return $this->from('no-reply@gamithonfantasy.com')->view('mail.signup');
     }
 }

@@ -511,7 +511,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-
                     <div class="abot_me">
                     <span class="text_abot_me">
                         A Little about me
@@ -665,7 +664,9 @@
                                             <span><img src="{{URL::to('/img/upcomin_img.png')}}" alt=""/></span>
                                             <div class="sect">
                                                 <span class="text_abot_me_upcome_tour">{{$tour['name']}}</span>
-                                                <span class="clor_text">{{  formatDate($tour['start_date'])}}</span>
+                                                <span class="clor_text">
+                                                   
+                                                </span>
                                                 <span class="time_area">{{formatDate($tour['start_date'])}}</span>
                                                 <a href="{{route('fixturesdetail',['tournament_id'=>$tour['slug']])}}"
                                                    class="more_btn">

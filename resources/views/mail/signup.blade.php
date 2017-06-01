@@ -185,7 +185,12 @@
     <span class="text">
     WELCOME TO Gamithon Fantasy!
     </span>
-        <a href="http://gamithon.dev/how-to-play" class="link_hello">How to play</a>
+        <span class="pull-right">
+           <a class="btn btn-warning" href="http://gamithon.dev/how-to-play">
+            How to play
+        </a>
+        </span>
+
     </div>
     <div class="banner_area">
         <img src={{URL::to('/img/icc-champ-banner.jpg')}} alt=""/>

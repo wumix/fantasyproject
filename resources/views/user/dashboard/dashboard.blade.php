@@ -608,24 +608,23 @@
                                         </p>
                                     </div>
                                 @else
-                                    <span class="trophies text-center">Your's Team</span>
+                                    <span class="trophies text-center">Your Teams</span>
                                     {!! Form::open(['url' => route('teamdetail'),'method'=>'get']) !!}
                                     <div class="form-group">
                                         <select id="team_id" style="width:100%;" name="team_id"
                                                 class="form-control dropdown-toggle col-md-12"
                                                 data-toggle="dropdown"
                                                 style="border:1px solid #9acc59; border-radius: 6px;">
-
+                                            <option value="">Please select your team</option>
                                             @foreach($user_teams as $row)
                                                 <option id="dropdownbtn"
                                                         value="{{$row['id']}}">{{$row['name']}}</option>
-
                                             @endforeach
                                         </select>
                                     </div>
-
-                                    <div class="form-group text-center">
-                                        <button style="margin-top:10px;  " class="btn btn-success"
+                                    <div class="clear clearfix" style="margin-top:10px;"></div>
+                                    <div style="margin-top:10px;" class="form-group text-center">
+                                        <button class="btn btn-block btn-gamithon-default btn-success"
                                                 type="submit">
                                             Go
                                         </button>

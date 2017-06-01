@@ -21,8 +21,17 @@
                             </div>
 
                     </div>
+                    <div style="position: fixed;border: solid thin #CCC9D0; right:0;min-width:200px;z-index:2000;">
+                       <div class="row">
+                            <div class="col-md-8"><span style="color:#F9930E" >Remaining Points</span> </div>
+                           <div class="col-md-4"><span id="your_points1" style="color:#FF452F;">{{getUserTotalScore(Auth::id())}}</span> </div>
+
+
+                       </div>
+
+                    </div>
                     <div class="row mt26">
-                        <div class="col-md-12">
+                        <div class="col-md-11">
                             <div class="table-responsive">
                                 <table class="table table-striped" id="tortable">
                                     <thead class="main-taible-head">
@@ -92,7 +101,7 @@
 
                     <!--Choose player-->
 
-                    <div class="col-md-12 no-padding">
+                    <div class="col-md-11 no-padding">
                         <h4>
                             Add players to participate in tournament
                         </h4>
@@ -255,6 +264,7 @@
             success: function (data) {
                 if (data.success == true) {
                     $('#your_points').html(data.score);
+                    $('#your_points1').html(data.score);
                     $('#player_tr-del-' + data.player_id).html('<span>Deleted</span>');
                     $('.error').html(data.msg);
                     $('.error').fadeIn(400).delay(2000).fadeOut(400); //fade out after 3 seconds
@@ -296,6 +306,7 @@
             }
 
             $("#your_points").html(data.player_score);
+                $("#your_points1").html(data.player_score);
             var obj = data.player;
             $('.error').html(data.msg);
             $('.error').fadeIn(200).delay(1000).fadeOut(200); //fade out after 3 seconds

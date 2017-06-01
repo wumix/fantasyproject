@@ -9,7 +9,7 @@
                     Say Hi!
                 </h1>
                 <hr class="light full">
-                <div class="page-content">
+                <div class="page-content" style="margin:0 auto;max-width: 700px;">
                     <div class="col-md-12">
                         @if (count($errors) > 0)
                         <div class="alert alert-danger">

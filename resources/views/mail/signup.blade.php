@@ -9,7 +9,7 @@
 
     <style type="text/css">
         .whole_setio_news {
-            width: 800px;
+            max-width: 800px;
             display: block;
             margin: 0 auto;
         }
@@ -182,8 +182,9 @@
             float: right;
             padding: 10px 0px;
         }
+
         /*.anchor-htp a{*/
-            /*color: #00a65a;*/
+        /*color: #00a65a;*/
         /*}*/
     </style>
 </head>

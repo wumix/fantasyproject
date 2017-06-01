@@ -183,9 +183,9 @@
             padding: 10px 0px;
         }
 
-        /*.anchor-htp a{*/
-        /*color: #00a65a;*/
-        /*}*/
+        .anchor-htp a{
+        color: #5DBE19;
+        }
     </style>
 </head>
 <body>

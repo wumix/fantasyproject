@@ -181,6 +181,7 @@
             background: #fff;
             box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
             padding: 22px 10px 0px 10px;
+            margin-bottom: 30px;
         }
 
         .right_sec_second {
@@ -189,7 +190,6 @@
             background: #fff;
             box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
             padding: 22px 10px 0px 10px;
-            margin-top: 30px;
         }
 
         .trophies {
@@ -561,20 +561,22 @@
                     <div class="right_sec">
                         <div class="col-md-6">
                             <span class="trophies">Trophies</span>
-                            <img src={{URL::to('/img/star.png')}} alt=""/>
-                            <span class="plyer_one">Player Level</span>
-                            <span id="game_lame_1" class="number_sec">1</span>
+                            {{--<img src={{URL::to('/img/gold-medal2.png')}} alt=""/>--}}
+                            {{--<span class="plyer_one">Your level</span>--}}
+                            {{--<span id="game_lame_1" class="number_sec">--}}
+                                {{--Beginner--}}
+                            {{--</span>--}}
                         </div>
                         <div class="col-md-6">
                             <ul class="medal">
-                                {{--<li id="exp">--}}
-                                {{--<img src={{URL::to('/img/gold-medal.png')}} alt=""/>--}}
-                                {{--<span>20</span>--}}
-                                {{--</li>--}}
-                                {{--<li id="exp1">--}}
-                                {{--<img src={{URL::to('/img/gold-medal1.png')}} alt=""/>--}}
-                                {{--<span>10</span>--}}
-                                {{--</li>--}}
+                                <li id="exp">
+                                    <img src={{URL::to('/img/gold-medal.png')}} alt=""/>
+                                    <span>20</span>
+                                </li>
+                                <li id="exp1">
+                                    <img src={{URL::to('/img/gold-medal1.png')}} alt=""/>
+                                    <span>10</span>
+                                </li>
                                 <li id="exp2">
                                     <img src={{URL::to('/img/gold-medal2.png')}} alt=""/>
                                     <span>00</span>

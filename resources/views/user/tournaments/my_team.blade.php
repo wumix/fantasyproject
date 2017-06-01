@@ -308,10 +308,16 @@
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
             $(window).scroll(function () {
+                var scrollPositionTop = 0;
+                if($(window).scrollTop() >= 3300){
+                    scrollPositionTop = 3300;
+                }else{
+                   scrollPositionTop = $(window).scrollTop();
+                }
                 $("#point-summery").stop().animate({
-                    "marginTop": ($(window).scrollTop()) + "px",
+                    "marginTop": (scrollPositionTop) + "px",
                     "marginLeft": ($(window).scrollLeft()) + "px"
-                }, "fast");
+                }, "2000");
             });
         });
         function deletePlayer(playerid, player_price) {

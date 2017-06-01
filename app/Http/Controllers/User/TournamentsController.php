@@ -121,10 +121,13 @@ class TournamentsController extends Controller
     where utp.team_id = '$teamid' AND pr.game_role_id = '$roleid' AND ut.user_id = '$userid'");
         return ($count[0]->total);
 
-//        returns no of players in user team against a specific role i.e no of batsmen
+       // returns no of players in user team against a specific role i.e no of batsmen
         $x = \App\UserTeam::where('user_id', $userid)
-            ->where('tournament_id', $tournament_id)
+            ->where('id', $teamid)
             ->with('user_team_player.player_roles')->firstOrFail()->toArray();
+//        $x = \App\UserTeam::where('user_id', $userid)
+//           ->where('tournament_id', $tournament_id)
+//          ->with('user_team_player.player_roles')->firstOrFail()->toArray();
 
         $i = 0;
         foreach ($x['user_team_player'] as $row) {
@@ -457,6 +460,10 @@ class TournamentsController extends Controller
         $objResponse['success'] = true;
         $objResponse['score'] = getUserTotalScore(Auth::id());;
         $objResponse['msg'] = "Player Deleted Successfully";
+        $objResponse['batsmen']=$this->giveanygoodname(Auth::id(), $request->team_id, 5);
+        $objResponse['bowler']=$this->giveanygoodname(Auth::id(), $request->team_id, 6);
+        $objResponse['wicketkeeper']=$this->giveanygoodname(Auth::id(), $request->team_id, 8);
+        $objResponse['allrounder']=$this->giveanygoodname(Auth::id(), $request->team_id, 7);
 
         return response()->json($objResponse);
 
@@ -485,6 +492,11 @@ class TournamentsController extends Controller
                         \App\UserPointsConsumed::insert($array);
                         $objResponse['success'] = true;
                         $objResponse['msg'] = "Player added successfully";
+                        $objResponse['batsmen']=$this->giveanygoodname(Auth::id(), $request->team_id, 5);
+                        $objResponse['bowler']=$this->giveanygoodname(Auth::id(), $request->team_id, 6);
+                        $objResponse['wicketkeeper']=$this->giveanygoodname(Auth::id(), $request->team_id, 8);
+                        $objResponse['allrounder']=$this->giveanygoodname(Auth::id(), $request->team_id, 7);
+
                         $objResponse['player']['id'] = $request->player_id[0];
                         $objResponse['player']['name'] = \App\Player::get_player($request->player_id[0])->name;
                         $objResponse['player']['profile_pic'] = getUploadsPath(\App\Player::get_player($request->player_id[0])->profile_pic);

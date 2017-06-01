@@ -1,5 +1,5 @@
 @extends('layouts.app')
-{{--{{dd($matches->t)}}--}}
+{{--{{dd($user_teams)}}--}}
 @section('title')
     Gamithon Fantasy
 @stop
@@ -627,7 +627,7 @@
                                             <option value="">Please select your team</option>
                                             @foreach($user_teams as $row)
                                                 <option id="dropdownbtn"
-                                                        value="{{$row['id']}}">{{$row['name']}}</option>
+                                                        value="{{$row['id']}}">{{$row['name']}} ( {{$row['teamtournament']['name']}} )</option>
                                             @endforeach
                                         </select>
                                     </div>

@@ -108,7 +108,7 @@ class DashboardController extends Controller
         //  dd(getServerTimeAsGMT());
         $datetime = new \DateTime();
         $date = $datetime->format('Y-m-d H:i:s');
-        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())
+        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->with('teamtournament')->orderBy('id', 'DESC')
             ->get()
             ->toArray();
         //   dd($data);
@@ -128,7 +128,7 @@ class DashboardController extends Controller
 
     function teamHome()
     {
-        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->with('teamtournament')
+        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->with('teamtournament')->orderBy('id', 'DESC')
             ->get()
             ->toArray();
         //dd($data['user_teams']);

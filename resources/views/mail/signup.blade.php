@@ -173,6 +173,7 @@
         color: rgb(168, 176, 182);
     }
 </style>
+
 <div class="whole_setio_news">
     <div class="black_area">
     <span class="text">
@@ -188,15 +189,11 @@
             Hi {{$name}}
         </span>
         <p class="parah_new">
-            Thank you for your registration at Gamithon fantasy. Here a lot of exciting prizes are waiting for you
-            every day! You can win these prizes just by making your favorite squad and let it play! </p>
-        <p class="parah_new">
-            To help you get started on DFC, I wanted to share a video with you (Watch it here!) that explains how we
-            work and help you win cash and prizes easily &amp; just by choosing your favorite cricketers and playing
-            against your friends!
-        </p>
+            Thank you for your registration at Gamithon fantasy. Lots of exciting prizes are waiting for you every day!
+            You can win these prizes just by making your favorite squad. </p>
+
         <span class="free_roll_text">I'd like to invite you to play today's Free-Roll</span>
-        <a href="{{route('loginForm')}}" class="paly_btn">Play Now</a>
+        <a href="" class="paly_btn">Play Now</a>
     </div>
     <div class="how_to_play_sec">
         <span class="section_heading">How to play Gamithon Fantasy</span>
@@ -241,21 +238,21 @@
         <ul class="social_list">
             <li>
                 <a href="https://www.facebook.com/gamithonfantasy" class="">
-                    <img src={{URL::to('/img/fb.png')}} alt=""/>
+                    <img src="{{URL::to('/img/fb.png')}}" alt=""/>
                 </a>
             </li>
             <li>
                 <a href="https://twitter.com/GamithonFantasy" class="">
-                    <img src={{URL::to('/img/tw.png')}} alt=""/>
+                    <img src="{{URL::to('/img/tw.png')}}" alt=""/>
                 </a>
             </li>
         </ul>
         <ul class="links_list">
             <li>
-                <a href="{{route('howPlay')}}" class="">How to play</a>
+                <a href="" class="">How to play</a>
             </li>
             <li>
-                <a href="{{route('contactPage')}}" class="">Contact Us</a>
+                <a href="" class="">Contact Us</a>
             </li>
         </ul>
     </div>

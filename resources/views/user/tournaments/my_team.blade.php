@@ -127,6 +127,7 @@
                                         For playing tournament you will need:
                                         <ul>
                                             <li>
+
                                                 <strong>Batsman: </strong>4
                                             </li>
                                             <li><strong>Bowler: </strong>4</li>
@@ -252,9 +253,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="point-summery col-md-3" id="point-summery">
+                            <div class="point-summery col-md-3"  id="point-summery">
                                 <h4 class="small-sec-heading">
-                                    Remaining points <span class="pull-right" id="current-points">9000</span>
+                                    Remaining points <span class="pull-right" id="your_points1">{{getUserTotalScore(Auth::id())}}</span>
                                 </h4>
                                 <hr class="light"/>
                                 <h5 style="color: #92B713;">
@@ -264,25 +265,25 @@
                                     <li>
                                         Batsman
                                         <span class="pull-right">
-                                            4/<span id="remaining-batsman">4</span>
+                                           <span id="remaining-batsman">{{getPlayerNoInTeam(\Auth::id(),$team_id,5)}}</span>/4
                                         </span>
                                     </li>
                                     <li>
                                         Bowler
                                         <span class="pull-right">
-                                            4/<span id="remaining-bowler">4</span>
+                                            <span id="remaining-bowler">{{getPlayerNoInTeam(\Auth::id(),$team_id,6)}}</span>/4
                                         </span>
                                     </li>
                                     <li>
                                         All Rounder
                                         <span class="pull-right">
-                                            4/<span id="remaining-ar">4</span>
+                                            <span id="remaining-ar">{{getPlayerNoInTeam(\Auth::id(),$team_id,7)}}</span>/2
                                         </span>
                                     </li>
                                     <li>
                                         Wicket Keeper
                                         <span class="pull-right">
-                                            4/<span id="remaining-wk">4</span>
+                                            <span id="remaining-wk">{{getPlayerNoInTeam(\Auth::id(),$team_id,8)}}</span>/1
                                         </span>
                                     </li>
                                 </ul>
@@ -333,6 +334,10 @@
                 },
                 success: function (data) {
                     if (data.success == true) {
+                        $("#remaining-batsman").html(data.batsmen);
+                        $("#remaining-bowler").html(data.bowler);
+                        $("#remaining-ar").html(data.allrounder);
+                        $("#remaining-wk").html(data.wicketkeeper);
                         $('#your_points').html(data.score);
                         $('#your_points1').html(data.score);
                         $('#player_tr-del-' + data.player_id).html('<span>Deleted</span>');
@@ -374,6 +379,11 @@
                             // console.log(teamCompletedUrl);
                             window.location = teamCompletedUrl;
                         }
+                        $("#remaining-batsman").html(data.batsmen);
+                        $("#remaining-bowler").html(data.bowler);
+                        $("#remaining-ar").html(data.allrounder);
+                        $("#remaining-wk").html(data.wicketkeeper);
+
 
                         $("#your_points").html(data.player_score);
                         $("#your_points1").html(data.player_score);

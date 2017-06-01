@@ -121,7 +121,7 @@
 
                     <div class="col-lg-12 text-center">
                         <h2 class="section-heading">
-                            Upcomming Tournaments
+                            Active Tournaments
                             <hr class="light">
                         </h2>
 
@@ -140,7 +140,7 @@
                                     @foreach ($tournaments_list as $row)
                                         <tr class="trr">
                                             <td class="border-r"><a
-                                                        href="{{route('showTournament', ['tournament_id'=>$row['id']])}}">{{$row['name']}}</a>
+                                                        href="{{route('fixturesdetail',['tournament_id'=>$row['slug']])}}">{{$row['name']}}</a>
                                             </td>
                                             <td class="border-r">{{$row['venue']}}</td>
                                             <td class="border-r">

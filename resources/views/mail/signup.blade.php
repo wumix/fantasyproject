@@ -176,6 +176,15 @@
         .links_list li a {
             color: rgb(168, 176, 182);
         }
+
+        .anchor-htp {
+            display: block;
+            float: right;
+            padding: 10px 0px;
+        }
+        /*.anchor-htp a{*/
+            /*color: #00a65a;*/
+        /*}*/
     </style>
 </head>
 <body>
@@ -185,10 +194,10 @@
     <span class="text">
     WELCOME TO Gamithon Fantasy!
     </span>
-        <span class="pull-right">
-           <a class="btn btn-warning" href="http://gamithon.dev/how-to-play">
+        <span class="anchor-htp">
+           <a href="{{Url::to('how-to-play')}}">
             How to play
-        </a>
+         </a>
         </span>
 
     </div>

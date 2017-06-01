@@ -558,7 +558,7 @@
                         <ul class="img_area_area">
                             <li>
                                 @if(has_user_team_ipl(Auth::id()))
-                                    IPL Score <span id="game_lame"> Calulating...</span>
+                                     <span id="game_lame"> Calulating...</span>
                                 @else
                                     You haven't played any tournament yet
                                 @endif

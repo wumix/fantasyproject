@@ -214,7 +214,7 @@
             You can win these prizes just by making your favorite squad. </p>
 
         <span class="free_roll_text">I'd like to invite you to play today's Free-Roll</span>
-        <a href="" class="paly_btn">Play Now</a>
+        <a href="{{route('loginForm')}}" class="paly_btn">Play Now</a>
     </div>
     <div class="how_to_play_sec">
         <span class="section_heading">How to play Gamithon Fantasy</span>

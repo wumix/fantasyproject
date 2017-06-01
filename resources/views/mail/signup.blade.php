@@ -180,7 +180,7 @@
         .anchor-htp {
             display: block;
             float: right;
-            padding: 10px 0px;
+            padding: 10px 10px;
         }
 
         .anchor-htp a{
@@ -214,7 +214,7 @@
             You can win these prizes just by making your favorite squad. </p>
 
         <span class="free_roll_text">I'd like to invite you to play today's Free-Roll</span>
-        <a href="{{route('loginForm')}}" class="paly_btn">Play Now</a>
+        <a href="http://www.gamithonfantasy.com/login/" class="paly_btn">Play Now</a>
     </div>
     <div class="how_to_play_sec">
         <span class="section_heading">How to play Gamithon Fantasy</span>

@@ -620,7 +620,7 @@
                                     <span class="trophies text-center">Your Teams</span>
                                     {!! Form::open(['url' => route('teamdetail'),'method'=>'get']) !!}
                                     <div class="form-group">
-                                        <select id="team_id" style="width:100%;" name="team_id"
+                                        <select required id="team_id" style="width:100%;" name="team_id"
                                                 class="form-control dropdown-toggle col-md-12"
                                                 data-toggle="dropdown"
                                                 style="border:1px solid #9acc59; border-radius: 6px;">

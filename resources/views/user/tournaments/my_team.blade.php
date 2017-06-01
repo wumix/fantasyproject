@@ -11,6 +11,9 @@
         }
 
         .point-summery {
+            position: fixed;
+            right:15px;
+            top: 35%;
             padding: 8px;
             box-shadow: 5px 5px 5px 5px #CECECE;
         }
@@ -308,18 +311,18 @@
     <script>
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
-            $(window).scroll(function () {
-                var scrollPositionTop = 0;
-                if($(window).scrollTop() >= 3300){
-                    scrollPositionTop = 3300;
-                }else{
-                   scrollPositionTop = $(window).scrollTop();
-                }
-                $("#point-summery").stop().animate({
-                    "marginTop": (scrollPositionTop) + "px",
-                    "marginLeft": ($(window).scrollLeft()) + "px"
-                }, "2000");
-            });
+//            $(window).scroll(function () {
+//                var scrollPositionTop = 0;
+//                if($(window).scrollTop() >= 3300){
+//                    scrollPositionTop = 3300;
+//                }else{
+//                   scrollPositionTop = $(window).scrollTop();
+//                }
+//                $("#point-summery").stop().animate({
+//                    "marginTop": (scrollPositionTop) + "px",
+//                    "marginLeft": ($(window).scrollLeft()) + "px"
+//                }, "2000");
+//            });
         });
         function deletePlayer(playerid, player_price) {
 

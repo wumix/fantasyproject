@@ -80,7 +80,7 @@ class HomeController extends Controller
 
     public function index()
     {
-       // \Mail::to("tooovim@yahoo.com")->send(new \App\Mail\SignUp("hi Adeel"));
+       
         // dd($this->getServerTimeAsGMT());
         $datetime = new \DateTime();
         $date = $datetime->format('Y-m-d H:i:s');

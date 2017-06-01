@@ -83,13 +83,8 @@
                         $('<input type="hidden" id="team_id" value="' + data.team_id + '"/>').insertBefore("#addstatus");
                     }
                     else {
-                        if (data.status == "no"){
 
-                            $('.error').html(data.message);
-                            $('.error').fadeIn(400).delay(3000).fadeOut(400); //fade out after 3 seconds
-                            return;
-                        }
-                        $('.error').html('Team Name Already taken');
+                        $('.error').html(data.message);
                         $('.error').fadeIn(400).delay(3000).fadeOut(400); //fade out after 3 seconds
 
                     }

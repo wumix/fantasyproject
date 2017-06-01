@@ -34,7 +34,7 @@ class DashboardController extends Controller {
 
         $teamId = $request->team_id;
         $data['user_teams'] = \App\UserTeam::where('id',$teamId)->where('user_id', \Auth::id())->get()->toArray();
-        //dd($data['user_teams']);
+
         $tournament_id=$data['user_teams'][0]['tournament_id'];
         $date_end=\App\Tournament::where('id',$tournament_id)->firstOrFail()->end_date;
         $datetime = new \DateTime();
@@ -50,7 +50,8 @@ class DashboardController extends Controller {
         // dd($data['user_team_player_transfer']->toArray());
         // //Get matches after team making
         if ($data['user_teams'][0]['joined_from_match_date'] == null) {
-            return view('pages.team_incomplete');
+            $dataArray['tournament_id']=$data['user_teams'][0]['tournament_id'];
+            return view('pages.team_incomplete',$dataArray);
         }
         $matcheIdsAfterThisTeamMade = \App\Match::select('id')
                         ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])
@@ -100,6 +101,7 @@ class DashboardController extends Controller {
     }
 
     function index() {
+      //  dd(getServerTimeAsGMT());
         $datetime = new \DateTime();
         $date = $datetime->format('Y-m-d H:i:s');
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())

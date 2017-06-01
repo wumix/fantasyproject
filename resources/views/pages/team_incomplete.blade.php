@@ -21,7 +21,7 @@
                         </p>
                         <p>
                             You will be allowed to play when you will complete 11 players in team.
-                            <a href="{{route('addTeam', ['tournament_id'=>2])}}">Complete Team</a>.
+                            <a href="{{route('addTeam', ['tournament_id'=>$tournament_id])}}">Complete Team</a>.
                         </p>
                     </div>
                 </div>

@@ -62,16 +62,20 @@
                             <div class="col-md-12 no-padding" style="margin-top: -20px;">
 
                                 <h4 style="font-weight: 500;color: #FFFFFF">
-                                   WINNER OF LAST TOURNAMENT
+                                    @if(!empty($leaders))
+                                  Leader Board
+                                        @endif
                                 </h4>
 
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 count-down no-padding">
 
+                            <div class="col-md-12 count-down no-padding">
+                                @if(empty($leaders))
                                 @foreach($leaders as $leader)
-                                    <div class="col-md-12 text-center">
+
+                                    <div class="col-md-4">
                                         <div class="circle2">
                         <span id="getting-started1">
                           <img style="width: 50px;
@@ -85,9 +89,14 @@
                                             <p class="no-mrg-in-home1 leaderboardscore"  style="font-size:16px !important">{{$leader['score']}}</p>
                                         </div>
                                     </div>
+
                                 @endforeach
+                                    @endif
 
                             </div>
+
+
+
                         </div>
 
 

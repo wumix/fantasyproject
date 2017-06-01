@@ -117,6 +117,7 @@ use RegistersUsers;
      * @return mixed
      */
     protected function registered(Request $request, $user) {
+
         $userActionKey = 'user_signup';
         $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
         //Saving user points scored
@@ -125,6 +126,8 @@ use RegistersUsers;
         $objPointsScored->action_key = $userActionKey;
         $objPointsScored->points_scored = $actionPoints;
         $objPointsScored->save();
+        \Mail::to($user->email)->send(new \App\Mail\SignUp($user->name));
+
         //Sending email to registered user
 //        Mail::send('emails.send', ['title' => $title, 'message' => $message], function ($message) {
 //            $message->from('no-reply@scotch.io', 'Scotch.IO');

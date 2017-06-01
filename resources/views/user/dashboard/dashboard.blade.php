@@ -540,6 +540,13 @@
                             </div>
                             <div class="col-md-6">
                                 <span class="trophies text-center">Your's Team</span>
+                                @if(empty($user_teams))
+                                    <div class="alert alert-info">
+                                        You don't have any team yet.
+                                        <a href="{{route('addTeam', ['tournament_id'=>2])}}">Make your team
+                                            first.</a>
+                                    </div>
+                                @else
                                 {!! Form::open(['url' => route('teamdetail'),'method'=>'get']) !!}
                                 <div class="form-group">
                                     <select id="team_id" style="width:100%;" name="team_id"
@@ -563,6 +570,7 @@
                                 </div>
 
                                 </form>
+                                    @endif
                             </div>
                             <div class="col-md-3">
                             </div>

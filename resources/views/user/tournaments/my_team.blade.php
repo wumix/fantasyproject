@@ -290,6 +290,20 @@
                                             <span id="remaining-wk">{{getPlayerNoInTeam(\Auth::id(),$team_id,8)}}</span>/1
                                         </span>
                                     </li>
+
+                                    <li>
+
+                                            <span id="user_team_complete">
+                                                @if(getUserTeamPlayersCount($team_id))
+                                                    Confirm Team
+
+                                                @endif
+
+                                            </span>
+
+                                    </li>
+
+
                                 </ul>
                             </div>
                         </div>
@@ -338,6 +352,9 @@
                 },
                 success: function (data) {
                     if (data.success == true) {
+                        if (data.team_complete == false) {
+                            $('#user_team_complete').html('');
+                        }
                         $("#remaining-batsman").html(data.batsmen);
                         $("#remaining-bowler").html(data.bowler);
                         $("#remaining-ar").html(data.allrounder);
@@ -393,11 +410,14 @@
                 success: function (data) {
                     if (data.success == true) {
                         if (data.teamsuccess == true) {
-                            var teamCompletedUrl = '{{route("team-completed", ['team_id'=>'id']) }}';
-                            teamCompletedUrl = teamCompletedUrl.replace('id', data.team_id);
+                           
+                             var teamCompletedUrl = '{{route("team-completed", ['team_id'=>'id']) }}';
+                             var html='<a href="'+teamCompletedUrl+'" class="btn btn-success">Confirm</a>';
+                            $('#user_team_complete').html(html);
+                            // teamCompletedUrl = teamCompletedUrl.replace('id', data.team_id);
                             //  alert(teamCompletedUrl);
                             // console.log(teamCompletedUrl);
-                            window.location = teamCompletedUrl;
+
                         }
                         $("#remaining-batsman").html(data.batsmen);
                         $("#remaining-bowler").html(data.bowler);

@@ -160,13 +160,19 @@ class TournamentsController extends Controller
 
     }
 
-    function playTournament($team_id, $tournament_id)
-    {
 
-       if($this->tournamentteamcomplete($team_id, $tournament_id)){
-           return view('pages.teamconfirmation');
-       }
-       
+
+    function playTournament($team_id, $tournament_id)
+
+    {
+        dd(getGmtTime());
+        die;
+        // echo getUserTeamPlayersCount($team_id);
+        // die;
+        if ($this->tournamentteamcomplete($team_id, $tournament_id)) {
+            return view('pages.teamconfirmation');
+        }
+
         $tournamentDate = \App\Tournament::getStartdate($tournament_id);
         $difference = $this->getTImeDifference($tournamentDate);
 
@@ -346,8 +352,8 @@ class TournamentsController extends Controller
 // dd($request->all());
         $tournamentDate = \App\Tournament::getStartdate($request->tournament_id);
         $difference = $this->getTImeDifference($tournamentDate);
-//        $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
-//        $currentNoPlayers = \App\UserTeam::find($request->team_id)->user_team_player()->count();
+        $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
+        $currentNoPlayers = \App\UserTeam::find($request->team_id)->user_team_player()->count();
         $objResponse = [];
         $objResponse['success'] = false;
         $tournament_id = $request->tournament_id;
@@ -476,6 +482,12 @@ class TournamentsController extends Controller
         $objResponse['bowler'] = $this->giveanygoodname(Auth::id(), $request->team_id, 6);
         $objResponse['wicketkeeper'] = $this->giveanygoodname(Auth::id(), $request->team_id, 8);
         $objResponse['allrounder'] = $this->giveanygoodname(Auth::id(), $request->team_id, 7);
+        if (getUserTeamPlayersCount($request->team_id) == 11) {
+            $objResponse['team_complete'] = true;
+        } else {
+            $objResponse['team_complete'] = false;
+        }
+
 
         return response()->json($objResponse);
 
@@ -537,11 +549,11 @@ class TournamentsController extends Controller
         }
 
         //$currentNoPlayers += 1;
-        if ($currentNoPlayers >= 10) {
+        if (getUserTeamPlayersCount($request->team_id) == 11) {
 
-            $userteamsave = \App\UserTeam::find($request->team_id);
-            $userteamsave->joined_from_match_date = getGmtTime();
-            $userteamsave->save();
+//            $userteamsave = \App\UserTeam::find($request->team_id);
+//            $userteamsave->joined_from_match_date = getGmtTime();
+//            $userteamsave->save();
 
 
             $objResponse['success'] = true;
@@ -549,13 +561,18 @@ class TournamentsController extends Controller
             $objResponse['team_id'] = $request->team_id;
             //joined_from_match_date -- I guess update team here
             return response()->json($objResponse);
-        } else {
-            return response()->json($objResponse);
         }
+        //else {
+        return response()->json($objResponse);
+//        }
     }
 
     public function sucessteam($team_id)
     {
+
+        $userteamsave = \App\UserTeam::find(team_id);
+        $userteamsave->joined_from_match_date = getGmtTime();
+        $userteamsave->save();
         $data['team_id'] = $team_id;
         return view('pages.teamconfirmation', $data);
     }

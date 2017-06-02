@@ -149,6 +149,11 @@ function get_individual_player_score($tournament_id, $teamId, $playerid)
 
 }
 
+function getUserTeamPlayersCount($team_id)
+{
+    return \App\UserTeam::find($team_id)->user_team_player()->count();
+}
+
 function ordinal_suffix($num)
 {
     $num = $num % 100; // protect against large numbers

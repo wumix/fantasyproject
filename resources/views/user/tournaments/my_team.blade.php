@@ -12,7 +12,7 @@
 
         .point-summery {
             position: fixed;
-            right:15px;
+            right: 15px;
             top: 35%;
             padding: 8px;
             box-shadow: 5px 5px 5px 5px #CECECE;
@@ -256,9 +256,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="point-summery col-md-3"  id="point-summery">
+                            <div class="point-summery col-md-3" id="point-summery">
                                 <h4 class="small-sec-heading">
-                                    Remaining points <span class="pull-right" id="your_points1">{{getUserTotalScore(Auth::id())}}</span>
+                                    Remaining points <span class="pull-right"
+                                                           id="your_points1">{{getUserTotalScore(Auth::id())}}</span>
                                 </h4>
                                 <hr class="light"/>
                                 <h5 style="color: #92B713;">
@@ -344,13 +345,29 @@
                         $('#your_points').html(data.score);
                         $('#your_points1').html(data.score);
                         $('#player_tr-del-' + data.player_id).html('<span>Deleted</span>');
-                        $('.error').html(data.msg);
-                        $('.error').fadeIn(400).delay(2000).fadeOut(400); //fade out after 3 seconds
+                        $.toast({
+                            heading: '&nbsp;',
+                            text: data.msg,
+                            icon: 'success',
+                            loader: true, // Change it to false to disable loader
+                            position: 'top-right',
+                            showHideTransition: 'slide',
+                            hideAfter: 10000,
+                            allowToastClose: true,
+                            loaderBg: '#92B713'  // To change the background
+                        });
                     } else {
-                        $('.error').html(data.msg);
-                        $('.error').fadeIn(400).delay(2000).fadeOut(400); //fade out after 3 seconds
-
-
+                        $.toast({
+                            heading: 'Error',
+                            text: data.msg,
+                            icon: 'error',
+                            loader: true, // Change it to false to disable loader
+                            position: 'top-right',
+                            showHideTransition: 'slide',
+                            hideAfter: 10000,
+                            allowToastClose: true,
+                            loaderBg: '#92B713'  // To change the background
+                        });
                     }
 
                 }
@@ -391,8 +408,21 @@
                         $("#your_points").html(data.player_score);
                         $("#your_points1").html(data.player_score);
                         var obj = data.player;
-                        $('.error').html(data.msg);
-                        $('.error').fadeIn(200).delay(1000).fadeOut(200); //fade out after 3 seconds
+
+//                        $('.error').html(data.msg);
+//                        $('.error').fadeIn(200).delay(1000).fadeOut(200); //fade out after 3 seconds
+                        $.toast({
+                            heading: '&nbsp;',
+                            text: data.msg,
+                            icon: 'success',
+                            loader: true, // Change it to false to disable loader
+                            position: 'top-right',
+                            showHideTransition: 'slide',
+                            hideAfter: 10000,
+                            allowToastClose: true,
+                            loaderBg: '#92B713'  // To change the background
+                        });
+
                         $('#btn-player-' + playerid).attr('disabled', true);
                         $('#btn-player-' + playerid).remove();
                         $('#total-score-user').html(obj.player_score);
@@ -418,8 +448,19 @@
                         t = "";
                         $('#player_tr-' + obj.id).html(t);
                     } else {
-                        $('.error').html(data.msg);
-                        $('.error').fadeIn(200).delay(1500).fadeOut(200); //fade out after 3 seconds
+//                        $('.error').html(data.msg);
+//                        $('.error').fadeIn(200).delay(1500).fadeOut(200); //fade out after 3 seconds
+                        $.toast({
+                            heading: 'Error',
+                            text: data.msg,
+                            icon: 'error',
+                            loader: true, // Change it to false to disable loader
+                            position: 'top-right',
+                            showHideTransition: 'slide',
+                            hideAfter: 10000,
+                            allowToastClose: true,
+                            loaderBg: '#92B713'  // To change the background
+                        });
 
 
                     }

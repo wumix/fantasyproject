@@ -165,8 +165,7 @@ class TournamentsController extends Controller
     function playTournament($team_id, $tournament_id)
 
     {
-        dd(getGmtTime());
-        die;
+
         // echo getUserTeamPlayersCount($team_id);
         // die;
         if ($this->tournamentteamcomplete($team_id, $tournament_id)) {
@@ -570,7 +569,7 @@ class TournamentsController extends Controller
     public function sucessteam($team_id)
     {
 
-        $userteamsave = \App\UserTeam::find(team_id);
+        $userteamsave = \App\UserTeam::find($team_id);
         $userteamsave->joined_from_match_date = getGmtTime();
         $userteamsave->save();
         $data['team_id'] = $team_id;

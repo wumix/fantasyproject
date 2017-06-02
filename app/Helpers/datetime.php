@@ -20,7 +20,28 @@ function formatMonth($date) {
 }
 
 
+function getServerTimeAsGMT()
+{
+    $timestamp = localtime();
+    $timestamp[5] += 1900;
+    $timestamp[4]++;
+    for ($i = 0; $i <= 9; $i++) {
+        if ($timestamp[0] == $i) {
+            $newValue = "0" . $i;
+            $timestamp[0] = $newValue;
+        }
+    }
+    for ($i = 0; $i <= 9; $i++) {
+        if ($timestamp[1] == $i) {
+            $newValue = "0" . $i;
+            $timestamp[1] = $newValue;
+        }
+    }
 
+    $this->timestamp = $timestamp[5] . "-" . $timestamp[4] . "-" . $timestamp[3] . " " . $timestamp[2] . ":" . $timestamp[1] . ":" . $timestamp[0];
+    $this->timestamp = strtotime($this->timestamp);
+    return $this->timestamp;
+}
 function getGmtTime() {
     $serverTime = config('app.timezone');
     $timeZoneDiff = config('app.timezone_difference');

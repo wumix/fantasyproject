@@ -18,8 +18,6 @@
             </div>
             <div class="row">
                 <div class="col-lg-6">
-
-
                     <div class="page-content">
                         <div class="form-container">
                             <div class="col-lg-12">
@@ -85,15 +83,13 @@
                                                 <label class="form-check-label">
                                                     <input type="checkbox" class="form-check-input"/>
                                                     <span id="remberbox"> Rember Me</span>
-                                                <!--                                        <a href="{{ route('password.request') }}" id="forgetlink"> Forget Your Password?</a>-->
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 signuplink">
-                                            {{--<div class="form-group  " id="withbox">--}}
-                                                {{--<a href="{{ route('signUp') }}">Sign up for new account</a>--}}
-                                            {{--</div>--}}
-
+                                            <label class="pull-right">
+                                                <a href="{{ route('password.request') }}" id="forgetlink"> Forget Your Password?</a>
+                                            </label>
                                         </div>
                                         <div class="col-lg-12 text-center">
                                             <div class="form-group">

@@ -17,11 +17,13 @@ body {
 ::-webkit-scrollbar:horizontal {
     height: 12px;
 }
+
 ::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, .5);
     border-radius: 10px;
     border: 2px solid #ffffff;
 }
+
 ::-webkit-scrollbar-track {
     border-radius: 10px;
     background-color: #ffffff;
@@ -79,13 +81,13 @@ a {
     -webkit-transition: all 0.35s;
     -moz-transition: all 0.35s;
     transition: all 0.35s;
-    color: #F05F40;
+    color: #92B713;
 
 }
 
 a:hover,
 a:focus {
-    color: #eb3812;
+    color: #92B713;
 }
 
 h1,
@@ -154,8 +156,6 @@ p {
 .text-faded {
     color: rgba(255, 255, 255, 0.7);
 }
-
-
 
 aside {
     padding: 50px 0;
@@ -403,15 +403,17 @@ header .header-content .header-content-inner p {
         margin-right: auto;
     }
 }
-.login-top-margin{
+
+.login-top-margin {
     margin-top: 15px;
 }
-.services-padding-bottom{
+
+.services-padding-bottom {
     padding-bottom: 20px;
 }
 
 .section-heading {
-   padding-top: 4px;
+    padding-top: 4px;
 }
 
 .service-box {
@@ -569,8 +571,8 @@ fieldset[disabled] .btn-default.active {
 
 .btn-primary {
     color: white;
-    background-color: #F05F40;
-    border-color: #F05F40;
+    background-color: #92B713;
+    border-color: #92B713;
     -webkit-transition: all 0.35s;
     -moz-transition: all 0.35s;
     transition: all 0.35s;
@@ -583,8 +585,8 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
     color: white;
-    background-color: #ee4b28;
-    border-color: #ed431f;
+    background-color: #92B713;
+    border-color: #92B713;
 }
 
 .btn-primary:active,

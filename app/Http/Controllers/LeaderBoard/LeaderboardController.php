@@ -18,7 +18,7 @@ class LeaderboardController extends Controller {
         foreach ($userid as $userids) {
 
             $userteam = \App\UserTeam::where('user_id', $userids['id'])
-                    ->where('tournament_id', 1)
+                    ->where('tournament_id', 2)
                     ->first();
 
 
@@ -38,7 +38,7 @@ class LeaderboardController extends Controller {
 
 
 //
-            $score = $this->get_user_team_score(1, $k['id'], $k['user_id']);
+            $score = $this->get_user_team_score(2, $k['id'], $k['user_id']);
 
 
             $leaderboard->user_id = $k['user_id'];
@@ -92,7 +92,8 @@ class LeaderboardController extends Controller {
                     'player_gameTerm_score.game_terms' => function ($query) {
                         $query->select('name', 'id');
                     },
-                    'player_gameTerm_score.points_devision_tournament' => function ($query) use ($matcheIdsAfterThisTeamMade) {
+                    'player_gameTerm_score.points_devision_tournament' => function ($query) use ($matcheIdsAfterThisTeamMade,$tournament_id) {
+                        $query->where('tournament_id',$tournament_id);
                         
                     }
                 ])->get()->toArray();

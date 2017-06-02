@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Contact
+    @stop
 @section('content')
 <section>
     <div class="container">
@@ -9,8 +11,10 @@
                     Say Hi!
                 </h1>
                 <hr class="light full">
-                <div class="page-content">
-                    <div class="col-md-12">
+                <div class="page-content" style="margin:0 auto;max-width: 700px;">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6 text-center">
                         @if (count($errors) > 0)
                         <div class="alert alert-danger">
                             <ul>
@@ -28,35 +32,40 @@
                         @endif
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('postContact') }}">
                             {{ csrf_field() }}
-                            <div class="form-group">
-                                <label>
-                                    Name
-                                </label>
-                                <input name="name" class="form-control" required/>
+                            <div class="input-group"  style="margin-bottom: 20px">
+                                <span class="input-group-addon signinforminputs">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </span>
+                                <input type="text" class="form-control signinforminputs1" name="Name"
+                                       id="name" placeholder="Name" required="">
+
+
                             </div>
-                            <div class="form-group">
-                                <label>
-                                    Email
-                                </label>
-                                <input type="email" name="email" class="form-control" />
+                            <div class="input-group" style="margin-bottom: 20px">
+                                <span class="input-group-addon signinforminputs">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </span>
+                                <input type="email" class="form-control signinforminputs1"
+                                       name="name" id="name" placeholder="Email" required="">
+
+
                             </div>
-                            <div class="form-group">
-                                <label>
-                                    Subject
-                                </label>
-                                <input type="text" name="subject" class="form-control" required/>
+                            <div class="input-group" style="margin-bottom: 20px">
+                                <span class="input-group-addon signinforminputs">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </span>
+                                <input type="subject" class="form-control signinforminputs1"
+                                       name="name" id="name" placeholder="Subject" required="">
+
+
                             </div>
-                            <div class="form-group">
-                                <label>
-                                    Message
-                                </label>
-                                <textarea type="text" name="message" class="form-control" required></textarea>
-                            </div>
-                            <div class="form-group">
+                            <textarea type="text" name="message" class="form-control" placeholder="Meassage" required style="height: 150px;"></textarea>
+                        <div class="form-group" style="margin-top: 20px;">
                                 <input type="submit" class="btn btn-success" value="Submit"/>
                             </div>
                         </form>
                     </div>
+                    <div class="col-md-3">
                 </div>
             </div>
         </div>

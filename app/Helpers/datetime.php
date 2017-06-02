@@ -12,7 +12,12 @@ function formatDate($date) {
 function formatTime($date) {
     return date(config('const.sitewise_time_format'), strtotime($date));
 }
-
+function formatDay($date) {
+    return date(config('dd'), strtotime($date));
+}
+function formatMonth($date) {
+    return date(config('m'), strtotime($date));
+}
 
 
 

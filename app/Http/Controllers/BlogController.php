@@ -8,13 +8,14 @@ use Illuminate\Http\Request;
 class BlogController extends Controller {
 
     public function index() {
-        $data['blogTitle'] = 'Gamithon Gossips';
+        $data['blogTitle'] = 'Gossips';
         $data['posts'] = \App\BlogPost::where('post_type', 'post')->get()->toArray();
         return view('user.blog.blog', $data);
     }
 
     function showBlogPostDetail($postid) {
-        $data['news'] = \App\BlogPost::where('post_type', 'post')->where('slug')->take(3)->get()->toArray();
+        $data['news'] = \App\BlogPost::where('post_type', 'post')->take(3)->get()->toArray();
+//        dd( $data['news']);
         $data['postdetail'] = \App\BlogPost::where('slug', $postid)->firstOrFail()->toArray();
         return view('user.blog.blog-inner', $data);
     }
@@ -37,7 +38,7 @@ class BlogController extends Controller {
 
     public function getNews() {
         $data['blogTitle'] = 'News';
-        $data['posts'] = \App\BlogPost::where('post_type', 'news')->orderBy('id', 'DESC')->get()->toArray();
+        $data['posts'] = \App\BlogPost::where('post_type', 'news')->orderBy('id', 'DESC')->paginate('8');
         return view('user.news.news', $data);
     }
 

@@ -30,6 +30,21 @@ class HomeController extends Controller
      *
      * @return void
      */
+    public function newdash()
+    {
+        $datetime = new \DateTime();
+        $date = $datetime->format('Y-m-d H:i:s');
+        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())
+            ->get()
+            ->toArray();
+        //dd($data);
+        $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
+        $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', $date);
+        //dd($data['upcommingTour']->toArray());
+        //dd($data['upcommingTour']->toArray());
+        return view('user.dashboard.newdash', $data);
+    }
+
     public function __construct()
     {
         // $this->middleware('auth');
@@ -65,6 +80,9 @@ class HomeController extends Controller
 
     public function index()
     {
+       // \Mail::to("tooovim@yahoo.com")->send(new \App\Mail\SignUp("hi Adeel"));
+       // \Mail::to("alraadu58@gmail.com")->send(new \App\Mail\SignUp("hi Adeel"));
+        // dd($this->getServerTimeAsGMT());
         $datetime = new \DateTime();
         $date = $datetime->format('Y-m-d H:i:s');
         $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', $date)->Where('end_date', '>=', $date);
@@ -79,7 +97,7 @@ class HomeController extends Controller
 
     public function fixturesDetial($tournament_id)
     {
-        $data['fixture_details'] = \App\Tournament::where('id', $tournament_id)->with('tournament_matches')->firstOrFail()->toArray();
+        $data['fixture_details'] = \App\Tournament::where('slug', $tournament_id)->with('tournament_matches')->firstOrFail()->toArray();
         return view('pages.fixtures_c_trophy', $data);
 
     }
@@ -103,10 +121,16 @@ class HomeController extends Controller
 
     public function rankings()
     {
-        $stats = \App\Game::where('id', '1')
-            ->with('game_roles', 'game_type.game_type_points.player_roles')->get()->toArray();
-        $data['rankings'] = $stats;
-        //dd($stats);
+//        $stats = \App\Game::where('id', '1')
+//            ->with('game_roles', 'game_type.game_type_points.player_roles')->get()->toArray();
+//        $data['rankings'] = $stats;
+//        //dd($stats);
+        $data['rankings'] = \App\RankingCategory::with(['category_players' => function ($query) {
+            $query->orderBy('rating', 'DESC');
+
+        }])->get()->toArray();
+        //dd($data['rankings']);
+
         return view('pages.rankings', $data);
     }
 
@@ -115,7 +139,9 @@ class HomeController extends Controller
         $this->validatorContact($request->all())->validate();
         $emailRecievers = [
             'umair_hamid100@yahoo.com',
-            'hassan@branchezconsulting.com'
+            'hassan@branchezconsulting.com',
+            'jahangir.yousaf@branchezconsulting.com',
+            'adeel@branchezconsulting.com'
         ];
         \Mail::send('emails.contact', array(
             'name' => $request->get('name'),
@@ -156,7 +182,7 @@ class HomeController extends Controller
 
     public function howPlay()
     {
-        $data['tournament'] = \App\Tournament::where('id', 1)
+        $data['tournament'] = \App\Tournament::where('id', 2)
             ->with('tournament_game.game_actions.game_terms', 'game_term_points')
             ->firstOrFail()
             ->toArray();

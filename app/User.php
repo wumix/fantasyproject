@@ -18,7 +18,7 @@ class User extends Authenticatable {
      */
     protected $table = 'users';
     protected $fillable = [
-        'name', 'email', 'profile_pic', 'password', 'user_type', 'provider_user_id', 'remember_token', 'provider','last_login'
+        'name', 'email','about_me', 'profile_pic', 'password', 'user_type', 'provider_user_id', 'remember_token', 'provider','last_login'
     ];
 
     /**
@@ -73,10 +73,13 @@ class User extends Authenticatable {
     }
 
     public function createOrGetUser(ProviderUser $providerUser, $socialProvider) {
+        //to handle facebook email not found exception
+      // if(empty($providerUser->getEmail()))   return redirect()->route('signUp') ;
         $account = User::where('email', $providerUser->getEmail())->first();
         if ($account) {
             return $account;
         } else {
+
             $user = User::whereEmail($providerUser->getEmail())->first();
             if (!$user) {
                 $user = User::create([

@@ -293,10 +293,9 @@
 
                                     <li>
 
-                                            <span id="user_team_complete">
+                                            <span id="user_team_complete" class="pull-right">
                                                 @if(getUserTeamPlayersCount($team_id))
-                                                    Confirm Team
-
+<a class="btn btn-green" style="margin-top: 5px;" href="{{route("team-completed", ['team_id'=>$team_id]) }}">Confirm Team</a>
                                                 @endif
 
                                             </span>
@@ -410,9 +409,12 @@
                 success: function (data) {
                     if (data.success == true) {
                         if (data.teamsuccess == true) {
-                           
+
+
                              var teamCompletedUrl = '{{route("team-completed", ['team_id'=>'id']) }}';
-                             var html='<a href="'+teamCompletedUrl+'" class="btn btn-success">Confirm</a>';
+                            teamCompletedUrl=teamCompletedUrl.replace('id',data.team_id)
+                             var html='<a href="'+teamCompletedUrl+'" class="btn btn-green" style="margin-top: 5px;">Confirm Team</a>';
+                            // alert(html);
                             $('#user_team_complete').html(html);
                             // teamCompletedUrl = teamCompletedUrl.replace('id', data.team_id);
                             //  alert(teamCompletedUrl);

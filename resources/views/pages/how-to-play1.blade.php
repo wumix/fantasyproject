@@ -73,32 +73,31 @@
                 <div class="col-md-12 no-padding">
                     <ul>
                         <li>
-                            <div class="sign_text">1. <a href="{{route('signUp')}}">Sign up</a> for an account</div>
-                            <span class="sign_up_imp"><img src="{{URL::to('/img/sign-up_imp.png')}}" alt=""/></span>
+                            <div class="sign_text">1. <span>Sign up</span> for an account</div>
+                            <span class="sign_up_imp"><img src={{URL::to('/img/sign-up_imp.png')}} alt=""/></span>
                         </li>
                         <li>
-
-                            <div class="sign_text">2. Go for <a href="{{route('addTeam', ['tournament_id'=>2])}}">Create The Team</a></div>
-                            <span class="sign_up_imp"><img src="{{URL::to('/img/sign-up_imp2.png')}}" alt=""/></span>
+                            <div class="sign_text">2. Go for <span>Create The Team</span></div>
+                            <span class="sign_up_imp"><img src={{URL::to('/img/sign-up_imp2.png')}} alt=""/></span>
                         </li>
                         <li>
-                            <div class="sign_text">3. Create your own Fantasy team with your Favorite Players in the tournament</div>
-                            <span class="sign_up_imp"><img src="{{URL::to('/img/sign-up_imp3.png')}}" alt=""/></span>
+                            <div class="sign_text">3. Create your own Fantasy team with your <span>Favorite Players</span> in the tournament</div>
+                            <span class="sign_up_imp"><img src={{URL::to('/img/sign-up_imp3.png')}} alt=""/></span>
                         </li>
                         <li>
-                            <div class="sign_text">4. Every new user earns free 100,000 points</div>
-                            <span class="sign_up_imp"><img src="{{URL::to('/img/sign-up_imp4.png')}}" alt=""/></span>
+                            <div class="sign_text">4. Every new user earns free <span>100,000</span> points</div>
+                            <span class="sign_up_imp"><img src={{URL::to('/img/sign-up_imp4.png')}} alt=""/></span>
                         </li>
                         <li>
-                            <div class="sign_text">5. Catch your points when your players score runs, take wickets, etc</div>
-                            <span class="sign_up_imp"><img src="{{URL::to('/img/sign-up_imp5.png')}}" alt=""/></span>
+                            <div class="sign_text">5. Catch your <span>points</span> when your players score runs, take wickets, etc</div>
+                            <span class="sign_up_imp"><img src={{URL::to('/img/sign-up_imp5.png')}} alt=""/></span>
                         </li>
                         <li>
-                            <div class="sign_text">6. You can win exciting prizes once you make your way into the <a href="{{URL::to('/')}}"> leader board</a> </div>
-                            <span class="sign_up_imp"><img src="{{URL::to('/img/sign-up_imp6.png')}}" alt=""/></span>
+                            <div class="sign_text">6. You can win exciting prizes once you make your way into the<span>leader board</span> </div>
+                            <span class="sign_up_imp"><img src={{URL::to('/img/sign-up_imp6.png')}} alt=""/></span>
                         </li>
                         <li>
-                            <div class="sign_text">7. If you win you will be surprised with the Prize<a href="{{route('TermsCon')}}"> Terms & Conditions </a> Apply</div>
+                            <div class="sign_text">7. If you win you will be surprised with the Prize<span>- Terms & Conditions </span> Apply</div>
                         </li>
                     </ul>
                 </div>
@@ -118,7 +117,7 @@
 
                     </p>
                 </div>
-                <!--start -->
+               <!--start -->
                 <div class="col-md-12">
                     <h3 class="text-center">Score rules</h3>
                     <div class="table-responsive">

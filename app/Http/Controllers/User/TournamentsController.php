@@ -166,6 +166,7 @@ class TournamentsController extends Controller
        if($this->tournamentteamcomplete($team_id, $tournament_id)){
            return view('pages.teamconfirmation');
        }
+       
         $tournamentDate = \App\Tournament::getStartdate($tournament_id);
         $difference = $this->getTImeDifference($tournamentDate);
 

@@ -150,6 +150,8 @@ class TournamentsController extends Controller
 
     function playTournament($team_id, $tournament_id)
     {
+        echo userTeamPlayerCount($team_id);
+        die;
 //        echo get_individual_player_score("1",'5','88');
 //       die;
 
@@ -524,22 +526,22 @@ class TournamentsController extends Controller
             $objResponse['msg'] = "You can't have more than $tournamentMaxPlayers in this tournament.";
         }
 
-        //$currentNoPlayers += 1;
-        if ($currentNoPlayers >= 10) {
 
-            $userteamsave = \App\UserTeam::find($request->team_id);
-            $userteamsave->joined_from_match_date = getGmtTime();
-            $userteamsave->save();
-
-
-            $objResponse['success'] = true;
-            $objResponse['teamsuccess'] = true;
-            $objResponse['team_id'] = $request->team_id;
+//        if ($currentNoPlayers >= 10) {
+//
+//            $userteamsave = \App\UserTeam::find($request->team_id);
+//            $userteamsave->joined_from_match_date = getGmtTime();
+//            $userteamsave->save();
+//
+//
+//            $objResponse['success'] = true;
+//            $objResponse['teamsuccess'] = true;
+//            $objResponse['team_id'] = $request->team_id;
             //joined_from_match_date -- I guess update team here
+            //return response()->json($objResponse);
+//        } else {
             return response()->json($objResponse);
-        } else {
-            return response()->json($objResponse);
-        }
+//        }
     }
 
     public function sucessteam($team_id)

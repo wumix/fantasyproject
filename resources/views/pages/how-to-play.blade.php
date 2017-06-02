@@ -117,410 +117,69 @@
 
                     </p>
                 </div>
-                <div class="col-md-12 no-padding">
+                <!--start -->
+                <div class="col-md-12">
                     <h3 class="text-center">Score rules</h3>
                     <div class="table-responsive">
                         <div class="panel with-nav-tabs panel">
                             <div class="panel-heading">
                                 <ul class="nav nav-tabs">
-                                    <li class="active">
-                                        <a href="#action-1" data-toggle="tab" aria-expanded="true">
-                                            Bowling
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="#action-2" data-toggle="tab" aria-expanded="false">
-                                            Fielding
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="#action-3" data-toggle="tab" aria-expanded="false">
-                                            Batting
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="#action-4" data-toggle="tab" aria-expanded="false">
-                                            Bonus
-                                        </a>
-                                    </li>
+                                    @foreach($game_actions as $key => $val)
+                                        <li class="{!! ($key == 0) ? 'active':'' !!}">
+                                            <a href="#action-{{$val['id']}}" data-toggle="tab">
+                                                {{$val['name']}}
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <div class="panel-body">
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="action-1">
-                                        <div class="table-responsive col-md-12">
-                                            <table class="table table-striped table-bordered">
-                                                <thead>
-                                                <tr>
-                                                    <th>Rule</th>
-                                                    <th>Points</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Each Maiden
-                                                    </td>
-                                                    <td>
-                                                        7000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        R.R.P.O : 9.01 - Above
-                                                    </td>
-                                                    <td>
-                                                        -30000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        R.R.P.O : 7.01 - 9
-                                                    </td>
-                                                    <td>
-                                                        -20000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        R.R.P.O : 1 - 2.5
-                                                    </td>
-                                                    <td>
-                                                        25000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        R.R.P.O : 2.51 - 3
-                                                    </td>
-                                                    <td>
-                                                        20000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        R.R.P.O : 3.01 - 3.5
-                                                    </td>
-                                                    <td>
-                                                        10000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        R.R.P.O : 3.51 - 4.5
-                                                    </td>
-                                                    <td>
-                                                        5000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        R.R.P.O : 5.01 - 6
-                                                    </td>
-                                                    <td>
-                                                        -10000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        R.R.P.O : 6.01 - 7
-                                                    </td>
-                                                    <td>
-                                                        -15000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Wicket Taken : 1 - Above
-                                                    </td>
-                                                    <td>
-                                                        20000
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
+                                    @foreach($game_actions as $key => $val)
+                                        <div class="tab-pane {!! ($key == 0) ? 'active':'' !!}" id="action-{{$val['id']}}">
+                                            <div class="table-responsive col-md-12">
+                                                <table class="table table-striped table-bordered">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Rule</th>
+                                                        <th>Points</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach($val['game_terms'] as $key => $val)
+                                                        <?php
+                                                        $termFromToPoints = tapArray($tournament['game_term_points'], ['game_term_id' => $val['id']], false);
+                                                        ?>
+                                                        @foreach($termFromToPoints as $termPointIndex => $termPointVal)
+                                                            <tr  class="cwt">
+                                                                <td>
+                                                                    <?php
+                                                                    $qtyToTxt = ($termPointVal['qty_to'] > 999) ? 'Above' : $termPointVal['qty_to'];
+                                                                    ?>
+                                                                    @php($fromToText = ': '.$termPointVal['qty_from'].' - '.$qtyToTxt)
+                                                                    @if($termPointVal['qty_from']-$termPointVal['qty_to'] == 0)
+                                                                        @php($fromToText = '')
+                                                                    @endif
+                                                                    {{$val['name']}} {{$fromToText}}
+                                                                </td>
+                                                                <td>
+                                                                    {{$termPointVal['points']}}
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane" id="action-2">
-                                        <div class="table-responsive col-md-12">
-                                            <table class="table table-striped table-bordered">
-                                                <thead>
-                                                <tr>
-                                                    <th>Rule</th>
-                                                    <th>Points</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Per Catch
-                                                    </td>
-                                                    <td>
-                                                        10000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Per WK Catch
-                                                    </td>
-                                                    <td>
-                                                        8000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Per Run Out (Direct Hit)
-                                                    </td>
-                                                    <td>
-                                                        15000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Per Run Out (Indirect Hit for every player involved)
-                                                    </td>
-                                                    <td>
-                                                        10000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Per Stumping
-                                                    </td>
-                                                    <td>
-                                                        15000
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="action-3">
-                                        <div class="table-responsive col-md-12">
-                                            <table class="table table-striped table-bordered">
-                                                <thead>
-                                                <tr>
-                                                    <th>Rule</th>
-                                                    <th>Points</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Each Run Scored
-                                                    </td>
-                                                    <td>
-                                                        1000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Duck
-                                                    </td>
-                                                    <td>
-                                                        -10000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Golden/Diamond duck
-                                                    </td>
-                                                    <td>
-                                                        -20000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Scoring Rate : 1 - 60
-                                                    </td>
-                                                    <td>
-                                                        -15000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Scoring Rate : 80 - 99.99
-                                                    </td>
-                                                    <td>
-                                                        5000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Scoring Rate : 100 - 119.99
-                                                    </td>
-                                                    <td>
-                                                        10000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Scoring Rate : 120 - 149.99
-                                                    </td>
-                                                    <td>
-                                                        15000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Scoring Rate : 150 - 199.99
-                                                    </td>
-                                                    <td>
-                                                        20000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Scoring Rate : 200 - Above
-                                                    </td>
-                                                    <td>
-                                                        25000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        6s
-                                                    </td>
-                                                    <td>
-                                                        6000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        4s
-                                                    </td>
-                                                    <td>
-                                                        4000
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="action-4">
-                                        <div class="table-responsive col-md-12">
-                                            <table class="table table-striped table-bordered">
-                                                <thead>
-                                                <tr>
-                                                    <th>Rule</th>
-                                                    <th>Points</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Runs : 201 - Above
-                                                    </td>
-                                                    <td>
-                                                        45000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Runs : 151 - 200
-                                                    </td>
-                                                    <td>
-                                                        35000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Runs : 126 - 150
-                                                    </td>
-                                                    <td>
-                                                        30000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Runs : 101 - 125
-                                                    </td>
-                                                    <td>
-                                                        25000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Runs : 76 - 100
-                                                    </td>
-                                                    <td>
-                                                        20000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Runs : 51 - 75
-                                                    </td>
-                                                    <td>
-                                                        15000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Runs : 1 - 50
-                                                    </td>
-                                                    <td>
-                                                        10000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Wicket Haul : 1 - 2
-                                                    </td>
-                                                    <td>
-                                                        10000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Wicket Haul : 2 - 3
-                                                    </td>
-                                                    <td>
-                                                        15000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Wicket Haul : 4 - 5
-                                                    </td>
-                                                    <td>
-                                                        25000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Wicket Haul : 5 - 6
-                                                    </td>
-                                                    <td>
-                                                        30000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Wicket Haul : 6 - Above
-                                                    </td>
-                                                    <td>
-                                                        35000
-                                                    </td>
-                                                </tr>
-                                                <tr class="cwt">
-                                                    <td>
-                                                        Not Out
-                                                    </td>
-                                                    <td>
-                                                        5000
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!--Game actions outer loop-->
+                                @endforeach<!--Game actions outer loop-->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- tab end -->
             </div>
         </div>
     </div>

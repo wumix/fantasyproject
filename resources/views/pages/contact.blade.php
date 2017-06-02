@@ -55,7 +55,7 @@
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                 </span>
                                 <input type="subject" class="form-control signinforminputs1"
-                                       name="name" id="name" placeholder="Subject" required="">
+                                       name="subject" id="name" placeholder="Subject" required="">
 
 
                             </div>

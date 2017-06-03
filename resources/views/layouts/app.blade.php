@@ -32,7 +32,7 @@
     @yield('css')
     <style>
 
-        #bs-example-navbar-collapse-1{display: block}
+
         .slick_nav li {
             list-style: none;
             overflow: hidden;
@@ -40,6 +40,7 @@
             margin: 0 0 0 0;
 
         }
+        #bs-example-navbar-collapse-1{display: block}
     </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

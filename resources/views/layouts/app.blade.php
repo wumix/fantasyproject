@@ -20,7 +20,6 @@
     {!! Html::style('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!}
     {!! Html::style('https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic') !!}
 
-    {!! Html::style('js/toaster/jquery.toast.css') !!}
     {!! Html::style('js/colorbox-master/example1/colorbox.css') !!}
     {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}
     {!! Html::style('assets-new/vendor/magnific-popup/magnific-popup.css') !!}
@@ -31,8 +30,6 @@
 
     @yield('css')
     <style>
-
-
         .slick_nav li {
             list-style: none;
             overflow: hidden;
@@ -40,7 +37,6 @@
             margin: 0 0 0 0;
 
         }
-        #bs-example-navbar-collapse-1{display: block}
     </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -72,7 +68,7 @@
 <nav class="bg-primary navbar navbar-default navbar-fixed-top">
     <!--Menu-->
 
-      <div class="container-fluid">
+    <div class="container-fluid">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header main-top-menu">
@@ -299,10 +295,10 @@
 //        $(window).on('load', function(){
 //            $('.content').mCustomScrollbar();
 //        });
-//        $('#bs-example-navbar-collapse-1').slicknav({
-//            appendTo: '#top-menu-res',
-//            label: 'Main Menu'
-//        });
+        $('#bs-example-navbar-collapse-1').slicknav({
+            appendTo: '#top-menu-res',
+            label: 'Main Menu'
+        });
         jQuery(".colorbox").colorbox({
             iframe: true,
             innerWidth: '90%', innerHeight: '70%',
@@ -320,7 +316,6 @@
 {!! Html::script('assets-new/js/jquery.matchHeight-min.js') !!}
 {!! Html::script('assets-new/js/jquery.backstretch.min.js') !!}
 {!! Html::script('js/colorbox-master/jquery.colorbox-min.js') !!}
-{!! Html::script('js/toaster/jquery.toast.js') !!}
 @yield('js')
 @yield('addteamjs')
 

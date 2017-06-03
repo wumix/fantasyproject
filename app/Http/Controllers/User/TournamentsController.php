@@ -165,6 +165,8 @@ class TournamentsController extends Controller
     function playTournament($team_id, $tournament_id)
 
     {
+//        echo getUserTeamPlayersCount($team_id);
+//        die;
 
         // echo getUserTeamPlayersCount($team_id);
         // die;

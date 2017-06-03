@@ -30,8 +30,6 @@
 
     @yield('css')
     <style>
-
-
         .slick_nav li {
             list-style: none;
             overflow: hidden;
@@ -70,8 +68,7 @@
 <nav class="bg-primary navbar navbar-default navbar-fixed-top">
     <!--Menu-->
 
-    <!-------------->
-    <div class="container-fluid">
+      <div class="container-fluid">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header main-top-menu">

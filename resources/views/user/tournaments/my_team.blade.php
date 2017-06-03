@@ -294,7 +294,7 @@
                                     <li>
 
                                             <span id="user_team_complete" class="pull-right">
-                                                @if(getUserTeamPlayersCount($team_id))
+                                                @if(getUserTeamPlayersCount($team_id)==11)
 <a class="btn btn-green" style="margin-top: 5px;" href="{{route("team-completed", ['team_id'=>$team_id]) }}">Confirm Team</a>
                                                 @endif
 

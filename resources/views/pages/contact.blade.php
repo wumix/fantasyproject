@@ -36,7 +36,7 @@
                                 <span class="input-group-addon signinforminputs">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                 </span>
-                                <input type="text" class="form-control signinforminputs1" name="Name"
+                                <input type="text" class="form-control signinforminputs1" name="name"
                                        id="name" placeholder="Name" required="">
 
 
@@ -46,7 +46,7 @@
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
                                 </span>
                                 <input type="email" class="form-control signinforminputs1"
-                                       name="name" id="name" placeholder="Email" required="">
+                                       name="email" id="name" placeholder="Email" required="">
 
 
                             </div>
@@ -55,7 +55,7 @@
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                 </span>
                                 <input type="subject" class="form-control signinforminputs1"
-                                       name="name" id="name" placeholder="Subject" required="">
+                                       name="subject" id="name" placeholder="Subject" required="">
 
 
                             </div>

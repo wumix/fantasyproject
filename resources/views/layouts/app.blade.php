@@ -32,7 +32,7 @@
     @yield('css')
     <style>
 
-
+        #bs-example-navbar-collapse-1{display: block}
         .slick_nav li {
             list-style: none;
             overflow: hidden;

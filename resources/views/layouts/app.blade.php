@@ -20,6 +20,7 @@
     {!! Html::style('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!}
     {!! Html::style('https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic') !!}
 
+    {!! Html::style('js/toaster/jquery.toast.css') !!}
     {!! Html::style('js/colorbox-master/example1/colorbox.css') !!}
     {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}
     {!! Html::style('assets-new/vendor/magnific-popup/magnific-popup.css') !!}
@@ -316,6 +317,7 @@
 {!! Html::script('assets-new/js/jquery.matchHeight-min.js') !!}
 {!! Html::script('assets-new/js/jquery.backstretch.min.js') !!}
 {!! Html::script('js/colorbox-master/jquery.colorbox-min.js') !!}
+{!! Html::script('js/toaster/jquery.toast.js') !!}
 @yield('js')
 @yield('addteamjs')
 

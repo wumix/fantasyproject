@@ -137,7 +137,7 @@ class LoginController extends Controller
     {
         $userObj = new \App\User;
         $socialProvider = 'facebook';
-        $user = $userObj->createOrGetUser(Socialite::driver('facebook')->user(), $socialProvider);
+        $user = $userObj->createOrGetUser(Socialite::driver('facebook')->stateless()->user(), $socialProvider);
         if (empty($user)) {
             return redirect()->to(route('signUp'))
                 ->withErrors(['We are not able to grab your facebook email due to some restrictions. Please signup from here.']);

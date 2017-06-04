@@ -82,8 +82,7 @@ class User extends Authenticatable
     {
         //to handle facebook email not found exception
         if (empty($providerUser->getEmail())) {
-            return redirect()->to(route('signUp'))
-                ->withErrors(['We are not able to grab your facebook email due to some restrictions. Please signup from here.']);
+            return [];
         }
         //End fb error handle
         $account = User::where('email', $providerUser->getEmail())->first();

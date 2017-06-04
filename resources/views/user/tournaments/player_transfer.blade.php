@@ -1,12 +1,7 @@
-@php
-
-
-    //dd($roles);
-    //dd($player_info);
-
-@endphp
 @extends('layouts.app')
-
+@section('title')
+    Player transfer
+@stop
 @section('content')
 
     <section>
@@ -36,7 +31,7 @@
                                         <thead class="main-taible-head">
                                         <tr>
                                             <th class="border-r th1" style="min-width: 300px;
-">PLAYERS
+">PLAYER
                                             </th>
                                             <th class="border-r">ROLES</th>
                                             <th class="border-r">POINTS</th>
@@ -85,7 +80,7 @@
 
                         <div class="col-md-12 no-padding">
                             <h4>
-                                Add players to participate in tournament
+                                Transfer with:
                             </h4>
 
                             <div class="panel with-nav-tabs panel">
@@ -113,8 +108,10 @@
                                                         <thead class="main-taible-head1">
                                                         <tr>
 
-                                                            <th class=" th1" style="min-width: 300px;">PLAYERS</th>
-
+                                                            <th class=" th1" style="min-width: 300px;">PLAYER</th>
+                                                            <th>
+                                                                Team
+                                                            </th>
                                                             <th class="text-center">PRICE</th>
                                                             <th class="text-center">ACTION</th>
                                                         </tr>
@@ -136,7 +133,13 @@
 
                                                                     {{$player['name']}}
                                                                 </td>
-
+                                                                <td class="text-left">
+                                                                    <?php
+                                                                    if (!empty($player['player_actual_teams'])) {
+                                                                        echo $player['player_actual_teams'][0]['name'];
+                                                                    }
+                                                                    ?>
+                                                                </td>
                                                                 <td class=" point"><p
                                                                             class="myteamtt">
                                                                         <?php
@@ -228,7 +231,7 @@
                             allowToastClose: true,
                             loaderBg: '#92B713'  // To change the background
                         });
-                        setTimeout(function(){
+                        setTimeout(function () {
                             var url = '{{route("teamdetail", ['team_id'=>'ttid']) }}';
                             url = url.replace('ttid', data.team_id);
                             window.location.href = url;

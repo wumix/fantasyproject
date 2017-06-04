@@ -161,7 +161,6 @@ class TournamentsController extends Controller
     }
 
 
-
     function playTournament($team_id, $tournament_id)
 
     {
@@ -271,11 +270,14 @@ class TournamentsController extends Controller
         },
             'players' => function ($q) use ($selectedPlayers) {
                 $q->whereNotIn('players.id', $selectedPlayers);
+            },
+            'players.player_actual_teams' => function ($query) use ($tournament_id) {
+                $query->where('tournament_id', $tournament_id);
             }
         ])->where('id', $data['player_info']['player_roles'][0]['id'])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
             $query->where('tournament_id', $tournament_id);
         })->get()->toArray();
-        // dd($data['roles']);
+         //dd($data['roles']);
 
         return view('user.tournaments.player_transfer', $data);
     }

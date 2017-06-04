@@ -122,6 +122,7 @@ class LoginController extends Controller
      */
     public function redirectToFacebookProvider()
     {
+
         return Socialite::driver('facebook')
             ->scopes(['email', 'public_profile'])
             ->redirect();

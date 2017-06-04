@@ -7,7 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Socialite\Contracts\User as ProviderUser;
 use Laravel\Socialite\Facades\Socialite;
 
-class User extends Authenticatable {
+class User extends Authenticatable
+{
 
     use Notifiable;
 
@@ -18,7 +19,7 @@ class User extends Authenticatable {
      */
     protected $table = 'users';
     protected $fillable = [
-        'name', 'email','about_me', 'profile_pic', 'password', 'user_type', 'provider_user_id', 'remember_token', 'provider','last_login'
+        'name', 'email', 'about_me', 'profile_pic', 'password', 'user_type', 'provider_user_id', 'remember_token', 'provider', 'last_login'
     ];
 
     /**
@@ -42,7 +43,8 @@ class User extends Authenticatable {
      * Check if this is an admin
      * @return type
      */
-    public static function isAdmin() {
+    public static function isAdmin()
+    {
         return (\Auth::user()->user_type == 0) ? true : false;
     }
 
@@ -50,13 +52,16 @@ class User extends Authenticatable {
      * Check if this is an blogger
      * @return type
      */
-    public static function isBlogger() {
+    public static function isBlogger()
+    {
         return (\Auth::user()->user_type == 0 || \Auth::user()->user_type == 2) ? true : false;
     }
 
-    public static function isUser() {
+    public static function isUser()
+    {
         return (\Auth::user()->user_type == 1) ? true : false;
     }
+
     public function comments()
     {
         return $this->hasMany('\App\Comment');
@@ -67,14 +72,20 @@ class User extends Authenticatable {
      * @param \App\ProviderUser $providerUser
      * @return type
      */
-    public function leaderboard() {
+    public function leaderboard()
+    {
 
         return $this->hasMany('App\LeaderBoard', 'user_id', 'id');
     }
 
-    public function createOrGetUser(ProviderUser $providerUser, $socialProvider) {
+    public function createOrGetUser(ProviderUser $providerUser, $socialProvider)
+    {
         //to handle facebook email not found exception
-      // if(empty($providerUser->getEmail()))   return redirect()->route('signUp') ;
+        if (empty($providerUser->getEmail())) {
+            return redirect()->to(route('signUp'))
+                ->withErrors(['We are not able to grab your facebook email due to some restrictions. Please signup from here.']);
+        }
+        //End fb error handle
         $account = User::where('email', $providerUser->getEmail())->first();
         if ($account) {
             return $account;
@@ -83,14 +94,14 @@ class User extends Authenticatable {
             $user = User::whereEmail($providerUser->getEmail())->first();
             if (!$user) {
                 $user = User::create([
-                            'email' => $providerUser->getEmail(),
-                            'name' => $providerUser->getName(),
-                            'user_type' => '1',
-                            'profile_pic' => $providerUser->getAvatar(),
-                            'provider_user_id' => $providerUser->getId(),
-                            'provider' => $socialProvider,
-                            'password' => bcrypt(str_random(8)),
-                            'remember_token' => bcrypt(str_random(16))
+                    'email' => $providerUser->getEmail(),
+                    'name' => $providerUser->getName(),
+                    'user_type' => '1',
+                    'profile_pic' => $providerUser->getAvatar(),
+                    'provider_user_id' => $providerUser->getId(),
+                    'provider' => $socialProvider,
+                    'password' => bcrypt(str_random(8)),
+                    'remember_token' => bcrypt(str_random(16))
 
                 ]);
                 //adding user registration points

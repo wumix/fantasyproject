@@ -14,17 +14,30 @@
                     <div class="page-content">
                         <div class="form-container">
                             <!--Form-->
-                            <div class="text-center col-md-12 col">
-                                <div class="gbtn">
-                                    <a href="{{route('facebookLogin')}}" class="btn btn-fb-login">
-                                        Signup Using Facebook
-                                    </a>
-                                </div>
-                                <div class="lines mt26">
-                                    <h4 class="linor">OR</h4>
-                                </div>
-                            </div>
+
+
+
                             <div class="col-md-8 col-md-offset-2">
+                                <div class="text-center col-md-12 col">
+                                    @if (count($errors) > 0)
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @else
+                                        <div class="gbtn">
+                                            <a href="{{route('facebookLogin')}}" class="btn btn-fb-login">
+                                                Signup Using Facebook
+                                            </a>
+                                        </div>
+                                        <div class="lines mt26">
+                                            <h4 class="linor">OR</h4>
+                                        </div>
+                                    @endif
+                                </div>
                                 <form class="form-horizontal" role="form" method="POST"
                                       action="{{ route('register') }}">
                                     {{ csrf_field() }}

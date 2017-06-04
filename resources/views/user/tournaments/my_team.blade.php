@@ -11,11 +11,9 @@
         }
 
         .point-summery {
-            position: fixed;
-            right: 15px;
-            top: 35%;
             padding: 8px;
             box-shadow: 5px 5px 5px 5px #CECECE;
+            background: #fff;
         }
 
         .players-cal-summery {
@@ -31,6 +29,14 @@
 
         .players-cal-summery li:last-child {
             border-bottom: none;
+        }
+
+        @media screen and (min-width: 1000px) {
+            .point-summery {
+                position: fixed;
+                right: 15px;
+                top: 35%;
+            }
         }
     </style>
 
@@ -295,7 +301,8 @@
 
                                             <span id="user_team_complete" class="pull-right">
                                                 @if(getUserTeamPlayersCount($team_id)==11)
-<a class="btn btn-green" style="margin-top: 5px;" href="{{route("team-completed", ['team_id'=>$team_id]) }}">Confirm Team</a>
+                                                    <a class="btn btn-green" style="margin-top: 5px;"
+                                                       href="{{route("team-completed", ['team_id'=>$team_id]) }}">Confirm Team</a>
                                                 @endif
 
                                             </span>
@@ -411,9 +418,9 @@
                         if (data.teamsuccess == true) {
 
 
-                             var teamCompletedUrl = '{{route("team-completed", ['team_id'=>'id']) }}';
-                            teamCompletedUrl=teamCompletedUrl.replace('id',data.team_id)
-                             var html='<a href="'+teamCompletedUrl+'" class="btn btn-green" style="margin-top: 5px;">Confirm Team</a>';
+                            var teamCompletedUrl = '{{route("team-completed", ['team_id'=>'id']) }}';
+                            teamCompletedUrl = teamCompletedUrl.replace('id', data.team_id)
+                            var html = '<a href="' + teamCompletedUrl + '" class="btn btn-green" style="margin-top: 5px;">Confirm Team</a>';
                             // alert(html);
                             $('#user_team_complete').html(html);
                             // teamCompletedUrl = teamCompletedUrl.replace('id', data.team_id);

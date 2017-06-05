@@ -206,7 +206,7 @@ margin-bottom:20px !important;
 		<div class="back-ground clearfix" style="padding-top:32px;">
 
 			<div class="col-md-3 responcve_type">
-				<img src="{{getUploadsPath($player['profile_pic'])}}" alt="no-img">
+				<img height="325" width="255px" src="{{getUploadsPath($player['profile_pic'])}}" alt="no-img">
 			</div>
 			<div class="col-md-9 equal_locate">
 				<span class="plyer_name">Name: <span>{{$player['name']}}</span></span>

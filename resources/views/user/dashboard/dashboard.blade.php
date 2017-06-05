@@ -385,16 +385,14 @@
         }
 
         @media all and (min-width: 961px) and (max-width: 1200px) {
-            .right_sec {
-                margin-top: 30px;
-            }
+
 
             .upcoming_sec {
                 margin-bottom: 50px;
             }
 
             .btn_club {
-                left: 37%;
+                left: 20%;
             }
 
             .circle_area_for img {
@@ -405,6 +403,9 @@
         }
 
         @media all and (min-width: 769px) and (max-width: 960px) {
+            .owner_text {
+                font-size: 27px;
+            }
             .right_sec {
                 margin-top: 30px;
             }
@@ -425,6 +426,11 @@
         }
 
         @media all and (min-width: 100px) and (max-width: 768px) {
+            .owner_text {
+                font-size: 19px;
+                font-weight: bold;
+            }
+
             .right_sec {
                 margin-top: 30px;
             }
@@ -451,17 +457,24 @@
             .left_upcoming {
                 width: 100%;
             }
+            .abot_me{
+            margin-top: 25px;
+        }
+
         }
 
         @media all and (min-width: 100px) and (max-width: 480px) {
+            .owner_text {
+                font-size: 15px;
+                font-weight: bold;
+            }
+            .btn_club {
+                left: 20%;
+            }
+
             .text_con {
                 bottom: -123px;
             }
-
-            .btn_club {
-                left: 32%;
-            }
-
             .sect {
                 display: inline-block;
                 float: right;

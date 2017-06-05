@@ -281,13 +281,13 @@
     border: 2px solid #ddd;
 }
 .th1{
-    border-radius: 8px 0 0 0 ;
+    border-radius: 0px 0 0 0 ;
 }
 .th11{
     border-radius: 0px 0 0 0 ;
 }
 .th2{
-    border-radius: 0 8px 0 0 ;
+    border-radius: 0 0px 0 0 ;
 }
 .brr1{
     border-radius:  0 0 0 8px;

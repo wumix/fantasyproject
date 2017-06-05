@@ -2,6 +2,44 @@
 @section('title')
     Player transfer
 @stop
+@section('css')
+    <style>
+        .small-sec-heading {
+            color: orangered;
+            font-family: Raleway
+        }
+
+        .point-summery {
+            padding: 8px;
+            box-shadow: 5px 5px 5px 5px #CECECE;
+            background: #fff;
+        }
+
+        .players-cal-summery {
+            margin: 0;
+            padding: 0;
+        }
+
+        .players-cal-summery li {
+            list-style: none;
+            border-bottom: 1px solid #CECECE;
+            padding: 5px 0;
+        }
+
+        .players-cal-summery li:last-child {
+            border-bottom: none;
+        }
+
+        @media screen and (min-width: 1000px) {
+            .point-summery {
+                position: fixed;
+                right: 15px;
+                top: 35%;
+            }
+        }
+    </style>
+
+@stop
 @section('content')
 
     <section>
@@ -25,16 +63,16 @@
 
                         </div>
                         <div class="row mt26">
-                            <div class="col-md-12">
+                            <div class="col-md-9">
                                 <div class="table-responsive">
                                     <table class="table table-striped" id="tortable">
                                         <thead class="main-taible-head">
                                         <tr>
                                             <th class="border-r th1" style="min-width: 300px;
-">PLAYER
+">Player
                                             </th>
-                                            <th class="border-r">ROLES</th>
-                                            <th class="border-r">POINTS</th>
+                                            <th class="border-r">Roles</th>
+                                            <th class="border-r">Price</th>
                                             <th class="th2" colspan="2">Actions</th>
                                         </tr>
                                         </thead>
@@ -77,116 +115,144 @@
                         </div>
 
                         <!--Choose player-->
+                        <div class="row mt26">
+                            <div class="col-md-9">
+                                <h4>
+                                    Transfer with:
+                                </h4>
 
-                        <div class="col-md-12 no-padding">
-                            <h4>
-                                Transfer with:
-                            </h4>
+                                <div class="panel with-nav-tabs panel">
+                                    <div class="panel-heading">
+                                        <ul class="nav nav-tabs">
 
-                            <div class="panel with-nav-tabs panel">
-                                <div class="panel-heading">
-                                    <ul class="nav nav-tabs">
+                                            @foreach($roles as $key => $role)
 
-                                        @foreach($roles as $key => $role)
+                                                <li id="tbbox-{{$key}}" class="{!! ($key == 0) ? 'active':'' !!}">
+                                                    <a id="tabt-{{$key}}" href="#tab{{$role['id']}}default"
+                                                       data-toggle="tab">{{$role['name']}}</a>
+                                                </li>
 
-                                            <li id="tbbox-{{$key}}" class="{!! ($key == 0) ? 'active':'' !!}">
-                                                <a id="tabt-{{$key}}" href="#tab{{$role['id']}}default"
-                                                   data-toggle="tab">{{$role['name']}}</a>
-                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="tab-content">
+                                            {{--first div--}}
+                                            @foreach($roles as $key=>$role)
+                                                <div class="tab-pane fade {!! ($key == 0) ? 'in active':'' !!}"
+                                                     id="tab{{$role['id']}}default">
+                                                    <div class="table-responsive">
+                                                        <table class="table " id="tortable">
+                                                            <thead class="main-taible-head1">
+                                                            <tr>
 
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="tab-content">
-                                        {{--first div--}}
-                                        @foreach($roles as $key=>$role)
-                                            <div class="tab-pane fade {!! ($key == 0) ? 'in active':'' !!}"
-                                                 id="tab{{$role['id']}}default">
-                                                <div class="table-responsive">
-                                                    <table class="table " id="tortable">
-                                                        <thead class="main-taible-head1">
-                                                        <tr>
-
-                                                            <th class=" th1" style="min-width: 300px;">PLAYER</th>
-                                                            <th>
-                                                                Team
-                                                            </th>
-                                                            <th class="text-center">PRICE</th>
-                                                            <th class="text-center">ACTION</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody class="main-taible-body">
-
-                                                        @foreach($role['players'] as $player)
-                                                            <?php if (empty($player['player_tournaments'])) continue;   ?>
-                                                            <tr id="player_tr-{{$player['id']}}" class="cwt">
-
-                                                                <td class=" th11">
-                                                                    <a class="colorbox"
-                                                                       href="{{route('showPlayerStats', ['player_id'=>$player['id']])}}">
-                                                                        <img id="myteamtimg" class="img-circle"
-                                                                             style="width: 80px;float: left;margin-right: 24px;"
-                                                                             src="{{getUploadsPath($player['profile_pic'])}}">
-                                                                    </a>
-
-
-                                                                    {{$player['name']}}
-                                                                </td>
-                                                                <td class="text-left">
-                                                                    <?php
-                                                                    if (!empty($player['player_actual_teams'])) {
-                                                                        echo $player['player_actual_teams'][0]['name'];
-                                                                    }
-                                                                    ?>
-                                                                </td>
-                                                                <td class=" point"><p
-                                                                            class="myteamtt">
-                                                                        <?php
-                                                                        $playerids = 0;
-                                                                        $playerThisTournamnetPrice = 0;
-                                                                        // dd($player);
-                                                                        if (!empty($player['player_tournaments'][0]['pivot']['player_price'])) {
-                                                                            $playerThisTournamnetPrice = $player['player_tournaments'][0]['pivot']['player_price'];
-                                                                        }
-
-                                                                        //                                                            if (!empty($player['player_tournaments'][0]['id'])) {
-                                                                        //                                                                $playerids =$player['player_tournaments'][0]['id'];
-                                                                        //                                                            }
-                                                                        ?>
-                                                                        {{$playerThisTournamnetPrice}}
-
-                                                                    </p>
-                                                                </td>
-
-                                                                <td>
-                                                                    <a onclick="return confirm('Are you sure you want to transfer');"
-                                                                       style="text-transform: uppercase"
-                                                                       id="btn-player-{{$player['id']}}"
-                                                                       href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$playerThisTournamnetPrice}}')"
-                                                                       class="btn btn-md bttor1">
-                                                                        TRANSFER WITH {{$player_info['name']}}
-                                                                    </a>
-                                                                </td>
-
-
+                                                                <th class=" th1" style="min-width: 300px;">Player</th>
+                                                                <th>
+                                                                    Team
+                                                                </th>
+                                                                <th class="text-center">Price</th>
+                                                                <th class="text-center">Action</th>
                                                             </tr>
-                                                        @endforeach
+                                                            </thead>
+                                                            <tbody class="main-taible-body">
 
-                                                        </tbody>
-                                                    </table>
+                                                            @foreach($role['players'] as $player)
+                                                                <?php if (empty($player['player_tournaments'])) continue;   ?>
+                                                                <tr id="player_tr-{{$player['id']}}" class="cwt">
+
+                                                                    <td class=" th11">
+                                                                        <a class="colorbox"
+                                                                           href="{{route('showPlayerStats', ['player_id'=>$player['id']])}}">
+                                                                            <img id="myteamtimg" class="img-circle"
+                                                                                 style="width: 80px;float: left;margin-right: 24px;"
+                                                                                 src="{{getUploadsPath($player['profile_pic'])}}">
+                                                                        </a>
+
+
+                                                                        {{$player['name']}}
+                                                                    </td>
+                                                                    <td class="text-left">
+                                                                        <?php
+                                                                        if (!empty($player['player_actual_teams'])) {
+                                                                            echo $player['player_actual_teams'][0]['name'];
+                                                                        }
+                                                                        ?>
+                                                                    </td>
+                                                                    <td class=" point"><p
+                                                                                class="myteamtt">
+                                                                            <?php
+                                                                            $playerids = 0;
+                                                                            $playerThisTournamnetPrice = 0;
+                                                                            // dd($player);
+                                                                            if (!empty($player['player_tournaments'][0]['pivot']['player_price'])) {
+                                                                                $playerThisTournamnetPrice = $player['player_tournaments'][0]['pivot']['player_price'];
+                                                                            }
+
+                                                                            //                                                            if (!empty($player['player_tournaments'][0]['id'])) {
+                                                                            //                                                                $playerids =$player['player_tournaments'][0]['id'];
+                                                                            //                                                            }
+                                                                            ?>
+                                                                            {{$playerThisTournamnetPrice}}
+
+                                                                        </p>
+                                                                    </td>
+
+                                                                    <td>
+                                                                        <a onclick="return confirm('Are you sure you want to transfer');"
+                                                                           style="text-transform: uppercase"
+                                                                           id="btn-player-{{$player['id']}}"
+                                                                           href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$player['player_tournaments'][0]['id']}}','{{$playerThisTournamnetPrice}}')"
+                                                                           class="btn btn-md bttor1">
+                                                                            TRANSFER WITH {{$player_info['name']}}
+                                                                        </a>
+                                                                    </td>
+
+
+                                                                </tr>
+                                                            @endforeach
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
                                                 </div>
-
-                                            </div>
-                                        @endforeach
+                                            @endforeach
 
 
+                                        </div>
                                     </div>
                                 </div>
+
+
                             </div>
+                            <div class="point-summery col-md-3" id="point-summery">
+                                <h4 class="small-sec-heading">
+                                    Available points <span class="pull-right"
+                                                           id="your_points1">{{getUserTotalScore(Auth::id())}}</span>
+                                </h4>
+                                <hr class="light"/>
+                                <h5 style="color: #92B713;">
+                                    Transfer Rules
+                                </h5>
+                                <ul class="players-cal-summery">
+                                    <li>
+                                        You can Transfer a palyer with in available points OR
+                                        {{--<span class="pull-right">--}}
+                                           {{--<span id="remaining-batsman">{{getPlayerNoInTeam(\Auth::id(),$team_id,5)}}</span>/4--}}
+                                        {{--</span>--}}
+                                    </li>
+                                    <li>
+                                        You can swap a higher priced player with lower priced player.
+                                        {{--Bowler--}}
+                                        {{--<span class="pull-right">--}}
+                                            {{--<span id="remaining-bowler">{{getPlayerNoInTeam(\Auth::id(),$team_id,6)}}</span>/4--}}
+                                        {{--</span>--}}
+                                    </li>
 
 
-                            <!--/Choose player-->
+
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -11,6 +11,5 @@ return [
     'sitewise_time_format' => 'H:i:s',
     'email_from' => 'info@gamithonfantasy.com',
     ///////
-    //'facebook_redirect' => env('APP_ENV') == 'local' ? 'http://development.gamithonfantasy.com/login/facebook/callback' : 'http://gamithonfantasy.com/login/facebook/callback',
-    'facebook_redirect' => env('APP_ENV') == 'local' ? 'http://gamithonfantasy.com/login/facebook/callback' : 'http://gamithonfantasy.com/login/facebook/callback'
+    'facebook_redirect' => env('FACBOOK_REDIRECT', 'http://gamithonfantasy.com/login/facebook/callback'),
 ];

@@ -50,6 +50,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/tournament-detail/{tournament_id}', 'User\TournamentsController@showTournamentDetails')->name('showTournament');
     Route::group(['middleware' => ['is_user']], function () {
         Route::group(['prefix' => 'user'], function () {
+
+            Route::get('/check-winner/{id}', 'user\ChallengeController@checkWinner')->name('adasd');
             Route::get('/send-challenge', 'user\ChallengeController@sendChallenge')->name('adasd');
             Route::get('/accept-challenge/{user_id}', 'user\ChallengeController@acceptChallenge')->name('accept');
             Route::get('/show-challenge/{id}', 'user\ChallengeController@showUserChallenges')->name('accept');

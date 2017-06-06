@@ -29,5 +29,11 @@ class ChallengeController extends Controller
         $challenge->save();
 
     }
+    public function checkWinner($user_id){
+       $user_1_id=$this->userChallenge->where('user_1_id',\Auth::id())->get()->toArray();
+       dd($user_1_id);
+
+    }
+
 
 }

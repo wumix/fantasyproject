@@ -9,9 +9,6 @@ use App\Http\Controllers\Controller;
 
 class LeaderboardController extends Controller
 {
-
-    //
-
     function index($tournament_id)
     {
         $userid = \App\User::all()->toArray();

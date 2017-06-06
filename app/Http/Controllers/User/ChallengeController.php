@@ -18,12 +18,16 @@ class ChallengeController extends Controller
         $this->userChallenge->fill($request->all());
         $this->userChallenge->save();
     }
-    public function showChallenges($user_id){
-        $this->userChallenge->get();
+    public function showUserChallenges(){
+        $r=$this->userChallenge->where('user_2_id',\Auth::id())->get()->toArray();
+        //$r=$this->userChallenge->find('12')->get()->toArray();
+        dd($r);
     }
-    public function acceptChallenge($user_id){
-        $challenge=$this->userChallenge->findOrFail($user_id);
-        $challenge->is_accepted;
+    public function acceptChallenge($id){ //challenge id
+        $challenge=$this->userChallenge->findOrFail($id);
+        $challenge->is_accepted=$id;
+        $challenge->save();
+
     }
 
 }

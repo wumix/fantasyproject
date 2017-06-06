@@ -52,6 +52,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::group(['prefix' => 'user'], function () {
             Route::get('/send-challenge', 'user\ChallengeController@sendChallenge')->name('adasd');
             Route::get('/accept-challenge/{user_id}', 'user\ChallengeController@acceptChallenge')->name('accept');
+            Route::get('/show-challenge/{id}', 'user\ChallengeController@showUserChallenges')->name('accept');
             Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
             Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
             Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');

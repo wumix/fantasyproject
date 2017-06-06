@@ -50,6 +50,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/tournament-detail/{tournament_id}', 'User\TournamentsController@showTournamentDetails')->name('showTournament');
     Route::group(['middleware' => ['is_user']], function () {
         Route::group(['prefix' => 'user'], function () {
+            Route::get('/send-challenge', 'user\ChallengeController@sendChallenge')->name('adasd');
+            Route::get('/accept-challenge/{user_id}', 'user\ChallengeController@acceptChallenge')->name('accept');
             Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
             Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
             Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');
@@ -166,7 +168,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
         });
 //tournamentroutes
         Route::group(['prefix' => 'tournaments'], function () {
-            Route::get('/delete/{tournament_id}/{player_id}','Admin\TournamentsController@deletePlayerFromTournament')->name('deletePlayerFromTournament');
+            Route::get('/delete/{tournament_id}/{player_id}', 'Admin\TournamentsController@deletePlayerFromTournament')->name('deletePlayerFromTournament');
             Route::get('/', 'Admin\TournamentsController@index')->name('Tournamentslist');
             Route::get('/add', 'Admin\TournamentsController@addTournamentForm')->name('addTournament'); //showsaddplayerform
             Route::post('/add', 'Admin\TournamentsController@add')->name('postAddTournament');

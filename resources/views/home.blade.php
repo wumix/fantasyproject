@@ -71,10 +71,10 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 count-down no-padding">
-               @if(!empty($leaders))
-                                @foreach($leaders as $leader)
-                                    <div class="col-md-4 text-center">
-                                        <div class="circle2">
+                                @if(!empty($leaders))
+                                    @foreach($leaders as $leader)
+                                        <div class="col-md-4 text-center">
+                                            <div class="circle2">
                         <span id="getting-started1">
                           <img style="width: 50px;
     height: 50px; border-radius: 50%;
@@ -83,12 +83,12 @@
 
 " src="{{getUploadsPath($leader['user']['profile_pic'])}}"/>
                         </span>
-                                            <p class="no-mrg-in-home ">{{$leader['user']['name']}}</p>
-                                            <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
+                                                <p class="no-mrg-in-home ">{{$leader['user']['name']}}</p>
+                                                <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                @endforeach
-                   @endif
+                                    @endforeach
+                                @endif
 
                             </div>
                         </div>
@@ -276,6 +276,7 @@
         </div>
         <div class="container">
             <div class="row">
+
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="service-box">
                         <a>
@@ -315,6 +316,52 @@
     <section id="portfolio">
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Australia Vs Bangladesh
+                                </div>
+                                <div class="project-name">
+                                    Match Abandoned
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Australia Vs Bangladesh
+                                </div>
+                                <div class="project-name">
+                                    Match Abandoned
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt=" DD VS GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Australia Vs Bangladesh
+                                </div>
+                                <div class="project-name">
+                                    Match Abandoned
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" DD VS GL">
@@ -401,7 +448,7 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                   South Africa Vs Srilanka
+                                    South Africa Vs Srilanka
                                 </div>
                                 <div class="project-name">
                                     South Africa won by 96 runs
@@ -412,52 +459,7 @@
                 </div>
 
 
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Australia Vs New Zealand
-                                </div>
-                                <div class="project-name">
-                                    Match Abandoned
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Australia Vs New Zealand
-                                </div>
-                                <div class="project-name">
-                                    Match Abandoned
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Australia Vs New Zealand
-                                </div>
-                                <div class="project-name">
-                                    Match Abandoned
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
 
             </div>

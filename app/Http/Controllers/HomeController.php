@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\GameAction;
 use App\Http\Requests;
 use App\Mail\MyMail;
@@ -80,8 +81,8 @@ class HomeController extends Controller
 
     public function index()
     {
-       // \Mail::to("tooovim@yahoo.com")->send(new \App\Mail\SignUp("hi Adeel"));
-       // \Mail::to("alraadu58@gmail.com")->send(new \App\Mail\SignUp("hi Adeel"));
+        // \Mail::to("tooovim@yahoo.com")->send(new \App\Mail\SignUp("hi Adeel"));
+        // \Mail::to("alraadu58@gmail.com")->send(new \App\Mail\SignUp("hi Adeel"));
         // dd($this->getServerTimeAsGMT());
         $datetime = new \DateTime();
         $date = $datetime->format('Y-m-d H:i:s');
@@ -90,7 +91,7 @@ class HomeController extends Controller
         $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', $date);
         $data['upcomming_tournaments_list'] = $upcommingTour->toArray(); //upcomming tournament of active
         $data['matches'] = \App\Match::getNextMatch();
-        $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
+        $data['leaders'] = \App\Leaderboard::where('tournament_id', config('const.tournament_id'))->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
         $data['news'] = \App\BlogPost::where('post_type', 'news')->take(3)->orderBy('id', 'DESC')->get()->toArray();
         return view('home', $data);
     }

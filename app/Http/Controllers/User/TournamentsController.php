@@ -277,7 +277,7 @@ class TournamentsController extends Controller
         ])->where('id', $data['player_info']['player_roles'][0]['id'])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
             $query->where('tournament_id', $tournament_id);
         })->get()->toArray();
-         //dd($data['roles']);
+        //dd($data['roles']);
 
         return view('user.tournaments.player_transfer', $data);
     }
@@ -376,7 +376,7 @@ class TournamentsController extends Controller
 //        dd($player_in_price);
 
 
-            if ($request->player_out_price >= ($player_in_price+getUserTotalScore(Auth::id()))) {
+            if (((getUserTotalScore(Auth::id()))+$request->player_out_price )>= ($player_in_price)) {
 
 
                 //    dd(get_individual_player_score($tournament_id, $request->team_id, 20));
@@ -392,9 +392,11 @@ class TournamentsController extends Controller
                 $transferDate = $transferDate->format('Y-m-d H:i:sP');
                 //  $playertransfers->transfer_date = $transferDate;
 //                    $playertransfers->save();
+                $netpointsdeduction=($request->player_out_price)-($player_in_price);
+                $netpointsdeduction=abs($netpointsdeduction);
                 $player_out_score = get_individual_player_score($tournament_id, $request->team_id, $request->player_out_id);
 
-                $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => 0]);
+                $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => $netpointsdeduction]);
                 \App\UserPointsConsumed::insert($array);
                 $objResponse['success'] = true;
                 $objResponse['msg'] = "Player transfered successfully";
@@ -510,7 +512,7 @@ class TournamentsController extends Controller
         $objResponse['success'] = false;
         if ($tournamentMaxPlayers > $currentNoPlayers) {
             if ($difference > 15 || $difference < 15) {
-                if ($request->player_price <= getUserTotalScore(\Auth::id())) {
+                if ($request->player_price <= getUserTotalScore(Auth::id())) {
                     if ($this->giveanygoodname(Auth::id(), $request->team_id, $request->role_id) < $this->playerRoleLimit($request->tournament_id, $request->role_id)) {
 
                         $objteam = \App\UserTeam::find($request->team_id);

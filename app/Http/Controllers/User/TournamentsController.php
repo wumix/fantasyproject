@@ -392,9 +392,11 @@ class TournamentsController extends Controller
                 $transferDate = $transferDate->format('Y-m-d H:i:sP');
                 //  $playertransfers->transfer_date = $transferDate;
 //                    $playertransfers->save();
+                $netpointsdeduction=($request->player_out_price)-($player_in_price);
+                $netpointsdeduction=abs($netpointsdeduction);
                 $player_out_score = get_individual_player_score($tournament_id, $request->team_id, $request->player_out_id);
 
-                $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => 0]);
+                $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => $netpointsdeduction]);
                 \App\UserPointsConsumed::insert($array);
                 $objResponse['success'] = true;
                 $objResponse['msg'] = "Player transfered successfully";

@@ -33,14 +33,13 @@ class HomeController extends Controller
      */
     public function newdash()
     {
-        $datetime = new \DateTime();
-        $date = $datetime->format('Y-m-d H:i:s');
+
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())
             ->get()
             ->toArray();
         //dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
-        $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', $date);
+        $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
         //dd($data['upcommingTour']->toArray());
         //dd($data['upcommingTour']->toArray());
         return view('user.dashboard.newdash', $data);
@@ -84,11 +83,10 @@ class HomeController extends Controller
         // \Mail::to("tooovim@yahoo.com")->send(new \App\Mail\SignUp("hi Adeel"));
         // \Mail::to("alraadu58@gmail.com")->send(new \App\Mail\SignUp("hi Adeel"));
         // dd($this->getServerTimeAsGMT());
-        $datetime = new \DateTime();
-        $date = $datetime->format('Y-m-d H:i:s');
-        $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', $date)->Where('end_date', '>=', $date);
+
+        $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
         $data['tournaments_list'] = $objTourmament->toArray(); //list of active
-        $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', $date);
+        $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
         $data['upcomming_tournaments_list'] = $upcommingTour->toArray(); //upcomming tournament of active
         $data['matches'] = \App\Match::getNextMatch();
         $data['leaders'] = \App\Leaderboard::where('tournament_id', config('const.tournament_id'))->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();

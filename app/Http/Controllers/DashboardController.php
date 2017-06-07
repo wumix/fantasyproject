@@ -40,10 +40,9 @@ class DashboardController extends Controller
 
         $tournament_id = $data['user_teams'][0]['tournament_id'];
         $date_end = \App\Tournament::where('id', $tournament_id)->firstOrFail()->end_date;
-        $datetime = new \DateTime();
-        $datenow = $datetime->format('Y-m-d H:i:s');
 
-        if ($datenow > $date_end) {
+
+        if (getGmtTime() > $date_end) {
             $transferflag = 1;
         }
         $data['transferflag'] = $transferflag;

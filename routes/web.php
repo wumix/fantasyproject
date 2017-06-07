@@ -51,10 +51,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['middleware' => ['is_user']], function () {
         Route::group(['prefix' => 'user'], function () {
 
-            Route::get('/check-winner/{id}', 'user\ChallengeController@checkWinner')->name('adasd');
-            Route::get('/send-challenge', 'user\ChallengeController@sendChallenge')->name('adasd');
-            Route::get('/accept-challenge/{user_id}', 'user\ChallengeController@acceptChallenge')->name('accept');
-            Route::get('/show-challenge/{id}', 'user\ChallengeController@showUserChallenges')->name('accept');
+            Route::get('/check-winner/{id}', 'User\ChallengeController@checkWinner')->name('adasd');
+            Route::get('/send-challenge', 'User\ChallengeController@sendChallenge')->name('adasd');
+            Route::get('/accept-challenge/{user_id}', 'User\ChallengeController@acceptChallenge')->name('accept');
+            Route::get('/show-challenge/{id}', 'User\ChallengeController@showUserChallenges')->name('accept');
             Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
             Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
             Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');

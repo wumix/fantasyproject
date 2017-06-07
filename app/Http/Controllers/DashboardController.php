@@ -58,8 +58,9 @@ class DashboardController extends Controller
         $matcheIdsAfterThisTeamMade = \App\Match::select('id')
             ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])
             ->get()->toArray();
-        echo getGmtTime();
-         dd($matcheIdsAfterThisTeamMade);
+      //  echo 'joined date'.$data['user_teams'][0]['joined_from_match_date'].'<br>';
+       // echo getGmtTime();
+         //dd($matcheIdsAfterThisTeamMade);
         if (!empty($matcheIdsAfterThisTeamMade)) {
             $matcheIdsAfterThisTeamMade = array_column($matcheIdsAfterThisTeamMade, 'id');
             //  $matcheIdsAfterThisTeamMade = [1];
@@ -106,14 +107,14 @@ class DashboardController extends Controller
     function index()
     {
         //  dd(getServerTimeAsGMT());
-        $datetime = new \DateTime();
-        $date = $datetime->format('Y-m-d H:i:s');
+//        $datetime = new \DateTime();
+//        $date = $datetime->format('Y-m-d H:i:s');
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->with('teamtournament')->orderBy('id', 'DESC')
             ->get()
             ->toArray();
         //   dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
-        $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', $date)->Where('end_date', '>=', $date);
+        $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
         $data['leaders'] = \App\Leaderboard::take(3)->select(['user_id', 'score'])->orderBy('score', 'DESC')->get()->toArray();
         //dd($data['leaders']);
         $data['user_ranking'] = 0;

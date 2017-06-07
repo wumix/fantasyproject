@@ -376,7 +376,7 @@ class TournamentsController extends Controller
 //        dd($player_in_price);
 
 
-            if ($request->player_out_price >= $player_in_price) {
+            if ($request->player_out_price >= ($player_in_price+getUserTotalScore(Auth::id()))) {
 
 
                 //    dd(get_individual_player_score($tournament_id, $request->team_id, 20));
@@ -510,7 +510,7 @@ class TournamentsController extends Controller
         $objResponse['success'] = false;
         if ($tournamentMaxPlayers > $currentNoPlayers) {
             if ($difference > 15 || $difference < 15) {
-                if ($request->player_price <= getUserTotalScore(Auth::id())) {
+                if ($request->player_price <= getUserTotalScore(\Auth::id())) {
                     if ($this->giveanygoodname(Auth::id(), $request->team_id, $request->role_id) < $this->playerRoleLimit($request->tournament_id, $request->role_id)) {
 
                         $objteam = \App\UserTeam::find($request->team_id);

@@ -512,7 +512,7 @@
     <script>
         $('#header').backstretch([
 
-            {url: '{{URL::to('assets-new/img/pak-SA-banner-gam-1.jpg')}}', fade: 500},
+           
             {
                 url: '{{URL::to('assets-new/img/icc-banner-1.jpg')}}', fade: 500
             },

@@ -17,6 +17,7 @@ class ChallengeController extends Controller
 
     public function sendChallenge(Request $request)
     { //user2 id is the id to whom challenge is being sent
+
         $this->userChallenge->fill($request->all());
         $this->userChallenge->save();
     }
@@ -36,14 +37,24 @@ class ChallengeController extends Controller
 
     }
 
-    public function checkWinner($user_id)
+    public function checkWinner($challenge_id)
     {
-        echo getServerTimeAsGMT();
-        die;
 
-        $user_1_id = $this->userChallenge->where('user_1_id', \Auth::id())->get()->toArray();
+
+        $challenge = $this->userChallenge->findOrFail($challenge_id)->first()->toArray();
+        $user_1_id=$challenge['user_1_id'];
+        $user_2_id=$challenge['user_2_id'];
+        $tournament_id=$challenge['tournament_id'];
+//        $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->
+//        where('start_date', '>=', getGmtTime());
+        \App\Leaderboard::where('user_id',$user_1_id)->where('user_id',$user_2_id);
+
+
+
+
 
         dd($user_1_id);
+        getGmtTime();
 
     }
 

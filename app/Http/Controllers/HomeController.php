@@ -82,7 +82,7 @@ class HomeController extends Controller
     {
         // \Mail::to("tooovim@yahoo.com")->send(new \App\Mail\SignUp("hi Adeel"));
         // \Mail::to("alraadu58@gmail.com")->send(new \App\Mail\SignUp("hi Adeel"));
-        dd(getGmtTime());
+       // dd(getGmtTime());
 
         $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
         $data['tournaments_list'] = $objTourmament->toArray(); //list of active

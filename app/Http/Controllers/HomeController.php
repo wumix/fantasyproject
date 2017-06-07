@@ -140,7 +140,7 @@ class HomeController extends Controller
         $emailRecievers = [
             'umair_hamid100@yahoo.com',
             'hassan@branchezconsulting.com',
-            'jahangir.yousaf@branchezconsulting.com',
+            'jahangeer.yousaf@gmail.com',
             'adeel@branchezconsulting.com'
         ];
         \Mail::send('emails.contact', array(

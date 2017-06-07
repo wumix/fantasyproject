@@ -59,7 +59,7 @@ class DashboardController extends Controller
         $matcheIdsAfterThisTeamMade = \App\Match::select('id')
             ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])
             ->get()->toArray();
-        //  dd($matcheIdsAfterThisTeamMade);
+         dd($matcheIdsAfterThisTeamMade);
         if (!empty($matcheIdsAfterThisTeamMade)) {
             $matcheIdsAfterThisTeamMade = array_column($matcheIdsAfterThisTeamMade, 'id');
             //  $matcheIdsAfterThisTeamMade = [1];

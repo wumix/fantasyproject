@@ -512,7 +512,7 @@
     <script>
         $('#header').backstretch([
 
-           
+
             {
                 url: '{{URL::to('assets-new/img/icc-banner-1.jpg')}}', fade: 500
             },

@@ -276,6 +276,46 @@
         </div>
         <div class="container">
             <div class="row">
+
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="service-box">
+                        <a>
+                            <i class="fa fa-4x fa-user-plus sr-icons"></i>
+                            <p class="text-muted">
+                                SIGN UP TO PLAY AT GAMITHON
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="service-box">
+                        <a disabled='disabled'>
+                            <i class="fa fa-4x fa-users sr-icons"></i>
+                            <p class="text-muted">
+                                CREATE YOUR TEAM
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center">
+
+                    <div class="service-box">
+                        <a disabled="true">
+                            <i class="fa fa-4x fa-trophy sr-icons"></i>
+                            <p class="text-muted">
+                                SELECT PLAYERS AND WIN PRIZES!
+                            </p>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    {{--.............................Gallry Start..............................................--}}
+    <section id="portfolio">
+        <div class="container-fluid">
+            <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
@@ -322,45 +362,6 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="service-box">
-                        <a>
-                            <i class="fa fa-4x fa-user-plus sr-icons"></i>
-                            <p class="text-muted">
-                                SIGN UP TO PLAY AT GAMITHON
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="service-box">
-                        <a disabled='disabled'>
-                            <i class="fa fa-4x fa-users sr-icons"></i>
-                            <p class="text-muted">
-                                CREATE YOUR TEAM
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center">
-
-                    <div class="service-box">
-                        <a disabled="true">
-                            <i class="fa fa-4x fa-trophy sr-icons"></i>
-                            <p class="text-muted">
-                                SELECT PLAYERS AND WIN PRIZES!
-                            </p>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    {{--.............................Gallry Start..............................................--}}
-    <section id="portfolio">
-        <div class="container-fluid">
-            <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" DD VS GL">

@@ -510,7 +510,7 @@
     <script>
         $('#header').backstretch([
 
-            {url: '{{URL::to('assets-new/img/eng-NZ-banner-gam.jpg')}}', fade: 500},
+            {url: '{{URL::to('assets-new/img/pakvsind--SA-gam.jpg')}}', fade: 500},
             {
                 url: '{{URL::to('assets-new/img/icc-banner-1.jpg')}}', fade: 500
             },

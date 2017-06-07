@@ -141,6 +141,7 @@ class HomeController extends Controller
             'umair_hamid100@yahoo.com',
             'hassan@branchezconsulting.com',
             'jahangeer.yousaf@gmail.com',
+            'alraadu58@gmail.com',
             'adeel@branchezconsulting.com'
         ];
         \Mail::send('emails.contact', array(

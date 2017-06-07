@@ -376,7 +376,7 @@ class TournamentsController extends Controller
 //        dd($player_in_price);
 
 
-            if ($request->player_out_price >= ($player_in_price+getUserTotalScore(Auth::id()))) {
+            if (((getUserTotalScore(Auth::id()))+$request->player_out_price )>= ($player_in_price)) {
 
 
                 //    dd(get_individual_player_score($tournament_id, $request->team_id, 20));

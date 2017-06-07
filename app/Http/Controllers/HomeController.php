@@ -148,9 +148,9 @@ class HomeController extends Controller
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'user_message' => $request->get('message')
-        ), function ($message) use ($request) {
+        ), function ($message) use ($request,$emailRecievers) {
             $message->from($request->get('email'));
-            $message->to('umair_hamid100@yahoo.com', 'Admin')->subject('Gamithon Contact');
+            $message->to($emailRecievers, 'Admin')->subject('Gamithon Contact');
         });
         return redirect()->back()->with('status', 'Thanks for contacting us!');
     }

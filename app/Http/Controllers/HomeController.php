@@ -96,8 +96,7 @@ class HomeController extends Controller
     }
 // public function leaderboard(){
 //     $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->orderBy('score', 'DESC')->get()->toArray();
-//     dd('asd');
-//     return view('pages.fixtures_c_trophy', $data);
+//     return view('pages.leaderboard', $data);
 //
 //    }
     public function fixturesDetial($tournament_id)

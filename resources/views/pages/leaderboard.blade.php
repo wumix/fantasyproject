@@ -1,722 +1,468 @@
 @extends('layouts.app')
-{{--{{dd($rankings)}}--}}
 @section('title')
-    ICC Player Rankings
+    Leaderboard
 @stop
+@section('css')
+    <style>
+        .leader_bord_section{
+            width: 100%;
+            box-shadow: 0px 0px 13px rgba(0,0,0,0.21);
+            display: inline-block;
+            padding: 20px 20px;
+            margin-bottom: 22px;
+        }
+        .leder_cirlcle_img{
+            width: 150px;
+            height: 150px;
+            line-height: 150px;
+            border-radius: 50%;
+            box-shadow: 0px 0px 18px rgba(0,0,0,0.35);
+        }
+        .leder_cirlcle_img img{
+            width: 150px;
+            height: 150px;
+            line-height: 150px;
+            border-radius: 50%;
+            border: 9px solid #fff;
+            box-shadow: 0px 0px 18px rgba(0,0,0,0.35);
+            margin-top: 16px;
+            display: inline-block;
+        }
+
+        .leder_cirlcle_jhon_text{
+            font-size: 20px;
+            color: #92b713;
+        }
+        .leder_cirlcle_jhon_text_num{
+            font-size: 28px;
+            color: #f6980e;
+        }
+        .leder_smaal_text{
+            font-size: 12px;
+            color: #a8a8a8;
+            width: 100%;
+            display: inline-block;
+        }
+        .leder_cirlcle_rank_text{
+            font-size: 120px;
+            color: #a8a8a8;
+            position: relative;
+        }
+        .leder_cirlcle_rank_text span{
+            font-size: 12px;
+            position: absolute;
+            bottom: -6px;
+            right: 17px;
+        }
+        .leader_curnt_text{
+            font-size: 28px;
+            color: #f6980e;
+            line-height: 200px;
+        }
+        .area_leader{
+            margin-top: 58px;
+        }
+        .section_leader_secnd{
+            width: 100%;
+            display: inline-block;
+        }
+        .back_white_leader{
+            box-shadow: 0px 0px 18px rgba(0,0,0,0.35);
+            width: 48%;
+            padding: 25px 0;
+            margin-bottom: 20px;
+        }
+        .back_white_leader_sec{
+            box-shadow: 0px 0px 18px rgba(0,0,0,0.35);
+            width: 48%;
+            padding: 25px 0;
+        }
+        .section_smal{
+            box-shadow: 0px 0px 18px rgba(0,0,0,0.35);
+        }
+        .leder_cirlcle_img_smaal{
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            border-radius: 50%;
+            box-shadow: 0px 0px 18px rgba(0,0,0,0.35);
+        }
+        .leder_cirlcle_img_smaal img{
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            border-radius: 50%;
+            border: 9px solid #fff;
+            box-shadow: 0px 0px 18px rgba(0,0,0,0.35);
+            margin-top: 28px;
+            display: inline-block;
+        }
+        .leder_cirlcle_jhon_text_second{
+            font-size: 17px;
+            color: #92b713;
+        }
+
+        .leder_cirlcle_jhon_text_num_second{
+            font-size: 24px;
+            color: #f6980e;
+        }
+
+        .leder_smaal_text_second{
+            font-size: 12px;
+            color: #a8a8a8;
+            width: 100%;
+            display: inline-block;
+        }
+        .leder_cirlcle_rank_text_second{
+            font-size: 69px;
+            color: #a8a8a8;
+            position: relative;
+        }
+        .leder_cirlcle_rank_text_second span{
+            font-size: 12px;
+            position: absolute;
+            bottom: -6px;
+            right: 17px;
+        }
+        .leader_small_sec{
+            box-shadow: 0px 0px 18px rgba(0,0,0,0.35);
+            padding: 22px 0;
+            width: 32%;
+            margin-right: 2%;
+            margin-bottom: 20px;
+        }
+
+        .area_leader_second{
+            margin-top: 30px;
+        }
+        .cnter_liez{
+            width: 100%;
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            line-height: 150px;
+            border-radius:50%;
+        }
+        .cnter_liez img{
+            width: 100%;
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            line-height: 150px;
+            border-radius:50%;
+            border: 9px solid #fff;
+            box-shadow: 0px 0px 18px rgba(0,0,0,0.35);
+        }
+        .cnter_liez1 img{
+            width: 100%;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            border-radius:50%;
+            border: 9px solid #fff;
+            box-shadow: 0px 0px 18px rgba(0,0,0,0.35);
+        }
+        .leader_small_sec:nth-child(3n) {
+            margin-right: 0;
+        }
+        @media all and (min-width: 961px) and (max-width: 1200px) {
+            .col-md-4{
+                width: 100%;
+                text-align: center;
+            }
+            .col-md-6 {
+                text-align: center;
+                width: 100%;
+            }
+            .col-md-12 {
+                text-align: center;
+                width: 100%;
+            }
+        }
+        @media all and (min-width: 768px) and (max-width: 960px) {
+            .col-md-4{
+                width: 100%;
+                text-align: center;
+            }
+            .col-md-6 {
+                text-align: center;
+                width: 100%;
+            }
+            .col-md-12 {
+                text-align: center;
+                width: 100%;
+            }
+            .area_heandel{
+                display: none;
+            }
+        }
+        @media all and (min-width: 100px) and (max-width: 768px) {
+            .col-md-4{
+                width: 100%;
+                text-align: center;
+            }
+            .col-md-6 {
+                text-align: center;
+                width: 100%;
+            }
+            .col-md-12 {
+                text-align: center;
+                width: 100%;
+            }
+            .area_heandel{
+                display: none;
+            }
+            .cnter_liez{
+                width: auto !important;
+                text-align: center;
+            }
+        }
+        @media all and (min-width: 100px) and (max-width: 600px) {
+            .col-md-4{
+                width: 100%;
+                text-align: center;
+            }
+            .col-md-6 {
+                text-align: center;
+                width: 100%;
+            }
+            .col-md-12 {
+                text-align: center;
+                width: 100%;
+            }
+            .area_heandel{
+                display: none;
+            }
+            .area_leader{
+                width: 100%;
+            }
+            .cnter_liez{
+                width: auto !important;
+                text-align: center;
+            }
+        }
+        @media all and (min-width: 100px) and (max-width: 480px) {
+            .col-md-4{
+                width: 100%;
+                text-align: center;
+            }
+            .col-md-6 {
+                text-align: center;
+                width: 100%;
+            }
+            .col-md-12 {
+                text-align: center;
+                width: 100%;
+            }
+            .area_heandel{
+                display: none;
+            }
+            .area_leader{
+                width: 100%;
+                display: block;
+            }
+            .cnter_liez{
+                width: auto !important;
+                text-align: center;
+            }
+
+        }
+    </style>
+@endsection
 @section('content')
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-heading">
-                        ICC Player Rankings
-                    </h1>
-                    <hr class="light full">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-heading">
+                    Top 20 on Leader Board
+                </h1>
+                <hr class="light full">
+            </div>
+            <div class="col-md-12">
+                <div class="leader_bord_section">
 
-                    <div class="col-md-12">
-                        <?php $k = 0;?>
-                        @foreach($rankings as $cat)
-                            <div class="col-md-4">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-stripedhome-1 gen-table">
-                                        <thead class="main-taible-head">
-                                        <tr>
-                                            <th colspan="3" class="border-r th11"> {{$cat['name']}}</th>
-                                        </tr>
-                                        <tr>
-                                            <th class="border-r th11">Ranking</th>
-                                            <th class="border-r th11">Name</th>
-                                            <th class="border-r th11">Rating</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="main-taible-body">
-                                        <?php $i = 1;?>
-                                        @foreach($cat['category_players'] as $row)
-                                            <tr class="trr">
-                                                <td class="border-r">{{$i}}</td>
-                                                <td class="border-r">{{$row['player_name']}}</td>
-
-                                                <td class="border-r">{{$row['rating']}}</td>
-                                            </tr>
-                                            <?php $i++;?>
-                                        @endforeach
-                                        </tbody>
-
-
-                                    </table>
-                                </div>
+                    <div class="col-md-6">
+                        <div class="col-md-4 col-sm-12">
+                            <div class="cnter_liez">
+                                <img class="img-responsive " src={{URL::to('/img/leader_bord_plyer.png')}} alt=""/>
                             </div>
-                        <?php $k++;?>
-                        @if($k%3==0)
-                                    {{--<hr class="light full">--}}
-                        @endif
-
-                    @endforeach
-
-
-
-
-
-                    <!--
-
-                                           <div class="col-md-12">
-                                           <h3 class="text-center">ODI Players</h3>
-                                           <div class="table-responsive">
-                                           <div class="panel with-nav-tabs panel">
-                                           <div class="panel-heading">
-                                           <ul class="nav nav-tabs">
-                                           <li class="active">
-                                           <a href="#action-4" data-toggle="tab">
-                                           Batsman
-                                           </a>
-                                           </li>
-                                           <li class="">
-                                           <a href="#action-5" data-toggle="tab">
-                                           Bowler
-                                           </a>
-                                           </li>
-                                           <li class="">
-                                           <a href="#action-6" data-toggle="tab">
-                                           All Rounder
-                                           </a>
-                                           </li>
-
-                                           </ul>
-                                           </div>
-                                           <div class="panel-body">
-                                           <div class="tab-content">
-                                           <div class="tab-pane active" id="action-4">
-                                           <div class="table-responsive col-md-12">
-                                           <table class="table table-striped table-bordered">
-                                           <thead>
-                                           <tr>
-                                           <th style="min-width: 50px;">Rank</th>
-                                           <th>Player</th>
-                                           <th>Belongs To</th>
-
-                                           <th>Points</th>
-                                           </tr>
-                                           </thead>
-                                           <tbody class="table-has-player">
-                                           <tr class="cwt">
-                                           <td style="min-width: 50px;">
-                                           1
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           AB De Villiers
-
-                                           </td>
-
-                                           <td>
-                                           Southafrica
-                                           </td>
-
-                                           <td>875</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           2
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           David Warner
-
-                                           </td>
-
-                                           <td>
-                                           Australia
-                                           </td>
-
-                                           <td>871</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           3
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Virat Kohli
-
-                                           </td>
-
-                                           <td>
-                                           India
-                                           </td>
-
-                                           <td>852</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           4
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Joe Root
-
-                                           </td>
-
-                                           <td>
-                                           England
-                                           </td>
-
-                                           <td>792</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           5
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Francois du Plessis
-
-                                           </td>
-
-                                           <td>
-                                           Southafrica
-                                           </td>
-
-                                           <td>781</td>
-                                           </tr>
-
-
-                                           </tbody>
-                                           </table>
-                                           </div>
-                                           </div>
-                                           <div class="tab-pane" id="action-5">
-                                           <div class="table-responsive col-md-12">
-                                           <table class="table table-striped table-bordered">
-                                           <thead>
-                                           <tr>
-                                           <th style="min-width: 50px;">Rank</th>
-                                           <th>Player</th>
-                                           <th>Belongs To</th>
-
-                                           <th>Points</th>
-                                           </tr>
-                                           </thead>
-                                           <tbody class="table-has-player">
-                                           <tr class="cwt">
-                                           <td style="min-width: 50px;">
-                                           1
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Imran Tahir
-
-                                           </td>
-
-                                           <td>
-                                           South Africa
-                                           </td>
-
-                                           <td>750</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           2
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Mitchell Starc
-
-                                           </td>
-
-                                           <td>
-                                           Australia
-                                           </td>
-
-                                           <td>701</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           3
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Trent Boult
-
-                                           </td>
-
-                                           <td>
-                                           NewZealand
-                                           </td>
-
-                                           <td>697</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           4
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Sunil Narin
-
-                                           </td>
-
-                                           <td>
-                                           Westindies
-                                           </td>
-
-                                           <td>690</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           5
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Kagiso Rabada
-
-                                           </td>
-
-                                           <td>
-                                           Southafrica
-                                           </td>
-
-                                           <td>686</td>
-                                           </tr>
-
-
-                                           </tbody>
-                                           </table>
-                                           </div>
-                                           </div>
-                                           <div class="tab-pane" id="action-6">
-                                           <div class="table-responsive col-md-12">
-                                           <table class="table table-striped table-bordered">
-                                           <thead>
-                                           <tr>
-                                           <th style="min-width: 50px;">Rank</th>
-                                           <th>Player</th>
-                                           <th>Belongs To</th>
-
-                                           <th>Points</th>
-                                           </tr>
-                                           </thead>
-                                           <tbody class="table-has-player">
-                                           <tr class="cwt">
-                                           <td style="min-width: 50px;">
-                                           1
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Shakib Al Hasan
-
-                                           </td>
-
-                                           <td>
-                                           Bangladesh
-                                           </td>
-
-                                           <td>376</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           2
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Mohammad Hafeez
-
-                                           </td>
-
-                                           <td>
-                                           Pakistan
-                                           </td>
-
-                                           <td>353</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           3
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Mohammad Nabi
-
-                                           </td>
-
-                                           <td>
-                                           Afghanistan
-                                           </td>
-
-                                           <td>330</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           4
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           James Faulkner
-
-                                           </td>
-
-                                           <td>
-                                           Austraila
-                                           </td>
-
-                                           <td>308</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           5
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Anglo Mathews
-
-                                           </td>
-
-                                           <td>
-                                           Srilanka
-                                           </td>
-
-                                           <td>308</td>
-                                           </tr>
-
-
-                                           </tbody>
-                                           </table>
-                                           </div>
-                                           </div>
-                                           </div>
-                                           </div>
-                                           </div>
-                                           </div>
-                                           </div>
-                                           <div class="col-md-12">
-                                           <h3 class="text-center">Test Players</h3>
-                                           <div class="table-responsive">
-                                           <div class="panel with-nav-tabs panel">
-                                           <div class="panel-heading">
-                                           <ul class="nav nav-tabs">
-                                           <li class="active">
-                                           <a href="#action-7" data-toggle="tab">
-                                           Batsman
-                                           </a>
-                                           </li>
-                                           <li class="">
-                                           <a href="#action-8" data-toggle="tab">
-                                           Bowler
-                                           </a>
-                                           </li>
-                                           <li class="">
-                                           <a href="#action-9" data-toggle="tab">
-                                           All Rounder
-                                           </a>
-                                           </li>
-
-                                           </ul>
-                                           </div>
-                                           <div class="panel-body">
-                                           <div class="tab-content">
-                                           <div class="tab-pane active" id="action-7">
-                                           <div class="table-responsive col-md-12">
-                                           <table class="table table-striped table-bordered">
-                                           <thead>
-                                           <tr>
-                                           <th style="min-width: 50px;">Rank</th>
-                                           <th>Player</th>
-                                           <th>Belongs To</th>
-
-                                           <th>Points</th>
-                                           </tr>
-                                           </thead>
-                                           <tbody class="table-has-player">
-                                           <tr class="cwt">
-                                           <td style="min-width: 50px;">
-                                           1
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Steve Smith
-
-                                           </td>
-
-                                           <td>
-                                           Austrila
-                                           </td>
-
-                                           <td>941</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           2
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Kane Willimson
-
-                                           </td>
-
-                                           <td>
-                                           NewZealand
-                                           </td>
-
-                                           <td>880</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           3
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Joe Root
-
-                                           </td>
-
-                                           <td>
-                                           England
-                                           </td>
-
-                                           <td>848</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           4
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Cheteshwar Pujara
-
-                                           </td>
-
-                                           <td>
-                                           India
-                                           </td>
-
-                                           <td>846</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           5
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Virat kohli
-
-                                           </td>
-
-                                           <td>
-                                           India
-                                           </td>
-
-                                           <td>818</td>
-                                           </tr>
-
-
-                                           </tbody>
-                                           </table>
-                                           </div>
-                                           </div>
-                                           <div class="tab-pane" id="action-8">
-                                           <div class="table-responsive col-md-12">
-                                           <table class="table table-striped table-bordered">
-                                           <thead>
-                                           <tr>
-                                           <th style="min-width: 50px;">Rank</th>
-                                           <th>Player</th>
-                                           <th>Belongs To</th>
-
-                                           <th>Points</th>
-                                           </tr>
-                                           </thead>
-                                           <tbody class="table-has-player">
-                                           <tr class="cwt">
-                                           <td style="min-width: 50px;">
-                                           1
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Ravindra Jadeja
-
-                                           </td>
-
-                                           <td>
-                                           India
-                                           </td>
-
-                                           <td>898</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           2
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Ravichandran Ashwin
-
-                                           </td>
-
-                                           <td>
-                                           India
-                                           </td>
-
-                                           <td>865</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           3
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Rangana Herath
-
-                                           </td>
-
-                                           <td>
-                                           Srilanka
-                                           </td>
-
-                                           <td>854</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           4
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Josh Hazlewood
-
-                                           </td>
-
-                                           <td>
-                                           Ausralia
-                                           </td>
-
-                                           <td>826</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           5
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           James Aanderson
-
-                                           </td>
-
-                                           <td>
-                                           England
-                                           </td>
-
-                                           <td>810</td>
-                                           </tr>
-
-
-                                           </tbody>
-                                           </table>
-                                           </div>
-                                           </div>
-                                           <div class="tab-pane" id="action-9">
-                                           <div class="table-responsive col-md-12">
-                                           <table class="table table-striped table-bordered">
-                                           <thead>
-                                           <tr>
-                                           <th style="min-width: 50px;">Rank</th>
-                                           <th>Player</th>
-                                           <th>Belongs To</th>
-
-                                           <th>Points</th>
-                                           </tr>
-                                           </thead>
-                                           <tbody class="table-has-player">
-                                           <tr class="cwt">
-                                           <td style="min-width: 50px;">
-                                           1
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Shakib Al Hasan
-
-                                           </td>
-
-                                           <td>
-                                           Bangladesh
-                                           </td>
-
-                                           <td>431</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           2
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Ravindra Jadeja
-
-                                           </td>
-
-                                           <td>
-                                           India
-                                           </td>
-
-                                           <td>422</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           2
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Ravichandran Ashwin
-
-                                           </td>
-
-                                           <td>
-                                           India
-                                           </td>
-
-                                           <td>413</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           4
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Ben Stokes
-
-                                           </td>
-
-                                           <td>
-                                           England
-                                           </td>
-
-                                           <td>327</td>
-                                           </tr>
-                                           <tr class="cwt">
-                                           <td>
-                                           5
-                                           </td>
-                                           <td class="text-left" style="min-width: 250px;">
-
-                                           Mitchell Starc
-
-                                           </td>
-
-                                           <td>
-                                           Australia
-                                           </td>
-
-                                           <td>318</td>
-                                           </tr>
-
-
-                                           </tbody>
-                                           </table>
-                                           </div>
-                                           </div>
-                                           </div>
-                                           </div>
-                                           </div>
-                                           </div>-->
+                            <div class="clear clearfix"></div>
+                        </div>
+                        <div class="col-md-4 text-center area_leader col-sm-12">
+                            <span class="leder_cirlcle_jhon_text">John Mathews</span>
+                            <span class="leder_cirlcle_jhon_text_num">110000</span>
+                            <span class="leder_smaal_text">Current Points)</span>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="leder_cirlcle_rank_text">01<span>Rank</span></span>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 no-padding  area_heandel">
+                        <div class="pull-left">
+                            <span class="leader_curnt_text vcenter">CURRENT LEADER</span>
+                        </div>
+                        <div class="pull-right">
+                            <span class=""><img src={{URL::to('/img/leader_bord_cup.png')}} alt=""/></span>
+                        </div>
+                        <div class="clear clearfix"></div>
                     </div>
                 </div>
             </div>
+            <div class="section_leader_secnd col-md-12">
+                <div class="col-md-6 col-sm-12 back_white_leader  pull-left">
+                    <div class="col-md-12 pull-left">
+                        <div class="col-md-4">
+                            <div class="cnter_liez">
+                                <img class="img-responsive " src={{URL::to('/img/leader_bord_plyer.png')}} alt=""/>
+                            </div>
+                            <div class="clear clearfix"></div>
+                        </div>
+                        <div class="col-md-4 text-center  area_leader">
+                            <span class="leder_cirlcle_jhon_text">John Mathews</span>
+                            <span class="leder_cirlcle_jhon_text_num">110000</span>
+                            <span class="leder_smaal_text">Current Points)</span>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="leder_cirlcle_rank_text">02<span>Rank</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 back_white_leader  pull-right">
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <div class="cnter_liez">
+                                <img class="img-responsive " src={{URL::to('/img/leader_bord_plyer.png')}} alt=""/>
+                            </div>
+                            <div class="clear clearfix"></div>
+                        </div>
+                        <div class="col-md-4 text-center  area_leader">
+                            <span class="leder_cirlcle_jhon_text">John Mathews</span>
+                            <span class="leder_cirlcle_jhon_text_num">110000</span>
+                            <span class="leder_smaal_text">Current Points)</span>
+                        </div>
+
+                        <div class="col-md-4">
+                            <span class="leder_cirlcle_rank_text">03<span>Rank</span></span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="col-md-4 col-sm-12 leader_small_sec no-padding">
+                    <div class="col-md-4">
+                        <div class="cnter_liez1">
+                            <img class="img-responsive " src={{URL::to('/img/leader_bord_plyer.png')}} alt=""/>
+                        </div>
+                        <div class="clear clearfix"></div>
+                    </div>
+                    <div class="col-md-4 text-center  area_leader_second">
+                        <span class="leder_cirlcle_jhon_text_second">John Mathews</span>
+                        <span class="leder_cirlcle_jhon_text_num_second">110000</span>
+                        <span class="leder_smaal_text_second">Current Points)</span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <span class="leder_cirlcle_rank_text_second">04<span>Rank</span></span>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-sm-12 leader_small_sec no-padding">
+                    <div class="col-md-4">
+                        <div class="cnter_liez1">
+                            <img class="img-responsive " src={{URL::to('/img/leader_bord_plyer.png')}} alt=""/>
+                        </div>
+                        <div class="clear clearfix"></div>
+                    </div>
+                    <div class="col-md-4 text-center  area_leader_second">
+                        <span class="leder_cirlcle_jhon_text_second">John Mathews</span>
+                        <span class="leder_cirlcle_jhon_text_num_second">110000</span>
+                        <span class="leder_smaal_text_second">Current Points)</span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <span class="leder_cirlcle_rank_text_second">04<span>Rank</span></span>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-sm-12 leader_small_sec no-padding">
+                    <div class="col-md-4">
+                        <div class="cnter_liez1">
+                            <img class="img-responsive " src={{URL::to('/img/leader_bord_plyer.png')}} alt=""/>
+                        </div>
+                        <div class="clear clearfix"></div>
+                    </div>
+                    <div class="col-md-4 text-center  area_leader_second">
+                        <span class="leder_cirlcle_jhon_text_second">John Mathews</span>
+                        <span class="leder_cirlcle_jhon_text_num_second">110000</span>
+                        <span class="leder_smaal_text_second">Current Points)</span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <span class="leder_cirlcle_rank_text_second">04<span>Rank</span></span>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-sm-12 leader_small_sec no-padding">
+                    <div class="col-md-4">
+                        <div class="cnter_liez1">
+                            <img class="img-responsive " src={{URL::to('/img/leader_bord_plyer.png')}} alt=""/>
+                        </div>
+                        <div class="clear clearfix"></div>
+                    </div>
+                    <div class="col-md-4 text-center  area_leader_second">
+                        <span class="leder_cirlcle_jhon_text_second">John Mathews</span>
+                        <span class="leder_cirlcle_jhon_text_num_second">110000</span>
+                        <span class="leder_smaal_text_second">Current Points)</span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <span class="leder_cirlcle_rank_text_second">04<span>Rank</span></span>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-sm-12 leader_small_sec no-padding">
+                    <div class="col-md-4">
+                        <div class="cnter_liez1">
+                            <img class="img-responsive " src={{URL::to('/img/leader_bord_plyer.png')}} alt=""/>
+                        </div>
+                        <div class="clear clearfix"></div>
+                    </div>
+                    <div class="col-md-4 text-center  area_leader_second">
+                        <span class="leder_cirlcle_jhon_text_second">John Mathews</span>
+                        <span class="leder_cirlcle_jhon_text_num_second">110000</span>
+                        <span class="leder_smaal_text_second">Current Points)</span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <span class="leder_cirlcle_rank_text_second">04<span>Rank</span></span>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-sm-12 leader_small_sec no-padding">
+                    <div class="col-md-4">
+                        <div class="cnter_liez1">
+                            <img class="img-responsive " src={{URL::to('/img/leader_bord_plyer.png')}} alt=""/>
+                        </div>
+                        <div class="clear clearfix"></div>
+                    </div>
+                    <div class="col-md-4 text-center  area_leader_second">
+                        <span class="leder_cirlcle_jhon_text_second">John Mathews</span>
+                        <span class="leder_cirlcle_jhon_text_num_second">110000</span>
+                        <span class="leder_smaal_text_second">Current Points)</span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <span class="leder_cirlcle_rank_text_second">04<span>Rank</span></span>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
-    </section>
-@stop
+    </div>
+
+@endsection

@@ -157,7 +157,7 @@
             margin-bottom: 20px;
             background: #fff;
         }
-       
+
         .area_leader_second {
             margin-top: 30px;
         }

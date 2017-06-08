@@ -422,7 +422,7 @@
                     <div class="col-md-4 itemsz col-sm-12 leader_small_sec no-padding">
                         <div class="col-md-3 ">
                             <div class="cnter_liez1">
-                                <img class="img-responsive " src="{{Croppa::url(getUploadsPath($row['user']['profile_pic'],156,134))}}"
+                                <img class="img-responsive " src="{{getUploadsPath($row['user']['profile_pic'])}}"
                                      alt=""/>
                             </div>
                             <div class="clear clearfix"></div>

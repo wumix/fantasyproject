@@ -97,9 +97,9 @@
                         <div class="row">
                             <div class="col-md-12 no-padding">
 
-                                {{--<h5>--}}
-                                 {{--<a  class="btn leaderboardviewmorebutton" href="{{route('homeleaderboard')}}">View More</a>--}}
-                                {{--</h5>--}}
+                                <h5>
+                                 {{--<a  class="btn leaderboardviewmorebutton" href="{{route('homeleaderboard')}}">List More</a>--}}
+                                </h5>
 
                             </div>
                         </div>

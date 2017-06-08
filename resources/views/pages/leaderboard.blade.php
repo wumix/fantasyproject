@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{dd($leaders)}}
 @section('title')
     Leaderboard
 @stop

@@ -410,7 +410,7 @@
                                  {{getUploadsPath($leaders[2]['user']['profile_pic'])}}
                                 @else
 
-                                {{Croppa::url(getUploadsPath($leaders[2]['user']['profile_pic']),156,134)}}
+                                {{Croppa::url("https://graph.facebook.com/v2.9/10212232213256074/picture?type=normal",156,134)}}
                                 @endif" alt=""/>
                             </div>
                             <div class="clear clearfix"></div>

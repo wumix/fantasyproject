@@ -53,6 +53,7 @@
         }
 
         .leder_cirlcle_rank_text {
+            font-family: "Open Sans";
             font-size: 120px;
             color: #a8a8a8;
             position: relative;
@@ -156,9 +157,7 @@
             margin-bottom: 20px;
             background: #fff;
         }
-        .leader_small_sec:hover{
-            background: #92b713;
-        }
+       
         .area_leader_second {
             margin-top: 30px;
         }

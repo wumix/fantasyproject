@@ -328,12 +328,16 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="page-heading">
+                    @if(count($leaders)>3))
                     Top 20 on Leader Board
+                        @else
+                        Nothing to show
+                    @endif
                 </h1>
                 <hr class="light full">
             </div>
 
-
+            @if(count($leaders)>3)
             <div class="col-md-12">
                 <div class="leader_bord_section">
 
@@ -439,6 +443,7 @@
                 @endforeach
 
             </div>
+       @endif
 
         </div>
     </div>

@@ -99,9 +99,9 @@
 
                                 <h5>
 
-                                        <a class="btn leaderboardviewmorebutton" href="{{route('homeleaderboard')}}">List
+                                        <a class="btn leaderboardviewmorebutton" href="{{route('homeleaderboard')}}">View
                                             More</a>
-                                   
+
                                 </h5>
 
                             </div>

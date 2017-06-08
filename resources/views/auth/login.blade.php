@@ -81,7 +81,7 @@
                                         <div class="col-lg-6 signiinlink">
                                             <div class="form-group " id="withbox">
                                                 <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input"/>
+                                                    <input name="remember" type="checkbox" class="form-check-input"/>
                                                     <span id="remberbox"> Rember Me</span>
                                                 </label>
                                             </div>

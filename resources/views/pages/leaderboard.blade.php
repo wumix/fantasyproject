@@ -346,7 +346,7 @@
                             <div class="cnter_liez">
                                 <img class="img-responsive "
                                      src="
-                              @if("http://gamithon.dev/assets-new/img/default-profile-pic.png"==getUploadsPath($leaders[0]['user']['profile_pic']))
+                              @if("http://www.gamithonfantasy.com/assets-new/img/default-profile-pic.png"==getUploadsPath($leaders[0]['user']['profile_pic']))
                                              {{getUploadsPath($leaders[0]['user']['profile_pic'])}}
                                                     @else
                                      {{Croppa::url(getUploadsPath($leaders[0]['user']['profile_pic']),156,134)}}
@@ -383,7 +383,7 @@
                         <div class="col-md-4">
                             <div class="cnter_liez">
                                 <img class="img-responsive "  src="
-                              @if("http://gamithon.dev/assets-new/img/default-profile-pic.png"==getUploadsPath($leaders[1]['user']['profile_pic']))
+                              @if("http://www.gamithonfantasy.com/assets-new/img/default-profile-pic.png"==getUploadsPath($leaders[1]['user']['profile_pic']))
                                 {{getUploadsPath($leaders[1]['user']['profile_pic'])}}
                                 @else
                                 {{Croppa::url(getUploadsPath($leaders[1]['user']['profile_pic']),156,134)}}
@@ -406,7 +406,7 @@
                         <div class="col-md-4">
                             <div class="cnter_liez">
                                 <img class="img-responsive" src="
-                              @if("http://gamithon.dev/assets-new/img/default-profile-pic.png"==getUploadsPath($leaders[2]['user']['profile_pic']))
+                              @if("http://www.gamithonfantasy.com/assets-new/img/default-profile-pic.png"==getUploadsPath($leaders[2]['user']['profile_pic']))
                                 {{getUploadsPath($leaders[2]['user']['profile_pic'])}}
                                 @else
                                 {{Croppa::url(getUploadsPath($leaders[2]['user']['profile_pic']),156,134)}}

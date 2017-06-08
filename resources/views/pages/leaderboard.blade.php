@@ -328,7 +328,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="page-heading">
-                    @if(count($leaders)>3))
+                    @if(count($leaders)>3)
                     Top 20 on Leader Board
                         @else
                         Nothing to show

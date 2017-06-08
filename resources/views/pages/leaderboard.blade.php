@@ -345,7 +345,7 @@
                         <div class="col-md-4 col-sm-12">
                             <div class="cnter_liez">
                                 <img class="img-responsive "
-                                     src="{{Croppa::url(getUploadsPath($leaders[0]['user']['profile_pic']))}}" alt=""/>
+                                     src="{{Croppa::url(getUploadsPath($leaders[0]['user']['profile_pic']),156,134)}}" alt=""/>
                             </div>
                             <div class="clear clearfix"></div>
                         </div>
@@ -377,7 +377,7 @@
                     <div class="col-md-12 pull-left">
                         <div class="col-md-4">
                             <div class="cnter_liez">
-                                <img class="img-responsive " src="{{Croppa::url(getUploadsPath($leaders[1]['user']['profile_pic'],156,134))}}" alt=""/>
+                                <img class="img-responsive " src="{{Croppa::url(getUploadsPath($leaders[1]['user']['profile_pic']),156,134)}}" alt=""/>
                             </div>
                             <div class="clear clearfix"></div>
                         </div>
@@ -395,7 +395,7 @@
                     <div class="col-md-12">
                         <div class="col-md-4">
                             <div class="cnter_liez">
-                                <img class="img-responsive " src={{Croppa::url(getUploadsPath($leaders[2]['user']['profile_pic'],156,134))}} alt=""/>
+                                <img class="img-responsive " src={{Croppa::url(getUploadsPath($leaders[2]['user']['profile_pic']),156,134)}} alt=""/>
                             </div>
                             <div class="clear clearfix"></div>
                         </div>

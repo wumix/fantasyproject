@@ -373,13 +373,13 @@
                     <div class="col-md-12 pull-left">
                         <div class="col-md-4">
                             <div class="cnter_liez">
-                                <img class="img-responsive " src={{URL::to('/img/leader_bord_plyer.png')}} alt=""/>
+                                <img class="img-responsive " src="{{getUploadsPath($leaders[1]['user']['profile_pic'])}}" alt=""/>
                             </div>
                             <div class="clear clearfix"></div>
                         </div>
                         <div class="col-md-4 text-center  area_leader">
                             <span class="leder_cirlcle_jhon_text">{{$leaders[1]['user']['name']}}</span>
-                            <span class="leder_cirlcle_jhon_text_num">{{$leaders[0]['score']}}</span>
+                            <span class="leder_cirlcle_jhon_text_num">{{$leaders[1]['score']}}</span>
                             <span class="leder_smaal_text">Current Points</span>
                         </div>
                         <div class="col-md-4">
@@ -391,13 +391,13 @@
                     <div class="col-md-12">
                         <div class="col-md-4">
                             <div class="cnter_liez">
-                                <img class="img-responsive " src={{URL::to('/img/leader_bord_plyer.png')}} alt=""/>
+                                <img class="img-responsive " src={{getUploadsPath($leaders[2]['user']['profile_pic'])}} alt=""/>
                             </div>
                             <div class="clear clearfix"></div>
                         </div>
                         <div class="col-md-4 text-center  area_leader">
                             <span class="leder_cirlcle_jhon_text">{{$leaders[2]['user']['name']}}</span>
-                            <span class="leder_cirlcle_jhon_text_num">{{$leaders[0]['score']}}</span>
+                            <span class="leder_cirlcle_jhon_text_num">{{$leaders[2]['score']}}</span>
                             <span class="leder_smaal_text">Current Points</span>
                         </div>
 

@@ -397,7 +397,15 @@
                               @if("http://www.gamithonfantasy.com/assets-new/img/default-profile-pic.png"==getUploadsPath($leaders[1]['user']['profile_pic']))
                                 {{getUploadsPath($leaders[1]['user']['profile_pic'])}}
                                 @else
-                                {{Croppa::url(getUploadsPath($leaders[1]['user']['profile_pic']),156,134)}}
+                                <?php
+                                $check=explode(".",$leaders[1]['user']['profile_pic']);
+                                if($check[1]=="facebook"){
+                                    echo $leaders[1]['user']['profile_pic'];
+                                }else{
+                                    echo Croppa::url(getUploadsPath($leaders[1]['user']['profile_pic']),156,134);
+                                }
+
+                                ?>
                                 @endif" alt=""/>
                             </div>
                             <div class="clear clearfix"></div>

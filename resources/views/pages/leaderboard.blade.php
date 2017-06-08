@@ -329,7 +329,7 @@
             <div class="col-md-12">
                 <h1 class="page-heading">
                     @if(count($leaders)>3)
-                    Top 20 on Leader Board
+                    Top Players
                         @else
                         Nothing to show
                     @endif

@@ -516,6 +516,9 @@
             {
                 url: '{{URL::to('assets-new/img/icc-banner-1.jpg')}}', fade: 500
             },
+            {
+                url: '{{URL::to('assets-new/img/indiaa-siri-lanka.jpg')}}', fade: 500
+            },
             {url: '{{URL::to('assets-new/img/latest-banner.jpg')}}', fade: 500},
 
 

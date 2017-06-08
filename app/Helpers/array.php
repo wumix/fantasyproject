@@ -81,7 +81,13 @@ function fix_keys($array) {
         return $array;
     }
 }
-
+function checksingledigit($int){
+    if($int>9){
+        return false;
+    }else{
+        return true;
+    }
+}
 function whatever($array, $key, $val) {
     foreach ($array as $item)
         if (isset($item[$key]) && $item[$key] == $val)

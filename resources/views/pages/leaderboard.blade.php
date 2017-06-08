@@ -434,7 +434,9 @@
                         </div>
 
                         <div class="col-md-4 ">
-                            <span class="leder_cirlcle_rank_text_second">0{{$key}}<span>Rank</span></span>
+                            <span class="leder_cirlcle_rank_text_second">
+
+                               <?php if(checksingledigit($key)) echo '0';?>{{$key}}<span>Rank</span></span>
                         </div>
 
                     </div>

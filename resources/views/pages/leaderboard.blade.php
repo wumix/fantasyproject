@@ -423,13 +423,13 @@
                             </div>
                             <div class="clear clearfix"></div>
                         </div>
-                        <div class="col-md-6 text-center  area_leader_second ">
+                        <div class="col-md-5 text-center  area_leader_second ">
                             <span class="leder_cirlcle_jhon_text_second">{{$row['user']['name']}}</span>
                             <span class="leder_cirlcle_jhon_text_num_second">{{$row['score']}}</span>
                             <span class="leder_smaal_text_second">Current Points</span>
                         </div>
 
-                        <div class="col-md-3 ">
+                        <div class="col-md-4 ">
                             <span class="leder_cirlcle_rank_text_second">{{$key}}<span>Rank</span></span>
                         </div>
 

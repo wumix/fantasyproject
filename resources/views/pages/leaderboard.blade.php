@@ -409,6 +409,7 @@
                                @if("http://www.gamithonfantasy.com/assets-new/img/default-profile-pic.png"==getUploadsPath($leaders[2]['user']['profile_pic']))
                                  {{getUploadsPath($leaders[2]['user']['profile_pic'])}}
                                 @else
+
                                 {{Croppa::url(getUploadsPath($leaders[2]['user']['profile_pic']),156,134)}}
                                 @endif" alt=""/>
                             </div>

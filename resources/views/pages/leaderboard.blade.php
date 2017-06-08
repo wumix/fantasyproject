@@ -349,7 +349,18 @@
                               @if("http://www.gamithonfantasy.com/assets-new/img/default-profile-pic.png"==getUploadsPath($leaders[0]['user']['profile_pic']))
                                              {{getUploadsPath($leaders[0]['user']['profile_pic'])}}
                                                     @else
-                                     {{Croppa::url(getUploadsPath($leaders[0]['user']['profile_pic']),156,134)}}
+                                     <?php
+                                     $check=explode(".",$leaders[0]['user']['profile_pic']);
+                                     if($check[1]=="facebook"){
+                                      echo $leaders[0]['user']['profile_pic'];
+                                     }else{
+                                     echo Croppa::url(getUploadsPath($leaders[0]['user']['profile_pic']),156,134);
+                                     }
+                                         
+                                         ?>
+
+
+
                                              @endif" alt=""/>
                             </div>
                             <div class="clear clearfix"></div>
@@ -409,8 +420,15 @@
                                @if("http://www.gamithonfantasy.com/assets-new/img/default-profile-pic.png"==getUploadsPath($leaders[2]['user']['profile_pic']))
                                  {{getUploadsPath($leaders[2]['user']['profile_pic'])}}
                                 @else
+                                <?php
+                                $check=explode(".",$leaders[0]['user']['profile_pic']);
+                                if($check[1]=="facebook"){
+                                    echo $leaders[0]['user']['profile_pic'];
+                                }else{
+                                    echo Croppa::url(getUploadsPath($leaders[0]['user']['profile_pic']),156,134);
+                                }
 
-                                {{Croppa::url("https://graph.facebook.com/v2.9/10212232213256074/picture?type=normal",156,134)}}
+                                ?>
                                 @endif" alt=""/>
                             </div>
                             <div class="clear clearfix"></div>

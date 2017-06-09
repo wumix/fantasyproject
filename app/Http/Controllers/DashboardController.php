@@ -116,7 +116,7 @@ class DashboardController extends Controller
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
         $data['leaders'] = \App\Leaderboard::take(3)->select(['user_id', 'score'])->orderBy('score', 'DESC')->get()->toArray();
-        $data['challenges'] = \App\UserChallenge::where(['user_2_id'=> \Auth::id(),'is_accepted'=>0])->with('user')->get()->toArray();
+        $data['challenges'] = \App\UserChallenge::where(['user_2_id'=> \Auth::id(),'is_accepted'=>0])->with('user2')->get()->toArray();
        dd($data['challenges']);
         $data['user_ranking'] = 0;
         foreach ($data['leaders'] as $key => $val){

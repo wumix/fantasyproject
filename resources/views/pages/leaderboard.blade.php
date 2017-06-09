@@ -460,7 +460,7 @@
                 <?php $i=0?>
                 @foreach($leaders as $key=>$row)
 
-                    <?php if($i>3){?>
+                    <?php if($i>=3){?>
                     <div class="col-md-4 itemsz col-sm-12 leader_small_sec no-padding">
                         <div class="col-md-3 ">
                             <div class="cnter_liez1">
@@ -478,7 +478,7 @@
                         <div class="col-md-4 ">
                             <span class="leder_cirlcle_rank_text_second">
 
-                               <?php if(checksingledigit($key)) echo '0';?>{{$key}}<span>Rank</span></span>
+                               <?php if(checksingledigit($key)) echo '0';?>{{$key+1}}<span>Rank</span></span>
                         </div>
 
                     </div>

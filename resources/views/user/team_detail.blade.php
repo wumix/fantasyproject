@@ -173,7 +173,7 @@ foreach ($team_score as $teamplayers) {
                                         <span style="position: absolute;"> {{ $playertotal}}  </span>
                                         <br>
                                         @if($flag==1)
-                                            <span style="position: absolute;">
+                                            <span style="position: absolute;min-width: 150px;">
                                         {{$playerinscore}}: <strong>previous score</strong>
                                     </span>
 

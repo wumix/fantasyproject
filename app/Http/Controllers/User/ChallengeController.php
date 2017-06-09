@@ -15,11 +15,29 @@ class ChallengeController extends Controller
         $this->userChallenge = new \App\UserChallenge;
     }
 
+    public function index()
+    {
+        $data['users'] = \App\Leaderboard::where('tournament_id', config('const.tournament_id'))
+            ->with('user', 'user_team')->orderBy('score', 'DESC')->get()->toArray();
+        return view('user.challenge.challenge', $data);
+    }
+
     public function sendChallenge(Request $request)
     { //user2 id is the id to whom challenge is being sent
+        $request->request->remove('_token');
+        $request->request->add(['tournament_id' => config('const.tournament_id')]);
+        $data=$this->userChallenge->where(['user_1_id'=>$request->user_1_id,'user_2_id'=>$request->user_2_id])->first();
+       if(empty($data)){
+           $this->userChallenge->fill($request->all());
+           $this->userChallenge->save();
+           return redirect()->back()
+               ->with('status', 'Challenge Sent Succesfully');
+       }else{
+           return redirect()->back()
+               ->with('status', 'You have already challenged this user');
+       }
 
-        $this->userChallenge->fill($request->all());
-        $this->userChallenge->save();
+
     }
 
     public function showUserChallenges()
@@ -42,15 +60,12 @@ class ChallengeController extends Controller
 
 
         $challenge = $this->userChallenge->findOrFail($challenge_id)->first()->toArray();
-        $user_1_id=$challenge['user_1_id'];
-        $user_2_id=$challenge['user_2_id'];
-        $tournament_id=$challenge['tournament_id'];
+        $user_1_id = $challenge['user_1_id'];
+        $user_2_id = $challenge['user_2_id'];
+        $tournament_id = $challenge['tournament_id'];
 //        $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->
 //        where('start_date', '>=', getGmtTime());
-        \App\Leaderboard::where('user_id',$user_1_id)->where('user_id',$user_2_id);
-
-
-
+        \App\Leaderboard::where('user_id', $user_1_id)->where('user_id', $user_2_id);
 
 
         dd($user_1_id);

@@ -181,7 +181,7 @@ class HomeController extends Controller
 
     public function howPlay()
     {
-        $data['tournament'] = \App\Tournament::where('id', 2)
+        $data['tournament'] = \App\Tournament::where('id', config('const.tournament_id'))
             ->with('tournament_game.game_actions.game_terms', 'game_term_points')
             ->firstOrFail()
             ->toArray();

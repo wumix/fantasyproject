@@ -72,6 +72,14 @@
             background: #fff;
             box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
             padding: 0 29px;
+            margin-bottom: 40px;
+        }
+        .abot_me_sec1 {
+            width: 100%;
+            display: inline-block;
+            background: #fff;
+            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
+            padding: 0 29px;
         }
 
         .text_abot_me {
@@ -572,6 +580,21 @@
                             <li>
                                 @if(has_user_team_ipl(Auth::id()))
                                      <span id="game_lame"> Calulating...</span>
+                                @else
+                                    You haven't played any tournament yet
+                                @endif
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="abot_me_sec1">
+                    <span class="text_abot_me text-center">
+                        Your Challenges
+                    </span>
+
+                        <ul class="img_area_area">
+                            <li>
+                                @if(has_user_team_ipl(Auth::id()))
+                                    <span id="game_lame"> Calulating...</span>
                                 @else
                                     You haven't played any tournament yet
                                 @endif

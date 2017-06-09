@@ -66,6 +66,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('\App\Comment');
     }
+    public function challenges(){
+        return $this->hasMany('\App\UserChallenge','user_2_id','id');
+    }
+
 
     /**
      * Get user from social media logins

@@ -97,7 +97,7 @@ class HomeController extends Controller
 
     public function leaderboard()
     {
-        $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(22)->orderBy('score', 'DESC')->get()->toArray();
+        $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(21)->orderBy('score', 'DESC')->get()->toArray();
         return view('pages.leaderboard', $data);
 
     }

@@ -20,6 +20,7 @@
 
 
 Route::get('/newdash', 'HomeController@newdash')->name('newdashboard');
+
 Route::get('login/facebook', 'Auth\LoginController@redirectToFacebookProvider')->name('facebookLogin');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleFacebookProviderCallback')->name('facebookLoginCallback');
 Route::group(['middleware' => ['web']], function () {

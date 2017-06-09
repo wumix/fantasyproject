@@ -78,11 +78,11 @@ class HomeController extends Controller
         return $this->timestamp;
     }
 
+
+
     public function index()
     {
-       // \Mail::to("tooovim@yahoo.com")->send(new \App\Mail\SignUp("hi Adeel"));
-       // \Mail::to("alraadu58@gmail.com")->send(new \App\Mail\SignUp("hi Adeel"));
-        // dd($this->getServerTimeAsGMT());
+
         $datetime = new \DateTime();
         $date = $datetime->format('Y-m-d H:i:s');
         $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', $date)->Where('end_date', '>=', $date);
@@ -94,11 +94,14 @@ class HomeController extends Controller
         $data['news'] = \App\BlogPost::where('post_type', 'news')->take(3)->orderBy('id', 'DESC')->get()->toArray();
         return view('home', $data);
     }
- public function leaderboard(){
-     $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(22)->orderBy('score', 'DESC')->get()->toArray();
-     return view('pages.leaderboard', $data);
+
+    public function leaderboard()
+    {
+        $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(22)->orderBy('score', 'DESC')->get()->toArray();
+        return view('pages.leaderboard', $data);
 
     }
+
     public function fixturesDetial($tournament_id)
     {
         $data['fixture_details'] = \App\Tournament::where('slug', $tournament_id)->with('tournament_matches')->firstOrFail()->toArray();
@@ -152,7 +155,7 @@ class HomeController extends Controller
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'user_message' => $request->get('message')
-        ), function ($message) use ($request,$emailRecievers) {
+        ), function ($message) use ($request, $emailRecievers) {
             $message->from($request->get('email'));
             $message->to($emailRecievers, 'Admin')->subject('Gamithon Contact');
         });

@@ -277,7 +277,7 @@ class TournamentsController extends Controller
         ])->where('id', $data['player_info']['player_roles'][0]['id'])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
             $query->where('tournament_id', $tournament_id);
         })->get()->toArray();
-         //dd($data['roles']);
+        //dd($data['roles']);
 
         return view('user.tournaments.player_transfer', $data);
     }
@@ -341,20 +341,29 @@ class TournamentsController extends Controller
 
     function getTImeDifference($tournamentDate)
     {
+
         $datetime = new \DateTime($tournamentDate);
-        $date = $datetime->format('Y-m-d H:i:sP');
+        $date = $datetime->format('Y-m-d H:i:s');
         $dateint = strtotime($date);
-        $date1 = new DateTime();
-        $date1 = $date1->format('Y-m-d H:i:sP');
-        $date1int = strtotime($date1);
+//        echo $date.'<br>';
+//        echo getGmtTime();
+//        $date1 = new DateTime();
+//        $date1 = $date1->format('Y-m-d H:i:sP');
+        $date1int = strtotime(getGmtTime());
         return $difference = round(($dateint - $date1int) / 60, 0);
     }
 
     function transferPlayerPost(Request $request)
     {
-// dd($request->all());
-        $tournamentDate = \App\Tournament::getStartdate($request->tournament_id);
-        $difference = $this->getTImeDifference($tournamentDate);
+
+        //  $tournamentDate = \App\Tournament::getStartdate($request->tournament_id);
+        $start_date = getGmtTime();
+        $tournamentMatches = \App\Tournament::where('id', $request->tournament_id)->with(['tournament_matches' => function ($query) use ($start_date) {
+            $query->where('start_date', '>', $start_date)->firstOrfail();
+        }])->firstOrfail()->toArray();
+        $nextMatchStartDate = $tournamentMatches['tournament_matches'][0]['start_date'];
+        $difference = $this->getTImeDifference($nextMatchStartDate);
+        $difference = abs($difference);
         $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
         $currentNoPlayers = \App\UserTeam::find($request->team_id)->user_team_player()->count();
         $objResponse = [];
@@ -366,17 +375,15 @@ class TournamentsController extends Controller
             }])->firstORFail();
 
         $player_in_price = $player_in_price['player_tournaments'][0]['pivot']['player_price'];
-        // dd($player_in_price);
-        // die;
 
-        if ($difference > 15 || $difference < 15) {
+        if ($difference > 15 || $difference<15) {
 //            echo $player_in_price." ". getUserTotalScore(Auth::id());
 //            die;
 //            echo $request->player_out_price;
 //        dd($player_in_price);
 
 
-            if (((getUserTotalScore(Auth::id()))+$request->player_out_price )>= ($player_in_price)) {
+            if (((getUserTotalScore(Auth::id())) + $request->player_out_price) >= ($player_in_price)) {
 
 
                 //    dd(get_individual_player_score($tournament_id, $request->team_id, 20));
@@ -392,8 +399,8 @@ class TournamentsController extends Controller
                 $transferDate = $transferDate->format('Y-m-d H:i:sP');
                 //  $playertransfers->transfer_date = $transferDate;
 //                    $playertransfers->save();
-                $netpointsdeduction=($request->player_out_price)-($player_in_price);
-                $netpointsdeduction=abs($netpointsdeduction);
+                $netpointsdeduction = ($request->player_out_price) - ($player_in_price);
+                $netpointsdeduction = abs($netpointsdeduction);
                 $player_out_score = get_individual_player_score($tournament_id, $request->team_id, $request->player_out_id);
 
                 $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => $netpointsdeduction]);
@@ -468,7 +475,7 @@ class TournamentsController extends Controller
 
         } else {
             $objResponse['success'] = false;
-            $objResponse['msg'] = "Tournament starts in 15 minutes you cant add player now";
+            $objResponse['msg'] = "Match starts in 15 minutes you cant transfer player now";
         }
         return response()->json($objResponse);
     }

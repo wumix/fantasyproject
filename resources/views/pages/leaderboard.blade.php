@@ -478,7 +478,7 @@
                         <div class="col-md-4 ">
                             <span class="leder_cirlcle_rank_text_second">
 
-                               <?php if(checksingledigit($key)) echo '0';?>{{$key+1}}<span>Rank</span></span>
+                               <?php if(checksingledigit($key+1)) echo '0';?>{{$key+1}}<span>Rank</span></span>
                         </div>
 
                     </div>

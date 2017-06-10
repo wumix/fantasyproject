@@ -93,6 +93,12 @@ class HomeController extends Controller
         $data['news'] = \App\BlogPost::where('post_type', 'news')->take(3)->orderBy('id', 'DESC')->get()->toArray();
         return view('home', $data);
     }
+    public function leaderboard()
+    {
+        $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(21)->orderBy('score', 'DESC')->get()->toArray();
+        return view('pages.leaderboard', $data);
+
+    }
 
     public function fixturesDetial($tournament_id)
     {

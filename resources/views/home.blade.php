@@ -98,7 +98,12 @@
                             <div class="col-md-12 no-padding">
 
                                 <h2 style="font-weight: 600;">
+                                    <h5>
 
+                                        <a class="btn leaderboardviewmorebutton" href="{{route('homeleaderboard')}}">View
+                                            More</a>
+
+                                    </h5>
                                 </h2>
 
                             </div>

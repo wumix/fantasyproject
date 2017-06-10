@@ -62,6 +62,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
         Route::group(['prefix' => 'challenge'], function () {
+            
             Route::get('/', 'user\ChallengeController@index')->name('sendchallenge');
             Route::get('/check-winner/{id}', 'User\ChallengeController@checkWinner')->name('adasd');
             Route::post('/send-challenge', 'User\ChallengeController@sendChallenge')->name('sendchallenge');

@@ -33,6 +33,13 @@ function has_user_team_ipl($user_id)
 function userTeamPlayerCount($team_id){
    return \App\UserTeam::find($team_id)->user_team_player()->count();
 }
+function checksingledigit($int){
+    if($int>9){
+        return false;
+    }else{
+        return true;
+    }
+}
 
 function getPlayerNoInTeam($userid, $teamid, $roleid)
 {

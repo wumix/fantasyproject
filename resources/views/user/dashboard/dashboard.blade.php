@@ -617,6 +617,33 @@
                         @endforeach
 
                     </div>
+                    <div class="abot_me_sec1">
+                    <span class="text_abot_me text-center">
+                        Your Challenges
+                    </span>
+                        @include('adminlte::layouts.form_errors')
+
+                        @foreach($accepted_challenges as $val)
+                            @foreach($val['challenges'] as $row)
+                                <ul class="img_area_area">
+                                    <li>
+
+                                        Name    <span id="game_lame">{{$row['user']['name']}}</span>
+                                    </li>
+                                    <li>
+                                        Reward:  <span id="game_lame">{{$row['rewards']}}</span>
+                                        <a href="{{route('accept_challenge',['id'=>$row['id']])}}">Accept</a>
+                                    </li>
+
+
+
+
+
+                                </ul>
+                            @endforeach
+                        @endforeach
+
+                    </div>
                 </div>
                 <div class="col-md-8 no-padding">
                     <div class="right_sec">

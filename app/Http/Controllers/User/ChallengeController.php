@@ -27,15 +27,15 @@ class ChallengeController extends Controller
         $request->request->remove('_token');
         $request->request->add(['tournament_id' => config('const.tournament_id')]);
         $data=$this->userChallenge->where(['user_1_id'=>$request->user_1_id,'user_2_id'=>$request->user_2_id])->first();
-       if(empty($data)){
-           $this->userChallenge->fill($request->all());
-           $this->userChallenge->save();
-           return redirect()->back()
-               ->with('status', 'Challenge Sent Succesfully');
-       }else{
-           return redirect()->back()
-               ->with('status', 'You have already challenged this user');
-       }
+        if(empty($data)){
+            $this->userChallenge->fill($request->all());
+            $this->userChallenge->save();
+            return redirect()->back()
+                ->with('status', 'Challenge Sent Succesfully');
+        }else{
+            return redirect()->back()
+                ->with('status', 'You have already challenged this user');
+        }
 
 
     }

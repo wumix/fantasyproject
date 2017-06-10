@@ -81,6 +81,14 @@
             background: #fff;
             box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
             padding: 0 29px;
+            margin-bottom: 40px;
+        }
+        .abot_me_sec2 {
+            width: 100%;
+            display: inline-block;
+            background: #fff;
+            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
+            padding: 0 29px;
         }
 
         .text_abot_me {
@@ -601,15 +609,12 @@
                                 <ul class="img_area_area">
                                     <li>
 
-                                    Name    <span id="game_lame">{{$row['user']['name']}}</span>
+                                        Name <span id="game_lame">{{$row['user']['name']}}</span>
                                     </li>
                                     <li>
-                                      Reward:  <span id="game_lame">{{$row['rewards']}}</span>
+                                        Reward: <span id="game_lame">{{$row['rewards']}}</span>
                                         <a href="{{route('accept_challenge',['id'=>$row['id']])}}">Accept</a>
                                     </li>
-
-
-
 
 
                                 </ul>
@@ -617,9 +622,9 @@
                         @endforeach
 
                     </div>
-                    <div class="abot_me_sec1">
+                    <div class="abot_me_sec2">
                     <span class="text_abot_me text-center">
-                        Your Challenges
+                        Active
                     </span>
                         @include('adminlte::layouts.form_errors')
 
@@ -628,15 +633,22 @@
                                 <ul class="img_area_area">
                                     <li>
 
-                                        Name    <span id="game_lame">{{$row['user']['name']}}</span>
+                                        Vs <span id="game_lame">{{$row['user']['name']}}</span>
                                     </li>
                                     <li>
-                                        Reward:  <span id="game_lame">{{$row['rewards']}}</span>
-                                        <a href="{{route('accept_challenge',['id'=>$row['id']])}}">Accept</a>
+                                        Reward: <span id="game_lame">{{$row['rewards']}}</span>
+                                        <span id="game_lame">
+                                        @if($row['status']==0)
+                                            In progress
+                                        @endif
+                                        @if($row['status']==1)
+                                            Won
+                                        @endif
+                                        @if($row['status']==2)
+                                            Lost
+                                        @endif
+                                        </span>
                                     </li>
-
-
-
 
 
                                 </ul>
@@ -654,7 +666,8 @@
                                 Your level is <span class="lvl-text">Beginner</span>
                             </span>
                             <span class="plyer_one">
-                                <span class="lvl-text"><a href="{{route('challenges')}}">Challenge Other Players</a> </span>
+                                <span class="lvl-text"><a
+                                            href="{{route('challenges')}}">Challenge Other Players</a> </span>
                             </span>
 
                         </div>

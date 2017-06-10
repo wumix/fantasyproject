@@ -48,10 +48,13 @@ class ChallengeController extends Controller
     }
 
     public function acceptChallenge($id)
-    { //challenge id
+    {
+
         $challenge = $this->userChallenge->findOrFail($id);
-        $challenge->is_accepted = $id;
+        $challenge->is_accepted =1;
         $challenge->save();
+        return redirect()->back()
+            ->with('status', 'Challenge Accepted ');
 
     }
 

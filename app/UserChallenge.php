@@ -11,13 +11,10 @@ class UserChallenge extends Model
     public $timestamps = false;
     protected $guarded = [];
 
-    function user1()
-    {
-        return $this->belongsTo('\App\User', 'id');
-    }
 
-    function user2()
+
+    function user()
     {
-        return $this->belongsTo('\App\User', 'id');
+        return $this->belongsTo('\App\User','user_1_id');
     }
 }

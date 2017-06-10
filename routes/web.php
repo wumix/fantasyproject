@@ -67,7 +67,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/', 'user\ChallengeController@index')->name('sendchallenge');
             Route::get('/check-winner/{id}', 'User\ChallengeController@checkWinner')->name('adasd');
             Route::post('/send-challenge', 'User\ChallengeController@sendChallenge')->name('sendchallenge');
-            Route::get('/accept-challenge/{user_id}', 'User\ChallengeController@acceptChallenge')->name('accept');
+            Route::get('/accept-challenge/{id}', 'User\ChallengeController@acceptChallenge')->name('accept_challenge');
             Route::get('/show-challenge/{id}', 'User\ChallengeController@showUserChallenges')->name('accept');
         });
         Route::group(['prefix' => 'tournaments'], function () {

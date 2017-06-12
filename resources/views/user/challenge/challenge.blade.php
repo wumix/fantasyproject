@@ -238,11 +238,11 @@
                 <div class=" challenge_section ">
                     <form class="form_area_challenge">
                         <label class="label_challnge_sec">
-                            <div class="sectio_absolute">
-                                <input type="text" placeholder="Search player by email" class="input_challenge_field">
-                                <a href="#" class="serch_challenge"><img class="img-responsive "
-                                                                         src={{URL::to('/img/search_challenge.png')}} alt=""/></a>
-                            </div>
+                            {{--<div class="sectio_absolute">--}}
+                                {{--<input type="text" placeholder="Search player by email" class="input_challenge_field">--}}
+                                {{--<a href="#" class="serch_challenge"><img class="img-responsive "--}}
+                                                                         {{--src={{URL::to('/img/search_challenge.png')}} alt=""/></a>--}}
+                            {{--</div>--}}
                         </label>
                     </form>
                     <?php $i = 0;?>

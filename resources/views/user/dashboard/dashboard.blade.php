@@ -600,7 +600,7 @@
                     </div>
                     <div class="abot_me_sec1">
                     <span class="text_abot_me text-center">
-                        Your Challenges
+                        Active Challenges
                     </span>
                         @include('adminlte::layouts.form_errors')
 

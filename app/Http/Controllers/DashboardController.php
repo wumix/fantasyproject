@@ -38,7 +38,11 @@ class DashboardController extends Controller
         $teamId = $request->team_id;
         //->where('user_id', \Auth::id())
         $data['user_teams'] = \App\UserTeam::where('id', $teamId)->get()->toArray();
-
+        //////Error
+        if (empty($data['user_teams'])) {
+            return abort(404);
+        }
+        /// End Error
         $tournament_id = $data['user_teams'][0]['tournament_id'];
         $date_end = \App\Tournament::where('id', $tournament_id)->firstOrFail()->end_date;
         $datetime = new \DateTime();

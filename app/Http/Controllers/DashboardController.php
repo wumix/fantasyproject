@@ -36,7 +36,8 @@ class DashboardController extends Controller
         $transferflag = 0; // if tournament over hides transfer button
 
         $teamId = $request->team_id;
-        $data['user_teams'] = \App\UserTeam::where('id', $teamId)->where('user_id', \Auth::id())->get()->toArray();
+        //->where('user_id', \Auth::id())
+        $data['user_teams'] = \App\UserTeam::where('id', $teamId)->get()->toArray();
 
         $tournament_id = $data['user_teams'][0]['tournament_id'];
         $date_end = \App\Tournament::where('id', $tournament_id)->firstOrFail()->end_date;
@@ -117,9 +118,9 @@ class DashboardController extends Controller
         $data['leaders'] = \App\Leaderboard::take(3)->select(['user_id', 'score'])->orderBy('score', 'DESC')->get()->toArray();
         //dd($data['leaders']);
         $data['user_ranking'] = 0;
-        foreach ($data['leaders'] as $key => $val){
-            if($val['user_id'] == \Auth::id()){
-                $data['user_ranking'] = $key+1;
+        foreach ($data['leaders'] as $key => $val) {
+            if ($val['user_id'] == \Auth::id()) {
+                $data['user_ranking'] = $key + 1;
             }
         }
         //echo $data['user_ranking']; die;

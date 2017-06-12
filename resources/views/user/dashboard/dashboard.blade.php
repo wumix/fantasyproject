@@ -598,7 +598,7 @@
                             </li>
                         </ul>
                     </div>
-                    @if(!empty($challenges))
+                    @if(!empty($challenges[0]['challenges']))
                     <div class="abot_me_sec1">
                     <span class="text_abot_me text-center">
                         Active Challenges
@@ -624,7 +624,7 @@
 
                     </div>
                     @endif
-                    @if(!empty($accepted_challenges))
+                    @if(!empty($accepted_challenges[0]['challenges']))
                     <div class="abot_me_sec2">
                     <span class="text_abot_me text-center">
                         Active

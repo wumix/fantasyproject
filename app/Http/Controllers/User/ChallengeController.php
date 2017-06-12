@@ -26,13 +26,17 @@ class ChallengeController extends Controller
     { //user2 id is the id to whom challenge is being sent
         $request->request->remove('_token');
         $request->request->add(['tournament_id' => config('const.tournament_id')]);
-        $data=$this->userChallenge->where(['user_1_id'=>$request->user_1_id,'user_2_id'=>$request->user_2_id])->first();
-        if(empty($data)){
+        $data = $this->userChallenge->where(['user_1_id' => $request->user_1_id, 'user_2_id' => $request->user_2_id])->first();
+        if (empty($data)) {
             $this->userChallenge->fill($request->all());
             $this->userChallenge->save();
+            $sender = \App\User::find($request->user_1_id);
+            $reciever = $id = \App\User::find($request->user_2_id);
+            \Mail::to($reciever->email)->send(new \App\Mail\SignUp($sender->name, $reciever->name));
             return redirect()->back()
                 ->with('status', 'Challenge Sent Succesfully');
-        }else{
+
+        } else {
             return redirect()->back()
                 ->with('status', 'You have already challenged this user');
         }
@@ -51,7 +55,7 @@ class ChallengeController extends Controller
     {
 
         $challenge = $this->userChallenge->findOrFail($id);
-        $challenge->is_accepted =1;
+        $challenge->is_accepted = 1;
         $challenge->save();
         return redirect()->back()
             ->with('status', 'Challenge Accepted ');

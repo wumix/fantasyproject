@@ -601,7 +601,7 @@
                     @if(!empty($challenges[0]['challenges']))
                     <div class="abot_me_sec1">
                     <span class="text_abot_me text-center">
-                        Active Challenges
+                        InActive Challenges
                     </span>
                         @include('adminlte::layouts.form_errors')
 
@@ -627,7 +627,7 @@
                     @if(!empty($accepted_challenges[0]['challenges']))
                     <div class="abot_me_sec2">
                     <span class="text_abot_me text-center">
-                        Active
+                        Active Chanllenges
                     </span>
                         @include('adminlte::layouts.form_errors')
 

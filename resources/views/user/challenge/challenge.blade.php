@@ -18,6 +18,11 @@
             border-radius: 5px;
             background: #f4f2f2;
         }
+.centerlize{
+    width: 500px;
+    display:block;
+    margin: 0 auto;
+}
 
         .sectio_absolute {
             width: 100%;
@@ -239,14 +244,15 @@
                     <form class="form_area_challenge">
                         <label class="label_challnge_sec">
                             {{--<div class="sectio_absolute">--}}
-                                {{--<input type="text" placeholder="Search player by email" class="input_challenge_field">--}}
-                                {{--<a href="#" class="serch_challenge"><img class="img-responsive "--}}
-                                                                         {{--src={{URL::to('/img/search_challenge.png')}} alt=""/></a>--}}
+                            {{--<input type="text" placeholder="Search player by email" class="input_challenge_field">--}}
+                            {{--<a href="#" class="serch_challenge"><img class="img-responsive "--}}
+                            {{--src={{URL::to('/img/search_challenge.png')}} alt=""/></a>--}}
                             {{--</div>--}}
                         </label>
                     </form>
                     <?php $i = 0;?>
                     <?php $y = 4;?>
+
                     @foreach($users as $key=>$user)
                         @if($i%3==0)
                             <div class="border_arrea">
@@ -279,7 +285,7 @@
                     @endforeach
 
 
-                    <div class="text-center">
+                    <div class="text-center centerlize">
                         {{$users->links()}}
                     </div>
                 </div>

@@ -598,6 +598,7 @@
                             </li>
                         </ul>
                     </div>
+                    @if(!empty($challenges))
                     <div class="abot_me_sec1">
                     <span class="text_abot_me text-center">
                         Active Challenges
@@ -622,6 +623,8 @@
                         @endforeach
 
                     </div>
+                    @endif
+                    @if(!empty($accepted_challenges))
                     <div class="abot_me_sec2">
                     <span class="text_abot_me text-center">
                         Active
@@ -656,6 +659,7 @@
                         @endforeach
 
                     </div>
+                    @endif
                 </div>
                 <div class="col-md-8 no-padding">
                     <div class="right_sec">

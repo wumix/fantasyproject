@@ -248,7 +248,6 @@
                     <?php $i = 0;?>
                     <?php $y = 4;?>
                     @foreach($users as $key=>$user)
-                        @if($user['user']['id']!=\Auth::id())
                         @if($i%3==0)
                             <div class="border_arrea">
                                 @endif
@@ -276,7 +275,7 @@
                         @endif
                         <?php $i++;?>
                         <?php $y++;?>
-                            @endif
+
                     @endforeach
 
 

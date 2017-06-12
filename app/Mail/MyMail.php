@@ -30,6 +30,6 @@ class MyMail extends Mailable
      */
     public function build()
     {
-        return $this->from('gamithonfantasy@gmail.com')->view('mail.leaderboard');
+        return $this->from('no-reply@gamithonfantasy.com')->view('mail.leaderboard');
     }
 }

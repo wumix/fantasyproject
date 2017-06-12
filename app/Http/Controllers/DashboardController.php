@@ -58,9 +58,9 @@ class DashboardController extends Controller
         $matcheIdsAfterThisTeamMade = \App\Match::select('id')
             ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])
             ->get()->toArray();
-      //  echo 'joined date'.$data['user_teams'][0]['joined_from_match_date'].'<br>';
-       // echo getGmtTime();
-         //dd($matcheIdsAfterThisTeamMade);
+        //  echo 'joined date'.$data['user_teams'][0]['joined_from_match_date'].'<br>';
+        // echo getGmtTime();
+        //dd($matcheIdsAfterThisTeamMade);
         if (!empty($matcheIdsAfterThisTeamMade)) {
             $matcheIdsAfterThisTeamMade = array_column($matcheIdsAfterThisTeamMade, 'id');
             //  $matcheIdsAfterThisTeamMade = [1];
@@ -116,16 +116,16 @@ class DashboardController extends Controller
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
         $data['leaders'] = \App\Leaderboard::take(3)->select(['user_id', 'score'])->orderBy('score', 'DESC')->get()->toArray();
-        $data['challenges'] = \App\User::where(['id'=> \Auth::id()])->with(['challenges'=>function($query){
-           $query->where('is_accepted',0);
-    },'challenges.user'])->get()->toArray();
-        $data['accepted_challenges'] = \App\User::where(['id'=> \Auth::id()])->with(['challenges'=>function($query){
-            $query->where('is_accepted',1);
-        },'challenges.user'])->get()->toArray();
+        $data['challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
+            $query->where('is_accepted', 0);
+        }, 'challenges.user'])->get()->toArray();
+        $data['accepted_challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
+            $query->where('is_accepted', 1);
+        }, 'challenges.user'])->get()->toArray();
         $data['user_ranking'] = 0;
-        foreach ($data['leaders'] as $key => $val){
-            if($val['user_id'] == \Auth::id()){
-                $data['user_ranking'] = $key+1;
+        foreach ($data['leaders'] as $key => $val) {
+            if ($val['user_id'] == \Auth::id()) {
+                $data['user_ranking'] = $key + 1;
             }
         }
         //echo $data['user_ranking']; die;

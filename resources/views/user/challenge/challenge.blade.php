@@ -273,13 +273,15 @@
                         @endif
                         <?php $i++;?>
                         <?php $y++;?>
+
                     @endforeach
 
 
-                    <div class="pagination">
-                        <img class="img-responsive " src={{URL::to('/img/pagination.png')}} alt=""/>
+                    <div class="text-center">
+                        {{$users->links()}}
                     </div>
                 </div>
+
             </div>
 
 

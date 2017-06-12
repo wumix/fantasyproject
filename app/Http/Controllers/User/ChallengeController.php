@@ -18,7 +18,7 @@ class ChallengeController extends Controller
     public function index()
     {
         $data['users'] = \App\Leaderboard::where('tournament_id', config('const.tournament_id'))
-            ->with('user', 'user_team')->orderBy('score', 'DESC')->get()->toArray();
+            ->with('user', 'user_team')->orderBy('score', 'DESC')->paginate(9);
         return view('user.challenge.challenge', $data);
     }
 

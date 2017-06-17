@@ -531,7 +531,7 @@
                 url: '{{URL::to('assets-new/img/icc-banner-1.jpg')}}', fade: 500
             },
 
-            {url: '{{URL::to('assets-new/img/banner-final')}}', fade: 500},
+            {url: '{{URL::to('assets-new/img/banner-final.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/latest-banner.jpg')}}', fade: 500},
 
 

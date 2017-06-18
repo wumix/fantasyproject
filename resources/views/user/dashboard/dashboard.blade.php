@@ -711,7 +711,7 @@
                 var l=$("#team_id :selected").text();
 
 
-                $("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[2] + " #total_team_score");
+                $("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[3] + " #total_team_score");
                 //  $("#game_lame_1").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + $(this).val() + " #total_team_score");
             });
         });

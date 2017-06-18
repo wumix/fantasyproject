@@ -78,8 +78,8 @@
                             <div class="col-md-12 count-down no-padding">
                                 @if(!empty($leaders))
                                     @foreach($leaders as $leader)
-                                        <div class="col-md-4 leadersName text-center">
-                                            <div class="circle2">
+                                        <div class="col-md-4  text-center">
+                                            <div class="circle2 leadersName">
                         <span id="getting-started1">
                           <img style="width: 50px;
     height: 50px; border-radius: 50%;

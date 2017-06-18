@@ -479,41 +479,43 @@
     @php($date= '00-00-00 00:00:00')
     @if(!empty($matches['start_date']))
         @php($date= $matches['start_date'])
+        {{Html::script('js/moment.js')}}
+        <script type="text/javascript">
+            var dateObj = new Date();
+            var userTimeZone = dateObj.getTimezoneOffset();
+            //Time zone is in negatinv i.e. forward from GMT
+            userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : Math.abs(userTimeZone) * -1;
+
+            var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
+            console.log(tournamentDateTime, userTimeZone);
+
+            $("#getting-started").countdown(tournamentDateTime, function (event) {
+                $(this).text(
+                    event.strftime('%D')
+                );
+            });
+            $("#getting-started1")
+                .countdown(tournamentDateTime, function (event) {
+                    $(this).text(
+                        event.strftime('%H')
+                    );
+                });
+            $("#getting-started2")
+                .countdown(tournamentDateTime, function (event) {
+                    $(this).text(
+                        event.strftime('%M')
+                    );
+                });
+            $("#getting-started3")
+                .countdown(tournamentDateTime, function (event) {
+                    $(this).text(
+                        event.strftime('%S')
+                    );
+                });
+        </script>
     @endif
-    {{Html::script('js/moment.js')}}
-    <script type="text/javascript">
-        var dateObj = new Date();
-        var userTimeZone = dateObj.getTimezoneOffset();
-        //Time zone is in negatinv i.e. forward from GMT
-        userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : Math.abs(userTimeZone) * -1;
 
-        var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
-        console.log(tournamentDateTime, userTimeZone);
 
-        $("#getting-started").countdown(tournamentDateTime, function (event) {
-            $(this).text(
-                event.strftime('%D')
-            );
-        });
-        $("#getting-started1")
-            .countdown(tournamentDateTime, function (event) {
-                $(this).text(
-                    event.strftime('%H')
-                );
-            });
-        $("#getting-started2")
-            .countdown(tournamentDateTime, function (event) {
-                $(this).text(
-                    event.strftime('%M')
-                );
-            });
-        $("#getting-started3")
-            .countdown(tournamentDateTime, function (event) {
-                $(this).text(
-                    event.strftime('%S')
-                );
-            });
-    </script>
     <script>
         $('#header').backstretch([
 

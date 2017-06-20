@@ -162,6 +162,9 @@ return [
         //Social login
         Laravel\Socialite\SocialiteServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
+        Way\Generators\GeneratorsServiceProvider::class,
+        Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
+        DevDojo\Chatter\ChatterServiceProvider::class,
         'Bkwld\Croppa\ServiceProvider'
     ],
     /*

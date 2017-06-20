@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{--{{dd($leaders)}}--}}
 @section('title')
     Leaderboard
 @stop
@@ -351,7 +351,8 @@
                                          @else
                                          <?php
                                          $check=explode(".",$leaders[0]['user']['profile_pic']);
-                                         if($check[1]=="facebook"){
+                                        // if($check[1]=="facebook"){
+                                                 if(1){
                                              echo $leaders[0]['user']['profile_pic'];
                                          }else{
                                              echo Croppa::url(getUploadsPath($leaders[0]['user']['profile_pic']),156,134);

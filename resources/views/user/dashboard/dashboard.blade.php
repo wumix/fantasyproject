@@ -748,10 +748,12 @@
                             </div>
                         </div>
                     </div>
+                    @if(!empty($upcommingTour))
                     <div class="upcoming_sec">
                         <span class="text_abot_me_upcome">Active Tournaments</span>
                         <div class="col-md-12 no-padding">
                             <ul class="upcomin_list">
+
                                 @foreach($upcommingTour as $tour)
                                     <li>
                                         <div class="left_upcoming">
@@ -780,6 +782,7 @@
                         </div>
 
                     </div>
+                        @endif
                 </div>
             </div>
         </div>

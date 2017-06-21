@@ -82,16 +82,14 @@ class HomeController extends Controller
 
     public function index()
     {
-
-        $datetime = new \DateTime();
-        $date = $datetime->format('Y-m-d H:i:s');
-        $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', $date)->Where('end_date', '>=', $date);
+        $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
         $data['tournaments_list'] = $objTourmament->toArray(); //list of active
-        $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', $date);
+        $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
         $data['upcomming_tournaments_list'] = $upcommingTour->toArray(); //upcomming tournament of active
         $data['matches'] = \App\Match::getNextMatch();
         $data['leaders'] = \App\Leaderboard::where('tournament_id', config('const.tournament_id'))->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
         $data['news'] = \App\BlogPost::where('post_type', 'news')->take(3)->orderBy('id', 'DESC')->get()->toArray();
+
         return view('home', $data);
     }
 

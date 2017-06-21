@@ -13,53 +13,58 @@
                     <div class="col-md-8"></div>
 
                     <div class="header-content-inner bg-primary-opacity col-md-4 ">
-                        <div class="row">
-                            <div class="col-md-12 no-padding">
+                        <div style="display: none">
+                            <div class="row">
+                                <div class="col-md-12 no-padding">
 
-                                <h3 style="font-weight: 500; color: #FFFFFF">
-                                    NEXT MATCH COUNT DOWN
-                                </h3>
+                                    <h3 style="font-weight: 500; color: #FFFFFF">
+                                        NEXT MATCH COUNT DOWN
+                                    </h3>
 
 
-                                <h6 style="color: white;">
-                                    {{$matches['team_one']}}
-                                    <strong class="mlr10 Bold">
-                                        <em>Vs</em>
-                                    </strong>
-                                    {{$matches['team_two']}}
-                                </h6>
+                                    <h6 style="color: white;">
+                                        {{$matches['team_one']}}
+                                        <strong class="mlr10 Bold">
+                                            <em>Vs</em>
+                                        </strong>
+                                        {{$matches['team_two']}}
+                                    </h6>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row col-md-12">
-                            <div class="col-md-12 count-down no-padding mt30">
-                                <div class="col-md-3 text-center">
+                            <div class="row col-md-12">
+                                <div class="col-md-12 count-down no-padding mt30">
+                                    <div class="col-md-3 text-center">
                         <span id="getting-started" class="circle">
                             10
                         </span>
-                                    <p class="mtb10">Days</p>
-                                </div>
-                                <div class="col-md-3 text-center">
+                                        <p class="mtb10">Days</p>
+                                    </div>
+                                    <div class="col-md-3 text-center">
                         <span id="getting-started1" class="circle">
                             10
                         </span>
-                                    <p class="mtb10">Hours</p>
-                                </div>
-                                <div class="col-md-3 text-center">
+                                        <p class="mtb10">Hours</p>
+                                    </div>
+                                    <div class="col-md-3 text-center">
                         <span id="getting-started2" class="circle">
                             10
                         </span>
-                                    <p class="mtb10" style="margin-left: 12px;">Min</p>
-                                </div>
-                                <div class="col-md-3 text-center">
+                                        <p class="mtb10" style="margin-left: 12px;">Min</p>
+                                    </div>
+                                    <div class="col-md-3 text-center">
                         <span id="getting-started3" class="circle">
                             10
                         </span>
-                                    <p class="mtb10" style="margin-left: 12px;">Sec</p>
+                                        <p class="mtb10" style="margin-left: 12px;">Sec</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="row">
-                            <div class="col-md-12 no-padding" style="margin-top: -20px;">
+                            <!-- style="margin-top: -20px;"-->
+                            <div class="col-md-12 no-padding">
 
                                 <h4 style="font-weight: 500;color: #FFFFFF">
                                     @if(!empty($leaders))
@@ -73,8 +78,8 @@
                             <div class="col-md-12 count-down no-padding">
                                 @if(!empty($leaders))
                                     @foreach($leaders as $leader)
-                                        <div class="col-md-4 text-center">
-                                            <div class="circle2">
+                                        <div class="col-md-4  text-center">
+                                            <div class="circle2 leadersName">
                         <span id="getting-started1">
                           <img style="width: 50px;
     height: 50px; border-radius: 50%;
@@ -99,8 +104,8 @@
 
                                 <h5>
 
-                                        <a class="btn leaderboardviewmorebutton" href="{{route('homeleaderboard')}}">View
-                                            More</a>
+                                    <a class="btn leaderboardviewmorebutton" href="{{route('homeleaderboard')}}">View
+                                        More</a>
 
                                 </h5>
 
@@ -464,21 +469,6 @@
                 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
         </div>
     </section>
@@ -489,41 +479,43 @@
     @php($date= '00-00-00 00:00:00')
     @if(!empty($matches['start_date']))
         @php($date= $matches['start_date'])
+        {{Html::script('js/moment.js')}}
+        <script type="text/javascript">
+            var dateObj = new Date();
+            var userTimeZone = dateObj.getTimezoneOffset();
+            //Time zone is in negatinv i.e. forward from GMT
+            userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : Math.abs(userTimeZone) * -1;
+
+            var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
+            console.log(tournamentDateTime, userTimeZone);
+
+            $("#getting-started").countdown(tournamentDateTime, function (event) {
+                $(this).text(
+                    event.strftime('%D')
+                );
+            });
+            $("#getting-started1")
+                .countdown(tournamentDateTime, function (event) {
+                    $(this).text(
+                        event.strftime('%H')
+                    );
+                });
+            $("#getting-started2")
+                .countdown(tournamentDateTime, function (event) {
+                    $(this).text(
+                        event.strftime('%M')
+                    );
+                });
+            $("#getting-started3")
+                .countdown(tournamentDateTime, function (event) {
+                    $(this).text(
+                        event.strftime('%S')
+                    );
+                });
+        </script>
     @endif
-    {{Html::script('js/moment.js')}}
-    <script type="text/javascript">
-        var dateObj = new Date();
-        var userTimeZone = dateObj.getTimezoneOffset();
-        //Time zone is in negatinv i.e. forward from GMT
-        userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : Math.abs(userTimeZone) * -1;
 
-        var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
-        console.log(tournamentDateTime, userTimeZone);
 
-        $("#getting-started").countdown(tournamentDateTime, function (event) {
-            $(this).text(
-                event.strftime('%D')
-            );
-        });
-        $("#getting-started1")
-            .countdown(tournamentDateTime, function (event) {
-                $(this).text(
-                    event.strftime('%H')
-                );
-            });
-        $("#getting-started2")
-            .countdown(tournamentDateTime, function (event) {
-                $(this).text(
-                    event.strftime('%M')
-                );
-            });
-        $("#getting-started3")
-            .countdown(tournamentDateTime, function (event) {
-                $(this).text(
-                    event.strftime('%S')
-                );
-            });
-    </script>
     <script>
         $('#header').backstretch([
 
@@ -536,14 +528,13 @@
             {url: '{{URL::to('assets-new/img/latest-banner.jpg')}}', fade: 500},
 
 
-
         ]);
 
 
     </script>
     <script>
         $(function () {
-            $('.itemsz').matchHeight('col-md-4');
+            $('.itemsz, .leadersName').matchHeight('col-md-4');
         });
 
     </script>

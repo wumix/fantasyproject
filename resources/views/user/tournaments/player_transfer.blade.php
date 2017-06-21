@@ -305,16 +305,17 @@
 
 
                     } else {
+
                         $.toast({
                             heading: '&nbsp;',
                             text: data.msg,
-                            icon: 'success',
+                            icon: 'error',
                             loader: true, // Change it to false to disable loader
                             position: 'top-right',
                             showHideTransition: 'slide',
                             hideAfter: 10000,
                             allowToastClose: true,
-                            loaderBg: '#92B713'  // To change the background
+                            loaderBg: '#FF0000'  // To change the background
                         });
 
 

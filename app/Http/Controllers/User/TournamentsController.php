@@ -357,9 +357,10 @@ class TournamentsController extends Controller
     {
 
         //  $tournamentDate = \App\Tournament::getStartdate($request->tournament_id);
-        $start_date = getGmtTime();
-        $tournamentMatches = \App\Tournament::where('id', $request->tournament_id)->with(['tournament_matches' => function ($query) use ($start_date) {
-            $query->where('start_date', '>', $start_date)->firstOrfail();
+
+        $gmttimenow = getGmtTime();
+        $tournamentMatches = \App\Tournament::where('id', $request->tournament_id)->with(['tournament_matches' => function ($query) use ($gmttimenow) {
+            $query->where('start_date', '>', $gmttimenow)->firstOrfail();
         }])->firstOrfail()->toArray();
         $nextMatchStartDate = $tournamentMatches['tournament_matches'][0]['start_date'];
         $difference = $this->getTImeDifference($nextMatchStartDate);
@@ -376,7 +377,8 @@ class TournamentsController extends Controller
 
         $player_in_price = $player_in_price['player_tournaments'][0]['pivot']['player_price'];
 
-        if ($difference > 15 || $difference<15) {
+
+        if ($difference >15 ) {
 //            echo $player_in_price." ". getUserTotalScore(Auth::id());
 //            die;
 //            echo $request->player_out_price;

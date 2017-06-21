@@ -169,15 +169,26 @@
                         {{--LeaderBoard--}}
                         {{--</a>--}}
                         {{--</li>--}}
+<<<<<<< HEAD
                     <!--    @if(!has_user_team(Auth::id()))
                             <li id="create-your-team">
+=======
+                        @if(!has_user_team(Auth::id()))
+                           <!-- <li id="create-your-team">
+>>>>>>> develop
 
                                 <a class="page-scroll" href="{{route('addTeam', ['tournament_id'=>2])}}">
                                     Create Team
                                 </a>
+<<<<<<< HEAD
                             </li>
                         @endif -->
                      <li>
+=======
+                            </li> -->
+                        @endif
+                        <li>
+>>>>>>> develop
                             <a class="page-scroll" href="{{route('usertournamenthome')}}">
                                 Create Team
                             </a>

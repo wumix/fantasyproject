@@ -35,7 +35,7 @@
         }
 
         .lvl-text {
-            font-size: 24px;
+            font-size: 20px;
             color: #F9980E;
         }
 
@@ -67,6 +67,23 @@
         }
 
         .abot_me_sec {
+            width: 100%;
+            display: inline-block;
+            background: #fff;
+            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
+            padding: 0 29px;
+            margin-bottom: 40px;
+        }
+
+        .abot_me_sec1 {
+            width: 100%;
+            display: inline-block;
+            background: #fff;
+            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
+            padding: 0 29px;
+            margin-bottom: 40px;
+        }
+        .abot_me_sec2 {
             width: 100%;
             display: inline-block;
             background: #fff;
@@ -386,7 +403,6 @@
 
         @media all and (min-width: 961px) and (max-width: 1200px) {
 
-
             .upcoming_sec {
                 margin-bottom: 50px;
             }
@@ -406,6 +422,7 @@
             .owner_text {
                 font-size: 27px;
             }
+
             .right_sec {
                 margin-top: 30px;
             }
@@ -457,9 +474,10 @@
             .left_upcoming {
                 width: 100%;
             }
-            .abot_me{
-            margin-top: 25px;
-        }
+
+            .abot_me {
+                margin-top: 25px;
+            }
 
         }
 
@@ -468,6 +486,7 @@
                 font-size: 15px;
                 font-weight: bold;
             }
+
             .btn_club {
                 left: 20%;
             }
@@ -475,6 +494,7 @@
             .text_con {
                 bottom: -123px;
             }
+
             .sect {
                 display: inline-block;
                 float: right;
@@ -571,13 +591,75 @@
                         <ul class="img_area_area">
                             <li>
                                 @if(has_user_team_ipl(Auth::id()))
-                                     <span id="game_lame"> Calulating...</span>
+                                    <span id="game_lame"> Calulating...</span>
                                 @else
                                     You haven't played any tournament yet
                                 @endif
                             </li>
                         </ul>
                     </div>
+                    @if(!empty($challenges[0]['challenges']))
+                    <div class="abot_me_sec1">
+                    <span class="text_abot_me text-center">
+                        InActive Challenges
+                    </span>
+                        @include('adminlte::layouts.form_errors')
+
+                        @foreach($challenges as $val)
+                            @foreach($val['challenges'] as $row)
+                                <ul class="img_area_area">
+                                    <li>
+
+                                        Name <span id="game_lame">{{$row['user']['name']}}</span>
+                                    </li>
+                                    <li>
+                                        Reward: <span id="game_lame">{{$row['rewards']}}</span>
+                                        <a href="{{route('accept_challenge',['id'=>$row['id']])}}">Accept</a>
+                                    </li>
+
+
+                                </ul>
+                            @endforeach
+                        @endforeach
+
+                    </div>
+                    @endif
+                    @if(!empty($accepted_challenges[0]['challenges']))
+                    <div class="abot_me_sec2">
+                    <span class="text_abot_me text-center">
+                        Active Chanllenges
+                    </span>
+                        @include('adminlte::layouts.form_errors')
+
+                        @foreach($accepted_challenges as $val)
+                            @foreach($val['challenges'] as $row)
+                                <ul class="img_area_area">
+                                    <li>
+
+                                        Vs <span id="game_lame">{{$row['user']['name']}}</span>
+                                    </li>
+                                    <li>
+                                        Reward: <span id="game_lame">{{$row['rewards']}}</span>
+                                        <span id="game_lame">
+                                        @if($row['status']==0)
+                                            In progress
+                                        @endif
+                                        @if($row['status']==1)
+                                            Won
+                                        @endif
+                                        @if($row['status']==2)
+                                            Lost
+                                        @endif
+                                        </span>
+                                    </li>
+
+
+                                </ul>
+                            @endforeach
+                        @endforeach
+
+                    </div>
+                    @endif
                 </div>
                 <div class="col-md-8 no-padding">
                     <div class="right_sec">
@@ -587,6 +669,11 @@
                             <span class="plyer_one">
                                 Your level is <span class="lvl-text">Beginner</span>
                             </span>
+                            <span class="plyer_one">
+                                <span class="lvl-text"><a
+                                            href="{{route('challenges')}}">Challenge Other Players</a> </span>
+                            </span>
+
                         </div>
                         <div class="col-md-6">
                             <ul class="medal">
@@ -640,7 +727,9 @@
                                             <option value="">Please select your team</option>
                                             @foreach($user_teams as $row)
                                                 <option id="dropdownbtn"
-                                                        value="{{$row['id']}}">{{$row['name']}} ( {{$row['teamtournament']['name']}} )</option>
+                                                        value="{{$row['id']}}">{{$row['name']}}
+                                                    ( {{$row['teamtournament']['name']}} )
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -702,13 +791,13 @@
 
         $(document).ready(function () {
             myList = [];
-            $('#team_id option').each(function() {
+            $('#team_id option').each(function () {
                 myList.push($(this).val())
             });
 
 
             $("#team_id").each(function () {
-                var l=$("#team_id :selected").text();
+                var l = $("#team_id :selected").text();
 
 
                 $("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[1] + " #total_team_score");

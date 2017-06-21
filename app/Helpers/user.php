@@ -11,7 +11,7 @@ function getUserTotalScore($userid)
 
 function has_user_team($user_id)
 {
-    $userteam = \App\UserTeam::where('user_id', $user_id)->where('tournament_id', 2)->first();
+    $userteam = \App\UserTeam::where('user_id', $user_id)->where('tournament_id',3)->first();
     ///dd($userteam);
     if ($userteam == NULL) {
         return FALSE;
@@ -40,7 +40,10 @@ function checksingledigit($int){
         return true;
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
 function getPlayerNoInTeam($userid, $teamid, $roleid)
 {
 

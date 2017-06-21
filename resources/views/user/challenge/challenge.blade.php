@@ -18,6 +18,14 @@
             border-radius: 5px;
             background: #f4f2f2;
         }
+<<<<<<< HEAD
+=======
+.centerlize{
+    width: 500px;
+    display:block;
+    margin: 0 auto;
+}
+>>>>>>> develop
 
         .sectio_absolute {
             width: 100%;
@@ -238,19 +246,35 @@
                 <div class=" challenge_section ">
                     <form class="form_area_challenge">
                         <label class="label_challnge_sec">
+<<<<<<< HEAD
                             <div class="sectio_absolute">
                                 <input type="text" placeholder="Search player by email" class="input_challenge_field">
                                 <a href="#" class="serch_challenge"><img class="img-responsive "
                                                                          src={{URL::to('/img/search_challenge.png')}} alt=""/></a>
                             </div>
+=======
+                            {{--<div class="sectio_absolute">--}}
+                            {{--<input type="text" placeholder="Search player by email" class="input_challenge_field">--}}
+                            {{--<a href="#" class="serch_challenge"><img class="img-responsive "--}}
+                            {{--src={{URL::to('/img/search_challenge.png')}} alt=""/></a>--}}
+                            {{--</div>--}}
+>>>>>>> develop
                         </label>
                     </form>
                     <?php $i = 0;?>
                     <?php $y = 4;?>
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
                     @foreach($users as $key=>$user)
                         @if($i%3==0)
                             <div class="border_arrea">
                                 @endif
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
                                 <div class="col-md-4">
                                     <div class="col-md-6">
                                         <div class="cnter_liez_challenge">
@@ -269,10 +293,15 @@
                                 </div>
 
                                 @if($y%3==0)
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
                             </div>
                         @endif
                         <?php $i++;?>
                         <?php $y++;?>
+<<<<<<< HEAD
                     @endforeach
 
 
@@ -280,6 +309,17 @@
                         <img class="img-responsive " src={{URL::to('/img/pagination.png')}} alt=""/>
                     </div>
                 </div>
+=======
+
+                    @endforeach
+
+
+                    <div class="text-center centerlize">
+                        {{$users->links()}}
+                    </div>
+                </div>
+
+>>>>>>> develop
             </div>
 
 

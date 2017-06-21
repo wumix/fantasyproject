@@ -53,12 +53,26 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['middleware' => ['is_user']], function () {
         Route::group(['prefix' => 'user'], function () {
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
             Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
             Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
             Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');
             Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
             Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('postUserProfile');
             Route::any('/team-detail/', 'DashboardController@teamDetail')->name('teamdetail');
+        });
+
+
+        Route::group(['prefix' => 'challenge'], function () {
+            
+            Route::get('/', 'User\ChallengeController@index')->name('challenges');
+            Route::get('/check-winner/{id}', 'User\ChallengeController@checkWinner')->name('adasd');
+            Route::post('/send-challenge', 'User\ChallengeController@sendChallenge')->name('sendchallenge');
+            Route::get('/accept-challenge/{id}', 'User\ChallengeController@acceptChallenge')->name('accept_challenge');
+            Route::get('/show-challenge/{id}', 'User\ChallengeController@showUserChallenges')->name('accept');
         });
         Route::group(['prefix' => 'tournaments'], function () {
 

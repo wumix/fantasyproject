@@ -385,7 +385,11 @@ class TournamentsController extends Controller
 //        dd($player_in_price);
 
 
+<<<<<<< HEAD
             if (((getUserTotalScore(Auth::id())) + $request->player_out_price) >= ($player_in_price)) {
+=======
+            if (((getUserTotalScore(Auth::id()))+$request->player_out_price )>= ($player_in_price)) {
+>>>>>>> develop
 
 
                 //    dd(get_individual_player_score($tournament_id, $request->team_id, 20));
@@ -401,8 +405,13 @@ class TournamentsController extends Controller
                 $transferDate = $transferDate->format('Y-m-d H:i:sP');
                 //  $playertransfers->transfer_date = $transferDate;
 //                    $playertransfers->save();
+<<<<<<< HEAD
                 $netpointsdeduction = ($request->player_out_price) - ($player_in_price);
                 $netpointsdeduction = abs($netpointsdeduction);
+=======
+                $netpointsdeduction=($request->player_out_price)-($player_in_price);
+                $netpointsdeduction=abs($netpointsdeduction);
+>>>>>>> develop
                 $player_out_score = get_individual_player_score($tournament_id, $request->team_id, $request->player_out_id);
 
                 $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => $netpointsdeduction]);

@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\GameAction;
 use App\Http\Requests;
 use App\Mail\MyMail;
@@ -32,14 +33,13 @@ class HomeController extends Controller
      */
     public function newdash()
     {
-        $datetime = new \DateTime();
-        $date = $datetime->format('Y-m-d H:i:s');
+
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())
             ->get()
             ->toArray();
         //dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
-        $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', $date);
+        $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
         //dd($data['upcommingTour']->toArray());
         //dd($data['upcommingTour']->toArray());
         return view('user.dashboard.newdash', $data);
@@ -82,6 +82,7 @@ class HomeController extends Controller
 
     public function index()
     {
+
         $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
         $data['tournaments_list'] = $objTourmament->toArray(); //list of active
         $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
@@ -91,6 +92,13 @@ class HomeController extends Controller
         $data['news'] = \App\BlogPost::where('post_type', 'news')->take(3)->orderBy('id', 'DESC')->get()->toArray();
 
         return view('home', $data);
+    }
+    public function leaderboard()
+    {
+        $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(21)->
+        orderBy('score', 'DESC')->get()->toArray();
+        return view('pages.leaderboard', $data);
+
     }
 
     public function leaderboard()
@@ -188,7 +196,7 @@ class HomeController extends Controller
 
     public function howPlay()
     {
-        $data['tournament'] = \App\Tournament::where('id', 2)
+        $data['tournament'] = \App\Tournament::where('id', config('const.tournament_id'))
             ->with('tournament_game.game_actions.game_terms', 'game_term_points')
             ->firstOrFail()
             ->toArray();

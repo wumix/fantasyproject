@@ -748,7 +748,7 @@
                             </div>
                         </div>
                     </div>
-                  
+
                     {{--<div class="upcoming_sec">--}}
                         {{--<span class="text_abot_me_upcome">Active Tournaments</span>--}}
                         {{--<div class="col-md-12 no-padding">--}}

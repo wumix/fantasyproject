@@ -43,7 +43,7 @@
                                         <td class="border-r1">
                                             <a href="{{route('addTeam', ['tournament_id'=>$row['id']])}}"
                                                class="btn btn-green">
-                                                Play this tournament
+                                                Create Team
                                             </a>
                                         </td>
                                     </tr>
@@ -60,6 +60,6 @@
                 </div>
             </div>
         </div>
-        <br> <br> <br> <br> <br> <br> <br>
+        <br> <br> <br> <br> <br> <br> <br><br> <br> <br><br> <br><br> <br>
     </section>
 @endsection

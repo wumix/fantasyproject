@@ -46,7 +46,7 @@ class LeaderboardController extends Controller
             ->take(3)->orderBy('score', 'DESC')->get()->toArray();
 
         foreach ($data['leaders'] as $user) {
-            send_user_mail($user['user']['email'], $user['user']['name']);
+          send_user_mail($user['user']['email'], $user['user']['name']);
         }
     }
 

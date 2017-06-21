@@ -591,7 +591,14 @@
                         <ul class="img_area_area">
                             <li>
                                 @if(has_user_team_ipl(Auth::id()))
-                                    <span id="game_lame"> Calulating...</span>
+                                  IPL:  <span id="game_lame"> Calulating...</span>
+                                @else
+                                    You haven't played any tournament yet
+                                @endif
+                            </li>
+                            <li>
+                                @if(has_user_team_ipl(Auth::id()))
+                                ICC Champions Trophy    <span id="game_lame1"> Calulating...</span>
                                 @else
                                     You haven't played any tournament yet
                                 @endif
@@ -804,7 +811,8 @@
 
 
                 $("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[2] + " #total_team_score");
-                //  $("#game_lame_1").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + $(this).val() + " #total_team_score");
+                $("#game_lame1").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[1] + " #total_team_score");
+
             });
         });
     </script>

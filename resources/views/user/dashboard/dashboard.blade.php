@@ -711,7 +711,7 @@
                                         <p style="color: #F88509;">
                                             You don't have any team yet.
                                             <a class="btn btn-gamithon-default btn-success pull-right"
-                                               href="{{route('addTeam', ['tournament_id'=>3])}}">
+                                               href="{{route('usertournamenthome')}}">
                                                 Press here to make your team to win prizes
                                             </a>
                                         </p>

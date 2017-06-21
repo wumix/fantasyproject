@@ -357,10 +357,9 @@ class TournamentsController extends Controller
     {
 
         //  $tournamentDate = \App\Tournament::getStartdate($request->tournament_id);
-
-        $gmttimenow = getGmtTime();
-        $tournamentMatches = \App\Tournament::where('id', $request->tournament_id)->with(['tournament_matches' => function ($query) use ($gmttimenow) {
-            $query->where('start_date', '>', $gmttimenow)->firstOrfail();
+        $start_date = getGmtTime();
+        $tournamentMatches = \App\Tournament::where('id', $request->tournament_id)->with(['tournament_matches' => function ($query) use ($start_date) {
+            $query->where('start_date', '>', $start_date)->firstOrfail();
         }])->firstOrfail()->toArray();
         $nextMatchStartDate = $tournamentMatches['tournament_matches'][0]['start_date'];
         $difference = $this->getTImeDifference($nextMatchStartDate);
@@ -377,19 +376,14 @@ class TournamentsController extends Controller
 
         $player_in_price = $player_in_price['player_tournaments'][0]['pivot']['player_price'];
 
-
-        if ($difference >15 ) {
+        if ($difference > 15 || $difference<15) {
 //            echo $player_in_price." ". getUserTotalScore(Auth::id());
 //            die;
 //            echo $request->player_out_price;
 //        dd($player_in_price);
 
 
-<<<<<<< HEAD
             if (((getUserTotalScore(Auth::id())) + $request->player_out_price) >= ($player_in_price)) {
-=======
-            if (((getUserTotalScore(Auth::id()))+$request->player_out_price )>= ($player_in_price)) {
->>>>>>> develop
 
 
                 //    dd(get_individual_player_score($tournament_id, $request->team_id, 20));
@@ -405,13 +399,8 @@ class TournamentsController extends Controller
                 $transferDate = $transferDate->format('Y-m-d H:i:sP');
                 //  $playertransfers->transfer_date = $transferDate;
 //                    $playertransfers->save();
-<<<<<<< HEAD
                 $netpointsdeduction = ($request->player_out_price) - ($player_in_price);
                 $netpointsdeduction = abs($netpointsdeduction);
-=======
-                $netpointsdeduction=($request->player_out_price)-($player_in_price);
-                $netpointsdeduction=abs($netpointsdeduction);
->>>>>>> develop
                 $player_out_score = get_individual_player_score($tournament_id, $request->team_id, $request->player_out_id);
 
                 $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => $netpointsdeduction]);

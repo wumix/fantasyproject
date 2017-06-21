@@ -40,10 +40,7 @@ function checksingledigit($int){
         return true;
     }
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
 function getPlayerNoInTeam($userid, $teamid, $roleid)
 {
 

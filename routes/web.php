@@ -53,10 +53,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['middleware' => ['is_user']], function () {
         Route::group(['prefix' => 'user'], function () {
 
-<<<<<<< HEAD
-=======
 
->>>>>>> develop
             Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
             Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
             Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');

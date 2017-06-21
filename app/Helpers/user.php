@@ -11,7 +11,7 @@ function getUserTotalScore($userid)
 
 function has_user_team($user_id)
 {
-    $userteam = \App\UserTeam::where('user_id', $user_id)->where('tournament_id',3)->first();
+    $userteam = \App\UserTeam::where('user_id', $user_id)->where('tournament_id', 2)->first();
     ///dd($userteam);
     if ($userteam == NULL) {
         return FALSE;
@@ -31,7 +31,7 @@ function has_user_team_ipl($user_id)
     }
 }
 function userTeamPlayerCount($team_id){
-   return \App\UserTeam::find($team_id)->user_team_player()->count();
+    return \App\UserTeam::find($team_id)->user_team_player()->count();
 }
 function checksingledigit($int){
     if($int>9){
@@ -183,3 +183,4 @@ function send_user_mail($email, $name)
 {
     Mail::to($email)->send(new \App\Mail\MyMail($name));
 }
+

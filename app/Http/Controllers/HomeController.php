@@ -101,12 +101,12 @@ class HomeController extends Controller
 
     }
 
-    public function leaderboard()
-    {
-        $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(21)->orderBy('score', 'DESC')->get()->toArray();
-        return view('pages.leaderboard', $data);
-
-    }
+//    public function leaderboard()
+//    {
+//        $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(21)->orderBy('score', 'DESC')->get()->toArray();
+//        return view('pages.leaderboard', $data);
+//
+//    }
 
     public function fixturesDetial($tournament_id)
     {

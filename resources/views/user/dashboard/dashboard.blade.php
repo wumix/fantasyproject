@@ -590,15 +590,17 @@
 
                         <ul class="img_area_area">
                             <li>
+                                IPL:
                                 @if(has_user_team_ipl(Auth::id()))
-                                  IPL:  <span id="game_lame"> Calulating...</span>
+                                    <span id="game_lame"> Calulating...</span>
                                 @else
-                                    You haven't played any tournament yet
+                                    You haven't played This tournament yet
                                 @endif
                             </li>
                             <li>
+                                ICC Champions Trophy:
                                 @if(has_user_team_ipl(Auth::id()))
-                                ICC Champions Trophy    <span id="game_lame1"> Calulating...</span>
+                                    <span id="game_lame1"> Calulating...</span>
                                 @else
                                     You haven't played any tournament yet
                                 @endif

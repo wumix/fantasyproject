@@ -594,7 +594,7 @@
                                 @if(has_user_team_ipl(Auth::id()))
                                     <span id="game_lame"> Calulating...</span>
                                 @else
-                                    You haven't played This tournament yet
+                                    You did not play
                                 @endif
                             </li>
                             <li>
@@ -602,7 +602,7 @@
                                 @if(has_user_team_ipl(Auth::id()))
                                     <span id="game_lame1"> Calulating...</span>
                                 @else
-                                    You haven't played any tournament yet
+                                    You did not play
                                 @endif
                             </li>
                         </ul>

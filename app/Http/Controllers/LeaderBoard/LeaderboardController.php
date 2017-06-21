@@ -9,10 +9,7 @@ use App\Http\Controllers\Controller;
 
 class LeaderboardController extends Controller
 {
-
-    //
-
-    function index()
+    function index($tournament_id)
     {
         $userid = \App\User::all()->toArray();
         $userteams = [];
@@ -20,7 +17,7 @@ class LeaderboardController extends Controller
         foreach ($userid as $userids) {
 
             $userteam = \App\UserTeam::where('user_id', $userids['id'])
-                ->where('tournament_id', 2)
+                ->where('tournament_id', $tournament_id)
                 ->first();
 
 
@@ -30,13 +27,16 @@ class LeaderboardController extends Controller
         }
 
 //dd($userteams);
-        \App\Leaderboard::truncate();
+        \App\Leaderboard::where('tournament_id', $tournament_id)->delete();
+
 
         $leaderboard = new Leaderboard();
 
         foreach ($userteams as $k) {
+            //   echo $k['id']." ".$k['user_id']." ".$k['name'];
             $leaderboard = new Leaderboard();
-            $score = $this->get_user_team_score(2, $k['id'], $k['user_id']);
+            $score = $this->get_user_team_score($tournament_id, $k['id'], $k['user_id']);
+            $leaderboard->tournament_id = $tournament_id;
             $leaderboard->user_id = $k['user_id'];
             $leaderboard->team_id = $k['id'];
             $leaderboard->score = $score;
@@ -44,11 +44,20 @@ class LeaderboardController extends Controller
         }
         $data['leaders'] = \App\Leaderboard::with('user', 'user_team')
             ->take(3)->orderBy('score', 'DESC')->get()->toArray();
+        // $this->sendleaderboardMails($data['leaders']);
 
-        foreach ($data['leaders'] as $user) {
+
+    }
+
+    function sendleaderboardMails($data = [])
+    {
+        foreach ($data as $user) {
             send_user_mail($user['user']['email'], $user['user']['name']);
         }
+
+
     }
+
 
     function get_user_team_score($tournament_id, $teamId, $userid)
     {
@@ -100,7 +109,7 @@ class LeaderboardController extends Controller
 //       debugArr($data['team_score']);
 //       die;
         $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
-        $data['matches'] = \App\Match::all()->where('tournament_id', 1)
+        $data['matches'] = \App\Match::all()->where('tournament_id', $tournament_id)
             ->where('matches', '>=', date("Y-m-d"))
             ->sortByDesc("start_date")->toArray();
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());

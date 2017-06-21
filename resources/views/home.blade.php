@@ -14,7 +14,7 @@
 
                     <div class="header-content-inner bg-primary-opacity col-md-4 ">
 
-<<<<<<< HEAD
+
                         <div class="row">
                             <div class="col-md-12 no-padding">
 
@@ -30,7 +30,6 @@
                                     </strong>
                                     {{$matches['team_two']}}
                                 </h6>
-=======
                             <div class="row">
                                 <div class="col-md-12 no-padding">
 
@@ -47,7 +46,7 @@
                                         {{$matches['team_two']}}
                                     </h6>
                                 </div>
->>>>>>> master
+
                             </div>
                         </div>
                         <div class="row col-md-12">

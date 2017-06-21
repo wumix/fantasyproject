@@ -14,51 +14,51 @@
 
                     <div class="header-content-inner bg-primary-opacity col-md-4 ">
 
-                            <div class="row">
-                                <div class="col-md-12 no-padding">
+                        <div class="row">
+                            <div class="col-md-12 no-padding">
 
-                                    <h3 style="font-weight: 500; color: #FFFFFF">
-                                        NEXT MATCH COUNT DOWN
-                                    </h3>
+                                <h3 style="font-weight: 500; color: #FFFFFF">
+                                    NEXT MATCH COUNT DOWN
+                                </h3>
 
 
-                                    <h6 style="color: white;">
-                                        {{$matches['team_one']}}
-                                        <strong class="mlr10 Bold">
-                                            <em>Vs</em>
-                                        </strong>
-                                        {{$matches['team_two']}}
-                                    </h6>
-                                </div>
+                                <h6 style="color: white;">
+                                    {{$matches['team_one']}}
+                                    <strong class="mlr10 Bold">
+                                        <em>Vs</em>
+                                    </strong>
+                                    {{$matches['team_two']}}
+                                </h6>
                             </div>
-                            <div class="row col-md-12">
-                                <div class="col-md-12 count-down no-padding mt30">
-                                    <div class="col-md-3 text-center">
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="col-md-12 count-down no-padding mt30">
+                                <div class="col-md-3 text-center">
                         <span id="getting-started" class="circle">
                             10
                         </span>
-                                        <p class="mtb10">Days</p>
-                                    </div>
-                                    <div class="col-md-3 text-center">
+                                    <p class="mtb10">Days</p>
+                                </div>
+                                <div class="col-md-3 text-center">
                         <span id="getting-started1" class="circle">
                             10
                         </span>
-                                        <p class="mtb10">Hours</p>
-                                    </div>
-                                    <div class="col-md-3 text-center">
+                                    <p class="mtb10">Hours</p>
+                                </div>
+                                <div class="col-md-3 text-center">
                         <span id="getting-started2" class="circle">
                             10
                         </span>
-                                        <p class="mtb10" style="margin-left: 12px;">Min</p>
-                                    </div>
-                                    <div class="col-md-3 text-center">
+                                    <p class="mtb10" style="margin-left: 12px;">Min</p>
+                                </div>
+                                <div class="col-md-3 text-center">
                         <span id="getting-started3" class="circle">
                             10
                         </span>
-                                        <p class="mtb10" style="margin-left: 12px;">Sec</p>
-                                    </div>
+                                    <p class="mtb10" style="margin-left: 12px;">Sec</p>
                                 </div>
                             </div>
+                        </div>
 
 
 
@@ -102,23 +102,12 @@
                         <div class="row">
                             <div class="col-md-12 no-padding">
 
-<<<<<<< HEAD
                                 <h5>
 
                                     <a class="btn leaderboardviewmorebutton" href="{{route('homeleaderboard')}}">View
                                         More</a>
 
                                 </h5>
-=======
-                                <h2 style="font-weight: 600;">
-                                    <h5>
-
-                                        <a class="btn leaderboardviewmorebutton" href="{{route('homeleaderboard')}}">View
-                                            More</a>
-
-                                    </h5>
-                                </h2>
->>>>>>> develop
 
                             </div>
                         </div>
@@ -296,10 +285,7 @@
         <div class="container">
             <div class="row">
 
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="service-box">
                         <a>
@@ -340,7 +326,6 @@
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
-<<<<<<< HEAD
                     <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="KXIP VS KKR">
                         <div class="portfolio-box-caption">
@@ -350,24 +335,12 @@
                                 </div>
                                 <div class="project-name">
                                     Pakistan won by 180 runs
-=======
-                    <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Australia Vs Bangladesh
-                                </div>
-                                <div class="project-name">
-                                    Match Abandoned
->>>>>>> develop
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-<<<<<<< HEAD
                     <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="KXIP VS KKR">
                         <div class="portfolio-box-caption">
@@ -377,24 +350,12 @@
                                 </div>
                                 <div class="project-name">
                                     Pakistan won by 180 runs
-=======
-                    <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Australia Vs Bangladesh
-                                </div>
-                                <div class="project-name">
-                                    Match Abandoned
->>>>>>> develop
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-<<<<<<< HEAD
                     <a href="img/portfolio/thumbnails/203.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="KXIP VS MI">
                         <div class="portfolio-box-caption">
@@ -404,17 +365,6 @@
                                 </div>
                                 <div class="project-name">
                                     Pakistan won by 180 runs
-=======
-                    <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Australia Vs Bangladesh
-                                </div>
-                                <div class="project-name">
-                                    Match Abandoned
->>>>>>> develop
                                 </div>
                             </div>
                         </div>
@@ -422,7 +372,6 @@
                 </div>
 
                 <div class="col-lg-4 col-sm-6">
-<<<<<<< HEAD
                     <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
                         <div class="portfolio-box-caption">
@@ -432,26 +381,12 @@
                                 </div>
                                 <div class="project-name">
                                     India won by 9 wickets
-=======
-                    <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Pakistan VS India
-                                </div>
-                                <div class="project-name">
-                                    India won by 124 runs
->>>>>>> develop
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-
-
                 <div class="col-lg-4 col-sm-6">
-<<<<<<< HEAD
                     <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS MI">
                         <div class="portfolio-box-caption">
@@ -461,17 +396,6 @@
                                 </div>
                                 <div class="project-name">
                                     India won by 9 wickets
-=======
-                    <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Pakistan VS India
-                                </div>
-                                <div class="project-name">
-                                    India won by 124 runs
->>>>>>> develop
                                 </div>
                             </div>
                         </div>
@@ -479,7 +403,6 @@
                 </div>
 
                 <div class="col-lg-4 col-sm-6">
-<<<<<<< HEAD
                     <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt=" DD VS GL">
                         <div class="portfolio-box-caption">
@@ -489,26 +412,12 @@
                                 </div>
                                 <div class="project-name">
                                     India won by 9 wickets
-=======
-                    <a href="../img/portfolio/thumbnails/103.jpg" class="portfolio-box">
-                        <img src="../img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Pakistan VS India
-                                </div>
-                                <div class="project-name">
-                                    India won by 124 runs
->>>>>>> develop
                                 </div>
                             </div>
-
-
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-<<<<<<< HEAD
                     <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" DD VS GL">
                         <div class="portfolio-box-caption">
@@ -518,17 +427,6 @@
                                 </div>
                                 <div class="project-name">
                                     Pakistan won by 8 wickets
-=======
-                    <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="KXIP VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    South Africa Vs Srilanka
-                                </div>
-                                <div class="project-name">
-                                    South Africa won by 96 runs
->>>>>>> develop
                                 </div>
                             </div>
                         </div>
@@ -537,7 +435,6 @@
 
 
                 <div class="col-lg-4 col-sm-6">
-<<<<<<< HEAD
                     <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt=" DD VS GL">
                         <div class="portfolio-box-caption">
@@ -547,24 +444,13 @@
                                 </div>
                                 <div class="project-name">
                                     Pakistan won by 8 wickets
-=======
-                    <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="KXIP VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    South Africa Vs Srilanka
-                                </div>
-                                <div class="project-name">
-                                    South Africa won by 96 runs
->>>>>>> develop
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
+
                 <div class="col-lg-4 col-sm-6">
-<<<<<<< HEAD
                     <a href="../img/portfolio/thumbnails/103.jpg" class="portfolio-box">
                         <img src="../img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS KKR">
                         <div class="portfolio-box-caption">
@@ -574,17 +460,6 @@
                                 </div>
                                 <div class="project-name">
                                     Pakistan won by 8 wickets
-=======
-                    <a href="img/portfolio/thumbnails/203.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                   South Africa Vs Srilanka
-                                </div>
-                                <div class="project-name">
-                                    South Africa won by 96 runs
->>>>>>> develop
                                 </div>
                             </div>
 
@@ -592,9 +467,6 @@
                         </div>
                     </a>
                 </div>
-
-
-
 
 
             </div>
@@ -652,7 +524,7 @@
                 url: '{{URL::to('assets-new/img/icc-banner-1.jpg')}}', fade: 500
             },
 
-            {url: '{{URL::to('assets-new/img/champions-trophy-pakistan.jpg')}}', fade: 500},
+            {url: '{{URL::to('assets-new/img/champions-trophy-pakistan.jpg=')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/latest-banner.jpg')}}', fade: 500},
 
 

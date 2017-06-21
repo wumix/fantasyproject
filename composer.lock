@@ -126,16 +126,16 @@
         },
         {
             "name": "acacha/helpers",
-            "version": "0.1.3",
+            "version": "0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/acacha/helpers.git",
-                "reference": "02a461ffbcd7991c7758d78d0764fd3f9bb4582f"
+                "reference": "d211d8de2534b3227be2f52c35c1b1664e938598"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acacha/helpers/zipball/02a461ffbcd7991c7758d78d0764fd3f9bb4582f",
-                "reference": "02a461ffbcd7991c7758d78d0764fd3f9bb4582f",
+                "url": "https://api.github.com/repos/acacha/helpers/zipball/d211d8de2534b3227be2f52c35c1b1664e938598",
+                "reference": "d211d8de2534b3227be2f52c35c1b1664e938598",
                 "shasum": ""
             },
             "require": {
@@ -178,7 +178,7 @@
                 "helpers",
                 "laravel"
             ],
-            "time": "2016-12-24T09:40:05+00:00"
+            "time": "2017-06-20T13:28:48+00:00"
         },
         {
             "name": "acacha/user",
@@ -1978,16 +1978,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.8.6",
+            "version": "v0.8.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "7028d6d525fb183d50b249b7c07598e3d386b27d"
+                "reference": "be969b9dc89dcaefdb9a3117fa91fa38bca19f50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/7028d6d525fb183d50b249b7c07598e3d386b27d",
-                "reference": "7028d6d525fb183d50b249b7c07598e3d386b27d",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/be969b9dc89dcaefdb9a3117fa91fa38bca19f50",
+                "reference": "be969b9dc89dcaefdb9a3117fa91fa38bca19f50",
                 "shasum": ""
             },
             "require": {
@@ -2047,7 +2047,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-06-04T10:34:20+00:00"
+            "time": "2017-06-20T12:51:31+00:00"
         },
         {
             "name": "ramsey/uuid",

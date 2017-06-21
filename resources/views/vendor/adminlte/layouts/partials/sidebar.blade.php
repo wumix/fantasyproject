@@ -112,10 +112,6 @@
                 </ul>
             </li>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
             <li class="treeview">
                 <a href="#">
                     <i class='fa fa-users'></i> <span>Blog Categories</span> <i class="fa fa-angle-left pull-right"></i></a>

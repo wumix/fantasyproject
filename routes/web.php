@@ -85,7 +85,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
 
     Route::get('/', 'Auth\LoginController@showAdminLoginForm');
     Route::group(['middleware' => ['is_admin']], function () {
-        Route::get('/leaderboard/{id}', 'LeaderBoard\LeaderboardController@index')->name('leaderboard');
+        Route::get('/leaderboard/{tournament_id}', 'LeaderBoard\LeaderboardController@index')->name('leaderboard');
         Route::get('/dashboard', 'Admin\DashboardController@index'); //Gamesroutes
         Route::get('/addheader', 'Admin\SettingsController@index')->name('headerbackground');
         Route::post('/addheader', 'Admin\SettingsController@postAddHeader')->name('postAddHeader');

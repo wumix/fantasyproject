@@ -93,11 +93,11 @@
                                             </div>
                                         </div>
                                     @endforeach
-
+                                @endif
 
                             </div>
                         </div>
-                        @if(!empty($leaders))
+
 
                         <div class="row">
                             <div class="col-md-12 no-padding">
@@ -111,7 +111,6 @@
 
                             </div>
                         </div>
-                        @endif
                         <div class="clear clearfix"></div>
                     </div>
                 </div>

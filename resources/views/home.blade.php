@@ -104,7 +104,7 @@
 
                                 <h5>
 
-                                    <a class="btn leaderboardviewmorebutton" href="{{route('homeleaderboard')}}">View
+                                    <a class="btn leaderboardviewmorebutton" href="{{route('homeleaderboard',['id'=>3])}}">View
                                         More</a>
 
                                 </h5>

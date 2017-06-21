@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="text-center" style="color: #F9960E;">
-                        ICC Champions Trophy Fixtures
+                        {{$fixture_details['name']}}
                     </h1>
                     <hr class="light full">
 

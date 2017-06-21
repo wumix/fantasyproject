@@ -748,41 +748,41 @@
                             </div>
                         </div>
                     </div>
-                    @if(!empty($upcommingTour))
-                    <div class="upcoming_sec">
-                        <span class="text_abot_me_upcome">Active Tournaments</span>
-                        <div class="col-md-12 no-padding">
-                            <ul class="upcomin_list">
+                  
+                    {{--<div class="upcoming_sec">--}}
+                        {{--<span class="text_abot_me_upcome">Active Tournaments</span>--}}
+                        {{--<div class="col-md-12 no-padding">--}}
+                            {{--<ul class="upcomin_list">--}}
 
-                                @foreach($upcommingTour as $tour)
-                                    <li>
-                                        <div class="left_upcoming">
-                                            <span><img src="{{URL::to('/img/upcomin_img.png')}}" alt=""/></span>
-                                            <div class="sect">
-                                                <span class="text_abot_me_upcome_tour">{{$tour['name']}}</span>
-                                                <span class="clor_text">
+                                {{--@foreach($upcommingTour as $tour)--}}
+                                    {{--<li>--}}
+                                        {{--<div class="left_upcoming">--}}
+                                            {{--<span><img src="{{URL::to('/img/upcomin_img.png')}}" alt=""/></span>--}}
+                                            {{--<div class="sect">--}}
+                                                {{--<span class="text_abot_me_upcome_tour">{{$tour['name']}}</span>--}}
+                                                {{--<span class="clor_text">--}}
 
-                                                </span>
-                                                <span class="time_area">{{formatDate($tour['start_date'])}}</span>
-                                                <a href="{{route('fixturesdetail',['tournament_id'=>$tour['slug']])}}"
-                                                   class="more_btn">
-                                                    More Info >
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="right_upcoming">
-                                             <span class="nine_area">
-                                           01
-                                            <span> June</span>
-                                        </span>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+                                                {{--</span>--}}
+                                                {{--<span class="time_area">{{formatDate($tour['start_date'])}}</span>--}}
+                                                {{--<a href="{{route('fixturesdetail',['tournament_id'=>$tour['slug']])}}"--}}
+                                                   {{--class="more_btn">--}}
+                                                    {{--More Info >--}}
+                                                {{--</a>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="right_upcoming">--}}
+                                             {{--<span class="nine_area">--}}
+                                           {{--01--}}
+                                            {{--<span> June</span>--}}
+                                        {{--</span>--}}
+                                        {{--</div>--}}
+                                    {{--</li>--}}
+                                {{--@endforeach--}}
+                            {{--</ul>--}}
+                        {{--</div>--}}
 
-                    </div>
-                        @endif
+                    {{--</div>--}}
+
                 </div>
             </div>
         </div>

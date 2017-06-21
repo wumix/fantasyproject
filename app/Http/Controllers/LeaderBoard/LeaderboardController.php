@@ -44,20 +44,19 @@ class LeaderboardController extends Controller
         }
         $data['leaders'] = \App\Leaderboard::with('user', 'user_team')
             ->take(3)->orderBy('score', 'DESC')->get()->toArray();
-<<<<<<< HEAD
+
         $this->sendleaderboardMails($data['leaders']);
-=======
-       // $this->sendleaderboardMails($data['leaders']);
->>>>>>> develop
 
 
     }
+}
+
 
     function sendleaderboardMails($data = [])
     {
         foreach ($data as $user) {
             send_user_mail($user['user']['email'], $user['user']['name']);
-        }
+
 
 
     }

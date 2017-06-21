@@ -10,7 +10,7 @@ return [
     'sitewise_date_format' => 'M jS, Y',
     'sitewise_time_format' => 'H:i:s',
     'email_from' => 'info@gamithonfantasy.com',
-    'tournament_id' => '2',
+    'tournament_id' => '3',
     ///////
     'facebook_redirect' => env('FACBOOK_REDIRECT', 'http://gamithonfantasy.com/login/facebook/callback'),
 ];

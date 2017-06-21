@@ -27,7 +27,7 @@ class DashboardController extends Controller
 //        $userteamsave=\App\UserTeam::find($request->team_id);
 //       echo $newdate;
 //       die;
-//        $tournamentid=$request->tournament_id
+//        $tournamentid=$request->tournament_id;
 //dd($tournamentid);
 //        die;
         // dd($request->all());
@@ -61,11 +61,11 @@ class DashboardController extends Controller
             return view('pages.team_incomplete', $dataArray);
         }
         $matcheIdsAfterThisTeamMade = \App\Match::select('id')
-            ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])
+            ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])->where('tournament_id',$tournament_id)
             ->get()->toArray();
         //  echo 'joined date'.$data['user_teams'][0]['joined_from_match_date'].'<br>';
         // echo getGmtTime();
-        //dd($matcheIdsAfterThisTeamMade);
+//        dd($matcheIdsAfterThisTeamMade);
         if (!empty($matcheIdsAfterThisTeamMade)) {
             $matcheIdsAfterThisTeamMade = array_column($matcheIdsAfterThisTeamMade, 'id');
             //  $matcheIdsAfterThisTeamMade = [1];

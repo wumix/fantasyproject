@@ -14,6 +14,7 @@
 
                     <div class="header-content-inner bg-primary-opacity col-md-4 ">
 
+<<<<<<< HEAD
                         <div class="row">
                             <div class="col-md-12 no-padding">
 
@@ -29,6 +30,24 @@
                                     </strong>
                                     {{$matches['team_two']}}
                                 </h6>
+=======
+                            <div class="row">
+                                <div class="col-md-12 no-padding">
+
+                                    <h3 style="font-weight: 500; color: #FFFFFF">
+                                        NEXT MATCH COUNT DOWN
+                                    </h3>
+
+
+                                    <h6 style="color: white;">
+                                        {{$matches['team_one']}}
+                                        <strong class="mlr10 Bold">
+                                            <em>Vs</em>
+                                        </strong>
+                                        {{$matches['team_two']}}
+                                    </h6>
+                                </div>
+>>>>>>> master
                             </div>
                         </div>
                         <div class="row col-md-12">
@@ -58,7 +77,7 @@
                                     <p class="mtb10" style="margin-left: 12px;">Sec</p>
                                 </div>
                             </div>
-                        </div>
+
 
 
 

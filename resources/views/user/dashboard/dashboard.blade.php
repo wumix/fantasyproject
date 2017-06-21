@@ -669,10 +669,10 @@
                             <span class="plyer_one">
                                 Your level is <span class="lvl-text">Beginner</span>
                             </span>
-                            <span class="plyer_one">
-                                <span class="lvl-text"><a
-                                            href="{{route('challenges')}}">Challenge Other Players</a> </span>
-                            </span>
+                            {{--<span class="plyer_one">--}}
+                                {{--<span class="lvl-text"><a--}}
+                                            {{--href="{{route('challenges')}}">Challenge Other Players</a> </span>--}}
+                            {{--</span>--}}
 
                         </div>
                         <div class="col-md-6">

@@ -130,7 +130,7 @@
 
                     <div class="col-lg-12 text-center">
                         <h2 class="section-heading">
-                            Active Tournaments and Series
+                            Active Tournament and Series
                             <hr class="light">
                         </h2>
 

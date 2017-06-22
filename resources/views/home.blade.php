@@ -130,7 +130,7 @@
 
                     <div class="col-lg-12 text-center">
                         <h2 class="section-heading">
-                            Active Tournaments
+                            Active Tournaments And Series
                             <hr class="light">
                         </h2>
 
@@ -175,7 +175,7 @@
                             </table>
                         </div>
                         <a href="{{route('usertournamenthome')}}" class="btn btn-green ">
-                            View all tournaments
+                            View all
                         </a>
                     </div>
                 </div>

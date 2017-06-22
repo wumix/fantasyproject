@@ -256,7 +256,7 @@
 .main-taible-head{
     background-color: #92b713;
     color: white;
-    border-radius: 8px 0 0 0 ;
+    border-radius: 0 0 0 0 ;
 }
 .main-taible-head th{
     text-align: center;

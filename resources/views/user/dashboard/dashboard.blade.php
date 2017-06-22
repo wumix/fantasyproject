@@ -806,7 +806,7 @@
             $('#team_id option').each(function () {
                 myList.push($(this).val())
             });
-
+       
 
             $("#team_id").each(function () {
                 var l = $("#team_id :selected").text();

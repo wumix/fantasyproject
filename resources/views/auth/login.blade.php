@@ -13,7 +13,7 @@
                     <span class="align-middle">Login</span>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <span class="align-middle">Register</span>
+                    <span id="hide-reg-on-mob" class="align-middle">Register</span>
                 </div>
             </div>
             <div class="row">

@@ -3,7 +3,15 @@
 @section('title')
     Login
 @stop
-
+@section('css')
+    <style>
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    #hide-reg-on-mob {
+        display: none !important;
+    }
+}
+    </style>
+    @stop
 @section('content')
 
     <section>

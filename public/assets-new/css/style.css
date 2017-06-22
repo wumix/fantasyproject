@@ -6,6 +6,7 @@
 
 
 }
+
 .home-news-headings{
     text-transform: capitalize;
     font-size: 13px;
@@ -785,10 +786,16 @@ hr.light.full{
 }
 @media screen and (min-width: 1000px) and (max-width: 2500px) {
     #signhide { display: none; }
+
 }
 @media screen and (min-width: 200px) and (min-width: 500px) {
     #signshow { display: none;}
+
+
+
 }
+
+
 /*@media screen and (min-width: 0px) and (max-width: 400px) {*/
 /*#signshow{ display: none; }  !* show it on small screens *!*/
 /*}*/

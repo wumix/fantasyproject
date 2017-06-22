@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-heading">
-                        Tournaments
+                        Tournament and Series
                     </h1>
                     <hr class="light full">
                     <div class="page-content" style="margin-bottom: 80px;">

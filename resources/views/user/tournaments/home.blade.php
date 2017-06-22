@@ -23,7 +23,7 @@
                                 <thead class="main-taible-head">
                                 <tr>
 
-                                    <th class="border-r">Tournament</th>
+                                    <th class="border-r">Tournament and Series</th>
                                     {{--<th class="border-r">Points Required To Play</th>--}}
                                     <th class="th2"></th>
                                 </tr>

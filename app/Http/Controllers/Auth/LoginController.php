@@ -62,6 +62,7 @@ class LoginController extends Controller
     protected function redirectTo()
     {
 
+
         return (\Auth::user()->user_type == 0) ? 'admin/dashboard' : $this->userRedirect;
     }
 

@@ -811,7 +811,7 @@
             });
             myList= myList.reverse()
            // myList.indexOf(0);
-      alert(myList);
+     // alert(myList);
 
             $("#team_id").each(function () {
                 var l = $("#team_id :selected").text();

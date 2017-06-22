@@ -74,7 +74,7 @@ function get_individual_player_score($tournament_id, $teamId, $playerid)
 //          ->get()
 //          ->toArray();
     //dd($tournament_id);die;
-    $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->where('tournament_id', 2)
+    $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->where('tournament_id',$tournament_id)
         ->get()
         ->toArray();
     //dd($data['user_teams'][0]['joined_from_match_date']);

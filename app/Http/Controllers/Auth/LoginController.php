@@ -31,6 +31,19 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected function authenticated(Request $request, $user)
+    {
+
+
+        if (\Auth::user()->user_type == 0) {
+            return redirect('admin/dashboard');
+        } else {
+            $intendedroute = \Request::session()->get('_previous', route('userdashboard'));
+            return redirect($intendedroute['url']);
+        }
+        //return redirect()->intended('dashboard');
+    }
+
     public function showLoginForm()
     {
         $objTourmament = \App\Tournament::all()->toArray();
@@ -61,6 +74,7 @@ class LoginController extends Controller
      */
     protected function redirectTo()
     {
+
 
         return (\Auth::user()->user_type == 0) ? 'admin/dashboard' : $this->userRedirect;
     }

@@ -430,7 +430,8 @@
                                     @else
                                     <?php
                                     $check=explode(".",$leaders[2]['user']['profile_pic']);
-                                    if($check[1]=="facebook"){
+                                   // if($check[1]=="facebook"){
+                                            if(1){
                                         echo $leaders[2]['user']['profile_pic'];
                                     }else{
                                         echo Croppa::url(getUploadsPath($leaders[2]['user']['profile_pic']),156,134);

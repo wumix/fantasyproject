@@ -78,7 +78,7 @@
                         </li>
                         <li>
 
-                            <div class="sign_text">2. Go for <a href="{{route('addTeam', ['tournament_id'=>2])}}">Create The Team</a></div>
+                            <div class="sign_text">2. Go for <a href="{{route('usertournamenthome')}}">Create The Team</a></div>
                             <span class="sign_up_imp"><img src="{{URL::to('/img/sign-up_imp2.png')}}" alt=""/></span>
                         </li>
                         <li>

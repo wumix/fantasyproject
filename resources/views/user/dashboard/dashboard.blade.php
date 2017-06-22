@@ -590,10 +590,19 @@
 
                         <ul class="img_area_area">
                             <li>
+                                IPL:
                                 @if(has_user_team_ipl(Auth::id()))
                                     <span id="game_lame"> Calulating...</span>
                                 @else
-                                    You haven't played any tournament yet
+                                    You did not play
+                                @endif
+                            </li>
+                            <li>
+                                ICC Champions Trophy:
+                                @if(has_user_team_ipl(Auth::id()))
+                                    <span id="game_lame1"> Calulating...</span>
+                                @else
+                                    You did not play
                                 @endif
                             </li>
                         </ul>
@@ -711,7 +720,7 @@
                                         <p style="color: #F88509;">
                                             You don't have any team yet.
                                             <a class="btn btn-gamithon-default btn-success pull-right"
-                                               href="{{route('addTeam', ['tournament_id'=>2])}}">
+                                               href="{{route('usertournamenthome')}}">
                                                 Press here to make your team to win prizes
                                             </a>
                                         </p>
@@ -748,38 +757,41 @@
                             </div>
                         </div>
                     </div>
-                    <div class="upcoming_sec">
-                        <span class="text_abot_me_upcome">Active Tournaments</span>
-                        <div class="col-md-12 no-padding">
-                            <ul class="upcomin_list">
-                                @foreach($upcommingTour as $tour)
-                                    <li>
-                                        <div class="left_upcoming">
-                                            <span><img src="{{URL::to('/img/upcomin_img.png')}}" alt=""/></span>
-                                            <div class="sect">
-                                                <span class="text_abot_me_upcome_tour">{{$tour['name']}}</span>
-                                                <span class="clor_text">
 
-                                                </span>
-                                                <span class="time_area">{{formatDate($tour['start_date'])}}</span>
-                                                <a href="{{route('fixturesdetail',['tournament_id'=>$tour['slug']])}}"
-                                                   class="more_btn">
-                                                    More Info >
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="right_upcoming">
-                                             <span class="nine_area">
-                                           01
-                                            <span> June</span>
-                                        </span>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+                    {{--<div class="upcoming_sec">--}}
+                        {{--<span class="text_abot_me_upcome">Active Tournaments</span>--}}
+                        {{--<div class="col-md-12 no-padding">--}}
+                            {{--<ul class="upcomin_list">--}}
 
-                    </div>
+                                {{--@foreach($upcommingTour as $tour)--}}
+                                    {{--<li>--}}
+                                        {{--<div class="left_upcoming">--}}
+                                            {{--<span><img src="{{URL::to('/img/upcomin_img.png')}}" alt=""/></span>--}}
+                                            {{--<div class="sect">--}}
+                                                {{--<span class="text_abot_me_upcome_tour">{{$tour['name']}}</span>--}}
+                                                {{--<span class="clor_text">--}}
+
+                                                {{--</span>--}}
+                                                {{--<span class="time_area">{{formatDate($tour['start_date'])}}</span>--}}
+                                                {{--<a href="{{route('fixturesdetail',['tournament_id'=>$tour['slug']])}}"--}}
+                                                   {{--class="more_btn">--}}
+                                                    {{--More Info >--}}
+                                                {{--</a>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="right_upcoming">--}}
+                                             {{--<span class="nine_area">--}}
+                                           {{--01--}}
+                                            {{--<span> June</span>--}}
+                                        {{--</span>--}}
+                                        {{--</div>--}}
+                                    {{--</li>--}}
+                                {{--@endforeach--}}
+                            {{--</ul>--}}
+                        {{--</div>--}}
+
+                    {{--</div>--}}
+
                 </div>
             </div>
         </div>
@@ -791,17 +803,23 @@
 
         $(document).ready(function () {
             myList = [];
-            $('#team_id option').each(function () {
-                myList.push($(this).val())
-            });
 
+            $('#team_id option').each(function () {
+
+                myList.push($(this).val());
+
+            });
+            myList= myList.reverse()
+           // myList.indexOf(0);
+     // alert(myList);
 
             $("#team_id").each(function () {
                 var l = $("#team_id :selected").text();
 
 
-                $("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[2] + " #total_team_score");
-                //  $("#game_lame_1").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + $(this).val() + " #total_team_score");
+                $("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[0] + " #total_team_score");
+                $("#game_lame1").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[1] + " #total_team_score");
+
             });
         });
     </script>

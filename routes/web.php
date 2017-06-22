@@ -24,7 +24,7 @@ Route::get('/newdash', 'HomeController@newdash')->name('newdashboard');
 Route::get('login/facebook', 'Auth\LoginController@redirectToFacebookProvider')->name('facebookLogin');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleFacebookProviderCallback')->name('facebookLoginCallback');
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/leaderboard', 'HomeController@leaderboard')->name('homeleaderboard');
+    Route::get('/leaderboard/{tournamentid}', 'HomeController@leaderboard')->name('homeleaderboard');
     Route::get('contact', 'HomeController@contactPage')->name('contactPage');
     Route::post('contact', 'HomeController@postContact')->name('postContact');
     Route::get('privacy', 'HomeController@privacyPolicy')->name('PrivacyPolicy');

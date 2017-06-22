@@ -14,7 +14,6 @@
 
                     <div class="header-content-inner bg-primary-opacity col-md-4 ">
 
-<<<<<<< HEAD
                         <div class="row">
                             <div class="col-md-12 no-padding">
 
@@ -30,24 +29,6 @@
                                     </strong>
                                     {{$matches['team_two']}}
                                 </h6>
-=======
-                            <div class="row">
-                                <div class="col-md-12 no-padding">
-
-                                    <h3 style="font-weight: 500; color: #FFFFFF">
-                                        NEXT MATCH COUNT DOWN
-                                    </h3>
-
-
-                                    <h6 style="color: white;">
-                                        {{$matches['team_one']}}
-                                        <strong class="mlr10 Bold">
-                                            <em>Vs</em>
-                                        </strong>
-                                        {{$matches['team_two']}}
-                                    </h6>
-                                </div>
->>>>>>> master
                             </div>
                         </div>
                         <div class="row col-md-12">
@@ -77,7 +58,7 @@
                                     <p class="mtb10" style="margin-left: 12px;">Sec</p>
                                 </div>
                             </div>
-
+                        </div>
 
 
 
@@ -117,19 +98,20 @@
                             </div>
                         </div>
 
-
+                        @if(!empty($leaders))
                         <div class="row">
                             <div class="col-md-12 no-padding">
 
                                 <h5>
 
-                                    <a class="btn leaderboardviewmorebutton" href="{{route('homeleaderboard')}}">View
+                                    <a class="btn leaderboardviewmorebutton" href="{{route('homeleaderboard',['id'=>3])}}">View
                                         More</a>
 
                                 </h5>
 
                             </div>
                         </div>
+                        @endif
                         <div class="clear clearfix"></div>
                     </div>
                 </div>
@@ -148,7 +130,7 @@
 
                     <div class="col-lg-12 text-center">
                         <h2 class="section-heading">
-                            Active Tournaments
+                            Active Tournament and Series
                             <hr class="light">
                         </h2>
 
@@ -193,7 +175,7 @@
                             </table>
                         </div>
                         <a href="{{route('usertournamenthome')}}" class="btn btn-green ">
-                            View all tournaments
+                            View all
                         </a>
                     </div>
                 </div>
@@ -345,6 +327,56 @@
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" DD VS GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    England VS South Africa
+                                </div>
+                                <div class="project-name">
+                                    England won by 9 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt=" DD VS GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    England VS South Africa
+                                </div>
+                                <div class="project-name">
+                                    England won by 9 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="../img/portfolio/thumbnails/103.jpg" class="portfolio-box">
+                        <img src="../img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS KKR">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    England VS South Africa
+                                </div>
+                                <div class="project-name">
+                                    England won by 9 wickets
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="KXIP VS KKR">
                         <div class="portfolio-box-caption">
@@ -436,56 +468,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    England VS Pakistan
-                                </div>
-                                <div class="project-name">
-                                    Pakistan won by 8 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    England VS Pakistan
-                                </div>
-                                <div class="project-name">
-                                    Pakistan won by 8 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="../img/portfolio/thumbnails/103.jpg" class="portfolio-box">
-                        <img src="../img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    England VS Pakistan
-                                </div>
-                                <div class="project-name">
-                                    Pakistan won by 8 wickets
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </a>
-                </div>
 
 
             </div>
@@ -539,12 +522,11 @@
         $('#header').backstretch([
 
 
-            {
-                url: '{{URL::to('assets-new/img/icc-banner-1.jpg')}}', fade: 500
-            },
 
-            {url: '{{URL::to('assets-new/img/champions-trophy-pakistan.jpg=')}}', fade: 500},
-            {url: '{{URL::to('assets-new/img/latest-banner.jpg')}}', fade: 500},
+
+            {url: '{{URL::to('assets-new/img/gamithon--22-j-banner.jpg')}}', fade: 500},
+            {url: '{{URL::to('assets-new/img/champions-trophy-pakistan.jpg')}}', fade: 500},
+
 
 
         ]);

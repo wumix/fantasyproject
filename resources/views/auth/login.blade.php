@@ -3,7 +3,15 @@
 @section('title')
     Login
 @stop
-
+@section('css')
+    <style>
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    #hide-reg-on-mob {
+        display: none !important;
+    }
+}
+    </style>
+    @stop
 @section('content')
 
     <section>
@@ -13,7 +21,7 @@
                     <span class="align-middle">Login</span>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <span class="align-middle">Register</span>
+                    <span id="hide-reg-on-mob" class="align-middle">Register</span>
                 </div>
             </div>
             <div class="row">
@@ -127,6 +135,7 @@
                 </div>
             </div>
         </div>
+        <br><br><br><br><br><br>
     </section>
 
 @endsection

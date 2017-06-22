@@ -63,7 +63,9 @@
         ga('create', 'UA-98453424-1', 'auto');
         ga('send', 'pageview');
     </script>
+
 </head>
+
 <body>
 @yield('facebook-share-div-code')
 <nav class="bg-primary navbar navbar-default navbar-fixed-top">
@@ -320,5 +322,16 @@
 {!! Html::script('js/toaster/jquery.toast.js') !!}
 @yield('js')
 @yield('addteamjs')
+<script>
+    $(document).ready(function () {
+        $('.yourclass').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+
+        });
+    });
+</script>
 </body>
 </html>

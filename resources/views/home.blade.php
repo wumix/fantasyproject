@@ -1,5 +1,13 @@
 @extends('layouts.app')
 {{--{{dd($matches->t)}}--}}
+@section('css')
+    {!! Html::style('assets-new/css/slick-theme.css') !!}
+    {!! Html::style('assets-new/css/slick.css') !!}
+@endsection
+
+@section('js')
+    {!! Html::script('assets-new/js/slick.js') !!}
+@stop
 @section('title')
     Gamithon Fantasy
 @stop
@@ -61,7 +69,6 @@
                         </div>
 
 
-
                         <div class="row">
                             <!-- style="margin-top: -20px;"-->
                             <div class="col-md-12 no-padding">
@@ -74,12 +81,13 @@
 
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12 count-down no-padding">
-                                @if(!empty($leaders))
-                                    @foreach($leaders as $leader)
-                                        <div class="col-md-4  text-center">
-                                            <div class="circle2 leadersName">
+                        <div class="yourclass">
+                            <div>
+                                <div class="col-md-12 count-down no-padding">
+                                    @if(!empty($leaders))
+                                        @foreach($leaders as $leader)
+                                            <div class="col-md-4  text-center">
+                                                <div class="circle2 leadersName">
                         <span id="getting-started1">
                           <img style="width: 50px;
     height: 50px; border-radius: 50%;
@@ -88,29 +96,54 @@
 
 " src="{{getUploadsPath($leader['user']['profile_pic'])}}"/>
                         </span>
-                                                <p class="no-mrg-in-home ">{{$leader['user']['name']}}</p>
-                                                <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
+                                                    <p class="no-mrg-in-home ">{{$leader['user']['name']}}</p>
+                                                    <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endforeach
-                                @endif
+                                        @endforeach
+                                    @endif
 
+                                </div>
+                            </div>
+                            <div>
+                                <div class="col-md-12 count-down no-padding">
+                                    @if(!empty($leaders))
+                                        @foreach($leaders as $leader)
+                                            <div class="col-md-4  text-center">
+                                                <div class="circle2 leadersName">
+                        <span id="getting-started1">
+                          <img style="width: 50px;
+    height: 50px; border-radius: 50%;
+    padding:5px;
+
+
+" src="{{getUploadsPath($leader['user']['profile_pic'])}}"/>
+                        </span>
+                                                    <p class="no-mrg-in-home ">{{$leader['user']['name']}}</p>
+                                                    <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
+
+                                </div>
                             </div>
                         </div>
 
                         @if(!empty($leaders))
-                        <div class="row">
-                            <div class="col-md-12 no-padding">
+                            <div class="row">
+                                <div class="col-md-12 no-padding">
 
-                                <h5>
+                                    <h5>
 
-                                    <a class="btn leaderboardviewmorebutton" href="{{route('homeleaderboard',['id'=>3])}}">View
-                                        More</a>
+                                        <a class="btn leaderboardviewmorebutton"
+                                           href="{{route('homeleaderboard',['id'=>3])}}">View
+                                            More</a>
 
-                                </h5>
+                                    </h5>
 
+                                </div>
                             </div>
-                        </div>
                         @endif
                         <div class="clear clearfix"></div>
                     </div>
@@ -470,7 +503,6 @@
                 </div>
 
 
-
             </div>
         </div>
     </section>
@@ -522,11 +554,8 @@
         $('#header').backstretch([
 
 
-
-
             {url: '{{URL::to('assets-new/img/gamithon--22-j-banner.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/champions-trophy-pakistan.jpg')}}', fade: 500},
-
 
 
         ]);
@@ -539,6 +568,7 @@
         });
 
     </script>
+
 
 
 

@@ -80,7 +80,7 @@
                                         <tbody id="selected-player" class="main-taible-body">
                                         @foreach($user_team_player as $row)
                                             {{--{{ dd($user_team_player)}}--}}
-                                            <tr>
+                                            <tr id="player_tr-del-{{$row['id']}}">
                                                 <td class="border-r1 text-left" style="min-width: 300px;
 ">
                                                     <a class="colorbox"
@@ -107,7 +107,7 @@
                                                     </td>
                                                 @endforeach
 
-                                                <td id="player_tr-del-{{$row['id']}}" class="cwt">
+                                                <td  class="cwt">
 
                                                     <a onclick="return confirm('Are you sure you want to delete this player')"
                                                        href="javascript:deletePlayer('{{$row['id']}}','{{$playerThisTournamnetPrice}}')"
@@ -367,7 +367,8 @@
                         $("#remaining-wk").html(data.wicketkeeper);
                         $('#your_points').html(data.score);
                         $('#your_points1').html(data.score);
-                        $('#player_tr-del-' + data.player_id).html('<span>Deleted</span>');
+                        //$('#player_tr-del-' + data.player_id).html('<span>Deleted</span>');
+                        $('#player_tr-del-' + data.player_id).remove();
                         $.toast({
                             heading: '&nbsp;',
                             text: data.msg,
@@ -379,6 +380,7 @@
                             allowToastClose: true,
                             loaderBg: '#92B713'  // To change the background
                         });
+                        location.reload();
                     } else {
                         $.toast({
                             heading: 'Error',
@@ -455,7 +457,7 @@
                         $('#btn-player-' + playerid).attr('disabled', true);
                         $('#btn-player-' + playerid).remove();
                         $('#total-score-user').html(obj.player_score);
-                        var t = '<tr>';
+                        var t = '<tr id="player_tr-del-' + obj.id + '">';
                         var staturl = '{{ route("showPlayerStats", ["player_id"=>'pid']) }}';
                         staturl = staturl.replace('pid', obj.id);
                         t += '<input type=hidden" name="player_id_t" value="' + obj.id + '"/>';
@@ -468,7 +470,7 @@
                         url = url.replace('pid', obj.id);
                         url = url.replace('id', obj.team_id);
                         url = url.replace('tid', obj.tournament_id);
-                        t += '<td id="player_tr-del-' + obj.id + '" class="cwt"><a href="javascript:deletePlayer(' + obj.id + ',' + obj.price + ')" id="" class="btn btn-md bttor1">Delete Player</a></td >';
+                        t += '<td  class="cwt"><a href="javascript:deletePlayer(' + obj.id + ',' + obj.price + ')" id="" class="btn btn-md bttor1">Delete Player</a></td >';
                         //  t += '<td><a href="' + url + '" class="btn btn-green">Transfer Player</a></td >';
 
                         // t += '<td>Player transfer is disabled by the end of today\'s match!</td >';

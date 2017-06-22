@@ -803,16 +803,21 @@
 
         $(document).ready(function () {
             myList = [];
+
             $('#team_id option').each(function () {
-                myList.push($(this).val())
+
+                myList.push($(this).val());
+
             });
-       
+            myList= myList.reverse()
+           // myList.indexOf(0);
+      alert(myList);
 
             $("#team_id").each(function () {
                 var l = $("#team_id :selected").text();
 
 
-                $("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[2] + " #total_team_score");
+                $("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[0] + " #total_team_score");
                 $("#game_lame1").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[1] + " #total_team_score");
 
             });

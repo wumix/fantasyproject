@@ -526,7 +526,7 @@
             },
 
             {url: '{{URL::to('assets-new/img/champions-trophy-pakistan.jpg')}}', fade: 500},
-           
+
 
 
         ]);

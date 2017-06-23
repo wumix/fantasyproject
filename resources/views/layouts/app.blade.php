@@ -322,16 +322,6 @@
 {!! Html::script('js/toaster/jquery.toast.js') !!}
 @yield('js')
 @yield('addteamjs')
-<script>
-    $(document).ready(function () {
-        $('.yourclass').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 2000,
 
-        });
-    });
-</script>
 </body>
 </html>

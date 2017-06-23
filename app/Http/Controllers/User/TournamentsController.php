@@ -482,13 +482,16 @@ class TournamentsController extends Controller
 
     function deletePlayerPost(Request $request)
     {
+        $teamdetails=\App\UserTeam::where('id',$request->team_id)->first();
+        $tournament_id=$teamdetails->tournament_id;
+
 
         DB::table('user_team_players')->where('player_id', $request->player_id)->where('team_id', $request->team_id)->delete();
-        $array = array(['tournament_id'=>$request->tournament_id,'action_key' => 'delete_player', 'user_id' => Auth::id(), 'points_scored' => $request->player_price]);
+        $array = array(['tournament_id'=>$tournament_id,'action_key' => 'delete_player', 'user_id' => Auth::id(), 'points_scored' => $request->player_price]);
         \App\UserPointsScored::insert($array);
         $objResponse['player_id'] = $request->player_id;
         $objResponse['success'] = true;
-        $objResponse['score'] = getUserTotalScore(Auth::id(),$request->tournament_id);;
+        $objResponse['score'] = getUserTotalScore(Auth::id(),$tournament_id);
         $objResponse['msg'] = "Player Deleted Successfully";
         $objResponse['batsmen'] = $this->giveanygoodname(Auth::id(), $request->team_id, 5);
         $objResponse['bowler'] = $this->giveanygoodname(Auth::id(), $request->team_id, 6);

@@ -570,8 +570,8 @@
                 slidesToScroll: 1,
                 autoplay: true,
                 autoplaySpeed: 2000,
-                prevArrow: '<a type="button"   style=" font-size:30px; text-decoration:none;border: none; outline: none;left:-15px;position: absolute; top:50%;" class="fa fa-chevron-circle-left"></a>',
-                nextArrow: '<a type="button"   style=" font-size:30px; text-decoration:none;border: none; outline: none;right:-15px;position: absolute; top:50%;" class="fa fa-chevron-circle-right"></a>'
+                prevArrow: '<a href=""   style=" font-size:30px; text-decoration:none;border: none;cursor: hand; outline: none;left:-15px;position: absolute; top:50%;" class="fa fa-chevron-circle-left"></a>',
+                nextArrow: '<a href=""   style=" font-size:30px; text-decoration:none;border: none;cursor: hand; outline: none;right:-15px;position: absolute; top:50%;" class="fa fa-chevron-circle-right"></a>'
 
                 //prevArrow:'<button type="button" class="slick-prev" style="fa fa-chevron-circle-right" aria-hidden="true"></i>Previous</button>'
 

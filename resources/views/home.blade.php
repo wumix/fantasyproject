@@ -549,6 +549,7 @@
 
 
             {url: '{{URL::to('assets-new/img/gamithon--22-j-banner.jpg')}}', fade: 500},
+            {url: '{{URL::to('assets-new/img/eng-SA-banner-Gmit-3.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/champions-trophy-pakistan.jpg')}}', fade: 500},
 
 

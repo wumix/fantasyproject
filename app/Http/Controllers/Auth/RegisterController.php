@@ -120,12 +120,23 @@ use RegistersUsers;
 
         $userActionKey = 'user_signup';
         $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
-        //Saving user points scored
-        $objPointsScored = new \App\UserPointsScored;
-        $objPointsScored->user_id = $user->id;
-        $objPointsScored->action_key = $userActionKey;
-        $objPointsScored->points_scored = $actionPoints;
-        $objPointsScored->save();
+        $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
+        $tournaments_list= $objTourmament->toArray();
+        foreach($tournaments_list as $row){
+            $array = array(
+                ['tournament_id'=>$row['id'],'action_key' =>
+                    'pusrchase_tournament', 'user_id' => \Auth::id(), 'points_scored' =>$actionPoints]
+            );
+            \App\UserPointsScored::insert($array);
+        }
+
+//
+//        //Saving user points scored
+//        $objPointsScored = new \App\UserPointsScored;
+//        $objPointsScored->user_id = $user->id;
+//        $objPointsScored->action_key = $userActionKey;
+//        $objPointsScored->points_scored = $actionPoints;
+//        $objPointsScored->save();
         \Mail::to($user->email)->send(new \App\Mail\SignUp($user->name));
 
         //Sending email to registered user

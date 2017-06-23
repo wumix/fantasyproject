@@ -110,12 +110,15 @@ class User extends Authenticatable
                 //adding user registration points
                 $userActionKey = 'user_signup';
                 $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
-                //Saving user points scored
-                $objPointsScored = new \App\UserPointsScored;
-                $objPointsScored->user_id = $user->id;
-                $objPointsScored->action_key = $userActionKey;
-                $objPointsScored->points_scored = $actionPoints;
-                $objPointsScored->save();
+                $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
+                $tournaments_list= $objTourmament->toArray();
+                foreach($tournaments_list as $row){
+                    $array = array(
+                        ['tournament_id'=>$row['id'],'action_key' =>
+                            'pusrchase_tournament', 'user_id' => \Auth::id(), 'points_scored' =>$actionPoints]
+                    );
+                    \App\UserPointsScored::insert($array);
+                }
             }
             return $user;
         }

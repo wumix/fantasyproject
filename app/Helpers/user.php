@@ -1,8 +1,8 @@
 <?php
-function getUserTotalScore($userid)
+function getUserTotalScore($userid,$tournament_id)
 {
-    $consumed = \App\UserPointsConsumed::where('user_id', $userid)->sum('points_consumed');
-    $scored = \App\UserPointsScored::where('user_id', $userid)->sum('points_scored');
+    $consumed = \App\UserPointsConsumed::where(['user_id'=>$userid,'tournament_id'=>$tournament_id])->sum('points_consumed');
+    $scored = \App\UserPointsScored::where(['user_id'=>$userid,'tournament_id'=>$tournament_id])->sum('points_scored');
     if ($scored - $consumed >= 0) {
         return $scored - $consumed;
     }

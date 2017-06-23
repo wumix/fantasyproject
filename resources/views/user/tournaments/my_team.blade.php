@@ -58,7 +58,7 @@
                                 <h3 style="color: blue;">{{$tournament_detail['name']}}</h3>
                             </div>
                             <div class="col-md-12 small-sec-heading">
-                                <h3>Your Points: <span id="your_points">{{getUserTotalScore(Auth::id())}}</span></h3>
+                                <h3>Your Points: <span id="your_points">{{getUserTotalScore(Auth::id(),$tournament_detail['id'])}}</span></h3>
                             </div>
 
                         </div>
@@ -147,7 +147,7 @@
                                         <div class="alert alert-danger">
                                             <ul>
                                                 <li>You can make a team with in available points.
-                                                    i.e {{getUserTotalScore(Auth::id())}}</li>
+                                                    i.e {{getUserTotalScore(Auth::id(),$tournament_detail['id'])}}</li>
                                                 <li>You must have 11 players in your team to play this tournament.</li>
                                             </ul>
                                         </div>
@@ -265,7 +265,7 @@
                             <div class="point-summery col-md-3" id="point-summery">
                                 <h4 class="small-sec-heading">
                                     Remaining points <span class="pull-right"
-                                                           id="your_points1">{{getUserTotalScore(Auth::id())}}</span>
+                                                           id="your_points1">{{getUserTotalScore(Auth::id(),$tournament_detail['id'])}}</span>
                                 </h4>
                                 <hr class="light"/>
                                 <h5 style="color: #92B713;">

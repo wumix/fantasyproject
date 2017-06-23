@@ -105,6 +105,7 @@ class DashboardController extends Controller
             ->sortByDesc("start_date")->toArray();
 
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
+        $data['tournament_id']=$tournament_id;
         // dd($data['user_team_player_transfer']->toArray());
         return view('user.team_detail', $data);
     }

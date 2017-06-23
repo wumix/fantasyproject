@@ -27,7 +27,7 @@
                             <h4 class="tnt1">Tournament Cost:<span
                                         class="tnt2">{{$tournament_detail['tournament_price']}}</span></h4>
                             <br>
-                            <h4 class="tnt1">Current Points:<span class="tnt2">{{getUserTotalScore(Auth::id())}}</span>
+                            <h4 class="tnt1">Current Points:<span class="tnt2">{{getUserTotalScore(Auth::id(),$tournament_detail['id'])}}</span>
                             </h4>
                             <div class="col-md-5">
                                 <form id="team_submit">

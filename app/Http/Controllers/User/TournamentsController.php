@@ -311,7 +311,7 @@ class TournamentsController extends Controller
 
         $tournamentPrice = \App\Tournament::find($tournament_id)->tournament_price;
 
-        if ($tournamentPrice <= (double)getUserTotalScore(Auth::id())) {
+        if ($tournamentPrice <= (double)getUserTotalScore(Auth::id(),$tournament_id)) {
             $tournamentData = [
                 'tournament_id' => $tournament_id,
                 'user_id' => Auth::id(),
@@ -322,7 +322,7 @@ class TournamentsController extends Controller
             );
 
             $array = array(
-                ['action_key' => 'pusrchase_tournament', 'user_id' => Auth::id(), 'points_consumed' => $tournamentPrice]
+                ['tournament_id'=>$request->tournament_id,'action_key' => 'pusrchase_tournament', 'user_id' => Auth::id(), 'points_consumed' => $tournamentPrice]
             );
             \App\UserPointsConsumed::insert($array);
             $userteam = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' => Auth::id()])->first()->toArray();
@@ -383,7 +383,7 @@ class TournamentsController extends Controller
 //        dd($player_in_price);
 
 
-            if (((getUserTotalScore(Auth::id())) + $request->player_out_price) >= ($player_in_price)) {
+            if (((getUserTotalScore(Auth::id(),$tournament_id)) + $request->player_out_price) >= ($player_in_price)) {
 
 
                 //    dd(get_individual_player_score($tournament_id, $request->team_id, 20));
@@ -403,7 +403,7 @@ class TournamentsController extends Controller
                 $netpointsdeduction = abs($netpointsdeduction);
                 $player_out_score = get_individual_player_score($tournament_id, $request->team_id, $request->player_out_id);
 
-                $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => $netpointsdeduction]);
+                $array = array(['tournament_id'=>$request->tournament_id,'action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => $netpointsdeduction]);
                 \App\UserPointsConsumed::insert($array);
                 $objResponse['success'] = true;
                 $objResponse['msg'] = "Player transfered successfully";
@@ -436,7 +436,7 @@ class TournamentsController extends Controller
 //                    dd('aja');
 
 
-                if ($player_in_price >= getUserTotalScore(Auth::id())) {
+                if ($player_in_price >= getUserTotalScore(Auth::id(),$tournament_id)) {
                     $objResponse['success'] = false;
                     $objResponse['msg'] = "You donot have enough points";
 
@@ -445,7 +445,7 @@ class TournamentsController extends Controller
 
                     $netpoints = $player_in_price - $request->player_out_price;
                     //   dd($netpoints);
-                    $array = array(['action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => $netpoints]);
+                    $array = array(['tournament_id'=>$request->tournament_id,'action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => $netpoints]);
                     \App\UserPointsConsumed::insert($array);
                     $player_out_score = get_individual_player_score($tournament_id, $request->team_id, $request->player_out_id);
 
@@ -484,11 +484,11 @@ class TournamentsController extends Controller
     {
 
         DB::table('user_team_players')->where('player_id', $request->player_id)->where('team_id', $request->team_id)->delete();
-        $array = array(['action_key' => 'delete_player', 'user_id' => Auth::id(), 'points_scored' => $request->player_price]);
+        $array = array(['tournament_id'=>$request->tournament_id,'action_key' => 'delete_player', 'user_id' => Auth::id(), 'points_scored' => $request->player_price]);
         \App\UserPointsScored::insert($array);
         $objResponse['player_id'] = $request->player_id;
         $objResponse['success'] = true;
-        $objResponse['score'] = getUserTotalScore(Auth::id());;
+        $objResponse['score'] = getUserTotalScore(Auth::id(),$request->tournament_id);;
         $objResponse['msg'] = "Player Deleted Successfully";
         $objResponse['batsmen'] = $this->giveanygoodname(Auth::id(), $request->team_id, 5);
         $objResponse['bowler'] = $this->giveanygoodname(Auth::id(), $request->team_id, 6);
@@ -519,12 +519,12 @@ class TournamentsController extends Controller
         $objResponse['success'] = false;
         if ($tournamentMaxPlayers > $currentNoPlayers) {
             if ($difference > 15 || $difference < 15) {
-                if ($request->player_price <= getUserTotalScore(Auth::id())) {
+                if ($request->player_price <= getUserTotalScore(Auth::id(),$request->tournament_id)) {
                     if ($this->giveanygoodname(Auth::id(), $request->team_id, $request->role_id) < $this->playerRoleLimit($request->tournament_id, $request->role_id)) {
 
                         $objteam = \App\UserTeam::find($request->team_id);
                         $objteam->user_team_player()->sync($request->player_id, false);
-                        $array = array(['action_key' => 'add_player', 'user_id' => Auth::id(), 'points_consumed' => $request->player_price]);
+                        $array = array(['tournament_id'=>$request->tournament_id,'action_key' => 'add_player', 'user_id' => Auth::id(), 'points_consumed' => $request->player_price]);
                         \App\UserPointsConsumed::insert($array);
                         $objResponse['success'] = true;
                         $objResponse['msg'] = "Player added successfully";
@@ -542,7 +542,7 @@ class TournamentsController extends Controller
                         $objResponse['player']['price'] = $request->player_price;
                         $objResponse['player']['team_id'] = $request->team_id;
                         $objResponse['player']['tournament_id'] = $request->tournament_id;
-                        $objResponse['player_score'] = getUserTotalScore(Auth::id());
+                        $objResponse['player_score'] = getUserTotalScore(Auth::id(),$request->tournament_id);
                     } else {
                         $objResponse['success'] = false;
                         $objResponse['msg'] = "You cant have more than " . $this->giveanygoodname(Auth::id(), $request->team_id, $request->role_id) . " " . $request->role_name . "s in this Tournament";

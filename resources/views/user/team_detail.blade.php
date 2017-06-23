@@ -1,4 +1,5 @@
 <?php
+       // dd($tournament_id);
 // dd($user_team_player_transfer['user_team_player_transfers']);
 //dd(user_team_player_transfer);
 //dd($team_score);
@@ -233,7 +234,7 @@ foreach ($team_score as $teamplayers) {
 
         $('[data-toggle="tooltip"]').tooltip();
         $('#team_score').html('{{$teamtotal}}')
-        $('#remaining_score').html('{{getUserTotalScore(\Auth::id())}}');
+        $('#remaining_score').html('{{getUserTotalScore(\Auth::id(),$tournament_id)}}');
 
     </script>
 @stop

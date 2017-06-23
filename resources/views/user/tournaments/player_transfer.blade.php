@@ -58,7 +58,7 @@
                                 <h3 style="color: blue;">{{$tournament_detail['name']}}</h3>
                             </div>
                             <div class="col-md-12" style="color: orangered; font-family: Raleway">
-                                <h3>Your Points: <span id="your_points">{{getUserTotalScore(Auth::id())}}</span></h3>
+                                <h3>Your Points: <span id="your_points">{{getUserTotalScore(Auth::id(),$tournament_detail['id'])}}</span></h3>
                             </div>
 
                         </div>
@@ -228,7 +228,7 @@
                             <div class="point-summery col-md-3" id="point-summery">
                                 <h4 class="small-sec-heading">
                                     Available points <span class="pull-right"
-                                                           id="your_points1">{{getUserTotalScore(Auth::id())}}</span>
+                                                           id="your_points1">{{getUserTotalScore(Auth::id(),$tournament_detail['id'])}}</span>
                                 </h4>
                                 <hr class="light"/>
                                 <h5 style="color: #92B713;">

@@ -5,90 +5,94 @@
     {!! Html::style('assets-new/css/slick.css') !!}
 @endsection
 
-@section('js')
-    {!! Html::script('assets-new/js/slick.js') !!}
-@stop
+
 @section('title')
     Gamithon Fantasy
 @stop
 @section('content')
     <!--BASBB-->
+
     <header id="header">
         <div id="abcd" class="header-content container">
             <div class="container">
                 <div class="col-md-12 no-padding">
 
                     <div class="col-md-8"></div>
-
-                    <div class="header-content-inner bg-primary-opacity col-md-4 ">
-
-                        <div class="row">
-                            <div class="col-md-12 no-padding">
-
-                                <h3 style="font-weight: 500; color: #FFFFFF">
-                                    NEXT MATCH COUNT DOWN
-                                </h3>
+                    <div class="yourclass  col-md-4">
+                        <?php $i = 1;?>
+                        @foreach($tournaments_list as $tournament)
 
 
-                                <h6 style="color: white;">
-                                    {{$matches['team_one']}}
-                                    <strong class="mlr10 Bold">
-                                        <em>Vs</em>
-                                    </strong>
-                                    {{$matches['team_two']}}
-                                </h6>
-                            </div>
-                        </div>
-                        <div class="row col-md-12">
-                            <div class="col-md-12 count-down no-padding mt30">
-                                <div class="col-md-3 text-center">
-                        <span id="getting-started" class="circle">
+                                <div class="header-content-inner bg-primary-opacity col-md-4 ">
+
+                                    <div class="row">
+                                        <div class="col-md-12 no-padding">
+
+                                            <h3 style="font-weight: 500; color: #FFFFFF">
+                                                NEXT MATCH COUNT DOWN
+                                            </h3>
+
+
+                                            <h6 style="color: white;">
+                                                {{$tournament['nextmatch']['team_one']}}
+                                                <strong class="mlr10 Bold">
+                                                    <em>Vs</em>
+                                                </strong>
+                                                {{$tournament['nextmatch']['team_two']}}
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="row col-md-12">
+                                        <div class="col-md-12 count-down no-padding mt30">
+                                            <div class="col-md-3 text-center">
+                        <span id="getting-started{{$i}}" class="circle">
                             10
                         </span>
-                                    <p class="mtb10">Days</p>
-                                </div>
-                                <div class="col-md-3 text-center">
-                        <span id="getting-started1" class="circle">
+                                                <p class="mtb10">Days</p>
+                                            </div>
+                                            <div class="col-md-3 text-center">
+                        <span id="getting-started{{$i+1}}" class="circle">
                             10
                         </span>
-                                    <p class="mtb10">Hours</p>
-                                </div>
-                                <div class="col-md-3 text-center">
-                        <span id="getting-started2" class="circle">
+                                                <p class="mtb10">Hours</p>
+                                            </div>
+                                            <div class="col-md-3 text-center">
+                        <span id="getting-started{{$i+2}}" class="circle">
                             10
                         </span>
-                                    <p class="mtb10" style="margin-left: 12px;">Min</p>
-                                </div>
-                                <div class="col-md-3 text-center">
-                        <span id="getting-started3" class="circle">
+                                                <p class="mtb10" style="margin-left: 12px;">Min</p>
+                                            </div>
+                                            <div class="col-md-3 text-center">
+                        <span id="getting-started{{$i+3}}" class="circle">
                             10
                         </span>
-                                    <p class="mtb10" style="margin-left: 12px;">Sec</p>
-                                </div>
-                            </div>
-                        </div>
+                                                <p class="mtb10" style="margin-left: 12px;">Sec</p>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
-                        <div class="row">
-                            <!-- style="margin-top: -20px;"-->
-                            <div class="col-md-12 no-padding">
+                                    <div class="row">
+                                        <!-- style="margin-top: -20px;"-->
+                                        <div class="col-md-12 no-padding">
 
-                                <h4 style="font-weight: 500;color: #FFFFFF">
-                                    @if(!empty($leaders))
-                                        Leader Board
-                                    @endif
-                                </h4>
+                                            <h4 style="font-weight: 500;color: #FFFFFF">
+                                                @if(!empty($tournament['leaderboard']))
+                                                    Leader Board
+                                                @endif
+                                            </h4>
 
-                            </div>
-                        </div>
-                        <div class="yourclass">
-                            <div>
-                                <div class="col-md-12 count-down no-padding">
-                                    @if(!empty($leaders))
-                                        @foreach($leaders as $leader)
-                                            <div class="col-md-4  text-center">
-                                                <div class="circle2 leadersName">
-                        <span id="getting-started1">
+                                        </div>
+                                    </div>
+
+
+                                    <div>
+                                        <div class="col-md-12 count-down no-padding">
+                                            @if(!empty($tournament['leaderboard']))
+                                                @foreach($tournament['leaderboard'] as $leader)
+                                                    <div class="col-md-4  text-center">
+                                                        <div class="circle2 leadersName">
+                        <span id="getting-started09">
                           <img style="width: 50px;
     height: 50px; border-radius: 50%;
     padding:5px;
@@ -96,56 +100,39 @@
 
 " src="{{getUploadsPath($leader['user']['profile_pic'])}}"/>
                         </span>
-                                                    <p class="no-mrg-in-home ">{{$leader['user']['name']}}</p>
-                                                    <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
-                                                </div>
+                                                            <p class="no-mrg-in-home ">{{$leader['user']['name']}}</p>
+                                                            <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+
+                                        </div>
+                                    </div>
+
+
+                                    @if(!empty($tournament['leaderboard']))
+                                        <div class="row">
+                                            <div class="col-md-12 no-padding">
+
+                                                <h5>
+
+                                                    <a class="btn leaderboardviewmorebutton"
+                                                       href="{{route('homeleaderboard',['id'=>$leader['tournament_id']])}}">View
+                                                        More</a>
+
+                                                </h5>
+
                                             </div>
-                                        @endforeach
+                                        </div>
                                     @endif
+                                    <div class="clear clearfix"></div>
 
                                 </div>
-                            </div>
-                            <div>
-                                <div class="col-md-12 count-down no-padding">
-                                    @if(!empty($leaders))
-                                        @foreach($leaders as $leader)
-                                            <div class="col-md-4  text-center">
-                                                <div class="circle2 leadersName">
-                        <span id="getting-started1">
-                          <img style="width: 50px;
-    height: 50px; border-radius: 50%;
-    padding:5px;
 
 
-" src="{{getUploadsPath($leader['user']['profile_pic'])}}"/>
-                        </span>
-                                                    <p class="no-mrg-in-home ">{{$leader['user']['name']}}</p>
-                                                    <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    @endif
-
-                                </div>
-                            </div>
-                        </div>
-
-                        @if(!empty($leaders))
-                            <div class="row">
-                                <div class="col-md-12 no-padding">
-
-                                    <h5>
-
-                                        <a class="btn leaderboardviewmorebutton"
-                                           href="{{route('homeleaderboard',['id'=>3])}}">View
-                                            More</a>
-
-                                    </h5>
-
-                                </div>
-                            </div>
-                        @endif
-                        <div class="clear clearfix"></div>
+                            <?php $i = $i + 4?>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -251,6 +238,7 @@
                                             {{formatDate($tournament['end_date'])}}
                                         </td>
                                     </tr>
+
                                 @endforeach
 
                                 </tbody>
@@ -509,45 +497,51 @@
     <!-- /.....................footer Start here......................../ -->
 @endsection
 @section('js')
+    {!! Html::script('assets-new/js/slick.js') !!}
     {!! Html::script('assets/jquery.countdown-2.2.0/jquery.countdown.min.js') !!}
     @php($date= '00-00-00 00:00:00')
-    @if(!empty($matches['start_date']))
-        @php($date= $matches['start_date'])
-        {{Html::script('js/moment.js')}}
-        <script type="text/javascript">
-            var dateObj = new Date();
-            var userTimeZone = dateObj.getTimezoneOffset();
-            //Time zone is in negatinv i.e. forward from GMT
-            userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : Math.abs(userTimeZone) * -1;
+    <?php $i = 1?>
+    @foreach($tournaments_list as $tournament)
 
-            var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
-            console.log(tournamentDateTime, userTimeZone);
+        @if(!empty($tournament['nextmatch']['start_date']))
+            @php($date=$tournament['nextmatch']['start_date'])
+            {{Html::script('js/moment.js')}}
+            <script type="text/javascript">
+                var dateObj = new Date();
+                var userTimeZone = dateObj.getTimezoneOffset();
+                //Time zone is in negatinv i.e. forward from GMT
+                userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : Math.abs(userTimeZone) * -1;
 
-            $("#getting-started").countdown(tournamentDateTime, function (event) {
-                $(this).text(
-                    event.strftime('%D')
-                );
-            });
-            $("#getting-started1")
-                .countdown(tournamentDateTime, function (event) {
+                var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
+                console.log(tournamentDateTime, userTimeZone);
+
+                $('#getting-started{{$i}}').countdown(tournamentDateTime, function (event) {
                     $(this).text(
-                        event.strftime('%H')
+                        event.strftime('%D')
                     );
                 });
-            $("#getting-started2")
-                .countdown(tournamentDateTime, function (event) {
-                    $(this).text(
-                        event.strftime('%M')
-                    );
-                });
-            $("#getting-started3")
-                .countdown(tournamentDateTime, function (event) {
-                    $(this).text(
-                        event.strftime('%S')
-                    );
-                });
-        </script>
-    @endif
+                $("#getting-started{{$i+1}}")
+                    .countdown(tournamentDateTime, function (event) {
+                        $(this).text(
+                            event.strftime('%H')
+                        );
+                    });
+                $("#getting-started{{$i+2}}")
+                    .countdown(tournamentDateTime, function (event) {
+                        $(this).text(
+                            event.strftime('%M')
+                        );
+                    });
+                $("#getting-started{{$i+3}}")
+                    .countdown(tournamentDateTime, function (event) {
+                        $(this).text(
+                            event.strftime('%S')
+                        );
+                    });
+            </script>
+            <?php $i = $i + 4?>
+        @endif
+    @endforeach
 
 
     <script>

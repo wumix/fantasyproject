@@ -92,10 +92,10 @@
                                             @foreach($tournament['leaderboard'] as $leader)
                                                 <div class="col-md-4  text-center">
                                                     <div class="circle2 leadersName">
-                        <span id="getting-started09">
+                        <span id="getting-started1">
                           <img style="width: 50px;
     height: 50px; border-radius: 50%;
-    padding:5px;
+    margin:0 auto;
 
 
 " src="{{getUploadsPath($leader['user']['profile_pic'])}}"/>
@@ -569,7 +569,7 @@
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 autoplay: true,
-                autoplaySpeed: 4000,
+                autoplaySpeed: 40000,
                 prevArrow: '<a href=""   style=" font-size:30px; text-decoration:none;border: none;cursor: hand; outline: none;left:-15px;position: absolute; top:50%;" class="fa fa-chevron-circle-left"></a>',
                 nextArrow: '<a href=""   style=" font-size:30px; text-decoration:none;border: none;cursor: hand; outline: none;right:-15px;position: absolute; top:50%;" class="fa fa-chevron-circle-right"></a>'
 

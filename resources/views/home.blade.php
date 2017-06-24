@@ -18,21 +18,16 @@
                 <div class="col-md-12 no-padding">
 
                     <div class="col-md-8"></div>
-                    <div class="yourclass  col-md-4">
+                    <div class="carousal-leaders-tourm  col-md-4">
                         <?php $i = 1;?>
                         @foreach($tournaments_list as $tournament)
-
-
                             <div class="header-content-inner bg-primary-opacity col-md-4 ">
 
                                 <div class="row">
                                     <div class="col-md-12 no-padding">
-
                                         <h3 style="font-weight: 500; color: #FFFFFF">
                                             NEXT MATCH COUNT DOWN
                                         </h3>
-
-
                                         <h6 style="color: white;">
                                             {{$tournament['nextmatch']['team_one']}}
                                             <strong class="mlr10 Bold">
@@ -566,13 +561,15 @@
 
     <script>
         $(document).ready(function () {
-            $('.yourclass').slick({
+            $('.carousal-leaders-tourm').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 autoplay: true,
                 autoplaySpeed: 7000,
-                prevArrow: '<a href=""   style=" font-size:43px; text-decoration:none;border: none;cursor: hand; outline: none;left:-25px;position: absolute; top:50%;" class="fa fa-chevron-circle-left"></a>',
-                nextArrow: '<a href=""   style=" font-size:43px; text-decoration:none;border: none;cursor: hand; outline: none;right:-25px;position: absolute; top:50%;" class="fa fa-chevron-circle-right"></a>'
+                adaptiveHeight: true, lazyLoad: 'ondemand',
+                fade: true,
+                prevArrow: '<a href="" style=" font-size:43px; text-decoration:none;border: none;cursor: hand; outline: none;left:-25px;position: absolute; top:50%;" class="fa fa-chevron-circle-left"></a>',
+                nextArrow: '<a href="" style=" font-size:43px; text-decoration:none;border: none;cursor: hand; outline: none;right:-25px;position: absolute; top:50%;" class="fa fa-chevron-circle-right"></a>'
 
                 //prevArrow:'<button type="button" class="slick-prev" style="fa fa-chevron-circle-right" aria-hidden="true"></i>Previous</button>'
 

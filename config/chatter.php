@@ -56,7 +56,7 @@ return [
 
     'headline'      => 'Welcome to Gamithon Forums',
     'description'   => 'Here you can say what do you want to say!',
-    'headline_logo' => '/vendor/devdojo/chatter/assets/images/logo-light.png',
+    'headline_logo' => 'http://gamithon.dev/assets-new/img/gamithon-logo1.png',
 
     /*
     |--------------------------------------------------------------------------

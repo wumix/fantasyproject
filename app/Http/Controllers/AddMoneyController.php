@@ -7,7 +7,7 @@ use Validator;
 use URL;
 use Session;
 use Redirect;
-use Input;
+
 /** All Paypal Details class **/
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
@@ -21,6 +21,7 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
+use Illuminate\Support\Facades\Input;
 class AddMoneyController extends HomeController
 {
     private $_api_context;

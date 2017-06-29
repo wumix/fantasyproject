@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{--{{dd($leaders)}}--}}
 @section('title')
     Leaderboard
 @stop
@@ -329,7 +329,7 @@
             <div class="col-md-12">
                 <h1 class="page-heading">
                     @if(count($leaders)>3)
-                        Top Players
+                        Top Players of {{$tournamet}}
                     @else
                         Nothing to show
                     @endif

@@ -111,6 +111,7 @@ class HomeController extends Controller
     {
         $data['leaders'] = \App\Leaderboard::where('tournament_id',$tournament_id)->with('user', 'user_team')->take(21)->
         orderBy('score', 'DESC')->get()->toArray();
+        $data['tournamet']=\App\Tournament::find($tournament_id)->name;
         return view('pages.leaderboard', $data);
 
     }

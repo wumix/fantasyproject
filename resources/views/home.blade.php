@@ -413,10 +413,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Australia Women Vs New Zealand Women
+                                    England Women VS Sri lanka Women
                                 </div>
                                 <div class="project-name">
-                                    Australia Women won by 5 wickets
+                                    England Women won by 7 wickets
                                 </div>
                             </div>
                         </div>

@@ -126,10 +126,10 @@ class HomeController extends Controller
     public function fixturesDetial($tournament_id)
     {
         $data['fixture_details'] = \App\Tournament::where('slug', $tournament_id)->with(['tournament_matches'=>function($query){
-            $query->orderBy('start_date','desc');
+            $query->orderBy('start_date','asc');
 
         }])->firstOrFail()->toArray();
-     
+
         return view('pages.fixtures_c_trophy', $data);
 
     }

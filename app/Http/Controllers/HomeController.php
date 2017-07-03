@@ -40,8 +40,8 @@ class HomeController extends Controller
         //dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
-        //dd($data['upcommingTour']->toArray());
-        //dd($data['upcommingTour']->toArray());
+
+        dd($data['upcommingTour']->toArray());
         return view('user.dashboard.newdash', $data);
     }
 
@@ -125,7 +125,11 @@ class HomeController extends Controller
 
     public function fixturesDetial($tournament_id)
     {
-        $data['fixture_details'] = \App\Tournament::where('slug', $tournament_id)->with('tournament_matches')->orderBy('start_date', 'ASC')->firstOrFail()->toArray();
+        $data['fixture_details'] = \App\Tournament::where('slug', $tournament_id)->with(['tournament_matches'=>function($query){
+            $query->orderBy('start_date','desc');
+
+        }])->firstOrFail()->toArray();
+     
         return view('pages.fixtures_c_trophy', $data);
 
     }

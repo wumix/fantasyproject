@@ -24,7 +24,7 @@ class MatchesController extends Controller {
         $data['tournamentId'] = Input::get('tournament_id');
         $data['tournaments'] = Tournament::all()->toArray();
         $this->objMatch = \App\Match::where('tournament_id', $data['tournamentId'])->get()->toArray();
-        $data['matches_list'] = $this->objMatch; //list of games form games table   
+        $data['matches_list'] = $this->objMatch->orderBy('start_date','asc'); //list of games form games table
         return view('adminlte::matches.matches_list', $data);
     }
 

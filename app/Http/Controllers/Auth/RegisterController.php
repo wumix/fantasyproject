@@ -8,12 +8,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Response;
 
 /**
  * Class RegisterController
  * @package %%NAMESPACE%%\Http\Controllers\Auth
  */
-class RegisterController extends Controller {
+class RegisterController extends Controller
+{
     /*
       |--------------------------------------------------------------------------
       | Register Controller
@@ -25,19 +27,34 @@ class RegisterController extends Controller {
       |
      */
 
-use RegistersUsers;
+    use RegistersUsers;
 
     /**
      * Show the application registration form.
      *
      * @return \Illuminate\Http\Response
      */
-    public function showRegistrationForm() {
+    public function showRegistrationForm()
+    {
+
         return view('adminlte::auth.register');
     }
 
-    public function showUserRegistrationForm() {
-        return view('auth.register');
+    public function showUserRegistrationForm(Request $request)
+    {
+        \Cookie::make('cookieName', 'list', 60);
+        dd(\Cookie::get('cookieName'));
+        die;
+        if (empty($request->referral_key)) {
+            $data['referral_key'] = NULL;
+        } else {
+
+            $data['referral_key'] = $request->referral_key;
+        }
+
+        cookie('name', 'virat', 60);
+
+        return view('auth.register', $data);
     }
 
     /**
@@ -52,7 +69,8 @@ use RegistersUsers;
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         //$this->middleware('guest');
     }
 
@@ -62,7 +80,8 @@ use RegistersUsers;
      * @param Request $request
      * @return type
      */
-    public function postAddUserFromAdmin(Request $request) {
+    public function postAddUserFromAdmin(Request $request)
+    {
         // dd($request);
         $this->validator($request->all())->validate();
         if ($request->hasFile('profile_pic')) {
@@ -76,26 +95,28 @@ use RegistersUsers;
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data) {
+    protected function validator(array $data)
+    {
         return Validator::make($data, [
-                    'name' => 'required|max:255',
-                    'username' => 'sometimes|required|max:255|unique:users',
-                    'email' => 'required|email|max:255|unique:users',
-                    'password' => 'required|min:6|confirmed',
-                    'terms' => 'required',
+            'name' => 'required|max:255',
+            'username' => 'sometimes|required|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
+            'terms' => 'required',
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
-    protected function create(array $data) {
+    protected function create(array $data)
+    {
 
         $fields = [
             'name' => $data['name'],
@@ -112,23 +133,42 @@ use RegistersUsers;
     /**
      * The user has been registered. Override
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
+     * @param  \Illuminate\Http\Request $request
+     * @param  mixed $user
      * @return mixed
      */
-    protected function registered(Request $request, $user) {
+    public function addUserRefferalPoints($userid, $referral_key)
+    {
+
+    }
+
+    protected function registered(Request $request, $user)
+    {
+
 
         $userActionKey = 'user_signup';
         $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
         $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
-        $tournaments_list= $objTourmament->toArray();
-        foreach($tournaments_list as $row){
+        $tournaments_list = $objTourmament->toArray();
+        foreach ($tournaments_list as $row) {
             $array = array(
-                ['tournament_id'=>$row['id'],'action_key' =>
-                    'pusrchase_tournament', 'user_id' => \Auth::id(), 'points_scored' =>$actionPoints]
+                ['tournament_id' => $row['id'], 'action_key' =>
+                    'pusrchase_tournament', 'user_id' => \Auth::id(), 'points_scored' => $actionPoints]
             );
             \App\UserPointsScored::insert($array);
         }
+        if (!empty($request->referral_key)) {
+            $refferal_points = \App\UserAction::where('action_key', 'referral_signup')->first()->action_points;
+            $user_id = \App\User::where('referral_key', $request->referral_key)->first()->id;
+
+
+            $array = array(
+                ['tournament_id' => $row['id'], 'action_key' =>
+                    'referral_signup', 'user_id' => $user_id, 'points_scored' => $refferal_points]
+            );
+            \App\UserPointsScored::insert($array);
+        }
+
 
 //
 //        //Saving user points scored

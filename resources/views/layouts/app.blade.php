@@ -67,7 +67,9 @@
 </head>
 
 <body>
+
 @yield('facebook-share-div-code')
+@yield('FbJsSdk')
 <nav class="bg-primary navbar navbar-default navbar-fixed-top">
     <!--Menu-->
 

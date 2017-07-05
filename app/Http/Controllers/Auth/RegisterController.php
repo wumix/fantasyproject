@@ -120,6 +120,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'profile_pic' => isset($data[1]) ? $data[1] : '',
+            //'referral_key'=>md5(str_random('')+ "xyz"),
             'password' => bcrypt($data['password']),
         ];
         if (config('auth.providers.user.field', 'email') === 'username' && isset($data['username'])) {
@@ -142,7 +143,6 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
-
 
         $userActionKey = 'user_signup';
         $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
@@ -175,7 +175,7 @@ class RegisterController extends Controller
 //        $objPointsScored->action_key = $userActionKey;
 //        $objPointsScored->points_scored = $actionPoints;
 //        $objPointsScored->save();
-        \Mail::to($user->email)->send(new \App\Mail\SignUp($user->name));
+       // \Mail::to($user->email)->send(new \App\Mail\SignUp($user->name));
 
         //Sending email to registered user
 //        Mail::send('emails.send', ['title' => $title, 'message' => $message], function ($message) {

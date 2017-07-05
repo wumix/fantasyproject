@@ -42,9 +42,7 @@ class RegisterController extends Controller
 
     public function showUserRegistrationForm(Request $request)
     {
-        \Cookie::make('cookieName', 'list', 60);
-        dd(\Cookie::get('cookieName'));
-        die;
+
         if (empty($request->referral_key)) {
             $data['referral_key'] = NULL;
         } else {
@@ -52,7 +50,7 @@ class RegisterController extends Controller
             $data['referral_key'] = $request->referral_key;
         }
 
-        cookie('name', 'virat', 60);
+
 
         return view('auth.register', $data);
     }

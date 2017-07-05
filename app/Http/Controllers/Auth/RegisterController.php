@@ -168,8 +168,6 @@ class RegisterController extends Controller
                         'referral_signup', 'user_id' => $user_id, 'points_scored' => $refferal_points]
                 );
                 \App\UserPointsScored::insert($array);
-            }else{
-                echo 'empty';
             }
         }
 

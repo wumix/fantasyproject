@@ -1,5 +1,5 @@
 @extends('layouts.app')
-{{--{{dd($user_teams)}}--}}
+
 @section('title')
     Gamithon Fantasy
 @stop
@@ -670,6 +670,14 @@
 
                         </div>
                     @endif
+                    <div class="abot_me_sec1">
+
+                        <hr />
+                        <div id="shareBtn" class="btn btn-success clearfix center">Invite Friends</div>
+                         </p>
+
+
+                    </div>
                 </div>
                 <div class="col-md-8 no-padding">
                     <div class="right_sec">
@@ -800,18 +808,7 @@
     <div class="clearfix clear" style="margin-bottom: 100px;"></div>
 
 @endsection
-<div class="page-header">
-    <h1>Share Dialog</h1>
-</div>
 
-<p>Click the button below to trigger a Share Dialog</p>
-
-<div id="shareBtn" class="btn btn-success clearfix">Share</div>
-
-<p style="margin-top: 50px">
-<hr />
-<a class="btn btn-small"  href="http://gamithon.dev/?referral_key={{$userprofileinfo['referral_key']}}">Share Dialog Documentation</a>
-</p>
 @section('FbJsSdk')
     <script>
         window.fbAsyncInit = function() {
@@ -849,7 +846,7 @@
             FB.ui({
                 method: 'share',
                 display: 'popup',
-                href: 'http://gamithon.dev/signup/?referral_key={{$userprofileinfo['referral_key']}}',
+                href: '{{URL::to('/')}}'+'/signup/?referral_key={{$userprofileinfo['referral_key']}}',
             }, function(response){});
         }
     </script>

@@ -31,7 +31,7 @@
                             <div class="col-lg-12">
                                 <div class="text-center col-lg-12">
                                     <div class="gbtn">
-                                        <a href="{{route('facebookLogin')}}" class="btn btn-fb-login">
+                                        <a href="{{route('facebookLogin',['referral_key'=>''])}}" class="btn btn-fb-login">
                                             Login with Facebook
                                         </a>
                                     </div>

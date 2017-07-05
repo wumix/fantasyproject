@@ -29,7 +29,7 @@
                                         </div>
                                     @else
                                         <div class="gbtn">
-                                            <a href="{{route('facebookLogin',['referral_key'=>$referral_key])}}" class="btn btn-fb-login">
+                                            <a href="{{route('facebookLogin')}}" class="btn btn-fb-login">
                                                 Signup Using Facebook
                                             </a>
                                         </div>

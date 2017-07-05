@@ -800,18 +800,6 @@
     <div class="clearfix clear" style="margin-bottom: 100px;"></div>
 
 @endsection
-<div class="page-header">
-    <h1>Share Dialog</h1>
-</div>
-
-<p>Click the button below to trigger a Share Dialog</p>
-
-<div id="shareBtn" class="btn btn-success clearfix">Share</div>
-
-<p style="margin-top: 50px">
-<hr />
-<a class="btn btn-small"  href="http://gamithon.dev/?referral_key={{$userprofileinfo['referral_key']}}">Share Dialog Documentation</a>
-</p>
 @section('FbJsSdk')
     <script>
         window.fbAsyncInit = function() {

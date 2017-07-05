@@ -83,6 +83,7 @@
             padding: 0 29px;
             margin-bottom: 40px;
         }
+
         .abot_me_sec2 {
             width: 100%;
             display: inline-block;
@@ -608,66 +609,66 @@
                         </ul>
                     </div>
                     @if(!empty($challenges[0]['challenges']))
-                    <div class="abot_me_sec1">
+                        <div class="abot_me_sec1">
                     <span class="text_abot_me text-center">
                         InActive Challenges
                     </span>
-                        @include('adminlte::layouts.form_errors')
+                            @include('adminlte::layouts.form_errors')
 
-                        @foreach($challenges as $val)
-                            @foreach($val['challenges'] as $row)
-                                <ul class="img_area_area">
-                                    <li>
+                            @foreach($challenges as $val)
+                                @foreach($val['challenges'] as $row)
+                                    <ul class="img_area_area">
+                                        <li>
 
-                                        Name <span id="game_lame">{{$row['user']['name']}}</span>
-                                    </li>
-                                    <li>
-                                        Reward: <span id="game_lame">{{$row['rewards']}}</span>
-                                        <a href="{{route('accept_challenge',['id'=>$row['id']])}}">Accept</a>
-                                    </li>
+                                            Name <span id="game_lame">{{$row['user']['name']}}</span>
+                                        </li>
+                                        <li>
+                                            Reward: <span id="game_lame">{{$row['rewards']}}</span>
+                                            <a href="{{route('accept_challenge',['id'=>$row['id']])}}">Accept</a>
+                                        </li>
 
 
-                                </ul>
+                                    </ul>
+                                @endforeach
                             @endforeach
-                        @endforeach
 
-                    </div>
+                        </div>
                     @endif
                     @if(!empty($accepted_challenges[0]['challenges']))
-                    <div class="abot_me_sec2">
+                        <div class="abot_me_sec2">
                     <span class="text_abot_me text-center">
                         Active Chanllenges
                     </span>
-                        @include('adminlte::layouts.form_errors')
+                            @include('adminlte::layouts.form_errors')
 
-                        @foreach($accepted_challenges as $val)
-                            @foreach($val['challenges'] as $row)
-                                <ul class="img_area_area">
-                                    <li>
+                            @foreach($accepted_challenges as $val)
+                                @foreach($val['challenges'] as $row)
+                                    <ul class="img_area_area">
+                                        <li>
 
-                                        Vs <span id="game_lame">{{$row['user']['name']}}</span>
-                                    </li>
-                                    <li>
-                                        Reward: <span id="game_lame">{{$row['rewards']}}</span>
-                                        <span id="game_lame">
+                                            Vs <span id="game_lame">{{$row['user']['name']}}</span>
+                                        </li>
+                                        <li>
+                                            Reward: <span id="game_lame">{{$row['rewards']}}</span>
+                                            <span id="game_lame">
                                         @if($row['status']==0)
-                                            In progress
-                                        @endif
-                                        @if($row['status']==1)
-                                            Won
-                                        @endif
-                                        @if($row['status']==2)
-                                            Lost
-                                        @endif
+                                                    In progress
+                                                @endif
+                                                @if($row['status']==1)
+                                                    Won
+                                                @endif
+                                                @if($row['status']==2)
+                                                    Lost
+                                                @endif
                                         </span>
-                                    </li>
+                                        </li>
 
 
-                                </ul>
+                                    </ul>
+                                @endforeach
                             @endforeach
-                        @endforeach
 
-                    </div>
+                        </div>
                     @endif
                 </div>
                 <div class="col-md-8 no-padding">
@@ -679,8 +680,8 @@
                                 Your level is <span class="lvl-text">Beginner</span>
                             </span>
                             {{--<span class="plyer_one">--}}
-                                {{--<span class="lvl-text"><a--}}
-                                            {{--href="{{route('challenges')}}">Challenge Other Players</a> </span>--}}
+                            {{--<span class="lvl-text"><a--}}
+                            {{--href="{{route('challenges')}}">Challenge Other Players</a> </span>--}}
                             {{--</span>--}}
 
                         </div>
@@ -759,36 +760,36 @@
                     </div>
 
                     {{--<div class="upcoming_sec">--}}
-                        {{--<span class="text_abot_me_upcome">Active Tournaments</span>--}}
-                        {{--<div class="col-md-12 no-padding">--}}
-                            {{--<ul class="upcomin_list">--}}
+                    {{--<span class="text_abot_me_upcome">Active Tournaments</span>--}}
+                    {{--<div class="col-md-12 no-padding">--}}
+                    {{--<ul class="upcomin_list">--}}
 
-                                {{--@foreach($upcommingTour as $tour)--}}
-                                    {{--<li>--}}
-                                        {{--<div class="left_upcoming">--}}
-                                            {{--<span><img src="{{URL::to('/img/upcomin_img.png')}}" alt=""/></span>--}}
-                                            {{--<div class="sect">--}}
-                                                {{--<span class="text_abot_me_upcome_tour">{{$tour['name']}}</span>--}}
-                                                {{--<span class="clor_text">--}}
+                    {{--@foreach($upcommingTour as $tour)--}}
+                    {{--<li>--}}
+                    {{--<div class="left_upcoming">--}}
+                    {{--<span><img src="{{URL::to('/img/upcomin_img.png')}}" alt=""/></span>--}}
+                    {{--<div class="sect">--}}
+                    {{--<span class="text_abot_me_upcome_tour">{{$tour['name']}}</span>--}}
+                    {{--<span class="clor_text">--}}
 
-                                                {{--</span>--}}
-                                                {{--<span class="time_area">{{formatDate($tour['start_date'])}}</span>--}}
-                                                {{--<a href="{{route('fixturesdetail',['tournament_id'=>$tour['slug']])}}"--}}
-                                                   {{--class="more_btn">--}}
-                                                    {{--More Info >--}}
-                                                {{--</a>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="right_upcoming">--}}
-                                             {{--<span class="nine_area">--}}
-                                           {{--01--}}
-                                            {{--<span> June</span>--}}
-                                        {{--</span>--}}
-                                        {{--</div>--}}
-                                    {{--</li>--}}
-                                {{--@endforeach--}}
-                            {{--</ul>--}}
-                        {{--</div>--}}
+                    {{--</span>--}}
+                    {{--<span class="time_area">{{formatDate($tour['start_date'])}}</span>--}}
+                    {{--<a href="{{route('fixturesdetail',['tournament_id'=>$tour['slug']])}}"--}}
+                    {{--class="more_btn">--}}
+                    {{--More Info >--}}
+                    {{--</a>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="right_upcoming">--}}
+                    {{--<span class="nine_area">--}}
+                    {{--01--}}
+                    {{--<span> June</span>--}}
+                    {{--</span>--}}
+                    {{--</div>--}}
+                    {{--</li>--}}
+                    {{--@endforeach--}}
+                    {{--</ul>--}}
+                    {{--</div>--}}
 
                     {{--</div>--}}
 
@@ -797,8 +798,61 @@
         </div>
     </div>
     <div class="clearfix clear" style="margin-bottom: 100px;"></div>
+
 @endsection
+<div class="page-header">
+    <h1>Share Dialog</h1>
+</div>
+
+<p>Click the button below to trigger a Share Dialog</p>
+
+<div id="shareBtn" class="btn btn-success clearfix">Share</div>
+
+<p style="margin-top: 50px">
+<hr />
+<a class="btn btn-small"  href="http://gamithon.dev/?referral_key={{$userprofileinfo['referral_key']}}">Share Dialog Documentation</a>
+</p>
+@section('FbJsSdk')
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId            : '1736071000056030',
+                autoLogAppEvents : true,
+                xfbml            : true,
+                version          : 'v2.9'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+@endsection
+@section('facbook-og-tags')
+<meta property="og:url" content="heelo world"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="My title"/>
+    <meta property="og:description" content="Join referral here"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
+    <meta property="og:image" content="http://www.gamithonfantasy.com/assets-new/img/gamithon-logo1.png"/>
+    <meta property="fb:app_id" content="712839212231397"/>
+@stop
 @section('js')
+    <script>
+        document.getElementById('shareBtn').onclick = function() {
+            FB.ui({
+                method: 'share',
+                display: 'popup',
+                href: 'http://gamithon.dev/signup/?referral_key={{$userprofileinfo['referral_key']}}',
+            }, function(response){});
+        }
+    </script>
     <script>
 
         $(document).ready(function () {
@@ -809,9 +863,9 @@
                 myList.push($(this).val());
 
             });
-            myList= myList.reverse()
-           // myList.indexOf(0);
-     // alert(myList);
+            myList = myList.reverse()
+            // myList.indexOf(0);
+            // alert(myList);
 
             $("#team_id").each(function () {
                 var l = $("#team_id :selected").text();

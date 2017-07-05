@@ -348,10 +348,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    England VS South Africa
+                                    England Women VS Sri lanka Women
                                 </div>
                                 <div class="project-name">
-                                    England won by 9 wickets
+                                    England Women won by 7 wickets
                                 </div>
                             </div>
                         </div>
@@ -365,10 +365,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    England VS South Africa
+                                    England Women VS Sri lanka Women
                                 </div>
                                 <div class="project-name">
-                                    England won by 9 wickets
+                                    England Women won by 7 wickets
                                 </div>
                             </div>
                         </div>
@@ -381,29 +381,14 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    England VS South Africa
+                                    England Women VS Sri lanka Women
                                 </div>
                                 <div class="project-name">
-                                    England won by 9 wickets
+                                    England Women won by 7 wickets
                                 </div>
                             </div>
 
 
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="KXIP VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Pakistan vs India
-                                </div>
-                                <div class="project-name">
-                                    Pakistan won by 180 runs
-                                </div>
-                            </div>
                         </div>
                     </a>
                 </div>
@@ -413,25 +398,56 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Pakistan vs India
+                                    England Women VS Sri lanka Women
                                 </div>
                                 <div class="project-name">
-                                    Pakistan won by 180 runs
+                                    England Women won by 7 wickets
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/203.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="KXIP VS MI">
+                    <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS MI">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Pakistan vs India
+                                    England Women VS Sri lanka Women
                                 </div>
                                 <div class="project-name">
-                                    Pakistan won by 180 runs
+                                    England Women won by 7 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/203.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="KXIP VS KKR">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Pakistan Women vs India Women
+                                </div>
+                                <div class="project-name">
+                                    India Women won by 95 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Australia Women Vs New Zealand Women
+                                </div>
+                                <div class="project-name">
+                                    Australia Women won by 5 wickets
                                 </div>
                             </div>
                         </div>
@@ -444,25 +460,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Bangladesh Vs India
+                                    Australia Women Vs New Zealand Women
                                 </div>
                                 <div class="project-name">
-                                    India won by 9 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Bangladesh Vs India
-                                </div>
-                                <div class="project-name">
-                                    India won by 9 wickets
+                                    Australia Women won by 5 wickets
                                 </div>
                             </div>
                         </div>
@@ -475,10 +476,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Bangladesh Vs India
+                                    South Africa Women  Vs West Indies Women
                                 </div>
                                 <div class="project-name">
-                                    India won by 9 wickets
+                                    South Africa Women won by 10 wickets
                                 </div>
                             </div>
                         </div>
@@ -545,6 +546,8 @@
 
             {url: '{{URL::to('assets-new/img/gamithon--22-j-banner.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/eng-SA-banner-Gmit-3.jpg')}}', fade: 500},
+            {url: '{{URL::to('assets-new/img/women-worldcup-new.jpg')}}', fade: 500},
+
             {url: '{{URL::to('assets-new/img/champions-trophy-pakistan.jpg')}}', fade: 500},
 
 

@@ -25,6 +25,34 @@ use Validator;
  */
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+
+        // $this->middleware('auth');
+
+//        $users = \App\User::get()->toArray();
+//        foreach ($users as $row){
+//        $flight = \App\User::find($row['id']);
+//
+//        $flight->referral_key =md5($row['id']+ "xyz");
+//
+//        $flight->save();
+//
+//    }
+//  $users = \App\User::get()->toArray();
+//        foreach ($users as $row){
+//        $flight = \App\User::find($row['id']);
+//
+//        $flight->referral_key =md5($row['id']+ "xyz");
+//
+//        $flight->save();
+//
+//    }
+//
+
+
+
+    }
 
     /**
      * Create a new controller instance.
@@ -40,15 +68,11 @@ class HomeController extends Controller
         //dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
-        //dd($data['upcommingTour']->toArray());
-        //dd($data['upcommingTour']->toArray());
+
+        dd($data['upcommingTour']->toArray());
         return view('user.dashboard.newdash', $data);
     }
 
-    public function __construct()
-    {
-        // $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -79,39 +103,42 @@ class HomeController extends Controller
     }
 
 
-
     public function index()
     {
 
-        $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
+        $objTourmament = \App\Tournament::all()->sortBy("start_date")->
+        where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
         $data['tournaments_list'] = $objTourmament->toArray(); //list of active
         //dd($data['tournaments_list']);
-      //  dd($tournaments_list);
+        //  dd($tournaments_list);
         //dd($tournaments_list);
         //dd(  $data['tournaments_list']);
-        $tournaments_data=[];
-        foreach($data['tournaments_list'] as $key=>$tournament){
-            $data['tournaments_list'][$key]=$tournament;
-            $data['tournaments_list'][$key]['leaderboard']=\App\Leaderboard::where('tournament_id', $tournament['id'])->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
-            $data['tournaments_list'][$key]['nextmatch']=\App\Match::getNextMatch($tournament['id']);
+        $tournaments_data = [];
+        foreach ($data['tournaments_list'] as $key => $tournament) {
+            $data['tournaments_list'][$key] = $tournament;
+            $data['tournaments_list'][$key]['leaderboard'] = \App\Leaderboard::where('tournament_id', $tournament['id'])->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
+            $data['tournaments_list'][$key]['nextmatch'] = \App\Match::getNextMatch($tournament['id']);
         }
 
-       // $data['tournaments_list']['leaderboard']=\App\Leaderboard::where('tournament_id', config('const.tournament_id'))->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
+        // $data['tournaments_list']['leaderboard']=\App\Leaderboard::where('tournament_id', config('const.tournament_id'))->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
         $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
         $data['upcomming_tournaments_list'] = $upcommingTour->toArray(); //upcomming tournament of active
-        $data['matches'] = \App\Match::getNextMatch();
-       //$data['matches']=$data['matches']->toarray();
-       // $data['leaders'] = \App\Leaderboard::where('tournament_id', config('const.tournament_id'))->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
+        // $data['matches'] = \App\Match::getNextMatch();
+        //$data['matches']=$data['matches']->toarray();
+        // $data['leaders'] = \App\Leaderboard::where('tournament_id', config('const.tournament_id'))->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
         $data['news'] = \App\BlogPost::where('post_type', 'news')->take(3)->orderBy('id', 'DESC')->get()->toArray();
 
         return view('home', $data);
     }
+
     public function leaderboard($tournament_id)
     {
-        $data['leaders'] = \App\Leaderboard::where('tournament_id',$tournament_id)->with('user', 'user_team')->take(21)->
+        $data['leaders'] = \App\Leaderboard::where('tournament_id', $tournament_id)->with('user', 'user_team')->take(21)->
         orderBy('score', 'DESC')->get()->toArray();
-        $data['tournamet']=\App\Tournament::find($tournament_id)->name;
-        return view('pages.leaderboard', $data);
+
+        $data['tournamet'] = \App\Tournament::find($tournament_id)->name;
+
+       return view('pages.leaderboard', $data);
 
     }
 
@@ -124,7 +151,11 @@ class HomeController extends Controller
 
     public function fixturesDetial($tournament_id)
     {
-        $data['fixture_details'] = \App\Tournament::where('slug', $tournament_id)->with('tournament_matches')->firstOrFail()->toArray();
+        $data['fixture_details'] = \App\Tournament::where('slug', $tournament_id)->with(['tournament_matches' => function ($query) {
+            $query->orderBy('start_date', 'asc');
+
+        }])->firstOrFail()->toArray();
+
         return view('pages.fixtures_c_trophy', $data);
 
     }

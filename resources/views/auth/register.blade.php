@@ -29,7 +29,7 @@
                                         </div>
                                     @else
                                         <div class="gbtn">
-                                            <a href="{{route('facebookLogin')}}" class="btn btn-fb-login">
+                                            <a href="{{route('facebookLogin',['referral_key'=>$referral_key])}}" class="btn btn-fb-login">
                                                 Signup Using Facebook
                                             </a>
                                         </div>
@@ -40,6 +40,7 @@
                                 </div>
                                 <form class="form-horizontal" role="form" method="POST"
                                       action="{{ route('register') }}">
+                                    <input type="hidden" name="referral_key" value="{{$referral_key}}">
                                     {{ csrf_field() }}
 
                                     <div class="form-group" id="sformbox">

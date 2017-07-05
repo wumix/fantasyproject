@@ -157,19 +157,22 @@ class RegisterController extends Controller
                     'pusrchase_tournament', 'user_id' => \Auth::id(), 'points_scored' => $actionPoints]
             );
             \App\UserPointsScored::insert($array);
-        }
-        if (!empty($request->referral_key)) {
-            //dd('go');
-            $refferal_points = \App\UserAction::where('action_key', 'referral_signup')->first()->action_points;
-            $user_id = \App\User::where('referral_key', $request->referral_key)->first()->id;
+            if (!empty($request->referral_key)) {
+                //dd('go');
+                $refferal_points = \App\UserAction::where('action_key', 'referral_signup')->first()->action_points;
+                $user_id = \App\User::where('referral_key', $request->referral_key)->first()->id;
 
 
-            $array = array(
-                ['tournament_id' => $row['id'], 'action_key' =>
-                    'referral_signup', 'user_id' => $user_id, 'points_scored' => $refferal_points]
-            );
-            \App\UserPointsScored::insert($array);
+                $array = array(
+                    ['tournament_id' => $row['id'], 'action_key' =>
+                        'referral_signup', 'user_id' => $user_id, 'points_scored' => $refferal_points]
+                );
+                \App\UserPointsScored::insert($array);
+            }else{
+                echo 'empty';
+            }
         }
+
 
 
 //

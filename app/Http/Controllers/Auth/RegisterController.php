@@ -146,6 +146,9 @@ class RegisterController extends Controller
 
         $userActionKey = 'user_signup';
         $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
+
+
+
         $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
         $tournaments_list = $objTourmament->toArray();
         foreach ($tournaments_list as $row) {
@@ -156,6 +159,7 @@ class RegisterController extends Controller
             \App\UserPointsScored::insert($array);
         }
         if (!empty($request->referral_key)) {
+            //dd('go');
             $refferal_points = \App\UserAction::where('action_key', 'referral_signup')->first()->action_points;
             $user_id = \App\User::where('referral_key', $request->referral_key)->first()->id;
 

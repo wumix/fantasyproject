@@ -813,7 +813,7 @@
     <script>
         window.fbAsyncInit = function() {
             FB.init({
-                appId            : '1736071000056030',
+                appId            : '337419313358697',
                 autoLogAppEvents : true,
                 xfbml            : true,
                 version          : 'v2.9'
@@ -838,7 +838,7 @@
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="600"/>
     <meta property="og:image" content="http://www.gamithonfantasy.com/assets-new/img/gamithon-logo1.png"/>
-    <meta property="fb:app_id" content="712839212231397"/>
+    <meta property="fb:app_id" content="337419313358697"/>
 @stop
 @section('js')
     <script>

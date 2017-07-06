@@ -128,8 +128,10 @@ class DashboardController extends Controller
         $data['accepted_challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
             $query->where('is_accepted', 1);
         }, 'challenges.user'])->get()->toArray();
-//dd($data['accepted_challenges']);
-//dd( $data['challenges']);
+        $data['membership_plans']=\App\Membership::all();
+        //dd( $data['membership_plans']);
+        //dd($data['accepted_challenges']);
+        //dd( $data['challenges']);
         $data['user_ranking'] = 0;
         foreach ($data['leaders'] as $key => $val) {
             if ($val['user_id'] == \Auth::id()) {

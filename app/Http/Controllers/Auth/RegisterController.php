@@ -43,6 +43,7 @@ class RegisterController extends Controller
     public function showUserRegistrationForm(Request $request)
     {
 
+
         if (empty($request->referral_key)) {
             $data['referral_key'] = NULL;
         } else {
@@ -52,7 +53,8 @@ class RegisterController extends Controller
 
 
 
-        return view('auth.register', $data);
+
+        return view('auth.register');
     }
 
     /**
@@ -170,6 +172,7 @@ class RegisterController extends Controller
                 \App\UserPointsScored::insert($array);
             }
         }
+
 
 
 

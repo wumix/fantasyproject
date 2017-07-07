@@ -348,10 +348,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Australia Women Vs Pakistan Women
+                                    New Zealand Women Vs West Indies Women
                                 </div>
                                 <div class="project-name">
-                                    Australia Women won by 159 runs
+                                    New Zealand Women won by 8 wickets
                                 </div>
                             </div>
                         </div>
@@ -364,10 +364,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    England Women Vs  South Africa Women
+                                    New Zealand Women Vs West Indies Women
                                 </div>
                                 <div class="project-name">
-                                    England Women won by 68 runs
+                                    New Zealand Women won by 8 wickets
                                 </div>
                             </div>
                         </div>
@@ -380,11 +380,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    India Women  Vs Sri Lanka Women
+                                    New Zealand Women Vs West Indies Women
                                 </div>
                                 <div class="project-name">
-                                    India Women won by 16 runs
-
+                                    New Zealand Women won by 8 wickets
                                 </div>
                             </div>
                         </div>
@@ -396,10 +395,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    England Women VS Sri lanka Women
+                                    India vs West Indies
                                 </div>
                                 <div class="project-name">
-                                    England Women won by 7 wickets
+                                    India won by 8 wickets
                                 </div>
                             </div>
                         </div>
@@ -413,10 +412,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    England Women VS Sri lanka Women
+                                    India vs West Indies
                                 </div>
                                 <div class="project-name">
-                                    England Women won by 7 wickets
+                                    India won by 8 wickets
                                 </div>
                             </div>
                         </div>
@@ -429,10 +428,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    England Women VS Sri lanka Women
+                                    India vs West Indies
                                 </div>
                                 <div class="project-name">
-                                    England Women won by 7 wickets
+                                    India won by 8 wickets
                                 </div>
                             </div>
 

@@ -343,15 +343,15 @@
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="KXIP VS MI">
+                    <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    New Zealand Women Vs West Indies Women
+                                    India Vs West Indies
                                 </div>
                                 <div class="project-name">
-                                    New Zealand Women won by 8 wickets
+                                    West Indies won by 9 wickets
                                 </div>
                             </div>
                         </div>
@@ -359,15 +359,15 @@
                 </div>
 
                 <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
+                    <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    New Zealand Women Vs West Indies Women
+                                    India Vs West Indies
                                 </div>
                                 <div class="project-name">
-                                    New Zealand Women won by 8 wickets
+                                    West Indies won by 9 wickets
                                 </div>
                             </div>
                         </div>
@@ -380,10 +380,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    New Zealand Women Vs West Indies Women
+                                    India Vs West Indies
                                 </div>
                                 <div class="project-name">
-                                    New Zealand Women won by 8 wickets
+                                    West Indies won by 9 wickets
                                 </div>
                             </div>
                         </div>
@@ -395,10 +395,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    India vs West Indies
+                                    Sri Lanka vs West Indies
                                 </div>
                                 <div class="project-name">
-                                    India won by 8 wickets
+                                    West Indies Women won by 47 runs
                                 </div>
                             </div>
                         </div>
@@ -412,10 +412,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    India vs West Indies
+                                    Sri Lanka vs West Indies
                                 </div>
                                 <div class="project-name">
-                                    India won by 8 wickets
+                                    West Indies Women won by 47 runs
                                 </div>
                             </div>
                         </div>
@@ -428,42 +428,42 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    India vs West Indies
+                                    Sri Lanka vs West Indies
                                 </div>
                                 <div class="project-name">
-                                    India won by 8 wickets
+                                    West Indies Women won by 47 runs
                                 </div>
                             </div>
 
 
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="KXIP VS KKR">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    England Women VS Australia Women
+                                </div>
+                                <div class="project-name">
+                                    England Women won by 3 runs
+                                </div>
+                            </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="KXIP VS KKR">
+                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="KXIP VS MI">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    England Women VS Sri lanka Women
+                                    England Women VS Australia Women
                                 </div>
                                 <div class="project-name">
-                                    England Women won by 7 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    England Women VS Sri lanka Women
-                                </div>
-                                <div class="project-name">
-                                    England Women won by 7 wickets
+                                    England Women won by 3 runs
                                 </div>
                             </div>
                         </div>
@@ -476,10 +476,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Pakistan Women vs India Women
+                                    England Women VS Australia Women
                                 </div>
                                 <div class="project-name">
-                                    India Women won by 95 runs
+                                    England Women won by 3 runs
                                 </div>
                             </div>
                         </div>

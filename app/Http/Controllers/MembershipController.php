@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Validator;
@@ -29,7 +30,7 @@ class MembershipController extends HomeController
 
     public function __construct()
     {
-       parent::__construct();
+        parent::__construct();
 
         /** setup PayPal api context **/
         $paypal_conf = \Config::get('paypal');
@@ -43,7 +44,7 @@ class MembershipController extends HomeController
         return view('user.memberships.home', $data);
     }
 
-    function subscribeMembership(Request $request,$id)
+    function subscribeMembership(Request $request, $id)
     {
         $this->postPaymentWithpaypal($request);
         dd('asd');
@@ -63,12 +64,11 @@ class MembershipController extends HomeController
         $user_memberhsip = \App\User::find('317');
         $user_memberhsip->membership()->attach($membership['id'], [
             'end_date' => $end_date, 'start_date' => getGmtTime()]);
-        $request->request->add(['amount'=>$membership['price']]);
-
-
+        $request->request->add(['amount' => $membership['price']]);
 
 
     }
+
     public function payWithPaypal()
     {
         return view('paywithpaypal');
@@ -77,21 +77,25 @@ class MembershipController extends HomeController
     /**
      * Store a details of payment with paypal.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function postPaymentWithpaypal(Request $request)
+    public function postPaymentWithpaypal(Request $request, $id)
     {
-       //dd($request);
+
+        $user_memberhsip = \App\User::where('id', $id)->with('membership')->get()->toArray();
+        $membership = \App\Membership::where('id', $id)->first()->toArray();
+        // dd($membership);
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
         $item_1 = new Item();
 
-        $item_1->setName('Item 1') /** item name **/
+        $item_1->setName("Gamithon ".$membership['name']." Membership")/** item name **/
         ->setCurrency('USD')
             ->setQuantity(1)
-            ->setPrice($request->get('amount')); /** unit price **/
+            ->setPrice($request->get('amount'));
+        /** unit price **/
 
         $item_list = new ItemList();
         $item_list->setItems(array($item_1));
@@ -103,9 +107,9 @@ class MembershipController extends HomeController
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($item_list)
-            ->setDescription('Your transaction description');
+            ->setDescription('Membership Purchase Gamithon');
         $redirect_urls = new RedirectUrls();
-        $redirect_urls->setReturnUrl(URL::route('payment.status')) /** Specify return URL **/
+        $redirect_urls->setReturnUrl(URL::route('payment.status'))/** Specify return URL **/
         ->setCancelUrl(URL::route('payment.status'));
 
         $payment = new Payment();
@@ -120,20 +124,20 @@ class MembershipController extends HomeController
 
         } catch (\PayPal\Exception\PPConnectionException $ex) {
             if (\Config::get('app.debug')) {
-                \Session::put('error','Connection timeout');
+                \Session::put('error', 'Connection timeout');
                 return Redirect::route('paywithpaypal');
                 /** echo "Exception: " . $ex->getMessage() . PHP_EOL; **/
                 /** $err_data = json_decode($ex->getData(), true); **/
                 /** exit; **/
             } else {
-                \Session::put('error','Some error occur, sorry for inconvenient');
+                \Session::put('error', 'Some error occur, sorry for inconvenient');
                 return Redirect::route('paywithpaypal');
                 /** die('Some error occur, sorry for inconvenient'); **/
             }
         }
 
-        foreach($payment->getLinks() as $link) {
-            if($link->getRel() == 'approval_url') {
+        foreach ($payment->getLinks() as $link) {
+            if ($link->getRel() == 'approval_url') {
                 $redirect_url = $link->getHref();
                 break;
             }
@@ -141,13 +145,14 @@ class MembershipController extends HomeController
 
         /** add payment ID to session **/
         Session::put('paypal_payment_id', $payment->getId());
+        Session::put('membersip_id',$id);
 
-        if(isset($redirect_url)) {
+        if (isset($redirect_url)) {
             /** redirect to paypal **/
             return Redirect::away($redirect_url);
         }
 
-        \Session::put('error','Unknown error occurred');
+        \Session::put('error', 'Unknown error occurred');
         return Redirect::route('paywithpaypal');
     }
 
@@ -155,11 +160,14 @@ class MembershipController extends HomeController
     {
         /** Get the payment ID before session clear **/
         $payment_id = Session::get('paypal_payment_id');
+        $membership_id = Session::get('membersip_id');
+        //dd($payment_id);
+
         /** clear the session payment ID **/
         Session::forget('paypal_payment_id');
         if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
-            \Session::put('error','Payment failed');
-            return Redirect::route('paywithpaypa');
+            \Session::put('error', 'Payment failed');
+            return Redirect::route('paywithpaypal');
         }
         $payment = Payment::get($payment_id, $this->_api_context);
         /** PaymentExecution object includes information necessary **/
@@ -170,17 +178,39 @@ class MembershipController extends HomeController
         $execution->setPayerId(Input::get('PayerID'));
         /**Execute the payment **/
         $result = $payment->execute($execution, $this->_api_context);
-        dd($result);
-        /** dd($result);exit; /** DEBUG RESULT, remove it later **/
-        if ($result->getState() == 'approved') {
 
+
+
+
+        /** dd($result);exit; /** DEBUG RESULT, remove it later **/
+        if ($result->getState()== 'approved') {
+            $result=$result->toArray();
+            //dd($result);
+            $payment_detail=[];
+            $payment_detail['paypal_payment_id']=$result['id'];
+            $payment_detail['intent']=$result['intent'];
+            $payment_detail['amount']=$result['transactions'][0]['item_list']['items'][0]['price'];
+            $payment_detail['currency']=$result['transactions'][0]['item_list']['items'][0]['currency'];
+            $payment_detail['description']=$result['transactions'][0]['item_list']['items'][0]['name'];
+            $payment_detail['merchant_id']=$result['transactions'][0]['payee']['merchant_id'];
+            $payment_detail['email']=$result['transactions'][0]['payee']['email'];
+            $payment_detail['user_id']=\Auth::id();
+            $payment_detail['date']=getGmtTime();
+          //  dd($payment_detail);
             /** it's all right **/
             /** Here Write your database logic like that insert record or value in database if you want **/
-
-            \Session::put('success','Payment success');
-            return Redirect::route('paywithpaypal');
+            $user_memberhsip = \App\User::find(\Auth::id());
+            $end_date = date('Y-m-d h:i:s', strtotime('+1 years'));
+            $user_memberhsip->membership()->attach($membership_id, [
+                'end_date' => $end_date, 'start_date' => getGmtTime()]);
+            $payment= new \App\UserPayment;
+            $payment->fill($payment_detail);
+            $payment->save();
+            \Session::put('success', 'Payment success');
+            //dd('end here');
+            return Redirect::route('userdashboard');
         }
-        \Session::put('error','Payment failed');
+        \Session::put('error', 'Payment failed');
 
         return Redirect::route('paywithpaypal');
     }

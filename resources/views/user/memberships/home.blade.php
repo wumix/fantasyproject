@@ -245,7 +245,7 @@
                         <section id="pricePlans">
                             <ul id="plans">
                                 @foreach($membership_plans as $plan)
-                                    addmoney.paypal1
+
                                     {!! Form::open(['method'=>'POST','url' => route('addmoney.paypal',['id'=>$plan['id']])]) !!}
 
                                 <li class="plan">
@@ -262,7 +262,7 @@
                                             </ul>
                                         </li>
                                         <li class="button">
-                                            <input type="hidden" name="amount" value="5"/>
+                                            <input type="hidden" name="amount" value="{{$plan['price']}}"/>
                                             <input value="purchase" class="bestPlanButton" type="submit"></li>
                                     </ul>
                                 </li>

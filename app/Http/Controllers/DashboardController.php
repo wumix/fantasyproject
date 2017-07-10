@@ -130,7 +130,7 @@ class DashboardController extends Controller
             $query->where('is_accepted', 1);
         }, 'challenges.user'])->get()->toArray();
 
-        $data['user_memberhsip']=\App\User::where('id','317')->with(['membership'=>function($query){
+        $data['user_memberhsip']=\App\User::where('id',\Auth::id())->with(['membership'=>function($query){
             $query->orderBy('user_memberships.id','desc')->first();
             //$q->orderBy('job_user.created_at','asc');
         }])->first()->toArray();

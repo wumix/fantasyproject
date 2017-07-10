@@ -606,6 +606,14 @@
                                     You did not play
                                 @endif
                             </li>
+                            <li>
+                                India Vs West Indies
+                                @if(has_user_team_ipl(Auth::id()))
+                                    <span id="game_lame2"> Calulating...</span>
+                                @else
+                                    You did not play
+                                @endif
+                            </li>
                         </ul>
                     </div>
                     @if(!empty($challenges[0]['challenges']))
@@ -861,6 +869,7 @@
 
                 $("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[0] + " #total_team_score");
                 $("#game_lame1").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[1] + " #total_team_score");
+                $("#game_lame2").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[3] + " #total_team_score");
 
             });
         });

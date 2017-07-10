@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use \App\UserTeam;
 use DateTime;
@@ -128,7 +129,12 @@ class DashboardController extends Controller
         $data['accepted_challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
             $query->where('is_accepted', 1);
         }, 'challenges.user'])->get()->toArray();
-        $data['membership_plans']=\App\Membership::all();
+
+        $data['user_memberhsip']=\App\User::where('id','317')->with(['membership'=>function($query){
+            $query->orderBy('user_memberships.id','desc')->first();
+            //$q->orderBy('job_user.created_at','asc');
+        }])->first()->toArray();
+//dd($data['user_memberhsip']);
         //dd( $data['membership_plans']);
         //dd($data['accepted_challenges']);
         //dd( $data['challenges']);

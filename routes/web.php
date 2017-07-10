@@ -52,7 +52,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/tournament-detail/{tournament_id}', 'User\TournamentsController@showTournamentDetails')->name('showTournament');
     Route::group(['middleware' => ['is_user']], function () {
         Route::group(['prefix' => 'membership'], function () {
-            Route::post('/subscribe', 'MembershipController@subscribeMembership')->name('subscribeMembership');
+            Route::get('/', 'MembershipController@index')->name('membershiphome');
+            Route::post('/subscribe/{id}', 'MembershipController@subscribeMembership')->name('subscribeMembership');
         });
         Route::group(['prefix' => 'user'], function () {
             Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
@@ -242,6 +243,11 @@ Route::group(['middleware' => ['is_blogger'], 'prefix' => 'admin/blog'], functio
         Route::post('addCategory', 'Admin\Blog\CategoryController@postAddBlogCategory')->name('postAddBlogCategory');
     });
 });
-Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal','uses' => 'AddMoneyController@payWithPaypal',));
-Route::post('paypal', array('as' => 'addmoney.paypal','uses' => 'AddMoneyController@postPaymentWithpaypal',));
-Route::get('paypal', array('as' => 'payment.status','uses' => 'AddMoneyController@getPaymentStatus',));
+//Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal','uses' => 'AddMoneyController@payWithPaypal',));
+//Route::post('paypal', array('as' => 'addmoney.paypal','uses' => 'AddMoneyController@postPaymentWithpaypal',));
+//Route::get('paypal', array('as' => 'payment.status','uses' => 'AddMoneyController@getPaymentStatus',));
+
+Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal','uses' => 'MembershipController@payWithPaypal',));
+Route::post('paypal/{id}', array('as' => 'addmoney.paypal','uses' => 'MembershipController@postPaymentWithpaypal',));
+Route::get('paypal', array('as' => 'payment.status','uses' => 'MembershipController@getPaymentStatus',));
+Route::post('test', array('as' => 'test','uses' => 'MembershipController@subscribeMembership',));

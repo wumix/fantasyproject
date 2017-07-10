@@ -676,19 +676,17 @@
                         <p class="text-center">
                         <div id="shareBtn" class="btn btn-success clearfix center">Invite Friends</div>
                         </p>
+                        <p>
+                            Current Membership:
+
+                           @foreach($user_memberhsip['membership'] as $row)
+                               {{$row['name']}}
+                            @endforeach
+
+                        </p>
 
                         <p class="text-center">
-                            {!! Form::open(['url' => route('subscribeMembership'),'method'=>'post']) !!}
-
-
-                            <select name="membership_id">
-
-                            @foreach($membership_plans as $member)
-                                <option value="{{$member['id']}}">{{$member['name']}}</option>
-                            @endforeach
-                            </select>
-                            <input type="submit" value="Buy">
-                            {!! Form::close() !!}
+                            <a class="btn btn-success" href="{{route('membershiphome')}}">Membership Plans</a>
 
                         </p>
 

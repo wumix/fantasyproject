@@ -69,6 +69,11 @@ class User extends Authenticatable
     public function challenges(){
         return $this->hasMany('\App\UserChallenge','user_2_id','id');
     }
+    public function membership(){
+        return $this->belongsToMany('App\Membership', 'user_memberships',
+            'user_id', 'membership_id')->withPivot('id');
+
+    }
 
 
     /**

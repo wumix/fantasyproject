@@ -112,6 +112,7 @@
 
                                             <h5>
 
+
                                                 <a class="btn leaderboardviewmorebutton"
                                                    href="{{route('homeleaderboard',['id'=>$leader['tournament_id']])}}">View
                                                     More</a>

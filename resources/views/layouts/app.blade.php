@@ -156,6 +156,11 @@
                                 How to play
                             </a>
                         </li>
+                        <li>
+                            <a class="page-scroll" href="{{route('dashboardhome')}}">
+                                Leader Boards
+                            </a>
+                        </li>
 
                         <li>
 
@@ -186,11 +191,7 @@
                                 Create Team
                             </a>
                         </li>
-                        <li>
-                            <a class="page-scroll" href="{{route('rankings')}}">
-                                Rankings
-                            </a>
-                        </li>
+
 
                         @if(Auth::check())
                             <li>

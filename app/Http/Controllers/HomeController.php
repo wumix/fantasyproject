@@ -140,6 +140,17 @@ class HomeController extends Controller
         return view('pages.leaderboard', $data);
 
     }
+    function allTournaments()
+    {
+
+        $datetime = new \DateTime();
+        $date = $datetime->format('Y-m-d H:i:s');
+        $objTourmament = \App\Tournament::all();
+        $data['tournaments_list'] = $objTourmament->toArray();
+        return view('user.dashboard.home', $data);
+
+    }
+
 
 //    public function leaderboard()
 //    {

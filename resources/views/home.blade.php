@@ -395,7 +395,7 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Sri Lanka vs West Indies
+                                    Sri Lanka Women vs West Indies Women
                                 </div>
                                 <div class="project-name">
                                     West Indies Women won by 47 runs
@@ -412,7 +412,7 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Sri Lanka vs West Indies
+                                    Sri Lanka Women vs West Indies Women
                                 </div>
                                 <div class="project-name">
                                     West Indies Women won by 47 runs
@@ -428,7 +428,7 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Sri Lanka vs West Indies
+                                    Sri Lanka Women vs West Indies Women
                                 </div>
                                 <div class="project-name">
                                     West Indies Women won by 47 runs

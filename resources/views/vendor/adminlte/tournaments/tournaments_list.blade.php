@@ -47,9 +47,9 @@
                                                class="btn btn-info">
                                                 <i class="fa fa-plus"></i> Generate LeaderBoard
                                             </a>
-                                            <a href="{{route('starttournament',['tournament_id'=>$row['id']])}}" class="btn btn-danger">
-                                                <i class="fa fa-times"></i> start tournamnet
-                                            </a>
+                                            {{--<a href="{{route('starttournament',['tournament_id'=>$row['id']])}}" class="btn btn-danger">--}}
+                                                {{--<i class="fa fa-times"></i> start tournamnet--}}
+                                            {{--</a>--}}
                                         </td>
 
 

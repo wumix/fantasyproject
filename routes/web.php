@@ -181,6 +181,8 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
         });
 //tournamentroutes
         Route::group(['prefix' => 'tournaments'], function () {
+
+            Route::get('/start/{id}', 'Admin\TournamentsController@startTournament')->name('starttournament');
             Route::get('/delete/{tournament_id}/{player_id}', 'Admin\TournamentsController@deletePlayerFromTournament')->name('deletePlayerFromTournament');
             Route::get('/', 'Admin\TournamentsController@index')->name('Tournamentslist');
             Route::get('/add', 'Admin\TournamentsController@addTournamentForm')->name('addTournament'); //showsaddplayerform

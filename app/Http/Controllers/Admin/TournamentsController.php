@@ -46,6 +46,20 @@ class TournamentsController extends Controller
         $data['tournaments_list'] = $objTourmament; //list of tournaments
         return view('adminlte::tournaments.tournaments_list', $data);
     }
+    function startTournament($id)
+    {
+        $users=\App\User::all();
+        foreach($users as $user){
+            $array = array(
+                ['tournament_id' => $id, 'action_key' =>
+                    'pusrchase_tournament', 'user_id' => $user['id'], 'points_scored' =>100000]
+            );
+
+
+          \App\UserPointsScored::insert($array);
+        }
+
+    }
 
     public function addTournamentForm()
     {

@@ -56,6 +56,7 @@ class AddMoneyController extends HomeController
      */
     public function postPaymentWithpaypal(Request $request)
     {
+
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
         $item_1 = new Item();

@@ -672,9 +672,27 @@
                     @endif
                     <div class="abot_me_sec1">
 
-                        <hr />
+                        <hr/>
+                        <p class="text-center">
                         <div id="shareBtn" class="btn btn-success clearfix center">Invite Friends</div>
-                         </p>
+                        </p>
+                        <p>
+                            Current Membership:
+
+                           @foreach($user_memberhsip['membership'] as $row)
+                               {{$row['name']}}
+                            @endforeach
+
+                        </p>
+
+                        <p class="text-center">
+                            <a class="btn btn-success" href="{{route('membershiphome')}}">Membership Plans</a>
+
+                        </p>
+                        <p class="text-center">
+                            <a class="btn btn-success" href="{{route('paymentdetails')}}">Payment History</a>
+
+                        </p>
 
 
                     </div>
@@ -811,27 +829,30 @@
 
 @section('FbJsSdk')
     <script>
-        window.fbAsyncInit = function() {
+        window.fbAsyncInit = function () {
             FB.init({
-                appId            : '337419313358697',
-                autoLogAppEvents : true,
-                xfbml            : true,
-                version          : 'v2.9'
+                appId: '337419313358697',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.9'
             });
             FB.AppEvents.logPageView();
         };
 
-        (function(d, s, id){
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
             js.src = "//connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
 @endsection
 @section('facbook-og-tags')
-<meta property="og:url" content="heelo world"/>
+    <meta property="og:url" content="heelo world"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="My title"/>
     <meta property="og:description" content="Join referral here"/>
@@ -842,12 +863,13 @@
 @stop
 @section('js')
     <script>
-        document.getElementById('shareBtn').onclick = function() {
+        document.getElementById('shareBtn').onclick = function () {
             FB.ui({
                 method: 'share',
                 display: 'popup',
-                href: '{{URL::to('/')}}'+'/signup/?referral_key={{$userprofileinfo['referral_key']}}',
-            }, function(response){});
+                href: '{{URL::to('/')}}' + '/signup/?referral_key={{$userprofileinfo['referral_key']}}',
+            }, function (response) {
+            });
         }
     </script>
     <script>

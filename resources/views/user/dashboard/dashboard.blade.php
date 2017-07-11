@@ -678,10 +678,15 @@
                         </p>
                         <p>
                             Current Membership:
+                            @if(empty($user_memberhsip['membership']))
+                                Not a member
 
-                           @foreach($user_memberhsip['membership'] as $row)
-                               {{$row['name']}}
-                            @endforeach
+                            @else
+
+                                @foreach($user_memberhsip['membership'] as $row)
+                                    {{$row['name']}}
+                                @endforeach
+                            @endif
 
                         </p>
 

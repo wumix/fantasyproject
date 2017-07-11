@@ -51,11 +51,15 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/signup', 'Auth\RegisterController@showUserRegistrationForm')->name('signUp');
     Route::get('/tournament-detail/{tournament_id}', 'User\TournamentsController@showTournamentDetails')->name('showTournament');
     Route::group(['middleware' => ['is_user']], function () {
+        Route::group(['prefix' => 'payments'], function () {
+            Route::get('/', 'PaymentController@index')->name('paymentdetails');
+        });
         Route::group(['prefix' => 'membership'], function () {
             Route::get('/', 'MembershipController@index')->name('membershiphome');
             Route::post('/subscribe/{id}', 'MembershipController@subscribeMembership')->name('subscribeMembership');
         });
         Route::group(['prefix' => 'user'], function () {
+
             Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
             Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
             Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');

@@ -13,13 +13,46 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
+ Route::group(['prefix' => 'v1'], function () {
+    /**
+     * Auth
+     */
+    Route::post('login', 'Api\UserController@authenticate');
+    Route::post('register', 'Api\UserController@create');
+    Route::post('password/email', 'Auth\ForgotPasswordController@getResetToken');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+    Route::any('/sendpush', 'Api\OrdersController@sendPushMessage');
+    /**
+     * Product
+     */
+    Route::get('product', 'Api\ProductController@index');
+    /**
+     * Laundries
+     */
+    //Route::post('nearest-laundry', 'Api\LaundryController@getNearByLocation');
+    Route::get('laundries', 'Api\LaundryController@laundries');
 
-Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
-    //    Route::resource('task', 'TasksController');
+    Route::group(['middleware' => 'jwt.auth'], function () {
+        Route::get('order/get-detail', 'Api\OrdersController@getById');
+        Route::resource('order', 'Api\OrdersController');
 
-    //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
-    #adminlte_api_routes
+        Route::post('change/password', 'Api\UserController@changePasswordWhenLogin');
+        Route::get('client-orders', 'Api\OrdersController@orderHistory');
+        Route::post('password/change', 'Api\UserController@changePassword');
+        Route::post('nearest-drivers', 'Api\UserController@getNearByDriver');
+
+        Route::get('order-history', 'Api\DriverController@orderHistory');
+        Route::get('client-location/{order_id}', 'Api\DriverController@clientLocation');
+        Route::post('driver-orders', 'Api\DriverController@searchOrder');
+        Route::group(['prefix' => 'driver'], function () {
+            Route::get('orders-drivers', 'Api\DriverController@driverOrders');//Driver orders with status
+        });
+        Route::group(['prefix' => 'order'], function () {
+            Route::get('/', 'Api\OrdersController@getById');
+            Route::post('update-status', 'Api\OrdersController@updateOrderStatus');
+        });
+
+        Route::resource('user', 'Api\UserController');
+        Route::resource('driver', 'Api\DriverController');
+    });
 });

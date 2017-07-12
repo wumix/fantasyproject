@@ -25,7 +25,7 @@ use Illuminate\Http\Request;
     /**
      * Product
      */
-    Route::get('product', 'Api\ProductController@index');
+    Route::resource('tournaments', 'Api\TournamentsController');
     /**
      * Laundries
      */

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\api;
-
+use \JWTAuth;
 use App\Tournament;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -33,6 +33,20 @@ class TournamentsController extends Controller
         }
 
         return response()->json($tournamnets);
+
+    }
+
+    public function show($id)
+    {
+        $tournament_detail = \App\Tournament::find($id);
+        if(empty($tournament_detail)){
+            return response()->json(['message' => 'Not tournament Found','more_info'=>[]], 404);
+
+
+        }else{
+            return response()->json($tournament_detail, 200);
+
+        }
 
     }
 }

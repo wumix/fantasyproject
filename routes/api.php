@@ -25,7 +25,8 @@ use Illuminate\Http\Request;
     /**
      * Product
      */
-    Route::resource('tournaments', 'Api\TournamentsController');
+     Route::resource('tournaments', 'Api\TournamentsController', ['only' => [ 'index'
+     ]]);
     /**
      * Laundries
      */
@@ -33,26 +34,7 @@ use Illuminate\Http\Request;
     Route::get('laundries', 'Api\LaundryController@laundries');
 
     Route::group(['middleware' => 'jwt.auth'], function () {
-        Route::get('order/get-detail', 'Api\OrdersController@getById');
-        Route::resource('order', 'Api\OrdersController');
+        Route::resource('tournaments', 'Api\TournamentsController');
 
-        Route::post('change/password', 'Api\UserController@changePasswordWhenLogin');
-        Route::get('client-orders', 'Api\OrdersController@orderHistory');
-        Route::post('password/change', 'Api\UserController@changePassword');
-        Route::post('nearest-drivers', 'Api\UserController@getNearByDriver');
-
-        Route::get('order-history', 'Api\DriverController@orderHistory');
-        Route::get('client-location/{order_id}', 'Api\DriverController@clientLocation');
-        Route::post('driver-orders', 'Api\DriverController@searchOrder');
-        Route::group(['prefix' => 'driver'], function () {
-            Route::get('orders-drivers', 'Api\DriverController@driverOrders');//Driver orders with status
-        });
-        Route::group(['prefix' => 'order'], function () {
-            Route::get('/', 'Api\OrdersController@getById');
-            Route::post('update-status', 'Api\OrdersController@updateOrderStatus');
-        });
-
-        Route::resource('user', 'Api\UserController');
-        Route::resource('driver', 'Api\DriverController');
     });
 });

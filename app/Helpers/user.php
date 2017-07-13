@@ -9,9 +9,10 @@ function getUserTotalScore($userid,$tournament_id)
     return 0;
 }
 
-function has_user_team($user_id)
+function has_user_team($user_id,$tournamnet_id)
 {
-    $userteam = \App\UserTeam::where('user_id', $user_id)->where('tournament_id', 2)->first();
+    dd(\Auth::id());
+    $userteam = \App\UserTeam::where('user_id', $user_id)->where('tournament_id', $tournamnet_id)->first();
     ///dd($userteam);
     if ($userteam == NULL) {
         return FALSE;

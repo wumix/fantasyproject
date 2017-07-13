@@ -38,7 +38,7 @@ class UserController extends Controller
         $newUser = $this->user->create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'password' => $request->get('password')
+            'password' =>bcrypt($request->get('password'))
 
         ]);
         if (!$newUser) {

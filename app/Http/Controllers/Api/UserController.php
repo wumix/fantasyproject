@@ -59,6 +59,7 @@ class UserController extends Controller
      */
     public function authenticate(\App\Http\Requests\LoginRequest $request)
     {
+
         $credentials = $request->only('email', 'password');
         try {
             if (!$token = JWTAuth::attempt($credentials)) {

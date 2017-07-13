@@ -44,7 +44,7 @@ class UserController extends Controller
         if (!$newUser) {
             return response()->json(['failed_to_create_new_user'], 500);
         }
-        $user = User::where('id', $newUser->id)->get();
+        $user = User::where('id', $newUser->id)->first();
         return response()->json([
             'success' => true,
             'user' => $user

@@ -118,7 +118,7 @@ class DashboardController extends Controller
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->with('teamtournament')->orderBy('id', 'DESC')
             ->get()
             ->toArray();
-        //   dd($data);
+        // dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
         $data['leaders'] = \App\Leaderboard::take(3)->select(['user_id', 'score'])->orderBy('score', 'DESC')->get()->toArray();
@@ -130,6 +130,8 @@ class DashboardController extends Controller
         }, 'challenges.user'])->get()->toArray();
 //dd($data['accepted_challenges']);
 //dd( $data['challenges']);
+        $data['user_scores']=\App\User::where('id',\Auth::id())->with('leaderboard.tournament')->first()->toArray();
+
         $data['user_ranking'] = 0;
         foreach ($data['leaders'] as $key => $val) {
             if ($val['user_id'] == \Auth::id()) {

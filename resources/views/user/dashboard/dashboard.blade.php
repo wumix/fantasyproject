@@ -586,34 +586,19 @@
                     </div>
                     <div class="abot_me_sec">
                     <span class="text_abot_me text-center">
-                        Previous Tournament Score
+                         Tournament Scores
                     </span>
 
                         <ul class="img_area_area">
+                            @foreach($user_scores['leaderboard'] as $score)
+                               @if(!empty($score['tournament']))
                             <li>
-                                IPL:
-                                @if(has_user_team(Auth::id(),1))
-                                    <span id="game_lame"> Calulating...</span>
-                                @else
-                                    You did not play
-                                @endif
+                               {{$score['tournament']['name']}}: <strong>{{$score['score']}}</strong>
+
                             </li>
-                            <li>
-                                ICC Champions Trophy:
-                                @if(has_user_team(Auth::id(),2))
-                                    <span id="game_lame1"> Calulating...</span>
-                                @else
-                                    You did not play
                                 @endif
-                            </li>
-                            <li>
-                                India Vs West Indies
-                                @if(has_user_team(Auth::id(),4))
-                                    <span id="game_lame2"> Calulating...</span>
-                                @else
-                                    You did not play
-                                @endif
-                            </li>
+                                @endforeach
+
                         </ul>
                     </div>
                     @if(!empty($challenges[0]['challenges']))
@@ -810,27 +795,30 @@
 @endsection
 @section('FbJsSdk')
     <script>
-        window.fbAsyncInit = function() {
+        window.fbAsyncInit = function () {
             FB.init({
-                appId            : '1736071000056030',
-                autoLogAppEvents : true,
-                xfbml            : true,
-                version          : 'v2.9'
+                appId: '1736071000056030',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.9'
             });
             FB.AppEvents.logPageView();
         };
 
-        (function(d, s, id){
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
             js.src = "//connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
 @endsection
 @section('facbook-og-tags')
-<meta property="og:url" content="heelo world"/>
+    <meta property="og:url" content="heelo world"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="My title"/>
     <meta property="og:description" content="Join referral here"/>
@@ -841,37 +829,39 @@
 @stop
 @section('js')
     <script>
-        document.getElementById('shareBtn').onclick = function() {
+        document.getElementById('shareBtn').onclick = function () {
             FB.ui({
                 method: 'share',
                 display: 'popup',
                 href: 'http://gamithon.dev/signup/?referral_key={{$userprofileinfo['referral_key']}}',
-            }, function(response){});
+            }, function (response) {
+            });
         }
     </script>
     <script>
 
-        $(document).ready(function () {
-            myList = [];
+        {{--$(document).ready(function () {--}}
+            {{--var myList = [];--}}
+            {{--var i = 0;--}}
+            {{--$('#team_id option').each(function () {--}}
 
-            $('#team_id option').each(function () {
+                {{--myList[i]={id:$(this).text(),name:$(this).val()};--}}
 
-                myList.push($(this).val());
+                {{--i++;--}}
+            {{--});--}}
+           {{--myList = myList.reverse()--}}
+            {{--// myList.indexOf(0);--}}
+           {{--console.log(myList);--}}
 
-            });
-            myList = myList.reverse()
-            // myList.indexOf(0);
-           //  alert(myList);
-
-            $("#team_id").each(function () {
-                var l = $("#team_id :selected").text();
+            {{--$("#team_id").each(function () {--}}
+                {{--var l = $("#team_id :selected").text();--}}
 
 
-                $("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[0] + " #total_team_score");
-                $("#game_lame1").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[1] + " #total_team_score");
-                $("#game_lame2").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[3] + " #total_team_score");
+                {{--$("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[0] + " #total_team_score");--}}
+                {{--$("#game_lame1").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[1] + " #total_team_score");--}}
+                {{--$("#game_lame2").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[3] + " #total_team_score");--}}
 
-            });
-        });
+            {{--});--}}
+        {{--});--}}
     </script>
 @endsection

@@ -592,7 +592,7 @@
                         <ul class="img_area_area">
                             <li>
                                 IPL:
-                                @if(has_user_team_ipl(Auth::id()))
+                                @if(has_user_team(Auth::id(),1))
                                     <span id="game_lame"> Calulating...</span>
                                 @else
                                     You did not play
@@ -600,7 +600,7 @@
                             </li>
                             <li>
                                 ICC Champions Trophy:
-                                @if(has_user_team_ipl(Auth::id()))
+                                @if(has_user_team(Auth::id(),2))
                                     <span id="game_lame1"> Calulating...</span>
                                 @else
                                     You did not play
@@ -608,7 +608,7 @@
                             </li>
                             <li>
                                 India Vs West Indies
-                                @if(has_user_team_ipl(Auth::id()))
+                                @if(has_user_team(Auth::id(),4))
                                     <span id="game_lame2"> Calulating...</span>
                                 @else
                                     You did not play
@@ -861,7 +861,7 @@
             });
             myList = myList.reverse()
             // myList.indexOf(0);
-            // alert(myList);
+           //  alert(myList);
 
             $("#team_id").each(function () {
                 var l = $("#team_id :selected").text();

@@ -27,26 +27,7 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-
-        // $this->middleware('auth');
-
-//        $users = \App\User::get()->toArray();
-//        foreach ($users as $row) {
-//            $flight = \App\User::find($row['id']);
-//
-//            $flight->referral_key = md5($row['id'] + "xyz");
-//
-//            $flight->save();
-//
-//        }
-//        $users = \App\User::get()->toArray();
-//        foreach ($users as $row) {
-//            $flight = \App\User::find($row['id']);
-//
-//            $flight->referral_key = md5($row['id'] + "xyz");
-//
-//            $flight->save();
-//        }
+        $categories = \App\ForumCategory::with('children')->get()->toArray();
 
 
     }

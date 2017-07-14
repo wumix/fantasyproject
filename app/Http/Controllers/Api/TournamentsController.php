@@ -21,13 +21,13 @@ class TournamentsController extends Controller
         $tournamnets = [];
         foreach ($this->tournamnetObj->get() as $tour) {
             if ($tour['stat_date'] < getGmtTime() && $tour['end_date'] < getGmtTime()) {
-                $tournamnets['previous'][] = $tour['name'];
+                $tournamnets['previous'][] = $tour;
             }
             if ($tour['stat_date'] < getGmtTime() && $tour['end_date'] > getGmtTime()) {
-                $tournamnets['current'][] = $tour['name'];
+                $tournamnets['current'][] = $tour;
             }
             if ($tour['stat_date'] > getGmtTime() && $tour['end_date'] > getGmtTime()) {
-                $tournamnets['upcomming'][] = $tour['name'];
+                $tournamnets['upcomming'][] = $tour;
             }
 
         }

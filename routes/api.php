@@ -34,7 +34,7 @@ use Illuminate\Http\Request;
     Route::get('laundries', 'Api\LaundryController@laundries');
 
     Route::group(['middleware' => 'jwt.auth'], function () {
-        Route::resource('tournaments', 'Api\TournamentsController');
-
+        Route::resource('tournaments', 'Api\TournamentsController',['except' => [ 'index'
+        ]]);
     });
 });

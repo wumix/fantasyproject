@@ -168,6 +168,12 @@
                                 News
                             </a>
                         </li>
+                        <li>
+                            <a class="page-scroll" href="{{route('Forums')}}">
+                                Forums
+                            </a>
+
+                        </li>
                         {{--<li>--}}
                         {{--<a href="{{route('leaderboard')}}">--}}
                         {{--LeaderBoard--}}

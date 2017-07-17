@@ -50,7 +50,14 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('loginForm');
     Route::get('/signup', 'Auth\RegisterController@showUserRegistrationForm')->name('signUp');
     Route::get('/tournament-detail/{tournament_id}', 'User\TournamentsController@showTournamentDetails')->name('showTournament');
+    Route::group(['prefix' => 'forums'], function () {
+        Route::get('/', 'Forums\ForumController@index')->name('Forums');
+        Route::get('category/{id}', 'Forums\ForumController@cagetory')->name('forumCategory');
+        
+    });
     Route::group(['middleware' => ['is_user']], function () {
+
+
         Route::group(['prefix' => 'payments'], function () {
             Route::get('/', 'PaymentController@index')->name('paymentdetails');
         });
@@ -70,7 +77,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
         Route::group(['prefix' => 'challenge'], function () {
-            
+
             Route::get('/', 'User\ChallengeController@index')->name('challenges');
             Route::get('/check-winner/{id}', 'User\ChallengeController@checkWinner')->name('adasd');
             Route::post('/send-challenge', 'User\ChallengeController@sendChallenge')->name('sendchallenge');
@@ -251,7 +258,7 @@ Route::group(['middleware' => ['is_blogger'], 'prefix' => 'admin/blog'], functio
 //Route::post('paypal', array('as' => 'addmoney.paypal','uses' => 'AddMoneyController@postPaymentWithpaypal',));
 //Route::get('paypal', array('as' => 'payment.status','uses' => 'AddMoneyController@getPaymentStatus',));
 
-Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal','uses' => 'MembershipController@payWithPaypal',));
-Route::post('paypal/{id}', array('as' => 'addmoney.paypal','uses' => 'MembershipController@postPaymentWithpaypal',));
-Route::get('paypal', array('as' => 'payment.status','uses' => 'MembershipController@getPaymentStatus',));
-Route::post('test', array('as' => 'test','uses' => 'MembershipController@subscribeMembership',));
+Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal', 'uses' => 'MembershipController@payWithPaypal',));
+Route::post('paypal/{id}', array('as' => 'addmoney.paypal', 'uses' => 'MembershipController@postPaymentWithpaypal',));
+Route::get('paypal', array('as' => 'payment.status', 'uses' => 'MembershipController@getPaymentStatus',));
+Route::post('test', array('as' => 'test', 'uses' => 'MembershipController@subscribeMembership',));

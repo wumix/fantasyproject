@@ -12,7 +12,7 @@
     "acacha/admin-lte-template-laravel": "4.*",
     "bkwld/croppa": "~4.0",
     "cviebrock/eloquent-sluggable": "^4.2",
-    "devdojo/chatter": "0.2.*",
+
     "laravel/framework": "5.4.*",
     "laravel/socialite": "^3.0",
     "laravel/tinker": "~1.0",

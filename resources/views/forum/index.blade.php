@@ -24,7 +24,7 @@
                                 <tr>
 
                                     <th class="border-r">Categories</th>
-                                    {{--<th class="border-r">Points Required To Play</th>--}}
+                                    <th class="border-r">Description</th>
 
                                 </tr>
                                 </thead>
@@ -40,10 +40,12 @@
 
                                         </td>
 
-                                        {{--<td class="border-r1">--}}
-                                        {{--<p class="myteamtt"--}}
-                                        {{--style="padding-top:34px;">{{$row['tournament_price']}}</p></td>--}}
 
+                                        <td class="border-r1" style="min-width: 305px;">
+
+                                            {{$cat['description']}}
+
+                                        </td>
                                     </tr>
                                     @endif
                                 @endforeach

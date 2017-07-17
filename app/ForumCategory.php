@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Forum;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,18 +12,18 @@ class ForumCategory extends Model
 
     public function parent()
     {
-       return $this->belongsTo('App\Forum\ForumCategory', 'parent_id');
+       return $this->belongsTo('App\ForumCategory', 'parent_id');
     }
 
     public function children()
     {
-        return $this->hasMany('App\Forum\ForumCategory', 'parent_id');
+        return $this->hasMany('App\ForumCategory', 'parent_id');
     }
 
-//    public function pets()
-//    {
-//        return $this->hasMany('\App\Pets');
-//    }
+    public function posts()
+    {
+        return $this->hasMany('\App\ForumPost','category_id','id');
+    }
 
 //    public function posts(){
 //        return $this->hasMany('App\Forum\ForumPost', 'parent_id');

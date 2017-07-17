@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Forums;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Forum\ForumCategory;
+use App\ForumCategory;
 
 class ForumController extends Controller
 {
@@ -12,17 +12,29 @@ class ForumController extends Controller
     {
 
     }
-    public function index(){
+
+    public function index()
+    {
 
         $data['categories'] = ForumCategory::with('children')->get()->toArray();
-        return view('forum/index',$data);
+        return view('forum/index', $data);
 
     }
-    public function cagetory($id){
-        $data['categories'] = ForumCategory::where('id',$id)->with('children')->first()->children;
-        //dd( $data['categories']);
-        return view('forum/category',$data);
+
+    public function cagetory($id)
+    {
+        $data['categories'] = ForumCategory::where('id', $id)->with('children')->first()->children;
+        return view('forum/category', $data);
 
     }
+    public function categoryPosts($id)
+    {
+        $data['posts'] = ForumCategory::where('id', $id)->with('posts')->first();
+        //dd($data['posts']->toArray());
+        return view('forum/posts', $data);
+        //dd($data['posts']->toArray());
+
+    }
+
 
 }

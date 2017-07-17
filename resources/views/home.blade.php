@@ -464,7 +464,7 @@
                                     Pakistan Women vs Sri lanka Women
                                 </div>
                                 <div class="project-name">
-                                    England Women won by 75 runs
+                                    Pakistan Women won by 75 runs
                                 </div>
                             </div>
 
@@ -481,7 +481,7 @@
                                     Pakistan Women vs Sri lanka Women
                                 </div>
                                 <div class="project-name">
-                                    England Women won by 75 runs
+                                    Pakistan Women won by 75 runs
                                 </div>
                             </div>
                         </div>

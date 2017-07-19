@@ -15,8 +15,9 @@ class TournamentsController extends Controller
         $this->tournamnetObj = new Tournament;
     }
 
-    function index()
+    function index(Request $request)
     {
+//dd(apache_request_headers());
         // dd(getGmtTime());
         $tournamnets = [];
         foreach ($this->tournamnetObj->get() as $tour) {

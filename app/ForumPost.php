@@ -11,5 +11,9 @@ class ForumPost extends Model
     {
         return $this->hasMany('\App\ForumReply','post_id','id');
     }
+    public function category(){
+        return $this->belongsTo('\App\ForumCategory');
+    }
+
 
 }

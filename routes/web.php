@@ -140,6 +140,15 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::get('/add/{id}', 'Admin\StatsController@addStatForm')->name('showAddStatForm');
             Route::post('/add/{id}', 'Admin\StatsController@postAddStat')->name('postAddStat');
         });
+
+        Route::group(['prefix' => 'forums'], function () {
+            Route::get('/', 'Admin\Forums\ForumsController@index')->name('lists');
+            Route::get('category/{id}', 'Forums\ForumController@cagetory')->name('forumCategory');
+            Route::get('post/{id}', 'Forums\ForumController@categoryPosts')->name('categoryposts');
+            Route::post('reply/', 'Forums\ForumController@reply')->name('reply');
+
+        });
+
         Route::group(['prefix' => 'stats'], function () {
             Route::get('/formats/{game_id}', 'Admin\StatsController@showGameTypeForm')->name('showGameFormats');
             //Route::get('/formats/{game_id}', 'Admin\GamesController@showGameTypeForm')->name('showGameFormats');

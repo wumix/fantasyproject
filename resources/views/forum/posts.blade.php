@@ -51,7 +51,8 @@
                                         <td>
                                             @foreach($post['replies'] as $row)
                                                 {{$row['user_id']}} <br>
-                                            {!! $row['post_text'] !!}
+                                            {!! $row['post_text'] !!}<br>
+                                                {!! $row['created_at'] !!}
 
 
                                                 @endforeach

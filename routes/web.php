@@ -54,8 +54,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/', 'Forums\ForumController@index')->name('Forums');
         Route::get('category/{id}', 'Forums\ForumController@cagetory')->name('forumCategory');
         Route::get('post/{id}', 'Forums\ForumController@categoryPosts')->name('categoryposts');
+        Route::post('reply/', 'Forums\ForumController@reply')->name('reply');
 
-        
     });
     Route::group(['middleware' => ['is_user']], function () {
 

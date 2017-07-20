@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Forums;
 
 use App\ForumComment;
+use App\ForumPost;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ForumCategory;
@@ -27,9 +28,23 @@ class ForumController extends Controller
     public function cagetory($id)
     {
 
-        $data['categories'] = ForumCategory::where('slug', $id)->with('children')->first()->children;
-       // dd($data['categories']->toArray());
+        $data['categories'] = ForumCategory::where('slug', $id)->with('children')->first();
+        //$data['parent_categories'] = ForumCategory::where('parent_id',NULL)->get()->toArray();
+        //dd($data['categories']->toArray());
         return view('forum/category', $data);
+
+    }
+    public function addpost($id,Request $request){
+       // dd($request->all());
+        $form_cat=new ForumCategory;
+        $form_cat->parent_id=$id;
+        $form_cat->name=$request->title;
+        $form_cat->description=$request->post_text;
+        $form_cat->slug=slugify($request->title);
+
+        $form_cat->save();
+        //$formcat->
+
 
     }
 
@@ -52,14 +67,15 @@ class ForumController extends Controller
         $post = \App\ForumPost::find($request->post_id);
         $post->replies()->insert(
             [
-                'user_id' => 4,
+                'user_id' => Auth::id(),
                 'post_id' => $request->post_id,
                 'post_text' => $request->post_text,
                 'created_at'=>getGmtTime(),
                 'updated_at'=>getGmtTime()
             ]);
 
-        dd('asd');
+        return redirect()->back()
+            ->with('msg', 'Added success');
 
     }
     //50:32:75:c9:db:f3

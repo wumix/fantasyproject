@@ -8,7 +8,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Forum\ForumCategory;
+
 use App\GameAction;
 use App\Http\Requests;
 use App\Mail\MyMail;

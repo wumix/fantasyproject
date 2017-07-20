@@ -50,13 +50,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('loginForm');
     Route::get('/signup', 'Auth\RegisterController@showUserRegistrationForm')->name('signUp');
     Route::get('/tournament-detail/{tournament_id}', 'User\TournamentsController@showTournamentDetails')->name('showTournament');
-    Route::group(['prefix' => 'forums'], function () {
-        Route::get('/', 'Forums\ForumController@index')->name('Forums');
-        Route::get('category/{id}', 'Forums\ForumController@cagetory')->name('forumCategory');
-        Route::get('post/{id}', 'Forums\ForumController@categoryPosts')->name('categoryposts');
-        Route::post('reply/', 'Forums\ForumController@reply')->name('reply');
 
-    });
     Route::group(['middleware' => ['is_user']], function () {
 
 
@@ -273,3 +267,11 @@ Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal', 'uses' => 'M
 Route::post('paypal/{id}', array('as' => 'addmoney.paypal', 'uses' => 'MembershipController@postPaymentWithpaypal',));
 Route::get('paypal', array('as' => 'payment.status', 'uses' => 'MembershipController@getPaymentStatus',));
 Route::post('test', array('as' => 'test', 'uses' => 'MembershipController@subscribeMembership',));
+Route::group(['prefix' => 'forums'], function () {
+    Route::get('/', 'Forums\ForumController@index')->name('Forums');
+    Route::get('category/{id}', 'Forums\ForumController@cagetory')->name('forumCategory');
+    Route::get('post/{id}', 'Forums\ForumController@categoryPosts')->name('categoryposts');
+    Route::post('subact/{id}', 'Forums\ForumController@addpost')->name('subcat');
+    Route::post('reply/', 'Forums\ForumController@reply')->name('reply');
+
+});

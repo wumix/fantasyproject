@@ -4,6 +4,7 @@
     Challenge
 @stop
 @section('css')
+    {!!  Html::style('assets-new/css/bootstrap3-wysihtml5.css'); !!}
     <style>
         .creat_topic_btn {
             width: 140px;
@@ -113,7 +114,7 @@
                     <div class="modal-content">
                         <div style='background-color: #009900;' class="modal-header">
                             <h4 class='modal-title' style="color:#fff;">
-                               Your Post
+                               Category: {{$categories['name']}}
                             </h4>
                         </div>
 
@@ -121,24 +122,23 @@
 
                             {!! Form::open(['url' => route('subcat',['id'=>$categories['id']]),'method'=>'POST']) !!}
                             <div class="form-grop">
-                                <label>
-                                   Add post in  {{$categories['name']}}
-                                </label>
+                                {{--<label>--}}
 
-                                {{--<select name="category_id">--}}
-                                    {{--@foreach($categories['children'] as $cat)--}}
-                                        {{--<option value="{{$cat['id']}}">{{$cat['name']}}</option>--}}
-                                    {{--@endforeach--}}
-                                {{--</select>--}}
+                                {{--</label>--}}
+
                             </div>
-                            <input type="text" name="title">
+                            {{--<input type="text" name="title">--}}
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input required type="text" class="form-control" name="title" >
+                            </div>
                             <div class="form-group">
 
-                                    <textarea name="post_text" id="post-data"
-                                              style="height:200px;" class="form-control wysiwyg"></textarea>
+                                    <textarea name="post_text" id="textarea"
+                                              style="height:200px;" class="form-control"></textarea>
                             </div>
 
-                            <input type="hidden" id="post_id" name="post_id" value=""/>
+                            <input type="hidden" id="post_id" name="post_id" value="{{$categories['id']}}"/>
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Post</button>
@@ -159,6 +159,20 @@
 
 @endsection
 @section('js')
+    {!! Html::script('assets-new/js/wysihtml5.min.js');!!}
+    {!! Html::script('assets-new/js/wysihtml5x-toolbar.min.js');!!}
     {!! Html::script('js/tinymce/tinymce.min.js'); !!}
     {!! Html::script('js/tinymce.js');!!}
+    <script>
+        $(document).on("click", ".creat_topic_btn", function () {
+
+            // $('#post-data').wysihtml5();
+            $('textarea').wysihtml5({
+                "image": false,
+                "blockquote": true,
+                "lists": true
+            });
+        });
+
+            </script>
     @endsection

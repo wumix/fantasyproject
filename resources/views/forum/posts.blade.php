@@ -1,9 +1,10 @@
 @extends('layouts.app')
-{{dd($posts->toArray())}}
+{{--{{dd($posts->toArray())}}--}}
 @section('title')
     Challenge
 @stop
 @section('css')
+    {!!  Html::style('assets-new/css/bootstrap3-wysihtml5.css'); !!}
     <style>
         .image_circle_img img {
             height: 80px;
@@ -392,28 +393,30 @@
                 <!---Section-start-->
                 <ul class="list_icon">
                     @foreach($posts['posts'] as $post)
-                    <li style="border: solid thin red;">
+                    <li>
                         <div class="comment_area">
             <span class="image_circle_img">
                 <img class="img-responsive " src={{URL::to('/img/avatar5.png')}} alt=""/>
             </span>
                             <span class="heading">
-                Jhon Burmi
+               {{$post['user']['name']}}
             </span>
                             <span class="hour_text">
                 10h
             </span>
                             <div class="section_reply">
-                                <p class="parah">
+                                <p id="parah-{{$post['id']}}" class="parah">
                                    {{$post['description']}}
                                 <div class="right_anqer">
                                     <a href="#" class="edit_btn_one">Quote</a>
-                                    <a href="#" class="edit_btn_edit"><i class="fa fa-pencil" aria-hidden="true"></i>
+                                    <a href="#" data-id="{{$post['id']}}"
+                                       data-target="#editModal" data-toggle="modal"
+                                       class="edit_btn_edit"><i class="fa fa-pencil" aria-hidden="true"></i>
                                         Edit</a>
                                 </div>
                                 {{--<a href="#" class="edit_btn_two">Reply</a>--}}
                                 <a  href="#" id="1" data-id="{{$post['id']}}"  data-toggle="modal"
-                                         data-target="#myModal" class="edit_btn_two">Reply</a>
+                                         data-target="#myModal" class="reply_btn_two">Reply</a>
 
                                 </p>
 
@@ -426,7 +429,7 @@
                 <img class="img-responsive " src={{URL::to('/img/avatar5.png')}} alt=""/>
             </span>
                             <span class="heading">
-                Jhon Burmi
+                {{$row['user']['name']}}
             </span>
                             <span class="hour_text">
                 10h
@@ -459,13 +462,14 @@
         </div>
     </div>
     <!-- Modal content-->
+    <!-- REPLY FORM -->
     <div id="myModal" class="modal fade in" role="dialog">
         <div class="modal-dialog">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <div class="modal-content">
                 <div style='background-color: #009900;' class="modal-header">
                     <h4 class='modal-title' style="color:#fff;">
-                        Message?
+                        Add Reply
                     </h4>
                 </div>
 
@@ -473,8 +477,14 @@
 
                     {!! Form::open(['url' => route('reply'),'method'=>'POST']) !!}
                     <div class="form-group">
-                                    <textarea name="post_text" id="post-data"
-                                              style="height:200px;" class="form-control wysiwyg"></textarea>
+
+                        <textarea required name="post_text" class="form-control"
+                                  id="textarea"
+                                  placeholder="Write details about your pet"
+                                  rows="6"></textarea>
+
+                        {{--<textarea name="post_text" id="post-data"--}}
+                                              {{--style="height:200px;" class="form-control wysiwyg"></textarea>--}}
                     </div>
 
                     <input type="hidden" id="post_id" name="post_id" value=""/>
@@ -483,12 +493,63 @@
                         <button type="submit" class="btn btn-primary">Post</button>
                     </div>
                     {!! Form::close() !!}
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+                <!-- END FORM REPLY-->
+
+            </div>
+
+
+
+
             </div>
         </div>
+    <div id="editModal" class="modal fade in" role="dialog">
+        <div class="modal-dialog">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="modal-content">
+                <div style='background-color: #009900;' class="modal-header">
+                    <h4 class='modal-title' style="color:#fff;">
+                        Edit
+                    </h4>
+                </div>
+
+                <div class="modal-body" >
+
+                    {!! Form::open(['url' => route('edit'),'method'=>'POST']) !!}
+                    <div class="form-group">
+
+                        <textarea required name="post_text" class="form-control"
+                                  id="edittextarea"
+                                  placeholder="Write details about your pet"
+                                  rows="6"></textarea>
+
+                        {{--<textarea name="post_text" id="post-data"--}}
+                        {{--style="height:200px;" class="form-control wysiwyg"></textarea>--}}
+                    </div>
+
+                    <input type="hidden" id="post_id" name="post_id" value=""/>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Post</button>
+                    </div>
+                    {!! Form::close() !!}
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- END FORM REPLY-->
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+
     </div>
 
     </div>
@@ -496,25 +557,47 @@
 @endsection
 @section('js')
 
-    <script>
-        jQuery.ajaxSetup({async:false});
-        $(document).on("click", ".edit_btn_two", function () {
-            var postId=$(this).data('id');
 
-            var liopo='border-r1-'+postId;
-            var t=($("#"+liopo).text());
-            alert(t);
-            //  alert(t);
-
-            $(".modal-body #post-data").text("zulfiqar tariq is good");
-            $(".modal-body #post_id").val(postId);
-
-
-
-
-        });
-    </script>
 
     {!! Html::script('js/tinymce/tinymce.min.js'); !!}
-    {!! Html::script('js/tinymce.js');!!}
+    {!! Html::script('assets-new/js/wysihtml5.min.js');!!}
+    {!! Html::script('assets-new/js/wysihtml5x-toolbar.min.js');!!}
+    {!! Html::script('assets-new/js/handlebars.runtime.min.js');!!}
+    
+    <script>
+
+        $(document).on("click", ".reply_btn_two", function () {
+           // $('#post-data').wysihtml5();
+            $('textarea').wysihtml5({
+                "image": false,
+                "blockquote": true,
+                "lists": true
+            });
+
+//            var liopo='border-r1-'+postId;
+//            var t=($("#"+liopo).text());
+            var postId=$(this).data('id');
+          $(".modal-body #post_id").val(postId);
+
+        });
+        $(document).on("click", ".edit_btn_edit", function () {
+            // alert('asd');
+
+//            var liopo='border-r1-'+postId;
+//            var t=($("#"+liopo).text());
+//            alert(t);
+            var postId=$(this).data('id');
+            var k=$('#parah-'+postId).html();
+           // alert(k);
+           //$('edittextarea').html(k);
+            $('edittextarea').wysihtml5({
+                "image": false,
+                "blockquote": true,
+                "lists": true
+            });
+
+        });
+
+    </script>
+
 @endsection

@@ -14,6 +14,9 @@ class ForumPost extends Model
     public function category(){
         return $this->belongsTo('\App\ForumCategory');
     }
+    public function user(){
+        return $this->belongsTo('\App\User');
+    }
 
 
 }

@@ -12,4 +12,7 @@ class ForumReply extends Model
         return $this->belongs('\App\ForumPost');
 
     }
+    public function user(){
+        return $this->belongsTo('\App\User');
+    }
 }

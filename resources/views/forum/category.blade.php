@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Challenge
+    Forums
 @stop
 @section('css')
     {!!  Html::style('assets-new/css/bootstrap3-wysihtml5.css'); !!}
@@ -59,7 +59,7 @@
         <div class="row">
             <div class="col-md-12 no-padding">
                 <h1 class="page-heading">
-                    Gamithon Forums
+                    {{$categories['name']}}
                 </h1>
                 <hr class="light full">
             </div>
@@ -80,9 +80,9 @@
                             <tr>
                                 <th>Topics</th>
                                 <th>Category</th>
-                                <th>Users</th>
-                                <th>Replies</th>
-                                <th>Views</th>
+
+                                <th>Posts</th>
+
                                 <th>Activity</th>
                             </tr>
                             </thead>
@@ -95,9 +95,9 @@
                                     <td>{{$categories['name']}}</td>
                                     <td style="font-size:18px;color: #d3d3d3;"><i class="fa fa-user"
                                                                                   aria-hidden="true"></i></td>
-                                    <td>23</td>
-                                    <td>45</td>
-                                    <td>5mem</td>
+                                    <td>{{count($cat['posts'])}}</td>
+
+
                                 </tr>
                             @endforeach
 

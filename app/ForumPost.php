@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ForumPost extends Model
 {
+    public $timestamps = false;
     protected $table = 'forum_posts';
     public function replies()
     {

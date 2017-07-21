@@ -19,8 +19,11 @@ class ForumController extends Controller
     public function index()
     {
 
-        $data['categories'] = ForumCategory::where('parent_id',NULL)->with('children')->get()->toArray();
-       //dd($data['categories']);
+        $data['categories'] = ForumCategory::where('parent_id',NULL)->with(['children'=>function($query){
+            $query->where('is_approved',1);
+        },'children.posts'])->get()->toArray();
+
+      // dd($data['categories']);
         return view('forum/index', $data);
 
     }
@@ -30,9 +33,9 @@ class ForumController extends Controller
 
         $data['categories'] = ForumCategory::where('slug', $id)->with(['children'=>function($query){
             $query->where('is_approved',1);
-        }])->first();
+        },'children.posts'])->first()->toArray();
         //$data['parent_categories'] = ForumCategory::where('parent_id',NULL)->get()->toArray();
-       // dd($data['categories']->toArray());
+     //  dd($data['categories']);
         return view('forum/category', $data);
 
     }
@@ -49,6 +52,19 @@ class ForumController extends Controller
 
 
     }
+    public function addtopic($cat_id,Request $request){
+        //dd($request->all());
+        $topic=new \App\ForumPost;
+        $topic->user_id='317';
+        $topic->category_id=$cat_id;
+        $topic->approved_id=1;
+        $topic->title=$request->title;
+        $topic->description=$request->description;
+        $topic->slug=slugify($request->title);
+        $topic->date=getGmtTime();
+        $topic->save();
+       return redirect()->back();
+    }
 
     public function categoryPosts($id)
     {
@@ -58,7 +74,7 @@ class ForumController extends Controller
         $data['posts'] = ForumCategory::where('slug',$id)->with(['posts.replies.user','posts.user'])->first();
      //   dd($data['posts']->toArray());
 //       dd(\App\ForumPost::where('category_id',20)->get()->toArray());
-      //  dd($data['posts']->toArray());
+      // dd($data['posts']->toArray());
         return view('forum/posts', $data);
         //dd($data['posts']->toArray());
 
@@ -84,17 +100,15 @@ class ForumController extends Controller
     }
     public function edit(Request $request)
     {
-      //  dd($request->all());
+      // dd($request->all());
         //  $comment = new \App\ForumReply(array(['post_text',$request->post_text]));
-        $post = \App\ForumPost::find($request->post_id);
-        $post->replies()->insert(
+        $post = new \App\ForumPost;
+        $post->where('id',$request->post_id)->update(
             [
-                'user_id' => '317',
-                'name'=>$request->title,
-                'post_id' => $request->post_id,
-                'post_text' => $request->post_text,
-                'created_at'=>getGmtTime(),
-                'updated_at'=>getGmtTime()
+
+                'id' => $request->post_id,
+                'description' => $request->post_text,
+                'date'=>getGmtTime()
             ]);
 
         return redirect()->back()

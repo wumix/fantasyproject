@@ -272,6 +272,7 @@ Route::group(['prefix' => 'forums'], function () {
     Route::get('category/{id}', 'Forums\ForumController@cagetory')->name('forumCategory');
     Route::get('post/{id}', 'Forums\ForumController@categoryPosts')->name('categoryposts');
     Route::post('subact/{id}', 'Forums\ForumController@addpost')->name('subcat');
+    Route::post('addtopic/{cat_id}', 'Forums\ForumController@addtopic')->name('addtopic');
     Route::post('reply/', 'Forums\ForumController@reply')->name('reply');
     Route::post('edit/', 'Forums\ForumController@edit')->name('edit');
 

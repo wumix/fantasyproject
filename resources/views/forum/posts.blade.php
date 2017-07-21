@@ -6,6 +6,18 @@
 @section('css')
     {!!  Html::style('assets-new/css/bootstrap3-wysihtml5.css'); !!}
     <style>
+        .creat_topic_btn {
+            width: 140px;
+            display: inline-block;
+            float: right;
+            background: #8bc53f;
+            color: #fff;
+            padding: 12px 0;
+            text-align: center;
+            font-size: 13px;
+            margin: 25px 39px 25px 0;
+        }
+
         .image_circle_img img {
             height: 80px;
             width: 80px;
@@ -31,7 +43,7 @@
         }
 
         .hour_text {
-            width: 7%;
+            width: 8%;
             display: inline-block;
             font-size: 14px;
             color: #d3d3d3;
@@ -384,75 +396,85 @@
         <div class="row">
             <div class="col-md-12 no-padding">
                 <h1 class="page-heading">
-                    Forums
+                    {{$posts['name']}}
                 </h1>
                 <hr class="light full">
             </div>
 
+
             <div class="col-md-12 no-padding inner_area_section">
+                <div class="col-md-12">
+                    <button href="#" data-toggle="modal"
+                            data-target="#create_topic" class="creat_topic_btn">Add Topic
+                    </button>
+                </div>
+
                 <!---Section-start-->
                 <ul class="list_icon">
                     @foreach($posts['posts'] as $post)
-                    <li>
-                        <div class="comment_area">
+                        <li>
+                            <div class="comment_area">
             <span class="image_circle_img">
                 <img class="img-responsive " src={{URL::to('/img/avatar5.png')}} alt=""/>
             </span>
-                            <span class="heading">
+                                <span class="heading">
                {{$post['user']['name']}}
             </span>
-                            <span class="hour_text">
-                10h
-            </span>
-                            <div class="section_reply">
-                                <p id="parah-{{$post['id']}}" class="parah">
-                                   {{$post['description']}}
-                                <div class="right_anqer">
-                                    <a href="#" class="edit_btn_one">Quote</a>
-                                    <a href="#" data-id="{{$post['id']}}"
-                                       data-target="#editModal" data-toggle="modal"
-                                       class="edit_btn_edit"><i class="fa fa-pencil" aria-hidden="true"></i>
-                                        Edit</a>
-                                </div>
-                                {{--<a href="#" class="edit_btn_two">Reply</a>--}}
-                                <a  href="#" id="1" data-id="{{$post['id']}}"  data-toggle="modal"
-                                         data-target="#myModal" class="reply_btn_two">Reply</a>
+                                <span class="hour_text">
+                                {{formatDate($post['date'])}}
 
-                                </p>
+            </span>
+                                <div class="section_reply">
+                                    <p id="parah-{{$post['id']}}" class="parah">
+                                    {{$post['description']}}
+                                    <div class="right_anqer">
+                                        {{--<a href="#" class="edit_btn_one">Quote</a>--}}
+                                        @if($post['user_id']==\Auth::id())
+                                            <a href="#" data-id="{{$post['id']}}"
+                                               data-target="#editModal" data-toggle="modal"
+                                               class="edit_btn_edit"><i class="fa fa-pencil" aria-hidden="true"></i>
+                                                Edit</a>
+                                        @endif
+                                    </div>
+                                    {{--<a href="#" class="edit_btn_two">Reply</a>--}}
+                                    <a href="#" id="1" data-id="{{$post['id']}}" data-toggle="modal"
+                                       data-target="#myModal" class="reply_btn_two">Reply</a>
+
+                                    </p>
+
+                                </div>
 
                             </div>
-
-                        </div>
-                        @foreach($post['replies'] as $row)
-                        <div class="comment_area_second">
+                            @foreach($post['replies'] as $row)
+                                <div class="comment_area_second">
             <span class="image_circle_img">
                 <img class="img-responsive " src={{URL::to('/img/avatar5.png')}} alt=""/>
             </span>
-                            <span class="heading">
+                                    <span class="heading">
                 {{$row['user']['name']}}
             </span>
-                            <span class="hour_text">
+                                    <span class="hour_text">
                 10h
             </span>
 
-                            <div class="section_reply">
-                                <p class="parah">
-                                {{$row['post_text']}}
+                                    <div class="section_reply">
+                                        <p class="parah">
+                                        {{$row['post_text']}}
 
-                                <div class="right_anqer_second">
-                                    {{--<a href="#" class="edit_btn_one_quote">Quote</a>--}}
-                                    {{--<a href="#" class="edit_btn_edit_second"><i class="fa fa-pencil"--}}
-                                                                                {{--aria-hidden="true"></i> Edit</a>--}}
+                                        <div class="right_anqer_second">
+                                            {{--<a href="#" class="edit_btn_one_quote">Quote</a>--}}
+                                            {{--<a href="#" class="edit_btn_edit_second"><i class="fa fa-pencil"--}}
+                                            {{--aria-hidden="true"></i> Edit</a>--}}
+                                        </div>
+                                        {{--<a href="#" class="edit_btn_reply_second">Reply</a>--}}
+
+                                        </p>
+
+                                    </div>
                                 </div>
-                                {{--<a href="#" class="edit_btn_reply_second">Reply</a>--}}
-
-                                </p>
-
-                            </div>
-                        </div>
                             @endforeach
-                    </li>
-                   @endforeach
+                        </li>
+                    @endforeach
                 </ul>
                 <!---Section-End-->
             </div>
@@ -463,31 +485,34 @@
     </div>
     <!-- Modal content-->
     <!-- REPLY FORM -->
-    <div id="myModal" class="modal fade in" role="dialog">
+    <div id="create_topic" class="modal fade in" role="dialog">
         <div class="modal-dialog">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <div class="modal-content">
                 <div style='background-color: #009900;' class="modal-header">
                     <h4 class='modal-title' style="color:#fff;">
-                        Add Reply
+                        Add zulfi
                     </h4>
                 </div>
 
-                <div class="modal-body" >
+                <div class="modal-body">
 
-                    {!! Form::open(['url' => route('reply'),'method'=>'POST']) !!}
+                    {!! Form::open(['url' => route('addtopic',['cat_id'=>$posts['id']]),'method'=>'POST']) !!}
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input required type="text" name="title" class="form-control" placeholder="enter title here"/>
+                    </div>
                     <div class="form-group">
 
-                        <textarea required name="post_text" class="form-control"
+                        <textarea required name="description" class="form-control"
                                   id="textarea"
                                   placeholder="Write details about your pet"
                                   rows="6"></textarea>
 
                         {{--<textarea name="post_text" id="post-data"--}}
-                                              {{--style="height:200px;" class="form-control wysiwyg"></textarea>--}}
+                        {{--style="height:200px;" class="form-control wysiwyg"></textarea>--}}
                     </div>
 
-                    <input type="hidden" id="post_id" name="post_id" value=""/>
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Post</button>
@@ -502,27 +527,25 @@
             </div>
 
 
-
-
-            </div>
         </div>
-    <div id="editModal" class="modal fade in" role="dialog">
+    </div>
+    <div id="myModal" class="modal fade in" role="dialog">
         <div class="modal-dialog">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <div class="modal-content">
                 <div style='background-color: #009900;' class="modal-header">
                     <h4 class='modal-title' style="color:#fff;">
-                        Edit
+                        Add Reply
                     </h4>
                 </div>
 
-                <div class="modal-body" >
+                <div class="modal-body">
 
-                    {!! Form::open(['url' => route('edit'),'method'=>'POST']) !!}
+                    {!! Form::open(['url' => route('reply'),'method'=>'POST']) !!}
                     <div class="form-group">
 
                         <textarea required name="post_text" class="form-control"
-                                  id="edittextarea"
+                                  id="textarea"
                                   placeholder="Write details about your pet"
                                   rows="6"></textarea>
 
@@ -545,6 +568,45 @@
             </div>
 
 
+        </div>
+    </div>
+    <div id="editModal" class="modal fade in" role="dialog">
+        <div class="modal-dialog">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="modal-content">
+                <div style='background-color: #009900;' class="modal-header">
+                    <h4 class='modal-title' style="color:#fff;">
+                        Edit
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+
+                    {!! Form::open(['url' => route('edit'),'method'=>'POST']) !!}
+                    <div class="form-group">
+
+                        <textarea required name="post_text" class="form-control"
+                                  id="edittextarea"
+                                  placeholder="Write details about your pet"
+                                  rows="6"></textarea>
+
+                        {{--<textarea name="post_text" id="post-data"--}}
+                        {{--style="height:200px;" class="form-control wysiwyg"></textarea>--}}
+                    </div>
+
+                    <input type="hidden" id="edit_post_id" name="post_id" value=""/>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Post</button>
+                    </div>
+                    {!! Form::close() !!}
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- END FORM REPLY-->
+
+            </div>
 
 
         </div>
@@ -563,11 +625,11 @@
     {!! Html::script('assets-new/js/wysihtml5.min.js');!!}
     {!! Html::script('assets-new/js/wysihtml5x-toolbar.min.js');!!}
     {!! Html::script('assets-new/js/handlebars.runtime.min.js');!!}
-    
+
     <script>
 
         $(document).on("click", ".reply_btn_two", function () {
-           // $('#post-data').wysihtml5();
+            // $('#post-data').wysihtml5();
             $('textarea').wysihtml5({
                 "image": false,
                 "blockquote": true,
@@ -576,8 +638,8 @@
 
 //            var liopo='border-r1-'+postId;
 //            var t=($("#"+liopo).text());
-            var postId=$(this).data('id');
-          $(".modal-body #post_id").val(postId);
+            var postId = $(this).data('id');
+            $(".modal-body #post_id").val(postId);
 
         });
         $(document).on("click", ".edit_btn_edit", function () {
@@ -586,15 +648,18 @@
 //            var liopo='border-r1-'+postId;
 //            var t=($("#"+liopo).text());
 //            alert(t);
-            var postId=$(this).data('id');
-            var k=$('#parah-'+postId).html();
-           // alert(k);
-           //$('edittextarea').html(k);
-            $('edittextarea').wysihtml5({
+            var postId = $(this).data('id');
+            var k = $('#parah-' + postId).html();
+            // alert(k);
+            //$('edittextarea').html(k);
+            $('#edittextarea').wysihtml5({
                 "image": false,
                 "blockquote": true,
                 "lists": true
             });
+            $(".modal-body #edit_post_id").val(postId);
+            $('#edittextarea').html(k);
+
 
         });
 

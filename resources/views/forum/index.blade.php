@@ -158,12 +158,12 @@
             float: right;
         }
         .left_li_section{
-            width: 67%;
+            width: 65%;
             display: inline-block;
             float: left;
         }
         .right_li_section{
-            width: 30%;
+            width: 35%;
             display: inline-block;
             float: right;
         }
@@ -406,9 +406,9 @@
                 <hr class="light full">
             </div>
 
-            <div class="col-md-12 ">
-                <a href="#" class="new_topic_btn">New Topic</a>
-            </div>
+            {{--<div class="col-md-12 ">--}}
+                {{--<a href="#" class="new_topic_btn">New Topic</a>--}}
+            {{--</div>--}}
             @foreach($categories as $cat )
             <div class="col-md-12 no-padding forum_area_full">
                 <!---Section-start-->
@@ -433,16 +433,16 @@
                     </div>
                     <div class="grey_forum">
                         <span class="topics_forum">Topics</span>
-                        <span class="topics_forum_num">731</span>
+                        <span class="topics_forum_num">{{count($cat['children'])}}</span>
                     </div>
                 </div>
                 <!---Section-End-->
                 <!---Section-start-->
                 <div class="col-md-6 no-padding area_handle">
-                    <div class="grey_forum_second">
-                        <span class="topics_forum">Posts</span>
-                        <span class="topics_forum_num_second">751</span>
-                    </div>
+                    {{--<div class="grey_forum_second">--}}
+                        {{--<span class="topics_forum">Posts</span>--}}
+                        {{--<span class="topics_forum_num_second">751</span>--}}
+                    {{--</div>--}}
 
                     <div class="introduction_area_secon">
 
@@ -460,8 +460,8 @@
                                 </div>
                                 <div class="right_li_section">
                                     <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    <span class="date">17-07-2017</span>
-                                    <span class="date">12:30</span>
+                                    <span class="date">{{formatDate($child['created_at'])}}</span>
+                                    <span class="date">{{formatTime($child['created_at'])}}</span>
                                 </div>
                             </li>
                                 <?php if($i==3){

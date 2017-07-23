@@ -48,7 +48,8 @@ class ForumController extends Controller
         $form_cat->slug=slugify($request->title);
 
         $form_cat->save();
-        //$formcat->
+        return redirect()->back()
+            ->with('msg', 'Added success');
 
 
     }

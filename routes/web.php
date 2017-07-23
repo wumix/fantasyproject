@@ -91,7 +91,17 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/transfer/{team_id}/{player_id}/{tournament_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
             Route::get('/congrats/{team_id}', 'User\TournamentsController@sucessteam')->name('team-completed');
         });
-    });
+        Route::group(['prefix' => 'forums'], function () {
+            Route::get('/', 'Forums\ForumController@index')->name('Forums');
+            Route::get('category/{id}', 'Forums\ForumController@cagetory')->name('forumCategory');
+            Route::get('post/{id}', 'Forums\ForumController@categoryPosts')->name('categoryposts');
+            Route::post('subact/{id}', 'Forums\ForumController@addpost')->name('subcat');
+            Route::post('addtopic/{cat_id}', 'Forums\ForumController@addtopic')->name('addtopic');
+            Route::post('reply/', 'Forums\ForumController@reply')->name('reply');
+            Route::post('editpost/', 'Forums\ForumController@edit')->name('editpost');
+            Route::post('editpostreply/', 'Forums\ForumController@editreply')->name('editpostreply');
+
+        });
     Route::group(['prefix' => 'dashboard'], function () {
         Route::get('/', 'DashboardController@index')->name('UserDashboard');
         Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
@@ -105,6 +115,19 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
 
     Route::get('/', 'Auth\LoginController@showAdminLoginForm');
     Route::group(['middleware' => ['is_admin']], function () {
+        Route::group(['prefix' => 'forums'], function () {
+            Route::get('/', 'Admin\Forums\ForumsController@index')->name('lists');
+          //  Route::get('category/{id}', 'Forums\ForumController@cagetory')->name('forumCategory');
+           // Route::get('post/{id}', 'Forums\ForumController@categoryPosts')->name('categoryposts');
+            //Route::post('reply/', 'Forums\ForumController@reply')->name('reply');
+            Route::get('category/', 'Admin\Forums\ForumsController@addCategory')->name('addcategory');
+            Route::post('category/', 'Admin\Forums\ForumsController@addCategoryPost')->name('addcategory');
+            Route::get('category_list/', 'Admin\Forums\ForumsController@listcategory')->name('listcategory');
+            Route::get('category_list/{id}', 'Admin\Forums\ForumsController@editCategory')->name('editcategory');
+            Route::post('category_list/{id}', 'Admin\Forums\ForumsController@postEditCategory')->name('editcategorypost');
+            Route::post('approve', 'Admin\Forums\ForumsController@approve')->name('approve');
+        });
+    }
         Route::get('/leaderboard/{tournament_id}', 'LeaderBoard\LeaderboardController@index')->name('leaderboard');
         Route::get('/dashboard', 'Admin\DashboardController@index'); //Gamesroutes
         Route::get('/addheader', 'Admin\SettingsController@index')->name('headerbackground');
@@ -135,24 +158,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/add/{id}', 'Admin\StatsController@postAddStat')->name('postAddStat');
         });
 
-        Route::group(['prefix' => 'forums'], function () {
-            Route::get('/', 'Admin\Forums\ForumsController@index')->name('lists');
-            Route::get('category/{id}', 'Forums\ForumController@cagetory')->name('forumCategory');
-            Route::get('post/{id}', 'Forums\ForumController@categoryPosts')->name('categoryposts');
-            Route::post('reply/', 'Forums\ForumController@reply')->name('reply');
-            Route::get('category/', 'Admin\Forums\ForumsController@addCategory')->name('addcategory');
-            Route::post('category/', 'Admin\Forums\ForumsController@addCategoryPost')->name('addcategory');
-            Route::get('category_list/', 'Admin\Forums\ForumsController@listcategory')->name('listcategory');
-            Route::get('category_list/{id}', 'Admin\Forums\ForumsController@editCategory')->name('editcategory');
-            Route::post('category_list/{id}', 'Admin\Forums\ForumsController@postEditCategory')->name('editcategorypost');
-            Route::post('approve', 'Admin\Forums\ForumsController@approve')->name('approve');
 
-
-
-
-
-
-        });
 
         Route::group(['prefix' => 'stats'], function () {
             Route::get('/formats/{game_id}', 'Admin\StatsController@showGameTypeForm')->name('showGameFormats');

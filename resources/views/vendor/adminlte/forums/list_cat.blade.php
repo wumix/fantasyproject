@@ -12,7 +12,7 @@
                 <!-- Default box -->
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">List of Unapproved Posts</h3>
+                        <h3 class="box-title">Category list</h3>
                         <span class="pull-right">
 
                     </span>
@@ -28,35 +28,16 @@
                                 </tr>
                                 @foreach($lists as $row)
                                     <tr>
-
                                         <td>
-
                                             {{$row['name']}}
                                         </td>
                                         <td>
                                             {{$row['description']}}
                                         </td>
                                         <td>
-                                            <form>
-                                                <input name="post_id" value="{{$row['id']}}" type="hidden" class="post_id_approve"/>
-                                            <select id="is_approve" class="is_approve" name="is_approved">
-                                                <option
-                                                        @if($row['is_approved']==0)
-                                                                selected
-                                                                @endif
-
-                                                        value="0">Un appproved</option>
-                                                <option  @if($row['is_approved']==1)
-                                                         selected
-                                                         @endif
-                                                         value="1">Approved</option>
-
-                                            </select>
-                                            </form>
+                                           <a class="btn btn-success" href="{{route('editcategory',['id'=>$row['id']])}}">Edit</a>
 
                                         </td>
-
-
 
                                     </tr>
                                 @endforeach
@@ -71,33 +52,3 @@
         </div>
     </div>
 @endsection
-@section('js')
-    <script>
-
-        $('.is_approve').change(function () {
-
-           var t= $(this).parent().children().val();
-
-
-
-
-
-            $.ajax({
-                type: 'POST',
-                url: '{{route('approve')}}',
-                data: {
-                    is_approved: $(this).val(),
-                    post_id:t,
-                    _token: '{{csrf_token()}}'
-                },
-                success: function (data) {
-                    if (data.success == true) {
-
-                }
-
-        }
-        });
-        });
-    </script>
-
-    @endsection

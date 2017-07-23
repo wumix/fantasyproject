@@ -415,7 +415,7 @@
                         <li>
                             <div class="comment_area">
             <span class="image_circle_img">
-                <img class="img-responsive " src={{URL::to('/img/avatar5.png')}} alt=""/>
+                <img class="img-responsive " src={{getUploadsPath($post['user']['profile_pic'])}} alt=""/>
             </span>
                                 <span class="heading">
                {{$post['user']['name']}}
@@ -425,7 +425,7 @@
 
             </span>
                                 <div class="section_reply">
-                                    <p id="parah-{{$post['id']}}" class="parah">
+                                    <p id="reply-{{$post['id']}}" class="parah">
                                     {{$post['description']}}
                                     <div class="right_anqer">
                                         {{--<a href="#" class="edit_btn_one">Quote</a>--}}
@@ -438,7 +438,7 @@
                                     </div>
                                     {{--<a href="#" class="edit_btn_two">Reply</a>--}}
                                     <a href="#" id="1" data-id="{{$post['id']}}" data-toggle="modal"
-                                       data-target="#myModal" class="reply_btn_two">Reply</a>
+                                       data-target="#myModal" class="post_reply_button">Reply</a>
 
                                     </p>
 
@@ -458,13 +458,19 @@
             </span>
 
                                     <div class="section_reply">
-                                        <p class="parah">
-                                        {{$row['post_text']}}
+                                        <p class="parah" id="repparah-{{$row['id']}}">
+
+                                        {!! $row['post_text'] !!}
 
                                         <div class="right_anqer_second">
                                             {{--<a href="#" class="edit_btn_one_quote">Quote</a>--}}
-                                            {{--<a href="#" class="edit_btn_edit_second"><i class="fa fa-pencil"--}}
-                                            {{--aria-hidden="true"></i> Edit</a>--}}
+                                            @if(\Auth::id()==$row['user_id'])
+                                            <a href="#" data-id="{{$row['id']}}"
+                                               data-target="#editReply" data-toggle="modal"
+                                               class="edit_post_reply"><i class="fa fa-pencil" aria-hidden="true"></i>
+                                                Edit Me</a>
+                                                @endif
+
                                         </div>
                                         {{--<a href="#" class="edit_btn_reply_second">Reply</a>--}}
 
@@ -491,7 +497,7 @@
             <div class="modal-content">
                 <div style='background-color: #009900;' class="modal-header">
                     <h4 class='modal-title' style="color:#fff;">
-                        Add zulfi
+                        Add New Post
                     </h4>
                 </div>
 
@@ -582,7 +588,7 @@
 
                 <div class="modal-body">
 
-                    {!! Form::open(['url' => route('edit'),'method'=>'POST']) !!}
+                    {!! Form::open(['url' => route('editpost'),'method'=>'POST']) !!}
                     <div class="form-group">
 
                         <textarea required name="post_text" class="form-control"
@@ -595,6 +601,47 @@
                     </div>
 
                     <input type="hidden" id="edit_post_id" name="post_id" value=""/>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Post</button>
+                    </div>
+                    {!! Form::close() !!}
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- END FORM REPLY-->
+
+            </div>
+
+
+        </div>
+    </div>
+    <div id="editReply" class="modal fade in" role="dialog">
+        <div class="modal-dialog">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="modal-content">
+                <div style='background-color: #009900;' class="modal-header">
+                    <h4 class='modal-title' style="color:#fff;">
+                        zulfi edit reply
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+
+                    {!! Form::open(['url' => route('editpostreply'),'method'=>'POST']) !!}
+                    <div class="form-group">
+
+                        <textarea required name="post_text" class="form-control"
+                                  id="editreplytextarea"
+                                  placeholder="Write details about your pet"
+                                  rows="6"></textarea>
+
+                        {{--<textarea name="post_text" id="post-data"--}}
+                        {{--style="height:200px;" class="form-control wysiwyg"></textarea>--}}
+                    </div>
+
+                    <input type="hidden" id="edit_post_reply_id" name="post_id" value=""/>
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Post</button>
@@ -628,7 +675,7 @@
 
     <script>
 
-        $(document).on("click", ".reply_btn_two", function () {
+        $(document).on("click", ".post_reply_button", function () { //open reply form on post
             // $('#post-data').wysihtml5();
             $('textarea').wysihtml5({
                 "image": false,
@@ -642,15 +689,15 @@
             $(".modal-body #post_id").val(postId);
 
         });
-        $(document).on("click", ".edit_btn_edit", function () {
+        $(document).on("click", ".edit_btn_edit", function () { //open post edit
             // alert('asd');
 
 //            var liopo='border-r1-'+postId;
 //            var t=($("#"+liopo).text());
 //            alert(t);
             var postId = $(this).data('id');
-            var k = $('#parah-' + postId).html();
-            // alert(k);
+            var k = $('#reply-' + postId).html();
+             alert(k);
             //$('edittextarea').html(k);
             $('#edittextarea').wysihtml5({
                 "image": false,
@@ -659,6 +706,27 @@
             });
             $(".modal-body #edit_post_id").val(postId);
             $('#edittextarea').html(k);
+
+
+        });
+
+        $(document).on("click", ".edit_post_reply", function () { //open post edit
+            // alert('asd');
+
+//            var liopo='border-r1-'+postId;
+//            var t=($("#"+liopo).text());
+//            alert(t);
+            var postId = $(this).data('id');
+            var k = $('#repparah-' + postId).html();
+            alert(k);
+            //$('edittextarea').html(k);
+            $('#editreplytextarea').wysihtml5({
+                "image": false,
+                "blockquote": true,
+                "lists": true
+            });
+            $(".modal-body #edit_post_reply_id").val(postId);
+            $('#editreplytextarea').html(k);
 
 
         });

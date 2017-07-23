@@ -140,6 +140,17 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::get('category/{id}', 'Forums\ForumController@cagetory')->name('forumCategory');
             Route::get('post/{id}', 'Forums\ForumController@categoryPosts')->name('categoryposts');
             Route::post('reply/', 'Forums\ForumController@reply')->name('reply');
+            Route::get('category/', 'Admin\Forums\ForumsController@addCategory')->name('addcategory');
+            Route::post('category/', 'Admin\Forums\ForumsController@addCategoryPost')->name('addcategory');
+            Route::get('category_list/', 'Admin\Forums\ForumsController@listcategory')->name('listcategory');
+            Route::get('category_list/{id}', 'Admin\Forums\ForumsController@editCategory')->name('editcategory');
+            Route::post('category_list/{id}', 'Admin\Forums\ForumsController@postEditCategory')->name('editcategorypost');
+            Route::post('approve', 'Admin\Forums\ForumsController@approve')->name('approve');
+
+
+
+
+
 
         });
 
@@ -274,6 +285,7 @@ Route::group(['prefix' => 'forums'], function () {
     Route::post('subact/{id}', 'Forums\ForumController@addpost')->name('subcat');
     Route::post('addtopic/{cat_id}', 'Forums\ForumController@addtopic')->name('addtopic');
     Route::post('reply/', 'Forums\ForumController@reply')->name('reply');
-    Route::post('edit/', 'Forums\ForumController@edit')->name('edit');
+    Route::post('editpost/', 'Forums\ForumController@edit')->name('editpost');
+    Route::post('editpostreply/', 'Forums\ForumController@editreply')->name('editpostreply');
 
 });

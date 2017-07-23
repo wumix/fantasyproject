@@ -55,7 +55,7 @@ class ForumController extends Controller
     public function addtopic($cat_id,Request $request){
         //dd($request->all());
         $topic=new \App\ForumPost;
-        $topic->user_id='317';
+        $topic->user_id=\Auth::id();
         $topic->category_id=$cat_id;
         $topic->approved_id=1;
         $topic->title=$request->title;
@@ -87,7 +87,7 @@ class ForumController extends Controller
         $post = \App\ForumPost::find($request->post_id);
         $post->replies()->insert(
             [
-                'user_id' => '317',
+                'user_id' => \Auth::id(),
                 'post_id' => $request->post_id,
                 'post_text' => $request->post_text,
                 'created_at'=>getGmtTime(),
@@ -113,6 +113,22 @@ class ForumController extends Controller
 
         return redirect()->back()
             ->with('msg', 'Added success');
+
+    }
+    public function editreply(Request $request)
+    {
+
+        $post = new \App\ForumReply;
+        $post->where('id',$request->post_id)->update(
+            [
+
+                'id' => $request->post_id,
+                'post_text' => $request->post_text,
+                'updated_at'=>getGmtTime()
+            ]);
+
+        return redirect()->back()
+            ->with('status', 'Added success');
 
     }
 

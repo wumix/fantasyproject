@@ -135,7 +135,6 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
 
-
         $userActionKey = 'user_signup';
         $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
         $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
@@ -143,7 +142,7 @@ class RegisterController extends Controller
         foreach ($tournaments_list as $row) {
             $array = array(
                 ['tournament_id' => $row['id'], 'action_key' =>
-                    'pusrchase_tournament', 'user_id' => \Auth::id(), 'points_scored' => $actionPoints]
+                    'pusrchase_tournament', 'user_id' => $user->id, 'points_scored' => $actionPoints]
             );
             \App\UserPointsScored::insert($array);
         }

@@ -115,7 +115,7 @@ class User extends Authenticatable
                 foreach($tournaments_list as $row){
                     $array = array(
                         ['tournament_id'=>$row['id'],'action_key' =>
-                            'pusrchase_tournament', 'user_id' => \Auth::id(), 'points_scored' =>$actionPoints]
+                            'pusrchase_tournament', 'user_id' =>$user->id, 'points_scored' =>$actionPoints]
                     );
                     \App\UserPointsScored::insert($array);
                 }

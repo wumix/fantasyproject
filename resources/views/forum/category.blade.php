@@ -65,11 +65,13 @@
             </div>
 
             <div class="col-md-12 no-padding area_creat_topic">
+                @if(\Auth::check())
                 <div class="col-md-12">
                     <button href="#" data-toggle="modal"
                             data-target="#myModal" class="creat_topic_btn">Create Topic
                     </button>
                 </div>
+                @endif
             {{--<button  type="button" id="1" data-id="{{$post['id']}}"  data-toggle="modal"--}}
             {{--data-target="#myModal" class="open-AddBookDialog">Reply</button>--}}
             <!---Section-start-->

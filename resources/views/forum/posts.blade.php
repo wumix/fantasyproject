@@ -403,11 +403,14 @@
 
 
             <div class="col-md-12 no-padding inner_area_section">
+
+                @if(\Auth::check())
                 <div class="col-md-12">
                     <button href="#" data-toggle="modal"
                             data-target="#create_topic" class="creat_topic_btn">Add Topic
                     </button>
                 </div>
+                @endif
 
                 <!---Section-start-->
                 <ul class="list_icon">

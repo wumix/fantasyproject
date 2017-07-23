@@ -50,7 +50,17 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('loginForm');
     Route::get('/signup', 'Auth\RegisterController@showUserRegistrationForm')->name('signUp');
     Route::get('/tournament-detail/{tournament_id}', 'User\TournamentsController@showTournamentDetails')->name('showTournament');
+    Route::group(['prefix' => 'forums'], function () {
+        Route::get('/', 'Forums\ForumController@index')->name('Forums');
+        Route::get('category/{id}', 'Forums\ForumController@cagetory')->name('forumCategory');
+        Route::get('post/{id}', 'Forums\ForumController@categoryPosts')->name('categoryposts');
+        Route::post('subact/{id}', 'Forums\ForumController@addpost')->name('subcat');
+        Route::post('addtopic/{cat_id}', 'Forums\ForumController@addtopic')->name('addtopic');
+        Route::post('reply/', 'Forums\ForumController@reply')->name('reply');
+        Route::post('editpost/', 'Forums\ForumController@edit')->name('editpost');
+        Route::post('editpostreply/', 'Forums\ForumController@editreply')->name('editpostreply');
 
+    });
     Route::group(['middleware' => ['is_user']], function () {
 
 
@@ -91,17 +101,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/transfer/{team_id}/{player_id}/{tournament_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
             Route::get('/congrats/{team_id}', 'User\TournamentsController@sucessteam')->name('team-completed');
         });
-        Route::group(['prefix' => 'forums'], function () {
-            Route::get('/', 'Forums\ForumController@index')->name('Forums');
-            Route::get('category/{id}', 'Forums\ForumController@cagetory')->name('forumCategory');
-            Route::get('post/{id}', 'Forums\ForumController@categoryPosts')->name('categoryposts');
-            Route::post('subact/{id}', 'Forums\ForumController@addpost')->name('subcat');
-            Route::post('addtopic/{cat_id}', 'Forums\ForumController@addtopic')->name('addtopic');
-            Route::post('reply/', 'Forums\ForumController@reply')->name('reply');
-            Route::post('editpost/', 'Forums\ForumController@edit')->name('editpost');
-            Route::post('editpostreply/', 'Forums\ForumController@editreply')->name('editpostreply');
 
-        });
         Route::group(['prefix' => 'dashboard'], function () {
             Route::get('/', 'DashboardController@index')->name('UserDashboard');
             Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');

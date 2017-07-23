@@ -282,15 +282,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('paypal/{id}', array('as' => 'addmoney.paypal', 'uses' => 'MembershipController@postPaymentWithpaypal',));
     Route::get('paypal', array('as' => 'payment.status', 'uses' => 'MembershipController@getPaymentStatus',));
     Route::post('test', array('as' => 'test', 'uses' => 'MembershipController@subscribeMembership',));
-    Route::group(['prefix' => 'forums'], function () {
-        Route::get('/', 'Forums\ForumController@index')->name('Forums');
-        Route::get('category/{id}', 'Forums\ForumController@cagetory')->name('forumCategory');
-        Route::get('post/{id}', 'Forums\ForumController@categoryPosts')->name('categoryposts');
-        Route::post('subact/{id}', 'Forums\ForumController@addpost')->name('subcat');
-        Route::post('addtopic/{cat_id}', 'Forums\ForumController@addtopic')->name('addtopic');
-        Route::post('reply/', 'Forums\ForumController@reply')->name('reply');
-        Route::post('editpost/', 'Forums\ForumController@edit')->name('editpost');
-        Route::post('editpostreply/', 'Forums\ForumController@editreply')->name('editpostreply');
 
-    });
 });

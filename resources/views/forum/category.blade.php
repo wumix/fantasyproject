@@ -75,6 +75,7 @@
             {{--<button  type="button" id="1" data-id="{{$post['id']}}"  data-toggle="modal"--}}
             {{--data-target="#myModal" class="open-AddBookDialog">Reply</button>--}}
             <!---Section-start-->
+                    @include('adminlte::layouts.form_errors')
                 <div class="col-md-12">
                     <div class="table-responsive">
                         <table class="table">

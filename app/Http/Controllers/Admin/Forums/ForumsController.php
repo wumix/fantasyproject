@@ -26,8 +26,18 @@ class ForumsController extends Controller
 
 
     }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+
+
+            'name' => 'required|unique:forum_categories',
+
+        ]);
+    }
     function addCategoryPost(Request $request){
        // dd($request->all());
+        $this->validator($request->all())->validate();
         $cat=new \App\ForumCategory;
         $cat->name=$request->name;
         $cat->is_approved=1;

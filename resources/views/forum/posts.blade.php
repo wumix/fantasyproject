@@ -608,7 +608,7 @@
                     <input type="hidden" id="edit_post_id" name="post_id" value=""/>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Post</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                     {!! Form::close() !!}
                     <div class="modal-footer">
@@ -649,7 +649,7 @@
                     <input type="hidden" id="edit_post_reply_id" name="post_id" value=""/>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Post</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                     {!! Form::close() !!}
                     <div class="modal-footer">

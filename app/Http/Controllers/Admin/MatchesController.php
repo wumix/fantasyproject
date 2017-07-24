@@ -75,10 +75,19 @@ foreach ($players['team_players'] as $key=>$val){
             ->with('status', 'Teams Added sucessfully');
     }
     public function addMatch(Request $request) {
-        //dd($request->all());
+
+        $request->request->remove('team_1_logo');
         $this->objMatch->fill($request->all());
+        if($request->hasFile('team_1_logo')){
+            $files = uploadInputs($request->file('team_1_logo'), 'team_logos');
+            $this->objMatch->team_1_logo=$files;
+        }
+        if($request->hasFile('team_2_logo')){
+            $files = uploadInputs($request->file('team_2_logo'), 'team_logos');
+            $this->objMatch->team_1_logo=$files;
+        }
         $this->objMatch->save();
-        return redirect()
+       return redirect()
                         ->route('editMatchForm', ['match_id' => $this->objMatch->id])
                         ->with('status', 'Match Saved');
     }
@@ -118,6 +127,7 @@ foreach ($players['team_players'] as $key=>$val){
     }
 
     function postAddMatchPlayers($match_id, Request $request) {
+        dd($request->all());
         $objMatch = \App\Match::findORFail($match_id);
         $objMatch->match_players()->sync(array_filter($request->player));
         return redirect()->back()->with('status', 'Match player score updated.');

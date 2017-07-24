@@ -25,16 +25,16 @@ use Illuminate\Http\Request;
     /**
      * Product
      */
-     Route::resource('tournaments', 'Api\TournamentsController', ['only' => [ 'index'
+     Route::resource('tournaments', 'Api\TournamentsController', ['only' => [ 'index','show'
      ]]);
     /**
      * Laundries
      */
     //Route::post('nearest-laundry', 'Api\LaundryController@getNearByLocation');
-    Route::get('laundries', 'Api\LaundryController@laundries');
+
 
     Route::group(['middleware' => 'jwt.auth'], function () {
-        Route::resource('tournaments', 'Api\TournamentsController',['except' => [ 'index'
+        Route::resource('tournaments', 'Api\TournamentsController',['except' => [ 'index','show'
         ]]);
     });
 });

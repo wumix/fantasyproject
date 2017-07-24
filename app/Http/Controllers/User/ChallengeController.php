@@ -23,7 +23,7 @@ class ChallengeController extends Controller
     }
 
     public function sendChallenge(Request $request)
-    { //user2 id is the id to whom challenge is being sent
+    {
         $request->request->remove('_token');
         $request->request->add(['tournament_id' => config('const.tournament_id')]);
         $data = $this->userChallenge->where(['user_1_id' => $request->user_1_id, 'user_2_id' => $request->user_2_id])->first();

@@ -56,15 +56,27 @@ class TournamentsController extends Controller
 
     }
 
-    public function show($id)
+    public function show($tournament_id)
     {
-        $tournament_detail = \App\Tournament::find($id);
-        if (empty($tournament_detail)) {
-            return response()->json(['message' => 'Not tournament Found', 'more_info' => []], 404);
+        $fixture_details = \App\Tournament::where('id', $tournament_id)->with(['tournament_matches' => function ($query) {
+            $query->orderBy('start_date', 'asc');
+
+        }])->first();
+        if (empty($fixture_details['tournament_matches'])) {
+            return response()->json(['message' => 'No tournament Found', 'more_info' => []], 404);
 
 
         } else {
-            return response()->json($tournament_detail, 200);
+            foreach ($fixture_details['tournament_matches'] as &$row) {
+                $row['start_date']=formatDate($row['start_date']);
+                $row['start_time']=formatTime($row['end_date']);
+                $row['team_1_logo']=getUploadsPath($row['team_1_logo']);
+                $row['team_2_logo']=getUploadsPath($row['team_2_logo']);
+                unset($row['end_date'],$row['deleted_at']);
+            }
+
+            $fixtures['fixtures']=$fixture_details['tournament_matches'];
+            return response()->json($fixtures, 200);
 
         }
 

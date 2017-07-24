@@ -55,6 +55,14 @@ Games
                         <input required name="end_date" class="datetimepicker form-control" type="text">
                     </div>
                     <div class="form-group">
+                        <label>Team 1 Logo</label>
+                        <input required name="team_1_logo" type="file"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Team 2 logo</label>
+                        <input required name="team_2_logo" type="file"/>
+                    </div>
+                    <div class="form-group">
                     <button type="submit" class="btn btn-primary">Add</button>
                     </div>
                             {!! Form::close() !!}

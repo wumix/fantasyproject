@@ -72,7 +72,7 @@ class TournamentsController extends Controller
                 $row['start_time']=formatTime($row['end_date']);
                 $row['team_1_logo']=getUploadsPath($row['team_1_logo']);
                 $row['team_2_logo']=getUploadsPath($row['team_2_logo']);
-                unset($row['end_date'],$row['deleted_at']);
+                unset($row['end_date'],$row['deleted_at'],$row['created_at'],$row['updated_at']);
             }
 
             $fixtures['fixtures']=$fixture_details['tournament_matches'];

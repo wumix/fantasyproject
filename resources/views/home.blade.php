@@ -344,6 +344,21 @@
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Australia Women Vs South Africa Women
+                                </div>
+                                <div class="project-name">
+                                    Australia Women won by 59 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
                         <div class="portfolio-box-caption">
@@ -456,21 +471,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Australia Women Vs South Africa Women
-                                </div>
-                                <div class="project-name">
-                                    Australia Women won by 59 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+
 
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/203.jpg" class="portfolio-box">

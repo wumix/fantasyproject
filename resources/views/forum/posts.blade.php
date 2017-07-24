@@ -43,7 +43,7 @@
         }
 
         .hour_text {
-            width: 8%;
+            width: 17%;
             display: inline-block;
             font-size: 14px;
             color: #d3d3d3;

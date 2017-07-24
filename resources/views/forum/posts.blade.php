@@ -516,7 +516,7 @@
                     <div class="form-group">
 
                         <textarea required id="add_topic_text_area" name="description" class="form-control"
-                                  id="textarea"
+
                                   placeholder="Write details about your pet"
                                   rows="6"></textarea>
 
@@ -680,11 +680,11 @@
 
     <script>
         $( document ).ready(function() {
-            $('textarea').wysihtml5({
-                "image": false,
-                "blockquote": true,
-                "lists": true
-            });
+//            $('textarea').wysihtml5({
+//                "image": false,
+//                "blockquote": true,
+//                "lists": true
+//            });
             $('#edittextarea').wysihtml5({
                 "image": false,
                 "blockquote": true,

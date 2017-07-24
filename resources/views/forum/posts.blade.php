@@ -695,11 +695,7 @@
                 "blockquote": true,
                 "lists": true
             });
-            $('#editreplytextarea').wysihtml5({
-                "image": false,
-                "blockquote": true,
-                "lists": true
-            });
+            
             $('#add_topic_text_area').wysihtml5({
                 "image": false,
                 "blockquote": true,

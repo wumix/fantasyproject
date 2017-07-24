@@ -679,7 +679,7 @@
     {!! Html::script('assets-new/js/handlebars.runtime.min.js');!!}
 
     <script>
-        jQuery(window).load(function (){
+        document.ready(function (){
 
             $('#add_topic_textarea').wysihtml5({
                 "image": false,

@@ -166,15 +166,21 @@
     {!! Html::script('js/tinymce/tinymce.min.js'); !!}
     {!! Html::script('js/tinymce.js');!!}
     <script>
-        $(document).on("click", ".creat_topic_btn", function () {
+        document.ready(function (){
 
-            // $('#post-data').wysihtml5();
-            $('textarea').wysihtml5({
+            $('#textarea').wysihtml5({
                 "image": false,
                 "blockquote": true,
                 "lists": true
             });
         });
+
+
+
+
+
+
+
 
             </script>
     @endsection

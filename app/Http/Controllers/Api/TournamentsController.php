@@ -26,20 +26,23 @@ class TournamentsController extends Controller
         $tournamnets['upcoming'] = [];
         $data = $this->tournamnetObj->orderBy('start_date', 'DESC')->get()->toArray();
 
-        foreach ($data as &$tour) {
+        foreach ($data as $tour) {
             if ($tour['start_date'] < getGmtTime() && $tour['end_date'] < getGmtTime()) {
 
                 $tour['start_date'] = formatDate($tour['start_date']);
+                $tour['end_date'] = formatDate($tour['start_date']);
                 $tour['t_logo'] = getUploadsPath($tour['t_logo']);
                 $tournamnets['previous'][] = $tour;
             }
             if ($tour['start_date'] < getGmtTime() && $tour['end_date'] > getGmtTime()) {
                 $tour['start_date'] = formatDate($tour['start_date']);
+                $tour['end_date'] = formatDate($tour['start_date']);
                 $tour['t_logo'] = getUploadsPath($tour['t_logo']);
                 $tournamnets['current'][] = $tour;
             }
             if ($tour['start_date'] > getGmtTime() && $tour['end_date'] > getGmtTime()) {
                 $tour['start_date'] = formatDate($tour['start_date']);
+                $tour['end_date'] = formatDate($tour['start_date']);
                 $tour['t_logo'] = getUploadsPath($tour['t_logo']);
                 $tournamnets['upcoming'][] = $tour;
             }

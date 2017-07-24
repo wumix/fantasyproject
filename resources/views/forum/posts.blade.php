@@ -476,7 +476,7 @@
                                                 @endif
 
                                         </div>
-                                        {{--<a href="#" class="edit_btn_reply_second">Reply</a>--}}
+                                        <a href="#" class="edit_btn_reply_second">Reply</a>
 
                                         </p>
 

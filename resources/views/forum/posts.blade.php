@@ -696,11 +696,7 @@
                 "blockquote": true,
                 "lists": true
             });
-            $('#editreplytextarea').wysihtml5({
-                "image": false,
-                "blockquote": true,
-                "lists": true
-            });
+
 
 
 
@@ -752,6 +748,11 @@
 
             $(".modal-body #edit_post_reply_id").val(postId);
             $('#editreplytextarea').val(k);
+            $('#editreplytextarea').wysihtml5({
+                "image": false,
+                "blockquote": true,
+                "lists": true
+            });
 
 
         });

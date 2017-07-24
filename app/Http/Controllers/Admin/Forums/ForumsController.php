@@ -46,9 +46,9 @@ class ForumsController extends Controller
             $cat->description = $request->description;
             $cat->created_at = getGmtTime();
             $cat->save();
-            return redirect()->back()->with('status', 'Caategory Added');;
+            return redirect()->back()->with('status', 'Caategory Added');
         }else{
-            redirect()->back();
+            return redirect()->back()->with('status', 'Caategory Added');
         }
     }
     public  function listcategory(){

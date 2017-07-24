@@ -11,7 +11,7 @@ Games
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Add Categorys</h3>
+                    <h3 class="box-title">Edit Category</h3>
                 </div>
                 <div class="box-body">
                     @include('adminlte::layouts.form_errors')
@@ -28,7 +28,7 @@ Games
                     </div>
 
                     <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                             {!! Form::close() !!}
                     </div>

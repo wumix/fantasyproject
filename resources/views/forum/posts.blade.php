@@ -453,7 +453,7 @@
                             @foreach($post['replies'] as $row)
                                 <div class="comment_area_second">
             <span class="image_circle_img">
-                <img class="img-responsive " src="{{getUploadsPath($row['profile_pic'])}}" alt=""/>
+                <img class="img-responsive " src="{{getUploadsPath($row['user']['profile_pic'])}}" alt=""/>
             </span>
                                     <span class="heading">
                 {{$row['user']['name']}}

@@ -407,7 +407,7 @@
                 @if(\Auth::check())
                 <div class="col-md-12">
                     <button href="#" data-toggle="modal"
-                            data-target="#create_topic" class="creat_topic_btn">Add Topic
+                            data-target="#create_topic" class="creat_topic_btn">Add Post
                     </button>
                 </div>
                 @endif

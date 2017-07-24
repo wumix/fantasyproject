@@ -85,7 +85,7 @@
 
                                 <th>Posts</th>
 
-                                <th>Activity</th>
+                                <th>Active</th>
                             </tr>
                             </thead>
                             <tbody style="padding:28px 0 13px 0;">
@@ -95,9 +95,10 @@
                                             <a href="{{route('categoryposts',['id'=>$cat['slug']])}}">{{$cat['name']}}</a></strong>
                                     </td>
                                     <td>{{$categories['name']}}</td>
-                                    <td style="font-size:18px;color: #d3d3d3;"><i class="fa fa-user"
-                                                                                  aria-hidden="true"></i></td>
+
                                     <td>{{count($cat['posts'])}}</td>
+                                    <td style="font-size:18px;color: #d3d3d3;"><i class="fa fa-user"
+                                                                                  aria-hidden="true"></i>Yes</td>
 
 
                                 </tr>

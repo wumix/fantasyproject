@@ -440,10 +440,10 @@
                                         @endif
                                     </div>
                                     {{--<a href="#" class="edit_btn_two">Reply</a>--}}
-
+                                    @if($post['user_id']==\Auth::id())
                                     <a href="#" id="1" data-id="{{$post['id']}}" data-toggle="modal"
                                        data-target="#myModal" class="post_reply_button">Reply</a>
-
+                                        @endif
 
                                     </p>
 
@@ -453,7 +453,7 @@
                             @foreach($post['replies'] as $row)
                                 <div class="comment_area_second">
             <span class="image_circle_img">
-                <img class="img-responsive " src="{{getUploadsPath($row['user']['profile_pic'])}}" alt=""/>
+                <img class="img-responsive " src="{{getUploadsPath($row['profile_pic'])}}" alt=""/>
             </span>
                                     <span class="heading">
                 {{$row['user']['name']}}
@@ -515,8 +515,8 @@
                     </div>
                     <div class="form-group">
 
-                        <textarea required id="add_topic_text_area" name="description" class="form-control"
-
+                        <textarea required name="description" class="form-control"
+                                  id="textarea"
                                   placeholder="Write details about your pet"
                                   rows="6"></textarea>
 
@@ -679,33 +679,14 @@
     {!! Html::script('assets-new/js/handlebars.runtime.min.js');!!}
 
     <script>
-        $( document ).ready(function() {
-//            $('textarea').wysihtml5({
-//                "image": false,
-//                "blockquote": true,
-//                "lists": true
-//            });
-            $('#edittextarea').wysihtml5({
-                "image": false,
-                "blockquote": true,
-                "lists": true
-            });
-            $('#editreplytextarea').wysihtml5({
-                "image": false,
-                "blockquote": true,
-                "lists": true
-            });
-            
-            $('#add_topic_text_area').wysihtml5({
-                "image": false,
-                "blockquote": true,
-                "lists": true
-            });
 
-        });
         $(document).on("click", ".post_reply_button", function () { //open reply form on post
             // $('#post-data').wysihtml5();
-
+            $('textarea').wysihtml5({
+                "image": false,
+                "blockquote": true,
+                "lists": true
+            });
 
 //            var liopo='border-r1-'+postId;
 //            var t=($("#"+liopo).text());
@@ -721,9 +702,13 @@
 //            alert(t);
             var postId = $(this).data('id');
             var k = $('#reply-' + postId).html();
-
+             alert(k);
             //$('edittextarea').html(k);
-
+            $('#edittextarea').wysihtml5({
+                "image": false,
+                "blockquote": true,
+                "lists": true
+            });
             $(".modal-body #edit_post_id").val(postId);
             $('#edittextarea').html(k);
 
@@ -738,9 +723,13 @@
 //            alert(t);
             var postId = $(this).data('id');
             var k = $('#repparah-' + postId).html();
-
+            alert(k);
             //$('edittextarea').html(k);
-
+            $('#editreplytextarea').wysihtml5({
+                "image": false,
+                "blockquote": true,
+                "lists": true
+            });
             $(".modal-body #edit_post_reply_id").val(postId);
             $('#editreplytextarea').html(k);
 

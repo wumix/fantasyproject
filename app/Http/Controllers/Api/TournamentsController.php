@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\api;
+
 use \JWTAuth;
 use App\Tournament;
 use Illuminate\Http\Request;
@@ -20,15 +21,27 @@ class TournamentsController extends Controller
 //dd(apache_request_headers());
         // dd(getGmtTime());
         $tournamnets = [];
-        foreach ($this->tournamnetObj->get() as $tour) {
-            if ($tour['stat_date'] < getGmtTime() && $tour['end_date'] < getGmtTime()) {
+        $tournamnets['previous'] = [];
+        $tournamnets['current'] = [];
+        $tournamnets['upcomming'] = [];
+        $data = $this->tournamnetObj->orderBy('start_date', 'DESC')->get()->toArray();
+
+        foreach ($data as &$tour) {
+            if ($tour['start_date'] < getGmtTime() && $tour['end_date'] < getGmtTime()) {
+
+                $tour['start_date'] = formatDate($tour['start_date']);
+                $tour['t_logo'] = getUploadsPath($tour['t_logo']);
                 $tournamnets['previous'][] = $tour;
             }
-            if ($tour['stat_date'] < getGmtTime() && $tour['end_date'] > getGmtTime()) {
+            if ($tour['start_date'] < getGmtTime() && $tour['end_date'] > getGmtTime()) {
+                $tour['start_date'] = formatDate($tour['start_date']);
+                $tour['t_logo'] = getUploadsPath($tour['t_logo']);
                 $tournamnets['current'][] = $tour;
             }
-            if ($tour['stat_date'] > getGmtTime() && $tour['end_date'] > getGmtTime()) {
-                $tournamnets['upcomming'][] = $tour;
+            if ($tour['start_date'] > getGmtTime() && $tour['end_date'] > getGmtTime()) {
+                $tour['start_date'] = formatDate($tour['start_date']);
+                $tour['t_logo'] = getUploadsPath($tour['t_logo']);
+                $tournamnets['upcoming'][] = $tour;
             }
 
         }
@@ -40,11 +53,11 @@ class TournamentsController extends Controller
     public function show($id)
     {
         $tournament_detail = \App\Tournament::find($id);
-        if(empty($tournament_detail)){
-            return response()->json(['message' => 'Not tournament Found','more_info'=>[]], 404);
+        if (empty($tournament_detail)) {
+            return response()->json(['message' => 'Not tournament Found', 'more_info' => []], 404);
 
 
-        }else{
+        } else {
             return response()->json($tournament_detail, 200);
 
         }

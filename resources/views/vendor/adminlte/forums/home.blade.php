@@ -77,12 +77,7 @@
         $('.is_approve').change(function () {
 
            var t= $(this).parent().children().val();
-
-
-
-
-
-            $.ajax({
+           $.ajax({
                 type: 'POST',
                 url: '{{route('approve')}}',
                 data: {

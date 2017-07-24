@@ -702,7 +702,7 @@
 //            alert(t);
             var postId = $(this).data('id');
             var k = $('#reply-' + postId).html();
-             alert(k);
+            // alert(k);
             //$('edittextarea').html(k);
             $('#edittextarea').wysihtml5({
                 "image": false,
@@ -723,7 +723,7 @@
 //            alert(t);
             var postId = $(this).data('id');
             var k = $('#repparah-' + postId).html();
-            alert(k);
+           // alert(k);
             //$('edittextarea').html(k);
             $('#editreplytextarea').wysihtml5({
                 "image": false,

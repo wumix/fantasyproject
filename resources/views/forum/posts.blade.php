@@ -1,7 +1,7 @@
 @extends('layouts.app')
 {{--{{dd($posts->toArray())}}--}}
 @section('title')
-    Challenge
+    Gamithon Forums
 @stop
 @section('css')
     {!!  Html::style('assets-new/css/bootstrap3-wysihtml5.css'); !!}

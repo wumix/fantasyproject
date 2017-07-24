@@ -75,7 +75,7 @@
     <script>
 
         $('.is_approve').change(function () {
-
+         return confirm("Are you sure");
            var t= $(this).parent().children().val();
            $.ajax({
                 type: 'POST',

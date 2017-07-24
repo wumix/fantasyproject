@@ -720,11 +720,11 @@
             // alert(k);
             //$('edittextarea').html(k);
 
-            $('#edittextarea').wysihtml5({
-                "image": false,
-                "blockquote": true,
-                "lists": true
-            });
+//            $('#edittextarea').wysihtml5({
+//                "image": false,
+//                "blockquote": true,
+//                "lists": true
+//            });
             $(".modal-body #edit_post_id").val(postId);
             $('#edittextarea').val(k);
 
@@ -749,11 +749,11 @@
 
             $(".modal-body #edit_post_reply_id").val(postId);
             $('#editreplytextarea').val(k);
-            $('#editreplytextarea').wysihtml5({
-                "image": false,
-                "blockquote": true,
-                "lists": true
-            });
+//            $('#editreplytextarea').wysihtml5({
+//                "image": false,
+//                "blockquote": true,
+//                "lists": true
+//            });
 
 
         });

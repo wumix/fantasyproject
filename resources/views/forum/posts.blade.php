@@ -726,6 +726,7 @@
 //                "lists": true
 //            });
             $(".modal-body #edit_post_id").val(postId);
+            alert(k);
             $('#edittextarea').val(k);
 
 

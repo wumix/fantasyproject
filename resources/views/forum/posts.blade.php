@@ -679,14 +679,27 @@
     {!! Html::script('assets-new/js/handlebars.runtime.min.js');!!}
 
     <script>
-
-        $(document).on("click", ".post_reply_button", function () { //open reply form on post
-            // $('#post-data').wysihtml5();
+        $(document).ready(function () {
             $('textarea').wysihtml5({
                 "image": false,
                 "blockquote": true,
                 "lists": true
             });
+            $('#edittextarea').wysihtml5({
+                "image": false,
+                "blockquote": true,
+                "lists": true
+            });
+            $('#editreplytextarea').wysihtml5({
+                "image": false,
+                "blockquote": true,
+                "lists": true
+            });
+        });
+
+        $(document).on("click", ".post_reply_button", function () { //open reply form on post
+            // $('#post-data').wysihtml5();
+
 
 //            var liopo='border-r1-'+postId;
 //            var t=($("#"+liopo).text());
@@ -704,11 +717,7 @@
             var k = $('#reply-' + postId).html();
             // alert(k);
             //$('edittextarea').html(k);
-            $('#edittextarea').wysihtml5({
-                "image": false,
-                "blockquote": true,
-                "lists": true
-            });
+
             $(".modal-body #edit_post_id").val(postId);
             $('#edittextarea').html(k);
 
@@ -725,11 +734,7 @@
             var k = $('#repparah-' + postId).html();
            // alert(k);
             //$('edittextarea').html(k);
-            $('#editreplytextarea').wysihtml5({
-                "image": false,
-                "blockquote": true,
-                "lists": true
-            });
+
             $(".modal-body #edit_post_reply_id").val(postId);
             $('#editreplytextarea').html(k);
 

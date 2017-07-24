@@ -23,8 +23,8 @@ Games
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <input  required class="form-control"
-                                  name="description"  value="{{$category['description']}}" ></input>
+                        <textarea placeholder="{{$category['description']}}"  required class="form-control"
+                                  name="description" cols="6" value="{{$category['description']}}" ></textarea>
                     </div>
 
                     <div class="form-group">

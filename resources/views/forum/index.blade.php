@@ -475,13 +475,13 @@
 
                         </ul>
                     </div>
-                    {{--<div class="orang_forum_second">--}}
+                    <div class="orang_forum_second">
                         {{--<span class="last_post_text">Last Post</span>--}}
                         {{--<span class="head_forum">--}}
                         {{--Today 10:32 pm--}}
                     {{--by Arsalan--}}
                     {{--</span>--}}
-                    {{--</div>--}}
+                    </div>
                 </div>
                 <!---Section-End-->
             </div>

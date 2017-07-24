@@ -137,7 +137,7 @@
                             </div>
                             <div class="form-group">
 
-                                    <textarea name="post_text" id="textarea"
+                                    <textarea required name="post_text" id="textarea"
                                               style="height:200px;" class="form-control"></textarea>
                             </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Forums;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class ForumsController extends Controller
 {

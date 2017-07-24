@@ -436,7 +436,7 @@
                                             <a href="#" data-id="{{$post['id']}}"
                                                data-target="#editModal" data-toggle="modal"
                                                class="edit_btn_edit" ><i class="fa fa-pencil" aria-hidden="true"></i>
-                                                Edit k</a>
+                                                Edit</a>
                                         @endif
                                     </div>
                                     {{--<a href="#" class="edit_btn_two">Reply</a>--}}
@@ -472,7 +472,7 @@
                                             <a href="#" data-id="{{$row['id']}}"
                                                data-target="#editReply" data-toggle="modal"
                                                class="edit_post_reply"><i class="fa fa-pencil" aria-hidden="true"></i>
-                                                Edit Me</a>
+                                                Edit </a>
                                                 @endif
 
                                         </div>
@@ -516,7 +516,7 @@
 
                         <textarea required name="description" class="form-control"
                                   id="add_topic_textarea"
-                                  placeholder="Write details about your pet"
+                                  placeholder="Write details "
                                   rows="6"></textarea>
 
                         {{--<textarea name="post_text" id="post-data"--}}
@@ -595,7 +595,7 @@
 
                         <textarea required name="post_text" class="form-control"
                                   id="edittextarea"
-                                  placeholder="Write details about your pet"
+                                  placeholder="Write details "
                                   rows="6"></textarea>
 
                         {{--<textarea name="post_text" id="post-data"--}}
@@ -636,7 +636,7 @@
 
                         <textarea required name="post_text" class="form-control"
                                   id="editreplytextarea"
-                                  placeholder="Write details about your pet"
+                                  placeholder="Write details"
                                   rows="6"></textarea>
 
                         {{--<textarea name="post_text" id="post-data"--}}

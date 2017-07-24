@@ -556,7 +556,7 @@
                     <div class="form-group">
 
                         <textarea required name="post_text" class="form-control"
-                                  id="textarea"
+                                  id="post_rep_text_area"
                                   placeholder="Write details about your pet"
                                   rows="6"></textarea>
 
@@ -686,7 +686,7 @@
                 "blockquote": true,
                 "lists": true
             });
-            $('textarea').wysihtml5({
+            $('#post_rep_text_area').wysihtml5({
                 "image": false,
                 "blockquote": true,
                 "lists": true

@@ -459,7 +459,7 @@
                 {{$row['user']['name']}}
             </span>
                                     <span class="hour_text">
-                10h
+               {{formatDate($row['updated_at'])}} {{formatTime($row['updated_at'])}}
             </span>
 
                                     <div class="section_reply">

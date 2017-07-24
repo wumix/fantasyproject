@@ -556,7 +556,7 @@
 
                         <textarea required name="post_text" class="form-control"
                                   id="post_rep_text_area"
-                                  placeholder="Write details about your pet"
+                                  placeholder="Write details"
                                   rows="6"></textarea>
 
                     </div>

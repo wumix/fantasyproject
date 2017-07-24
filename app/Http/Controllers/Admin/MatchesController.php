@@ -76,15 +76,15 @@ foreach ($players['team_players'] as $key=>$val){
     }
     public function addMatch(Request $request) {
 
-        $request->request->remove('team_1_logo');
+        
         $this->objMatch->fill($request->all());
         if($request->hasFile('team_1_logo')){
-            $files = uploadInputs($request->file('team_1_logo'), 'team_logos');
+            $files = uploadInputs($request->file('team_1_logo'), 'tournament_logos');
             $this->objMatch->team_1_logo=$files;
         }
         if($request->hasFile('team_2_logo')){
-            $files = uploadInputs($request->file('team_2_logo'), 'team_logos');
-            $this->objMatch->team_1_logo=$files;
+            $files = uploadInputs($request->file('team_2_logo'), 'tournament_logos');
+            $this->objMatch->team_2_logo=$files;
         }
         $this->objMatch->save();
        return redirect()

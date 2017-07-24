@@ -49,7 +49,7 @@ class ForumController extends Controller
 
         $form_cat->save();
         return redirect()->back()
-            ->with('status', 'Post Will Appear After Approval Form Admin');
+            ->with('status', 'Topic Will Appear After Approval Form Admin');
 
 
     }

@@ -344,6 +344,54 @@
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt=" DD VS GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    India Women vs Australia Women
+                                </div>
+                                <div class="project-name">
+                                    India Women won by 36 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="../img/portfolio/thumbnails/103.jpg" class="portfolio-box">
+                        <img src="../img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS KKR">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    India Women vs Australia Women
+                                </div>
+                                <div class="project-name">
+                                    India Women won by 36 runs
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt=" DD VS GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    India Women vs Australia Women
+                                </div>
+                                <div class="project-name">
+                                    India Women won by 36 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="KXIP VS KKR">
                         <div class="portfolio-box-caption">
@@ -439,54 +487,7 @@
                 </div>
 
 
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    England Women vs West Indies Women
-                                </div>
-                                <div class="project-name">
-                                    England Women won by 92 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
-                <div class="col-lg-4 col-sm-6">
-                    <a href="../img/portfolio/thumbnails/103.jpg" class="portfolio-box">
-                        <img src="../img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Pakistan Women vs Sri lanka Women
-                                </div>
-                                <div class="project-name">
-                                    Pakistan Women won by 75 runs
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Pakistan Women vs Sri lanka Women
-                                </div>
-                                <div class="project-name">
-                                    Pakistan Women won by 75 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
 
 

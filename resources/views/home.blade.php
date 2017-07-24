@@ -349,10 +349,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Australia Women Vs South Africa Women
+                                    England Women vs India Women
                                 </div>
                                 <div class="project-name">
-                                    Australia Women won by 59 runs
+                                    England Women won by 9 runs
                                 </div>
                             </div>
                         </div>

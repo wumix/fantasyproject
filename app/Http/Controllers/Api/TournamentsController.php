@@ -33,18 +33,21 @@ class TournamentsController extends Controller
                 $tour['end_date'] = formatDate($tour['start_date']);
                 $tour['t_logo'] = getUploadsPath($tour['t_logo']);
                 $tournamnets['previous'][] = $tour;
+                continue;
             }
             if ($tour['start_date'] < getGmtTime() && $tour['end_date'] > getGmtTime()) {
                 $tour['start_date'] = formatDate($tour['start_date']);
                 $tour['end_date'] = formatDate($tour['start_date']);
                 $tour['t_logo'] = getUploadsPath($tour['t_logo']);
                 $tournamnets['current'][] = $tour;
+                continue;
             }
             if ($tour['start_date'] > getGmtTime() && $tour['end_date'] > getGmtTime()) {
                 $tour['start_date'] = formatDate($tour['start_date']);
                 $tour['end_date'] = formatDate($tour['start_date']);
                 $tour['t_logo'] = getUploadsPath($tour['t_logo']);
                 $tournamnets['upcoming'][] = $tour;
+                continue;
             }
 
         }

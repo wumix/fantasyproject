@@ -691,6 +691,16 @@
                 "blockquote": true,
                 "lists": true
             });
+            $('#edittextarea').wysihtml5({
+                "image": false,
+                "blockquote": true,
+                "lists": true
+            });
+            $('#editreplytextarea').wysihtml5({
+                "image": false,
+                "blockquote": true,
+                "lists": true
+            });
 
 
 
@@ -717,11 +727,7 @@
             var k = $('#reply-' + postId).html();
             // alert(k);
             //$('edittextarea').html(k);
-            $('#edittextarea').wysihtml5({
-                "image": false,
-                "blockquote": true,
-                "lists": true
-            });
+
 
             $(".modal-body #edit_post_id").val(postId);
             $('#edittextarea').html(k);
@@ -739,11 +745,7 @@
             var k = $('#repparah-' + postId).html();
            // alert(k);
             //$('edittextarea').html(k);
-            $('#editreplytextarea').wysihtml5({
-                "image": false,
-                "blockquote": true,
-                "lists": true
-            });
+
 
             $(".modal-body #edit_post_reply_id").val(postId);
             $('#editreplytextarea').html(k);

@@ -440,9 +440,10 @@
                                         @endif
                                     </div>
                                     {{--<a href="#" class="edit_btn_two">Reply</a>--}}
-
+                       @if(\Auth::id())
                                     <a href="#" id="1" data-id="{{$post['id']}}" data-toggle="modal"
                                        data-target="#myModal" class="post_reply_button">Reply</a>
+                                    @endif
 
                                     </p>
 
@@ -476,7 +477,7 @@
                                                 @endif
 
                                         </div>
-                                        <a href="#" class="edit_btn_reply_second">Reply</a>
+                                        {{--<a href="#" class="edit_btn_reply_second">Reply</a>--}}
 
                                         </p>
 

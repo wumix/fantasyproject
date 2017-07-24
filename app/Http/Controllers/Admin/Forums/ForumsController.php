@@ -37,14 +37,17 @@ class ForumsController extends Controller
     }
     function addCategoryPost(Request $request){
        // dd($request->all());
-        $this->validator($request->all())->validate();
-        $cat=new \App\ForumCategory;
-        $cat->name=$request->name;
-        $cat->is_approved=1;
-        $cat->slug=slugify($request->name);
-        $cat->description=$request->description;
-        $cat->created_at=getGmtTime();
-        $cat->save();
+        if($this->validator($request->all())->validate()) {
+            $cat = new \App\ForumCategory;
+            $cat->name = $request->name;
+            $cat->is_approved = 1;
+            $cat->slug = slugify($request->name);
+            $cat->description = $request->description;
+            $cat->created_at = getGmtTime();
+            $cat->save();
+        }else{
+            redirect()->back();
+        }
     }
     public  function listcategory(){
         $data['lists'] = \App\ForumCategory::where('parent_id',NULL)->with('children')->paginate(10);

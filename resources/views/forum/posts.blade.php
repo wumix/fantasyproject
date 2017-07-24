@@ -435,15 +435,14 @@
                                         @if($post['user_id']==\Auth::id())
                                             <a href="#" data-id="{{$post['id']}}"
                                                data-target="#editModal" data-toggle="modal"
-                                               class="edit_btn_edit"><i class="fa fa-pencil" aria-hidden="true"></i>
-                                                Edit</a>
+                                               class="edit_btn_edit" ><i class="fa fa-pencil" aria-hidden="true"></i>
+                                                Edit k</a>
                                         @endif
                                     </div>
                                     {{--<a href="#" class="edit_btn_two">Reply</a>--}}
-                                    @if($post['user_id']==\Auth::id())
+
                                     <a href="#" id="1" data-id="{{$post['id']}}" data-toggle="modal"
                                        data-target="#myModal" class="post_reply_button">Reply</a>
-                                        @endif
 
                                     </p>
 
@@ -560,8 +559,6 @@
                                   placeholder="Write details about your pet"
                                   rows="6"></textarea>
 
-                        {{--<textarea name="post_text" id="post-data"--}}
-                        {{--style="height:200px;" class="form-control wysiwyg"></textarea>--}}
                     </div>
 
                     <input type="hidden" id="post_id" name="post_id" value=""/>
@@ -679,18 +676,18 @@
     {!! Html::script('assets-new/js/handlebars.runtime.min.js');!!}
 
     <script>
-        document.ready(function (){
+        $(document).ready(function (){
 
-            $('#add_topic_textarea').wysihtml5({
-                "image": false,
-                "blockquote": true,
-                "lists": true
-            });
-            $('#post_rep_text_area').wysihtml5({
-                "image": false,
-                "blockquote": true,
-                "lists": true
-            });
+//            $('#add_topic_textarea').wysihtml5({
+//                "image": false,
+//                "blockquote": true,
+//                "lists": true
+//            });
+//            $('#post_rep_text_area').wysihtml5({
+//                "image": false,
+//                "blockquote": true,
+//                "lists": true
+//            });
 
 
 
@@ -710,13 +707,14 @@
 
         });
         $(document).on("click", ".edit_btn_edit", function () { //open post edit
-            // alert('asd');
+
 
 //            var liopo='border-r1-'+postId;
 //            var t=($("#"+liopo).text());
 //            alert(t);
             var postId = $(this).data('id');
             var k = $('#reply-' + postId).html();
+
             // alert(k);
             //$('edittextarea').html(k);
 
@@ -726,7 +724,7 @@
 //                "lists": true
 //            });
             $(".modal-body #edit_post_id").val(postId);
-            alert(k);
+
             $('#edittextarea').val(k);
 
 

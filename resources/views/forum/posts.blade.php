@@ -745,6 +745,7 @@
             var k = $('#repparah-' + postId).html();
            // alert(k);
             //$('edittextarea').html(k);
+            alert(k);
 
 
             $(".modal-body #edit_post_reply_id").val(postId);

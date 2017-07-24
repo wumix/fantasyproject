@@ -691,11 +691,7 @@
                 "blockquote": true,
                 "lists": true
             });
-            $('#edittextarea').wysihtml5({
-                "image": false,
-                "blockquote": true,
-                "lists": true
-            });
+
 
 
 
@@ -724,7 +720,11 @@
             // alert(k);
             //$('edittextarea').html(k);
 
-
+            $('#edittextarea').wysihtml5({
+                "image": false,
+                "blockquote": true,
+                "lists": true
+            });
             $(".modal-body #edit_post_id").val(postId);
             $('#edittextarea').val(k);
 
@@ -739,7 +739,8 @@
 //            alert(t);
             var postId = $(this).data('id');
             var k = $('#repparah-' + postId).html();
-            alert(k);
+
+
            // alert(k);
             //$('edittextarea').html(k);
 

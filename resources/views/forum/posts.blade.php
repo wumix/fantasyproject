@@ -730,7 +730,7 @@
 
 
             $(".modal-body #edit_post_id").val(postId);
-            $('#edittextarea').html(k);
+            $('#edittextarea').val(k);
 
 
         });
@@ -743,13 +743,15 @@
 //            alert(t);
             var postId = $(this).data('id');
             var k = $('#repparah-' + postId).html();
+            alert(k);
            // alert(k);
             //$('edittextarea').html(k);
-            alert(k);
+
+
 
 
             $(".modal-body #edit_post_reply_id").val(postId);
-            $('#editreplytextarea').html(k);
+            $('#editreplytextarea').val(k);
 
 
         });

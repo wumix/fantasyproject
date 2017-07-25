@@ -61,15 +61,9 @@ class TournamentsController extends Controller
 
 
     }
-    function array_filter_recursive($input)
-    {
-        foreach ($input as &$value) {
-            if (is_array($value)) {
-                $value = $this->array_filter_recursive($value);
-            }
-        }
-        return array_filter($input);
-    }
+
+
+
 
     public function tournament_players($tournament_id){
         $roles = \App\GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
@@ -82,7 +76,15 @@ class TournamentsController extends Controller
         ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
             $query->where('tournament_id', $tournament_id);
         })->get()->toArray();
-        $roles=$this->array_filter_recursive($roles);
+        foreach ($roles as &$role){
+            foreach ($role['players'] as $key=>&$player) {
+                if(empty($player['player_tournaments'])){
+                    
+                }
+
+            }
+        }
+
         return response()->json($roles);
 
     }

@@ -439,7 +439,7 @@ class TournamentsController extends Controller
         $currentNoPlayers = \App\UserTeam::find($request->team_id)->user_team_player()->count();
 
 
-        $data = [];
+
         $objResponse = [];
         $objResponse['success'] = false;
         if ($tournamentMaxPlayers > $currentNoPlayers) {

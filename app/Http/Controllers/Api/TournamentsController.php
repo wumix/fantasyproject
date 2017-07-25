@@ -76,6 +76,7 @@ class TournamentsController extends Controller
         ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
             $query->where('tournament_id', $tournament_id);
         })->get()->toArray();
+
         $tournament_players = [];
         foreach ($roles as &$role) {
             foreach ($role['players'] as $key => &$player) {
@@ -84,7 +85,29 @@ class TournamentsController extends Controller
 
 
                 } else {
-                    $player['profile_pic']=getUploadsPath($player['profile_pic']);
+                    $player['profile_pic'] = getUploadsPath($player['profile_pic']);
+                    if (empty($player['player_actual_teams'])) {
+                        $player['team_name'] = NULL;
+                    } else {
+                        $player['team_id'] = $player['player_actual_teams'][0]['id'];
+                        $player['team_name'] = $player['player_actual_teams'][0]['name'];
+                        unset($player['player_actual_teams']);
+                    }
+                    if (empty($player['player_tournaments'])) {
+
+                        $player['tournament_id'] = NULL;
+                        $player['tournament_name'] = NULL;
+                        $player['player_price'] = NULL;
+                    } else {
+
+                        $player['tournament_id'] = $player['player_tournaments'][0]['id'];
+                        $player['tournament_name'] = $player['player_tournaments'][0]['name'];
+                        $player['player_price'] = $player['player_tournaments'][0]['pivot']['player_id'];
+                        $player['player_role_id'] = $player['player_tournaments'][0]['pivot']['player_price'];
+                        unset($player['player_tournaments']);
+                        unset($player['pivot']);
+
+                    }
                     $tournament_players[$role['name']][] = $player;
                 }
 

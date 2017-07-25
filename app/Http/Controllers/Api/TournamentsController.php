@@ -63,8 +63,10 @@ class TournamentsController extends Controller
     }
 
 
-    public function tournament_players($tournament_id)
+    public function tournament_players(Request $request)
     {
+
+        $tournament_id = $request->id;
         $roles = \App\GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
             $q->where('tournament_id', $tournament_id);
         },
@@ -78,8 +80,11 @@ class TournamentsController extends Controller
         foreach ($roles as &$role) {
             foreach ($role['players'] as $key => &$player) {
                 if (empty($player['player_tournaments'])) {
+                    unset($role['players'][$key]);
+
 
                 }
+
 
             }
         }

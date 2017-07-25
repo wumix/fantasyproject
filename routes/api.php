@@ -23,7 +23,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('password/reset', 'Auth\ResetPasswordController@reset');
     Route::any('/sendpush', 'Api\OrdersController@sendPushMessage');
     Route::group(['prefix' => 'tournaments'], function () {
-        Route::get('/players/{id}', 'Api\TournamentsController@tournament_players');
+        Route::get('/players', 'Api\TournamentsController@tournament_players');
         Route::get('fixtures', 'Api\TournamentsController@tournament_fixtures');
         Route::resource('/', 'Api\TournamentsController', ['only' => ['index', 'show']]);
     });

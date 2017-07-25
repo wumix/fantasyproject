@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
- Route::group(['prefix' => 'v1'], function () {
+Route::group(['prefix' => 'v1'], function () {
     /**
      * Auth
      */
@@ -22,19 +22,15 @@ use Illuminate\Http\Request;
     Route::post('password/email', 'Auth\ForgotPasswordController@getResetToken');
     Route::post('password/reset', 'Auth\ResetPasswordController@reset');
     Route::any('/sendpush', 'Api\OrdersController@sendPushMessage');
-    /**
-     * Product
-     */
-     Route::resource('tournaments', 'Api\TournamentsController', ['only' => [ 'index','show'
-     ]]);
-    /**
-     * Laundries
-     */
-    //Route::post('nearest-laundry', 'Api\LaundryController@getNearByLocation');
+    Route::group(['prefix' => 'tournaments'], function () {
+        Route::get('/players/{id}', 'Api\TournamentsController@tournament_players');
+        Route::get('/fixtures/{id}', 'Api\TournamentsController@tournament_fixtures');
+        Route::resource('/', 'Api\TournamentsController', ['only' => ['index', 'show']]);
+    });
 
 
     Route::group(['middleware' => 'jwt.auth'], function () {
-        Route::resource('tournaments', 'Api\TournamentsController',['except' => [ 'index','show'
+        Route::resource('tournaments', 'Api\TournamentsController', ['except' => ['index', 'show'
         ]]);
     });
 });

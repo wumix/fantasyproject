@@ -63,9 +63,8 @@ class TournamentsController extends Controller
     }
 
 
-
-
-    public function tournament_players($tournament_id){
+    public function tournament_players($tournament_id)
+    {
         $roles = \App\GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
             $q->where('tournament_id', $tournament_id);
         },
@@ -76,10 +75,10 @@ class TournamentsController extends Controller
         ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
             $query->where('tournament_id', $tournament_id);
         })->get()->toArray();
-        foreach ($roles as &$role){
-            foreach ($role['players'] as $key=>&$player) {
-                if(empty($player['player_tournaments'])){
-                    
+        foreach ($roles as &$role) {
+            foreach ($role['players'] as $key => &$player) {
+                if (empty($player['player_tournaments'])) {
+
                 }
 
             }
@@ -88,7 +87,10 @@ class TournamentsController extends Controller
         return response()->json($roles);
 
     }
-    public  function tournament_fixtures($tournament_id){
+
+    public function tournament_fixtures(Request $request)
+    {
+        $tournament_id = $request->id;
         $fixture_details = \App\Tournament::where('id', $tournament_id)->with(['tournament_matches' => function ($query) {
             $query->orderBy('start_date', 'asc');
 
@@ -99,14 +101,14 @@ class TournamentsController extends Controller
 
         } else {
             foreach ($fixture_details['tournament_matches'] as &$row) {
-                $row['start_date']=formatDate($row['start_date']);
-                $row['start_time']=formatTime($row['end_date']);
-                $row['team_1_logo']=getUploadsPath($row['team_1_logo']);
-                $row['team_2_logo']=getUploadsPath($row['team_2_logo']);
-                unset($row['end_date'],$row['deleted_at'],$row['created_at'],$row['updated_at']);
+                $row['start_date'] = formatDate($row['start_date']);
+                $row['start_time'] = formatTime($row['end_date']);
+                $row['team_1_logo'] = getUploadsPath($row['team_1_logo']);
+                $row['team_2_logo'] = getUploadsPath($row['team_2_logo']);
+                unset($row['end_date'], $row['deleted_at'], $row['created_at'], $row['updated_at']);
             }
 
-            $fixtures['fixtures']=$fixture_details['tournament_matches'];
+            $fixtures['fixtures'] = $fixture_details['tournament_matches'];
             return response()->json($fixtures, 200);
 
         }

@@ -24,7 +24,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::any('/sendpush', 'Api\OrdersController@sendPushMessage');
     Route::group(['prefix' => 'tournaments'], function () {
         Route::get('/players/{id}', 'Api\TournamentsController@tournament_players');
-        Route::get('/fixtures/{id}', 'Api\TournamentsController@tournament_fixtures');
+        Route::get('fixtures', 'Api\TournamentsController@tournament_fixtures');
         Route::resource('/', 'Api\TournamentsController', ['only' => ['index', 'show']]);
     });
 

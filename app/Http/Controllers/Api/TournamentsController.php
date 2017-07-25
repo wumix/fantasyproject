@@ -65,7 +65,6 @@ class TournamentsController extends Controller
 
     public function tournament_players(Request $request)
     {
-
         $tournament_id = $request->id;
         $roles = \App\GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
             $q->where('tournament_id', $tournament_id);
@@ -77,19 +76,26 @@ class TournamentsController extends Controller
         ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
             $query->where('tournament_id', $tournament_id);
         })->get()->toArray();
+        $tournament_players = [];
         foreach ($roles as &$role) {
             foreach ($role['players'] as $key => &$player) {
                 if (empty($player['player_tournaments'])) {
                     unset($role['players'][$key]);
 
 
+                } else {
+                    $player['profile_pic']=getUploadsPath($player['profile_pic']);
+                    $tournament_players[$role['name']][] = $player;
                 }
 
 
             }
         }
+        if (empty($tournament_players)) {
+            return response()->json(['message' => 'No Players In this Tournaments', 'more_info' => []], 404);
+        }
 
-        return response()->json($roles);
+        return response()->json($tournament_players);
 
     }
 

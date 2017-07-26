@@ -109,11 +109,11 @@ class UserController extends Controller
     // check if user has team in tournament
     function userHasTeamInTournament($tournament_id, $user_id)
     {
-        $userteam = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' => \Auth::id()])->first();
+        $userteam = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' =>$user_id])->first();
         if (empty($userteam)) {
-            return false;
-        } else {
             return true;
+        } else {
+            return false;
         }
 
     }
@@ -129,11 +129,12 @@ class UserController extends Controller
 
     }
 
-    function createTeam(Request $request)
+    function createTeam(\App\Http\Requests\CreateTeamRequest $request)
     {
         $team_name = $request->name;
-        $tournament_id = $request->tournament_id;
-        if ($this->userHasTeamInTournament($tournament_id, \Auth::id())) {
+        $tournament_id = $request->id;
+
+        if (!$this->userHasTeamInTournament($tournament_id, \Auth::id())) {
             return response()->json(
                 [
                     'status' => false,
@@ -147,7 +148,7 @@ class UserController extends Controller
                 return response()->json(
                     [
                         'status' => false,
-                        "message" => 'You already have a team in this tournament'
+                        "message" => 'Team name not availble'
                     ], 401);
             }
         }

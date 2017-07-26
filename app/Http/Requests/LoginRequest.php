@@ -1,11 +1,6 @@
 <?php
-/**
- * @resource Login User
- *
- * Longer description
- */
-namespace App\Http\Requests;
 
+namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 class LoginRequest extends FormRequest {
 

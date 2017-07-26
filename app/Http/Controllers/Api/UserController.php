@@ -35,10 +35,11 @@ class UserController extends Controller
 
     public function create(\App\Http\Requests\RegistrationRequest $request)
     {
+        //dd($request->all());
         $newUser = $this->user->create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'password' =>bcrypt($request->get('password'))
+            'password' => bcrypt($request->get('password'))
 
         ]);
         if (!$newUser) {
@@ -48,7 +49,7 @@ class UserController extends Controller
         return response()->json([
             'success' => true,
             'user' => $user
-        ],200);
+        ], 200);
     }
 
     /**
@@ -59,19 +60,21 @@ class UserController extends Controller
      */
     public function authenticate(\App\Http\Requests\LoginRequest $request)
     {
+//        dd($request->all());
+       // dd($r->only('email'));
 
         $credentials = $request->only('email', 'password');
         try {
             if (!$token = JWTAuth::attempt($credentials)) {
-                return response()->json(['message' => 'invalid_credentials','more_info'=>[]], 401);
+                return response()->json(['message' => 'invalid_credentials', 'more_info' => []], 401);
             }
         } catch (JWTException $e) {
-            return response()->json(['message' => 'could_not_create_token','more_info'=>[]], 401);
+            return response()->json(['message' => 'could_not_create_token', 'more_info' => []], 401);
         }
         // all good so return the token
         $message = 'Login Successful';
         $user = \Auth::user();
-        return response()->json(compact('message', 'token', 'user'),200);
+        return response()->json(compact('message', 'token', 'user'), 200);
     }
 
     /**
@@ -101,6 +104,64 @@ class UserController extends Controller
             }
         }
         return response()->json(['status' => false, "message" => 'Wrong password information'], 401);
+    }
+
+    // check if user has team in tournament
+    function userHasTeamInTournament($tournament_id, $user_id)
+    {
+        $userteam = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' => \Auth::id()])->first();
+        if (empty($userteam)) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
+    function isUniqueTeamName($team_name, $tournament_id)
+    {
+        $uniqueteam = \App\UserTeam::where(['name' => $team_name, 'tournament_id' => $tournament_id])->get()->toArray();
+        if (empty($uniqueteam)) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    function createTeam(Request $request)
+    {
+        $team_name = $request->name;
+        $tournament_id = $request->tournament_id;
+        if ($this->userHasTeamInTournament($tournament_id, \Auth::id())) {
+            return response()->json(
+                [
+                    'status' => false,
+                    "message" => 'You already have a team in this tournament'
+                ], 401);
+
+        } else {
+            if ($this->isUniqueTeamName($team_name, $tournament_id)) {
+                echo 'available team name';
+            } else {
+                return response()->json(
+                    [
+                        'status' => false,
+                        "message" => 'You already have a team in this tournament'
+                    ], 401);
+            }
+        }
+
+
+        die;
+
+        $uniqueteam = \App\UserTeam::where(['name' => $userteam, 'tournament_id' => $tournament_id])->get()->toArray();
+        if (!empty($uniqueteam)) {
+            $data['status'] = "no";
+            $data['message'] = "Team already exists";
+            return response()->json($data);
+        }
+
     }
 
 }

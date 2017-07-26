@@ -28,6 +28,7 @@ class TournamentsController extends Controller
     {
 
 
+
         $datetime = new \DateTime();
         $date = $datetime->format('Y-m-d H:i:s');
         $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('end_date', '>=', $date);
@@ -38,6 +39,7 @@ class TournamentsController extends Controller
 
     function showTournamentDetails($tournament_id)
     {
+
 
 
         $data['tournament'] = \App\Tournament::where('id', $tournament_id)

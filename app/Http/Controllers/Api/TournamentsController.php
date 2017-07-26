@@ -19,12 +19,18 @@ class TournamentsController extends Controller
     function index(Request $request)
     {
 //dd(apache_request_headers());
-        // dd(getGmtTime());
+        dd(getGmtTime());
+
+    }
+
+    public function show(Request $request)
+    {
+        $game_id = $request->id;
         $tournamnets = [];
         $tournamnets['previous'] = [];
         $tournamnets['current'] = [];
         $tournamnets['upcoming'] = [];
-        $data = $this->tournamnetObj->orderBy('start_date', 'DESC')->get()->toArray();
+        $data = $this->tournamnetObj->where('game_id', $game_id)->orderBy('start_date', 'DESC')->get()->toArray();
 
 
         foreach ($data as $tour) {
@@ -56,22 +62,17 @@ class TournamentsController extends Controller
 
         return response()->json($tournamnets);
 
-    }
-
-    public function show($tournament_id)
-    {
-
 
     }
 
 
     public function tournament_players(Request $request)
     {
-        $tournament_id=3;
-        $usersSelectedPlayers = \App\UserTeam::where('id', 264)->where('user_id', 317)
+        $team_id =$request->team_id;
+        $usersSelectedPlayers = \App\UserTeam::where('id', $team_id)->where('user_id', \Auth::id())
             ->with([
-                'user_team_player'=>function($q){
-                $q->orderBy('id','ASC');
+                'user_team_player' => function ($q) {
+                    $q->orderBy('id', 'ASC');
                 },
                 'user_team_player.player_roles',
                 'user_team_player.player_tournaments' => function ($q) use ($tournament_id) {
@@ -105,12 +106,13 @@ class TournamentsController extends Controller
         foreach ($roles as &$role) {
             foreach ($role['players'] as $key => &$player) {
 
+
                 if (empty($player['player_tournaments'])) {
                     unset($role['players'][$key]);
 
 
                 } else {
-                    dd($player);
+
                     $player['profile_pic'] = getUploadsPath($player['profile_pic']);
                     if (empty($player['player_actual_teams'])) {
                         $player['team_name'] = NULL;
@@ -130,12 +132,17 @@ class TournamentsController extends Controller
                         $player['tournament_name'] = $player['player_tournaments'][0]['name'];
                         $player['player_id'] = $player['player_tournaments'][0]['pivot']['player_id'];
                         $player['player_price'] = $player['player_tournaments'][0]['pivot']['player_price'];
+                        $player['in_team'] = $this->checkStatus($this->binary_search(
+                            $selectedPlayers, 0,
+                            sizeof($selectedPlayers), $player['id']));
+
+
                         unset($player['player_tournaments']);
                         unset($player['pivot']);
 
                     }
                     $tournament_players[$role['name']][] = $player;
-                    if(array_search($player['id'],$selectedPlayers));
+                    if (array_search($player['id'], $selectedPlayers)) ;
                 }
 
 
@@ -176,57 +183,58 @@ class TournamentsController extends Controller
         }
 
     }
-    public function tournament_leaderboard(Request $request){
-        $tournament_id=$request->id;
+
+    public function tournament_leaderboard(Request $request)
+    {
+        $tournament_id = $request->id;
         $result = \App\Leaderboard::where('tournament_id', $tournament_id)->with('user', 'user_team')->take(21)->
         orderBy('score', 'DESC')->get()->toArray();
-     //dd($result);
-        $leaders=[];
-        $leaders['leaders']=[];
-        $i=0;
-        foreach ($result as $val){
-            $val['name']=$val['user']['name'];
-            $val['profile_pic']=getUploadsPath($val['user']['profile_pic']);
+        //dd($result);
+        $leaders = [];
+        $leaders['leaders'] = [];
+        $i = 0;
+        foreach ($result as $val) {
+            $val['name'] = $val['user']['name'];
+            $val['profile_pic'] = getUploadsPath($val['user']['profile_pic']);
 
             unset($val['user']);
             unset($val['user_team']);
 
 
-           $leaders['leaders'][]=$val;
+            $leaders['leaders'][] = $val;
 
         }
         return response()->json($leaders);
 
     }
-    function binarySearch($needle, array $haystack, $compare, $high, $low = 0, $containsDuplicates = false)
-    {
-        $key = false;
-        // Whilst we have a range. If not, then that match was not found.
-        while ($high >= $low) {
-            // Find the middle of the range.
-            $mid = (int)floor(($high + $low) / 2);
-            // Compare the middle of the range with the needle. This should return <0 if it's in the first part of the range,
-            // or >0 if it's in the second part of the range. It will return 0 if there is a match.
-            $cmp = call_user_func($compare, $needle, $haystack[$mid]);
-            // Adjust the range based on the above logic, so the next loop iteration will use the narrowed range
+    function cmp($a, $b) {
+        return ($a < $b) ? -1 : (($a > $b) ? 1 : 0);
+    }
+    function checkStatus($id){
+
+        if ($id) {
+            return "true";
+        } else {
+            return "false";
+        }
+    }
+
+    function binary_search(array $a, $first, $last, $key) {
+        $lo = $first;
+        $hi = $last - 1;
+
+        while ($lo <= $hi) {
+            $mid = (int)(($hi - $lo) / 2) + $lo;
+            $cmp = $this->cmp( $a[$mid], $key);
+
             if ($cmp < 0) {
-                $high = $mid - 1;
+                $lo = $mid + 1;
             } elseif ($cmp > 0) {
-                $low = $mid + 1;
+                $hi = $mid - 1;
             } else {
-                // We've found a match
-                if ($containsDuplicates) {
-                    // Find the first item, if there is a possibility our data set contains duplicates by comparing the
-                    // previous item with the current item ($mid).
-                    while ($mid > 0 && call_user_func($compare, $haystack[($mid - 1)], $haystack[$mid]) === 0) {
-                        $mid--;
-                    }
-                }
-                $key = $mid;
-                break;
+                return $mid;
             }
         }
-
-        return $key;
+        return false;
     }
 }

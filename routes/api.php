@@ -26,7 +26,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('players', 'Api\TournamentsController@tournament_players');
         Route::get('fixtures', 'Api\TournamentsController@tournament_fixtures');
         Route::get('leaderboard', 'Api\TournamentsController@tournament_leaderboard');
-        Route::resource('/', 'Api\TournamentsController', ['only' => ['index', 'show']]);
+        Route::get('/', 'Api\TournamentsController@show');
     });
 //    Route::group(['prefix' => 'user'], function () {
 //
@@ -38,6 +38,8 @@ Route::group(['prefix' => 'v1'], function () {
         Route::resource('tournaments', 'Api\TournamentsController', ['except' => ['index', 'show'
         ]]);
         Route::group(['prefix' => 'user'], function () {
+
+            Route::get('check', 'Api\UserController@checkTeam');
             Route::get('team', 'Api\UserController@createTeam');
             Route::resource('/', 'Api\User');
         });

@@ -61,7 +61,7 @@ class UserController extends Controller
     public function authenticate(\App\Http\Requests\LoginRequest $request)
     {
 //        dd($request->all());
-       // dd($r->only('email'));
+        // dd($r->only('email'));
 
         $credentials = $request->only('email', 'password');
         try {
@@ -109,11 +109,11 @@ class UserController extends Controller
     // check if user has team in tournament
     function userHasTeamInTournament($tournament_id, $user_id)
     {
-        $userteam = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' =>$user_id])->first();
+        $userteam = \App\UserTeam::where(['tournament_id' => $tournament_id, 'user_id' => $user_id])->first();
         if (empty($userteam)) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
 
     }
@@ -127,6 +127,23 @@ class UserController extends Controller
             return false;
         }
 
+    }
+
+    function checkTeam(Request $request)
+    {
+        $tournament_id = $request->id;
+        if ($this->userHasTeamInTournament($tournament_id, \Auth::id())) {
+            return response()->json(
+                [
+                    "status" => 'true'
+                ], 200);
+        }else{
+            return response()->json(
+                [
+                    "status" => 'false'
+                ], 404);
+
+        }
     }
 
     function createTeam(\App\Http\Requests\CreateTeamRequest $request)

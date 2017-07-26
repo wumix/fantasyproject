@@ -141,7 +141,7 @@ class UserController extends Controller
             return response()->json(
                 [
                     "status" => 'false'
-                ], 404);
+                ], 200);
 
         }
     }

@@ -91,6 +91,7 @@ class TournamentsController extends Controller
       //  dd($request->all());
         $team_id =$request->id;
         $tournament_id=$request->tournament_id;
+
         $usersSelectedPlayers = \App\UserTeam::where('id', $team_id)->where('user_id', \Auth::id())
             ->with([
                 'user_team_player' => function ($q) {
@@ -102,7 +103,7 @@ class TournamentsController extends Controller
                 },
                 'teamtournament.tournament_players'
             ])->firstOrFail()->toArray();
-
+        $team_name=$usersSelectedPlayers['name'];
         //$tournament_id = $usersSelectedPlayers['tournament_id'];
         $selectedPlayers = [];
         if (!empty($usersSelectedPlayers['user_team_player'])) {
@@ -180,13 +181,13 @@ class TournamentsController extends Controller
         if (empty($tournament_players)) {
             return response()->json(['status'=>"false",'message' => 'No Players In this Tournaments', 'more_info' => []], 404);
         }
-        $tournament_players['bat_count'] = $this->getRoleCountInTeam(Auth::id(), $team_id, 5);
-        $tournament_players['bowl_count'] = $this->getRoleCountInTeam(Auth::id(), $team_id, 6);
-        $tournament_players['wicket_count'] = $this->getRoleCountInTeam(Auth::id(), $team_id, 8);
-        $tournament_players['allround_count'] = $this->getRoleCountInTeam(Auth::id(), $team_id, 7);
-        $tournament_players['total_count']=getUserTeamPlayersCount($team_id);
-        $tournament_players['get_total_score']=getUserTotalScore(Auth::id(),$tournament_id);
-
+        $tournament_players['bat_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 5);
+        $tournament_players['bowl_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 6);
+        $tournament_players['wicket_count'] =(String) $this->getRoleCountInTeam(Auth::id(), $team_id, 8);
+        $tournament_players['allround_count'] =(String) $this->getRoleCountInTeam(Auth::id(), $team_id, 7);
+        $tournament_players['total_count']=(String)getUserTeamPlayersCount($team_id);
+        $tournament_players['get_total_score']=(String)getUserTotalScore(Auth::id(),$tournament_id);
+        $tournament_players['team_name']=$team_name;
         return response()->json($tournament_players);
 
     }

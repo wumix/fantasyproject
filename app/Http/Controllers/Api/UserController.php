@@ -156,21 +156,28 @@ class UserController extends Controller
                 [
                     'status' => false,
                     "message" => 'You already have a team in this tournament'
-                ], 401);
+                ], 200);
 
         } else {
             if ($this->isUniqueTeamName($team_name, $tournament_id)) {
+                $user_team= new \App\UserTeam;
+                $user_team->name=$team_name;
+                $user_team->tournament_id=$tournament_id;
+                $user_team->user_id=Auth::id();
+                $user_team->save();
+              //  return $user_team->id;
                 return response()->json(
                     [
-                        'status' => false,
-                        "message" => 'Team name  availble'
-                    ], 202);
+                        'status' => true,
+                        'team_id'=> $user_team->id,
+                        "message" => 'Team name  created'
+                    ], 200);
             } else {
                 return response()->json(
                     [
                         'status' => false,
-                        "message" => 'Team name not availble'
-                    ], 202);
+                        "message" => 'Team name not available'
+                    ], 200);
             }
         }
 

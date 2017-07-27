@@ -135,7 +135,7 @@ class TournamentsController extends Controller
                         $player['tournament_name'] = $player['player_tournaments'][0]['name'];
                         $player['player_id'] = $player['player_tournaments'][0]['pivot']['player_id'];
                         $player['player_price'] = $player['player_tournaments'][0]['pivot']['player_price'];
-                        $player['in_team'] = "false";
+                        $player['in_team'] = "true";
 //                            $this->checkStatus($this->binary_search(
 //                            $selectedPlayers, 0,
 //                            sizeof($selectedPlayers), $player['id']));

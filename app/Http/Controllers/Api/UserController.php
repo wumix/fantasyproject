@@ -151,7 +151,7 @@ class UserController extends Controller
         $team_name = $request->name;
         $tournament_id = $request->id;
 
-        if (!$this->userHasTeamInTournament($tournament_id, \Auth::id())) {
+        if ($this->userHasTeamInTournament($tournament_id, \Auth::id())) {
             return response()->json(
                 [
                     'status' => false,

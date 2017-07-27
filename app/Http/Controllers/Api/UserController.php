@@ -141,6 +141,7 @@ class UserController extends Controller
             if(empty($user_team->joined_from_match_date)){
                 return response()->json(
                     [
+                        "status"=>"true",
                         "is_complete" => 'false',
                         "team_id" =>(String)$user_team->id,
                     ], 200);

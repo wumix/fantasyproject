@@ -94,6 +94,16 @@ class TournamentsController extends Controller
         $date1int = strtotime(getGmtTime());
         return $difference = round(($dateint - $date1int) / 60, 0);
     }
+    function playerRoleLimit($tournament_id, $roleid)
+    {
+        $max = DB::table('tournament_role_limit')->select('max_limit')->where('tournament_id', $tournament_id)->where('player_role_id', $roleid)->get();
+
+        if (empty($max->toArray())) {
+            return 0;
+        } else {
+            return ($max[0]->max_limit);
+        }
+    }
     public function add_player(Request $request){
         $tournamentDate = \App\Tournament::getStartdate($request->tournament_id);
         $difference = $this->getTImeDifference($tournamentDate);

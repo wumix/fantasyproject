@@ -153,17 +153,23 @@ class TournamentsController extends Controller
             $objResponse['status'] = false;
             $objResponse['msg'] = "You can't have more than $tournamentMaxPlayers in this tournament.";
         }
-        if (getUserTeamPlayersCount($request->team_id) == 11) {
+//        if (getUserTeamPlayersCount($request->team_id) == 11) {
+//
+//
+//            $objResponse['status'] = true;
+//            $objResponse['teamsuccess'] = true;
+//            $objResponse['team_id'] = $request->team_id;
+//            return response()->json($objResponse);
+//        }
+      if($objResponse['status']==true){
+          return $this->tournament_players($request);
 
+        }else{
+          return response()->json($objResponse);
 
-            $objResponse['status'] = true;
-            $objResponse['teamsuccess'] = true;
-            $objResponse['team_id'] = $request->team_id;
-            return response()->json($objResponse);
         }
-      //  return response()->json($objResponse);
 
-        return $this->tournament_players($request);
+
 
     }
 
@@ -184,6 +190,7 @@ class TournamentsController extends Controller
                 },
                 'teamtournament.tournament_players'
             ])->firstOrFail()->toArray();
+       // dd($usersSelectedPlayers);
         $team_name=$usersSelectedPlayers['name'];
         //$tournament_id = $usersSelectedPlayers['tournament_id'];
         $selectedPlayers = [];

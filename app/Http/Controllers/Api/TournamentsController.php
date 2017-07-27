@@ -135,9 +135,10 @@ class TournamentsController extends Controller
                         $player['tournament_name'] = $player['player_tournaments'][0]['name'];
                         $player['player_id'] = $player['player_tournaments'][0]['pivot']['player_id'];
                         $player['player_price'] = $player['player_tournaments'][0]['pivot']['player_price'];
-                        $player['in_team'] = $this->checkStatus($this->binary_search(
-                            $selectedPlayers, 0,
-                            sizeof($selectedPlayers), $player['id']));
+                        $player['in_team'] = "false";
+//                            $this->checkStatus($this->binary_search(
+//                            $selectedPlayers, 0,
+//                            sizeof($selectedPlayers), $player['id']));
 
 
                         unset($player['player_tournaments']);
@@ -152,7 +153,7 @@ class TournamentsController extends Controller
             }
         }
         if (empty($tournament_players)) {
-            return response()->json(['message' => 'No Players In this Tournaments', 'more_info' => []], 404);
+            return response()->json(['status'=>"false",'message' => 'No Players In this Tournaments', 'more_info' => []], 404);
         }
 
 

@@ -133,7 +133,7 @@ class UserController extends Controller
     {
         $tournament_id = $request->id;
         if ($this->userHasTeamInTournament($tournament_id, \Auth::id())) {
-            
+
             return response()->json(
                 [
                     "status" => 'true'
@@ -149,8 +149,9 @@ class UserController extends Controller
 
     function createTeam(\App\Http\Requests\CreateTeamRequest $request)
     {
-        $team_name = $request->name;
+        $team_name =  str_replace('%20', ' ', strtolower($request->name));
         $tournament_id = $request->id;
+
 
         if ($this->userHasTeamInTournament($tournament_id, \Auth::id())) {
             return response()->json(

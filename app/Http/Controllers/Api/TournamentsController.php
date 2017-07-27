@@ -190,7 +190,7 @@ class TournamentsController extends Controller
         if (!empty($usersSelectedPlayers['user_team_player'])) {
             $selectedPlayers = array_column($usersSelectedPlayers['user_team_player'], 'id');
         }
-        dd($selectedPlayers);
+        //dd($selectedPlayers);
 
 
         $roles = \App\GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
@@ -242,6 +242,10 @@ class TournamentsController extends Controller
                         $player['player_price'] = $player['player_tournaments'][0]['pivot']['player_price'];
                         $player['role_id'] = $player['pivot']['game_role_id'];
 
+
+//                       dd( $this->checkStatus($this->binary_search(
+//                            $selectedPlayers, 0,
+//                            sizeof($selectedPlayers), 27)));
                         $player['in_team'] =$this->checkStatus($this->binary_search(
                             $selectedPlayers, 0,
                             sizeof($selectedPlayers), $player['id']));
@@ -330,10 +334,10 @@ class TournamentsController extends Controller
     }
     function checkStatus($id){
 
-        if ($id) {
-            return "true";
-        } else {
+        if ($id<0) {
             return "false";
+        } else {
+            return "true";
         }
     }
 
@@ -353,6 +357,6 @@ class TournamentsController extends Controller
                 return $mid;
             }
         }
-        return false;
+        return -1;
     }
 }

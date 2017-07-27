@@ -185,6 +185,7 @@ class TournamentsController extends Controller
         $tournament_players['wicket_count'] = $this->giveanygoodname(Auth::id(), $team_id, 8);
         $tournament_players['allround_count'] = $this->giveanygoodname(Auth::id(), $team_id, 7);
         $tournament_players['total_count']=getUserTeamPlayersCount($team_id);
+        $tournament_players['get_total_score']=getUserTotalScore(Auth::id(),$tournament_id);
 
         return response()->json($tournament_players);
 

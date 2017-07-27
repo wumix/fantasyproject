@@ -161,13 +161,12 @@ class TournamentsController extends Controller
 //            $objResponse['team_id'] = $request->team_id;
 //            return response()->json($objResponse);
 //        }
-//      if($objResponse['status']==true){
-//          return $this->tournament_players($request);
-//
-//        }else{
-          return response()->json($objResponse);
+     //if($objResponse['status']==true){
+         return $this->tournament_players($request);
+      //  }else{
+       //   return response()->json($objResponse);
 
-//        }
+       //}
 
 
 

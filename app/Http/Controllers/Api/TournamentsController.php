@@ -163,7 +163,7 @@ class TournamentsController extends Controller
         }
       //  return response()->json($objResponse);
 
-        return response()->json($this->tournament_players($request));
+        return $this->tournament_players($request);
 
     }
 
@@ -190,7 +190,7 @@ class TournamentsController extends Controller
         if (!empty($usersSelectedPlayers['user_team_player'])) {
             $selectedPlayers = array_column($usersSelectedPlayers['user_team_player'], 'id');
         }
-        //dd($selectedPlayers);
+        dd($selectedPlayers);
 
 
         $roles = \App\GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
@@ -263,7 +263,7 @@ class TournamentsController extends Controller
         if (empty($tournament_players)) {
             return response()->json(['status'=>"false",'message' => 'No Players In this Tournaments', 'more_info' => []], 404);
         }
-       
+
         $tournament_players['bat_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 5);
         $tournament_players['bowl_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 6);
         $tournament_players['wicket_count'] =(String) $this->getRoleCountInTeam(Auth::id(), $team_id, 8);

@@ -68,8 +68,8 @@ class TournamentsController extends Controller
 
     public function tournament_players(Request $request)
     {
-       
-        $team_id =$request->team_id;
+      //  dd($request->all());
+        $team_id =$request->id;
         $tournament_id=$request->tournament_id;
         $usersSelectedPlayers = \App\UserTeam::where('id', $team_id)->where('user_id', \Auth::id())
             ->with([
@@ -82,14 +82,15 @@ class TournamentsController extends Controller
                 },
                 'teamtournament.tournament_players'
             ])->firstOrFail()->toArray();
-        $tournament_id = $usersSelectedPlayers['tournament_id'];
+
+        //$tournament_id = $usersSelectedPlayers['tournament_id'];
         $selectedPlayers = [];
         if (!empty($usersSelectedPlayers['user_team_player'])) {
             $selectedPlayers = array_column($usersSelectedPlayers['user_team_player'], 'id');
         }
         //dd($selectedPlayers);
 
-        $tournament_id = $request->id;
+
         $roles = \App\GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
             $q->where('tournament_id', $tournament_id);
         },
@@ -143,7 +144,7 @@ class TournamentsController extends Controller
                         unset($player['pivot']);
 
                     }
-                    $tournament_players[$role['name']][] = $player;
+                    $tournament_players[str_replace(' ', '_', strtolower($role['name']))][] = $player;
                     if (array_search($player['id'], $selectedPlayers)) ;
                 }
 

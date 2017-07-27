@@ -160,13 +160,17 @@ class UserController extends Controller
 
         } else {
             if ($this->isUniqueTeamName($team_name, $tournament_id)) {
-                echo 'available team name';
+                return response()->json(
+                    [
+                        'status' => false,
+                        "message" => 'Team name  availble'
+                    ], 202);
             } else {
                 return response()->json(
                     [
                         'status' => false,
                         "message" => 'Team name not availble'
-                    ], 401);
+                    ], 202);
             }
         }
 

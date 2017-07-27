@@ -171,6 +171,16 @@ class TournamentsController extends Controller
 
 
     }
+    public function delete_player(Request $request){
+        $teamdetails = \App\UserTeam::where('id', $request->team_id)->first();
+        $tournament_id = $teamdetails->tournament_id;
+
+        DB::table('user_team_players')->where('player_id', $request->player_id)->where('team_id', $request->team_id)->delete();
+        $array = array(['tournament_id' => $tournament_id, 'action_key' => 'delete_player', 'user_id' => Auth::id(), 'points_scored' => $request->player_price]);
+        \App\UserPointsScored::insert($array);
+        return $this->tournament_players($request);
+
+    }
 
     public function tournament_players(Request $request)
     {

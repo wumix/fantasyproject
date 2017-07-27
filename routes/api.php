@@ -41,6 +41,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::group(['prefix' => 'tournaments'], function () {
             Route::get('players', 'Api\TournamentsController@tournament_players');
             Route::get('add_player', 'Api\TournamentsController@add_player');
+            Route::get('delete_player', 'Api\TournamentsController@delete_player');
         });
         Route::group(['prefix' => 'user'], function () {
 

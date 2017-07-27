@@ -29,6 +29,7 @@ class TournamentsController extends Controller
 
 
 
+
         $datetime = new \DateTime();
         $date = $datetime->format('Y-m-d H:i:s');
         $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('end_date', '>=', $date);

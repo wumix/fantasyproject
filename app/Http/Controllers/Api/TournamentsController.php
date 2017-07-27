@@ -110,11 +110,14 @@ class TournamentsController extends Controller
             foreach ($role['players'] as $key => &$player) {
 
 
+
+
                 if (empty($player['player_tournaments'])) {
                     unset($role['players'][$key]);
 
 
                 } else {
+                    
 
                     $player['profile_pic'] = getUploadsPath($player['profile_pic']);
                     if (empty($player['player_actual_teams'])) {
@@ -135,10 +138,11 @@ class TournamentsController extends Controller
                         $player['tournament_name'] = $player['player_tournaments'][0]['name'];
                         $player['player_id'] = $player['player_tournaments'][0]['pivot']['player_id'];
                         $player['player_price'] = $player['player_tournaments'][0]['pivot']['player_price'];
-                        $player['in_team'] = "true";
-//                            $this->checkStatus($this->binary_search(
-//                            $selectedPlayers, 0,
-//                            sizeof($selectedPlayers), $player['id']));
+                        $player['role_id'] = $player['pivot']['game_role_id'];
+
+                        $player['in_team'] =$this->checkStatus($this->binary_search(
+                            $selectedPlayers, 0,
+                            sizeof($selectedPlayers), $player['id']));
 
 
                         unset($player['player_tournaments']);
@@ -152,6 +156,7 @@ class TournamentsController extends Controller
 
             }
         }
+
         if (empty($tournament_players)) {
             return response()->json(['status'=>"false",'message' => 'No Players In this Tournaments', 'more_info' => []], 404);
         }

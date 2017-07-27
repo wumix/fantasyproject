@@ -163,7 +163,7 @@ class TournamentsController extends Controller
         }
       //  return response()->json($objResponse);
 
-        $this->tournament_players($request);
+        return response()->json($this->tournament_players($request));
 
     }
 

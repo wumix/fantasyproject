@@ -68,7 +68,9 @@ class TournamentsController extends Controller
 
     public function tournament_players(Request $request)
     {
+        dd($request->all());
         $team_id =$request->team_id;
+        $tournament_id=$request->tournament_id;
         $usersSelectedPlayers = \App\UserTeam::where('id', $team_id)->where('user_id', \Auth::id())
             ->with([
                 'user_team_player' => function ($q) {

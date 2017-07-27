@@ -182,14 +182,7 @@ class UserController extends Controller
         }
 
 
-        die;
 
-        $uniqueteam = \App\UserTeam::where(['name' => $userteam, 'tournament_id' => $tournament_id])->get()->toArray();
-        if (!empty($uniqueteam)) {
-            $data['status'] = "no";
-            $data['message'] = "Team already exists";
-            return response()->json($data);
-        }
 
     }
 

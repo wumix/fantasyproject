@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\api;
-
+use Auth;
+use DB;
 use \JWTAuth;
 use App\Tournament;
 use Illuminate\Http\Request;
@@ -65,6 +66,25 @@ class TournamentsController extends Controller
 
     }
 
+    function giveanygoodname($userid, $teamid, $roleid)
+    {
+
+        $count = DB::select("SELECT COUNT(pr.game_role_id) as total FROM `user_team_players` utp
+        INNER JOIN player_roles pr ON pr.player_id = utp.player_id
+        INNER JOIN user_teams ut ON ut.id = utp.team_id
+        where utp.team_id = '$teamid' AND pr.game_role_id = '$roleid' AND ut.user_id = '$userid'");
+        return ($count[0]->total);
+        $x = \App\UserTeam::where('user_id', $userid)
+            ->where('id', $teamid)
+            ->with('user_team_player.player_roles')->firstOrFail()->toArray();
+
+        $i = 0;
+        foreach ($x['user_team_player'] as $row) {
+            if ($row['player_roles'][0]['id'] == $roleid)
+                $i++;
+        }
+        return $i;
+    }
 
     public function tournament_players(Request $request)
     {
@@ -117,7 +137,7 @@ class TournamentsController extends Controller
 
 
                 } else {
-                    
+
 
                     $player['profile_pic'] = getUploadsPath($player['profile_pic']);
                     if (empty($player['player_actual_teams'])) {
@@ -160,7 +180,11 @@ class TournamentsController extends Controller
         if (empty($tournament_players)) {
             return response()->json(['status'=>"false",'message' => 'No Players In this Tournaments', 'more_info' => []], 404);
         }
-
+        $tournament_players['bat_count'] = $this->giveanygoodname(Auth::id(), $team_id, 5);
+        $tournament_players['bowl_count'] = $this->giveanygoodname(Auth::id(), $team_id, 6);
+        $tournament_players['wicket_count'] = $this->giveanygoodname(Auth::id(), $team_id, 8);
+        $tournament_players['allround_count'] = $this->giveanygoodname(Auth::id(), $team_id, 7);
+        $tournament_players['total_count']=getUserTeamPlayersCount($team_id);
 
         return response()->json($tournament_players);
 

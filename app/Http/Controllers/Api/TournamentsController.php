@@ -104,7 +104,7 @@ class TournamentsController extends Controller
         if ($tournamentMaxPlayers > $currentNoPlayers) {
             if ($difference > 15 || $difference < 15) {
                 if ($request->player_price <= getUserTotalScore(Auth::id(), $request->tournament_id)) {
-                    if ($this->giveanygoodname(Auth::id(), $request->team_id, $request->role_id) < $this->playerRoleLimit($request->tournament_id, $request->role_id)) {
+                    if ($this->getRoleCountInTeam(Auth::id(), $request->team_id, $request->role_id) < $this->playerRoleLimit($request->tournament_id, $request->role_id)) {
 
                         $objteam = \App\UserTeam::find($request->team_id);
                         $objteam->user_team_player()->sync($request->player_id, false);
@@ -112,10 +112,10 @@ class TournamentsController extends Controller
                         \App\UserPointsConsumed::insert($array);
                         $objResponse['success'] = true;
                         $objResponse['msg'] = "Player added successfully";
-                        $objResponse['batsmen'] = $this->giveanygoodname(Auth::id(), $request->team_id, 5);
-                        $objResponse['bowler'] = $this->giveanygoodname(Auth::id(), $request->team_id, 6);
-                        $objResponse['wicketkeeper'] = $this->giveanygoodname(Auth::id(), $request->team_id, 8);
-                        $objResponse['allrounder'] = $this->giveanygoodname(Auth::id(), $request->team_id, 7);
+                        $objResponse['batsmen'] = $this->getRoleCountInTeam(Auth::id(), $request->team_id, 5);
+                        $objResponse['bowler'] = $this->getRoleCountInTeam(Auth::id(), $request->team_id, 6);
+                        $objResponse['wicketkeeper'] = $this->getRoleCountInTeam(Auth::id(), $request->team_id, 8);
+                        $objResponse['allrounder'] = $this->getRoleCountInTeam(Auth::id(), $request->team_id, 7);
 
                         $objResponse['player']['id'] = $request->player_id[0];
                         $objResponse['player']['name'] = \App\Player::get_player($request->player_id[0])->name;
@@ -129,7 +129,7 @@ class TournamentsController extends Controller
                         $objResponse['player_score'] = getUserTotalScore(Auth::id(), $request->tournament_id);
                     } else {
                         $objResponse['status'] = false;
-                        $objResponse['msg'] = "You cant have more than " . $this->giveanygoodname(Auth::id(), $request->team_id, $request->role_id) . " " . $request->role_name . "s in this Tournament";
+                        $objResponse['msg'] = "You cant have more than " . $this->getRoleCountInTeam(Auth::id(), $request->team_id, $request->role_id) . " " . $request->role_name . "s in this Tournament";
                     }
                 } else {
                     $objResponse['status'] = false;

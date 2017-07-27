@@ -131,13 +131,32 @@ class UserController extends Controller
 
     function checkTeam(Request $request)
     {
+
         $tournament_id = $request->id;
         if ($this->userHasTeamInTournament($tournament_id, \Auth::id())) {
+    //check team complete or not
+            //if complete send msg "team not completed" send team id
+            //if completed send message"team Completed"
+            $user_team=userTeamCompleteInTournament(\Auth::id(),$tournament_id);
+            if(empty($user_team->joined_from_match_date)){
+                return response()->json(
+                    [
+                        "is_complete" => 'false',
+                        "team_id" =>(String)$user_team->id,
+                    ], 200);
 
-            return response()->json(
-                [
-                    "status" => 'true'
-                ], 200);
+            }else{
+                return response()->json(
+                    [
+                        "is_complete" => 'true',
+                        "team_id" =>(String)$user_team->id
+
+                    ], 200);
+
+
+            }
+
+
         }else{
             return response()->json(
                 [

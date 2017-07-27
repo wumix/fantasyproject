@@ -20,7 +20,13 @@ function has_user_team($user_id)
         return TRUE;
     }
 }
+function userTeamCompleteInTournament($user_id,$tournament_id){
 
+     return \App\UserTeam::where(['user_id'=>$user_id,'tournament_id'=>$tournament_id])
+        ->first();
+
+
+}
 function has_user_team_ipl($user_id)
 {
     $userteam = \App\UserTeam::where('user_id', $user_id)->where('tournament_id', 1)->first();

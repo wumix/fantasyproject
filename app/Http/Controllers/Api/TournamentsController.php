@@ -185,6 +185,8 @@ class TournamentsController extends Controller
     public function tournament_players(Request $request)
     {
 
+
+
         $team_id =$request->team_id;
         $tournament_id=$request->tournament_id;
 

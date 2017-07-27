@@ -169,7 +169,7 @@ class TournamentsController extends Controller
 
     public function tournament_players(Request $request)
     {
-      //  dd($request->all());
+       dd($request->all());
         $team_id =$request->team_id;
         $tournament_id=$request->tournament_id;
 

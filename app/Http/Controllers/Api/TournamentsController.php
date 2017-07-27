@@ -263,7 +263,7 @@ class TournamentsController extends Controller
         if (empty($tournament_players)) {
             return response()->json(['status'=>"false",'message' => 'No Players In this Tournaments', 'more_info' => []], 404);
         }
-        debugArr($tournament_players);
+        echo('not here');
         $tournament_players['bat_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 5);
         $tournament_players['bowl_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 6);
         $tournament_players['wicket_count'] =(String) $this->getRoleCountInTeam(Auth::id(), $team_id, 8);

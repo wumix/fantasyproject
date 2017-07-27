@@ -170,7 +170,7 @@ class UserController extends Controller
                     [
                         'status' => true,
                         'team_id'=> $user_team->id,
-                        "message" => 'Team name  created'
+                        "message" => 'Team created'
                     ], 200);
             } else {
                 return response()->json(

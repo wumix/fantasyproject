@@ -24,6 +24,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::any('/sendpush', 'Api\OrdersController@sendPushMessage');
     Route::group(['prefix' => 'tournaments'], function () {
 
+
         Route::get('fixtures', 'Api\TournamentsController@tournament_fixtures');
         Route::get('leaderboard', 'Api\TournamentsController@tournament_leaderboard');
         Route::get('/', 'Api\TournamentsController@show');
@@ -39,6 +40,7 @@ Route::group(['prefix' => 'v1'], function () {
         ]]);
         Route::group(['prefix' => 'tournaments'], function () {
             Route::get('players', 'Api\TournamentsController@tournament_players');
+            Route::get('add_player', 'Api\TournamentsController@add_player');
         });
         Route::group(['prefix' => 'user'], function () {
 

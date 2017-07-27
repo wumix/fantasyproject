@@ -85,6 +85,76 @@ class TournamentsController extends Controller
         }
         return $i;
     }
+    function getTImeDifference($tournamentDate)
+    {
+
+        $datetime = new \DateTime($tournamentDate);
+        $date = $datetime->format('Y-m-d H:i:s');
+        $dateint = strtotime($date);
+        $date1int = strtotime(getGmtTime());
+        return $difference = round(($dateint - $date1int) / 60, 0);
+    }
+    public function add_player(Request $request){
+        $tournamentDate = \App\Tournament::getStartdate($request->tournament_id);
+        $difference = $this->getTImeDifference($tournamentDate);
+        $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
+        $currentNoPlayers = \App\UserTeam::find($request->team_id)->user_team_player()->count();
+        $objResponse = [];
+        $objResponse['status'] = false;
+        if ($tournamentMaxPlayers > $currentNoPlayers) {
+            if ($difference > 15 || $difference < 15) {
+                if ($request->player_price <= getUserTotalScore(Auth::id(), $request->tournament_id)) {
+                    if ($this->giveanygoodname(Auth::id(), $request->team_id, $request->role_id) < $this->playerRoleLimit($request->tournament_id, $request->role_id)) {
+
+                        $objteam = \App\UserTeam::find($request->team_id);
+                        $objteam->user_team_player()->sync($request->player_id, false);
+                        $array = array(['tournament_id' => $request->tournament_id, 'action_key' => 'add_player', 'user_id' => Auth::id(), 'points_consumed' => $request->player_price]);
+                        \App\UserPointsConsumed::insert($array);
+                        $objResponse['success'] = true;
+                        $objResponse['msg'] = "Player added successfully";
+                        $objResponse['batsmen'] = $this->giveanygoodname(Auth::id(), $request->team_id, 5);
+                        $objResponse['bowler'] = $this->giveanygoodname(Auth::id(), $request->team_id, 6);
+                        $objResponse['wicketkeeper'] = $this->giveanygoodname(Auth::id(), $request->team_id, 8);
+                        $objResponse['allrounder'] = $this->giveanygoodname(Auth::id(), $request->team_id, 7);
+
+                        $objResponse['player']['id'] = $request->player_id[0];
+                        $objResponse['player']['name'] = \App\Player::get_player($request->player_id[0])->name;
+                        $objResponse['player']['profile_pic'] = getUploadsPath(\App\Player::get_player($request->player_id[0])->profile_pic);
+                        $objResponse['player']['price'] = $request->player_price;
+                        $objResponse['player']['role_id'] = $request->role_id;
+                        $objResponse['player']['role_name'] = $request->role_name;
+                        $objResponse['player']['price'] = $request->player_price;
+                        $objResponse['player']['team_id'] = $request->team_id;
+                        $objResponse['player']['tournament_id'] = $request->tournament_id;
+                        $objResponse['player_score'] = getUserTotalScore(Auth::id(), $request->tournament_id);
+                    } else {
+                        $objResponse['status'] = false;
+                        $objResponse['msg'] = "You cant have more than " . $this->giveanygoodname(Auth::id(), $request->team_id, $request->role_id) . " " . $request->role_name . "s in this Tournament";
+                    }
+                } else {
+                    $objResponse['status'] = false;
+                    $objResponse['msg'] = "You donot have enough points";
+                }
+            } else {
+                $objResponse['status'] = false;
+                $objResponse['msg'] = "Tournament starts in 15 minutes you cant add player now";
+            }
+        } else {
+            $objResponse['status'] = false;
+            $objResponse['msg'] = "You can't have more than $tournamentMaxPlayers in this tournament.";
+        }
+        if (getUserTeamPlayersCount($request->team_id) == 11) {
+
+
+            $objResponse['status'] = true;
+            $objResponse['teamsuccess'] = true;
+            $objResponse['team_id'] = $request->team_id;
+            return response()->json($objResponse);
+        }
+      //  return response()->json($objResponse);
+        $this->tournament_players($request);
+
+    }
 
     public function tournament_players(Request $request)
     {

@@ -169,7 +169,7 @@ class TournamentsController extends Controller
 
     public function tournament_players(Request $request)
     {
-      // dd($request->all());
+      echo('here');
         $team_id =$request->team_id;
         $tournament_id=$request->tournament_id;
 
@@ -259,9 +259,11 @@ class TournamentsController extends Controller
             }
         }
 
+
         if (empty($tournament_players)) {
             return response()->json(['status'=>"false",'message' => 'No Players In this Tournaments', 'more_info' => []], 404);
         }
+        debugArr($tournament_players);
         $tournament_players['bat_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 5);
         $tournament_players['bowl_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 6);
         $tournament_players['wicket_count'] =(String) $this->getRoleCountInTeam(Auth::id(), $team_id, 8);

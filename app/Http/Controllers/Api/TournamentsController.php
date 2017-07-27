@@ -66,7 +66,7 @@ class TournamentsController extends Controller
 
     }
 
-    function giveanygoodname($userid, $teamid, $roleid)
+    function getRoleCountInTeam($userid, $teamid, $roleid)
     {
 
         $count = DB::select("SELECT COUNT(pr.game_role_id) as total FROM `user_team_players` utp
@@ -180,10 +180,10 @@ class TournamentsController extends Controller
         if (empty($tournament_players)) {
             return response()->json(['status'=>"false",'message' => 'No Players In this Tournaments', 'more_info' => []], 404);
         }
-        $tournament_players['bat_count'] = $this->giveanygoodname(Auth::id(), $team_id, 5);
-        $tournament_players['bowl_count'] = $this->giveanygoodname(Auth::id(), $team_id, 6);
-        $tournament_players['wicket_count'] = $this->giveanygoodname(Auth::id(), $team_id, 8);
-        $tournament_players['allround_count'] = $this->giveanygoodname(Auth::id(), $team_id, 7);
+        $tournament_players['bat_count'] = $this->getRoleCountInTeam(Auth::id(), $team_id, 5);
+        $tournament_players['bowl_count'] = $this->getRoleCountInTeam(Auth::id(), $team_id, 6);
+        $tournament_players['wicket_count'] = $this->getRoleCountInTeam(Auth::id(), $team_id, 8);
+        $tournament_players['allround_count'] = $this->getRoleCountInTeam(Auth::id(), $team_id, 7);
         $tournament_players['total_count']=getUserTeamPlayersCount($team_id);
         $tournament_players['get_total_score']=getUserTotalScore(Auth::id(),$tournament_id);
 

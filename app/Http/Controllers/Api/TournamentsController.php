@@ -252,7 +252,7 @@ class TournamentsController extends Controller
 
                     }
                     $tournament_players[str_replace(' ', '_', strtolower($role['name']))][] = $player;
-                    if (array_search($player['id'], $selectedPlayers)) ;
+                    //if (array_search($player['id'], $selectedPlayers)) ;
                 }
 
 

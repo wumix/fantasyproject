@@ -306,10 +306,10 @@ class TournamentsController extends Controller
             ['player_tournaments' => function ($k) use ($tournament_id) {
                 $k->where('tournaments.id', $tournament_id);
             }])->firstORFail();
+        dd($player_in_price);
 
         $player_in_price = $player_in_price['player_tournaments'][0]['pivot']['player_price'];
-
-        if ($difference > 15 || $difference < 15) {
+          if ($difference > 15 || $difference < 15) {
 
 
             if (((getUserTotalScore(Auth::id(), $tournament_id)) + $request->player_out_price) >= ($player_in_price)) {

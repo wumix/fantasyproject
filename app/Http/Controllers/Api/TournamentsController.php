@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\api;
+
 use Auth;
 use DB;
 use \JWTAuth;
@@ -85,6 +86,7 @@ class TournamentsController extends Controller
         }
         return $i;
     }
+
     function getTImeDifference($tournamentDate)
     {
 
@@ -94,6 +96,7 @@ class TournamentsController extends Controller
         $date1int = strtotime(getGmtTime());
         return $difference = round(($dateint - $date1int) / 60, 0);
     }
+
     function playerRoleLimit($tournament_id, $roleid)
     {
         $max = DB::table('tournament_role_limit')->select('max_limit')->where('tournament_id', $tournament_id)->where('player_role_id', $roleid)->get();
@@ -104,7 +107,9 @@ class TournamentsController extends Controller
             return ($max[0]->max_limit);
         }
     }
-    public function add_player(Request $request){
+
+    public function add_player(Request $request)
+    {
         $tournamentDate = \App\Tournament::getStartdate($request->tournament_id);
         $difference = $this->getTImeDifference($tournamentDate);
         $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
@@ -161,17 +166,18 @@ class TournamentsController extends Controller
 //            $objResponse['team_id'] = $request->team_id;
 //            return response()->json($objResponse);
 //        }
-     //if($objResponse['status']==true){
-         return $this->tournament_players($request);
-      //  }else{
-       //   return response()->json($objResponse);
+        //if($objResponse['status']==true){
+        return $this->tournament_players($request);
+        //  }else{
+        //   return response()->json($objResponse);
 
-       //}
-
+        //}
 
 
     }
-    public function delete_player(Request $request){
+
+    public function delete_player(Request $request)
+    {
         $teamdetails = \App\UserTeam::where('id', $request->team_id)->first();
         $tournament_id = $teamdetails->tournament_id;
 
@@ -186,9 +192,8 @@ class TournamentsController extends Controller
     {
 
 
-
-        $team_id =$request->team_id;
-        $tournament_id=$request->tournament_id;
+        $team_id = $request->team_id;
+        $tournament_id = $request->tournament_id;
 
         $usersSelectedPlayers = \App\UserTeam::where('id', $team_id)->where('user_id', \Auth::id())
             ->with([
@@ -201,15 +206,11 @@ class TournamentsController extends Controller
                 },
                 'teamtournament.tournament_players'
             ])->firstOrFail()->toArray();
-       // dd($usersSelectedPlayers);
-        $team_name=$usersSelectedPlayers['name'];
-        //$tournament_id = $usersSelectedPlayers['tournament_id'];
+        $team_name = $usersSelectedPlayers['name'];
         $selectedPlayers = [];
         if (!empty($usersSelectedPlayers['user_team_player'])) {
             $selectedPlayers = array_column($usersSelectedPlayers['user_team_player'], 'id');
         }
-        //dd($selectedPlayers);
-
 
         $roles = \App\GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
             $q->where('tournament_id', $tournament_id);
@@ -228,8 +229,6 @@ class TournamentsController extends Controller
 
         foreach ($roles as &$role) {
             foreach ($role['players'] as $key => &$player) {
-
-
 
 
                 if (empty($player['player_tournaments'])) {
@@ -264,9 +263,12 @@ class TournamentsController extends Controller
 //                       dd( $this->checkStatus($this->binary_search(
 //                            $selectedPlayers, 0,
 //                            sizeof($selectedPlayers), 27)));
-                        $player['in_team'] =$this->checkStatus($this->binary_search(
-                            $selectedPlayers, 0,
-                            sizeof($selectedPlayers), $player['id']));
+                        $player['in_team'] = $this->checkStatus(
+                            $this->binary_search(
+                                $selectedPlayers,
+                                    0,
+                                    sizeof($selectedPlayers),
+                                    $player['id']));
 
 
                         unset($player['player_tournaments']);
@@ -283,16 +285,16 @@ class TournamentsController extends Controller
 
 
         if (empty($tournament_players)) {
-            return response()->json(['status'=>"false",'message' => 'No Players In this Tournaments', 'more_info' => []], 404);
+            return response()->json(['status' => "false", 'message' => 'No Players In this Tournaments', 'more_info' => []], 404);
         }
 
         $tournament_players['bat_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 5);
         $tournament_players['bowl_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 6);
-        $tournament_players['wicket_count'] =(String) $this->getRoleCountInTeam(Auth::id(), $team_id, 8);
-        $tournament_players['allround_count'] =(String) $this->getRoleCountInTeam(Auth::id(), $team_id, 7);
-        $tournament_players['total_count']=(String)getUserTeamPlayersCount($team_id);
-        $tournament_players['current_score']=(String)getUserTotalScore(Auth::id(),$tournament_id);
-        $tournament_players['team_name']=$team_name;
+        $tournament_players['wicket_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 8);
+        $tournament_players['allround_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 7);
+        $tournament_players['total_count'] = (String)getUserTeamPlayersCount($team_id);
+        $tournament_players['current_score'] = (String)getUserTotalScore(Auth::id(), $tournament_id);
+        $tournament_players['team_name'] = $team_name;
         return response()->json($tournament_players);
 
     }
@@ -347,25 +349,30 @@ class TournamentsController extends Controller
         return response()->json($leaders);
 
     }
-    function cmp($a, $b) {
+
+    function cmp($a, $b)
+    {
         return ($a < $b) ? -1 : (($a > $b) ? 1 : 0);
     }
-    function checkStatus($id){
 
-        if ($id<0) {
+    function checkStatus($id)
+    {
+
+        if ($id < 0) {
             return "false";
         } else {
             return "true";
         }
     }
 
-    function binary_search(array $a, $first, $last, $key) {
+    function binary_search(array $a, $first, $last, $key)
+    {
         $lo = $first;
         $hi = $last - 1;
 
         while ($lo <= $hi) {
             $mid = (int)(($hi - $lo) / 2) + $lo;
-            $cmp = $this->cmp( $a[$mid], $key);
+            $cmp = $this->cmp($a[$mid], $key);
 
             if ($cmp < 0) {
                 $lo = $mid + 1;

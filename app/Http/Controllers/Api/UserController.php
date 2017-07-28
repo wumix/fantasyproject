@@ -133,6 +133,7 @@ class UserController extends Controller
     function userTeamPlayers(Request $request)
     {
 
+
         $transferflag = 0; // if tournament over hides transfer button
         $team_id = $request->team_id;
         $tournament_id = $request->tournament_id;
@@ -208,9 +209,9 @@ class UserController extends Controller
         $data['tournament_id'] = $tournament_id;
         // dd($data['user_team_player_transfer']->toArray());
         //points calculation script
+//return response()->json($data['team_score']);
 
-
-//return $this->playerScoreInTournament($player['id'],$data);
+//return $this->playerScoreInTournament($data['team_score']);
 
 
         $usersSelectedPlayers = userTeamPlayers($team_id, $tournament_id);
@@ -232,6 +233,7 @@ class UserController extends Controller
         ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
             $query->where('tournament_id', $tournament_id);
         })->get()->toArray();
+   //return response()->json($data[$r]);
 
         $tournament_players = [];
 
@@ -278,7 +280,7 @@ class UserController extends Controller
                             if(empty($k=$this->playerScoreInTournament($player['id'], $data)['transfer'])) {
                                 $player['transfer']=[] ;
                             }else{
-                                $player['transfer'][]=$k;
+                                $player['transfer'][]=$k ;
                             }
 
                         } else {
@@ -332,10 +334,13 @@ class UserController extends Controller
         $playertotal = 0;
 
         foreach ($data['team_score'] as $row) {
+
             foreach ($user_team_player_transfer['user_team_player_transfers'] as $transfer) {
                 if ($transfer['pivot']['player_in_id'] == $player_id) {
+                    //dd($row);
                     $obj['transfer']['id'] = $transfer['pivot']['player_out_id'];
-                    $obj['transfer']['profile_pic'] = $transfer['profile_pic'];
+//                    $obj['transfer']['team_name'] = $transfer['pivot']['player_out_id'];
+                    $obj['transfer']['profile_pic'] =getUploadsPath($transfer['profile_pic']);
                     $obj['transfer']['name'] = $transfer['name'];
                     $obj['transfer']['score'] = $transfer['pivot']['player_out_score'];
                     $flag = 1;
@@ -348,6 +353,7 @@ class UserController extends Controller
 
             }
             if ($row['id'] == $player_id) {
+                $obj['transfer']['team_name'] = $row['player_actual_teams'][0]['name'];
                 foreach ($row['player_game_term_score'] as $termscore) {
                     foreach ($termscore['points_devision_tournament'] as $points) {
 

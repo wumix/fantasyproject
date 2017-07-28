@@ -307,6 +307,7 @@ class TournamentsController extends Controller
 
     function transferPlayerPost(Request $request)
     {
+        dd('asdasd');
         $start_date = getGmtTime();
         $tournamentMatches = \App\Tournament::where('id', $request->tournament_id)->with(['tournament_matches' => function ($query) use ($start_date) {
             $query->where('start_date', '>', $start_date)->firstOrfail();

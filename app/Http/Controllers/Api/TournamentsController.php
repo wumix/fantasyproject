@@ -128,8 +128,8 @@ class TournamentsController extends Controller
                         $objteam->user_team_player()->sync($request->player_id, false);
                         $array = array(['tournament_id' => $request->tournament_id, 'action_key' => 'add_player', 'user_id' => Auth::id(), 'points_consumed' => $request->player_price]);
                         \App\UserPointsConsumed::insert($array);
-                        $objResponse['success'] = true;
-                        $objResponse['msg'] = "Player added successfully";
+                        $objResponse['success'] = "true";
+                        $objResponse['message'] = "Player added successfully";
                         $objResponse['batsmen'] = $this->getRoleCountInTeam(Auth::id(), $request->team_id, 5);
                         $objResponse['bowler'] = $this->getRoleCountInTeam(Auth::id(), $request->team_id, 6);
                         $objResponse['wicketkeeper'] = $this->getRoleCountInTeam(Auth::id(), $request->team_id, 8);
@@ -294,14 +294,14 @@ class TournamentsController extends Controller
                 'tournament_matches' => function ($query) use ($start_date) {
                     $query->where('start_date', '>', $start_date)->firstOrfail();
                 }])->firstOrfail()->toArray();
-        
+
         $nextMatchStartDate = $tournamentMatches['tournament_matches'][0]['start_date'];
         $difference = $this->getTImeDifference($nextMatchStartDate);
         $difference = abs($difference);
         $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
         $currentNoPlayers = \App\UserTeam::find($request->team_id)->user_team_player()->count();
         $objResponse = [];
-        $objResponse['success'] = false;
+        $objResponse['success'] = "false";
         $tournament_id = $request->tournament_id;
         $player_in_price = \App\Player::where('id', $request->player_in_id)->with(
             ['player_tournaments' => function ($k) use ($tournament_id) {
@@ -324,8 +324,8 @@ class TournamentsController extends Controller
 
                 $array = array(['tournament_id' => $request->tournament_id, 'action_key' => 'transfer_player', 'user_id' => Auth::id(), 'points_consumed' => $netpointsdeduction]);
                 \App\UserPointsConsumed::insert($array);
-                $objResponse['success'] = true;
-                $objResponse['msg'] = "Player transfered successfully";
+                $objResponse['success'] = "true";
+                $objResponse['message'] = "Player transfered successfully";
                 DB::table('user_team_players')->insert(
                     ['team_id' => $request->team_id, 'player_id' => $request->player_in_id]
                 );
@@ -345,8 +345,8 @@ class TournamentsController extends Controller
 
 
                 if ($player_in_price >= getUserTotalScore(Auth::id(), $tournament_id)) {
-                    $objResponse['success'] = false;
-                    $objResponse['msg'] = "You donot have enough points";
+                    $objResponse['success'] = "false";
+                    $objResponse['message'] = "You donot have enough points";
 
 
                 } else {
@@ -374,15 +374,15 @@ class TournamentsController extends Controller
 
                     $objResponse['team_id'] = $request->team_id;
                     $objResponse['tournament_id'] = $request->tournament_id;
-                    $objResponse['success'] = true;
-                    $objResponse['msg'] = "Player transfered successfully";
+                    $objResponse['success'] = "true";
+                    $objResponse['message'] = "Player transfered successfully";
                 }
 
             }
 
         } else {
-            $objResponse['success'] = false;
-            $objResponse['msg'] = "Match starts in 15 minutes you cant transfer player now";
+            $objResponse['success'] = "false";
+            $objResponse['message'] = "Match starts in 15 minutes you cant transfer player now";
         }
         return response()->json($objResponse);
     }

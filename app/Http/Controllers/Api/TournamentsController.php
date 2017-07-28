@@ -294,6 +294,7 @@ class TournamentsController extends Controller
                 'tournament_matches' => function ($query) use ($start_date) {
                     $query->where('start_date', '>', $start_date)->firstOrfail();
                 }])->firstOrfail()->toArray();
+        dd($tournamentMatches);
         $nextMatchStartDate = $tournamentMatches['tournament_matches'][0]['start_date'];
         $difference = $this->getTImeDifference($nextMatchStartDate);
         $difference = abs($difference);
@@ -306,7 +307,7 @@ class TournamentsController extends Controller
             ['player_tournaments' => function ($k) use ($tournament_id) {
                 $k->where('tournaments.id', $tournament_id);
             }])->firstORFail();
-        dd($player_in_price);
+
 
         $player_in_price = $player_in_price['player_tournaments'][0]['pivot']['player_price'];
           if ($difference > 15 || $difference < 15) {

@@ -130,181 +130,248 @@ class UserController extends Controller
 
     }
 
-//    function userTeamPlayers(Request $request)
-//    {
-//
-//        $transferflag = 0; // if tournament over hides transfer button
-//        $teamId = $request->team_id;
-//        $data['user_teams'] = \App\UserTeam::where('id', $teamId)->get()->toArray();
-//        //////Error
-//        if (empty($data['user_teams'])) {
-//            return abort(404);
-//        }
-//
-//        /// End Error
-//        $tournament_id = $data['user_teams'][0]['tournament_id'];
-//        $date_end = \App\Tournament::where('id', $tournament_id)->firstOrFail()->end_date;
-//
-//
-//        if (getGmtTime() > $date_end) {
-//            $transferflag = 1;
-//        }
-//        $data['transferflag'] = $transferflag;
-//        $data['user_team_player_transfer'] = \App\UserTeam::where('id', $request->team_id)
-//            ->with('user_team_player_transfers.player_transfer')
-//            ->get();
-//        // dd($data['user_team_player_transfer']->toArray());
-//        // //Get matches after team making
-//        if ($data['user_teams'][0]['joined_from_match_date'] == null) {
-//            $dataArray['tournament_id'] = $data['user_teams'][0]['tournament_id'];
-//            return view('pages.team_incomplete', $dataArray);
-//        }
-//        $matcheIdsAfterThisTeamMade = \App\Match::select('id')
-//            ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])->where('tournament_id', $tournament_id)
-//            ->get()->toArray();
-//        //  echo 'joined date'.$data['user_teams'][0]['joined_from_match_date'].'<br>';
-//        // echo getGmtTime();
-////        dd($matcheIdsAfterThisTeamMade);
-//        if (!empty($matcheIdsAfterThisTeamMade)) {
-//            $matcheIdsAfterThisTeamMade = array_column($matcheIdsAfterThisTeamMade, 'id');
-//            //  $matcheIdsAfterThisTeamMade = [1];
-//        }
-//        $data['user_team_players'] = \App\Player::whereHas('player_teams', function ($query) use ($teamId) {
-//            $query->where('team_id', $teamId);
-//        })->get()->toArray();
-//        $userTeamPlayerIds = [0];
-//        if (!empty($data['user_team_players'])) {
-//            $userTeamPlayerIds = array_column($data['user_team_players'], 'id');
-//        }
-//        // $matcheIdsAfterThisTeamMade=[1,2,3,4,5,6,7,8,9,10];
-//        //dd($matcheIdsAfterThisTeamMade);
-//        //  $userTeamPlayerIds=[1,2,3,4,5,6,7,8,9,10];
-//        //dd($userTeamPlayerIds);
-//        $data['team_score'] = \App\Player::whereIn('id', $userTeamPlayerIds)->with(['player_roles', 'player_matches',
-//            'player_gameTerm_score' => function ($query) use ($matcheIdsAfterThisTeamMade) {
-//                $query->whereIn('match_id', $matcheIdsAfterThisTeamMade);
-//            },
-//            'player_gameTerm_score.game_terms' => function ($query) {
-//                $query->select('name', 'id');
-//            },
-//            'player_gameTerm_score.points_devision_tournament' => function ($query) use ($matcheIdsAfterThisTeamMade, $tournament_id) {
-//                $query->where('tournament_id', $tournament_id);
-//            }, 'player_actual_teams' => function ($query) use ($tournament_id) {
-//                $query->where('tournament_id', $tournament_id);
-//            }
-//        ])->get()->toArray();
-//
-//
-//        // dd($data['team_score']);
-////       debugArr($data['team_score']);
-////       die;
-//        $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
-//        $data['matches'] = \App\Match::all()->where('tournament_id', $tournament_id)
-//            ->where('matches', '>=', date("Y-m-d"))
-//            ->sortByDesc("start_date")->toArray();
-//
-//        $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
-//        $data['tournament_id'] = $tournament_id;
-//        // dd($data['user_team_player_transfer']->toArray());
-//        return response()->json($data);
-//
-////        $team_id = $request->team_id;
-////        $tournament_id = $request->tournament_id;
-////
-////        $usersSelectedPlayers =userTeamPlayers($team_id,$tournament_id);
-////        $team_name = $usersSelectedPlayers['name'];
-////        $selectedPlayers = [];
-////        if (!empty($usersSelectedPlayers['user_team_player'])) {
-////            $selectedPlayers = array_column($usersSelectedPlayers['user_team_player'], 'id');
-////        }
-////
-////        $roles = \App\GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
-////            $q->where('tournament_id', $tournament_id);
-////        },
-//////            'players' => function ($q) use ($selectedPlayers) {
-//////                $q->whereNotIn('players.id', $selectedPlayers);
-//////            },
-////            'players.player_actual_teams' => function ($query) use ($tournament_id) {
-////                $query->where('tournament_id', $tournament_id);
-////            },
-////        ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
-////            $query->where('tournament_id', $tournament_id);
-////        })->get()->toArray();
-////
-////        $tournament_players = [];
-////
-////        foreach ($roles as &$role) {
-////            foreach ($role['players'] as $key => &$player) {
-////
-////                if (empty($player['player_tournaments'])) {
-////                    unset($role['players'][$key]);
-////
-////                } else {
-////                    $player['profile_pic'] = getUploadsPath($player['profile_pic']);
-////                    if (empty($player['player_actual_teams'])) {
-////                        $player['team_name'] = NULL;
-////                    } else {
-////                        $player['team_id'] = $player['player_actual_teams'][0]['id'];
-////                        $player['team_name'] = $player['player_actual_teams'][0]['name'];
-////                        unset($player['player_actual_teams']);
-////                    }
-////                    if (empty($player['player_tournaments'])) {
-////
-////                        $player['tournament_id'] = NULL;
-////                        $player['tournament_name'] = NULL;
-////                        $player['player_price'] = NULL;
-////                    } else {
-////
-////                        $player['tournament_id'] = $player['player_tournaments'][0]['id'];
-////                        $player['tournament_name'] = $player['player_tournaments'][0]['name'];
-////                        $player['player_id'] = $player['player_tournaments'][0]['pivot']['player_id'];
-////                        $player['player_price'] = $player['player_tournaments'][0]['pivot']['player_price'];
-////                        $player['role_id'] = $player['pivot']['game_role_id'];
-////
-////                        if($this->checkStatus(
-////                            $this->binary_search(  //binary search to find players in user team
-////                                $selectedPlayers,                                  0,
-////                                sizeof($selectedPlayers),
-////                                $player['id']))){
-////                            $player['role_id']="true";
-////
-////                        }else{
-////                            unset($player);
-////                            continue;
-////
-////                        }
-////
-////
-////                        unset($player['player_tournaments']);
-////                        unset($player['pivot']);
-////
-////                    }
-////                    $tournament_players[str_replace(
-////                        ' ',
-////                        '_',
-////                        strtolower($role['name']))][] = $player;
-////
-////                }
-////
-////
-////            }
-////        }
-////
-////
-////        if (empty($tournament_players)) {
-////            return response()->json(['status' => "false", 'message' => 'No Players In this Tournaments', 'more_info' => []], 404);
-////        }
-////
-////        $tournament_players['bat_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 5);
-////        $tournament_players['bowl_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 6);
-////        $tournament_players['wicket_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 8);
-////        $tournament_players['allround_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 7);
-////        $tournament_players['total_count'] = (String)getUserTeamPlayersCount($team_id);
-////        $tournament_players['current_score'] = (String)getUserTotalScore(Auth::id(), $tournament_id);
-////        $tournament_players['team_name'] = $team_name;
-////        return response()->json($tournament_players);
-//    }
+    function userTeamPlayers(Request $request)
+    {
 
+        $transferflag = 0; // if tournament over hides transfer button
+        $team_id = $request->team_id;
+        $tournament_id= $request->tournament_id;
+        $data['user_teams'] = \App\UserTeam::where('id', $team_id)->get()->toArray();
+        //////Error
+        if (empty($data['user_teams'])) {
+            return abort(404);
+        }
+
+        /// End Error
+//        $tournament_id = $data['user_teams'][0]['tournament_id'];
+        $date_end = \App\Tournament::where('id', $tournament_id)->firstOrFail()->end_date;
+
+
+        if (getGmtTime() > $date_end) {
+            $transferflag = 1;
+        }
+        $data['transferflag'] = $transferflag;
+        $data['user_team_player_transfer'] = \App\UserTeam::where('id', $team_id)
+            ->with('user_team_player_transfers.player_transfer')
+            ->get();
+        // dd($data['user_team_player_transfer']->toArray());
+        // //Get matches after team making
+        if ($data['user_teams'][0]['joined_from_match_date'] == null) {
+            $dataArray['tournament_id'] = $data['user_teams'][0]['tournament_id'];
+            return view('pages.team_incomplete', $dataArray);
+        }
+        $matcheIdsAfterThisTeamMade = \App\Match::select('id')
+            ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])->where('tournament_id', $tournament_id)
+            ->get()->toArray();
+        //  echo 'joined date'.$data['user_teams'][0]['joined_from_match_date'].'<br>';
+        // echo getGmtTime();
+//        dd($matcheIdsAfterThisTeamMade);
+        if (!empty($matcheIdsAfterThisTeamMade)) {
+            $matcheIdsAfterThisTeamMade = array_column($matcheIdsAfterThisTeamMade, 'id');
+            //  $matcheIdsAfterThisTeamMade = [1];
+        }
+        $data['user_team_players'] = \App\Player::whereHas('player_teams', function ($query) use ($team_id) {
+            $query->where('team_id', $team_id);
+        })->get()->toArray();
+        $userTeamPlayerIds = [0];
+        if (!empty($data['user_team_players'])) {
+            $userTeamPlayerIds = array_column($data['user_team_players'], 'id');
+        }
+        // $matcheIdsAfterThisTeamMade=[1,2,3,4,5,6,7,8,9,10];
+        //dd($matcheIdsAfterThisTeamMade);
+        //  $userTeamPlayerIds=[1,2,3,4,5,6,7,8,9,10];
+        //dd($userTeamPlayerIds);
+        $data['team_score']= \App\Player::whereIn('id', $userTeamPlayerIds)->with(['player_roles', 'player_matches',
+            'player_gameTerm_score' => function ($query) use ($matcheIdsAfterThisTeamMade) {
+                $query->whereIn('match_id', $matcheIdsAfterThisTeamMade);
+            },
+            'player_gameTerm_score.game_terms' => function ($query) {
+                $query->select('name', 'id');
+            },
+            'player_gameTerm_score.points_devision_tournament' => function ($query) use ($matcheIdsAfterThisTeamMade, $tournament_id) {
+                $query->where('tournament_id', $tournament_id);
+            }, 'player_actual_teams' => function ($query) use ($tournament_id) {
+                $query->where('tournament_id', $tournament_id);
+            }
+        ])->get()->toArray();
+
+
+        // dd($data['team_score']);
+//       debugArr($data['team_score']);
+//       die;
+        $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
+        $data['matches'] = \App\Match::all()->where('tournament_id', $tournament_id)
+            ->where('matches', '>=', date("Y-m-d"))
+            ->sortByDesc("start_date")->toArray();
+
+        $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
+        $data['tournament_id'] = $tournament_id;
+        // dd($data['user_team_player_transfer']->toArray());
+        //points calculation script
+
+
+
+
+//return $this->playerScoreInTournament($player['id'],$data);
+
+
+
+
+
+        $usersSelectedPlayers =userTeamPlayers($team_id,$tournament_id);
+        $team_name = $usersSelectedPlayers['name'];
+        $selectedPlayers = [];
+        if (!empty($usersSelectedPlayers['user_team_player'])) {
+            $selectedPlayers = array_column($usersSelectedPlayers['user_team_player'], 'id');
+        }
+
+        $roles = \App\GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
+            $q->where('tournament_id', $tournament_id);
+        },
+//            'players' => function ($q) use ($selectedPlayers) {
+//                $q->whereNotIn('players.id', $selectedPlayers);
+//            },
+            'players.player_actual_teams' => function ($query) use ($tournament_id) {
+                $query->where('tournament_id', $tournament_id);
+            },
+        ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
+            $query->where('tournament_id', $tournament_id);
+        })->get()->toArray();
+
+        $tournament_players = [];
+
+        foreach ($roles as &$role) {
+
+            foreach ($role['players'] as $key => &$player) {
+
+                if (empty($player['player_tournaments'])) {
+                    unset($role['players'][$key]);
+
+                } else {
+                    $player['profile_pic'] = getUploadsPath($player['profile_pic']);
+                    if (empty($player['player_actual_teams'])) {
+                        $player['team_name'] = NULL;
+                    } else {
+                        $player['team_id'] = $player['player_actual_teams'][0]['id'];
+                        $player['team_name'] = $player['player_actual_teams'][0]['name'];
+                        unset($player['player_actual_teams']);
+                    }
+                    if (empty($player['player_tournaments'])) {
+
+                        $player['tournament_id'] = NULL;
+                        $player['tournament_name'] = NULL;
+                        $player['player_price'] = NULL;
+                    } else {
+
+                        $player['tournament_id'] = $player['player_tournaments'][0]['id'];
+                        $player['tournament_name'] = $player['player_tournaments'][0]['name'];
+                        $player['player_id'] = $player['player_tournaments'][0]['pivot']['player_id'];
+                        $player['player_price'] = $player['player_tournaments'][0]['pivot']['player_price'];
+                        $player['role_id'] = $player['pivot']['game_role_id'];
+                     //  dd( $this->playerScoreInTournament($player['id'],$data));
+
+                        $player['score']=$this->playerScoreInTournament($player['id'],$data)['player_total'];
+                        $player['transfer']=NULL;
+
+
+                        if($this->checkStatus(
+                            $this->binary_search(  //binary search to find players in user team
+                                $selectedPlayers,                                  0,
+                                sizeof($selectedPlayers),
+                                $player['id']))){
+                            $player['transfer']=$this->playerScoreInTournament($player['id'],$data)['transfer'];
+
+                        }else{
+                            unset($player);
+                            continue;
+
+                        }
+
+
+                        unset($player['player_tournaments']);
+                        unset($player['pivot']);
+
+                    }
+                    $tournament_players[str_replace(
+                        ' ',
+                        '_',
+                        strtolower($role['name']))][] = $player;
+
+                }
+
+
+            }
+        }
+
+
+        if (empty($tournament_players)) {
+            return response()->json(['status' => "false", 'message' => 'No Players In this Tournaments', 'more_info' => []], 404);
+        }
+
+        $tournament_players['bat_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 5);
+        $tournament_players['bowl_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 6);
+        $tournament_players['wicket_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 8);
+        $tournament_players['allround_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 7);
+        $tournament_players['total_count'] = (String)getUserTeamPlayersCount($team_id);
+        $tournament_players['current_score'] = (String)getUserTotalScore(Auth::id(), $tournament_id);
+        $tournament_players['team_name'] = $team_name;
+        return response()->json($tournament_players);
+    }
+  function playerScoreInTournament($player_id,$data){
+      $obj=[];
+      $obj['transfer']=[];
+      $user_team_player_transfer=$data['user_team_player_transfer'];
+      if (empty($user_team_player_transfer->toArray())) {
+          $user_team_player_transfer = null;
+      } else {
+          $user_team_player_transfer = $user_team_player_transfer->toArray();
+          $user_team_player_transfer = $user_team_player_transfer[0];
+      }
+          $playertotal=0;
+
+foreach($data['team_score'] as $row) {
+    foreach ($user_team_player_transfer['user_team_player_transfers'] as $transfer) {
+        if ($transfer['pivot']['player_in_id'] ==$player_id ) {
+            $obj['transfer']['id'] = $transfer['pivot']['player_out_id'];
+            $obj['transfer']['profile_pic'] = $transfer['profile_pic'];
+            $obj['transfer']['name'] = $transfer['name'];
+            $obj['transfer']['score'] = $transfer['pivot']['player_out_score'];
+            $flag = 1;
+            // $playertotal+=$transfer['pivot']['player_out_score'];
+          //  $teamtotal += $transfer['pivot']['player_out_score'];
+           // $teamtotal -= $transfer['pivot']['player_in_score'];
+            $playerinscore = $transfer['pivot']['player_in_score'];
+           // $x = $transfer['pivot']['player_in_score'];
+        }
+
+    }
+    if($row['id']==$player_id) {
+        foreach ($row['player_game_term_score'] as $termscore) {
+            foreach ($termscore['points_devision_tournament'] as $points) {
+
+                if ($points['qty_from'] == $points['qty_to']) {
+                    //   echo "yes";
+                    //     echo $points['points'] * $termscore['player_term_count'];
+                    $playertotal += $points['points'] * $termscore['player_term_count'];
+                } else {
+                    if (($points['qty_from'] <= $termscore['player_term_count']) && ($points['qty_to'] >= $termscore['player_term_count'])) {
+                        //  echo $points['qty_from']." ". $termscore['player_term_count']." ".$points['qty_to']."<br>";
+
+
+                        $playertotal += $points['points'];
+                    }
+                }
+
+            }
+        }
+
+
+
+    }
+}
+      $obj['player_total']=$playertotal;
+      return $obj;
+  }
     function checkTeam(Request $request)
     {
 

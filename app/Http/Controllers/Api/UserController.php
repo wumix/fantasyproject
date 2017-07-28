@@ -135,7 +135,7 @@ class UserController extends Controller
 
         $transferflag = 0; // if tournament over hides transfer button
         $team_id = $request->team_id;
-        $tournament_id= $request->tournament_id;
+        $tournament_id = $request->tournament_id;
         $data['user_teams'] = \App\UserTeam::where('id', $team_id)->get()->toArray();
         //////Error
         if (empty($data['user_teams'])) {
@@ -181,7 +181,7 @@ class UserController extends Controller
         //dd($matcheIdsAfterThisTeamMade);
         //  $userTeamPlayerIds=[1,2,3,4,5,6,7,8,9,10];
         //dd($userTeamPlayerIds);
-        $data['team_score']= \App\Player::whereIn('id', $userTeamPlayerIds)->with(['player_roles', 'player_matches',
+        $data['team_score'] = \App\Player::whereIn('id', $userTeamPlayerIds)->with(['player_roles', 'player_matches',
             'player_gameTerm_score' => function ($query) use ($matcheIdsAfterThisTeamMade) {
                 $query->whereIn('match_id', $matcheIdsAfterThisTeamMade);
             },
@@ -210,15 +210,10 @@ class UserController extends Controller
         //points calculation script
 
 
-
-
 //return $this->playerScoreInTournament($player['id'],$data);
 
 
-
-
-
-        $usersSelectedPlayers =userTeamPlayers($team_id,$tournament_id);
+        $usersSelectedPlayers = userTeamPlayers($team_id, $tournament_id);
         $team_name = $usersSelectedPlayers['name'];
         $selectedPlayers = [];
         if (!empty($usersSelectedPlayers['user_team_player'])) {
@@ -268,20 +263,21 @@ class UserController extends Controller
                         $player['player_id'] = $player['player_tournaments'][0]['pivot']['player_id'];
                         $player['player_price'] = $player['player_tournaments'][0]['pivot']['player_price'];
                         $player['role_id'] = $player['pivot']['game_role_id'];
-                     //  dd( $this->playerScoreInTournament($player['id'],$data));
+                        //  dd( $this->playerScoreInTournament($player['id'],$data));
 
-                        $player['score']=$this->playerScoreInTournament($player['id'],$data)['player_total'];
-                        $player['transfer']=NULL;
+                        $player['score'] = $this->playerScoreInTournament($player['id'], $data)['player_total'];
+                        $player['transfer'] = NULL;
 
 
-                        if($this->checkStatus(
+                        if ($this->checkStatus(
                             $this->binary_search(  //binary search to find players in user team
-                                $selectedPlayers,                                  0,
+                                $selectedPlayers, 0,
                                 sizeof($selectedPlayers),
-                                $player['id']))){
-                            $player['transfer']=$this->playerScoreInTournament($player['id'],$data)['transfer'];
+                                $player['id']))
+                        ) {
+                            $player['transfer'][] = $this->playerScoreInTournament($player['id'], $data)['transfer'];
 
-                        }else{
+                        } else {
                             unset($player);
                             continue;
 
@@ -317,61 +313,63 @@ class UserController extends Controller
         $tournament_players['team_name'] = $team_name;
         return response()->json($tournament_players);
     }
-  function playerScoreInTournament($player_id,$data){
-      $obj=[];
-      $obj['transfer']=[];
-      $user_team_player_transfer=$data['user_team_player_transfer'];
-      if (empty($user_team_player_transfer->toArray())) {
-          $user_team_player_transfer = null;
-      } else {
-          $user_team_player_transfer = $user_team_player_transfer->toArray();
-          $user_team_player_transfer = $user_team_player_transfer[0];
-      }
-          $playertotal=0;
 
-foreach($data['team_score'] as $row) {
-    foreach ($user_team_player_transfer['user_team_player_transfers'] as $transfer) {
-        if ($transfer['pivot']['player_in_id'] ==$player_id ) {
-            $obj['transfer']['id'] = $transfer['pivot']['player_out_id'];
-            $obj['transfer']['profile_pic'] = $transfer['profile_pic'];
-            $obj['transfer']['name'] = $transfer['name'];
-            $obj['transfer']['score'] = $transfer['pivot']['player_out_score'];
-            $flag = 1;
-            // $playertotal+=$transfer['pivot']['player_out_score'];
-          //  $teamtotal += $transfer['pivot']['player_out_score'];
-           // $teamtotal -= $transfer['pivot']['player_in_score'];
-            $playerinscore = $transfer['pivot']['player_in_score'];
-           // $x = $transfer['pivot']['player_in_score'];
+    function playerScoreInTournament($player_id, $data)
+    {
+        $obj = [];
+        $obj['transfer'] =[];
+        $user_team_player_transfer = $data['user_team_player_transfer'];
+        if (empty($user_team_player_transfer->toArray())) {
+            $user_team_player_transfer = null;
+        } else {
+            $user_team_player_transfer = $user_team_player_transfer->toArray();
+            $user_team_player_transfer = $user_team_player_transfer[0];
         }
+        $playertotal = 0;
 
-    }
-    if($row['id']==$player_id) {
-        foreach ($row['player_game_term_score'] as $termscore) {
-            foreach ($termscore['points_devision_tournament'] as $points) {
-
-                if ($points['qty_from'] == $points['qty_to']) {
-                    //   echo "yes";
-                    //     echo $points['points'] * $termscore['player_term_count'];
-                    $playertotal += $points['points'] * $termscore['player_term_count'];
-                } else {
-                    if (($points['qty_from'] <= $termscore['player_term_count']) && ($points['qty_to'] >= $termscore['player_term_count'])) {
-                        //  echo $points['qty_from']." ". $termscore['player_term_count']." ".$points['qty_to']."<br>";
-
-
-                        $playertotal += $points['points'];
-                    }
+        foreach ($data['team_score'] as $row) {
+            foreach ($user_team_player_transfer['user_team_player_transfers'] as $transfer) {
+                if ($transfer['pivot']['player_in_id'] == $player_id) {
+                    $obj['transfer']['id'] = $transfer['pivot']['player_out_id'];
+                    $obj['transfer']['profile_pic'] = $transfer['profile_pic'];
+                    $obj['transfer']['name'] = $transfer['name'];
+                    $obj['transfer']['score'] = $transfer['pivot']['player_out_score'];
+                    $flag = 1;
+                    // $playertotal+=$transfer['pivot']['player_out_score'];
+                    //  $teamtotal += $transfer['pivot']['player_out_score'];
+                    // $teamtotal -= $transfer['pivot']['player_in_score'];
+                    $playerinscore = $transfer['pivot']['player_in_score'];
+                    // $x = $transfer['pivot']['player_in_score'];
                 }
 
             }
+            if ($row['id'] == $player_id) {
+                foreach ($row['player_game_term_score'] as $termscore) {
+                    foreach ($termscore['points_devision_tournament'] as $points) {
+
+                        if ($points['qty_from'] == $points['qty_to']) {
+                            //   echo "yes";
+                            //     echo $points['points'] * $termscore['player_term_count'];
+                            $playertotal += $points['points'] * $termscore['player_term_count'];
+                        } else {
+                            if (($points['qty_from'] <= $termscore['player_term_count']) && ($points['qty_to'] >= $termscore['player_term_count'])) {
+                                //  echo $points['qty_from']." ". $termscore['player_term_count']." ".$points['qty_to']."<br>";
+
+
+                                $playertotal += $points['points'];
+                            }
+                        }
+
+                    }
+                }
+
+
+            }
         }
-
-
-
+        $obj['player_total'] = $playertotal;
+        return $obj;
     }
-}
-      $obj['player_total']=$playertotal;
-      return $obj;
-  }
+
     function checkTeam(Request $request)
     {
 

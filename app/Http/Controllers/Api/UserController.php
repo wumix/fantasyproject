@@ -343,6 +343,7 @@ class UserController extends Controller
                     $obj['transfer']['profile_pic'] =getUploadsPath($transfer['profile_pic']);
                     $obj['transfer']['name'] = $transfer['name'];
                     $obj['transfer']['score'] = $transfer['pivot']['player_out_score'];
+                    $obj['transfer']['team_name'] = "test";
                     $flag = 1;
                     // $playertotal+=$transfer['pivot']['player_out_score'];
                     //  $teamtotal += $transfer['pivot']['player_out_score'];
@@ -353,7 +354,7 @@ class UserController extends Controller
 
             }
             if ($row['id'] == $player_id) {
-                $obj['transfer']['team_name'] = $row['player_actual_teams'][0]['name'];
+
                 foreach ($row['player_game_term_score'] as $termscore) {
                     foreach ($termscore['points_devision_tournament'] as $points) {
 

@@ -286,7 +286,7 @@ class TournamentsController extends Controller
 
     function transfer_player(Request $request)
     {
-       dd($request->all());
+     //  dd($request->all());
 
         $start_date = getGmtTime();
         $tournamentMatches = \App\Tournament::where('id', $request->tournament_id)->with(

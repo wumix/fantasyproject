@@ -42,9 +42,10 @@ Route::group(['prefix' => 'v1'], function () {
             Route::get('players', 'Api\TournamentsController@tournament_players');
             Route::get('add_player', 'Api\TournamentsController@add_player');
             Route::get('delete_player', 'Api\TournamentsController@delete_player');
+            Route::get('transfer_player', 'Api\TournamentsController@transfer_player');
         });
         Route::group(['prefix' => 'user'], function () {
-
+            Route::get('team_players', 'Api\UserController@userTeamPlayers');
             Route::get('check', 'Api\UserController@checkTeam');
             Route::get('team', 'Api\UserController@createTeam');
             Route::resource('/', 'Api\User');

@@ -9,6 +9,7 @@ use App\User;
 use App\User_Type;
 use Validator;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class UserController extends Controller
 {
@@ -129,28 +130,204 @@ class UserController extends Controller
 
     }
 
+    function userTeamPlayers(Request $request)
+    {
+
+        $transferflag = 0; // if tournament over hides transfer button
+        $teamId = $request->team_id;
+        $data['user_teams'] = \App\UserTeam::where('id', $teamId)->get()->toArray();
+        //////Error
+        if (empty($data['user_teams'])) {
+            return abort(404);
+        }
+
+        /// End Error
+        $tournament_id = $data['user_teams'][0]['tournament_id'];
+        $date_end = \App\Tournament::where('id', $tournament_id)->firstOrFail()->end_date;
+
+
+        if (getGmtTime() > $date_end) {
+            $transferflag = 1;
+        }
+        $data['transferflag'] = $transferflag;
+        $data['user_team_player_transfer'] = \App\UserTeam::where('id', $request->team_id)
+            ->with('user_team_player_transfers.player_transfer')
+            ->get();
+        // dd($data['user_team_player_transfer']->toArray());
+        // //Get matches after team making
+        if ($data['user_teams'][0]['joined_from_match_date'] == null) {
+            $dataArray['tournament_id'] = $data['user_teams'][0]['tournament_id'];
+            return view('pages.team_incomplete', $dataArray);
+        }
+        $matcheIdsAfterThisTeamMade = \App\Match::select('id')
+            ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])->where('tournament_id', $tournament_id)
+            ->get()->toArray();
+        //  echo 'joined date'.$data['user_teams'][0]['joined_from_match_date'].'<br>';
+        // echo getGmtTime();
+//        dd($matcheIdsAfterThisTeamMade);
+        if (!empty($matcheIdsAfterThisTeamMade)) {
+            $matcheIdsAfterThisTeamMade = array_column($matcheIdsAfterThisTeamMade, 'id');
+            //  $matcheIdsAfterThisTeamMade = [1];
+        }
+        $data['user_team_players'] = \App\Player::whereHas('player_teams', function ($query) use ($teamId) {
+            $query->where('team_id', $teamId);
+        })->get()->toArray();
+        $userTeamPlayerIds = [0];
+        if (!empty($data['user_team_players'])) {
+            $userTeamPlayerIds = array_column($data['user_team_players'], 'id');
+        }
+        // $matcheIdsAfterThisTeamMade=[1,2,3,4,5,6,7,8,9,10];
+        //dd($matcheIdsAfterThisTeamMade);
+        //  $userTeamPlayerIds=[1,2,3,4,5,6,7,8,9,10];
+        //dd($userTeamPlayerIds);
+        $data['team_score'] = \App\Player::whereIn('id', $userTeamPlayerIds)->with(['player_roles', 'player_matches',
+            'player_gameTerm_score' => function ($query) use ($matcheIdsAfterThisTeamMade) {
+                $query->whereIn('match_id', $matcheIdsAfterThisTeamMade);
+            },
+            'player_gameTerm_score.game_terms' => function ($query) {
+                $query->select('name', 'id');
+            },
+            'player_gameTerm_score.points_devision_tournament' => function ($query) use ($matcheIdsAfterThisTeamMade, $tournament_id) {
+                $query->where('tournament_id', $tournament_id);
+            }, 'player_actual_teams' => function ($query) use ($tournament_id) {
+                $query->where('tournament_id', $tournament_id);
+            }
+        ])->get()->toArray();
+
+
+        // dd($data['team_score']);
+//       debugArr($data['team_score']);
+//       die;
+        $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
+        $data['matches'] = \App\Match::all()->where('tournament_id', $tournament_id)
+            ->where('matches', '>=', date("Y-m-d"))
+            ->sortByDesc("start_date")->toArray();
+
+        $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
+        $data['tournament_id'] = $tournament_id;
+        // dd($data['user_team_player_transfer']->toArray());
+        return response()->json($data);
+
+//        $team_id = $request->team_id;
+//        $tournament_id = $request->tournament_id;
+//
+//        $usersSelectedPlayers =userTeamPlayers($team_id,$tournament_id);
+//        $team_name = $usersSelectedPlayers['name'];
+//        $selectedPlayers = [];
+//        if (!empty($usersSelectedPlayers['user_team_player'])) {
+//            $selectedPlayers = array_column($usersSelectedPlayers['user_team_player'], 'id');
+//        }
+//
+//        $roles = \App\GameRole::with(['players.player_tournaments' => function ($q) use ($tournament_id) {
+//            $q->where('tournament_id', $tournament_id);
+//        },
+////            'players' => function ($q) use ($selectedPlayers) {
+////                $q->whereNotIn('players.id', $selectedPlayers);
+////            },
+//            'players.player_actual_teams' => function ($query) use ($tournament_id) {
+//                $query->where('tournament_id', $tournament_id);
+//            },
+//        ])->whereHas('players.player_tournaments', function ($query) use ($tournament_id) {
+//            $query->where('tournament_id', $tournament_id);
+//        })->get()->toArray();
+//
+//        $tournament_players = [];
+//
+//        foreach ($roles as &$role) {
+//            foreach ($role['players'] as $key => &$player) {
+//
+//                if (empty($player['player_tournaments'])) {
+//                    unset($role['players'][$key]);
+//
+//                } else {
+//                    $player['profile_pic'] = getUploadsPath($player['profile_pic']);
+//                    if (empty($player['player_actual_teams'])) {
+//                        $player['team_name'] = NULL;
+//                    } else {
+//                        $player['team_id'] = $player['player_actual_teams'][0]['id'];
+//                        $player['team_name'] = $player['player_actual_teams'][0]['name'];
+//                        unset($player['player_actual_teams']);
+//                    }
+//                    if (empty($player['player_tournaments'])) {
+//
+//                        $player['tournament_id'] = NULL;
+//                        $player['tournament_name'] = NULL;
+//                        $player['player_price'] = NULL;
+//                    } else {
+//
+//                        $player['tournament_id'] = $player['player_tournaments'][0]['id'];
+//                        $player['tournament_name'] = $player['player_tournaments'][0]['name'];
+//                        $player['player_id'] = $player['player_tournaments'][0]['pivot']['player_id'];
+//                        $player['player_price'] = $player['player_tournaments'][0]['pivot']['player_price'];
+//                        $player['role_id'] = $player['pivot']['game_role_id'];
+//
+//                        if($this->checkStatus(
+//                            $this->binary_search(  //binary search to find players in user team
+//                                $selectedPlayers,                                  0,
+//                                sizeof($selectedPlayers),
+//                                $player['id']))){
+//                            $player['role_id']="true";
+//
+//                        }else{
+//                            unset($player);
+//                            continue;
+//
+//                        }
+//
+//
+//                        unset($player['player_tournaments']);
+//                        unset($player['pivot']);
+//
+//                    }
+//                    $tournament_players[str_replace(
+//                        ' ',
+//                        '_',
+//                        strtolower($role['name']))][] = $player;
+//
+//                }
+//
+//
+//            }
+//        }
+//
+//
+//        if (empty($tournament_players)) {
+//            return response()->json(['status' => "false", 'message' => 'No Players In this Tournaments', 'more_info' => []], 404);
+//        }
+//
+//        $tournament_players['bat_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 5);
+//        $tournament_players['bowl_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 6);
+//        $tournament_players['wicket_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 8);
+//        $tournament_players['allround_count'] = (String)$this->getRoleCountInTeam(Auth::id(), $team_id, 7);
+//        $tournament_players['total_count'] = (String)getUserTeamPlayersCount($team_id);
+//        $tournament_players['current_score'] = (String)getUserTotalScore(Auth::id(), $tournament_id);
+//        $tournament_players['team_name'] = $team_name;
+//        return response()->json($tournament_players);
+    }
+
     function checkTeam(Request $request)
     {
 
         $tournament_id = $request->id;
         if ($this->userHasTeamInTournament($tournament_id, \Auth::id())) {
-    //check team complete or not
+            //check team complete or not
             //if complete send msg "team not completed" send team id
             //if completed send message"team Completed"
-            $user_team=userTeamCompleteInTournament(\Auth::id(),$tournament_id);
-            if(empty($user_team->joined_from_match_date)){
+            $user_team = userTeamCompleteInTournament(\Auth::id(), $tournament_id);
+            if (empty($user_team->joined_from_match_date)) {
                 return response()->json(
                     [
-                        "status"=>"true",
+                        "status" => "true",
                         "is_complete" => 'false',
-                        "team_id" =>(String)$user_team->id,
+                        "team_id" => (String)$user_team->id,
                     ], 200);
 
-            }else{
+            } else {
                 return response()->json(
                     [
+                        "status" => "true",
                         "is_complete" => 'true',
-                        "team_id" =>(String)$user_team->id
+                        "team_id" => (String)$user_team->id
 
                     ], 200);
 
@@ -158,7 +335,7 @@ class UserController extends Controller
             }
 
 
-        }else{
+        } else {
             return response()->json(
                 [
                     "status" => 'false'
@@ -169,7 +346,7 @@ class UserController extends Controller
 
     function createTeam(\App\Http\Requests\CreateTeamRequest $request)
     {
-        $team_name =  str_replace('%20', ' ', strtolower($request->name));
+        $team_name = str_replace('%20', ' ', strtolower($request->name));
         $tournament_id = $request->id;
 
 
@@ -182,16 +359,16 @@ class UserController extends Controller
 
         } else {
             if ($this->isUniqueTeamName($team_name, $tournament_id)) {
-                $user_team= new \App\UserTeam;
-                $user_team->name=$team_name;
-                $user_team->tournament_id=$tournament_id;
-                $user_team->user_id=Auth::id();
+                $user_team = new \App\UserTeam;
+                $user_team->name = $team_name;
+                $user_team->tournament_id = $tournament_id;
+                $user_team->user_id = Auth::id();
                 $user_team->save();
-              //  return $user_team->id;
+                //  return $user_team->id;
                 return response()->json(
                     [
                         'status' => true,
-                        'team_id'=> $user_team->id,
+                        'team_id' => $user_team->id,
                         "message" => 'Team created'
                     ], 200);
             } else {
@@ -204,8 +381,61 @@ class UserController extends Controller
         }
 
 
+    }
 
+    function cmp($a, $b)
+    {
+        return ($a < $b) ? -1 : (($a > $b) ? 1 : 0);
+    }
 
+    function checkStatus($id)
+    {
+
+        if ($id < 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function binary_search(array $a, $first, $last, $key)
+    {
+        $lo = $first;
+        $hi = $last - 1;
+
+        while ($lo <= $hi) {
+            $mid = (int)(($hi - $lo) / 2) + $lo;
+            $cmp = $this->cmp($a[$mid], $key);
+
+            if ($cmp < 0) {
+                $lo = $mid + 1;
+            } elseif ($cmp > 0) {
+                $hi = $mid - 1;
+            } else {
+                return $mid;
+            }
+        }
+        return -1;
+    }
+
+    function getRoleCountInTeam($userid, $teamid, $roleid)
+    {
+
+        $count = DB::select("SELECT COUNT(pr.game_role_id) as total FROM `user_team_players` utp
+        INNER JOIN player_roles pr ON pr.player_id = utp.player_id
+        INNER JOIN user_teams ut ON ut.id = utp.team_id
+        where utp.team_id = '$teamid' AND pr.game_role_id = '$roleid' AND ut.user_id = '$userid'");
+        return ($count[0]->total);
+        $x = \App\UserTeam::where('user_id', $userid)
+            ->where('id', $teamid)
+            ->with('user_team_player.player_roles')->firstOrFail()->toArray();
+
+        $i = 0;
+        foreach ($x['user_team_player'] as $row) {
+            if ($row['player_roles'][0]['id'] == $roleid)
+                $i++;
+        }
+        return $i;
     }
 
 }

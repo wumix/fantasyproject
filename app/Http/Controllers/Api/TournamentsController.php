@@ -107,6 +107,9 @@ class TournamentsController extends Controller
             return ($max[0]->max_limit);
         }
     }
+    public function transfer_player(){
+        dd("transfer player");
+    }
 
     public function add_player(Request $request)
     {
@@ -190,22 +193,10 @@ class TournamentsController extends Controller
 
     public function tournament_players(Request $request)
     {
-
-
         $team_id = $request->team_id;
         $tournament_id = $request->tournament_id;
 
-        $usersSelectedPlayers = \App\UserTeam::where('id', $team_id)->where('user_id', \Auth::id())
-            ->with([
-                'user_team_player' => function ($q) {
-                    $q->orderBy('id', 'ASC');
-                },
-                'user_team_player.player_roles',
-                'user_team_player.player_tournaments' => function ($q) use ($tournament_id) {
-                    $q->where('tournaments.id', $tournament_id);
-                },
-                'teamtournament.tournament_players'
-            ])->firstOrFail()->toArray();
+        $usersSelectedPlayers =userTeamPlayers($team_id,$tournament_id);
         $team_name = $usersSelectedPlayers['name'];
         $selectedPlayers = [];
         if (!empty($usersSelectedPlayers['user_team_player'])) {
@@ -230,14 +221,10 @@ class TournamentsController extends Controller
         foreach ($roles as &$role) {
             foreach ($role['players'] as $key => &$player) {
 
-
                 if (empty($player['player_tournaments'])) {
                     unset($role['players'][$key]);
 
-
                 } else {
-
-
                     $player['profile_pic'] = getUploadsPath($player['profile_pic']);
                     if (empty($player['player_actual_teams'])) {
                         $player['team_name'] = NULL;
@@ -259,14 +246,9 @@ class TournamentsController extends Controller
                         $player['player_price'] = $player['player_tournaments'][0]['pivot']['player_price'];
                         $player['role_id'] = $player['pivot']['game_role_id'];
 
-
-//                       dd( $this->checkStatus($this->binary_search(
-//                            $selectedPlayers, 0,
-//                            sizeof($selectedPlayers), 27)));
                         $player['in_team'] = $this->checkStatus(
-                            $this->binary_search(
-                                $selectedPlayers,
-                                    0,
+                                     $this->binary_search(  //binary search to find players in user team
+                                   $selectedPlayers,                                  0,
                                     sizeof($selectedPlayers),
                                     $player['id']));
 
@@ -275,8 +257,11 @@ class TournamentsController extends Controller
                         unset($player['pivot']);
 
                     }
-                    $tournament_players[str_replace(' ', '_', strtolower($role['name']))][] = $player;
-                    //if (array_search($player['id'], $selectedPlayers)) ;
+                    $tournament_players[str_replace(
+                        ' ',
+                            '_',
+                            strtolower($role['name']))][] = $player;
+
                 }
 
 

@@ -317,7 +317,7 @@ class UserController extends Controller
     function playerScoreInTournament($player_id, $data)
     {
         $obj = [];
-        $obj['transfer'] =[];
+        $obj['transfer'];
         $user_team_player_transfer = $data['user_team_player_transfer'];
         if (empty($user_team_player_transfer->toArray())) {
             $user_team_player_transfer = null;

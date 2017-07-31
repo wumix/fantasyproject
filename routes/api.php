@@ -49,7 +49,7 @@ Route::group(['prefix' => 'v1'], function () {
             Route::get('team_players', 'Api\UserController@userTeamPlayers');
             Route::get('check', 'Api\UserController@checkTeam');
             Route::get('team', 'Api\UserController@createTeam');
-            Route::get('confirm_team', 'Api\TournamentsController@confirm_team');
+            Route::get('confirm_team', 'Api\UserController@confirm_team');
             Route::resource('/', 'Api\User');
         });
     });

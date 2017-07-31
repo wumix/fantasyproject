@@ -437,8 +437,21 @@ class UserController extends Controller
 
     function checkTeam(Request $request)
     {
-
         $tournament_id = $request->id;
+        $objTourmament = \App\Tournament::find($tournament_id)->
+        where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime())->get();
+         //list of active
+      //  dd($objTourmament);
+        if(empty($objTourmament->toArray())){
+            echo 'not active';
+        }else{
+            echo 'active';
+
+        }
+        die;
+
+
+
         if ($this->userHasTeamInTournament($tournament_id, \Auth::id())) {
             //check team complete or not
             //if complete send msg "team not completed" send team id

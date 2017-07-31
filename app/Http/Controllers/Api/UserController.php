@@ -436,7 +436,7 @@ class UserController extends Controller
     }
  function isTournamentActive($tournament_id){
      $objTourmament=\App\Tournament::find($tournament_id)->
-     where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime())->first();
+     where('start_date', '>=', getGmtTime())->Where('end_date', '>=', getGmtTime())->first();
      //list of active
       //dd($objTourmament);
      if(empty($objTourmament)){
@@ -492,11 +492,13 @@ class UserController extends Controller
         }
         }else{
            $leader=\App\Leaderboard::with('user')->where('tournament_id',$tournament_id)->first();
-
+ // dd($leader->toArray());
             return response()->json(
                 [
-                    'status' => true,
-                    "name" => $leader['user']['name']
+                    
+                    "name" => $leader['user']['name'],
+                    "profile_pic" => getUploadsPath($leader['user']['profile_pic']),
+                    "score" => $leader['score']
                 ], 200);
         }
     }

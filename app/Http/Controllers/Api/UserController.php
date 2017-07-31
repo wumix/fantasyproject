@@ -153,7 +153,9 @@ class UserController extends Controller
         }
         $data['transferflag'] = $transferflag;
         $data['user_team_player_transfer'] = \App\UserTeam::where('id', $team_id)
-            ->with('user_team_player_transfers.player_transfer')
+            ->with(['user_team_player_transfers.player_actual_teams'=>function($check) use($tournament_id){
+                $check->where('tournament_id',$tournament_id);
+            }])
             ->get();
         // dd($data['user_team_player_transfer']->toArray());
         // //Get matches after team making
@@ -268,8 +270,10 @@ class UserController extends Controller
                         $player['role_id'] = $player['pivot']['game_role_id'];
 
                         //  dd( $this->playerScoreInTournament($player['id'],$data));
+                        $score=$this->playerScoreInTournament($player['id'], $data);
 
-                        $player['score'] =$this->playerScoreInTournament($player['id'], $data)['player_total'];
+                        $player['score'] =$score['player_total'];
+
                         $tournament_players['team_total']+= $player['score'];
                         $player['transfer'] = NULL;
 
@@ -280,10 +284,11 @@ class UserController extends Controller
                                 sizeof($selectedPlayers),
                                 $player['id']))
                         ) {
-                            if(empty($k=$this->playerScoreInTournament($player['id'], $data)['transfer'])) {
+                            if(empty($k=$score)) {
                                 $player['transfer']=[] ;
                             }else{
-                                $player['transfer'][]=$k ;
+                                $player['transfer'][]=$k['transfer'] ;
+
                             }
 
                         } else {
@@ -361,7 +366,9 @@ class UserController extends Controller
                     $obj['transfer']['profile_pic'] =getUploadsPath($transfer['profile_pic']);
                     $obj['transfer']['name'] = $transfer['name'];
                     $obj['transfer']['score'] = $transfer['pivot']['player_out_score'];
-                    $obj['transfer']['team_name'] = "test";
+                    $playertotal-=$transfer['pivot']['player_in_score'];
+                    $playertotal=+$transfer['pivot']['player_out_score'];
+                    $obj['transfer']['team_name'] = $transfer['player_actual_teams'][0]['name'];
                     $flag = 1;
                     // $playertotal+=$transfer['pivot']['player_out_score'];
                     //  $teamtotal += $transfer['pivot']['player_out_score'];

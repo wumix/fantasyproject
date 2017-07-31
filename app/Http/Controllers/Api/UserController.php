@@ -65,6 +65,7 @@ class UserController extends Controller
         // dd($r->only('email'));
 
         $credentials = $request->only('email', 'password');
+
         try {
             if (!$token = JWTAuth::attempt($credentials)) {
                 return response()->json(['message' => 'invalid_credentials', 'more_info' => []], 401);
@@ -75,8 +76,24 @@ class UserController extends Controller
         // all good so return the token
         $message = 'Login Successful';
         $user = \Auth::user();
+        $user['profile_pic']=getUploadsPath($user['profile_pic']);
         return response()->json(compact('message', 'token', 'user'), 200);
     }
+    function loginFacebook(Request $request){
+        $credentials['email']=$request->email;
+        $user=\App\User::where('email',$request->email)->first();
+        try {
+            if (!$token = JWTAuth::fromUser($user)) {
+                return response()->json(['message' => 'invalid_credentials', 'more_info' => []], 401);
+            }
+        } catch (JWTException $e) {
+            return response()->json(['message' => 'could_not_create_token', 'more_info' => []], 401);
+        }
+      $user['profile_pic']=getUploadsPath($user['profile_pic']);
+        return response()->json(compact('message', 'token', 'user'), 200);
+
+    }
+
 
     /**
      * Change user's password

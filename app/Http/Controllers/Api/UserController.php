@@ -275,7 +275,7 @@ class UserController extends Controller
                         $player['score'] =$score['player_total'];
 
                         $tournament_players['team_total']+= $player['score'];
-                        $player['transfer'] = NULL;
+                      //  $player['transfer'] = NULL;
 
 
                         if ($this->checkStatus(
@@ -414,7 +414,9 @@ class UserController extends Controller
             //check team complete or not
             //if complete send msg "team not completed" send team id
             //if completed send message"team Completed"
+
             $user_team = userTeamCompleteInTournament(\Auth::id(), $tournament_id);
+
             if (empty($user_team->joined_from_match_date)) {
                 return response()->json(
                     [

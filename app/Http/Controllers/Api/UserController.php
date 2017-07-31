@@ -434,23 +434,26 @@ class UserController extends Controller
        // dd($playertotal);
         return $obj;
     }
+ function isTournamentActive($tournament_id){
+     $objTourmament=\App\Tournament::find($tournament_id)->
+     where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime())->first();
+     //list of active
+      //dd($objTourmament);
+     if(empty($objTourmament)){
+         return false;
+     }else{
+         return true;
 
+     }
+
+ }
     function checkTeam(Request $request)
     {
         $tournament_id = $request->id;
-//        $objTourmament = \App\Tournament::find($tournament_id)->
-//        where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime())->get();
-//         //list of active
-//      //  dd($objTourmament);
-//        if(empty($objTourmament->toArray())){
-//            echo 'not active';
-//        }else{
-//            echo 'active';
-//
-//        }
-//        die;
+        $objTourmament = $this->isTournamentActive($tournament_id);
+        if($objTourmament){
 
-
+ //dd('asd');
 
         if ($this->userHasTeamInTournament($tournament_id, \Auth::id())) {
             //check team complete or not
@@ -486,6 +489,15 @@ class UserController extends Controller
                     "status" => 'false'
                 ], 200);
 
+        }
+        }else{
+           $leader=\App\Leaderboard::with('user')->where('tournament_id',$tournament_id)->first();
+
+            return response()->json(
+                [
+                    'status' => true,
+                    "name" => $leader['user']['name']
+                ], 200);
         }
     }
 

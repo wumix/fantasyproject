@@ -332,6 +332,7 @@ class UserController extends Controller
             $data['status'] = "false";
             $data['message'] = "Complete you 11 players";
         }
+        return response()->json($data);
     }
 
     function playerScoreInTournament($player_id, $data)

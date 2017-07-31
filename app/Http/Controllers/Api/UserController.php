@@ -270,7 +270,7 @@ class UserController extends Controller
                         $player['role_id'] = $player['pivot']['game_role_id'];
 
                         //  dd( $this->playerScoreInTournament($player['id'],$data));
-                        $score=$this->playerScoreInTournament($player['id'], $data);
+                        $score=$this->playerScoreInTournament($player['id'],$data);
 
                         $player['score'] =$score['player_total'];
 
@@ -359,15 +359,17 @@ class UserController extends Controller
         foreach ($data['team_score'] as $row) {
 
             foreach ($user_team_player_transfer['user_team_player_transfers'] as $transfer) {
+
                 if ($transfer['pivot']['player_in_id'] == $player_id) {
-                    //dd($row);
+                  //  dd($transfer['name']);
+//                    /dd($row);
                     $obj['transfer']['id'] = $transfer['pivot']['player_out_id'];
 //                    $obj['transfer']['team_name'] = $transfer['pivot']['player_out_id'];
                     $obj['transfer']['profile_pic'] =getUploadsPath($transfer['profile_pic']);
                     $obj['transfer']['name'] = $transfer['name'];
                     $obj['transfer']['score'] = $transfer['pivot']['player_out_score'];
-                    $playertotal-=$transfer['pivot']['player_in_score'];
-                    $playertotal+=$transfer['pivot']['player_out_score'];
+                   // $playertotal=$playertotal-$transfer['pivot']['player_out_score'];
+                    //$playertotal=$playertotal-$transfer['pivot']['player_in_score'];
                     $obj['transfer']['team_name'] = $transfer['player_actual_teams'][0]['name'];
                     $flag = 1;
                     // $playertotal+=$transfer['pivot']['player_out_score'];
@@ -378,6 +380,7 @@ class UserController extends Controller
                 }
 
             }
+
             if ($row['id'] == $player_id) {
 
                 foreach ($row['player_game_term_score'] as $termscore) {
@@ -393,6 +396,7 @@ class UserController extends Controller
 
 
                                 $playertotal += $points['points'];
+
                             }
                         }
 
@@ -403,6 +407,7 @@ class UserController extends Controller
             }
         }
         $obj['player_total'] = $playertotal;
+       // dd($playertotal);
         return $obj;
     }
 

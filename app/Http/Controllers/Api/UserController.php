@@ -354,8 +354,8 @@ class UserController extends Controller
             $user_team_player_transfer = $user_team_player_transfer->toArray();
             $user_team_player_transfer = $user_team_player_transfer[0];
         }
-        $playertotal = 0;
-
+        $playertotal=0;
+        $subtotal=0;
         foreach ($data['team_score'] as $row) {
 
             foreach ($user_team_player_transfer['user_team_player_transfers'] as $transfer) {
@@ -368,8 +368,9 @@ class UserController extends Controller
                     $obj['transfer']['profile_pic'] =getUploadsPath($transfer['profile_pic']);
                     $obj['transfer']['name'] = $transfer['name'];
                     $obj['transfer']['score'] = $transfer['pivot']['player_out_score'];
-                   // $playertotal=$playertotal-$transfer['pivot']['player_out_score'];
-                    //$playertotal=$playertotal-$transfer['pivot']['player_in_score'];
+                   //$playertotal=$playertotal+$transfer['pivot']['player_out_score'];
+                    $playertotal=-$transfer['pivot']['player_in_score'];
+                    //$playertotal=0;
                     $obj['transfer']['team_name'] = $transfer['player_actual_teams'][0]['name'];
                     $flag = 1;
                     // $playertotal+=$transfer['pivot']['player_out_score'];
@@ -377,9 +378,11 @@ class UserController extends Controller
                     // $teamtotal -= $transfer['pivot']['player_in_score'];
                     $playerinscore = $transfer['pivot']['player_out_score'];
                     // $x = $transfer['pivot']['player_in_score'];
+
                 }
 
             }
+
 
             if ($row['id'] == $player_id) {
 
@@ -389,13 +392,15 @@ class UserController extends Controller
                         if ($points['qty_from'] == $points['qty_to']) {
                             //   echo "yes";
                             //     echo $points['points'] * $termscore['player_term_count'];
-                            $playertotal += $points['points'] * $termscore['player_term_count'];
+                            $subtotal += $points['points'] * $termscore['player_term_count'];
                         } else {
                             if (($points['qty_from'] <= $termscore['player_term_count']) && ($points['qty_to'] >= $termscore['player_term_count'])) {
                                 //  echo $points['qty_from']." ". $termscore['player_term_count']." ".$points['qty_to']."<br>";
 
 
-                                $playertotal += $points['points'];
+                                $subtotal=$subtotal+$points['points'];
+
+
 
                             }
                         }
@@ -405,8 +410,9 @@ class UserController extends Controller
 
 
             }
+          //$playertotal=+;
         }
-        $obj['player_total'] = $playertotal;
+        $obj['player_total'] = $playertotal+$subtotal;
        // dd($playertotal);
         return $obj;
     }

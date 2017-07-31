@@ -284,10 +284,10 @@ class UserController extends Controller
                                 sizeof($selectedPlayers),
                                 $player['id']))
                         ) {
-                            if(empty($k=$score)) {
+                            if(empty($score['transfer'])) {
                                 $player['transfer']=[] ;
                             }else{
-                                $player['transfer'][]=$k['transfer'] ;
+                                $player['transfer'][]=$score['transfer'] ;
 
                             }
 

@@ -236,6 +236,7 @@ class UserController extends Controller
    //return response()->json($data[$r]);
 
         $tournament_players = [];
+        $tournament_players['team_total']=0;
 
         foreach ($roles as &$role) {
 
@@ -265,9 +266,11 @@ class UserController extends Controller
                         $player['player_id'] = $player['player_tournaments'][0]['pivot']['player_id'];
                         $player['player_price'] = $player['player_tournaments'][0]['pivot']['player_price'];
                         $player['role_id'] = $player['pivot']['game_role_id'];
+
                         //  dd( $this->playerScoreInTournament($player['id'],$data));
 
-                        $player['score'] = $this->playerScoreInTournament($player['id'], $data)['player_total'];
+                        $player['score'] =$this->playerScoreInTournament($player['id'], $data)['player_total'];
+                        $tournament_players['team_total']+= $player['score'];
                         $player['transfer'] = NULL;
 
 

@@ -373,7 +373,7 @@ class UserController extends Controller
                     // $playertotal+=$transfer['pivot']['player_out_score'];
                     //  $teamtotal += $transfer['pivot']['player_out_score'];
                     // $teamtotal -= $transfer['pivot']['player_in_score'];
-                    $playerinscore = $transfer['pivot']['player_in_score'];
+                    $playerinscore = $transfer['pivot']['player_out_score'];
                     // $x = $transfer['pivot']['player_in_score'];
                 }
 

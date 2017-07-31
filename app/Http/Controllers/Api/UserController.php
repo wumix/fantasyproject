@@ -288,7 +288,7 @@ class UserController extends Controller
                                 $player['transfer']=[] ;
                             }else{
                                 $player['transfer'][]=$score['transfer'] ;
-                                $tournament_players['team_total']+$score['transfer']['score'];
+                                $tournament_players['team_total']+=$score['transfer']['score'];
 
                             }
 

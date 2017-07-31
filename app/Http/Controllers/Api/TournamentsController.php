@@ -414,6 +414,7 @@ class TournamentsController extends Controller
 
     }
 
+
     public function tournament_leaderboard(Request $request)
     {
         $tournament_id = $request->id;

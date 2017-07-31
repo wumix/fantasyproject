@@ -319,6 +319,20 @@ class UserController extends Controller
         $tournament_players['team_name'] = $team_name;
         return response()->json($tournament_players);
     }
+    public function confirm_team(Request $request)
+    {
+        $team_id = $request->team_id;
+        if (getUserTeamPlayersCount($team_id) == 11) {
+            $userteamsave = \App\UserTeam::find($team_id);
+            $userteamsave->joined_from_match_date = getGmtTime();
+            $userteamsave->save();
+            $data['status'] = "true";
+            $data['message'] = "Team Completed";
+        }else{
+            $data['status'] = "false";
+            $data['message'] = "Complete you 11 players";
+        }
+    }
 
     function playerScoreInTournament($player_id, $data)
     {

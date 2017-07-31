@@ -367,7 +367,7 @@ class UserController extends Controller
                     $obj['transfer']['name'] = $transfer['name'];
                     $obj['transfer']['score'] = $transfer['pivot']['player_out_score'];
                     $playertotal-=$transfer['pivot']['player_in_score'];
-                    $playertotal=+$transfer['pivot']['player_out_score'];
+                    $playertotal+=$transfer['pivot']['player_out_score'];
                     $obj['transfer']['team_name'] = $transfer['player_actual_teams'][0]['name'];
                     $flag = 1;
                     // $playertotal+=$transfer['pivot']['player_out_score'];

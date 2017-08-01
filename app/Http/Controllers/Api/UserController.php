@@ -43,6 +43,34 @@ class UserController extends Controller
             'password' => bcrypt($request->get('password'))
 
         ]);
+        $userActionKey = 'user_signup';
+        $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
+        $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
+        $tournaments_list = $objTourmament->toArray();
+        foreach ($tournaments_list as $row) {
+            $array = array(
+                ['tournament_id' => $row['id'], 'action_key' =>
+                    'pusrchase_tournament', 'user_id' => \Auth::id(), 'points_scored' => $actionPoints]
+            );
+            \App\UserPointsScored::insert($array);
+            if (!empty($request->referral_key)) {
+                //dd('go');
+                $refferal_points = \App\UserAction::where('action_key', 'referral_signup')->first()->action_points;
+                $user_id = \App\User::where('referral_key', $request->referral_key)->first();
+
+
+                $array = array(
+                    ['tournament_id' => $row['id'], 'action_key' =>
+                        'referral_signup', 'user_id' => $user_id['id'], 'points_scored' => $refferal_points]
+                );
+                \App\UserPointsScored::insert($array);
+                \Mail::to($user_id['email'])->send(new \App\Mail\RefferalMail($user_id['name']));
+            }
+        }
+
+
+
+
         if (!$newUser) {
             return response()->json(['failed_to_create_new_user'], 500);
         }

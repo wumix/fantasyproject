@@ -451,7 +451,7 @@ class UserController extends Controller
     {
         $tournament_id = $request->id;
         $objTourmament = $this->isTournamentActive($tournament_id);
-        if($objTourmament){
+        if(!$objTourmament){
 
  //dd('asd');
 
@@ -495,7 +495,7 @@ class UserController extends Controller
  // dd($leader->toArray());
             return response()->json(
                 [
-                    
+                    "status"=>"false",
                     "name" => $leader['user']['name'],
                     "profile_pic" => getUploadsPath($leader['user']['profile_pic']),
                     "score" => $leader['score']

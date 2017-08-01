@@ -92,6 +92,19 @@ class UserController extends Controller
     {
         $credentials['email'] = $request->email;
         $user = \App\User::where('email', $request->email)->first();
+        if(empty($user)){
+            $user = User::create([
+                'email' => $request->email,
+                'profile_pic' => $request->profile_pic,
+                'name' => $request->name,
+                'password' => bcrypt(str_random(8))
+
+
+            ]);
+
+        }else{
+
+        }
         try {
             if (!$token = JWTAuth::fromUser($user)) {
                 return response()->json(['message' => 'invalid_credentials', 'more_info' => []], 401);

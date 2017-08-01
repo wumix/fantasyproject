@@ -444,9 +444,9 @@ class UserController extends Controller
         //list of active
        //dd($objTourmament->toArray());
         if (empty($objTourmament)) {
-            return false;
-        } else {
             return true;
+        } else {
+            return false;
 
         }
 

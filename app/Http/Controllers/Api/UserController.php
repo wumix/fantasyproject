@@ -442,7 +442,7 @@ class UserController extends Controller
         $objTourmament = \App\Tournament::where('id',$tournament_id)->
         where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime())->first();
         //list of active
-        dd($objTourmament);
+        
         if (empty($objTourmament)) {
             return false;
         } else {

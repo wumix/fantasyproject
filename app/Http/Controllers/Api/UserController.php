@@ -43,49 +43,23 @@ class UserController extends Controller
             'password' => bcrypt($request->get('password'))
 
         ]);
-        $userActionKey = 'user_signup';
-        $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
-        $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
-        $tournaments_list = $objTourmament->toArray();
-        foreach ($tournaments_list as $row) {
-            $array = array(
-                ['tournament_id' => $row['id'], 'action_key' =>
-                    'pusrchase_tournament', 'user_id' => \Auth::id(), 'points_scored' => $actionPoints]
-            );
-            \App\UserPointsScored::insert($array);
-            if (!empty($request->referral_key)) {
-                //dd('go');
-                $refferal_points = \App\UserAction::where('action_key', 'referral_signup')->first()->action_points;
-                $user_id = \App\User::where('referral_key', $request->referral_key)->first();
-
-
-                $array = array(
-                    ['tournament_id' => $row['id'], 'action_key' =>
-                        'referral_signup', 'user_id' => $user_id['id'], 'points_scored' => $refferal_points]
-                );
-                \App\UserPointsScored::insert($array);
-                \Mail::to($user_id['email'])->send(new \App\Mail\RefferalMail($user_id['name']));
-            }
-        }
-
-
-
-
+        addUSerSignUpPoints($newUser->id);
         if (!$newUser) {
             return response()->json(['failed_to_create_new_user'], 500);
         }
         $user = User::where('id', $newUser->id)->first();
-        $success="";
+        $success = "";
         try {
             if (!$token = JWTAuth::fromUser($user)) {
-                $success="true";
+
                 return response()->json(['message' => 'invalid_credentials', 'more_info' => []], 401);
+            }else{
+                $success = "true";
             }
         } catch (JWTException $e) {
-            $success="flase";
+            $success = "flase";
             return response()->json(['message' => 'could_not_create_token', 'more_info' => []], 401);
         }
-
         return response()->json(compact('success', 'token', 'user'), 200);
     }
 
@@ -120,7 +94,7 @@ class UserController extends Controller
     {
         $credentials['email'] = $request->email;
         $user = \App\User::where('email', $request->email)->first();
-        if(empty($user)){
+        if (empty($user)) {
             $user = User::create([
                 'email' => $request->email,
                 'profile_pic' => $request->profile_pic,
@@ -129,8 +103,10 @@ class UserController extends Controller
 
 
             ]);
+            addUSerSignUpPoints($user['id']);
 
-        }else{
+
+        } else {
 
         }
         try {
@@ -488,10 +464,10 @@ class UserController extends Controller
 
     function isTournamentActive($tournament_id)
     {
-        $objTourmament = \App\Tournament::where('id',$tournament_id)->
+        $objTourmament = \App\Tournament::where('id', $tournament_id)->
         where('end_date', '<', getGmtTime())->first();
         //list of active
-       //dd($objTourmament->toArray());
+        //dd($objTourmament->toArray());
         if (empty($objTourmament)) {
             return true;
         } else {
@@ -505,7 +481,7 @@ class UserController extends Controller
     {
         $tournament_id = $request->id;
         $objTourmament = $this->isTournamentActive($tournament_id);
-       // dd($objTourmament);
+        // dd($objTourmament);
         if ($objTourmament) {
             if ($this->userHasTeamInTournament($tournament_id, \Auth::id())) {
                 //check team complete or not

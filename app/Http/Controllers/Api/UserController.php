@@ -47,18 +47,18 @@ class UserController extends Controller
             return response()->json(['failed_to_create_new_user'], 500);
         }
         $user = User::where('id', $newUser->id)->first();
+        $success="";
         try {
             if (!$token = JWTAuth::fromUser($user)) {
+                $success="true";
                 return response()->json(['message' => 'invalid_credentials', 'more_info' => []], 401);
             }
         } catch (JWTException $e) {
+            $success="flase";
             return response()->json(['message' => 'could_not_create_token', 'more_info' => []], 401);
         }
-        return response()->json([
-            'success' => true,
-            'user' => $user,
-            'token'=>$token
-        ], 200);
+
+        return response()->json(compact('success', 'token', 'user'), 200);
     }
 
     /**

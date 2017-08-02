@@ -423,8 +423,10 @@ class TournamentsController extends Controller
         //dd($result);
         $leaders = [];
         $leaders['leaders'] = [];
-        $i = 0;
-        foreach ($result as $val) {
+        $i =1;
+        foreach ($result as $key=>$val) {
+
+           $val['position']=(String)$i;
             $val['name'] = $val['user']['name'];
             $val['profile_pic'] = getUploadsPath($val['user']['profile_pic']);
 
@@ -432,6 +434,9 @@ class TournamentsController extends Controller
             unset($val['user_team']);
 
 
+
+            
+            $i++;
             $leaders['leaders'][] = $val;
 
         }

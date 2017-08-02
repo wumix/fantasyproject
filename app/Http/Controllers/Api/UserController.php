@@ -521,7 +521,7 @@ class UserController extends Controller
         } else {
             $leader =  $result = \App\Leaderboard::where('tournament_id', $tournament_id)->with('user', 'user_team')->take(21)->
             orderBy('score', 'DESC')->first()->toArray();// dd($leader->toArray());
-            
+
             return response()->json(
                 [
                     "status" => "false",

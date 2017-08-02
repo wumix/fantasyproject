@@ -1,4 +1,19 @@
 <?php
+function userTeamPlayers($team_id,$tournament_id){
+    return \App\UserTeam::where('id', $team_id)->where('user_id', \Auth::id())
+        ->with([
+            'user_team_player' => function ($q) {
+                $q->orderBy('id', 'ASC');
+            },
+            'user_team_player.player_roles',
+            'user_team_player.player_tournaments' => function ($q) use ($tournament_id) {
+                $q->where('tournaments.id', $tournament_id);
+            },
+            'teamtournament.tournament_players'
+        ])->firstOrFail()->toArray();
+
+
+}
 function getUserTotalScore($userid,$tournament_id)
 {
     $consumed = \App\UserPointsConsumed::where(['user_id'=>$userid,'tournament_id'=>$tournament_id])->sum('points_consumed');

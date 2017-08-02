@@ -13,13 +13,46 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
+Route::group(['prefix' => 'v1'], function () {
+    /**
+     * Auth
+     */
+    Route::post('login', 'Api\UserController@authenticate');
+    Route::post('register', 'Api\UserController@create');
+    Route::post('password/email', 'Auth\ForgotPasswordController@getResetToken');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+    Route::any('/sendpush', 'Api\OrdersController@sendPushMessage');
+    Route::post('login_with_facebook', 'Api\UserController@loginFacebook');
+    Route::group(['prefix' => 'tournaments'], function () {
 
-Route::group(['prefix' => 'v1','middleware' => 'auth:api'], function () {
-    //    Route::resource('task', 'TasksController');
 
-    //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
-    #adminlte_api_routes
+        Route::get('fixtures', 'Api\TournamentsController@tournament_fixtures');
+        Route::get('leaderboard', 'Api\TournamentsController@tournament_leaderboard');
+        Route::get('/', 'Api\TournamentsController@show');
+    });
+//    Route::group(['prefix' => 'user'], function () {
+//
+//    });
+
+
+
+    Route::group(['middleware' => 'jwt.auth'], function () {
+        Route::resource('tournaments', 'Api\TournamentsController', ['except' => ['index', 'show'
+        ]]);
+        Route::group(['prefix' => 'tournaments'], function () {
+            Route::get('players', 'Api\TournamentsController@tournament_players');
+            Route::get('add_player', 'Api\TournamentsController@add_player');
+            Route::get('delete_player', 'Api\TournamentsController@delete_player');
+            Route::get('transfer_player', 'Api\TournamentsController@transfer_player');
+
+        });
+        Route::group(['prefix' => 'user'], function () {
+
+            Route::get('team_players', 'Api\UserController@userTeamPlayers');
+            Route::get('check', 'Api\UserController@checkTeam');
+            Route::get('team', 'Api\UserController@createTeam');
+            Route::get('confirm_team', 'Api\UserController@confirm_team');
+            Route::resource('/', 'Api\User');
+        });
+    });
 });

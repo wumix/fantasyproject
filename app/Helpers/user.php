@@ -65,7 +65,22 @@ function getPlayerNoInTeam($userid, $teamid, $roleid)
     }
     return $i;
 }
+function addUSerSignUpPoints($userid){
+    $userActionKey = 'user_signup';
+    $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
+    $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
+    $tournaments_list = $objTourmament->toArray();
+    foreach ($tournaments_list as $row) {
+        $array = array(
+            ['tournament_id' => $row['id'], 'action_key' =>
+                'pusrchase_tournament', 'user_id' =>$userid, 'points_scored' => $actionPoints]
+        );
+        \App\UserPointsScored::insert($array);
 
+    }
+    return true;
+
+}
 function get_individual_player_score($tournament_id, $teamId, $playerid)
 {
 

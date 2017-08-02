@@ -40,7 +40,8 @@ class UserController extends Controller
         $newUser = $this->user->create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'password' => bcrypt($request->get('password'))
+            'password' => bcrypt($request->get('password')),
+            'profile_pic'=>getUploadsPath(NULL)
 
         ]);
         addUSerSignUpPoints($newUser->id);
@@ -48,6 +49,7 @@ class UserController extends Controller
             return response()->json(['failed_to_create_new_user'], 500);
         }
         $user = User::where('id', $newUser->id)->first();
+
         $success = "";
         try {
             if (!$token = JWTAuth::fromUser($user)) {

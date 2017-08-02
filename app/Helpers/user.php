@@ -40,6 +40,13 @@ function checksingledigit($int){
         return true;
     }
 }
+function userTeamCompleteInTournament($user_id,$tournament_id){
+
+    return \App\UserTeam::where(['user_id'=>$user_id,'tournament_id'=>$tournament_id])
+        ->first();
+
+
+}
 
 function getPlayerNoInTeam($userid, $teamid, $roleid)
 {

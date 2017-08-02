@@ -7,7 +7,7 @@
 
 
 @section('title')
-    Gamithon Fantasy
+    Gamithon Fantasy - Play Fantasy League Create Team
 @stop
 @section('content')
     <!--BASBB-->

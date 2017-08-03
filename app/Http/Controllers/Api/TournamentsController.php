@@ -118,7 +118,7 @@ class TournamentsController extends Controller
         $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
         $currentNoPlayers = \App\UserTeam::find($request->team_id)->user_team_player()->count();
         $objResponse = [];
-        $objResponse['status'] = false;
+        $objResponse['status'] ="false";
         if ($tournamentMaxPlayers > $currentNoPlayers) {
             if ($difference > 15 || $difference < 15) {
                 if ($request->player_price <= getUserTotalScore(Auth::id(), $request->tournament_id)) {
@@ -146,19 +146,19 @@ class TournamentsController extends Controller
                         $objResponse['player']['tournament_id'] = $request->tournament_id;
                         $objResponse['player_score'] = getUserTotalScore(Auth::id(), $request->tournament_id);
                     } else {
-                        $objResponse['status'] = false;
+                        $objResponse['status'] = "false";
                         $objResponse['msg'] = "You cant have more than " . $this->getRoleCountInTeam(Auth::id(), $request->team_id, $request->role_id) . " " . $request->role_name . "s in this Tournament";
                     }
                 } else {
-                    $objResponse['status'] = false;
+                    $objResponse['status'] = "false";
                     $objResponse['msg'] = "You do not have enough points";
                 }
             } else {
-                $objResponse['status'] = false;
+                $objResponse['status'] = "false";
                 $objResponse['msg'] = "Tournament starts in 15 minutes you cant add player now";
             }
         } else {
-            $objResponse['status'] = false;
+            $objResponse['status'] = "false";
             $objResponse['msg'] = "You can't have more than $tournamentMaxPlayers in this tournament.";
         }
 //        if (getUserTeamPlayersCount($request->team_id) == 11) {
@@ -282,7 +282,7 @@ class TournamentsController extends Controller
         $tournament_players['current_score'] = (String)getUserTotalScore(Auth::id(), $tournament_id);
         $tournament_players['team_name'] = $team_name;
         //$request->request->add(['status'=>$objResponse['status'],'msg'=>$objResponse['msg']]);
-        $tournament_players['status'] = $request->status;
+        $tournament_players['status'] =(String)$request->status;
         $tournament_players['msg'] = $request->msg;
 
         return response()->json($tournament_players);

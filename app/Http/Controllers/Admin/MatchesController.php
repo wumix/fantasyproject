@@ -100,6 +100,7 @@ foreach ($players['team_players'] as $key=>$val){
     }
 
     function postEditMatch($match_id, Request $request) {
+
         $match = \App\Match::find($match_id);
         $match->fill($request->all());
         if($request->hasFile('team_1_logo')){
@@ -111,6 +112,7 @@ foreach ($players['team_players'] as $key=>$val){
             $this->objMatch->team_2_logo=$files;
         }
         $match->save();
+        dd($request->all());
         return redirect()->route('editMatchForm', ['match_id' => $match_id])->with('status', 'Match Updated');
     }
 

@@ -283,7 +283,7 @@ class TournamentsController extends Controller
         $tournament_players['current_score'] = (String)getUserTotalScore(Auth::id(), $tournament_id);
         $tournament_players['team_name'] = $team_name;
         //$request->request->add(['status'=>$objResponse['status'],'msg'=>$objResponse['msg']]);
-        $tournament_players['status'] =$request->status;
+        $tournament_players['status'] =(String)$request->status;
         $tournament_players['msg'] = $request->msg;
 
         return response()->json($tournament_players);

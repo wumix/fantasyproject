@@ -119,7 +119,7 @@ class HomeController extends Controller
             $data['tournaments_list'][$key]['leaderboard'] = \App\Leaderboard::where('tournament_id', $tournament['id'])->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
             $data['tournaments_list'][$key]['nextmatch'] = \App\Match::getNextMatch($tournament['id']);
         }
-      //  dd($data['tournaments_list']);
+      //dd($data['tournaments_list']);
 
         // $data['tournaments_list']['leaderboard']=\App\Leaderboard::where('tournament_id', config('const.tournament_id'))->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
         $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());

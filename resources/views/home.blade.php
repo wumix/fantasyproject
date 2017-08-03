@@ -555,7 +555,7 @@
 
 
 
-            {url: '{{URL::to('assets-new/img/gamithon-Cpl.jpg')}}', fade: 500},
+            {url: '{{URL::to('assets-new/img/gamithon-Cpl-1.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/icc-champ-banner.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/gamithon--22-j-banner.jpg')}}', fade: 500},
 

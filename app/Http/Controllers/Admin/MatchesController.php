@@ -112,7 +112,7 @@ foreach ($players['team_players'] as $key=>$val){
             $this->objMatch->team_2_logo=$files;
         }
         $match->save();
-        dd($request->all());
+       // dd($request->all());
         return redirect()->route('editMatchForm', ['match_id' => $match_id])->with('status', 'Match Updated');
     }
 

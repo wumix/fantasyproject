@@ -129,7 +129,7 @@ class TournamentsController extends Controller
                         $array = array(['tournament_id' => $request->tournament_id, 'action_key' => 'add_player', 'user_id' => Auth::id(), 'points_consumed' => $request->player_price]);
                         \App\UserPointsConsumed::insert($array);
                         $objResponse['success'] = "true";
-                        $objResponse['message'] = "Player added successfully";
+                        $objResponse['msg'] = "Player added successfully";
                         $objResponse['batsmen'] = $this->getRoleCountInTeam(Auth::id(), $request->team_id, 5);
                         $objResponse['bowler'] = $this->getRoleCountInTeam(Auth::id(), $request->team_id, 6);
                         $objResponse['wicketkeeper'] = $this->getRoleCountInTeam(Auth::id(), $request->team_id, 8);
@@ -151,7 +151,7 @@ class TournamentsController extends Controller
                     }
                 } else {
                     $objResponse['status'] = false;
-                    $objResponse['msg'] = "You donot have enough points";
+                    $objResponse['msg'] = "You do not have enough points";
                 }
             } else {
                 $objResponse['status'] = false;
@@ -170,6 +170,7 @@ class TournamentsController extends Controller
 //            return response()->json($objResponse);
 //        }
         //if($objResponse['status']==true){
+        $request->request->add(['status'=>$objResponse['success'],'msg'=>$objResponse['msg']]);
         return $this->tournament_players($request);
         //  }else{
         //   return response()->json($objResponse);

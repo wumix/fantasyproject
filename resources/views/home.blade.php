@@ -26,17 +26,25 @@
                                 <div class="row">
                                     <div class="col-md-12 no-padding">
                                         <h3 style="font-weight: 500; color: #FFFFFF">
+                                            @if(!empty($tournament['nextmatch']))
                                             NEXT MATCH COUNT DOWN
+                                            @else
+                                               {{ $tournament['name']}}
+                                            @endif
                                         </h3>
                                         <h6 style="color: white;">
                                             {{$tournament['nextmatch']['team_one']}}
+                                            @if(!empty($tournament['nextmatch']))
                                             <strong class="mlr10 Bold">
                                                 <em>Vs</em>
                                             </strong>
+                                            @endif
                                             {{$tournament['nextmatch']['team_two']}}
                                         </h6>
                                     </div>
                                 </div>
+
+                                @if(!empty($tournament['nextmatch']))
                                 <div class="row col-md-12">
                                     <div class="col-md-12 count-down no-padding mt30">
                                         <div class="col-md-3 text-center">
@@ -65,6 +73,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
 
 
                                 <div class="row">
@@ -508,7 +517,7 @@
     @php($date= '00-00-00 00:00:00')
     <?php $i = 1?>
     @foreach($tournaments_list as $tournament)
-
+        @if(!empty($tournament['nextmatch']))
         @if(!empty($tournament['nextmatch']['start_date']))
             @php($date=$tournament['nextmatch']['start_date'])
             {{Html::script('js/moment.js')}}
@@ -546,6 +555,7 @@
                     });
             </script>
             <?php $i = $i + 4?>
+        @endif
         @endif
     @endforeach
 

@@ -110,9 +110,11 @@ class HomeController extends Controller
 //        where('end_date', '>', getGmtTime());
         //dd($objTourmament->toArray());
 
-        $objTourmament = \App\Tournament::all()->sortBy("start_date")->
-        where('start_date', '>=', getGmtTime())->Where('end_date', '>=', getGmtTime());
+        $objTourmament = \App\Tournament::orderBy("start_date",
+            'DESC')->
+        Where('end_date', '>=', getGmtTime())->get();
         $data['tournaments_list'] = $objTourmament->toArray(); //list of active
+       // dd($objTourmament->toArray());
         //dd($data['tournaments_list']);
         //  dd($tournaments_list);
         //dd($tournaments_list);

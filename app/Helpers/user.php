@@ -90,8 +90,11 @@ function getPlayerNoInTeam($userid, $teamid, $roleid)
 function addUSerSignUpPoints($userid){
     $userActionKey = 'user_signup';
     $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
-    $objTourmament =\App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
+    $objTourmament =\App\Tournament::orderBy("start_date",
+            'DESC')->
+        Where('end_date', '>=', getGmtTime())->get();
     $tournaments_list = $objTourmament->toArray();
+    //dd($tournaments_list);
     foreach ($tournaments_list as $row) {
         $array = array(
             ['tournament_id' => $row['id'], 'action_key' =>

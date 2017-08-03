@@ -200,51 +200,51 @@
     @endif
     @if(!empty($upcomming_tournaments_list))
 
-        <section class="bg-primary" id="about">
-            <div class="container">
-                <div class="row">
+        {{--<section class="bg-primary" id="about">--}}
+            {{--<div class="container">--}}
+                {{--<div class="row">--}}
 
-                    <div class="col-lg-12 text-center">
-                        <h2 class="section-heading">
-                            Upcomming Tournaments
-                            <hr class="light">
-                        </h2>
+                    {{--<div class="col-lg-12 text-center">--}}
+                        {{--<h2 class="section-heading">--}}
+                            {{--Upcomming Tournaments--}}
+                            {{--<hr class="light">--}}
+                        {{--</h2>--}}
 
-                        <div class="table-responsive">
-                            <table class="table table-striped table-stripedhome gen-table">
-                                <thead class="main-taible-head">
-                                <tr>
-                                    <th class="border-r th1">Name</th>
-                                    <th class="border-r">Venue</th>
-                                    <th class="border-r">Started At</th>
-                                    <th class="th2">Ending At</th>
-                                </tr>
-                                </thead>
-                                <tbody class="main-taible-body">
-                                @foreach($upcomming_tournaments_list as $tournament)
-                                    <tr class="trr">
-                                        <td class="border-r">
-                                            <a href="{{route('fixturesdetail',['tournament_id'=>$tournament['slug']])}}">{{$tournament['name']}} </a>
-                                        </td>
-                                        <td class="border-r">{{$tournament['venue']}}</td>
-                                        <td class="border-r">
-                                            {{formatDate($tournament['start_date'])}}
-                                        </td>
-                                        <td>
-                                            {{formatDate($tournament['end_date'])}}
-                                        </td>
-                                    </tr>
+                        {{--<div class="table-responsive">--}}
+                            {{--<table class="table table-striped table-stripedhome gen-table">--}}
+                                {{--<thead class="main-taible-head">--}}
+                                {{--<tr>--}}
+                                    {{--<th class="border-r th1">Name</th>--}}
+                                    {{--<th class="border-r">Venue</th>--}}
+                                    {{--<th class="border-r">Started At</th>--}}
+                                    {{--<th class="th2">Ending At</th>--}}
+                                {{--</tr>--}}
+                                {{--</thead>--}}
+                                {{--<tbody class="main-taible-body">--}}
+                                {{--@foreach($upcomming_tournaments_list as $tournament)--}}
+                                    {{--<tr class="trr">--}}
+                                        {{--<td class="border-r">--}}
+                                            {{--<a href="{{route('fixturesdetail',['tournament_id'=>$tournament['slug']])}}">{{$tournament['name']}} </a>--}}
+                                        {{--</td>--}}
+                                        {{--<td class="border-r">{{$tournament['venue']}}</td>--}}
+                                        {{--<td class="border-r">--}}
+                                            {{--{{formatDate($tournament['start_date'])}}--}}
+                                        {{--</td>--}}
+                                        {{--<td>--}}
+                                            {{--{{formatDate($tournament['end_date'])}}--}}
+                                        {{--</td>--}}
+                                    {{--</tr>--}}
 
-                                @endforeach
+                                {{--@endforeach--}}
 
-                                </tbody>
-                            </table>
-                        </div>
+                                {{--</tbody>--}}
+                            {{--</table>--}}
+                        {{--</div>--}}
 
-                    </div>
-                </div>
-            </div>
-        </section>
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</section>--}}
     @endif
 
     @if(!empty($news))

@@ -105,11 +105,11 @@ foreach ($players['team_players'] as $key=>$val){
         $match->fill($request->all());
         if($request->hasFile('team_1_logo')){
             $files = uploadInputs($request->file('team_1_logo'), 'tournament_logos');
-            $this->objMatch->team_1_logo=$files;
+            $match->team_1_logo=$files;
         }
         if($request->hasFile('team_2_logo')){
             $files = uploadInputs($request->file('team_2_logo'), 'tournament_logos');
-            $this->objMatch->team_2_logo=$files;
+            $match->team_2_logo=$files;
         }
         $match->save();
        // dd($request->all());

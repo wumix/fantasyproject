@@ -261,14 +261,15 @@
             <div class="container">
                 <div class="">
                     <!-- start news -->
+
                     @foreach($news as $key=>$val)
+
                         <div class="col-md-4 itemsz " style="margin: 15px 0 15px 0;  padding: 15px;">
                             <div class="media newscolor">
                                 <div class="media-left">
                                     <a href="{{getUploadsPath($val['image'])}}">
                                         <?php
                                         $arr = explode('/', $val['image']);
-
 
                                         ?>
                                         <img class="media-object"

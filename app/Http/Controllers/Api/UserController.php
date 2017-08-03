@@ -80,10 +80,10 @@ class UserController extends Controller
 
         try {
             if (!$token = JWTAuth::attempt($credentials)) {
-                return response()->json(['message' => 'invalid_credentials', 'more_info' => []], 401);
+                return response()->json(['message' => 'Invalid Credentials', 'more_info' => []], 401);
             }
         } catch (JWTException $e) {
-            return response()->json(['message' => 'could_not_create_token', 'more_info' => []], 401);
+            return response()->json(['message' => 'Something Went Wrong', 'more_info' => []], 401);
         }
         // all good so return the token
         $message = 'Login Successful';

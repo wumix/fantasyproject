@@ -27,6 +27,7 @@ class HomeController extends Controller
 {
     public function __construct()
     {
+        //dd(bcrypt('Waqas123!@#'));
 
         // $this->middleware('auth');
 

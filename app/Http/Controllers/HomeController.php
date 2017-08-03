@@ -105,6 +105,10 @@ class HomeController extends Controller
 
     public function index()
     {
+       // echo(getGmtTime());
+//        $objTourmament = \App\Tournament::all()->sortBy("start_date")->
+//        where('end_date', '>', getGmtTime());
+        //dd($objTourmament->toArray());
 
         $objTourmament = \App\Tournament::all()->sortBy("start_date")->
         where('start_date', '>=', getGmtTime())->Where('end_date', '>=', getGmtTime());

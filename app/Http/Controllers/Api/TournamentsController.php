@@ -22,7 +22,7 @@ class TournamentsController extends Controller
     function index(Request $request)
     {
 //dd(apache_request_headers());
-        dd(getGmtTime());
+       // dd(getGmtTime());
 
     }
 

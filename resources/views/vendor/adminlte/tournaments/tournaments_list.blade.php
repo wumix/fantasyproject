@@ -44,12 +44,13 @@
                                                 <i class="fa fa-plus"></i> Term points
                                             </a>
                                             <a href="{{route('leaderboard',['tournament_id'=>$row['id']])}}"
-                                               class="btn btn-danger">
+                                               class="btn btn-info">
                                                 <i class="fa fa-plus"></i> Generate LeaderBoard
                                             </a>
                                             <a href="{{route('starttournament',['tournament_id'=>$row['id']])}}" class="btn btn-danger">
                                                 <i class="fa fa-times"></i> start tournamnet
                                             </a>
+
                                         </td>
 
 

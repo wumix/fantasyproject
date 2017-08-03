@@ -170,7 +170,7 @@ class TournamentsController extends Controller
 //            return response()->json($objResponse);
 //        }
         //if($objResponse['status']==true){
-        $request->request->add(['status'=>$objResponse['status'],'msg'=>$objResponse['msg']]);
+        $request->request->add($objResponse);
         return $this->tournament_players($request);
         //  }else{
         //   return response()->json($objResponse);
@@ -194,6 +194,7 @@ class TournamentsController extends Controller
 
     public function tournament_players(Request $request)
     {
+       // dd($request->all());
         $team_id = $request->team_id;
         $tournament_id = $request->tournament_id;
 

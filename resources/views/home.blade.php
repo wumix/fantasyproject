@@ -276,7 +276,7 @@
                                              src="{{Croppa::url($val['image'],177,105)}}" alt="{{end($arr)}}">
                                     </a>
 
-                                    
+
                                 </div>
                                 <div class="media-body">
                                     <h4 class="media-heading mediah">

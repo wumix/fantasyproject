@@ -128,7 +128,7 @@ class TournamentsController extends Controller
                         $objteam->user_team_player()->sync($request->player_id, false);
                         $array = array(['tournament_id' => $request->tournament_id, 'action_key' => 'add_player', 'user_id' => Auth::id(), 'points_consumed' => $request->player_price]);
                         \App\UserPointsConsumed::insert($array);
-                        $objResponse['success'] = "true";
+                        $objResponse['status'] = "true";
                         $objResponse['msg'] = "Player added successfully";
                         $objResponse['batsmen'] = $this->getRoleCountInTeam(Auth::id(), $request->team_id, 5);
                         $objResponse['bowler'] = $this->getRoleCountInTeam(Auth::id(), $request->team_id, 6);
@@ -170,7 +170,7 @@ class TournamentsController extends Controller
 //            return response()->json($objResponse);
 //        }
         //if($objResponse['status']==true){
-        $request->request->add(['status'=>$objResponse['success'],'msg'=>$objResponse['msg']]);
+        $request->request->add(['status'=>$objResponse['status'],'msg'=>$objResponse['msg']]);
         return $this->tournament_players($request);
         //  }else{
         //   return response()->json($objResponse);
@@ -281,6 +281,10 @@ class TournamentsController extends Controller
         $tournament_players['total_count'] = (String)getUserTeamPlayersCount($team_id);
         $tournament_players['current_score'] = (String)getUserTotalScore(Auth::id(), $tournament_id);
         $tournament_players['team_name'] = $team_name;
+        //$request->request->add(['status'=>$objResponse['status'],'msg'=>$objResponse['msg']]);
+        $tournament_players['status'] = $request->status;
+        $tournament_players['msg'] = $request->msg;
+
         return response()->json($tournament_players);
 
     }

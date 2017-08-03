@@ -6,6 +6,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
+    <meta name="keywords" content="fantasy Cricket
+Play Fantasy Cricket,
+IPL Fantasy League,
+PSL Fantasy League,
+CPL Fantasy League,
+Fantasy Cricket League,
+Cricket League,
+Cricket Fantasy League,
+Cricket Fantasy,
+Play Fantasy Cricket and Win Cash Daily,
+Cricket app">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @yield('facbook-og-tags')

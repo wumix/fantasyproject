@@ -368,7 +368,7 @@
 
                 <div class="col-lg-4 col-md-4 text-center">
                     <div class="service-box">
-                        <a href="https://play.google.com/store/apps/details?id=com.branches.gamithon">
+                        <a target="_blank" href="https://play.google.com/store/apps/details?id=com.branches.gamithon">
                             <img  src="{{URL::to('/img/google.png')}}"/>
 
                         </a>

@@ -1,10 +1,12 @@
 <?php
 namespace App\Http\Controllers\Api;
-use App\Http\Controllers\Controller;
+
 use App\Transformers\Json;
 use App\User;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 class ForgotPasswordController extends Controller
 {
     /*
@@ -36,7 +38,6 @@ class ForgotPasswordController extends Controller
      */
     public function getResetToken(Request $request)
     {
-        dd('asd');
         $this->validate($request, ['email' => 'required|email']);
         if ($request->wantsJson()) {
             $user = User::where('email', $request->input('email'))->first();

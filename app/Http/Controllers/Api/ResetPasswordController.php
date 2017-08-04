@@ -39,10 +39,21 @@ class ResetPasswordController extends Controller
     public function reset(Request $request)
     {
        // dd($request->all());
-        dd($this->validate($request, $this->rules(), $this->validationErrorMessages()));
+       // $this->validate($request, $this->rules(), $this->validationErrorMessages());
         // Here we will attempt to reset the user's password. If it is successful we
         // will update the password on an actual user model and persist it to the
         // database. Otherwise we will parse the error and return the response.
+        $validator = Validator::make($request->all(), [
+            'email' => 'required',
+            'password'              => 'required',
+            'password_confirmation' => 'required|confirmed',
+            'token'=>'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->messages(), 200);
+        }
+
+
         $response = $this->broker()->reset(
             $this->credentials($request), function ($user, $password) {
             $this->resetPassword($user, $password);

@@ -12,8 +12,8 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('password/email', 'Auth\ForgotPasswordController@getResetToken');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+Route::post('password/email', 'Api\ForgotPasswordController@getResetToken');
+Route::post('password/reset', 'Api\ResetPasswordController@reset');
 
 Route::group(['prefix' => 'v1'], function () {
     /**

@@ -25,6 +25,7 @@ class ForgotPasswordController extends Controller
      */
     public function __construct()
     {
+        dd('asdasd');
         $this->middleware('guest');
     }
     /**

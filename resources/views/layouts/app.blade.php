@@ -176,7 +176,7 @@ Cricket app">
                         <li>
 
                             <a class="page-scroll" href="{{route('showBlog')}}">
-                                Gossips
+                               Blogs
                             </a>
                         </li>
                         <li>

@@ -48,7 +48,7 @@ class ResetPasswordController extends Controller
             $this->resetPassword($user, $password);
         }
         );
-        if ($request->wantsJson()) {
+        if (1) {
             if ($response == Password::PASSWORD_RESET) {
                 return response()->json(Json::response(null, trans('passwords.reset')));
             } else {

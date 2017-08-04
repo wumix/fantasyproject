@@ -50,7 +50,8 @@ class ResetPasswordController extends Controller
             'token'=>'required'
         ]);
         if ($validator->fails()) {
-            return response()->json($validator->messages(), 200);
+            return response()->json(['status'=>'false','message' =>
+                "password do not match"]);
         }
 
 

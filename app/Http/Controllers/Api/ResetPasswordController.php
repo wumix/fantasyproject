@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-
+use Validator;
 use App\Http\Controllers\Controller;
 use App\Transformers\Json;
 use Illuminate\Foundation\Auth\ResetsPasswords;

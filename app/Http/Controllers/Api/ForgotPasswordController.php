@@ -38,7 +38,7 @@ class ForgotPasswordController extends Controller
     public function getResetToken(Request $request)
     {
         dd($request->all());
-        $this->validate($request, ['email' => 'required|email']);
+       // $this->validate($request, ['email' => 'required|email']);
         if ($request->wantsJson()) {
             $user = User::where('email', $request->input('email'))->first();
             if (!$user) {

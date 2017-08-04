@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('password/email', 'Auth\ForgotPasswordController@getResetToken');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::group(['prefix' => 'v1'], function () {
     /**
@@ -24,8 +26,6 @@ Route::group(['prefix' => 'v1'], function () {
     Route::any('/sendpush', 'Api\OrdersController@sendPushMessage');
     Route::post('login_with_facebook', 'Api\UserController@loginFacebook');
     Route::group(['prefix' => 'tournaments'], function () {
-
-
         Route::get('fixtures', 'Api\TournamentsController@tournament_fixtures');
         Route::get('leaderboard', 'Api\TournamentsController@tournament_leaderboard');
         Route::get('/', 'Api\TournamentsController@show');

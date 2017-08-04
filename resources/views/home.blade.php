@@ -351,6 +351,43 @@
             </div>
         </div>
     </section>
+    <section id="services" class=" services-padding-bottom bg-dark how-to-play-summery" style="background:#252525 !important" >
+        <div class="container" >
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Download Our Mobile Applications</h2>
+
+                </div>
+            </div>
+        </div>
+        <div class="container" >
+            <div class="row" >
+
+                <div class="col-lg-2 col-md-2 text-center">
+                </div>
+
+                <div class="col-lg-4 col-md-4 text-center">
+                    <div class="service-box">
+                        <a href="https://play.google.com/store/apps/details?id=com.branches.gamithon">
+                            <img  src="{{URL::to('/img/google.png')}}"/>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 text-center">
+
+                    <div class="service-box">
+                        <a disabled="true">
+                            <img src="{{URL::to('/img/ios.png')}}"/>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 text-center">
+                </div>
+            </div>
+        </div>
+    </section>
     {{--.............................Gallry Start..............................................--}}
     <section id="portfolio">
         <div class="container-fluid">

@@ -1,6 +1,5 @@
 <?php
 namespace App\Http\Controllers\Api;
-
 use App\Transformers\Json;
 use App\User;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;

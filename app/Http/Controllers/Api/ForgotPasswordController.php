@@ -45,9 +45,9 @@ class ForgotPasswordController extends Controller
                 return response()->json(Json::response(null, trans('passwords.user')), 400);
             }
             $token = $this->broker()->createToken($user);
-            return response()->json(Json::response(['token' => $token]));
+            return response()->json(['token' => $token]);
         }else{
-            return response()->json(Json::response(['token' =>"email empty"]));
+            return response()->json(['token' =>"email empty"]);
         }
     }
 }

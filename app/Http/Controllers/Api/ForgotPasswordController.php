@@ -39,7 +39,7 @@ class ForgotPasswordController extends Controller
     {
        // dd($request->all());
        // $this->validate($request, ['email' => 'required|email']);
-        if ($request->wantsJson()) {
+        if (!empty($request->email)) {
             $user = User::where('email', $request->input('email'))->first();
             if (!$user) {
                 return response()->json(Json::response(null, trans('passwords.user')), 400);
@@ -47,7 +47,7 @@ class ForgotPasswordController extends Controller
             $token = $this->broker()->createToken($user);
             return response()->json(Json::response(['token' => $token]));
         }else{
-            return response()->json(Json::response(['token' =>"false"]));
+            return response()->json(Json::response(['token' =>"email empty"]));
         }
     }
 }

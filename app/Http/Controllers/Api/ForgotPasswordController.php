@@ -42,12 +42,13 @@ class ForgotPasswordController extends Controller
         if (!empty($request->email)) {
             $user = User::where('email', $request->input('email'))->first();
             if (!$user) {
-                return response()->json(Json::response(null, trans('passwords.user')), 400);
+                return response()->json(['status'=>'false','message' =>
+                    "We can't find a user with that e-mail address"]);
             }
             $token = $this->broker()->createToken($user);
-            return response()->json(['token' => $token]);
+            return response()->json(['status'=>'true','token' => $token]);
         }else{
-            return response()->json(['token' =>"email empty"]);
+            return response()->json(['status'=>'false','message' => "No Email given"]);
         }
     }
 }

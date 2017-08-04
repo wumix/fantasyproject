@@ -45,8 +45,8 @@ class ResetPasswordController extends Controller
         // database. Otherwise we will parse the error and return the response.
         $validator = Validator::make($request->all(), [
             'email' => 'required',
-            'password'              => 'required',
-            'password_confirmation' => 'required|confirmed',
+            'password'=> 'required',
+            'password_confirmation' => 'required|same:password',
             'token'=>'required'
         ]);
         if ($validator->fails()) {

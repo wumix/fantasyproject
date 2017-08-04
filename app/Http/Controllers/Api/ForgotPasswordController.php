@@ -25,7 +25,7 @@ class ForgotPasswordController extends Controller
      */
     public function __construct()
     {
-        dd('asdasd');
+       // dd('asdasd');
         $this->middleware('guest');
     }
     /**
@@ -36,6 +36,7 @@ class ForgotPasswordController extends Controller
      */
     public function getResetToken(Request $request)
     {
+        dd('asd');
         $this->validate($request, ['email' => 'required|email']);
         if ($request->wantsJson()) {
             $user = User::where('email', $request->input('email'))->first();

@@ -31,7 +31,7 @@ class LeaderboardController extends Controller
 
 
         $leaderboard = new Leaderboard();
-
+ dd($userteams);
         foreach ($userteams as $k) {
             //   echo $k['id']." ".$k['user_id']." ".$k['name'];
             $leaderboard = new Leaderboard();

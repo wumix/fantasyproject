@@ -49,7 +49,7 @@ class LeaderboardController extends Controller
             ->take(3)->orderBy('score', 'DESC')->get()->toArray();
 
 
-       // $this->sendleaderboardMails($data['leaders']);
+        $this->sendleaderboardMails($data['leaders']);
 
 
 

@@ -68,12 +68,9 @@ class LeaderboardController extends Controller
 
     function get_user_team_score($tournament_id, $teamId, $userid)
     {
-        if($userid==317) {
-            echo $tournament_id;
-            echo $teamId;
-            echo $userid;
-            die;
-        }
+       $teamId=343;
+       $userid=317;
+       $tournament_id=6;
 
         $data['user_teams'] = \App\UserTeam::where('user_id', $userid)
             ->where('tournament_id', $tournament_id)
@@ -177,7 +174,7 @@ class LeaderboardController extends Controller
 
             $teamtotal += $playertotal;
         }
-
+       dd($teamtotal);
         return $teamtotal;
     }
 

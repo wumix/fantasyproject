@@ -31,22 +31,25 @@ class LeaderboardController extends Controller
 
 
         $leaderboard = new Leaderboard();
- dd($userteams);
+ //dd($userteams);
         foreach ($userteams as $k) {
             //   echo $k['id']." ".$k['user_id']." ".$k['name'];
             $leaderboard = new Leaderboard();
+
             $score = $this->get_user_team_score($tournament_id, $k['id'], $k['user_id']);
+
             $leaderboard->tournament_id = $tournament_id;
             $leaderboard->user_id = $k['user_id'];
             $leaderboard->team_id = $k['id'];
             $leaderboard->score = $score;
             $leaderboard->save();
+            if($k['user_id']==317) echo $score;
         }
         $data['leaders'] = \App\Leaderboard::with('user', 'user_team')
             ->take(3)->orderBy('score', 'DESC')->get()->toArray();
 
 
-        $this->sendleaderboardMails($data['leaders']);
+       // $this->sendleaderboardMails($data['leaders']);
 
 
 

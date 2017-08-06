@@ -43,7 +43,7 @@ class LeaderboardController extends Controller
             $leaderboard->team_id = $k['id'];
             $leaderboard->score = $score;
             $leaderboard->save();
-            if($k['user_id']==317) echo $score;
+
         }
         $data['leaders'] = \App\Leaderboard::with('user', 'user_team')
             ->take(3)->orderBy('score', 'DESC')->get()->toArray();
@@ -68,6 +68,9 @@ class LeaderboardController extends Controller
 
     function get_user_team_score($tournament_id, $teamId, $userid)
     {
+        echo $tournament_id;
+        echo $teamId;
+        echo $userid;
 
         $data['user_teams'] = \App\UserTeam::where('user_id', $userid)
             ->where('tournament_id', $tournament_id)

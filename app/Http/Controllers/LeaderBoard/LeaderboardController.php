@@ -68,9 +68,7 @@ class LeaderboardController extends Controller
 
     function get_user_team_score($tournament_id, $teamId, $userid)
     {
-       $teamId=343;
-       $userid=317;
-       $tournament_id=6;
+
 
         $data['user_teams'] = \App\UserTeam::where('user_id', $userid)
             ->where('tournament_id', $tournament_id)
@@ -129,7 +127,7 @@ class LeaderboardController extends Controller
             ->get();
         $user_team_player_transfer = $user_team_player_transfer->toArray();
         $user_team_player_transfer = $user_team_player_transfer[0];
-        dd($team_score);
+        //dd($team_score);
 
         $teamtotal = 0;
         foreach ($team_score as $row) {
@@ -174,7 +172,7 @@ class LeaderboardController extends Controller
 
             $teamtotal += $playertotal;
         }
-       dd($teamtotal);
+
         return $teamtotal;
     }
 

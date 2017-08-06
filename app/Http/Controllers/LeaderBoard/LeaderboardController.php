@@ -129,7 +129,7 @@ class LeaderboardController extends Controller
             ->get();
         $user_team_player_transfer = $user_team_player_transfer->toArray();
         $user_team_player_transfer = $user_team_player_transfer[0];
-        // dd($team_score);
+        dd($team_score);
 
         $teamtotal = 0;
         foreach ($team_score as $row) {

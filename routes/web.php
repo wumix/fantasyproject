@@ -108,6 +108,18 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
 
     Route::get('/', 'Auth\LoginController@showAdminLoginForm');
     Route::group(['middleware' => ['is_admin']], function () {
+        Route::group(['prefix' => 'forums'], function () {
+            Route::get('/', 'Admin\Forums\ForumsController@index')->name('lists');
+            // Route::get('category/{id}', 'Forums\ForumController@cagetory')->name('forumCategory');
+            //Route::get('post/{id}', 'Forums\ForumController@categoryPosts')->name('categoryposts');
+            //Route::post('reply/', 'Forums\ForumController@reply')->name('reply');
+            Route::get('category/', 'Admin\Forums\ForumsController@addCategory')->name('addcategory');
+            Route::post('category/', 'Admin\Forums\ForumsController@addCategoryPost')->name('addcategory');
+            Route::get('category_list/', 'Admin\Forums\ForumsController@listcategory')->name('listcategory');
+            Route::get('category_list/{id}', 'Admin\Forums\ForumsController@editCategory')->name('editcategory');
+            Route::post('category_list/{id}', 'Admin\Forums\ForumsController@postEditCategory')->name('editcategorypost');
+            Route::post('approve', 'Admin\Forums\ForumsController@approve')->name('approve');
+        });
         Route::get('/leaderboard/{tournament_id}', 'LeaderBoard\LeaderboardController@index')->name('leaderboard');
         Route::get('/dashboard', 'Admin\DashboardController@index'); //Gamesroutes
         Route::get('/addheader', 'Admin\SettingsController@index')->name('headerbackground');

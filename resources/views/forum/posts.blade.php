@@ -56,12 +56,12 @@
         }
 
         .hour_text {
-            width: 23%;
+            width: 20%;
             display: inline-block;
             font-size: 14px;
             color: #5c4c4c;
             margin-top: 23px;
-            float: right;
+
         }
 
         .edit_btn {

@@ -27,6 +27,12 @@ class HomeController extends Controller
 {
     public function __construct()
     {
+//        $users=\App\User::all();
+//       // dd($users->toArray());
+//        foreach($users as $user){
+//            echo $user->email.'<br>';
+//        }
+
         //dd(bcrypt('Waqas123!@#'));
 
         // $this->middleware('auth');

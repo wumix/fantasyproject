@@ -468,7 +468,7 @@
                                     {{--<a href="#" class="edit_btn_two">Reply</a>--}}
                                     @if(\Auth::id())
                                         <a href="#" id="1" data-id="{{$post['id']}}" data-toggle="modal"
-                                           data-target="#myModal" class="post_reply_button" style="float: right; width: 30%">Reply</a>
+                                           data-target="#myModal" class="post_reply_button" style="float: right; width: 11%;">Reply</a>
                                         @endif
 
                                         </p>

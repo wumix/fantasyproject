@@ -77,7 +77,7 @@
             display: inline-block;
             color: #a5c345;
             margin-left: 12px;
-            font-size: 18px;
+            font-size: 14px;
             margin-bottom: 0;
         }
         .text_problem{
@@ -128,7 +128,7 @@
             display: inline-block;
         }
         .introduction_area_secon{
-            width: 76%;
+            width: 100%;
             display: inline-block
         }
         .section_area_left_tyota_list{

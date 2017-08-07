@@ -38,7 +38,8 @@ class ForumsController extends Controller
     }
     function addCategoryPost(Request $request){
        // dd($request->all());
-        if($this->validator($request->all())->validate()) {
+       // if($this->validator($request->all())->validate()) {
+            if(1){
             $cat = new \App\ForumCategory;
             $cat->name = $request->name;
             $cat->is_approved = 1;

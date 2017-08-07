@@ -7,6 +7,8 @@
     {!!  Html::style('assets-new/css/bootstrap3-wysihtml5.css'); !!}
     <style>
         .creat_topic_btn {
+            border: none;
+            border-radius: 6px;
             width: 140px;
             display: inline-block;
             float: right;
@@ -36,17 +38,28 @@
         .heading {
             width: 60%;
             display: inline-block;
+            font-weight: 400;
+            font-size: 18px;
+            margin-top: 0px;
+            margin-left: 21px;
+            text-transform: uppercase;
+            color: #92B713;
+        }
+        .new_heading{
+            width: 60%;
+            display: inline-block;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 14px;
             margin-top: 23px;
             margin-left: 21px;
+            color: orange;
         }
 
         .hour_text {
             width: 17%;
             display: inline-block;
             font-size: 14px;
-            color: #d3d3d3;
+            color: #5c4c4c;
             margin-top: 23px;
         }
 
@@ -128,7 +141,15 @@
             margin-left: 19px;
             float: left;
         }
-
+        .main_parah{
+            width: 50%;
+            display: inline-block;
+            font-size: 16px;
+            color: #999;
+            margin-top: 0px;
+            margin-left: 100px;
+            float: left;
+        }
         .list_icon {
             width: 100%;
             display: inline-block;
@@ -392,7 +413,7 @@
     </style>
 @endsection
 @section('content')
-    <div class="container">
+    <div class="container" style="min-height: 100%;">
         <div class="row">
             <div class="col-md-12 no-padding">
                 <h1 class="page-heading">
@@ -405,14 +426,14 @@
             <div class="col-md-12 no-padding inner_area_section">
 
                 @if(\Auth::check())
-                <div class="col-md-12">
-                    <button href="#" data-toggle="modal"
-                            data-target="#create_topic" class="creat_topic_btn">Add Post
-                    </button>
-                </div>
-                @endif
+                    <div class="col-md-12">
+                        <button href="#" data-toggle="modal"
+                                data-target="#create_topic" class="creat_topic_btn">Add Post
+                        </button>
+                    </div>
+            @endif
 
-                <!---Section-start-->
+            <!---Section-start-->
                 <ul class="list_icon">
                     @foreach($posts['posts'] as $post)
                         <li>
@@ -420,15 +441,20 @@
             <span class="image_circle_img">
                 <img class="img-responsive " src="{{getUploadsPath($post['user']['profile_pic'])}}" alt=""/>
             </span>
-                                <span class="heading">
+
+
+                                <span class="new_heading">
                {{$post['user']['name']}}
+            </span>
+                                <span class="heading">
+               {{$post['title']}}
             </span>
                                 <span class="hour_text">
                                 {{formatDate($post['date'])}}
 
             </span>
                                 <div class="section_reply">
-                                    <p id="reply-{{$post['id']}}" class="parah">
+                                    <p id="reply-{{$post['id']}}" class="main_parah">
                                     {{$post['description']}}
                                     <div class="right_anqer">
                                         {{--<a href="#" class="edit_btn_one">Quote</a>--}}
@@ -440,12 +466,12 @@
                                         @endif
                                     </div>
                                     {{--<a href="#" class="edit_btn_two">Reply</a>--}}
-                       @if(\Auth::id())
-                                    <a href="#" id="1" data-id="{{$post['id']}}" data-toggle="modal"
-                                       data-target="#myModal" class="post_reply_button">Reply</a>
-                                    @endif
+                                    @if(\Auth::id())
+                                        <a href="#" id="1" data-id="{{$post['id']}}" data-toggle="modal"
+                                           data-target="#myModal" class="post_reply_button" style="float: right;">Reply</a>
+                                        @endif
 
-                                    </p>
+                                        </p>
 
                                 </div>
 
@@ -455,7 +481,7 @@
             <span class="image_circle_img">
                 <img class="img-responsive " src="{{getUploadsPath($row['user']['profile_pic'])}}" alt=""/>
             </span>
-                                    <span class="heading">
+                                    <span class="new_heading">
                 {{$row['user']['name']}}
             </span>
                                     <span class="hour_text">
@@ -470,11 +496,11 @@
                                         <div class="right_anqer_second">
                                             {{--<a href="#" class="edit_btn_one_quote">Quote</a>--}}
                                             @if(\Auth::id()==$row['user_id'])
-                                            <a href="#" data-id="{{$row['id']}}"
-                                               data-target="#editReply" data-toggle="modal"
-                                               class="edit_post_reply"><i class="fa fa-pencil" aria-hidden="true"></i>
-                                                Edit </a>
-                                                @endif
+                                                <a href="#" data-id="{{$row['id']}}"
+                                                   data-target="#editReply" data-toggle="modal"
+                                                   class="edit_post_reply"><i class="fa fa-pencil" aria-hidden="true"></i>
+                                                    Edit </a>
+                                            @endif
 
                                         </div>
                                         {{--<a href="#" class="edit_btn_reply_second">Reply</a>--}}
@@ -741,7 +767,7 @@
             var k = $('#repparah-' + postId).html();
 
 
-           // alert(k);
+            // alert(k);
             //$('edittextarea').html(k);
 
 

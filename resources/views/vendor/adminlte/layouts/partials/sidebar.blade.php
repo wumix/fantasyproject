@@ -111,7 +111,15 @@
                     <li><a href="{{route('blogList')}}/?post_type=page">Page list</a></li>
                 </ul>
             </li>
-
+            <li class="treeview">
+                <a href="#">
+                    <i class='fa fa-users'></i> <span>Forums</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('lists')}}">Unapproved</a></li>
+                    <li><a href="{{route('addcategory')}}">Add New Category</a></li>
+                    <li><a href="{{route('listcategory')}}">List Categories</a></li>
+                </ul>
+            </li>
 
             <li class="treeview">
                 <a href="#">

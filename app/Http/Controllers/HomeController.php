@@ -129,7 +129,7 @@ class HomeController extends Controller
         $tournaments_data = [];
         foreach ($data['tournaments_list'] as $key => $tournament) {
             $data['tournaments_list'][$key] = $tournament;
-            $data['tournaments_list'][$key]['leaderboard'] = \App\Leaderboard::where('tournament_id', $tournament['id'])->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
+            $data['tournaments_list'][$key]['leaderboard'] = \App\Leaderboard::where('tournament_id', $tournament['id'])->where('score','>',0)->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
             $data['tournaments_list'][$key]['nextmatch'] = \App\Match::getNextMatch($tournament['id']);
         }
     //  dd($data['tournaments_list']);

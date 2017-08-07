@@ -467,7 +467,7 @@
                                         @endif
                                         @if(\Auth::id())
                                             <a href="#" id="1" data-id="{{$post['id']}}" data-toggle="modal"
-                                               data-target="#myModal" class="post_reply_button" style="float: right; width: 21%;">Reply</a>
+                                               data-target="#myModal" class="post_reply_button" style="float: left; width: 21%;">Reply</a>
                                         @endif
 
                                     </div>

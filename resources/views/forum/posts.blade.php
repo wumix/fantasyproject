@@ -56,11 +56,12 @@
         }
 
         .hour_text {
-            width: 17%;
+            width: 20%;
             display: inline-block;
             font-size: 14px;
             color: #5c4c4c;
             margin-top: 23px;
+
         }
 
         .edit_btn {
@@ -423,17 +424,17 @@
             </div>
 
 
-            <div class="col-md-12 no-padding inner_area_section">
+            <div class="col-md-12 no-padding inner_area_section" style="margin-bottom: 30px;">
 
                 @if(\Auth::check())
-                <div class="col-md-12">
-                    <button href="#" data-toggle="modal"
-                            data-target="#create_topic" class="creat_topic_btn">Add Post
-                    </button>
-                </div>
-                @endif
+                    <div class="col-md-12">
+                        <button href="#" data-toggle="modal"
+                                data-target="#create_topic" class="creat_topic_btn">Add Post
+                        </button>
+                    </div>
+            @endif
 
-                <!---Section-start-->
+            <!---Section-start-->
                 <ul class="list_icon">
                     @foreach($posts['posts'] as $post)
                         <li>
@@ -464,14 +465,15 @@
                                                class="edit_btn_edit" ><i class="fa fa-pencil" aria-hidden="true"></i>
                                                 Edit</a>
                                         @endif
+                                        @if(\Auth::id())
+                                            <a href="#" id="1" data-id="{{$post['id']}}" data-toggle="modal"
+                                               data-target="#myModal" class="post_reply_button" style="float: left; width: 21%;">Reply</a>
+                                        @endif
+
                                     </div>
                                     {{--<a href="#" class="edit_btn_two">Reply</a>--}}
-                       @if(\Auth::id())
-                                    <a href="#" id="1" data-id="{{$post['id']}}" data-toggle="modal"
-                                       data-target="#myModal" class="post_reply_button" style="float: right;">Reply</a>
-                                    @endif
 
-                                    </p>
+                                        </p>
 
                                 </div>
 
@@ -496,11 +498,11 @@
                                         <div class="right_anqer_second">
                                             {{--<a href="#" class="edit_btn_one_quote">Quote</a>--}}
                                             @if(\Auth::id()==$row['user_id'])
-                                            <a href="#" data-id="{{$row['id']}}"
-                                               data-target="#editReply" data-toggle="modal"
-                                               class="edit_post_reply"><i class="fa fa-pencil" aria-hidden="true"></i>
-                                                Edit </a>
-                                                @endif
+                                                <a href="#" data-id="{{$row['id']}}"
+                                                   data-target="#editReply" data-toggle="modal"
+                                                   class="edit_post_reply"><i class="fa fa-pencil" aria-hidden="true"></i>
+                                                    Edit </a>
+                                            @endif
 
                                         </div>
                                         {{--<a href="#" class="edit_btn_reply_second">Reply</a>--}}
@@ -767,7 +769,7 @@
             var k = $('#repparah-' + postId).html();
 
 
-           // alert(k);
+            // alert(k);
             //$('edittextarea').html(k);
 
 

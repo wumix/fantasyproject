@@ -57,7 +57,7 @@
     </style>
 @endsection
 @section('content')
-    <div class="container">
+    <div class="container" style="min-height: 100%;">
         <div class="row">
             <div class="col-md-12 no-padding">
                 <h1 class="page-heading">
@@ -68,12 +68,12 @@
 
             <div class="col-md-12 no-padding area_creat_topic" style="margin-bottom: 30px;">
                 @if(\Auth::check())
-                <div class="col-md-12">
-                    <button href="#" data-toggle="modal"
-                            data-target="#myModal" class="creat_topic_btn">Create Topic
-                    </button>
-                </div>
-                @endif
+                    <div class="col-md-12">
+                        <button href="#" data-toggle="modal"
+                                data-target="#myModal" class="creat_topic_btn">Create Topic
+                        </button>
+                    </div>
+            @endif
             {{--<button  type="button" id="1" data-id="{{$post['id']}}"  data-toggle="modal"--}}
             {{--data-target="#myModal" class="open-AddBookDialog">Reply</button>--}}
             <!---Section-start-->
@@ -121,7 +121,7 @@
                     <div class="modal-content">
                         <div style='background-color: #009900;' class="modal-header">
                             <h4 class='modal-title' style="color:#fff;">
-                               Category: {{$categories['name']}}
+                                Category: {{$categories['name']}}
                             </h4>
                         </div>
 
@@ -187,5 +187,5 @@
 
 
 
-            </script>
-    @endsection
+    </script>
+@endsection

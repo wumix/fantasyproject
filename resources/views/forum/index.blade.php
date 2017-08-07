@@ -77,7 +77,7 @@
             display: inline-block;
             color: #a5c345;
             margin-left: 12px;
-            font-size: 18px;
+            font-size: 14px;
             margin-bottom: 0;
         }
         .text_problem{
@@ -128,7 +128,7 @@
             display: inline-block;
         }
         .introduction_area_secon{
-            width: 76%;
+            width: 100%;
             display: inline-block
         }
         .section_area_left_tyota_list{
@@ -407,92 +407,92 @@
             </div>
 
             {{--<div class="col-md-12 ">--}}
-            {{--<a href="#" class="new_topic_btn">New Topic</a>--}}
+                {{--<a href="#" class="new_topic_btn">New Topic</a>--}}
             {{--</div>--}}
             @foreach($categories as $cat )
-                <div class="col-md-12 no-padding forum_area_full">
-                    <!---Section-start-->
-                    <div class="col-md-6 no-padding">
-                        <div class="orang_forum">
-                            <span class="clip-bord"><i class="fa fa-clipboard" aria-hidden="true"></i></span>
-                            <span class="clip-bord1"><i class="fa fa-clipboard" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="introduction_area">
-                            <div class="heading_forum">
+            <div class="col-md-12 no-padding forum_area_full">
+                <!---Section-start-->
+                <div class="col-md-6 no-padding">
+                    <div class="orang_forum">
+                        <span class="clip-bord"><i class="fa fa-clipboard" aria-hidden="true"></i></span>
+                        <span class="clip-bord1"><i class="fa fa-clipboard" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="introduction_area">
+                        <div class="heading_forum">
                         <span>
                             <img class="img-responsive " src={{URL::to('/img/arrow.png')}} alt=""/>
                         </span>
-                                <a href="{{route('forumCategory',['id'=>$cat['slug']])}}" >{{$cat['name']}}</a>
-                            </div>
-                            {{--<a href="#" class="parah_forum">All discussion related to Honda --}}
+                          <a href="{{route('forumCategory',['id'=>$cat['slug']])}}" >{{$cat['name']}}</a>
+                        </div>
+                        {{--<a href="#" class="parah_forum">All discussion related to Honda --}}
                             {{--cars goes into this section.</a>--}}
-                            <span class="text_problem">{{$cat['description']}}</span>
-                            {{--<a href="#" class="parah_forum">All discussion related to Honda cars goes into this section.</a>--}}
-                            {{--<span class="text_problem">to your problems, ask questions and talk about your Honda cars, all in o</span>--}}
+                        <span class="text_problem">{{$cat['description']}}</span>
+                        {{--<a href="#" class="parah_forum">All discussion related to Honda cars goes into this section.</a>--}}
+                        {{--<span class="text_problem">to your problems, ask questions and talk about your Honda cars, all in o</span>--}}
 
-                        </div>
-                        <div class="grey_forum">
-                            <span class="topics_forum">Topics</span>
-                            <span class="topics_forum_num">{{count($cat['children'])}}</span>
-                        </div>
                     </div>
-                    <!---Section-End-->
-                    <!---Section-start-->
-                    <div class="col-md-6 no-padding area_handle">
-                        {{--<div class="grey_forum_second">--}}
+                    <div class="grey_forum">
+                        <span class="topics_forum">Topics</span>
+                        <span class="topics_forum_num">{{count($cat['children'])}}</span>
+                    </div>
+                </div>
+                <!---Section-End-->
+                <!---Section-start-->
+                <div class="col-md-6 no-padding area_handle">
+                    {{--<div class="grey_forum_second">--}}
                         {{--<span class="topics_forum">Posts</span>--}}
                         {{--<span class="topics_forum_num_second">751</span>--}}
-                        {{--</div>--}}
+                    {{--</div>--}}
 
-                        <div class="introduction_area_secon">
+                    <div class="introduction_area_secon">
 
-                            <ul class="section_area_left_tyota_list">
-                                <?php $i=0?>
-                                @foreach($cat['children'] as $child)
-                                    <li>
-                                        <div class="left_li_section">
+                        <ul class="section_area_left_tyota_list">
+                            <?php $i=0?>
+                            @foreach($cat['children'] as $child)
+                            <li>
+                                <div class="left_li_section">
                             <span class="img_left">
                                 <img class="img-responsive " src={{URL::to('/img/toyata-arrow.png')}} alt=""/>
                             </span>
-                                            <span class="text_area">
+                                    <span class="text_area">
                                          <a href="{{route('categoryposts',['id'=>$child['slug']])}}" class="parah_forum">{{$child['name']}}</a>
                             </span>
-                                        </div>
-                                        <div class="right_li_section">
-                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                            <span class="date">{{formatDate($child['created_at'])}}</span>
-                                            <span class="date">{{formatTime($child['created_at'])}}</span>
-                                        </div>
-                                    </li>
-                                    <?php if($i==3){
+                                </div>
+                                <div class="right_li_section">
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    <span class="date">{{formatDate($child['created_at'])}}</span>
+                                    <span class="date">{{formatTime($child['created_at'])}}</span>
+                                </div>
+                            </li>
+                                <?php if($i==3){
                                         break;
                                     } else{
-                                        $i++;
+                                    $i++;
                                     }
 
-                                    ?>
-                                @endforeach
+                                ?>
+                            @endforeach
 
-                            </ul>
-                        </div>
-                        <div class="orang_forum_second">
-                            {{--<span class="last_post_text">Last Post</span>--}}
-                            {{--<span class="head_forum">--}}
-                            {{--Today 10:32 pm--}}
-                            {{--by Arsalan--}}
-                            {{--</span>--}}
-                        </div>
+                        </ul>
                     </div>
-                    <!---Section-End-->
+                    <div class="orang_forum_second">
+                        {{--<span class="last_post_text">Last Post</span>--}}
+                        {{--<span class="head_forum">--}}
+                        {{--Today 10:32 pm--}}
+                    {{--by Arsalan--}}
+                    {{--</span>--}}
+                    </div>
                 </div>
-                <!--Section-new-start-->
-        @endforeach
+                <!---Section-End-->
+            </div>
+            <!--Section-new-start-->
+            @endforeach
 
-        <!---Section-End-->
+                <!---Section-End-->
 
+            </div>
+            <!---->
         </div>
-        <!---->
-    </div>
     </div>
 
 @endsection

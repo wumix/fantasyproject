@@ -397,7 +397,7 @@
     </style>
 @endsection
 @section('content')
-    <div class="container">
+    <div class="container" style="min-height: 100%;">
         <div class="row">
             <div class="col-md-12">
                 <h1 class="page-heading">

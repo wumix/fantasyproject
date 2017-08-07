@@ -7,6 +7,7 @@
     {!!  Html::style('assets-new/css/bootstrap3-wysihtml5.css'); !!}
     <style>
         .creat_topic_btn {
+            border:none;
             width: 140px;
             display: inline-block;
             float: right;
@@ -14,8 +15,9 @@
             color: #fff;
             padding: 12px 0;
             text-align: center;
-            font-size: 13px;
+            font-size: 16px;
             margin: 25px 39px 25px 0;
+            border-radius: 6px;
         }
 
         .area_creat_topic {
@@ -64,7 +66,7 @@
                 <hr class="light full">
             </div>
 
-            <div class="col-md-12 no-padding area_creat_topic">
+            <div class="col-md-12 no-padding area_creat_topic" style="margin-bottom: 30px;">
                 @if(\Auth::check())
                 <div class="col-md-12">
                     <button href="#" data-toggle="modal"

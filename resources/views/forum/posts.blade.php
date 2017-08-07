@@ -7,6 +7,8 @@
     {!!  Html::style('assets-new/css/bootstrap3-wysihtml5.css'); !!}
     <style>
         .creat_topic_btn {
+            border: none;
+            border-radius: 6px;
             width: 140px;
             display: inline-block;
             float: right;
@@ -36,17 +38,28 @@
         .heading {
             width: 60%;
             display: inline-block;
+            font-weight: 400;
+            font-size: 18px;
+            margin-top: 0px;
+            margin-left: 21px;
+            text-transform: uppercase;
+            color: #92B713;
+        }
+        .new_heading{
+            width: 60%;
+            display: inline-block;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 14px;
             margin-top: 23px;
             margin-left: 21px;
+            color: orange;
         }
 
         .hour_text {
             width: 17%;
             display: inline-block;
             font-size: 14px;
-            color: #d3d3d3;
+            color: #5c4c4c;
             margin-top: 23px;
         }
 
@@ -128,7 +141,15 @@
             margin-left: 19px;
             float: left;
         }
-
+        .main_parah{
+            width: 50%;
+            display: inline-block;
+            font-size: 16px;
+            color: #999;
+            margin-top: 0px;
+            margin-left: 100px;
+            float: left;
+        }
         .list_icon {
             width: 100%;
             display: inline-block;
@@ -392,7 +413,7 @@
     </style>
 @endsection
 @section('content')
-    <div class="container">
+    <div class="container" style="min-height: 100%;">
         <div class="row">
             <div class="col-md-12 no-padding">
                 <h1 class="page-heading">
@@ -420,15 +441,20 @@
             <span class="image_circle_img">
                 <img class="img-responsive " src="{{getUploadsPath($post['user']['profile_pic'])}}" alt=""/>
             </span>
-                                <span class="heading">
+
+
+                                <span class="new_heading">
                {{$post['user']['name']}}
+            </span>
+                                <span class="heading">
+               {{$post['title']}}
             </span>
                                 <span class="hour_text">
                                 {{formatDate($post['date'])}}
 
             </span>
                                 <div class="section_reply">
-                                    <p id="reply-{{$post['id']}}" class="parah">
+                                    <p id="reply-{{$post['id']}}" class="main_parah">
                                     {{$post['description']}}
                                     <div class="right_anqer">
                                         {{--<a href="#" class="edit_btn_one">Quote</a>--}}
@@ -442,7 +468,7 @@
                                     {{--<a href="#" class="edit_btn_two">Reply</a>--}}
                        @if(\Auth::id())
                                     <a href="#" id="1" data-id="{{$post['id']}}" data-toggle="modal"
-                                       data-target="#myModal" class="post_reply_button">Reply</a>
+                                       data-target="#myModal" class="post_reply_button" style="float: right;">Reply</a>
                                     @endif
 
                                     </p>
@@ -455,7 +481,7 @@
             <span class="image_circle_img">
                 <img class="img-responsive " src="{{getUploadsPath($row['user']['profile_pic'])}}" alt=""/>
             </span>
-                                    <span class="heading">
+                                    <span class="new_heading">
                 {{$row['user']['name']}}
             </span>
                                     <span class="hour_text">

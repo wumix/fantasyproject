@@ -56,11 +56,12 @@
         }
 
         .hour_text {
-            width: 17%;
+            width: 23%;
             display: inline-block;
             font-size: 14px;
             color: #5c4c4c;
             margin-top: 23px;
+            float: right;
         }
 
         .edit_btn {
@@ -468,7 +469,7 @@
                                     {{--<a href="#" class="edit_btn_two">Reply</a>--}}
                                     @if(\Auth::id())
                                         <a href="#" id="1" data-id="{{$post['id']}}" data-toggle="modal"
-                                           data-target="#myModal" class="post_reply_button" style="float: right; width: 11%;">Reply</a>
+                                           data-target="#myModal" class="post_reply_button" style="float: right; width: 21%;">Reply</a>
                                         @endif
 
                                         </p>

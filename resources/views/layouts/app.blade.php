@@ -180,6 +180,12 @@ Cricket app">
                             </a>
                         </li>
                         <li>
+                            <a class="page-scroll" href="{{route('Forums')}}">
+                                Forums
+                            </a>
+
+                        </li>
+                        <li>
                             <a class="page-scroll" href="{{route('showNews')}}">
                                 News
                             </a>

@@ -40,7 +40,7 @@ class Match extends Model {
             $nextMatch = $nextMatch->where('tournament_id', $tournament_id);
         }
         $nextMatch = $nextMatch->first();
-     
+
         return $nextMatch;
     }
 

@@ -465,12 +465,13 @@
                                                class="edit_btn_edit" ><i class="fa fa-pencil" aria-hidden="true"></i>
                                                 Edit</a>
                                         @endif
+                                        @if(\Auth::id())
+                                            <a href="#" id="1" data-id="{{$post['id']}}" data-toggle="modal"
+                                               data-target="#myModal" class="post_reply_button" style="float: right; width: 21%;">Reply</a>
+                                        @endif
+
                                     </div>
                                     {{--<a href="#" class="edit_btn_two">Reply</a>--}}
-                                    @if(\Auth::id())
-                                        <a href="#" id="1" data-id="{{$post['id']}}" data-toggle="modal"
-                                           data-target="#myModal" class="post_reply_button" style="float: right; width: 21%;">Reply</a>
-                                        @endif
 
                                         </p>
 

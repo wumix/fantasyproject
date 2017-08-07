@@ -423,7 +423,7 @@
             </div>
 
 
-            <div class="col-md-12 no-padding inner_area_section">
+            <div class="col-md-12 no-padding inner_area_section" style="margin-bottom: 30px;">
 
                 @if(\Auth::check())
                     <div class="col-md-12">

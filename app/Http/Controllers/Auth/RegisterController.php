@@ -43,9 +43,8 @@ class RegisterController extends Controller
     public function showUserRegistrationForm(Request $request)
     {
         $data['referral_key'] =[];
-if(!empty($request->referral_key)) {
     $data['referral_key'] = $request->referral_key;
-}
+
         return view('auth.register',$data);
     }
 

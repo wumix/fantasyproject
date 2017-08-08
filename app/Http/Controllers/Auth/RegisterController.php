@@ -149,23 +149,9 @@ class RegisterController extends Controller
         }
 
 
-
-
-
-//
-//        //Saving user points scored
-//        $objPointsScored = new \App\UserPointsScored;
-//        $objPointsScored->user_id = $user->id;
-//        $objPointsScored->action_key = $userActionKey;
-//        $objPointsScored->points_scored = $actionPoints;
-//        $objPointsScored->save();
         \Mail::to($user->email)->send(new \App\Mail\SignUp($user->name));
 
-        //Sending email to registered user
-//        Mail::send('emails.send', ['title' => $title, 'message' => $message], function ($message) {
-//            $message->from('no-reply@scotch.io', 'Scotch.IO');
-//            $message->to('batman@batcave.io');
-//        });
+
     }
 
 }

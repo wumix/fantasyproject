@@ -34,8 +34,8 @@ class HomeController extends Controller
 //            $user= \App\User::find($user['id']);
 //            $user->referral_key=base64_encode($user->email);
 //            $user->save();
-
-        }
+//
+//        }
 
         //dd(bcrypt('Waqas123!@#'));
 

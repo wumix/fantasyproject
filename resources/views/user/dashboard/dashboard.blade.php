@@ -827,7 +827,28 @@
     <meta property="og:image" content="http://www.gamithonfantasy.com/assets-new/img/gamithon-logo1.png"/>
     <meta property="fb:app_id" content="712839212231397"/>
 @stop
+
+@section('facbook-og-tags')
+    <meta property="og:url" content="heelo world"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="My title"/>
+    <meta property="og:description" content="Join referral here"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
+    <meta property="og:image" content="{{URL::to('assets-new/img/sign_up.png')}}"/>
+    <meta property="fb:app_id" content="337419313358697"/>
+@stop
 @section('js')
+    <script>
+        document.getElementById('shareBtn').onclick = function () {
+            FB.ui({
+                method: 'share',
+                display: 'popup',
+                href: '{{URL::to('/')}}' + '/signup/?referral_key={{$userprofileinfo['referral_key']}}',
+            }, function (response) {
+            });
+        }
+    </script>
     <script>
         document.getElementById('shareBtn').onclick = function () {
             FB.ui({

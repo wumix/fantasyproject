@@ -615,6 +615,7 @@
                     <div>
                         <div id="shareBtn" class="btn-dash btn btn-success clearfix center">Invite via Refferal</div>
                     </div>
+                  Refferal code:  {{ URL::to('/')}}/signup/?referral_key={{$userprofileinfo['referral_key']}}
 
                     @if(!empty($challenges[0]['challenges']))
                         <div class="abot_me_sec1">

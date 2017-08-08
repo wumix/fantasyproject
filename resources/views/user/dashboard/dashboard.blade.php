@@ -861,7 +861,7 @@
             FB.ui({
                 method: 'share',
                 display: 'popup',
-                href: 'http://gamithon.dev/signup/?referral_key={{$userprofileinfo['referral_key']}}',
+                href: 'http://www.gamithonfantasy.com/signup/?referral_key={{$userprofileinfo['referral_key']}}',
             }, function (response) {
             });
         }

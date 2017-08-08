@@ -616,7 +616,7 @@
                         <div id="shareBtn" class="btn-dash btn btn-success clearfix center"
                      >Invite via Refferal</div>
                     </div>
-                <div style="color: red;
+                <div style="
     white-space: pre-line;
     max-width: 400px !important;
     overflow: scroll;  white-space: pre-wrap;      /* CSS3 */

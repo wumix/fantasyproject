@@ -156,10 +156,10 @@ if(!empty($request->referral_key)) {
                 $user_id = \App\User::where('referral_key', $request->referral_key)->first();
 
 
-                $newarray = array(
+                $newarray =
                     ['tournament_id' => $row['id'], 'action_key' =>
-                        'referral_signup', 'user_id' => $user_id['id'], 'points_scored' => $refferal_points]
-                );
+                        'referral_signup', 'user_id' => $user_id['id'], 'points_scored' => $refferal_points];
+
 
                 \App\UserPointsScored::insert($newarray);
                 \Mail::to($user_id['email'])->send(new \App\Mail\RefferalMail($user_id['name']));

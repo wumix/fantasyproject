@@ -136,7 +136,7 @@
             display: inline-block;
             float: left;
             padding: 0;
-            margin-top: 54px;
+            margin-top: 20px;
             margin-bottom: 0;
         }
         .section_area_left_tyota_list li{

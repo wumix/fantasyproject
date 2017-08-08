@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Challenge
+    Gamiton Forums
 @stop
 @section('css')
     <style>

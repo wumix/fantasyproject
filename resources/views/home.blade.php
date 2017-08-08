@@ -502,10 +502,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    St Lucia Stars v Trinbago Knight Riders
+                                    Patriots Vs Amazaon
                                 </div>
                                 <div class="project-name">
-                                    Trinbago Knight Riders 9 wickets
+                                    Patriots won by 4 runs
                                 </div>
                             </div>
                         </div>
@@ -517,10 +517,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    St Lucia Stars v Trinbago Knight Riders
+                                    Patriots Vs Amazaon
                                 </div>
                                 <div class="project-name">
-                                    Trinbago Knight Riders 9 wickets
+                                    Patriots won by 4 runs
                                 </div>
                             </div>
                         </div>
@@ -532,10 +532,11 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    St Lucia Stars v Trinbago Knight Riders
+                                    Tallawahs Vs Tridents
+
                                 </div>
                                 <div class="project-name">
-                                    Trinbago Knight Riders 9 wickets
+                                    Tallawahs won by 12 runs
                                 </div>
                             </div>
                         </div>

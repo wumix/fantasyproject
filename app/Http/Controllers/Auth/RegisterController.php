@@ -160,7 +160,7 @@ if(!empty($request->referral_key)) {
                     ['tournament_id' => $row['id'], 'action_key' =>
                         'referral_signup', 'user_id' => $user_id['id'], 'points_scored' => $refferal_points];
 
-
+             dd($newarray);
                 \App\UserPointsScored::insert($newarray);
                 \Mail::to($user_id['email'])->send(new \App\Mail\RefferalMail($user_id['name']));
             }

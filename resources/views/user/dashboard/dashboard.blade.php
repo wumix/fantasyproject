@@ -672,6 +672,7 @@
                             <span class="plyer_one">
                                 Your level is <span class="lvl-text">Beginner</span>
                             </span>
+                            <div id="shareBtn" class="btn btn-success clearfix center">Invite Friends</div>
                             {{--<span class="plyer_one">--}}
                             {{--<span class="lvl-text"><a--}}
                             {{--href="{{route('challenges')}}">Challenge Other Players</a> </span>--}}

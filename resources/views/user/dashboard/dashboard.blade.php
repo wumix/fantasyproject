@@ -613,7 +613,7 @@
                         </ul>
                     </div>
                     <div>
-                        <div id="shareBtn" class="btn-dash btn btn-success clearfix center">Invite Friends</div>
+                        <div id="shareBtn" class="btn-dash btn btn-success clearfix center">Invite Friend via Refferal</div>
                     </div>
 
                     @if(!empty($challenges[0]['challenges']))

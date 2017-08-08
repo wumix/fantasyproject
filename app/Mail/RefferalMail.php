@@ -16,9 +16,11 @@ class RefferalMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $name;
+
+    public function __construct($name)
     {
-        //
+        $this->name = $name;
     }
 
     /**
@@ -28,6 +30,7 @@ class RefferalMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+
+        return $this->from('no-reply@gamithonfantasy.com')->view('mail.refferal');
     }
 }

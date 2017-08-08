@@ -613,17 +613,17 @@
                         </ul>
                     </div>
                     <div>
-                        <div id="shareBtn" class="btn-dash btn btn-success clearfix center" style="color: red;
+                        <div id="shareBtn" class="btn-dash btn btn-success clearfix center"
+                     >Invite via Refferal</div>
+                    </div>
+                <div style="color: red;
     white-space: pre-line;
     max-width: 400px !important;
     overflow: scroll;  white-space: pre-wrap;      /* CSS3 */
    white-space: -moz-pre-wrap; /* Firefox */
    white-space: -pre-wrap;     /* Opera <7 */
    white-space: -o-pre-wrap;   /* Opera 7 */
-   word-wrap: break-word; "
-                     >Invite via Refferal</div>
-                    </div>
-                <div style="color:red;">  {{ URL::to('/')}}/signup/?referral_key={{$userprofileinfo['referral_key']}}
+   word-wrap: break-word; ">  {{ URL::to('/')}}/signup/?referral_key={{$userprofileinfo['referral_key']}}
                 </div>
 
                 @if(!empty($challenges[0]['challenges']))

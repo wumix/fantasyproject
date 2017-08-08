@@ -616,14 +616,18 @@
                         <div id="shareBtn" class="btn-dash btn btn-success clearfix center"
                      >Invite via Refferal</div>
                     </div>
-                <div style="
-    white-space: pre-line;
+                <div style="     white-space: pre-line;
     max-width: 400px !important;
-    overflow: scroll;  white-space: pre-wrap;      /* CSS3 */
-   white-space: -moz-pre-wrap; /* Firefox */
-   white-space: -pre-wrap;     /* Opera <7 */
-   white-space: -o-pre-wrap;   /* Opera 7 */
-   word-wrap: break-word; ">  {{ URL::to('/')}}/signup/?referral_key={{$userprofileinfo['referral_key']}}
+    overflow: scroll;
+    /* white-space: pre-wrap; */
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    /* word-wrap: break-word; */
+    background: #fff;
+    padding: 20px;
+    margin-top: 25px;
+    box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21); ">  {{ URL::to('/')}}/signup/?referral_key={{$userprofileinfo['referral_key']}}
                 </div>
 
                 @if(!empty($challenges[0]['challenges']))

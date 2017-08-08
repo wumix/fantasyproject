@@ -613,7 +613,8 @@
                         </ul>
                     </div>
                     <div>
-                        <div id="shareBtn" class="btn-dash btn btn-success clearfix center">Invite via Refferal</div>
+                        <div id="shareBtn" class="btn-dash btn btn-success clearfix center"
+                        style="max-width:400px; overflow-x:hidden;">Invite via Refferal</div>
                     </div>
                 <div style="color:red;">  {{ URL::to('/')}}/signup/?referral_key={{$userprofileinfo['referral_key']}}
                 </div>

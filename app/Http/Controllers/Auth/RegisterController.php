@@ -52,8 +52,6 @@ class RegisterController extends Controller
         }
 
 
-
-
         return view('auth.register');
     }
 
@@ -148,9 +146,6 @@ class RegisterController extends Controller
 
         $userActionKey = 'user_signup';
         $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
-
-
-
         $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
         $tournaments_list = $objTourmament->toArray();
         foreach ($tournaments_list as $row) {
@@ -175,22 +170,6 @@ class RegisterController extends Controller
         }
 
 
-
-
-//
-//        //Saving user points scored
-//        $objPointsScored = new \App\UserPointsScored;
-//        $objPointsScored->user_id = $user->id;
-//        $objPointsScored->action_key = $userActionKey;
-//        $objPointsScored->points_scored = $actionPoints;
-//        $objPointsScored->save();
-       // \Mail::to($user->email)->send(new \App\Mail\SignUp($user->name));
-
-        //Sending email to registered user
-//        Mail::send('emails.send', ['title' => $title, 'message' => $message], function ($message) {
-//            $message->from('no-reply@scotch.io', 'Scotch.IO');
-//            $message->to('batman@batcave.io');
-//        });
     }
 
 }

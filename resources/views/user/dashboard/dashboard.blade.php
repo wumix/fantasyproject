@@ -5,6 +5,17 @@
 @stop
 @section('css')
     <style>
+        .btn-dash{
+            display: block;
+            width: 150px;
+            margin: 0 auto !important;
+            font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+            border: none;
+            border-radius: 5px;
+            font-weight: 400;
+            background: #92B713 !important;
+            text-transform: capitalize;
+        }
         .highlight-badge {
             border: 2px solid #F98709;
             padding: 2px;
@@ -601,6 +612,10 @@
 
                         </ul>
                     </div>
+                    <div>
+                        <div id="shareBtn" class="btn-dash btn btn-success clearfix center">Invite Friends</div>
+                    </div>
+
                     @if(!empty($challenges[0]['challenges']))
                         <div class="abot_me_sec1">
                     <span class="text_abot_me text-center">
@@ -672,7 +687,7 @@
                             <span class="plyer_one">
                                 Your level is <span class="lvl-text">Beginner</span>
                             </span>
-                            <div id="shareBtn" class="btn btn-success clearfix center">Invite Friends</div>
+
                             {{--<span class="plyer_one">--}}
                             {{--<span class="lvl-text"><a--}}
                             {{--href="{{route('challenges')}}">Challenge Other Players</a> </span>--}}

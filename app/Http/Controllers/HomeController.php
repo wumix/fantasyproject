@@ -28,38 +28,14 @@ class HomeController extends Controller
     public function __construct()
     {
 
-//        $users=\App\User::all();
-//       // dd($users->toArray());
-//        foreach($users as $user){
-//            $user= \App\User::find($user['id']);
-//            $user->referral_key=base64_encode($user->email);
-//            $user->save();
-//
-//        }
+        $users=\App\User::all();
+        foreach($users as $user){
+            $user= \App\User::find($user['id']);
+            $user->referral_key= \Crypt::encrypt($user->email);
+            $user->save();
+        }
 
-        //dd(bcrypt('Waqas123!@#'));
 
-        // $this->middleware('auth');
-
-//        $users = \App\User::get()->toArray();
-//        foreach ($users as $row){
-//        $flight = \App\User::find($row['id']);
-//
-//        $flight->referral_key =md5($row['id']+ "xyz");
-//
-//        $flight->save();
-//
-//    }
-//  $users = \App\User::get()->toArray();
-//        foreach ($users as $row){
-//        $flight = \App\User::find($row['id']);
-//
-//        $flight->referral_key =md5($row['id']+ "xyz");
-//
-//        $flight->save();
-//
-//    }
-//
 
 
 

@@ -112,7 +112,7 @@
         .topics_forum_num{
             font-size: 12px;
             color: #000;
-            margin-bottom: 128px;
+            margin-bottom: 61px;
             margin-top: 22px;
             text-align: center;
             width: 100%;

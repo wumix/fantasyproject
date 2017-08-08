@@ -33,7 +33,23 @@ class UserController extends Controller
             return response()->json(['status' => 'fail', 'error' => 'could_not_create_token'], 500);
         }
     }
+  public function profileUpdate(Request $request){
 
+      $user = \App\USER::find(\Auth::id());
+      $files=null;
+      if ($request->hasFile('profile_pic')) {
+
+          $files = uploadInputs($request->profile_pic, 'user_profile_pics');
+          $user->profile_pic = $files;
+      }
+      $user->save();
+      return response()->json(
+          [
+              "status" =>getUploadsPath($files),
+
+          ], 200);
+
+}
     public function create(\App\Http\Requests\RegistrationRequest $request)
     {
         //dd($request->all());

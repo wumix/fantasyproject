@@ -150,12 +150,13 @@ class RegisterController extends Controller
 
                 $refferal_points = \App\UserAction::where('action_key', 'referral_signup')->first()->action_points;
                 $user_id = \App\User::where('referral_key', $request->referral_key)->first();
-
+                echo $user_id;
 
                 $array = array(
                     ['tournament_id' => $row['id'], 'action_key' =>
                         'referral_signup', 'user_id' => $user_id['id'], 'points_scored' => $refferal_points]
                 );
+                dd($array);
                 \App\UserPointsScored::insert($array);
                 \Mail::to($user_id['email'])->send(new \App\Mail\RefferalMail($user_id['name']));
             }

@@ -37,7 +37,7 @@
             width: 100%;
             display: inline-block;
             font-size: 21px;
-            margin-top: 67px;
+            margin-top: 41px;
             margin-bottom: 36px;
         }
         .clip-bord1{
@@ -46,7 +46,7 @@
             width: 100%;
             display: inline-block;
             font-size: 21px;
-            margin-bottom: 93px;
+            margin-bottom: 52px;
         }
         .left_area_forum{
             width: 50%;
@@ -70,7 +70,7 @@
             font-size: 20px;
             color: #92b713;
             font-weight: bold;
-            padding: 20px 0 20px 0;
+            padding: 20px 0 0px 0;
         }
         .parah_forum{
             width: 100%;

@@ -82,7 +82,7 @@ class User extends Authenticatable
     public function leaderboard()
     {
 
-        return $this->hasMany('\App\LeaderBoard', 'user_id', 'id');
+        return $this->hasMany('\App\Leaderboard', 'user_id', 'id');
     }
 
     public function createOrGetUser(ProviderUser $providerUser, $socialProvider)

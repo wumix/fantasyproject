@@ -236,7 +236,7 @@
                             </h2>
                             <div class="input-group">
 
-                                <input type="text" value="{{ URL::to('/')}}/signup/?referral_key={{\Crypt::encrypt(\Auth::user()->referral_key)}}" class="js-copytextarea form-control new_form">
+                                <input type="text" value="{{ URL::to('/')}}/signup/?referral_key={{\Auth::user()->referral_key}}" class="js-copytextarea form-control new_form">
                                 <span class="input-group-btn">
         <button class="btn btn-secondary js-textareacopybtn" type="button">Copy</button>
       </span>
@@ -699,7 +699,7 @@
             FB.ui({
                 method: 'share',
                 display: 'popup',
-                href: '{{URL::to('/')}}' + '/signup/?referral_key={{\Crypt::encrypt(\Auth::user()->referral_key)}}',
+                href: '{{URL::to('/')}}' + '/signup/?referral_key={{\Auth::user()->referral_key}}',
             }, function (response) {
             });
         }
@@ -709,7 +709,7 @@
             FB.ui({
                 method: 'share',
                 display: 'popup',
-                href: 'http://www.gamithonfantasy.com/signup/?referral_key={{\Crypt::encrypt(\Auth::user()->referral_key)}}',
+                href: 'http://www.gamithonfantasy.com/signup/?referral_key={{\Auth::user()->referral_key}}',
             }, function (response) {
             });
         }

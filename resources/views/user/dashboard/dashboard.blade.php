@@ -5,7 +5,7 @@
 @stop
 @section('css')
     <style>
-        .btn-dash{
+        .btn-dash {
             display: block;
             width: 150px;
             margin: 0 auto !important;
@@ -16,6 +16,7 @@
             background: #92B713 !important;
             text-transform: capitalize;
         }
+
         .highlight-badge {
             border: 2px solid #F98709;
             padding: 2px;
@@ -76,6 +77,7 @@
             position: relative;
             margin-bottom: 40px;
         }
+
         .rfral_code {
             width: 100%;
             display: inline-block;
@@ -84,17 +86,20 @@
             padding: 20px 20px;
             margin-bottom: 40px;
         }
-        .new_form{
+
+        .new_form {
             width: 213px !important;
-            padding: 20px;
             border: 1px solid #92B713;
+            height: 42px;
         }
-        .js-textareacopybtn{
+
+        .js-textareacopybtn {
             padding: 11px;
             width: 76px;
             background: #5cb85c;
             color: #fff;
         }
+
         .abot_me_sec {
             width: 100%;
             display: inline-block;
@@ -112,6 +117,7 @@
             padding: 0 29px;
             margin-bottom: 40px;
         }
+
         .share_text_area {
             width: 100%;
             display: inline-block;
@@ -628,13 +634,13 @@
 
                         <ul class="img_area_area">
                             @foreach($user_scores['leaderboard'] as $score)
-                               @if(!empty($score['tournament']))
-                            <li>
-                               {{$score['tournament']['name']}}: <strong>{{$score['score']}}</strong>
+                                @if(!empty($score['tournament']))
+                                    <li>
+                                        {{$score['tournament']['name']}}: <strong>{{$score['score']}}</strong>
 
-                            </li>
+                                    </li>
                                 @endif
-                                @endforeach
+                            @endforeach
 
                         </ul>
                     </div>
@@ -645,36 +651,19 @@
                          Share and win 5000 points
                     </span>
                             <div class="input-group">
-
-                                <input type="text" value="{{ URL::to('/')}}/signup/?referral_key={{$userprofileinfo['referral_key']}}" class="js-copytextarea form-control new_form">
+                                <input type="text"
+                                       value="{{ URL::to('/')}}/signup/?referral_key={{$userprofileinfo['referral_key']}}"
+                                       class="js-copytextarea form-control new_form"
+                                       onclick="select()"
+                                >
                                 <span class="input-group-btn">
         <button class="btn btn-secondary js-textareacopybtn" type="button">Copy</button>
       </span>
                             </div>
                         </div>
                     </div>
-                    {{--<div>--}}
-                        {{--<div id="shareBtn" class="btn-dash btn btn-success clearfix center"--}}
-                     {{-->Invite via Refferal</div>--}}
-                    {{--</div>--}}
-                {{--<textarea class="js-copytextarea share_text_area" style=" white-space: pre-line;--}}
-    {{--max-width: 400px !important;--}}
-    {{--overflow: scroll;--}}
-    {{--/* white-space: pre-wrap; */--}}
-    {{--white-space: -moz-pre-wrap;--}}
-    {{--white-space: -pre-wrap;--}}
-    {{--white-space: -o-pre-wrap;--}}
-    {{--/* word-wrap: break-word; */--}}
-    {{--background: #fff;--}}
-    {{--padding: 20px;--}}
-    {{--margin-top: 25px;--}}
-    {{--box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21); ">  {{ URL::to('/')}}/signup/?referral_key={{$userprofileinfo['referral_key']}}--}}
-                {{--</textarea>--}}
 
-                    {{--<button class="js-textareacopybtn btn-dash btn btn-success">Copy</button>--}}
-
-
-                @if(!empty($challenges[0]['challenges']))
+                    @if(!empty($challenges[0]['challenges']))
                         <div class="abot_me_sec1">
                     <span class="text_abot_me text-center">
                         InActive Challenges
@@ -927,16 +916,15 @@
     <script>
         var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
 
-        copyTextareaBtn.addEventListener('click', function(event) {
+        copyTextareaBtn.addEventListener('click', function (event) {
             var copyTextarea = document.querySelector('.js-copytextarea');
             copyTextarea.select();
-
             try {
                 var successful = document.execCommand('copy');
-                var msg = successful ? 'successful' : 'unsuccessful';
-              //  alert('copied to clipboard');
+                var msg = successful ? 'Copied to clipboard!' : 'There is an error in copy text, please try to select the text';
+                alert(msg);
             } catch (err) {
-               // console.log('Oops, unable to copy');
+                alert('Your browser may not support this feature')
             }
         });
 

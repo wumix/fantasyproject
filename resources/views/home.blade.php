@@ -15,11 +15,11 @@
 
         .new_form {
             width: 100% !important;
-            padding: 20px;
             border: 1px solid #92B713;
-            background: #000;
+            background: #000 !important;
             border-radius: 10px;
             color: #fff;
+            height: 42px;
         }
 
         .js-textareacopybtn {
@@ -233,7 +233,7 @@
 
                         @if(!\Auth::check())
                             <a href="{{route('userdashboard')}}">
-                                <img  style="margin-top: 15px;"
+                                <img style="margin-top: 15px;"
                                      src="{{URL::to('/')}}/img/refer-img.png"/>
                             </a>
                         @else
@@ -246,7 +246,9 @@
 
                                 <input type="text"
                                        value="{{ URL::to('/')}}/signup/?referral_key={{\Auth::user()->referral_key}}"
-                                       class="js-copytextarea form-control new_form">
+                                       class="js-copytextarea form-control new_form"
+                                       onclick="select()"
+                                >
                                 <span class="input-group-btn">
         <button class="btn btn-secondary js-textareacopybtn" type="button">Copy</button>
       </span>
@@ -696,10 +698,10 @@
 
             try {
                 var successful = document.execCommand('copy');
-                var msg = successful ? 'successful' : 'unsuccessful';
-                //  alert('copied to clipboard');
+                var msg = successful ? 'Copied to clipboard!' : 'There is an error in copy text, please try to select the text';
+                alert(msg);
             } catch (err) {
-                // console.log('Oops, unable to copy');
+                alert('Your browser may not support this feature')
             }
         });
 

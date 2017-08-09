@@ -226,7 +226,7 @@
                     </div>
                     <div class="col-lg-3 text-center">
 
-                        @if(\Auth::check())
+                        @if(!\Auth::check())
                             <img style="margin-top: 15px;" src="{{URL::to('/')}}/img/refer-img.png"/>
                         @else
                             <h2 class="section-heading" style="margin-top: 30px;

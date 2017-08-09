@@ -692,24 +692,7 @@
             });
         });
     </script>
-    <script>
-        var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
-
-        copyTextareaBtn.addEventListener('click', function (event) {
-            var copyTextarea = document.querySelector('.js-copytextarea');
-            copyTextarea.select();
-
-            try {
-                var successful = document.execCommand('copy');
-                var msg = successful ? 'Copied to clipboard!' : 'There is an error in copy text, please try to select the text';
-                alert(msg);
-            } catch (err) {
-                alert('Your browser may not support this feature')
-            }
-        });
-
-
-    </script>
+   
     @if(\Auth::check())
         <script>
             document.getElementById('shareBtn').onclick = function () {

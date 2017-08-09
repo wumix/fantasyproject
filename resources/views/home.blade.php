@@ -607,6 +607,8 @@
 @section('js')
     {!! Html::script('assets-new/js/slick.js') !!}
     {!! Html::script('assets/jquery.countdown-2.2.0/jquery.countdown.min.js') !!}
+    {!! Html::script('js/clipboard.min.js') !!}
+
     @php($date= '00-00-00 00:00:00')
     <?php $i = 1?>
     @foreach($tournaments_list as $tournament)

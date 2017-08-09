@@ -574,6 +574,8 @@
     </style>
 @endsection
 @section('content')
+    {!! Html::script('js/clipboard.min.js') !!}
+
     <div class="section_area">
         <div class="text_con">
             <span class="owner_text">{{$userprofileinfo['name']}}</span>
@@ -656,9 +658,11 @@
                                        class="js-copytextarea form-control new_form"
                                        onclick="select()"
                                        readonly
+                                       id="ref_link"
                                 >
                                 <span class="input-group-btn">
-        <button class="btn btn-secondary js-textareacopybtn" type="button">Copy</button>
+        <button class="btn btn-secondary js-textareacopybtn" data-clipboard-target="#ref_link"
+                type="button">Copy</button>
       </span>
                             </div>
                         </div>
@@ -894,7 +898,16 @@
 
 
 @section('js')
+
     <script>
+        var clipboard = new Clipboard('.js-textareacopybtn');
+        clipboard.on('success', function (e) {
+            alert('Copied to clipboard!');
+            e.clearSelection();
+        });
+        clipboard.on('error', function (e) {
+            alert('Oops, An error occurred!');
+        });
         document.getElementById('shareBtn').onclick = function () {
             FB.ui({
                 method: 'share',
@@ -904,31 +917,14 @@
             });
         }
     </script>
-    <script>
-        document.getElementById('shareBtn').onclick = function () {
-            FB.ui({
-                method: 'share',
-                display: 'popup',
-                href: 'http://www.gamithonfantasy.com/signup/?referral_key={{$userprofileinfo['referral_key']}}',
-            }, function (response) {
-            });
-        }
-    </script>
-    <script>
-        var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
-
-        copyTextareaBtn.addEventListener('click', function (event) {
-            var copyTextarea = document.querySelector('.js-copytextarea');
-            copyTextarea.select();
-            try {
-                var successful = document.execCommand('copy');
-                var msg = successful ? 'Copied to clipboard!' : 'There is an error in copy text, please try to select the text';
-                alert(msg);
-            } catch (err) {
-                alert('Your browser may not support this feature')
-            }
-        });
-
-
-    </script>
+    {{--<script>--}}
+    {{--document.getElementById('shareBtn').onclick = function () {--}}
+    {{--FB.ui({--}}
+    {{--method: 'share',--}}
+    {{--display: 'popup',--}}
+    {{--href: 'http://www.gamithonfantasy.com/signup/?referral_key={{$userprofileinfo['referral_key']}}',--}}
+    {{--}, function (response) {--}}
+    {{--});--}}
+    {{--}--}}
+    {{--</script>--}}
 @endsection

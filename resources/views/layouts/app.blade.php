@@ -176,13 +176,13 @@ Cricket app">
                         <li>
 
                             <a class="page-scroll" href="{{route('showBlog')}}">
-                               Blogs
+                                Blogs
                             </a>
                         </li>
                         {{--<li>--}}
-                            {{--<a class="page-scroll" href="{{route('Forums')}}">--}}
-                                {{--Forums--}}
-                            {{--</a>--}}
+                        {{--<a class="page-scroll" href="{{route('Forums')}}">--}}
+                        {{--Forums--}}
+                        {{--</a>--}}
 
                         {{--</li>--}}
                         <li>
@@ -196,7 +196,7 @@ Cricket app">
                         {{--</a>--}}
                         {{--</li>--}}
 
-                       <li>
+                        <li>
                             <a class="page-scroll" href="{{route('usertournamenthome')}}">
                                 Create Team
                             </a>

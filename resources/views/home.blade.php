@@ -694,6 +694,7 @@
 
 
     </script>
+    @if(\Auth::check())
     <script>
         document.getElementById('shareBtn').onclick = function () {
             FB.ui({
@@ -714,6 +715,7 @@
             });
         }
     </script>
+    @endif
 
 
 @stop

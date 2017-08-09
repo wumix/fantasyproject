@@ -640,9 +640,9 @@
                     </div>
                     <div class="rfral_code">
 
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <span class="text_abot_me text-center">
-                         Referral Code
+                         Share and win 5000 points
                     </span>
                             <div class="input-group">
 

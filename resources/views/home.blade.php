@@ -227,7 +227,7 @@
                     <div class="col-lg-3 text-center">
 
                         @if(!\Auth::check())
-                            <img style="margin-top: 15px;" src="{{URL::to('/')}}/img/refer-img.png"/>
+                            <img href="{{route('userdashboard')}}" style="margin-top: 15px;" src="{{URL::to('/')}}/img/refer-img.png"/>
                         @else
                             <h2 class="section-heading" style="margin-top: 30px;
     font-size: 21px;" >
@@ -242,7 +242,7 @@
       </span>
                             </div>
                             <div class="row">
-                                <img src="{{URL::to('/')}}/img/facebook-share.png" id="shareBtn" style="cursor:pointer; margin-top: 1%" />
+                                <img  src="{{URL::to('/')}}/img/facebook-share.png" id="shareBtn" style="cursor:pointer; margin-top: 1%" />
 
                                 </div>
                             </div>

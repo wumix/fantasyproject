@@ -179,7 +179,7 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-lg-9 text-center">
+                    <div class="col-lg-12 text-center">
                         <h2 class="section-heading">
                             Active Tournament and Series
                             <hr class="light">
@@ -229,7 +229,7 @@
                             View all
                         </a>
                     </div>
-                    <div class="col-lg-3 text-center">
+                    <div class="col-lg-3 text-center" style="display: none;">
 
                         @if(!\Auth::check())
                             <a href="{{route('userdashboard')}}">

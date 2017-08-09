@@ -574,7 +574,6 @@
     </style>
 @endsection
 @section('content')
-    {!! Html::script('js/clipboard.min.js') !!}
 
     <div class="section_area">
         <div class="text_con">
@@ -646,7 +645,7 @@
 
                         </ul>
                     </div>
-                    <div class="rfral_code">
+                    <div class="rfral_code" style="display: none;">
 
                         <div class="col-lg-12">
                             <span class="text_abot_me text-center">
@@ -662,7 +661,7 @@
                                 >
                                 <span class="input-group-btn">
         <button class="btn btn-secondary js-textareacopybtn" data-clipboard-target="#ref_link"
-                type="button">Copy</button>
+                type="button">Copy referral code</button>
       </span>
                             </div>
                         </div>
@@ -898,7 +897,7 @@
 
 
 @section('js')
-
+    {!! Html::script('js/clipboard.min.js') !!}
     <script>
         var clipboard = new Clipboard('.js-textareacopybtn');
         clipboard.on('success', function (e) {

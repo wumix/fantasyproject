@@ -245,6 +245,7 @@
                             <div class="input-group">
 
                                 <input type="text"
+                                       readonly
                                        value="{{ URL::to('/')}}/signup/?referral_key={{\Auth::user()->referral_key}}"
                                        class="js-copytextarea form-control new_form"
                                        onclick="select()"

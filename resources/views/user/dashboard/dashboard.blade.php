@@ -655,6 +655,7 @@
                                        value="{{ URL::to('/')}}/signup/?referral_key={{$userprofileinfo['referral_key']}}"
                                        class="js-copytextarea form-control new_form"
                                        onclick="select()"
+                                       readonly
                                 >
                                 <span class="input-group-btn">
         <button class="btn btn-secondary js-textareacopybtn" type="button">Copy</button>

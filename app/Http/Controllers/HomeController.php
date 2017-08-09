@@ -29,12 +29,12 @@ class HomeController extends Controller
     public function __construct()
     {
 
-        $users=\App\User::all();
-        foreach($users as $user){
-            $user= \App\User::find($user['id']);
-            $user->referral_key= \Crypt::encrypt($user->email);
-            $user->save();
-        }
+//        $users=\App\User::all();
+//        foreach($users as $user){
+//            $user= \App\User::find($user['id']);
+//            $user->referral_key= \Crypt::encrypt($user->email);
+//            $user->save();
+//        }
 
 
 

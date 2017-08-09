@@ -76,7 +76,25 @@
             position: relative;
             margin-bottom: 40px;
         }
-
+        .rfral_code {
+            width: 100%;
+            display: inline-block;
+            background: #fff;
+            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
+            padding: 20px 20px;
+            margin-bottom: 40px;
+        }
+        .new_form{
+            width: 213px !important;
+            padding: 20px;
+            border: 1px solid #92B713;
+        }
+        .js-textareacopybtn{
+            padding: 11px;
+            width: 76px;
+            background: #5cb85c;
+            color: #fff;
+        }
         .abot_me_sec {
             width: 100%;
             display: inline-block;
@@ -93,6 +111,14 @@
             box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
             padding: 0 29px;
             margin-bottom: 40px;
+        }
+        .share_text_area {
+            width: 100%;
+            display: inline-block;
+            background: #fff;
+            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
+            padding: 0 29px;
+
         }
 
         .abot_me_sec2 {
@@ -612,23 +638,41 @@
 
                         </ul>
                     </div>
-                    <div>
-                        <div id="shareBtn" class="btn-dash btn btn-success clearfix center"
-                     >Invite via Refferal</div>
+                    <div class="rfral_code">
+
+                        <div class="col-lg-6">
+                            <span class="text_abot_me text-center">
+                         Refral Code
+                    </span>
+                            <div class="input-group">
+
+                                <input type="text" value="{{ URL::to('/')}}/signup/?referral_key={{$userprofileinfo['referral_key']}}" class="js-copytextarea form-control new_form">
+                                <span class="input-group-btn">
+        <button class="btn btn-secondary js-textareacopybtn" type="button">Copy</button>
+      </span>
+                            </div>
+                        </div>
                     </div>
-                <div style="     white-space: pre-line;
-    max-width: 400px !important;
-    overflow: scroll;
-    /* white-space: pre-wrap; */
-    white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;
-    white-space: -o-pre-wrap;
-    /* word-wrap: break-word; */
-    background: #fff;
-    padding: 20px;
-    margin-top: 25px;
-    box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21); ">  {{ URL::to('/')}}/signup/?referral_key={{$userprofileinfo['referral_key']}}
-                </div>
+                    {{--<div>--}}
+                        {{--<div id="shareBtn" class="btn-dash btn btn-success clearfix center"--}}
+                     {{-->Invite via Refferal</div>--}}
+                    {{--</div>--}}
+                {{--<textarea class="js-copytextarea share_text_area" style=" white-space: pre-line;--}}
+    {{--max-width: 400px !important;--}}
+    {{--overflow: scroll;--}}
+    {{--/* white-space: pre-wrap; */--}}
+    {{--white-space: -moz-pre-wrap;--}}
+    {{--white-space: -pre-wrap;--}}
+    {{--white-space: -o-pre-wrap;--}}
+    {{--/* word-wrap: break-word; */--}}
+    {{--background: #fff;--}}
+    {{--padding: 20px;--}}
+    {{--margin-top: 25px;--}}
+    {{--box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21); ">  {{ URL::to('/')}}/signup/?referral_key={{$userprofileinfo['referral_key']}}--}}
+                {{--</textarea>--}}
+
+                    {{--<button class="js-textareacopybtn btn-dash btn btn-success">Copy</button>--}}
+
 
                 @if(!empty($challenges[0]['challenges']))
                         <div class="abot_me_sec1">
@@ -881,29 +925,21 @@
         }
     </script>
     <script>
+        var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
 
-        {{--$(document).ready(function () {--}}
-            {{--var myList = [];--}}
-            {{--var i = 0;--}}
-            {{--$('#team_id option').each(function () {--}}
+        copyTextareaBtn.addEventListener('click', function(event) {
+            var copyTextarea = document.querySelector('.js-copytextarea');
+            copyTextarea.select();
 
-                {{--myList[i]={id:$(this).text(),name:$(this).val()};--}}
-
-                {{--i++;--}}
-            {{--});--}}
-           {{--myList = myList.reverse()--}}
-            {{--// myList.indexOf(0);--}}
-           {{--console.log(myList);--}}
-
-            {{--$("#team_id").each(function () {--}}
-                {{--var l = $("#team_id :selected").text();--}}
+            try {
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successful' : 'unsuccessful';
+              //  alert('copied to clipboard');
+            } catch (err) {
+               // console.log('Oops, unable to copy');
+            }
+        });
 
 
-                {{--$("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[0] + " #total_team_score");--}}
-                {{--$("#game_lame1").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[1] + " #total_team_score");--}}
-                {{--$("#game_lame2").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[3] + " #total_team_score");--}}
-
-            {{--});--}}
-        {{--});--}}
     </script>
 @endsection

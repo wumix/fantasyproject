@@ -50,15 +50,17 @@ class UserController extends Controller
         }])->first()->toArray();
         $result=[];
         $result['status']=true;
+        $result['tournaments_score']=[];
+        $result['tournament_teams']=[];
         foreach ( $data['user_scores']['leaderboard'] as $key=>$leaderboard){
 
 
             if(!empty($leaderboard['tournament']['tournament_userteams'])){
-                $result['tournaments_score'][$key]['tournament_name']=$leaderboard['tournament']['name'];
-                $result['tournaments_score'][$key]['tournament_score']=$leaderboard['score'];
-                $result['tournament_teams'][$key]['team_name']=$leaderboard['tournament']
-                ['tournament_userteams'][0]['name'];
-                $result['tournament_teams'][$key]['tournament_id']=$leaderboard['tournament']['id'];
+                $a=['tournament_name'=>$leaderboard['tournament']['name'],'tournament_score'=>$leaderboard['score']];
+                $b=['team_name'=>$leaderboard['tournament']
+                ['tournament_userteams'][0]['name'],'tournament_id'=>$leaderboard['tournament']['id']];
+                $result['tournaments_score'][]=$a;
+                $result['tournament_teams'][]['team_name']=$b;
             }
 
 

@@ -642,7 +642,7 @@
 
                         <div class="col-lg-6">
                             <span class="text_abot_me text-center">
-                         Refral Code
+                         Referral Code
                     </span>
                             <div class="input-group">
 

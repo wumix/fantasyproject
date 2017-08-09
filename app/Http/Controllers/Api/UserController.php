@@ -58,7 +58,8 @@ class UserController extends Controller
             if(!empty($leaderboard['tournament']['tournament_userteams'])){
                 $a=['tournament_name'=>$leaderboard['tournament']['name'],'tournament_score'=>(String)$leaderboard['score']];
                 $b=['team_name'=>$leaderboard['tournament']
-                ['tournament_userteams'][0]['name'],'tournament_id'=>$leaderboard['tournament']['id']];
+                ['tournament_userteams'][0]['name'],'tournament_id'=>$leaderboard['tournament']['id'],
+                    'team_id'=>(String)$leaderboard['team_id']];
                 $result['tournaments_score'][]=$a;
                 $result['tournament_teams'][]=$b;
             }

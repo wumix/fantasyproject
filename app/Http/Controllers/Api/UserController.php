@@ -60,7 +60,7 @@ class UserController extends Controller
                 $b=['team_name'=>$leaderboard['tournament']
                 ['tournament_userteams'][0]['name'],'tournament_id'=>$leaderboard['tournament']['id']];
                 $result['tournaments_score'][]=$a;
-                $result['tournament_teams'][]['team_name']=$b;
+                $result['tournament_teams'][]=$b;
             }
 
 

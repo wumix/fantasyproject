@@ -250,7 +250,7 @@
                             </div>
                             <div class="row">
                                 <img src="{{URL::to('/')}}/img/facebook-share.png" id="shareBtn"
-                                     style="cursor:pointer; margin-top: 1%"/>
+                                     style="cursor:pointer; margin-top: 3%"/>
 
                             </div>
                     </div>

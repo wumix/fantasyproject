@@ -69,6 +69,9 @@ class User extends Authenticatable
     public function challenges(){
         return $this->hasMany('\App\UserChallenge','user_2_id','id');
     }
+    public function teams(){
+        return $this->hasMany('\App\UserTeam','user_id','id');
+    }
 
 
     /**

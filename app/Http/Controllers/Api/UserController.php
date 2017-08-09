@@ -33,6 +33,38 @@ class UserController extends Controller
             return response()->json(['status' => 'fail', 'error' => 'could_not_create_token'], 500);
         }
     }
+    function editName(Request $request){
+        $user = \App\USER::find(\Auth::id());
+        $user->name=$request->name;
+        $user->save();
+        return response()->json(
+            [
+                "status" =>"true",
+                "message" =>"Name Updated",
+
+            ], 200);
+    }
+    public function userTournamentTeamsScore(){
+        $data['user_scores']=\App\User::where('id',\Auth::id())->with(['leaderboard.tournament.tournament_userteams'=>function($query){
+            $query->where('user_id',\Auth::id())->whereNotNull('joined_from_match_date');
+        }])->first()->toArray();
+        $result=[];
+        $result['status']=true;
+        foreach ( $data['user_scores']['leaderboard'] as $key=>$leaderboard){
+
+
+            if(!empty($leaderboard['tournament']['tournament_userteams'])){
+                $result['tournaments_score'][$key]['tournament_name']=$leaderboard['tournament']['name'];
+                $result['tournaments_score'][$key]['tournament_score']=$leaderboard['score'];
+                $result['tournament_teams'][$key]['team_name']=$leaderboard['tournament']
+                ['tournament_userteams'][0]['name'];
+                $result['tournament_teams'][$key]['tournament_id']=$leaderboard['tournament']['id'];
+            }
+
+
+        }
+        return response()->json($result, 200);
+    }
   public function profileUpdate(Request $request){
 
       $user = \App\USER::find(\Auth::id());

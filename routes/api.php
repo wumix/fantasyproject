@@ -21,6 +21,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('password/reset', 'Api\ResetPasswordController@reset');
 
     Route::post('login', 'Api\UserController@authenticate');
+
     Route::post('register', 'Api\UserController@create');
     //Route::post('password/email', 'Auth\ForgotPasswordController@getResetToken');
    // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
@@ -46,7 +47,9 @@ Route::group(['prefix' => 'v1'], function () {
 
         });
         Route::group(['prefix' => 'user'], function () {
+            Route::get('user_teams', 'Api\UserController@userTournamentTeamsScore');
             Route::post('profile_update', 'Api\UserController@profileUpdate');
+            Route::post('edit_name', 'Api\UserController@editName');
             Route::get('team_players', 'Api\UserController@userTeamPlayers');
             Route::get('check', 'Api\UserController@checkTeam');
             Route::get('team', 'Api\UserController@createTeam');

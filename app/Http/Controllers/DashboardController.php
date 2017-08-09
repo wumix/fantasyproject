@@ -131,7 +131,6 @@ class DashboardController extends Controller
 //dd($data['accepted_challenges']);
 //dd( $data['challenges']);
         $data['user_scores']=\App\User::where('id',\Auth::id())->with('leaderboard.tournament')->first()->toArray();
-
         $data['user_ranking'] = 0;
         foreach ($data['leaders'] as $key => $val) {
             if ($val['user_id'] == \Auth::id()) {

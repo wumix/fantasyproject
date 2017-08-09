@@ -12,12 +12,14 @@
             padding: 20px 20px;
             margin-bottom: 40px;
         }
-        .new_form{
+
+        .new_form {
             width: 195px !important;
             padding: 20px;
             border: 1px solid #92B713;
         }
-        .js-textareacopybtn{
+
+        .js-textareacopybtn {
             padding: 11px;
             width: 76px;
             background: #92B713;
@@ -227,29 +229,35 @@
                     <div class="col-lg-3 text-center">
 
                         @if(!\Auth::check())
-                            <img href="{{route('userdashboard')}}" style="margin-top: 15px;" src="{{URL::to('/')}}/img/refer-img.png"/>
+                            <a href="{{route('userdashboard')}}">
+                                <img  style="margin-top: 15px;"
+                                     src="{{URL::to('/')}}/img/refer-img.png"/>
+                            </a>
                         @else
                             <h2 class="section-heading" style="margin-top: 30px;
-    font-size: 21px;" >
+    font-size: 21px;">
                                 Share and get 5000 points
                                 <hr class="light">
                             </h2>
                             <div class="input-group">
 
-                                <input type="text" value="{{ URL::to('/')}}/signup/?referral_key={{\Auth::user()->referral_key}}" class="js-copytextarea form-control new_form">
+                                <input type="text"
+                                       value="{{ URL::to('/')}}/signup/?referral_key={{\Auth::user()->referral_key}}"
+                                       class="js-copytextarea form-control new_form">
                                 <span class="input-group-btn">
         <button class="btn btn-secondary js-textareacopybtn" type="button">Copy</button>
       </span>
                             </div>
                             <div class="row">
-                                <img  src="{{URL::to('/')}}/img/facebook-share.png" id="shareBtn" style="cursor:pointer; margin-top: 1%" />
+                                <img src="{{URL::to('/')}}/img/facebook-share.png" id="shareBtn"
+                                     style="cursor:pointer; margin-top: 1%"/>
 
-                                </div>
                             </div>
-                        @endif
-
                     </div>
+                    @endif
+
                 </div>
+            </div>
             </div>
         </section>
     @endif
@@ -679,7 +687,7 @@
     <script>
         var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
 
-        copyTextareaBtn.addEventListener('click', function(event) {
+        copyTextareaBtn.addEventListener('click', function (event) {
             var copyTextarea = document.querySelector('.js-copytextarea');
             copyTextarea.select();
 
@@ -695,26 +703,26 @@
 
     </script>
     @if(\Auth::check())
-    <script>
-        document.getElementById('shareBtn').onclick = function () {
-            FB.ui({
-                method: 'share',
-                display: 'popup',
-                href: '{{URL::to('/')}}' + '/signup/?referral_key={{\Auth::user()->referral_key}}',
-            }, function (response) {
-            });
-        }
-    </script>
-    <script>
-        document.getElementById('shareBtn').onclick = function () {
-            FB.ui({
-                method: 'share',
-                display: 'popup',
-                href: 'http://www.gamithonfantasy.com/signup/?referral_key={{\Auth::user()->referral_key}}',
-            }, function (response) {
-            });
-        }
-    </script>
+        <script>
+            document.getElementById('shareBtn').onclick = function () {
+                FB.ui({
+                    method: 'share',
+                    display: 'popup',
+                    href: '{{URL::to('/')}}' + '/signup/?referral_key={{\Auth::user()->referral_key}}',
+                }, function (response) {
+                });
+            }
+        </script>
+        <script>
+            document.getElementById('shareBtn').onclick = function () {
+                FB.ui({
+                    method: 'share',
+                    display: 'popup',
+                    href: 'http://www.gamithonfantasy.com/signup/?referral_key={{\Auth::user()->referral_key}}',
+                }, function (response) {
+                });
+            }
+        </script>
     @endif
 
 

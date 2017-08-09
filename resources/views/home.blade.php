@@ -14,7 +14,7 @@
         }
 
         .new_form {
-            width: 188px !important;
+            width: 100% !important;
             padding: 20px;
             border: 1px solid #92B713;
             background: #000;

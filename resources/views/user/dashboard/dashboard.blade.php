@@ -646,7 +646,7 @@
                     </span>
                             <div class="input-group">
 
-                                <input type="text" value="{{ URL::to('/')}}/signup/?referral_key={{$userprofileinfo['referral_key']}}" class="js-copytextarea form-control new_form">
+                                <input type="text" value="{{ URL::to('/')}}/signup/?referral_key={{\Crypt::encrypt($userprofileinfo['referral_key'])}}" class="js-copytextarea form-control new_form">
                                 <span class="input-group-btn">
         <button class="btn btn-secondary js-textareacopybtn" type="button">Copy</button>
       </span>

@@ -3,6 +3,27 @@
 @section('css')
     {!! Html::style('assets-new/css/slick-theme.css') !!}
     {!! Html::style('assets-new/css/slick.css') !!}
+    <style>
+        .rfral_code {
+            width: 100%;
+            display: inline-block;
+            background: #fff;
+            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
+            padding: 20px 20px;
+            margin-bottom: 40px;
+        }
+        .new_form{
+            width: 195px !important;
+            padding: 20px;
+            border: 1px solid #92B713;
+        }
+        .js-textareacopybtn{
+            padding: 11px;
+            width: 76px;
+            background: #92B713;
+            color: #fff;
+        }
+    </style>
 @endsection
 
 
@@ -27,17 +48,17 @@
                                     <div class="col-md-12 no-padding">
                                         <h3 style="font-weight: 500; color: #FFFFFF">
                                             @if(!empty($tournament['nextmatch']))
-                                            NEXT MATCH COUNT DOWN
+                                                NEXT MATCH COUNT DOWN
                                             @else
-                                               {{ $tournament['name']}}
+                                                {{ $tournament['name']}}
                                             @endif
                                         </h3>
                                         <h6 style="color: white;">
                                             {{$tournament['nextmatch']['team_one']}}
                                             @if(!empty($tournament['nextmatch']))
-                                            <strong class="mlr10 Bold">
-                                                <em>Vs</em>
-                                            </strong>
+                                                <strong class="mlr10 Bold">
+                                                    <em>Vs</em>
+                                                </strong>
                                             @endif
                                             {{$tournament['nextmatch']['team_two']}}
                                         </h6>
@@ -45,34 +66,34 @@
                                 </div>
 
                                 @if(!empty($tournament['nextmatch']))
-                                <div class="row col-md-12">
-                                    <div class="col-md-12 count-down no-padding mt30">
-                                        <div class="col-md-3 text-center">
+                                    <div class="row col-md-12">
+                                        <div class="col-md-12 count-down no-padding mt30">
+                                            <div class="col-md-3 text-center">
                         <span id="getting-started{{$i}}" class="circle">
                             10
                         </span>
-                                            <p class="mtb10">Days</p>
-                                        </div>
-                                        <div class="col-md-3 text-center">
+                                                <p class="mtb10">Days</p>
+                                            </div>
+                                            <div class="col-md-3 text-center">
                         <span id="getting-started{{$i+1}}" class="circle">
                             10
                         </span>
-                                            <p class="mtb10">Hours</p>
-                                        </div>
-                                        <div class="col-md-3 text-center">
+                                                <p class="mtb10">Hours</p>
+                                            </div>
+                                            <div class="col-md-3 text-center">
                         <span id="getting-started{{$i+2}}" class="circle">
                             10
                         </span>
-                                            <p class="mtb10" style="margin-left: 12px;">Min</p>
-                                        </div>
-                                        <div class="col-md-3 text-center">
+                                                <p class="mtb10" style="margin-left: 12px;">Min</p>
+                                            </div>
+                                            <div class="col-md-3 text-center">
                         <span id="getting-started{{$i+3}}" class="circle">
                             10
                         </span>
-                                            <p class="mtb10" style="margin-left: 12px;">Sec</p>
+                                                <p class="mtb10" style="margin-left: 12px;">Sec</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endif
 
 
@@ -153,7 +174,7 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-lg-12 text-center">
+                    <div class="col-lg-9 text-center">
                         <h2 class="section-heading">
                             Active Tournament and Series
                             <hr class="light">
@@ -203,6 +224,31 @@
                             View all
                         </a>
                     </div>
+                    <div class="col-lg-3 text-center">
+
+                        @if(0)
+                            <img style="margin-top: 15px;" src="{{URL::to('/')}}/img/refer-img.png"/>
+                        @else
+                            <h2 class="section-heading" style="margin-top: 30px;
+    font-size: 21px;" >
+                                Share and get 5000 points
+                                <hr class="light">
+                            </h2>
+                            <div class="input-group">
+
+                                <input type="text" value="{{ URL::to('/')}}/signup/?referral_key={{\Crypt::encrypt(\Auth::user()->referral_key)}}" class="js-copytextarea form-control new_form">
+                                <span class="input-group-btn">
+        <button class="btn btn-secondary js-textareacopybtn" type="button">Copy</button>
+      </span>
+                            </div>
+                            <div class="row">
+                                <img src="{{URL::to('/')}}/img/facebook-share.png" id="shareBtn" style="cursor:pointer; margin-top: 1%" />
+
+                                </div>
+                            </div>
+                        @endif
+
+                    </div>
                 </div>
             </div>
         </section>
@@ -210,49 +256,49 @@
     @if(!empty($upcomming_tournaments_list))
 
         {{--<section class="bg-primary" id="about">--}}
-            {{--<div class="container">--}}
-                {{--<div class="row">--}}
+        {{--<div class="container">--}}
+        {{--<div class="row">--}}
 
-                    {{--<div class="col-lg-12 text-center">--}}
-                        {{--<h2 class="section-heading">--}}
-                            {{--Upcomming Tournaments--}}
-                            {{--<hr class="light">--}}
-                        {{--</h2>--}}
+        {{--<div class="col-lg-12 text-center">--}}
+        {{--<h2 class="section-heading">--}}
+        {{--Upcomming Tournaments--}}
+        {{--<hr class="light">--}}
+        {{--</h2>--}}
 
-                        {{--<div class="table-responsive">--}}
-                            {{--<table class="table table-striped table-stripedhome gen-table">--}}
-                                {{--<thead class="main-taible-head">--}}
-                                {{--<tr>--}}
-                                    {{--<th class="border-r th1">Name</th>--}}
-                                    {{--<th class="border-r">Venue</th>--}}
-                                    {{--<th class="border-r">Started At</th>--}}
-                                    {{--<th class="th2">Ending At</th>--}}
-                                {{--</tr>--}}
-                                {{--</thead>--}}
-                                {{--<tbody class="main-taible-body">--}}
-                                {{--@foreach($upcomming_tournaments_list as $tournament)--}}
-                                    {{--<tr class="trr">--}}
-                                        {{--<td class="border-r">--}}
-                                            {{--<a href="{{route('fixturesdetail',['tournament_id'=>$tournament['slug']])}}">{{$tournament['name']}} </a>--}}
-                                        {{--</td>--}}
-                                        {{--<td class="border-r">{{$tournament['venue']}}</td>--}}
-                                        {{--<td class="border-r">--}}
-                                            {{--{{formatDate($tournament['start_date'])}}--}}
-                                        {{--</td>--}}
-                                        {{--<td>--}}
-                                            {{--{{formatDate($tournament['end_date'])}}--}}
-                                        {{--</td>--}}
-                                    {{--</tr>--}}
+        {{--<div class="table-responsive">--}}
+        {{--<table class="table table-striped table-stripedhome gen-table">--}}
+        {{--<thead class="main-taible-head">--}}
+        {{--<tr>--}}
+        {{--<th class="border-r th1">Name</th>--}}
+        {{--<th class="border-r">Venue</th>--}}
+        {{--<th class="border-r">Started At</th>--}}
+        {{--<th class="th2">Ending At</th>--}}
+        {{--</tr>--}}
+        {{--</thead>--}}
+        {{--<tbody class="main-taible-body">--}}
+        {{--@foreach($upcomming_tournaments_list as $tournament)--}}
+        {{--<tr class="trr">--}}
+        {{--<td class="border-r">--}}
+        {{--<a href="{{route('fixturesdetail',['tournament_id'=>$tournament['slug']])}}">{{$tournament['name']}} </a>--}}
+        {{--</td>--}}
+        {{--<td class="border-r">{{$tournament['venue']}}</td>--}}
+        {{--<td class="border-r">--}}
+        {{--{{formatDate($tournament['start_date'])}}--}}
+        {{--</td>--}}
+        {{--<td>--}}
+        {{--{{formatDate($tournament['end_date'])}}--}}
+        {{--</td>--}}
+        {{--</tr>--}}
 
-                                {{--@endforeach--}}
+        {{--@endforeach--}}
 
-                                {{--</tbody>--}}
-                            {{--</table>--}}
-                        {{--</div>--}}
+        {{--</tbody>--}}
+        {{--</table>--}}
+        {{--</div>--}}
 
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
         {{--</section>--}}
     @endif
 
@@ -351,8 +397,9 @@
             </div>
         </div>
     </section>
-    <section id="services" class=" services-padding-bottom bg-dark how-to-play-summery" style="background:#252525 !important" >
-        <div class="container" >
+    <section id="services" class=" services-padding-bottom bg-dark how-to-play-summery"
+             style="background:#252525 !important">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Download Our Mobile Applications</h2>
@@ -360,8 +407,8 @@
                 </div>
             </div>
         </div>
-        <div class="container" >
-            <div class="row" >
+        <div class="container">
+            <div class="row">
 
                 <div class="col-lg-2 col-md-2 text-center">
                 </div>
@@ -369,7 +416,7 @@
                 <div class="col-lg-4 col-md-4 text-center">
                     <div class="service-box">
                         <a target="_blank" href="https://play.google.com/store/apps/details?id=com.branches.gamithon">
-                            <img  src="{{URL::to('/img/google.png')}}"/>
+                            <img src="{{URL::to('/img/google.png')}}"/>
 
                         </a>
                     </div>
@@ -398,7 +445,7 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                  Trinbago Knight Riders v St Lucia Stars
+                                    Trinbago Knight Riders v St Lucia Stars
                                 </div>
                                 <div class="project-name">
                                     T&T Riders won by 4 wickets
@@ -538,11 +585,6 @@
                 </div>
 
 
-
-
-
-
-
             </div>
         </div>
     </section>
@@ -555,44 +597,44 @@
     <?php $i = 1?>
     @foreach($tournaments_list as $tournament)
         @if(!empty($tournament['nextmatch']))
-        @if(!empty($tournament['nextmatch']['start_date']))
-            @php($date=$tournament['nextmatch']['start_date'])
-            {{Html::script('js/moment.js')}}
-            <script type="text/javascript">
-                var dateObj = new Date();
-                var userTimeZone = dateObj.getTimezoneOffset();
-                //Time zone is in negatinv i.e. forward from GMT
-                userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : Math.abs(userTimeZone) * -1;
+            @if(!empty($tournament['nextmatch']['start_date']))
+                @php($date=$tournament['nextmatch']['start_date'])
+                {{Html::script('js/moment.js')}}
+                <script type="text/javascript">
+                    var dateObj = new Date();
+                    var userTimeZone = dateObj.getTimezoneOffset();
+                    //Time zone is in negatinv i.e. forward from GMT
+                    userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : Math.abs(userTimeZone) * -1;
 
-                var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
-                console.log(tournamentDateTime, userTimeZone);
+                    var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
+                    console.log(tournamentDateTime, userTimeZone);
 
-                $('#getting-started{{$i}}').countdown(tournamentDateTime, function (event) {
-                    $(this).text(
-                        event.strftime('%D')
-                    );
-                });
-                $("#getting-started{{$i+1}}")
-                    .countdown(tournamentDateTime, function (event) {
+                    $('#getting-started{{$i}}').countdown(tournamentDateTime, function (event) {
                         $(this).text(
-                            event.strftime('%H')
+                            event.strftime('%D')
                         );
                     });
-                $("#getting-started{{$i+2}}")
-                    .countdown(tournamentDateTime, function (event) {
-                        $(this).text(
-                            event.strftime('%M')
-                        );
-                    });
-                $("#getting-started{{$i+3}}")
-                    .countdown(tournamentDateTime, function (event) {
-                        $(this).text(
-                            event.strftime('%S')
-                        );
-                    });
-            </script>
-            <?php $i = $i + 4?>
-        @endif
+                    $("#getting-started{{$i+1}}")
+                        .countdown(tournamentDateTime, function (event) {
+                            $(this).text(
+                                event.strftime('%H')
+                            );
+                        });
+                    $("#getting-started{{$i+2}}")
+                        .countdown(tournamentDateTime, function (event) {
+                            $(this).text(
+                                event.strftime('%M')
+                            );
+                        });
+                    $("#getting-started{{$i+3}}")
+                        .countdown(tournamentDateTime, function (event) {
+                            $(this).text(
+                                event.strftime('%S')
+                            );
+                        });
+                </script>
+                <?php $i = $i + 4?>
+            @endif
         @endif
     @endforeach
 
@@ -601,13 +643,9 @@
         $('#header').backstretch([
 
 
-
             {url: '{{URL::to('assets-new/img/gamithon-Cpl-1.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/web-prize-final.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/southwin.jpg')}}', fade: 500},
-
-
-
 
 
         ]);
@@ -638,6 +676,78 @@
             });
         });
     </script>
+    <script>
+        var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
+
+        copyTextareaBtn.addEventListener('click', function(event) {
+            var copyTextarea = document.querySelector('.js-copytextarea');
+            copyTextarea.select();
+
+            try {
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successful' : 'unsuccessful';
+                //  alert('copied to clipboard');
+            } catch (err) {
+                // console.log('Oops, unable to copy');
+            }
+        });
 
 
+    </script>
+    <script>
+        document.getElementById('shareBtn').onclick = function () {
+            FB.ui({
+                method: 'share',
+                display: 'popup',
+                href: '{{URL::to('/')}}' + '/signup/?referral_key={{\Crypt::encrypt(\Auth::user()->referral_key)}}',
+            }, function (response) {
+            });
+        }
+    </script>
+    <script>
+        document.getElementById('shareBtn').onclick = function () {
+            FB.ui({
+                method: 'share',
+                display: 'popup',
+                href: 'http://www.gamithonfantasy.com/signup/?referral_key={{\Crypt::encrypt(\Auth::user()->referral_key)}}',
+            }, function (response) {
+            });
+        }
+    </script>
+
+
+@stop
+@section('FbJsSdk')
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '337419313358697',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.9'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+@endsection
+@section('facbook-og-tags')
+    <meta property="og:url" content="heelo world"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="My title"/>
+    <meta property="og:description" content="Join referral here"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
+    <meta property="og:image" content="http://www.gamithonfantasy.com/assets-new/img/gamithon-logo1.png"/>
+    <meta property="fb:app_id" content="337419313358697"/>
 @stop

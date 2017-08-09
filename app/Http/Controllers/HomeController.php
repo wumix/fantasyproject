@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 use App\GameAction;
 use App\Http\Requests;
 use App\Mail\MyMail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Mailer;
@@ -28,12 +29,12 @@ class HomeController extends Controller
     public function __construct()
     {
 
-//        $users=\App\User::all();
-//        foreach($users as $user){
-//            $user= \App\User::find($user['id']);
-//            $user->referral_key= \Crypt::encrypt($user->email);
-//            $user->save();
-//        }
+        $users=\App\User::all();
+        foreach($users as $user){
+            $user= \App\User::find($user['id']);
+            $user->referral_key= \Crypt::encrypt($user->email);
+            $user->save();
+        }
 
 
 

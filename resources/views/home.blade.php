@@ -17,6 +17,9 @@
             width: 195px !important;
             padding: 20px;
             border: 1px solid #92B713;
+            background: #000;
+            border-radius: 10px;
+            color: #fff;
         }
 
         .js-textareacopybtn {

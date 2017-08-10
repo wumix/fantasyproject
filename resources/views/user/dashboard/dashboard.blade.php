@@ -645,7 +645,7 @@
 
                         </ul>
                     </div>
-                    <div class="rfral_code" style="display: none;">
+                    <div class="rfral_code" style="display:none;">
 
                         <div class="col-lg-12">
                             <span class="text_abot_me text-center">

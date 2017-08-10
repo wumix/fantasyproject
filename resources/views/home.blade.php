@@ -229,7 +229,7 @@
                             View all
                         </a>
                     </div>
-                    <div class="col-lg-3 text-center" style="display: none;">
+                    <div class="col-lg-3 text-center" style="display: none" >
 
                         @if(!\Auth::check())
                             <a href="{{route('userdashboard')}}">
@@ -244,14 +244,18 @@
                             </h2>
                             <div class="input-group">
 
-                                <input type="text"
+                                <input
+                                        id="foo"
+                                        type="text"
                                        readonly
                                        value="{{ URL::to('/')}}/signup/?referral_key={{\Auth::user()->referral_key}}"
                                        class="js-copytextarea form-control new_form"
                                        onclick="select()"
+
                                 >
                                 <span class="input-group-btn">
-        <button class="btn btn-secondary js-textareacopybtn" type="button">Copy</button>
+        <button class="btn btn-secondary js-textareacopybtn" data-clipboard-target="#foo"
+                type="button">Copy</button>
       </span>
                             </div>
                             <div class="row">
@@ -694,6 +698,16 @@
     </script>
    
     @if(\Auth::check())
+        <script>
+            var clipboard = new Clipboard('.js-textareacopybtn');
+            clipboard.on('success', function (e) {
+                alert('Copied to clipboard!');
+                e.clearSelection();
+            });
+            clipboard.on('error', function (e) {
+                alert('Oops, An error occurred!');
+            });
+        </script>
         <script>
             document.getElementById('shareBtn').onclick = function () {
                 FB.ui({

@@ -559,10 +559,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Nevis Patriots VS St Kitts
+                                     Trinbago Knight Riders v Jamaica Tallawahs
                                 </div>
                                 <div class="project-name">
-                                    Nevis Patriots won by 4 wickets
+                                    Jamaica Tallawahs  won by 4 wickets
                                 </div>
                             </div>
                         </div>
@@ -575,10 +575,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Nevis Patriots VS St Kitts
+                                    Trinbago Knight Riders v Jamaica Tallawahs
                                 </div>
                                 <div class="project-name">
-                                    Nevis Patriots won by 4 wickets
+                                    Jamaica Tallawahs  won by 4 wickets
                                 </div>
                             </div>
 
@@ -592,10 +592,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Nevis Patriots VS St Kitts
+                                    Trinbago Knight Riders v Jamaica Tallawahs
                                 </div>
                                 <div class="project-name">
-                                    Nevis Patriots won by 4 wickets
+                                    Jamaica Tallawahs  won by 4 wickets
                                 </div>
                             </div>
                         </div>

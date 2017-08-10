@@ -139,7 +139,7 @@ class HomeController extends Controller
 
         $datetime = new \DateTime();
         $date = $datetime->format('Y-m-d H:i:s');
-        $objTourmament = \App\Tournament::all();
+        $objTourmament = \App\Tournament::all()->sortByDesc('start_date');
         $data['tournaments_list'] = $objTourmament->toArray();
         return view('user.dashboard.home', $data);
 

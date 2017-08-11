@@ -142,6 +142,7 @@ class UserController extends Controller
         $message = 'Login Successful';
         $user = \Auth::user();
         $user['profile_pic'] = getUploadsPath($user['profile_pic']);
+        $user['referral_key']='http://www.gamithonfantasy.com/signup/?referral_key='.$user['referral_key'];
         return response()->json(compact('message', 'token', 'user'), 200);
     }
 

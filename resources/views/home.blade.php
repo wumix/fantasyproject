@@ -229,7 +229,7 @@
                             View all
                         </a>
                     </div>
-                    <div class="col-lg-3 text-center" style="display: none" >
+                    <div class="col-lg-3 text-center" style="display: none">
 
                         @if(!\Auth::check())
                             <a href="{{route('userdashboard')}}">
@@ -247,10 +247,10 @@
                                 <input
                                         id="foo"
                                         type="text"
-                                       readonly
-                                       value="{{ URL::to('/')}}/signup/?referral_key={{\Auth::user()->referral_key}}"
-                                       class="js-copytextarea form-control new_form"
-                                       onclick="select()"
+                                        readonly
+                                        value="{{ URL::to('/')}}/signup/?referral_key={{\Auth::user()->referral_key}}"
+                                        class="js-copytextarea form-control new_form"
+                                        onclick="select()"
 
                                 >
                                 <span class="input-group-btn">
@@ -333,11 +333,16 @@
                                 <div class="media-left">
                                     <a href="{{getUploadsPath($val['image'])}}">
                                         <?php
+
                                         $arr = explode('/', $val['image']);
+                                        $thumbnail = Image::open('uploads/source/'.end($arr))
+                                            ->thumbnail(new Imagine\Image\Box(177,105));
+                                        $thumbnail->save('uploads/source/thumb'.end($arr));
 
                                         ?>
+
                                         <img class="media-object"
-                                             src="{{Croppa::url($val['image'],177,105)}}" alt="{{end($arr)}}">
+                                             src="/uploads/source/thumb{{end($arr)}}" alt="{{end($arr)}}">
                                     </a>
 
 
@@ -466,7 +471,7 @@
                                     Trinbago Knight Riders v Jamaica Tallawahs
                                 </div>
                                 <div class="project-name">
-                                    Jamaica Tallawahs  won by 4 wickets
+                                    Jamaica Tallawahs won by 4 wickets
                                 </div>
                             </div>
                         </div>
@@ -482,7 +487,7 @@
                                     Trinbago Knight Riders v Jamaica Tallawahs
                                 </div>
                                 <div class="project-name">
-                                    Jamaica Tallawahs  won by 4 wickets
+                                    Jamaica Tallawahs won by 4 wickets
                                 </div>
                             </div>
 
@@ -499,7 +504,7 @@
                                     Trinbago Knight Riders v Jamaica Tallawahs
                                 </div>
                                 <div class="project-name">
-                                    Jamaica Tallawahs  won by 4 wickets
+                                    Jamaica Tallawahs won by 4 wickets
                                 </div>
                             </div>
                         </div>
@@ -603,7 +608,6 @@
                 </div>
 
 
-
             </div>
         </div>
     </section>
@@ -671,7 +675,6 @@
             {url: '{{URL::to('assets-new/img/web-prize-final.jpg')}}', fade: 500},
 
 
-
         ]);
 
 
@@ -700,7 +703,7 @@
             });
         });
     </script>
-   
+
     @if(\Auth::check())
         <script>
             var clipboard = new Clipboard('.js-textareacopybtn');

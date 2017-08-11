@@ -94,7 +94,7 @@
 	 * images require a lot of memory to perform the resize, so you may increase
 	 * this memory limit.
 	 */
-	'memory_limit' => '128M',
+	'memory_limit' => '512M',
 
 	/*
 	|-----------------------------------------------------------------------------

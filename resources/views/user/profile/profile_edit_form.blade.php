@@ -115,7 +115,7 @@
                         </div>
                         @if ($errors->has('password'))
                             <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
+                            <strong>{{ $errors->first('password') }}</strong>
                         </span>
                         @endif
                         <div class="form-group" id="sformbox">

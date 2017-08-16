@@ -57,7 +57,7 @@ class HomeController extends Controller
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
 
-        dd($data['upcommingTour']->toArray());
+      //  dd($data['upcommingTour']->toArray());
         return view('user.dashboard.newdash', $data);
     }
 

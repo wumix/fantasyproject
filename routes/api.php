@@ -56,5 +56,10 @@ Route::group(['prefix' => 'v1'], function () {
             Route::get('confirm_team', 'Api\UserController@confirm_team');
             Route::resource('/', 'Api\User');
         });
+
+    });
+    Route::group(['prefix' => 'players'], function () {
+        Route::get('/', 'Api\PlayersController@getPlayerStats');
+
     });
 });

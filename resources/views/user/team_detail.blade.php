@@ -27,7 +27,9 @@ foreach ($team_score as $teamplayers) {
 }
 ?>
 @extends('layouts.app')
-
+@section('title')
+    Team Detail
+@stop
 @section('content')
     <style>
         .transfered_player_img {

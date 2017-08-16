@@ -1,7 +1,7 @@
 @extends('layouts.app')
 {{--{{dd($matches->t)}}--}}
 @section('title')
-    <title>Gamithon Fantasy</title>
+    <title>My Account</title>
 @stop
 @section('css')
     <style>

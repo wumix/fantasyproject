@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-   Active Tournaments
+   LeaderBoard
     @stop
 @section('content')
 

@@ -31,7 +31,7 @@ function has_user_team($user_id,$tournamnet_id)
     if ($userteam == NULL) {
         return FALSE;
     } else {
-        return TRUE;
+        return $userteam;
     }
 }
 

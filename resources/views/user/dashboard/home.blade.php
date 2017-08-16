@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-   LeaderBoard
+   LeaderBoards
     @stop
 @section('content')
 

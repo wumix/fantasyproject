@@ -108,7 +108,7 @@
                                            name="password">
                                 </div>
                                 <span class="help-block">
-                                    Enter your password if you want to change yuor current password.
+                                    Enter old password to change your password.
                                 </span>
 
                             </div>

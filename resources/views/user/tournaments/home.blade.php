@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-   LeaderBoards
+   Create Team
     @stop
 @section('content')
 
@@ -43,7 +43,12 @@
                                         <td class="border-r1">
                                             <a href="{{route('addTeam', ['tournament_id'=>$row['id']])}}"
                                                class="btn btn-green">
-                                                Create Team
+                                              @if(has_user_team(\Auth::id(),$row['id']))
+                                                  View Team
+
+                                                  @else
+                                                  Create Team
+                                                @endif
                                             </a>
                                         </td>
                                     </tr>

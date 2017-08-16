@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+@section('title')
+    Team added successfully
+@stop
 <section>
     <div class="container">
         <div class="row">

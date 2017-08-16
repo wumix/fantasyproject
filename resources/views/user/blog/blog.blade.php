@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Gamithon Forums
+Gamithon Blogs
 @stop
 @section('content')
 

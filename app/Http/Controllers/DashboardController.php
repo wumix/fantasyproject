@@ -143,7 +143,8 @@ class DashboardController extends Controller
 
     function teamHome()
     {
-        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->with('teamtournament')->orderBy('id', 'DESC')
+        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->
+        with('teamtournament')->orderBy('id', 'DESC')
             ->get()
             ->toArray();
         //dd($data['user_teams']);

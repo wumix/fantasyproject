@@ -44,6 +44,7 @@ class TournamentsController extends Controller
                 $tour['start_date'] = formatDate($tour['start_date']);
                 $tour['end_date'] = formatDate($tour['end_date']);
                 $tour['t_logo'] = getUploadsPath($tour['t_logo']);
+                $tour['team_exist']="2";
                 $tournamnets['previous'][] = $tour;
                 continue;
             }
@@ -51,7 +52,7 @@ class TournamentsController extends Controller
                 $tour['start_date'] = formatDate($tour['start_date']);
                 $tour['end_date'] = formatDate($tour['end_date']);
                 $tour['t_logo'] = getUploadsPath($tour['t_logo']);
-                $tour['team_exist']=(has_user_team(\Auth::id(),$tour['id']) !=FALSE ? "true" : "false");
+                $tour['team_exist']=(has_user_team(\Auth::id(),$tour['id']) !=FALSE ? "1" : "0");
                 $tournamnets['current'][] = $tour;
 
                 continue;
@@ -60,7 +61,7 @@ class TournamentsController extends Controller
                 $tour['start_date'] = formatDate($tour['start_date']);
                 $tour['end_date'] = formatDate($tour['end_date']);
                 $tour['t_logo'] = getUploadsPath($tour['t_logo']);
-                $tour['team_exist']=(has_user_team(\Auth::id(),$tour['id']) !=FALSE ? "true" : "false");
+                $tour['team_exist']=(has_user_team(\Auth::id(),$tour['id']) !=FALSE ? "1" : "0");
                 $tournamnets['upcoming'][] = $tour;
                 continue;
             }

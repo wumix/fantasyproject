@@ -23,28 +23,37 @@ class PlayersController extends Controller
                 $k->where('player_id', $player_id);
             }
         ])->firstOrFail()->toArray();
-        $result=[];
+        $result = [];
+        //return response()->json($player);
+        $result['name']=$player['name'];
+        $result['profile_pic']=getUploadsPath($player['profile_pic']);
+
         foreach ($player['player_games']['game_type'] as $gametype) {
 
-            foreach ($gametype['game_type_stats_category'] as $key=>$game_type_stats)  //game_type_stats_category are batting bowling etc
+            foreach ($gametype['game_type_stats_category'] as $key => $game_type_stats)  //game_type_stats_category are batting bowling etc
             {
 
 
                 foreach ($game_type_stats['game_type_stats'] as $typestats) {
 
 
-                   // if (!empty($typestats['player'])) {
-     //          dd($result);
-                      $result[$gametype['type_name']][$game_type_stats['name']][$typestats['name']] = $typestats['player'][0]['pivot']['stat_points'];
+                    // if (!empty($typestats['player'])) {
+                    //          dd($result);
+                  //  $a = [];
+                    $a = $typestats['player'][0]['pivot']['stat_points'];
+                    $b[$typestats['name']]=$a;
 
-                      // }
+                   $result[$gametype['type_name']] = $b;
+
+
+                    // }
 
                 }
-               // dd($result);
+                // dd($result);
             }
         }
         // die;
         return response()->json($result);
-       // return response()->json($player);
+        // return response()->json($player);
     }
 }

@@ -60,6 +60,7 @@ class TournamentsController extends Controller
                 $tour['start_date'] = formatDate($tour['start_date']);
                 $tour['end_date'] = formatDate($tour['end_date']);
                 $tour['t_logo'] = getUploadsPath($tour['t_logo']);
+                $tour['team_exist']=(has_user_team(\Auth::id(),$tour['id']) !=FALSE ? "true" : "false");
                 $tournamnets['upcoming'][] = $tour;
                 continue;
             }

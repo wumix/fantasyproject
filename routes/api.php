@@ -32,6 +32,11 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('leaderboard', 'Api\TournamentsController@tournament_leaderboard');
 
     });
+    Route::group(['prefix' => 'news'], function () {
+        Route::get('/', 'Api\NewsController@index');
+        });
+
+
 
 
 

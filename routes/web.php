@@ -20,6 +20,7 @@
 
 
 Route::get('/newdash', 'HomeController@newdash')->name('newdashboard');
+Route::get('/test', 'HomeController@test')->name('test');
 Route::get('/leaderboard', 'HomeController@allTournaments')->name('dashboardhome');
 
 Route::get('login/facebook/', 'Auth\LoginController@redirectToFacebookProvider')->name('facebookLogin');

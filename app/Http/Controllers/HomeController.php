@@ -47,6 +47,11 @@ class HomeController extends Controller
      *
      * @return void
      */
+    public function test()
+    {
+        return view('user.team_detail1');
+    }
+
     public function newdash()
     {
 

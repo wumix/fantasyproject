@@ -510,78 +510,16 @@
                         </div>
                     </a>
                 </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Jamaica Tallawahs vs Amazon Warriors
-                                </div>
-                                <div class="project-name">
-                                    Jamaica Tallawahs won by 2 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Jamaica Tallawahs vs Amazon Warriors
-                                </div>
-                                <div class="project-name">
-                                    Jamaica Tallawahs won by 2 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/103.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Jamaica Tallawahs vs Amazon Warriors
-                                </div>
-                                <div class="project-name">
-                                    Jamaica Tallawahs won by 2 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Lucia Stars VS Jamaica Tallawahs
-                                </div>
-                                <div class="project-name">
-                                    Jamaica Tallawahs won by 5 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
                 <div class="col-lg-4 col-sm-6">
                     <a href="../img/portfolio/thumbnails/202.jpg" class="portfolio-box">
                         <img src="../img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="KXIP VS KKR">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Lucia Stars VS Jamaica Tallawahs
+                                    Barbados Tridents vs Amazon Warriors
                                 </div>
                                 <div class="project-name">
-                                    Jamaica Tallawahs won by 5 wickets
+                                    Guyana Amazon Warriors won by 4 wickets
                                 </div>
                             </div>
 
@@ -595,15 +533,78 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Lucia Stars VS Jamaica Tallawahs
+                                    Barbados Tridents vs Amazon Warriors
                                 </div>
                                 <div class="project-name">
-                                    Jamaica Tallawahs won by 5 wickets
+                                    Guyana Amazon Warriors won by 4 wickets
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
+
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/103.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Guyana Amazon Warriors v Trinbago Knight Riders
+                                </div>
+                                <div class="project-name">
+                                    Trinbago Knight Riders won by 7 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt=" DD VS GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Guyana Amazon Warriors v Trinbago Knight Riders
+                                </div>
+                                <div class="project-name">
+                                    Trinbago Knight Riders won by 7 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                               St Kitts and Nevis Patriots v Barbados Tridents at Basseterre
+                                </div>
+                                <div class="project-name">
+                                   Patriots won by 17 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt=" DD VS GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    St Kitts and Nevis Patriots v Barbados Tridents at Basseterre
+                                </div>
+                                <div class="project-name">
+                                    Patriots won by 17 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
 
 
 

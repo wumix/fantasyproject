@@ -22,12 +22,13 @@ class TournamentsController extends Controller
     function index(Request $request)
     {
 //dd(apache_request_headers());
-        dd(getGmtTime());
+       // dd(getGmtTime());
 
     }
 
     public function show(Request $request)
     {
+
         $game_id = $request->id;
         $tournamnets = [];
         $tournamnets['previous'] = [];
@@ -43,6 +44,7 @@ class TournamentsController extends Controller
                 $tour['start_date'] = formatDate($tour['start_date']);
                 $tour['end_date'] = formatDate($tour['end_date']);
                 $tour['t_logo'] = getUploadsPath($tour['t_logo']);
+                $tour['team_exist']="2";
                 $tournamnets['previous'][] = $tour;
                 continue;
             }
@@ -50,13 +52,16 @@ class TournamentsController extends Controller
                 $tour['start_date'] = formatDate($tour['start_date']);
                 $tour['end_date'] = formatDate($tour['end_date']);
                 $tour['t_logo'] = getUploadsPath($tour['t_logo']);
+                $tour['team_exist']=(has_user_team(\Auth::id(),$tour['id']) !=FALSE ? "1" : "0");
                 $tournamnets['current'][] = $tour;
+
                 continue;
             }
             if ($tour['start_date'] > getGmtTime() && $tour['end_date'] > getGmtTime()) {
                 $tour['start_date'] = formatDate($tour['start_date']);
                 $tour['end_date'] = formatDate($tour['end_date']);
                 $tour['t_logo'] = getUploadsPath($tour['t_logo']);
+                $tour['team_exist']=(has_user_team(\Auth::id(),$tour['id']) !=FALSE ? "1" : "0");
                 $tournamnets['upcoming'][] = $tour;
                 continue;
             }
@@ -118,7 +123,7 @@ class TournamentsController extends Controller
         $tournamentMaxPlayers = \App\Tournament::getMaxPlayers($request->tournament_id);
         $currentNoPlayers = \App\UserTeam::find($request->team_id)->user_team_player()->count();
         $objResponse = [];
-        $objResponse['status'] = false;
+        $objResponse['status'] ="false";
         if ($tournamentMaxPlayers > $currentNoPlayers) {
             if ($difference > 15 || $difference < 15) {
                 if ($request->player_price <= getUserTotalScore(Auth::id(), $request->tournament_id)) {
@@ -128,8 +133,8 @@ class TournamentsController extends Controller
                         $objteam->user_team_player()->sync($request->player_id, false);
                         $array = array(['tournament_id' => $request->tournament_id, 'action_key' => 'add_player', 'user_id' => Auth::id(), 'points_consumed' => $request->player_price]);
                         \App\UserPointsConsumed::insert($array);
-                        $objResponse['success'] = "true";
-                        $objResponse['message'] = "Player added successfully";
+                        $objResponse['status'] = "true";
+                        $objResponse['msg'] = "Player added successfully";
                         $objResponse['batsmen'] = $this->getRoleCountInTeam(Auth::id(), $request->team_id, 5);
                         $objResponse['bowler'] = $this->getRoleCountInTeam(Auth::id(), $request->team_id, 6);
                         $objResponse['wicketkeeper'] = $this->getRoleCountInTeam(Auth::id(), $request->team_id, 8);
@@ -146,19 +151,19 @@ class TournamentsController extends Controller
                         $objResponse['player']['tournament_id'] = $request->tournament_id;
                         $objResponse['player_score'] = getUserTotalScore(Auth::id(), $request->tournament_id);
                     } else {
-                        $objResponse['status'] = false;
+                        $objResponse['status'] = "false";
                         $objResponse['msg'] = "You cant have more than " . $this->getRoleCountInTeam(Auth::id(), $request->team_id, $request->role_id) . " " . $request->role_name . "s in this Tournament";
                     }
                 } else {
-                    $objResponse['status'] = false;
-                    $objResponse['msg'] = "You donot have enough points";
+                    $objResponse['status'] = "false";
+                    $objResponse['msg'] = "You do not have enough points";
                 }
             } else {
-                $objResponse['status'] = false;
+                $objResponse['status'] = "false";
                 $objResponse['msg'] = "Tournament starts in 15 minutes you cant add player now";
             }
         } else {
-            $objResponse['status'] = false;
+            $objResponse['status'] = "false";
             $objResponse['msg'] = "You can't have more than $tournamentMaxPlayers in this tournament.";
         }
 //        if (getUserTeamPlayersCount($request->team_id) == 11) {
@@ -170,6 +175,7 @@ class TournamentsController extends Controller
 //            return response()->json($objResponse);
 //        }
         //if($objResponse['status']==true){
+        $request->request->add($objResponse);
         return $this->tournament_players($request);
         //  }else{
         //   return response()->json($objResponse);
@@ -193,6 +199,7 @@ class TournamentsController extends Controller
 
     public function tournament_players(Request $request)
     {
+       // dd($request->all());
         $team_id = $request->team_id;
         $tournament_id = $request->tournament_id;
 
@@ -280,6 +287,10 @@ class TournamentsController extends Controller
         $tournament_players['total_count'] = (String)getUserTeamPlayersCount($team_id);
         $tournament_players['current_score'] = (String)getUserTotalScore(Auth::id(), $tournament_id);
         $tournament_players['team_name'] = $team_name;
+        //$request->request->add(['status'=>$objResponse['status'],'msg'=>$objResponse['msg']]);
+        $tournament_players['status'] =(String)$request->status;
+        $tournament_players['msg'] = $request->msg;
+
         return response()->json($tournament_players);
 
     }

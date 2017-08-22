@@ -33,14 +33,68 @@ class UserController extends Controller
             return response()->json(['status' => 'fail', 'error' => 'could_not_create_token'], 500);
         }
     }
+    function editName(Request $request){
+        $user = \App\USER::find(\Auth::id());
+        $user->name=$request->name;
+        $user->save();
+        return response()->json(
+            [
+                "status" =>"true",
+                "message" =>"Name Updated",
 
+            ], 200);
+    }
+    public function userTournamentTeamsScore(){
+        $data['user_scores']=\App\User::where('id',\Auth::id())->with(
+            ['leaderboard.tournament.tournament_userteams'=>function($query){
+            $query->where('user_id',\Auth::id())->whereNotNull('joined_from_match_date');
+        }])->first()->toArray();
+//        return response()->json($data['user_scores'], 200);
+        $result=[];
+        $result['status']=true;
+        $result['tournaments_score']=[];
+        $result['tournament_teams']=[];
+        foreach ( $data['user_scores']['leaderboard'] as $key=>$leaderboard){
+
+
+            if(!empty($leaderboard['tournament']['tournament_userteams'])){
+                $a=['tournament_name'=>$leaderboard['tournament']['name'],'tournament_score'=>(String)$leaderboard['score']];
+                $b=['team_name'=>$leaderboard['tournament']
+                ['tournament_userteams'][0]['name'],'tournament_id'=>$leaderboard['tournament']['id'],
+                    'team_id'=>(String)$leaderboard['team_id']];
+                $result['tournaments_score'][]=$a;
+                $result['tournament_teams'][]=$b;
+            }
+
+
+        }
+        return response()->json($result, 200);
+    }
+  public function profileUpdate(Request $request){
+
+      $user = \App\USER::find(\Auth::id());
+      $files=null;
+      if ($request->hasFile('profile_pic')) {
+
+          $files = uploadInputs($request->profile_pic, 'user_profile_pics');
+          $user->profile_pic = $files;
+      }
+      $user->save();
+      return response()->json(
+          [
+              "status" =>getUploadsPath($files),
+
+          ], 200);
+
+}
     public function create(\App\Http\Requests\RegistrationRequest $request)
     {
         //dd($request->all());
         $newUser = $this->user->create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'password' => bcrypt($request->get('password'))
+            'password' => bcrypt($request->get('password')),
+            'profile_pic'=>getUploadsPath(NULL)
 
         ]);
         addUSerSignUpPoints($newUser->id);
@@ -48,6 +102,7 @@ class UserController extends Controller
             return response()->json(['failed_to_create_new_user'], 500);
         }
         $user = User::where('id', $newUser->id)->first();
+
         $success = "";
         try {
             if (!$token = JWTAuth::fromUser($user)) {
@@ -78,15 +133,16 @@ class UserController extends Controller
 
         try {
             if (!$token = JWTAuth::attempt($credentials)) {
-                return response()->json(['message' => 'invalid_credentials', 'more_info' => []], 401);
+                return response()->json(['message' => 'Invalid Credentials', 'more_info' => []], 401);
             }
         } catch (JWTException $e) {
-            return response()->json(['message' => 'could_not_create_token', 'more_info' => []], 401);
+            return response()->json(['message' => 'Something Went Wrong', 'more_info' => []], 401);
         }
         // all good so return the token
         $message = 'Login Successful';
         $user = \Auth::user();
         $user['profile_pic'] = getUploadsPath($user['profile_pic']);
+        $user['referral_key']='http://www.gamithonfantasy.com/signup/?referral_key='.$user['referral_key'];
         return response()->json(compact('message', 'token', 'user'), 200);
     }
 

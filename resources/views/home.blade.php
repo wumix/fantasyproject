@@ -331,19 +331,26 @@
                         <div class="col-md-4 itemsz " style="margin: 15px 0 15px 0;  padding: 15px;">
                             <div class="media newscolor">
                                 <div class="media-left">
-                                    <a href="{{getUploadsPath($val['image'])}}">
+
+
                                         <?php
-
                                         $arr = explode('/', $val['image']);
-                                        $thumbnail = Image::open('uploads/source/'.end($arr))
-                                            ->thumbnail(new Imagine\Image\Box(177,105));
-                                        $thumbnail->save('uploads/source/thumb'.end($arr));
+                                        if(file_exists('uploads/source/'.end($arr))){
+                                              $thumbnail = Image::open('uploads/source/'.end($arr))
+                                                  ->thumbnail(new Imagine\Image\Box(177,105));
+                                              $thumbnail->save('uploads/source/thumb'.end($arr));
+                                            echo '<img class="media-object"
+                                             src="/uploads/source/'.end($arr).'"/>';
+                                        }else{
+                                            echo '<a href="'.getUploadsPath($val['image']).'">';
+                                            echo '<img class="media-object"
+                                             src="/uploads/source/defualt-img.jpg"/>';
 
+                                        }
                                         ?>
 
-                                        <img class="media-object"
-                                             src="/uploads/source/thumb{{end($arr)}}" alt="{{end($arr)}}">
-                                    </a>
+
+
 
 
                                 </div>

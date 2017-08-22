@@ -20,7 +20,7 @@ class ForumController extends Controller
     {
 
         $data['categories'] = ForumCategory::where('parent_id',NULL)->with(['children'=>function($query){
-            $query->where('is_approved',1);
+            $query->where('is_approved',1)->orderBy('created_at','DESC');
         },'children.posts'])->get()->toArray();
 
         // dd($data['categories']);

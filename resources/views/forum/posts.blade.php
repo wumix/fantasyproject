@@ -491,9 +491,7 @@
             </span>
 
                                     <div class="section_reply">
-                                        <p class="parah" id="repparah-{{$row['id']}}">
-
-                                        {!! $row['post_text'] !!}
+                                        <p class="parah" id="repparah-{{$row['id']}}">{{$row['post_text']}}
 
                                         <div class="right_anqer_second">
                                             {{--<a href="#" class="edit_btn_one_quote">Quote</a>--}}
@@ -769,7 +767,7 @@
             var k = $('#repparah-' + postId).html();
 
 
-            // alert(k);
+           // alert(k);
             //$('edittextarea').html(k);
 
 

@@ -94,7 +94,7 @@
                             <span class="sign_up_imp"><img src="{{URL::to('/img/sign-up_imp5.png')}}" alt=""/></span>
                         </li>
                         <li>
-                            <div class="sign_text">6. You can win exciting prizes once you make your way into the <a href="{{URL::to('/')}}"> leader board</a> </div>
+                            <div class="sign_text">6. You can win exciting prizes if you attain first position on leaderboard. <a href="{{URL::to('/')}}"></a> </div>
                             <span class="sign_up_imp"><img src="{{URL::to('/img/sign-up_imp6.png')}}" alt=""/></span>
                         </li>
 

@@ -126,7 +126,7 @@
                             <li>Exclusive fan services</li>
                             <li>Customised site content</li>
 
-                            <li>Favourite Game information and notifications</li>
+                            <li>Favorite Game information and notifications</li>
 
 
                         </ul>

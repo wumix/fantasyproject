@@ -22,7 +22,7 @@
             margin-bottom: 10px;
         }
         .sign_text{
-            font-size: 14px;
+            font-size: 16px;
             color: #333333;
         }
         .sign_text span{
@@ -65,7 +65,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="page-heading">
-                    How to play
+                    How To Play
                 </h1>
                 <hr class="light full">
             </div>

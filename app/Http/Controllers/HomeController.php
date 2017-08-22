@@ -252,10 +252,13 @@ class HomeController extends Controller
     public function howPlay()
     {
         $data['tournament'] = \App\Tournament::where('id',6)
-            ->with('tournament_game.game_actions.game_terms', 'game_term_points')
+            ->with(['tournament_game.game_actions.game_terms', 'game_term_points'=>function($query){
+                $query->orderBy('id','DESC');
+            }])
             ->firstOrFail()
             ->toArray();
         $data['game_actions'] = $data['tournament']['tournament_game']['game_actions'];
+        //dd($data['tournament']);
         return view('pages.how-to-play', $data);
     }
 

@@ -179,7 +179,7 @@
                         {{--LeaderBoard--}}
                         {{--</a>--}}
                         {{--</li>--}}
-                       
+
                        <li>
                             <a class="page-scroll" href="{{route('usertournamenthome')}}">
                                 Create Team

@@ -320,7 +320,55 @@
         {{--</section>--}}
     @endif
 
-    
+    @if(!empty($news))
+        <section class="bg-primary" style="padding-bottom: 20px;">
+            <div class="container">
+                <div class="">
+                    <!-- start news -->
+
+                    @foreach($news as $key=>$val)
+
+                        <div class="col-md-4 itemsz " style="margin: 15px 0 15px 0;  padding: 15px;">
+                            <div class="media newscolor">
+                                <div class="media-left">
+                                    <a href="{{getUploadsPath($val['image'])}}">
+                                        <?php
+
+                                        $arr = explode('/', $val['image']);
+                                        $thumbnail = Image::open('uploads/source/'.end($arr))
+                                            ->thumbnail(new Imagine\Image\Box(177,105));
+                                        $thumbnail->save('uploads/source/thumb'.end($arr));
+
+                                        ?>
+
+                                        <img class="media-object"
+                                             src="/uploads/source/thumb{{end($arr)}}" alt="{{end($arr)}}">
+                                    </a>
+
+
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading mediah">
+                                        <a class="home-news-headings"
+                                           href="{{route('newsdetail',['id'=>$val['slug']])}}">
+                                            {{$val['title']}}
+                                        </a>
+                                    </h4>
+
+                                    <span style="font-size: 12px;">
+                       {!! str_limit($val['description'], 100) !!}...
+                            <br>
+                        <a href="{{route('newsdetail',['id'=>$val['slug']])}}">Read More</a>
+    </span>
+                                </div>
+                            </div>
+                        </div>
+                @endforeach
+                <!-- end news -->
+                </div>
+            </div>
+        </section>
+    @endif
 
 
     <!-- LETS PLAY AT GAMITHON  Start-->

@@ -455,8 +455,7 @@
 
             </span>
                                 <div class="section_reply">
-                                    <p id="reply-{{$post['id']}}" class="main_parah">
-                                    {{$post['description']}}
+                                    <p id="reply-{{$post['id']}}" class="main_parah">{{$post['description']}}
                                     <div class="right_anqer">
                                         {{--<a href="#" class="edit_btn_one">Quote</a>--}}
                                         @if($post['user_id']==\Auth::id())

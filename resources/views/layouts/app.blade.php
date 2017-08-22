@@ -179,14 +179,7 @@
                         {{--LeaderBoard--}}
                         {{--</a>--}}
                         {{--</li>--}}
-                        @if(!has_user_team(Auth::id()))
-                            {{--<li id="create-your-team">--}}
-
-                                {{--<a class="page-scroll" href="{{route('addTeam', ['tournament_id'=>2])}}">--}}
-                                    {{--Create Team--}}
-                                {{--</a>--}}
-                            {{--</li>--}}
-                        @endif
+                       
                        <li>
                             <a class="page-scroll" href="{{route('usertournamenthome')}}">
                                 Create Team

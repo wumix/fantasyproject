@@ -13,7 +13,7 @@ class NewsController extends Controller
     function index(Request $request){
         $news_id=$request->id;
         if(empty($news_id)) {
-            $news=[];
+
             if($request->post_type=="news"){
             $news = \App\BlogPost::where('post_type', 'news')->
             orderBy('created_at', 'DESC')->get();
@@ -42,7 +42,8 @@ class NewsController extends Controller
             $news['content'] = str_replace($order, $replace, $str);
 
         }
-        return response()->json($news);
+        $data['news']=$news;
+        return response()->json($data);
 
     }
 

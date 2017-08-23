@@ -82,7 +82,8 @@ class DashboardController extends Controller
         //dd($matcheIdsAfterThisTeamMade);
         //  $userTeamPlayerIds=[1,2,3,4,5,6,7,8,9,10];
         //dd($userTeamPlayerIds);
-        $data['team_score'] = \App\Player::whereIn('id', $userTeamPlayerIds)->with(['player_roles', 'player_matches',
+        $data['team_score'] = \App\Player::whereIn('id', $userTeamPlayerIds)->with(
+            ['player_roles', 'player_matches',
             'player_gameTerm_score' => function ($query) use ($matcheIdsAfterThisTeamMade) {
                 $query->whereIn('match_id', $matcheIdsAfterThisTeamMade);
             },
@@ -95,6 +96,7 @@ class DashboardController extends Controller
                 $query->where('tournament_id', $tournament_id);
             }
         ])->get()->toArray();
+        dd($data['team_score'][0]['player_game_term_score']);
 
 
         // dd($data['team_score']);

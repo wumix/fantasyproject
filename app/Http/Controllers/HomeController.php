@@ -8,7 +8,6 @@
 namespace App\Http\Controllers;
 
 
-
 use App\GameAction;
 use App\Http\Requests;
 use App\Mail\MyMail;
@@ -28,7 +27,9 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-       // $categories = ForumCategory::with('children')->get()->toArray();
+
+
+        // debugArr($match['match_players'][0]['player_game_term_score']);
 
     }
 
@@ -37,6 +38,25 @@ class HomeController extends Controller
      *
      * @return void
      */
+    public function scorecard($id)
+    {
+        
+
+        $data['match'] = \App\Match::where('id', $id)->with(
+            ['match_players.player_gameTerm_score' => function ($q) use($id) {
+                return $q->where('match_id', $id);
+            },
+
+                'match_players.player_gameTerm_score.game_terms' => function ($q) {
+                    // return $q->where('match_id', 50)->orderBy('name', 'ASC');
+                }
+            ])
+            ->first()->toArray();
+        //debugArr($data['match']['match_players'][0]);
+        return view('user.team_detail1', $data);
+
+    }
+
     public function newdash()
     {
 
@@ -220,12 +240,12 @@ class HomeController extends Controller
     public function howPlay()
     {
         $data['tournament'] = \App\Tournament::where('id', config('const.tournament_id'))
-            ->with(['tournament_game.game_actions.game_terms', 'game_term_points'=>function($q){
-                $q->orderBY('points','DESC');
+            ->with(['tournament_game.game_actions.game_terms', 'game_term_points' => function ($q) {
+                $q->orderBY('points', 'DESC');
             }])
             ->firstOrFail()
             ->toArray();
-            //dd( $data['tournament'] );
+        //dd( $data['tournament'] );
         $data['game_actions'] = $data['tournament']['tournament_game']['game_actions'];
         return view('pages.how-to-play', $data);
     }

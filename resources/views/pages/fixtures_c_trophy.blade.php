@@ -45,6 +45,9 @@
                                             aria-hidden="true"></i> Date :</span> {{formatTime($fixture['start_date'])}} GMT
                             </p>
                         </div>
+                        <div>
+                           <a href="{{route('scorecard',['slug'=>$fixture['id']])}}">Score card</a>
+                        </div>
 
 
                     </div>

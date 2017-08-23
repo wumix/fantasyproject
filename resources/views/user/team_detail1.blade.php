@@ -1,238 +1,311 @@
-<?php
-// dd($user_team_player_transfer['user_team_player_transfers']);
-//dd(user_team_player_transfer);
-//dd($team_score);
-//first loop on players
-//dd($user_team_player_transfer->toArray());
-if (empty($user_team_player_transfer->toArray())) {
-    $user_team_player_transfer = null;
-} else {
-    $user_team_player_transfer = $user_team_player_transfer->toArray();
-    $user_team_player_transfer = $user_team_player_transfer[0];
-}
-//dd($user_team_player_transfer);
-$z = [];
-foreach ($team_score as $teamplayers) {
-    $i = 0;
-    foreach ($teamplayers['player_matches'] as $matches) {
-
-        $z[$matches['name']] = array_filter($teamplayers['player_game_term_score'], function ($i) use ($matches) {
-
-            if ($i['match_id'] == $matches['id'])
-                return $i;
-        });
-        $i++;
-    }
-}
-?>
 @extends('layouts.app')
+{{--{{dd($matches->t)}}--}}
+@section('title')
+    How To Play at Gamithon Fantasy
+@stop
+@section('css')
+    <style>
+        .how_play_sec {
+            width: 100%;
+            display: inline-block;
+            background: #fff;
+            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
+            padding: 50px 36px;
+            margin: 25px 0;
+        }
 
+        .scorin_bord_sec {
+            width: 100%;
+            display: inline-block;
+            background: #fff;
+            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
+            padding: 50px 36px 0 36px;
+            margin-bottom: 10px;
+        }
+
+        .sign_text {
+            font-size: 14px;
+            color: #333333;
+        }
+
+        .sign_text span {
+            color: #92b713;
+        }
+
+        .sign_up_imp {
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+            padding: 15px 0px 55px 0;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        @media all and (min-width: 100px) and (max-width: 768px) {
+            .sign_up_imp img {
+                width: 377px;
+            }
+
+            .scorin_bord_sec p {
+                text-align: justify;
+            }
+        }
+
+        @media all and (min-width: 100px) and (max-width: 480px) {
+            .sign_up_imp img {
+                width: 251px;
+            }
+
+            .scorin_bord_sec p {
+                text-align: justify;
+            }
+        }
+
+        .gt_match_details {
+            font-size: 19px;
+            color: #52534f;
+            margin-bottom: 30px;
+        }
+
+        .gt_match_details .gt_teams {
+            color: #f6980e;
+            text-transform: uppercase;
+        }
+
+        .gt_match_details .gt_match_result {
+            color: #757474;
+            font-size: 14px;
+            font-style: italic;
+            display: block;
+            font-family: 'Open Sans', Sans-Serif;
+        }
+
+        .grean_bg_row {
+            background: #92b713;
+            border: none !important;
+        }
+
+        .grey_bg_row {
+            background: #e8e8e8;
+            border: none !important;
+        }
+
+        .gt_team_select {
+            font-family: 'Open Sans', Sans-Serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 16px;
+        }
+
+        .gt_team_select select {
+            margin-left: 15px;
+        }
+
+        .grean_bg_row th {
+            padding: 10px !important;
+            color: #fff;
+            vertical-align: middle !important;
+            font-size: 19px;
+        }
+
+        .grey_bg_row th {
+            padding: 10px !important;
+            font-size: 14px;
+            font-weight: 300;
+            font-style: italic;
+            color: #575454;
+        }
+
+        .gt_scorecard_wrapper table tr th:nth-child(1),
+        .gt_scorecard_wrapper table tr td:nth-child(1) {
+            padding-left: 15px !important;
+        }
+
+        .gt_scorecard_wrapper table thead tr:nth-child(2) th,
+        .gt_scorecard_wrapper table tbody tr td {
+            font-family: 'Open Sans', Sans-Serif;
+
+        }
+
+        .gt_scorecard_wrapper table tbody tr td {
+            vertical-align: bottom;
+            height: 65px;
+        }
+
+        .gt_scorecard_wrapper table tbody tr td:nth-child(1) {
+            width: 200px;
+            color: #92b713;
+            font-size: 16px;
+        }
+
+        .gt_scorecard_wrapper table tbody tr td:nth-child(2) {
+            width: 60px;
+        }
+
+        .gt_scorecard_wrapper table tbody tr td:nth-child(3) {
+            width: 200px;
+            text-align: center;
+        }
+
+        .gt_scorecard_wrapper table thead tr:nth-child(2) th:nth-child(4),
+        .gt_scorecard_wrapper table thead tr:nth-child(2) th:nth-child(5),
+        .gt_scorecard_wrapper table thead tr:nth-child(2) th:nth-child(6),
+        .gt_scorecard_wrapper table thead tr:nth-child(2) th:nth-child(7),
+        .gt_scorecard_wrapper table thead tr:nth-child(2) th:nth-child(8) {
+            width: 60px;
+            text-align: center;
+        }
+
+        .gt_scorecard_wrapper table tbody tr td:nth-child(4),
+        .gt_scorecard_wrapper table tbody tr td:nth-child(5),
+        .gt_scorecard_wrapper table tbody tr td:nth-child(6),
+        .gt_scorecard_wrapper table tbody tr td:nth-child(7),
+        .gt_scorecard_wrapper table tbody tr td:nth-child(8) {
+            width: 60px;
+            text-align: center;
+        }
+
+    </style>
+@endsection
 @section('content')
-<style>
-    .transfered_player_img {
-        width: 50px;
-    }
-
-    .transfered_container {
-        float: left;
-    }
-
-    .transfered_player_img {
-        left: 50%;
-    }
-
-    .current_player {
-        float: left;
-    }
-    .thinkBorder{
-        border-width: 1px;
-    }
-</style>
-<section>
     <div class="container">
-
-        <div class="row" >
-            <div class="col-lg-12">
-
+        <div class="row">
+            <div class="col-md-12">
                 <h1 class="page-heading">
-                    {{$user_team_player_transfer['name']}}
+                    Score Card
                 </h1>
-                <div class="row">
-                    <h3  class="page-heading">Your Team Score: <span id="team_score"></span></h3>
-                    <h3 class="page-heading">Points Remaining:<span id="remaining_score"></span></h3>
-                </div>
-                <hr class="light full" id="guide">
-                <div class="table-responsive">
-                    <table class="table table-striped" id="tortable">
-                        <thead class="main-taible-head">
-                            <tr>
-                                <th class="border-r th1" style="min-width: 100px;
-                                    ">&nbsp;</th>
-                                <th class="border-r" style="min-width: 200px;">Player</th>
-                                <th class="border-r" style="min-width: 150px;">Belongs To</th>
-                                <th class="border-r" style="min-width: 250px;">Points</th>
-                                <th class="th2" colspan="2">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="selected-player" class="main-taible-body">
-                            <?php $teamtotal = 0; ?>
-                            @foreach($team_score as $row )
-                            <?php
-                            $player_transfer_id = $row['id'];
-
-                            $playertotal = 0;
-                            $flag = 0;
-                            $playertransferedname = "";
-                            $playertransferedpic = "";
-                            $playertransferedscore = 0;
-                            $playerinscore = 0;
-                            $x = 0;
-                            foreach ($user_team_player_transfer['user_team_player_transfers'] as $transfer) {
-
-
-                                if ($transfer['pivot']['player_in_id'] == $row['id']) {
-                                    $playertransferedpic = $transfer['profile_pic'];
-                                    $playertransferedname = $transfer['name'];
-                                    $playertransferedscore = $transfer['pivot']['player_out_score'];
-                                    $flag = 1;
-                                    // $playertotal+=$transfer['pivot']['player_out_score'];
-                                    $teamtotal += $transfer['pivot']['player_out_score'];
-                                    $teamtotal -= $transfer['pivot']['player_in_score'];
-                                    $playerinscore = $transfer['pivot']['player_in_score'];
-                                    $x = $transfer['pivot']['player_in_score'];
-                                }
-                            }
-                            ?>
-                            @foreach($row['player_game_term_score'] as $termscore)
-                            @foreach($termscore['points_devision_tournament'] as $points)
-                            <?php
-                            if ($points['qty_from'] == $points['qty_to']) {
-                                //   echo "yes";
-                                //     echo $points['points'] * $termscore['player_term_count'];
-                                $playertotal += $points['points'] * $termscore['player_term_count'];
-                            } else {
-                                if (($points['qty_from'] <= $termscore['player_term_count']) && ($points['qty_to'] >= $termscore['player_term_count'])) {
-                                    //  echo $points['qty_from']." ". $termscore['player_term_count']." ".$points['qty_to']."<br>";
-
-
-                                    $playertotal += $points['points'];
-                                }
-                            }
-                            ?>
-                            @endforeach
-                            @endforeach
-                            <tr>
-                                <td class="border-r1 text-left" style="min-width: 200px; position: relative;">
-                                    <div class="current_player">
-                                        <img style="width: 80px;" class="img-thumbnail" src="{{getUploadsPath($row['profile_pic'])}}">
-                                    </div>
-                                    @if($flag==1)
-                                    <div class="transfered_container relative">
-                                        <a href="#" data-toggle="tooltip" title="" data-original-title="Transferred">
-                                            <img src="{{URL::to('assets-new/img/transferred_arrow.png')}}">
-                                        </a>
-                                        <div class="absolute transfered_player_img">
-                                            <img class="img-thumbnail transfered_player_img" src=" {{getUploadsPath($playertransferedpic)}}">
-                                        </div>
-                                    </div>
-                                    @endif
-
-
-
-                                </td>
-
-                                <td class="border-r1 " style="position: relative; min-width: 250px; text-align: center;" >
-                                    <span style="position: absolute ; left:50px;text-align: center; " >  {{$row['name']}}</span>
-                                    <br>
-                                    <span style="position: absolute ;bottom: 23px; left:50px;text-align: center; " > {{$playertransferedname}}</span>
-                                </td>
-                                <td class="border-r1 " style="position: relative;" style="min-width: 150px;">
-                                    @foreach($row['player_actual_teams'] as $playerteam )
-                                    {{ $playerteam['name']}}
-                                    @endforeach
-                                    <?php $teamtotal += $playertotal; ?>
-                                    <br>
-                                    <span style="position: absolute ;bottom: 23px; "></span>
-                                </td>
-                                <td class="border-r1 " style="position:  relative; text-align:center;min-width: 250px;">
-                                    <span style="position: absolute;"> {{ $playertotal}}  </span>
-                                    <br>
-                                    @if($flag==1)
-                                        <span style="position: absolute;">
-                                            {{$playerinscore}}: <strong>previous score</strong>
-                                            </span>
-
-                                    @endif
-                                    <span style="position: absolute;bottom: 23px; ">
-
-                                        @if($flag==1)
-
-                                        {{$playertransferedscore}}
-
-
-                                        @endif
-
-                                    </span>
-                                </td>
-
-                                <td id="player_tr-del-111" class="cwt">
-
-
-
-                                </td>
-                                <td>
-                                    @if(!$flag==1)
-
-                                    <a href="{{route('transferplayer', ['team_id'=>$user_team_player_transfer['id'],'player_id'=>$player_transfer_id,'tournament_id'=>$user_team_player_transfer['tournament_id']])}}"
-                                       class="btn btn-green">Transfer Player
-                                    </a>
-                                    @endif
-
-                                </td>
-
-                            </tr>
-                            @endforeach
-
-                            <tr>
-                                <td> <h3>Total Team Score: {{$teamtotal}}</h3></td>
-                            </tr>
-
-                        </tbody></table></div>
+                <hr class="light full">
             </div>
+            <div class="how_play_sec">
+                <div class="col-md-12 no-padding">
+
+
+                    <div class="gt_match_details">
+                        <a href="#" class="gt_teams">ST LUCIA STARS</a> vs <a href="#" class="gt_teams">TRINBAGO KNIGHT
+                            RIDERS</a>
+                        <span class="gt_match_result">St Lucia won by 9 wickets (with 56 balls remaining)</span>
+                    </div>
+
+                    <div class="table-responsive gt_scorecard_wrapper">
+                        <!--<table class="table table-striped">-->
+                        <table class="table">
+                            <thead>
+                            <tr class="grean_bg_row">
+                                <th>Score Card</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th colspan="2">
+                                    <div class="gt_team_select">
+                                        Select Team:
+                                        <select class="form-control" style="width: 50%; display: inline-block;">
+                                            <option value="">ST Lucia Stars</option>
+                                            <option value="">ST Lucia</option>
+                                        </select>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr class="grey_bg_row">
+                                <th>PLAYERS</th>
+                                <th></th>
+                                <th></th>
+                                <th>6s</th>
+                                <th>4s</th>
+                                <th>SR</th>
+
+                                <th>R</th>
+                                <th>W</th>
+                                <th>ECON</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+
+                            @foreach($match['match_players'] as $player)
+
+
+                                <tr>
+                                    <td>{{$player['name']}}</td>
+
+                                    <td><img src="{{URL::to('/img/all-rounder-logo.png')}}" alt=""></td>
+                                    <td>c DM Bravo b Pierre</td>
+
+                                    @foreach($player['player_game_term_score'] as $terms)
+
+
+                                        @if($terms['game_terms']['name']=="Each Run Scored")
+                                            <td>
+                                                {{$terms['player_term_count']}}
+                                            </td>
+                                        @endif
+                                            @if($terms['game_terms']['name']=="Wicket Taken")
+                                                <td>
+                                                    {{$terms['player_term_count']}}
+                                                </td>
+
+                                            @endif
+                                            @if($terms['game_terms']['name']=="R.R.P.O")
+                                                <td>
+                                                    {{$terms['player_term_count']}}
+                                                </td>
+                                            @endif
+                                            @if($terms['game_terms']['name']=="Scoring Rate")
+                                                <td>
+                                                    {{$terms['player_term_count']}}
+                                                </td>
+                                            @endif
+                                            @if($terms['game_terms']['name']=="6s")
+                                                <td>
+                                                    {{$terms['player_term_count']}}
+                                                </td>
+
+                                            @endif
+                                            @if($terms['game_terms']['name']=="4s")
+                                                <td>
+                                                    {{$terms['player_term_count']}}
+                                                </td>
+
+                                            @endif
+
+
+
+
+
+
+
+                                    @endforeach
+
+
+                                </tr>
+
+                            @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+
+            </div>
+
         </div>
     </div>
-    <br><br><br><br><br> <br><br>
 
-</section>
-<!-- .....................Login Form Start............................... -->
-
-<!-- .....................Login Form Start............................... -->
 @endsection
-
 @section('js')
-    <script>
-      /*  var tour = new Tour({
-            steps: [
-                {
-                    element: "#guide",
-                    title: "Tip",
-                    content: "Scroll Left and Right"
-                }
-            ]}); */
 
-        // Initialize the tour
-        //tour.init();
 
-        // Start the tour
-     //   tour.start();
-    </script>
-<script>
 
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-    $('#team_score').html('{{$teamtotal}}')
-    $('#remaining_score').html('{{getUserTotalScore(\Auth::id())}}')
-</script>
-@stop
-
+@endsection

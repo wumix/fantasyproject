@@ -15,9 +15,13 @@ class NewsController extends Controller
             $new['content']=strip_tags($new['content']);
             $new['content']=stripslashes($new['content']);
             $str     = $new['content'];
-                      $order   = array("\r\n", "\n", "\r","<p>","\\","</p>",";&nbsp","&nbsp;","<br />","&rdquo;");
+            $order   = array("\r\n", "\n", "\r","<p>","\\","</p>",";&nbsp","&nbsp;","<br />","&rdquo;");
             $replace = '';
             $new['content']= str_replace($order, $replace, $str);
+           // $new['created_at']=formatDate($new['created_at']);
+
+
+
 
 
         }

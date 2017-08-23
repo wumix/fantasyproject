@@ -13,11 +13,13 @@ class NewsController extends Controller
         orderBy('created_at','DESC')->get();
         foreach($news as &$new){
             $new['content']=strip_tags($new['content']);
+            $new['content']=stripslashes($new['content']);
             $str     = $new['content'];
-            $order   = array("\r\n", "\n", "\r","<p>","</p>",";&nbsp","&nbsp;","<br />","rsquo;","\\\"");
+                      $order   = array("\r\n", "\n", "\r","<p>","\\","</p>",";&nbsp","&nbsp;","<br />","&rdquo;");
             $replace = '';
             $new['content']= str_replace($order, $replace, $str);
-            $new['content']=strip_tags($new['content']);
+
+
         }
         return response()->json($news);
 

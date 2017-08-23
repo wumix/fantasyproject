@@ -34,6 +34,7 @@ Route::group(['prefix' => 'v1'], function () {
     });
     Route::group(['prefix' => 'news'], function () {
         Route::get('/', 'Api\NewsController@index');
+
         });
 
 

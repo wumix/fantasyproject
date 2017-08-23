@@ -518,10 +518,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Guyana Amazon Warriors v Trinbago Knight Riders
+                                    St Kitts and Nevis Patriots v Barbados Tridents at Basseterre
                                 </div>
                                 <div class="project-name">
-                                    Trinbago Knight Riders won by 7 wickets
+                                    Patriots won by 17 runs
                                 </div>
                             </div>
                         </div>

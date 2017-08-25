@@ -219,13 +219,17 @@
                                 <th>PLAYERS</th>
                                 <th></th>
                                 <th></th>
-                                <th>4s</th>
-                                <th>6s</th>
-                                <th>SR</th>
-
                                 <th>R</th>
-                                <th>W</th>
+                                <th>6s</th>
+                                <th>4s</th>
+
+
+
+
+                                <th>SR</th>
                                 <th>ECON</th>
+
+                                <th>W</th>
                                 <th></th>
                             </tr>
                             </thead>

@@ -82,13 +82,14 @@
                             </div>
                             <div class="form-group">
                                 <label>Result</label>
-                                <input  class="form-control" name="team_two" value="
-                                    @if(empty($match['result']))
-                                        To be decided
-                                        @else
-                                        {{$match['result']}}
-                                        @endif
-                                        "
+                                <?php
+                                if(empty($match['result'])){
+                                    $match['result']="To Be Decided";
+                                    }
+
+
+                                ?>
+                                <input  class="form-control" name="result" value="{{$match['result']}}"
                                         type="text" placeholder=""/>
                             </div>
 

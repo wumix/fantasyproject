@@ -55,7 +55,7 @@ class HomeController extends Controller
                 }
             ])
             ->first()->toArray();
-        debugArr($data['match']['match_players'][2]);
+        //debugArr($data['match']['match_players'][2]);
         return view('user.team_detail1', $data);
 
     }

@@ -173,7 +173,7 @@ foreach ($players['team_players'] as $key=>$val){
         }else{
             $data['player_stat']="N-A";
         }
-        
+
 
 
 

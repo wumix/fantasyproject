@@ -1,7 +1,7 @@
 @extends('layouts.app')
 {{--{{dd($matches->t)}}--}}
 @section('title')
-    Match Stats
+    Scorecards
 @stop
 @section('css')
     <style>

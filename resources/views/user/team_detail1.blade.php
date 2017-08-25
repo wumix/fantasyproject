@@ -175,7 +175,7 @@
 @endsection
 @section('content')
     <div class="container">
-        <div class="row" style="min-height: 450px;">
+        <div class="row" style="min-height: 500px;">
             <div class="col-md-12">
                 <h1 class="page-heading">
                     Score Card

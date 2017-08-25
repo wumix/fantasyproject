@@ -199,6 +199,7 @@
 
                     <div class="table-responsive gt_scorecard_wrapper">
                         <!--<table class="table table-striped">-->
+                        @if(!empty($match['match_players']))
                         <table class="table">
                             <thead>
                             <tr class="grean_bg_row">
@@ -250,7 +251,7 @@
                                 @if(strtoupper($player['player_actual_teams'][0]['name'])==$team_name)
                                     <tr>
                                         <td>{{$player['name']}}</td>
-                                        
+
 
                                         <td><img src="{{URL::to('/img/all-rounder-logo.png')}}" alt=""></td>
                                         <td><?php
@@ -287,6 +288,9 @@
 
                             </tbody>
                         </table>
+                        @else
+                            No Records
+                        @endif
                     </div>
 
 

@@ -176,7 +176,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" style="min-height: 100%;">
                 <h1 class="page-heading">
                     Score Card
                 </h1>

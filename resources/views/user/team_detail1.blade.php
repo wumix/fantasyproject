@@ -189,7 +189,12 @@
                     <div class="gt_match_details">
                         <a href="#" class="gt_teams">{{$match['team_one']}}</a> vs
                         <a href="#" class="gt_teams">{{$match['team_two']}}</a>
-                        <span class="gt_match_result">St Lucia won by 9 wickets (with 56 balls remaining)</span>
+                        <?php
+                        if (empty($match['result'])) {
+                            $match['result'] = "To Be Decided";
+                        }
+                        ?>
+                        <span class="gt_match_result">{{$match['result']}}</span>
                     </div>
 
                     <div class="table-responsive gt_scorecard_wrapper">
@@ -208,9 +213,16 @@
                                 <th colspan="2">
                                     <div class="gt_team_select">
                                         Select Team:
-                                        <select class="form-control" style="width: 50%; display: inline-block;">
-                                            <option value="">ST Lucia Stars</option>
-                                            <option value="">ST Lucia</option>
+                                        <select id="gt_team_select" class="form-control"
+                                                style="width: 50%; display: inline-block;">
+                                            <option
+                                                    @if($team_name==$match['team_one'])
+                                                    selected
+                                                    @endif
+                                                    value="{{$match['team_one']}}">{{$match['team_one']}}</option>
+                                            <option @if($team_name==$match['team_two'])
+                                                    selected
+                                                    @endif value="{{$match['team_two']}}">{{$match['team_two']}}</option>
                                         </select>
                                     </div>
                                 </th>
@@ -224,8 +236,6 @@
                                 <th>4s</th>
 
 
-
-
                                 <th>SR</th>
                                 <th>ECON</th>
 
@@ -237,39 +247,41 @@
 
 
                             @foreach($match['match_players'] as $player)
+                                @if(strtoupper($player['player_actual_teams'][0]['name'])==$team_name)
+                                    <tr>
+                                        <td>{{$player['name']}}</td>
+                                        
+
+                                        <td><img src="{{URL::to('/img/all-rounder-logo.png')}}" alt=""></td>
+                                        <td><?php
+                                            $text = "N-A";
+                                            if (!empty($player['player_match_stats'][0]['text'])) {
+                                                $text = $player['player_match_stats'][0]['text'];
+                                            }
+                                            echo $text;
+                                            ?></td>
+                                        <?php $temp = ['Runs' => '-', '6s' => '-', '4s' => '-', 'Scoring Rate' => '-', 'R.R.P.O' => '-',
+                                            'Wicket Taken' => '-'];
+
+                                        ?>
 
 
-                                <tr>
-                                    <td>{{$player['name']}}</td>
+                                        @foreach($temp as $key=>$terms)
 
-                                    <td><img src="{{URL::to('/img/all-rounder-logo.png')}}" alt=""></td>
-                                    <td><?php
-                                    $text="N-A";
-                                    if(!empty($player['player_match_stats'][0]['text'])){
-                                    $text=$player['player_match_stats'][0]['text'];
-                                    }
-                                    echo $text;
-                                    ?></td>
-                                    <?php $temp = ['Runs'=>'-','6s'=>'-','4s'=>'-','Scoring Rate'=>'-','R.R.P.O'=>'-',
-                                        'Wicket Taken'=>'-'];
+                                            @if($t=zulfi_in_array($key,$player['player_game_term_score']))
 
-                                    ?>
-
-
-                                    @foreach($temp as $key=>$terms)
-
-                                        @if($t=zulfi_in_array($key,$player['player_game_term_score']))
-
-                                            <td>{{$t}}</td>
+                                                <td>{{$t}}</td>
                                             @else
-                                            <td>-</td>
+                                                <td>-</td>
                                             @endif
-                                    @endforeach
+
+                                        @endforeach
 
 
+                                    </tr>
+                                @endif
 
 
-                                </tr>
 
                             @endforeach
 
@@ -287,7 +299,11 @@
 
 @endsection
 @section('js')
-
+    <script>
+        $('#gt_team_select').change(function () {
+            window.location = "{{route('scorecard',['id'=>$match['id']])}}?team_name=" + $(this).val();
+        });
+    </script>
 
 
 @endsection

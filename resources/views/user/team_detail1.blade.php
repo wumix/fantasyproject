@@ -1,7 +1,7 @@
 @extends('layouts.app')
 {{--{{dd($matches->t)}}--}}
 @section('title')
-    How To Play at Gamithon Fantasy
+    Match Stats
 @stop
 @section('css')
     <style>
@@ -175,8 +175,8 @@
 @endsection
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-12" style="min-height: 100%;">
+        <div class="row" style="min-height: 450px;">
+            <div class="col-md-12">
                 <h1 class="page-heading">
                     Score Card
                 </h1>

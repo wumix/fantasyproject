@@ -187,8 +187,8 @@
 
 
                     <div class="gt_match_details">
-                        <a href="#" class="gt_teams">ST LUCIA STARS</a> vs <a href="#" class="gt_teams">TRINBAGO KNIGHT
-                            RIDERS</a>
+                        <a href="#" class="gt_teams">{{$match['team_one']}}</a> vs
+                        <a href="#" class="gt_teams">{{$match['team_two']}}</a>
                         <span class="gt_match_result">St Lucia won by 9 wickets (with 56 balls remaining)</span>
                     </div>
 

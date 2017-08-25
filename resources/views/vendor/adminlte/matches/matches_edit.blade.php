@@ -26,7 +26,7 @@
                             {!! Form::open(['url' => route('editMatch',['match_id'=>$match['id']]),'files' => true]) !!}
                             <div class="form-group">
                                 <label>Match Name</label>
-                                <input required class="form-control" name="name" value="{{$match['name']}}" type="text"
+                                <input  class="form-control" name="name" value="{{$match['name']}}" type="text"
                                        placeholder=""/>
                             </div>
                             <div class="form-group">
@@ -45,7 +45,7 @@
                                 <label>Start Date Time
                                     <small class="help">(This must be a GMT)</small>
                                     <input name="start_date" value="{{$match['start_date']}}"
-                                           class="datetimepicker form-control" type="text">
+                                           class="datetimepicker form-control" type="text"/>
                             </div>
                             <div class="form-group">
                                 <label>End Date Time
@@ -63,22 +63,33 @@
                             <div class="form-group">
                                 <label>Team one</label>
 
-                                <input required class="form-control" name="team_one" value="{{$match['team_one']}}"
+                                <input  class="form-control" name="team_one" value="{{$match['team_one']}}"
                                        type="text" placeholder=""/>
                             </div>
                             <div class="form-group">
                                 <label>Team Two</label>
 
-                                <input required class="form-control" name="team_two" value="{{$match['team_two']}}"
+                                <input  class="form-control" name="team_two" value="{{$match['team_two']}}"
                                        type="text" placeholder=""/>
                             </div>
                             <div class="form-group">
                                 <label>Team 1 Logo</label>
-                                <input required name="team_1_logo" type="file"/>
+                                <input  name="team_1_logo" type="file"/>
                             </div>
                             <div class="form-group">
                                 <label>Team 2 logo</label>
-                                <input required name="team_2_logo" type="file"/>
+                                <input  name="team_2_logo" type="file"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Result</label>
+                                <input  class="form-control" name="team_two" value="
+                                    @if(empty($match['result']))
+                                        To be decided
+                                        @else
+                                        {{$match['result']}}
+                                        @endif
+                                        "
+                                        type="text" placeholder=""/>
                             </div>
 
 

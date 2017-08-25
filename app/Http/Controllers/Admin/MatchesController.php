@@ -166,8 +166,16 @@ foreach ($players['team_players'] as $key=>$val){
                         ->with('game_terms')
                         ->get()->toArray();
         $data['match_id'] = $match_id;
+        $data['player_stat']=\App\PlayerMatchStats::where('match_id', $match_id)
+            ->where('player_id', $player_id)->first();
+        if(!empty($data['player_stat'])){
+            $data['player_stat']=$data['player_stat']->text;
+        }else{
+            $data['player_stat']="N-A";
+        }
+        
 
-        //dd($data);
+
 
         return view('adminlte::matches.add_player_match_score', $data);
     }
@@ -184,6 +192,19 @@ foreach ($players['team_players'] as $key=>$val){
             $playerMatchPoints['player_term_count'] = empty($val) ? 0 : $val;
             \App\MatchPlayerScore::insert($playerMatchPoints);
         }
+        return redirect()->back()->with('status', 'Match player score updated.');
+    }
+    function postAddMatchStats(Request $request,$match_id, $player_id) {
+
+        \App\PlayerMatchStats::where('match_id', $match_id)
+            ->where('player_id', $player_id)
+            ->delete();
+        $playerMatchPoints['text']=$request->details;
+        $playerMatchPoints['match_id'] = $match_id;
+        $playerMatchPoints['player_id'] = $player_id;
+        \App\PlayerMatchStats::insert($playerMatchPoints);
+
+
         return redirect()->back()->with('status', 'Match player score updated.');
     }
 

@@ -44,15 +44,18 @@ class HomeController extends Controller
 
         $data['match'] = \App\Match::where('id', $id)->with(
             ['match_players.player_gameTerm_score' => function ($q) use($id) {
-                return $q->where('match_id', $id);
+                return $q->where('match_id', $id)->where('player_term_count','!=',0);
             },
 
                 'match_players.player_gameTerm_score.game_terms' => function ($q) {
-                    // return $q->where('match_id', 50)->orderBy('name', 'ASC');
+                    $q->orderBy('id', 'ASC');
+                },
+                'match_players.player_match_stats' => function ($q) use($id) {
+                    $q->where('match_id', $id);
                 }
             ])
             ->first()->toArray();
-        //debugArr($data['match']['match_players'][0]);
+        debugArr($data['match']['match_players'][2]);
         return view('user.team_detail1', $data);
 
     }
@@ -67,7 +70,7 @@ class HomeController extends Controller
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
 
-        dd($data['upcommingTour']->toArray());
+       // dd($data['upcommingTour']->toArray());
         return view('user.dashboard.newdash', $data);
     }
 

@@ -219,8 +219,8 @@
                                 <th>PLAYERS</th>
                                 <th></th>
                                 <th></th>
-                                <th>6s</th>
                                 <th>4s</th>
+                                <th>6s</th>
                                 <th>SR</th>
 
                                 <th>R</th>
@@ -239,52 +239,30 @@
                                     <td>{{$player['name']}}</td>
 
                                     <td><img src="{{URL::to('/img/all-rounder-logo.png')}}" alt=""></td>
-                                    <td>c DM Bravo b Pierre</td>
+                                    <td><?php
+                                    $text="N-A";
+                                    if(!empty($player['player_match_stats'][0]['text'])){
+                                    $text=$player['player_match_stats'][0]['text'];
+                                    }
+                                    echo $text;
+                                    ?></td>
+                                    <?php $temp = ['Runs'=>'-','6s'=>'-','4s'=>'-','Scoring Rate'=>'-','R.R.P.O'=>'-',
+                                        'Wicket Taken'=>'-'];
 
-                                    @foreach($player['player_game_term_score'] as $terms)
+                                    ?>
 
 
-                                        @if($terms['game_terms']['name']=="Each Run Scored")
-                                            <td>
-                                                {{$terms['player_term_count']}}
-                                            </td>
-                                        @endif
-                                            @if($terms['game_terms']['name']=="Wicket Taken")
-                                                <td>
-                                                    {{$terms['player_term_count']}}
-                                                </td>
+                                    @foreach($temp as $key=>$terms)
 
+                                        @if($t=zulfi_in_array($key,$player['player_game_term_score']))
+
+                                            <td>{{$t}}</td>
+                                            @else
+                                            <td>-</td>
                                             @endif
-                                            @if($terms['game_terms']['name']=="R.R.P.O")
-                                                <td>
-                                                    {{$terms['player_term_count']}}
-                                                </td>
-                                            @endif
-                                            @if($terms['game_terms']['name']=="Scoring Rate")
-                                                <td>
-                                                    {{$terms['player_term_count']}}
-                                                </td>
-                                            @endif
-                                            @if($terms['game_terms']['name']=="6s")
-                                                <td>
-                                                    {{$terms['player_term_count']}}
-                                                </td>
-
-                                            @endif
-                                            @if($terms['game_terms']['name']=="4s")
-                                                <td>
-                                                    {{$terms['player_term_count']}}
-                                                </td>
-
-                                            @endif
-
-
-
-
-
-
-
                                     @endforeach
+
+
 
 
                                 </tr>

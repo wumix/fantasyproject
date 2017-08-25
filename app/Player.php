@@ -64,6 +64,9 @@ class Player extends Model
     {
         return $this->hasMany(MatchPlayerScore::class, 'player_id');
     }
+    public function player_match_stats(){
+        return $this->hasMany(PlayerMatchStats::class, 'player_id');
+    }
 
     public function game_types()
     {

@@ -96,7 +96,7 @@ class DashboardController extends Controller
                 $query->where('tournament_id', $tournament_id);
             }
         ])->get()->toArray();
-        dd($data['team_score'][0]['player_game_term_score']);
+        //dd($data['team_score'][0]['player_game_term_score']);
 
 
         // dd($data['team_score']);

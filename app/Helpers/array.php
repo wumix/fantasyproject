@@ -62,6 +62,22 @@ function tapArray($inputArray, array $searchCrieteria, $returnSingle = true) {
     return [];
 }
 
+function zulfi_in_array($key,$arr=[])
+{
+    foreach ($arr as $terms) {
+//echo $terms['game_terms']['name'].'<br>';
+        if ($terms['game_terms']['name']==$key) {
+            return $terms['player_term_count'];
+
+
+        }
+
+
+    }
+    return false;
+}
+
+
 /**
  * Reset array indexes
  * @param $array

@@ -255,4 +255,4 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
     Route::get('paypal', array('as' => 'payment.status', 'uses' => 'MembershipController@getPaymentStatus',));
     Route::post('test', array('as' => 'test', 'uses' => 'MembershipController@subscribeMembership',));
 
-
+});

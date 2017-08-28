@@ -19,9 +19,8 @@
     "laravelcollective/html": "^5.4",
     "guzzlehttp/guzzle": "*",
     "tymon/jwt-auth": "0.5.*",
-    "paypal/rest-api-sdk-php": "*"
+    "paypal/rest-api-sdk-php": "*",
 
-    "tymon/jwt-auth": "0.5.*",
     "laravelcollective/html": "^5.4",
     "folklore/image": "0.3.*"
 

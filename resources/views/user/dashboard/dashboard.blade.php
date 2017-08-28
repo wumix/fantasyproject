@@ -923,11 +923,7 @@
     <meta property="og:description" content="Join referral here"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="600"/>
-<<<<<<< HEAD
-    <meta property="og:image" content="{{URL::to('assets-new/img/sign_up.png')}}"/>
-=======
     <meta property="og:image" content="http://www.gamithonfantasy.com/assets-new/img/gamithon-logo1.png"/>
->>>>>>> master
     <meta property="fb:app_id" content="337419313358697"/>
 @stop
 
@@ -935,8 +931,6 @@
 @section('js')
     {!! Html::script('js/clipboard.min.js') !!}
     <script>
-<<<<<<< HEAD
-=======
         var clipboard = new Clipboard('.js-textareacopybtn');
         clipboard.on('success', function (e) {
             alert('Copied to clipboard!');
@@ -945,28 +939,12 @@
         clipboard.on('error', function (e) {
             alert('Oops, An error occurred!');
         });
->>>>>>> master
         document.getElementById('shareBtn').onclick = function () {
             FB.ui({
                 method: 'share',
                 display: 'popup',
                 href: '{{URL::to('/')}}' + '/signup/?referral_key={{$userprofileinfo['referral_key']}}',
             }, function (response) {
-<<<<<<< HEAD
-            });
-        }
-    </script>
-    <script>
-
-        $(document).ready(function () {
-            myList = [];
-
-            $('#team_id option').each(function () {
-
-                myList.push($(this).val());
-
-=======
->>>>>>> master
             });
         }
     </script>

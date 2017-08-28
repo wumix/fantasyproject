@@ -56,7 +56,7 @@ class HomeController extends Controller
                     $q->where('match_id', $id);
                 },'match_players.player_actual_teams' => function ($query) use ($tournament_id) {
                 $query->where('tournament_id', $tournament_id);
-            }
+            },'match_players.player_roles'
             ])
             ->first()->toArray();
         $team_name=$data['match']['team_one'];
@@ -65,7 +65,7 @@ class HomeController extends Controller
         }
         $data['team_name']=strtoupper($team_name);
         // dd($team_name);
-        //dd($data['match']['match_players'][2]);
+        //dd($data['match']['match_players'][0]);
         return view('user.team_detail1', $data);
 
     }

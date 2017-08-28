@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-   Active Tournaments
+   Create Team
     @stop
 @section('content')
 
@@ -41,10 +41,21 @@
                                             {{--<p class="myteamtt"--}}
                                                {{--style="padding-top:34px;">{{$row['tournament_price']}}</p></td>--}}
                                         <td class="border-r1">
-                                            <a href="{{route('addTeam', ['tournament_id'=>$row['id']])}}"
-                                               class="btn btn-green">
-                                                Create Team
-                                            </a>
+
+                                              @if($team=has_user_team(\Auth::id(),$row['id']))
+
+                                                <a href="{{route('teamdetail',['team_id'=>$team->id])}}"
+                                                   class="btn btn-green">
+                                                    View Team
+                                                </a>
+
+                                                  @else
+                                                <a href="{{route('addTeam', ['tournament_id'=>$row['id']])}}"
+                                                   class="btn btn-green">
+                                                  Create Team
+                                                </a>
+                                                @endif
+
                                         </td>
                                     </tr>
                                 @endforeach

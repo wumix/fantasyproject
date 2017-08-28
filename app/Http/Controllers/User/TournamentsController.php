@@ -38,6 +38,7 @@ class TournamentsController extends Controller
 
     }
 
+
     function showTournamentDetails($tournament_id)
     {
 
@@ -328,6 +329,14 @@ class TournamentsController extends Controller
         $player_in_price = $player_in_price['player_tournaments'][0]['pivot']['player_price'];
 
         if ($difference > 15 || $difference < 15) {
+
+//            echo $player_in_price." ". getUserTotalScore(Auth::id());
+//            die;
+//            echo $request->player_out_price;
+//        dd($player_in_price);
+
+
+            if (((getUserTotalScore(Auth::id(), $tournament_id)) + $request->player_out_price) >= ($player_in_price)) {
 
 
             if (((getUserTotalScore(Auth::id(), $tournament_id)) + $request->player_out_price) >= ($player_in_price)) {

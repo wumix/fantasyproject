@@ -40,7 +40,9 @@
                                 </div>
                                 <form class="form-horizontal" role="form" method="POST"
                                       action="{{ route('register') }}">
+
                                       {{ csrf_field() }}
+                                    <input type="hidden" name="referral_key" value="{{$referral_key}}"/>
 
                                     <div class="form-group" id="sformbox">
 

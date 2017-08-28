@@ -1,7 +1,7 @@
 @extends('layouts.app')
 {{--{{dd($rankings)}}--}}
 @section('title')
-    ICC Player Rankings
+    My Teams
 @stop
 @section('content')
     <section>
@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-heading">
-                        ICC Player Rankings
+                        My Teams
                     </h1>
                     <hr class="light full">
 

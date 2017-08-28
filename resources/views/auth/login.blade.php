@@ -5,6 +5,9 @@
 @stop
 @section('css')
     <style>
+        .help-block{
+            color:red;
+        }
 @media screen and (min-width: 320px) and (max-width: 480px) {
     #hide-reg-on-mob {
         display: none !important;
@@ -123,7 +126,7 @@
                             <li>Exclusive fan services</li>
                             <li>Customised site content</li>
 
-                            <li>Favourite Game information and notifications</li>
+                            <li>Favorite Game information and notifications</li>
 
 
                         </ul>

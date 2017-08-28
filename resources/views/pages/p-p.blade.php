@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <section>
+    @section('title')
+        Privacy Policy
+    @stop
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

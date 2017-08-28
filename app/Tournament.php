@@ -9,7 +9,7 @@ class Tournament extends Model {
 
     protected $table = 'tournaments';
     protected $fillable = [
-        'name', 'game_id', 'tournament_price', 'venue', 'max_players', 'start_date', 'end_date', 'created_at', 'updated_at'
+        'name', 'game_id', 'tournament_price', 'is_active','venue', 'max_players', 'start_date', 'end_date', 'created_at', 'updated_at'
     ];
 
     public static function getMaxPlayers($tournament_id) {

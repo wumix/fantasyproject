@@ -164,7 +164,7 @@ return [
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Way\Generators\GeneratorsServiceProvider::class,
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
-
+        'Folklore\Image\ImageServiceProvider',
         'Bkwld\Croppa\ServiceProvider'
     ],
     /*
@@ -217,8 +217,9 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Croppa' => 'Bkwld\Croppa\Facade',
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
-         
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+        'Image' => 'Folklore\Image\Facades\Image'
+
 
     ],
 ];

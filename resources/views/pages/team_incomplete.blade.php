@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    Team Incomplete
+@stop
 @section('content')
     <section>
         <style>

@@ -9,7 +9,7 @@ class BlogController extends Controller {
 
     public function index() {
         $data['blogTitle'] = 'Gossips';
-        $data['posts'] = \App\BlogPost::where('post_type', 'post')->get()->toArray();
+        $data['posts'] = \App\BlogPost::where('post_type', 'post')->orderBy('created_at','DESC')->get()->toArray();
         return view('user.blog.blog', $data);
     }
 

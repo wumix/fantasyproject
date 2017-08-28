@@ -35,11 +35,12 @@ class Match extends Model {
         $gmtDifference = $time_in_server->format('Y-m-d H:i:s');
 
 
-        $nextMatch = \App\Match::where('start_date', '>', "$gmtDifference");
+        $nextMatch = \App\Match::where('start_date', '>', "$gmtDifference")->orderBY('start_date','ASC');
         if (!empty($tournament_id)) {
             $nextMatch = $nextMatch->where('tournament_id', $tournament_id);
         }
         $nextMatch = $nextMatch->first();
+
         return $nextMatch;
     }
 

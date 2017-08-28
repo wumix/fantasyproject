@@ -5,6 +5,18 @@
 @stop
 @section('css')
     <style>
+        .btn-dash {
+            display: block;
+            width: 150px;
+            margin: 0 auto !important;
+            font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+            border: none;
+            border-radius: 5px;
+            font-weight: 400;
+            background: #92B713 !important;
+            text-transform: capitalize;
+        }
+
         .highlight-badge {
             border: 2px solid #F98709;
             padding: 2px;
@@ -66,6 +78,28 @@
             margin-bottom: 40px;
         }
 
+        .rfral_code {
+            width: 100%;
+            display: inline-block;
+            background: #fff;
+            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
+            padding: 20px 20px;
+            margin-bottom: 40px;
+        }
+
+        .new_form {
+            width: 213px !important;
+            border: 1px solid #92B713;
+            height: 42px;
+        }
+
+        .js-textareacopybtn {
+            padding: 11px;
+            width: 76px;
+            background: #5cb85c;
+            color: #fff;
+        }
+
         .abot_me_sec {
             width: 100%;
             display: inline-block;
@@ -82,6 +116,15 @@
             box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
             padding: 0 29px;
             margin-bottom: 40px;
+        }
+
+        .share_text_area {
+            width: 100%;
+            display: inline-block;
+            background: #fff;
+            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
+            padding: 0 29px;
+
         }
 
         .abot_me_sec2 {
@@ -531,6 +574,7 @@
     </style>
 @endsection
 @section('content')
+
     <div class="section_area">
         <div class="text_con">
             <span class="owner_text">{{$userprofileinfo['name']}}</span>
@@ -586,28 +630,43 @@
                     </div>
                     <div class="abot_me_sec">
                     <span class="text_abot_me text-center">
-                        Previous Tournament Score
+                         Tournament Scores
                     </span>
 
                         <ul class="img_area_area">
-                            <li>
-                                IPL:
-                                @if(has_user_team_ipl(Auth::id()))
-                                    <span id="game_lame"> Calulating...</span>
-                                @else
-                                    You did not play
+                            @foreach($user_scores['leaderboard'] as $score)
+                                @if(!empty($score['tournament']))
+                                    <li>
+                                        {{$score['tournament']['name']}}: <strong>{{$score['score']}}</strong>
+
+                                    </li>
                                 @endif
-                            </li>
-                            <li>
-                                ICC Champions Trophy:
-                                @if(has_user_team_ipl(Auth::id()))
-                                    <span id="game_lame1"> Calulating...</span>
-                                @else
-                                    You did not play
-                                @endif
-                            </li>
+                            @endforeach
+
                         </ul>
                     </div>
+                    <div class="rfral_code" style="display:none;">
+
+                        <div class="col-lg-12">
+                            <span class="text_abot_me text-center">
+                         Share and win 5000 points
+                    </span>
+                            <div class="input-group">
+                                <input type="text"
+                                       value="{{ URL::to('/')}}/signup/?referral_key={{$userprofileinfo['referral_key']}}"
+                                       class="js-copytextarea form-control new_form"
+                                       onclick="select()"
+                                       readonly
+                                       id="ref_link"
+                                >
+                                <span class="input-group-btn">
+        <button class="btn btn-secondary js-textareacopybtn" data-clipboard-target="#ref_link"
+                type="button">Copy referral code</button>
+      </span>
+                            </div>
+                        </div>
+                    </div>
+
                     @if(!empty($challenges[0]['challenges']))
                         <div class="abot_me_sec1">
                     <span class="text_abot_me text-center">
@@ -710,6 +769,7 @@
                             <span class="plyer_one">
                                 Your level is <span class="lvl-text">Beginner</span>
                             </span>
+
                             {{--<span class="plyer_one">--}}
                             {{--<span class="lvl-text"><a--}}
                             {{--href="{{route('challenges')}}">Challenge Other Players</a> </span>--}}
@@ -863,17 +923,36 @@
     <meta property="og:description" content="Join referral here"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="600"/>
+<<<<<<< HEAD
     <meta property="og:image" content="{{URL::to('assets-new/img/sign_up.png')}}"/>
+=======
+    <meta property="og:image" content="http://www.gamithonfantasy.com/assets-new/img/gamithon-logo1.png"/>
+>>>>>>> master
     <meta property="fb:app_id" content="337419313358697"/>
 @stop
+
+
 @section('js')
+    {!! Html::script('js/clipboard.min.js') !!}
     <script>
+<<<<<<< HEAD
+=======
+        var clipboard = new Clipboard('.js-textareacopybtn');
+        clipboard.on('success', function (e) {
+            alert('Copied to clipboard!');
+            e.clearSelection();
+        });
+        clipboard.on('error', function (e) {
+            alert('Oops, An error occurred!');
+        });
+>>>>>>> master
         document.getElementById('shareBtn').onclick = function () {
             FB.ui({
                 method: 'share',
                 display: 'popup',
                 href: '{{URL::to('/')}}' + '/signup/?referral_key={{$userprofileinfo['referral_key']}}',
             }, function (response) {
+<<<<<<< HEAD
             });
         }
     </script>
@@ -886,19 +965,19 @@
 
                 myList.push($(this).val());
 
+=======
+>>>>>>> master
             });
-            myList = myList.reverse()
-            // myList.indexOf(0);
-            // alert(myList);
-
-            $("#team_id").each(function () {
-                var l = $("#team_id :selected").text();
-
-
-                $("#game_lame").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[0] + " #total_team_score");
-                $("#game_lame1").load("{{URL::to('/')}}" + "/user/team-detail?team_id=" + myList[1] + " #total_team_score");
-
-            });
-        });
+        }
     </script>
+    {{--<script>--}}
+    {{--document.getElementById('shareBtn').onclick = function () {--}}
+    {{--FB.ui({--}}
+    {{--method: 'share',--}}
+    {{--display: 'popup',--}}
+    {{--href: 'http://www.gamithonfantasy.com/signup/?referral_key={{$userprofileinfo['referral_key']}}',--}}
+    {{--}, function (response) {--}}
+    {{--});--}}
+    {{--}--}}
+    {{--</script>--}}
 @endsection

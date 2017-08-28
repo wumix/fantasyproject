@@ -27,7 +27,11 @@
                             <div class="form-group">
                                 <label>Match Name</label>
                                 <input  class="form-control" name="name" value="{{$match['name']}}" type="text"
+<<<<<<< HEAD
                                        placeholder=""/>
+=======
+                                        placeholder=""/>
+>>>>>>> master
                             </div>
                             <div class="form-group">
                                 <label>Change Tournament</label>
@@ -64,13 +68,21 @@
                                 <label>Team one</label>
 
                                 <input  class="form-control" name="team_one" value="{{$match['team_one']}}"
+<<<<<<< HEAD
                                        type="text" placeholder=""/>
+=======
+                                        type="text" placeholder=""/>
+>>>>>>> master
                             </div>
                             <div class="form-group">
                                 <label>Team Two</label>
 
                                 <input  class="form-control" name="team_two" value="{{$match['team_two']}}"
+<<<<<<< HEAD
                                        type="text" placeholder=""/>
+=======
+                                        type="text" placeholder=""/>
+>>>>>>> master
                             </div>
                             <div class="form-group">
                                 <label>Team 1 Logo</label>
@@ -85,7 +97,11 @@
                                 <?php
                                 if(empty($match['result'])){
                                     $match['result']="To Be Decided";
+<<<<<<< HEAD
                                     }
+=======
+                                }
+>>>>>>> master
 
 
                                 ?>

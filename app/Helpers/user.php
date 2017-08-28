@@ -16,22 +16,8 @@ function userTeamPlayers($team_id,$tournament_id){
 
 }
 
- function addUSerSignUpPoints($userid){
-    $userActionKey = 'user_signup';
-    $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
-    $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
-    $tournaments_list = $objTourmament->toArray();
-    foreach ($tournaments_list as $row) {
-        $array = array(
-            ['tournament_id' => $row['id'], 'action_key' =>
-                'pusrchase_tournament', 'user_id' =>$userid, 'points_scored' => $actionPoints]
-        );
-        \App\UserPointsScored::insert($array);
 
-    }
-    return true;
 
-}
 
 function getUserTotalScore($userid,$tournament_id)
 {
@@ -54,13 +40,7 @@ function has_user_team($user_id,$tournamnet_id)
         return $userteam;
     }
 }
-function userTeamCompleteInTournament($user_id,$tournament_id){
 
-     return \App\UserTeam::where(['user_id'=>$user_id,'tournament_id'=>$tournament_id])
-        ->first();
-
-
-}
 function has_user_team_ipl($user_id)
 {
     $userteam = \App\UserTeam::where('user_id', $user_id)->where('tournament_id', 1)->first();
@@ -80,6 +60,13 @@ function checksingledigit($int){
     }else{
         return true;
     }
+}
+function userTeamCompleteInTournament($user_id,$tournament_id){
+
+    return \App\UserTeam::where(['user_id'=>$user_id,'tournament_id'=>$tournament_id])
+        ->first();
+
+
 }
 
 function getPlayerNoInTeam($userid, $teamid, $roleid)
@@ -107,6 +94,25 @@ function getPlayerNoInTeam($userid, $teamid, $roleid)
     return $i;
 }
 
+function addUSerSignUpPoints($userid){
+    $userActionKey = 'user_signup';
+    $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
+    $objTourmament =\App\Tournament::orderBy("start_date",
+            'DESC')->
+        Where('end_date', '>=', getGmtTime())->get();
+    $tournaments_list = $objTourmament->toArray();
+    //dd($tournaments_list);
+    foreach ($tournaments_list as $row) {
+        $array = array(
+            ['tournament_id' => $row['id'], 'action_key' =>
+                'pusrchase_tournament', 'user_id' =>$userid, 'points_scored' => $actionPoints]
+        );
+        \App\UserPointsScored::insert($array);
+
+    }
+    return true;
+
+}
 function get_individual_player_score($tournament_id, $teamId, $playerid)
 {
 

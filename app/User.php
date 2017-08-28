@@ -74,6 +74,9 @@ class User extends Authenticatable
             'user_id', 'membership_id')->withPivot('id');
 
     }
+    public function teams(){
+        return $this->hasMany('\App\UserTeam','user_id','id');
+    }
 
 
     /**
@@ -84,7 +87,7 @@ class User extends Authenticatable
     public function leaderboard()
     {
 
-        return $this->hasMany('App\LeaderBoard', 'user_id', 'id');
+        return $this->hasMany('\App\Leaderboard', 'user_id', 'id');
     }
 
     public function createOrGetUser(ProviderUser $providerUser, $socialProvider)
@@ -115,12 +118,14 @@ class User extends Authenticatable
                 //adding user registration points
                 $userActionKey = 'user_signup';
                 $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
-                $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
+                $objTourmament = \App\Tournament::orderBy("start_date",
+                    'DESC')->
+                Where('end_date', '>=', getGmtTime())->get();
                 $tournaments_list= $objTourmament->toArray();
                 foreach($tournaments_list as $row){
                     $array = array(
                         ['tournament_id'=>$row['id'],'action_key' =>
-                            'pusrchase_tournament', 'user_id' => \Auth::id(), 'points_scored' =>$actionPoints]
+                            'pusrchase_tournament', 'user_id' =>$user->id, 'points_scored' =>$actionPoints]
                     );
                     \App\UserPointsScored::insert($array);
                 }

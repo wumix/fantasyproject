@@ -24,7 +24,11 @@ Route::group(['prefix' => 'v1'], function () {
 
     Route::post('register', 'Api\UserController@create');
     //Route::post('password/email', 'Auth\ForgotPasswordController@getResetToken');
+<<<<<<< HEAD
     // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+=======
+   // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+>>>>>>> master
     Route::any('/sendpush', 'Api\OrdersController@sendPushMessage');
     Route::post('login_with_facebook', 'Api\UserController@loginFacebook');
     Route::group(['prefix' => 'tournaments'], function () {
@@ -34,7 +38,12 @@ Route::group(['prefix' => 'v1'], function () {
     });
     Route::group(['prefix' => 'news'], function () {
         Route::get('/', 'Api\NewsController@index');
+<<<<<<< HEAD
     });
+=======
+
+        });
+>>>>>>> master
 
 
 

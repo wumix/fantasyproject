@@ -42,7 +42,10 @@ class RegisterController extends Controller
 
     public function showUserRegistrationForm(Request $request)
     {
+        $data['referral_key'] =[];
+    $data['referral_key'] = $request->referral_key;
 
+<<<<<<< HEAD
 
         if (empty($request->referral_key)) {
             $data['referral_key'] = NULL;
@@ -53,6 +56,9 @@ class RegisterController extends Controller
 
 
         return view('auth.register');
+=======
+        return view('auth.register',$data);
+>>>>>>> master
     }
 
     /**
@@ -119,6 +125,7 @@ class RegisterController extends Controller
         $fields = [
             'name' => $data['name'],
             'email' => $data['email'],
+          //  'referral_key'=> \Crypt::encrypt($data['email']),
             'profile_pic' => isset($data[1]) ? $data[1] : '',
             //'referral_key'=>md5(str_random('')+ "xyz"),
             'password' => bcrypt($data['password']),
@@ -146,15 +153,17 @@ class RegisterController extends Controller
 
         $userActionKey = 'user_signup';
         $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
-        $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
+        $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('end_date', '>', getGmtTime());
+
         $tournaments_list = $objTourmament->toArray();
         foreach ($tournaments_list as $row) {
             $array = array(
                 ['tournament_id' => $row['id'], 'action_key' =>
-                    'pusrchase_tournament', 'user_id' => \Auth::id(), 'points_scored' => $actionPoints]
+                    'pusrchase_tournament', 'user_id' => $user->id, 'points_scored' => $actionPoints]
             );
             \App\UserPointsScored::insert($array);
             if (!empty($request->referral_key)) {
+<<<<<<< HEAD
                 //dd('go');
                 $refferal_points = \App\UserAction::where('action_key', 'referral_signup')->first()->action_points;
                 $user_id = \App\User::where('referral_key', $request->referral_key)->first();
@@ -170,6 +179,28 @@ class RegisterController extends Controller
         }
 
 
+=======
+
+
+                $refferal_points = \App\UserAction::where('action_key', 'referral_signup')->first()->action_points;
+                $user_id = \App\User::where('referral_key', $request->referral_key)->first();
+
+
+                $newarray =
+                    ['tournament_id' => $row['id'], 'action_key' =>
+                        'referral_signup', 'user_id' => $user_id['id'], 'points_scored' => $refferal_points];
+
+             //dd($newarray);
+                \App\UserPointsScored::insert($newarray);
+                \Mail::to($user_id['email'])->send(new \App\Mail\RefferalMail($user_id['name']));
+            }
+        }
+
+
+        \Mail::to($user->email)->send(new \App\Mail\SignUp($user->name));
+
+
+>>>>>>> master
     }
 
 }

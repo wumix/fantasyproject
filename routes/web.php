@@ -20,6 +20,9 @@
 
 
 Route::get('/newdash', 'HomeController@newdash')->name('newdashboard');
+Route::get('scorecard/{id}/{tournament_id}', 'HomeController@scorecard')->name('scorecard');
+Route::get('/test', 'HomeController@test')->name('test');
+Route::get('/leaderboard', 'HomeController@allTournaments')->name('dashboardhome');
 
 Route::get('/scorecard/{id}', 'HomeController@scorecard')->name('scorecard');
 
@@ -113,75 +116,38 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('player-stats/{player_id}', 'User\TournamentsController@showPlayerState')->name('showPlayerStats');
 
 //Adminroutes
-    Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
 
-        Route::get('/', 'Auth\LoginController@showAdminLoginForm');
-        Route::group(['middleware' => ['is_admin']], function () {
-            Route::group(['prefix' => 'forums'], function () {
-                Route::get('/', 'Admin\Forums\ForumsController@index')->name('lists');
-                // Route::get('category/{id}', 'Forums\ForumController@cagetory')->name('forumCategory');
-                //Route::get('post/{id}', 'Forums\ForumController@categoryPosts')->name('categoryposts');
-                //Route::post('reply/', 'Forums\ForumController@reply')->name('reply');
-                Route::get('category/', 'Admin\Forums\ForumsController@addCategory')->name('addcategory');
-                Route::post('category/', 'Admin\Forums\ForumsController@addCategoryPost')->name('addcategory');
-                Route::get('category_list/', 'Admin\Forums\ForumsController@listcategory')->name('listcategory');
-                Route::get('category_list/{id}', 'Admin\Forums\ForumsController@editCategory')->name('editcategory');
-                Route::post('category_list/{id}', 'Admin\Forums\ForumsController@postEditCategory')->name('editcategorypost');
-                Route::post('approve', 'Admin\Forums\ForumsController@approve')->name('approve');
-            });
-            Route::get('/leaderboard/{tournament_id}', 'LeaderBoard\LeaderboardController@index')->name('leaderboard');
-            Route::get('/dashboard', 'Admin\DashboardController@index'); //Gamesroutes
-            Route::get('/addheader', 'Admin\SettingsController@index')->name('headerbackground');
-            Route::post('/addheader', 'Admin\SettingsController@postAddHeader')->name('postAddHeader');
-            Route::group(['prefix' => 'blog'], function () {
-                Route::get('/', 'Admin\Blog\PostController@index')->name('blogList');
-                Route::get('add', 'Admin\Blog\PostController@addBlogPost')->name('addPost');
-                Route::post('add/{blog_id?}', 'Admin\Blog\PostController@postAddBlogPost')->name('postAddPost');
-                Route::get('edit/{blog_id}', 'Admin\Blog\PostController@editBlogPost')->name('editPost');
-                Route::post('edit/{blog_id}', 'Admin\Blog\PostController@editBlogPost')->name('postEditPost');
-                Route::group(['prefix' => 'category'], function () {
-                    Route::get('/', 'Admin\Blog\CategoryController@index')->name('blogCategoryList');
-                    Route::get('addCategory', 'Admin\Blog\CategoryController@addCategory')->name('addCategory');
-                    Route::post('addCategory', 'Admin\Blog\CategoryController@postAddBlogCategory')->name('postAddBlogCategory');
-                });
-            });
-            Route::group(['prefix' => 'ranking'], function () {
-                Route::get('/', 'Admin\RankingController@index')->name('adminListRanking');
-                Route::get('add/{cat_id}', 'Admin\RankingController@add')->name('addRankingAdmin');
-                Route::get('edit/{ranking_id}', 'Admin\RankingController@edit')->name('editRankingAdmin');
-                Route::post('edit/{ranking_id}', 'Admin\RankingController@editPost')->name('editPostRankingAdmin');
-                Route::post('add', 'Admin\RankingController@addPost')->name('addPostRankingAdmin');
-                Route::get('players/{cat_id}', 'Admin\RankingController@playerRankings')->name('playerRankingsAdmin');
-                Route::get('delete/{ranking_id}', 'Admin\RankingController@deleteRanking')->name('deleteRanking');
-            });
-            Route::group(['prefix' => 'stats'], function () {
-                Route::get('/add/{id}', 'Admin\StatsController@addStatForm')->name('showAddStatForm');
-                Route::post('/add/{id}', 'Admin\StatsController@postAddStat')->name('postAddStat');
-            });
+Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
 
-
-            Route::group(['prefix' => 'stats'], function () {
-                Route::get('/formats/{game_id}', 'Admin\StatsController@showGameTypeForm')->name('showGameFormats');
-                //Route::get('/formats/{game_id}', 'Admin\GamesController@showGameTypeForm')->name('showGameFormats');
-                Route::get('/add-stat/{game_id}', 'Admin\StatsController@addGameTypeStat')->name('showGameAddStatForm');
-                Route::post('/addStat/{game_id}', 'Admin\StatsController@postAddGameStat')->name('postAddGameStat');
-                Route::get('/add-game-format/{game_id}', 'Admin\GamesController@addGameFormat')->name('addGameFormat');
-                Route::post('/add-game-format/{game_id}', 'Admin\StatsController@postAddGameFormat')->name('postAddGameFormat');
-                Route::get('/add-stats/{player_id}', 'Admin\StatsController@addPlayerStats')->name('addPlayerStats');
-                Route::post('/add-stats/{player_id}', 'Admin\StatsController@postPlayerStats')->name('postPlayerStats');
-                Route::get('/edit-stat/{player_id}', 'Admin\StatsController@editPlayerStatForm')->name('editPlayerStats');
-                Route::post('/edit-stat/{player_id}', 'Admin\StatsController@editPlayerStats')->name('postPlayerEditStats');
-            });
-            Route::group(['prefix' => 'games'], function () {
-                Route::get('/', 'Admin\GamesController@index')->name('gameslist');
-                Route::get('/add', 'Admin\GamesController@showAddView')->name('addGame'); //showsaddgameform
-                Route::post('/add', 'Admin\GamesController@addPost')->name('postAddGame');
-                Route::get('/edit/{game_id}', 'Admin\GamesController@editGameForm')->name('editGameForm');
-                Route::post('/edit', 'Admin\GamesController@editGamePost')->name('postEditGame');
-                Route::get('/delete/{game_id}', 'Admin\GamesController@deleteGame')->name('deleteGame');
-                Route::post('/post-game-role', 'Admin\GamesController@addRolePost')->name('addGameRole');
-                Route::delete('delete-game-role', 'Admin\GamesController@deleteGameRole')->name('deleteGameRole');
-                Route::post('add-game-actions', 'Admin\GamesController@addGameActions')->name('addGameActions');
+    Route::get('/', 'Auth\LoginController@showAdminLoginForm');
+    Route::group(['middleware' => ['is_admin']], function () {
+        Route::group(['prefix' => 'forums'], function () {
+            Route::get('/', 'Admin\Forums\ForumsController@index')->name('lists');
+            // Route::get('category/{id}', 'Forums\ForumController@cagetory')->name('forumCategory');
+            //Route::get('post/{id}', 'Forums\ForumController@categoryPosts')->name('categoryposts');
+            //Route::post('reply/', 'Forums\ForumController@reply')->name('reply');
+            Route::get('category/', 'Admin\Forums\ForumsController@addCategory')->name('addcategory');
+            Route::post('category/', 'Admin\Forums\ForumsController@addCategoryPost')->name('addcategory');
+            Route::get('category_list/', 'Admin\Forums\ForumsController@listcategory')->name('listcategory');
+            Route::get('category_list/{id}', 'Admin\Forums\ForumsController@editCategory')->name('editcategory');
+            Route::post('category_list/{id}', 'Admin\Forums\ForumsController@postEditCategory')->name('editcategorypost');
+            Route::post('approve', 'Admin\Forums\ForumsController@approve')->name('approve');
+        });
+        Route::get('/leaderboard/{tournament_id}', 'LeaderBoard\LeaderboardController@index')->name('leaderboard');
+        Route::get('/dashboard', 'Admin\DashboardController@index'); //Gamesroutes
+        Route::get('/addheader', 'Admin\SettingsController@index')->name('headerbackground');
+        Route::post('/addheader', 'Admin\SettingsController@postAddHeader')->name('postAddHeader');
+        Route::group(['prefix' => 'blog'], function () {
+            Route::get('/', 'Admin\Blog\PostController@index')->name('blogList');
+            Route::get('add', 'Admin\Blog\PostController@addBlogPost')->name('addPost');
+            Route::post('add/{blog_id?}', 'Admin\Blog\PostController@postAddBlogPost')->name('postAddPost');
+            Route::get('edit/{blog_id}', 'Admin\Blog\PostController@editBlogPost')->name('editPost');
+            Route::post('edit/{blog_id}', 'Admin\Blog\PostController@editBlogPost')->name('postEditPost');
+            Route::group(['prefix' => 'category'], function () {
+                Route::get('/', 'Admin\Blog\CategoryController@index')->name('blogCategoryList');
+                Route::get('addCategory', 'Admin\Blog\CategoryController@addCategory')->name('addCategory');
+                Route::post('addCategory', 'Admin\Blog\CategoryController@postAddBlogCategory')->name('postAddBlogCategory');
+>>>>>>> master
             });
 //Gameterms
             Route::group(['prefix' => 'games-terms'], function () {
@@ -214,33 +180,36 @@ Route::group(['middleware' => ['web']], function () {
                 Route::get('/ajax_get_game_terms', 'Admin\PlayersController@get_game_roles')->name('ajax_get_game_terms');
             });
 //tournamentroutes
-            Route::group(['prefix' => 'tournaments'], function () {
-                Route::get('/delete/{tournament_id}/{player_id}', 'Admin\TournamentsController@deletePlayerFromTournament')->name('deletePlayerFromTournament');
-                Route::get('/', 'Admin\TournamentsController@index')->name('Tournamentslist');
-                Route::get('/add', 'Admin\TournamentsController@addTournamentForm')->name('addTournament'); //showsaddplayerform
-                Route::post('/add', 'Admin\TournamentsController@add')->name('postAddTournament');
-                Route::get('/edit/{tournament_id}', 'Admin\TournamentsController@editTournamentForm')->name('editTournamentForm');
-                Route::post('/edit', 'Admin\TournamentsController@postEditTournament')->name('editTournament');
-                Route::get('/addplayers/{tournament_id}', 'Admin\TournamentsController@showAddPlayerForm')->name('showAddPlayerForm');
-                Route::post('/addplayers/', 'Admin\TournamentsController@postAddTournamentPlayers')->name('postAddTournamentPlayers');
-                Route::get('/add-max-roles/{tournament_id}', 'Admin\TournamentsController@addTournamentRolesLimit')->name('addMaxRoles');
-                Route::post('/add-max-roles/{tournament_id}', 'Admin\TournamentsController@postAddTournamentRolesLimit')->name('postAddmaxRoles');
-            }); //Matches
-            Route::group(['prefix' => 'match'], function () {
-                Route::get('/', 'Admin\MatchesController@index')->name('Matcheslist');
-                Route::get('/add', 'Admin\MatchesController@addMatchForm')->name('addMatch'); //showsaddplayerform
-                Route::post('/add', 'Admin\MatchesController@addMatch')->name('postAddMatch');
-                Route::get('/edit/{match_id}', 'Admin\MatchesController@editMatchForm')->name('editMatchForm');
-                Route::post('/edit/{match_id}', 'Admin\MatchesController@postEditMatch')->name('editMatch');
-                Route::get('/players/{match_id}', 'Admin\MatchesController@getMatchPlayers')->name('showMatchPlayers');
-                Route::get('/add-player-score/match/{match_id}/player/{player_id}', 'Admin\MatchesController@playerMatchScore')->name('addPlayerMatchScore');
-                Route::post('/addscores/{match_id}/{player_id}', 'Admin\MatchesController@postAddMatchScore')->name('postPlayerMatchScore');
-                Route::post('/addstats/{match_id}/{player_id}', 'Admin\MatchesController@postAddMatchStats')->name('postPlayerMatchStats');
-                Route::get('/add-match-players/{match_id}', 'Admin\MatchesController@addMatchPlayerForm')->name('showAddMatchPlayerForm');
-                Route::post('/add-match-players/{match_id}', 'Admin\MatchesController@postAddMatchPlayers')->name('postAddMatchPlayers');
-                Route::get('/addTeamtoMatch/{match_id}/{tournament_id}', 'Admin\MatchesController@addTeamToMatchForm')->name('addTeamToMatch');
-                Route::post('/addTeamtoMatch/{match_id}/{tournament_id}', 'Admin\MatchesController@addTeamToMatchPost')->name('addTeamToMatchPost');
-            });
+
+        Route::group(['prefix' => 'tournaments'], function () {
+
+            Route::get('/start/{id}', 'Admin\TournamentsController@startTournament')->name('starttournament');
+            Route::get('/delete/{tournament_id}/{player_id}', 'Admin\TournamentsController@deletePlayerFromTournament')->name('deletePlayerFromTournament');
+            Route::get('/', 'Admin\TournamentsController@index')->name('Tournamentslist');
+            Route::get('/add', 'Admin\TournamentsController@addTournamentForm')->name('addTournament'); //showsaddplayerform
+            Route::post('/add', 'Admin\TournamentsController@add')->name('postAddTournament');
+            Route::get('/edit/{tournament_id}', 'Admin\TournamentsController@editTournamentForm')->name('editTournamentForm');
+            Route::post('/edit', 'Admin\TournamentsController@postEditTournament')->name('editTournament');
+            Route::get('/addplayers/{tournament_id}', 'Admin\TournamentsController@showAddPlayerForm')->name('showAddPlayerForm');
+            Route::post('/addplayers/', 'Admin\TournamentsController@postAddTournamentPlayers')->name('postAddTournamentPlayers');
+            Route::get('/add-max-roles/{tournament_id}', 'Admin\TournamentsController@addTournamentRolesLimit')->name('addMaxRoles');
+            Route::post('/add-max-roles/{tournament_id}', 'Admin\TournamentsController@postAddTournamentRolesLimit')->name('postAddmaxRoles');
+        }); //Matches
+        Route::group(['prefix' => 'match'], function () {
+            Route::get('/', 'Admin\MatchesController@index')->name('Matcheslist');
+            Route::get('/add', 'Admin\MatchesController@addMatchForm')->name('addMatch'); //showsaddplayerform
+            Route::post('/add', 'Admin\MatchesController@addMatch')->name('postAddMatch');
+            Route::get('/edit/{match_id}', 'Admin\MatchesController@editMatchForm')->name('editMatchForm');
+            Route::post('/edit/{match_id}', 'Admin\MatchesController@postEditMatch')->name('editMatch');
+            Route::get('/players/{match_id}', 'Admin\MatchesController@getMatchPlayers')->name('showMatchPlayers');
+            Route::get('/add-player-score/match/{match_id}/player/{player_id}', 'Admin\MatchesController@playerMatchScore')->name('addPlayerMatchScore');
+            Route::post('/addscores/{match_id}/{player_id}', 'Admin\MatchesController@postAddMatchScore')->name('postPlayerMatchScore');
+            Route::get('/add-match-players/{match_id}', 'Admin\MatchesController@addMatchPlayerForm')->name('showAddMatchPlayerForm');
+            Route::post('/add-match-players/{match_id}', 'Admin\MatchesController@postAddMatchPlayers')->name('postAddMatchPlayers');
+            Route::get('/addTeamtoMatch/{match_id}/{tournament_id}', 'Admin\MatchesController@addTeamToMatchForm')->name('addTeamToMatch');
+            Route::post('/addTeamtoMatch/{match_id}/{tournament_id}', 'Admin\MatchesController@addTeamToMatchPost')->name('addTeamToMatchPost');
+        });
+
 //Userroutes
             Route::group(['prefix' => 'user'], function () {
                 Route::get('/', 'Admin\UsersController@index')->name('listUsers');
@@ -286,4 +255,4 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('paypal', array('as' => 'payment.status', 'uses' => 'MembershipController@getPaymentStatus',));
     Route::post('test', array('as' => 'test', 'uses' => 'MembershipController@subscribeMembership',));
 
-});
+

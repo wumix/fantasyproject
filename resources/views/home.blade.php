@@ -3,11 +3,37 @@
 @section('css')
     {!! Html::style('assets-new/css/slick-theme.css') !!}
     {!! Html::style('assets-new/css/slick.css') !!}
+    <style>
+        .rfral_code {
+            width: 100%;
+            display: inline-block;
+            background: #fff;
+            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
+            padding: 20px 20px;
+            margin-bottom: 40px;
+        }
+
+        .new_form {
+            width: 100% !important;
+            border: 1px solid #92B713;
+            background: #000 !important;
+            border-radius: 10px;
+            color: #fff;
+            height: 42px;
+        }
+
+        .js-textareacopybtn {
+            padding: 11px;
+            width: 76px;
+            background: #92B713;
+            color: #fff;
+        }
+    </style>
 @endsection
 
 
 @section('title')
-    Gamithon Fantasy
+    Gamithon Fantasy - Play Fantasy League Create Team
 @stop
 @section('content')
     <!--BASBB-->
@@ -26,45 +52,54 @@
                                 <div class="row">
                                     <div class="col-md-12 no-padding">
                                         <h3 style="font-weight: 500; color: #FFFFFF">
-                                            NEXT MATCH COUNT DOWN
+                                            @if(!empty($tournament['nextmatch']))
+                                                NEXT MATCH COUNT DOWN
+                                            @else
+                                                {{ $tournament['name']}}
+                                            @endif
                                         </h3>
                                         <h6 style="color: white;">
                                             {{$tournament['nextmatch']['team_one']}}
-                                            <strong class="mlr10 Bold">
-                                                <em>Vs</em>
-                                            </strong>
+                                            @if(!empty($tournament['nextmatch']))
+                                                <strong class="mlr10 Bold">
+                                                    <em>Vs</em>
+                                                </strong>
+                                            @endif
                                             {{$tournament['nextmatch']['team_two']}}
                                         </h6>
                                     </div>
                                 </div>
-                                <div class="row col-md-12">
-                                    <div class="col-md-12 count-down no-padding mt30">
-                                        <div class="col-md-3 text-center">
+
+                                @if(!empty($tournament['nextmatch']))
+                                    <div class="row col-md-12">
+                                        <div class="col-md-12 count-down no-padding mt30">
+                                            <div class="col-md-3 text-center">
                         <span id="getting-started{{$i}}" class="circle">
                             10
                         </span>
-                                            <p class="mtb10">Days</p>
-                                        </div>
-                                        <div class="col-md-3 text-center">
+                                                <p class="mtb10">Days</p>
+                                            </div>
+                                            <div class="col-md-3 text-center">
                         <span id="getting-started{{$i+1}}" class="circle">
                             10
                         </span>
-                                            <p class="mtb10">Hours</p>
-                                        </div>
-                                        <div class="col-md-3 text-center">
+                                                <p class="mtb10">Hours</p>
+                                            </div>
+                                            <div class="col-md-3 text-center">
                         <span id="getting-started{{$i+2}}" class="circle">
                             10
                         </span>
-                                            <p class="mtb10" style="margin-left: 12px;">Min</p>
-                                        </div>
-                                        <div class="col-md-3 text-center">
+                                                <p class="mtb10" style="margin-left: 12px;">Min</p>
+                                            </div>
+                                            <div class="col-md-3 text-center">
                         <span id="getting-started{{$i+3}}" class="circle">
                             10
                         </span>
-                                            <p class="mtb10" style="margin-left: 12px;">Sec</p>
+                                                <p class="mtb10" style="margin-left: 12px;">Sec</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
 
 
                                 <div class="row">
@@ -111,6 +146,7 @@
                                         <div class="col-md-12 no-padding">
 
                                             <h5>
+
 
                                                 <a class="btn leaderboardviewmorebutton"
                                                    href="{{route('homeleaderboard',['id'=>$leader['tournament_id']])}}">View
@@ -193,57 +229,95 @@
                             View all
                         </a>
                     </div>
+                    <div class="col-lg-3 text-center" style="display: none">
+
+                        @if(!\Auth::check())
+                            <a href="{{route('userdashboard')}}">
+                                <img style="margin-top: 15px;"
+                                     src="{{URL::to('/')}}/img/refer-img.png"/>
+                            </a>
+                        @else
+                            <h2 class="section-heading" style="margin-top: 30px;
+    font-size: 21px;">
+                                Share and get 5000 points
+                                <hr class="light">
+                            </h2>
+                            <div class="input-group">
+
+                                <input
+                                        id="foo"
+                                        type="text"
+                                        readonly
+                                        value="{{ URL::to('/')}}/signup/?referral_key={{\Auth::user()->referral_key}}"
+                                        class="js-copytextarea form-control new_form"
+                                        onclick="select()"
+
+                                >
+                                <span class="input-group-btn">
+        <button class="btn btn-secondary js-textareacopybtn" data-clipboard-target="#foo"
+                type="button">Copy</button>
+      </span>
+                            </div>
+                            <div class="row">
+                                <img src="{{URL::to('/')}}/img/facebook-share.png" id="shareBtn"
+                                     style="cursor:pointer; margin-top: 3%"/>
+
+                            </div>
+                    </div>
+                    @endif
+
                 </div>
+            </div>
             </div>
         </section>
     @endif
     @if(!empty($upcomming_tournaments_list))
 
-        <section class="bg-primary" id="about">
-            <div class="container">
-                <div class="row">
+        {{--<section class="bg-primary" id="about">--}}
+        {{--<div class="container">--}}
+        {{--<div class="row">--}}
 
-                    <div class="col-lg-12 text-center">
-                        <h2 class="section-heading">
-                            Upcomming Tournaments
-                            <hr class="light">
-                        </h2>
+        {{--<div class="col-lg-12 text-center">--}}
+        {{--<h2 class="section-heading">--}}
+        {{--Upcomming Tournaments--}}
+        {{--<hr class="light">--}}
+        {{--</h2>--}}
 
-                        <div class="table-responsive">
-                            <table class="table table-striped table-stripedhome gen-table">
-                                <thead class="main-taible-head">
-                                <tr>
-                                    <th class="border-r th1">Name</th>
-                                    <th class="border-r">Venue</th>
-                                    <th class="border-r">Started At</th>
-                                    <th class="th2">Ending At</th>
-                                </tr>
-                                </thead>
-                                <tbody class="main-taible-body">
-                                @foreach($upcomming_tournaments_list as $tournament)
-                                    <tr class="trr">
-                                        <td class="border-r">
-                                            <a href="{{route('fixturesdetail',['tournament_id'=>$tournament['slug']])}}">{{$tournament['name']}} </a>
-                                        </td>
-                                        <td class="border-r">{{$tournament['venue']}}</td>
-                                        <td class="border-r">
-                                            {{formatDate($tournament['start_date'])}}
-                                        </td>
-                                        <td>
-                                            {{formatDate($tournament['end_date'])}}
-                                        </td>
-                                    </tr>
+        {{--<div class="table-responsive">--}}
+        {{--<table class="table table-striped table-stripedhome gen-table">--}}
+        {{--<thead class="main-taible-head">--}}
+        {{--<tr>--}}
+        {{--<th class="border-r th1">Name</th>--}}
+        {{--<th class="border-r">Venue</th>--}}
+        {{--<th class="border-r">Started At</th>--}}
+        {{--<th class="th2">Ending At</th>--}}
+        {{--</tr>--}}
+        {{--</thead>--}}
+        {{--<tbody class="main-taible-body">--}}
+        {{--@foreach($upcomming_tournaments_list as $tournament)--}}
+        {{--<tr class="trr">--}}
+        {{--<td class="border-r">--}}
+        {{--<a href="{{route('fixturesdetail',['tournament_id'=>$tournament['slug']])}}">{{$tournament['name']}} </a>--}}
+        {{--</td>--}}
+        {{--<td class="border-r">{{$tournament['venue']}}</td>--}}
+        {{--<td class="border-r">--}}
+        {{--{{formatDate($tournament['start_date'])}}--}}
+        {{--</td>--}}
+        {{--<td>--}}
+        {{--{{formatDate($tournament['end_date'])}}--}}
+        {{--</td>--}}
+        {{--</tr>--}}
 
-                                @endforeach
+        {{--@endforeach--}}
 
-                                </tbody>
-                            </table>
-                        </div>
+        {{--</tbody>--}}
+        {{--</table>--}}
+        {{--</div>--}}
 
-                    </div>
-                </div>
-            </div>
-        </section>
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</section>--}}
     @endif
 
     @if(!empty($news))
@@ -251,19 +325,27 @@
             <div class="container">
                 <div class="">
                     <!-- start news -->
+
                     @foreach($news as $key=>$val)
+
                         <div class="col-md-4 itemsz " style="margin: 15px 0 15px 0;  padding: 15px;">
                             <div class="media newscolor">
                                 <div class="media-left">
-                                    <a href="{{getUploadsPath($val['image'])}}">
-                                        <?php
-                                        $arr = explode('/', $val['image']);
+                                    <a href="{{route('newsdetail',['id'=>$val['slug']])}}">
+                                        <?php $arr = explode('/', $val['image']); ?>
 
+                                        @if(check_image($arr))
+                                            <img class="media-object"
+                                             src="/uploads/source/thumb{{end($arr)}}" alt="{{end($arr)}}">
+                                            @else
+                                                <img class="media-object"
+                                                     src="/uploads/source/defualt-img.jpg" alt="{{end($arr)}}">
 
-                                        ?>
-                                        <img class="media-object"
-                                             src="{{Croppa::url($val['image'],177,105)}}" alt="{{end($arr)}}">
+                                        @endif
+
                                     </a>
+
+
                                 </div>
                                 <div class="media-body">
                                     <h4 class="media-heading mediah">
@@ -338,20 +420,89 @@
             </div>
         </div>
     </section>
+    <section id="services" class=" services-padding-bottom bg-dark how-to-play-summery"
+             style="background:#252525 !important">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Download Our Mobile Applications</h2>
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-2 col-md-2 text-center">
+                </div>
+
+                <div class="col-lg-4 col-md-4 text-center">
+                    <div class="service-box">
+                        <a target="_blank" href="https://play.google.com/store/apps/details?id=com.branches.gamithon">
+                            <img src="{{URL::to('/img/google.png')}}"/>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 text-center">
+
+                    <div class="service-box">
+                        <a disabled="true">
+                            <img src="{{URL::to('/img/ios.png')}}"/>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 text-center">
+                </div>
+            </div>
+        </div>
+    </section>
     {{--.............................Gallry Start..............................................--}}
     <section id="portfolio">
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
+
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt=" DD VS GL">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Australia Women Vs Pakistan Women
+                                    India Vs Sri Lanka
                                 </div>
                                 <div class="project-name">
-                                    Australia Women won by 159 runs
+                                    India won by 6 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    India Vs Sri Lanka
+                                </div>
+                                <div class="project-name">
+                                    India won by 6 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/203.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt=" DD VS GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    India Vs Sri Lanka
+                                </div>
+                                <div class="project-name">
+                                    India won by 6 wickets
                                 </div>
                             </div>
                         </div>
@@ -359,133 +510,113 @@
                 </div>
 
                 <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
+                    <a href="../img/portfolio/thumbnails/101.jpg" class="portfolio-box">
+                        <img src="../img/portfolio/thumbnails/101.jpg" class="img-responsive" alt="KXIP VS KKR">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    England Women Vs  South Africa Women
+                                    Trinbago Knight Riders vs Jamaica Tallawahs
                                 </div>
                                 <div class="project-name">
-                                    England Women won by 68 runs
+                                    Trinbago Knight Riders won by 36 runs
                                 </div>
                             </div>
+
+
                         </div>
                     </a>
                 </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    India Women  Vs Sri Lanka Women
-                                </div>
-                                <div class="project-name">
-                                    India Women won by 16 runs
-
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    England Women VS Sri lanka Women
-                                </div>
-                                <div class="project-name">
-                                    England Women won by 7 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt=" DD VS GL">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    England Women VS Sri lanka Women
+                                    Trinbago Knight Riders vs Jamaica Tallawahs
                                 </div>
                                 <div class="project-name">
-                                    England Women won by 7 wickets
+                                    Trinbago Knight Riders won by 36 runs
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
 
+
                 <div class="col-lg-4 col-sm-6">
-                    <a href="../img/portfolio/thumbnails/103.jpg" class="portfolio-box">
-                        <img src="../img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS KKR">
+                    <a href="img/portfolio/thumbnails/103.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS MI">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    England Women VS Sri lanka Women
+                                    Trinbago Knight Riders vs Jamaica Tallawahs
                                 </div>
                                 <div class="project-name">
-                                    England Women won by 7 wickets
+                                    Trinbago Knight Riders won by 36 runs
                                 </div>
                             </div>
-
-
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="KXIP VS KKR">
+                    <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    England Women VS Sri lanka Women
+                                    India Vs Sri lanka
                                 </div>
                                 <div class="project-name">
-                                    England Women won by 7 wickets
+                                    India won by 3 wickets
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
+
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS KKR">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    England Women VS Sri lanka Women
+                                    India Vs Sri lanka
                                 </div>
                                 <div class="project-name">
-                                    England Women won by 7 wickets
+                                    India won by 3 wickets
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
 
+
                 <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/203.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="KXIP VS KKR">
+                    <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt="KXIP VS KKR">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Pakistan Women vs India Women
+                                    India Vs Sri lanka
                                 </div>
                                 <div class="project-name">
-                                    India Women won by 95 runs
+                                    India won by 3 wickets
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -497,47 +628,50 @@
 @section('js')
     {!! Html::script('assets-new/js/slick.js') !!}
     {!! Html::script('assets/jquery.countdown-2.2.0/jquery.countdown.min.js') !!}
+    {!! Html::script('js/clipboard.min.js') !!}
+
     @php($date= '00-00-00 00:00:00')
     <?php $i = 1?>
     @foreach($tournaments_list as $tournament)
+        @if(!empty($tournament['nextmatch']))
+            @if(!empty($tournament['nextmatch']['start_date']))
+                @php($date=$tournament['nextmatch']['start_date'])
+                {{Html::script('js/moment.js')}}
+                <script type="text/javascript">
+                    var dateObj = new Date();
+                    var userTimeZone = dateObj.getTimezoneOffset();
+                    //Time zone is in negatinv i.e. forward from GMT
+                    userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : Math.abs(userTimeZone) * -1;
 
-        @if(!empty($tournament['nextmatch']['start_date']))
-            @php($date=$tournament['nextmatch']['start_date'])
-            {{Html::script('js/moment.js')}}
-            <script type="text/javascript">
-                var dateObj = new Date();
-                var userTimeZone = dateObj.getTimezoneOffset();
-                //Time zone is in negatinv i.e. forward from GMT
-                userTimeZone = (userTimeZone < 0) ? Math.abs(userTimeZone) : Math.abs(userTimeZone) * -1;
+                    var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
+                    console.log(tournamentDateTime, userTimeZone);
 
-                var tournamentDateTime = moment('{{$date}}').add('m', userTimeZone).format('YYYY/MM/DD hh:mm:ss a');
-                console.log(tournamentDateTime, userTimeZone);
-
-                $('#getting-started{{$i}}').countdown(tournamentDateTime, function (event) {
-                    $(this).text(
-                        event.strftime('%D')
-                    );
-                });
-                $("#getting-started{{$i+1}}")
-                    .countdown(tournamentDateTime, function (event) {
+                    $('#getting-started{{$i}}').countdown(tournamentDateTime, function (event) {
                         $(this).text(
-                            event.strftime('%H')
+                            event.strftime('%D')
                         );
                     });
-                $("#getting-started{{$i+2}}")
-                    .countdown(tournamentDateTime, function (event) {
-                        $(this).text(
-                            event.strftime('%M')
-                        );
-                    });
-                $("#getting-started{{$i+3}}")
-                    .countdown(tournamentDateTime, function (event) {
-                        $(this).text(
-                            event.strftime('%S')
-                        );
-                    });
-            </script>
-            <?php $i = $i + 4?>
+                    $("#getting-started{{$i+1}}")
+                        .countdown(tournamentDateTime, function (event) {
+                            $(this).text(
+                                event.strftime('%H')
+                            );
+                        });
+                    $("#getting-started{{$i+2}}")
+                        .countdown(tournamentDateTime, function (event) {
+                            $(this).text(
+                                event.strftime('%M')
+                            );
+                        });
+                    $("#getting-started{{$i+3}}")
+                        .countdown(tournamentDateTime, function (event) {
+                            $(this).text(
+                                event.strftime('%S')
+                            );
+                        });
+                </script>
+                <?php $i = $i + 4?>
+            @endif
         @endif
     @endforeach
 
@@ -546,11 +680,11 @@
         $('#header').backstretch([
 
 
-            {url: '{{URL::to('assets-new/img/gamithon--22-j-banner.jpg')}}', fade: 500},
-            {url: '{{URL::to('assets-new/img/eng-SA-banner-Gmit-3.jpg')}}', fade: 500},
-            {url: '{{URL::to('assets-new/img/women-worldcup-new.jpg')}}', fade: 500},
+            {url: '{{URL::to('assets-new/img/gamithon-Cpl-1.jpg')}}', fade: 500},
+            {url: '{{URL::to('assets-new/img/india-srilanka.jpg')}}', fade: 500},
 
-            {url: '{{URL::to('assets-new/img/champions-trophy-pakistan.jpg')}}', fade: 500},
+
+            {url: '{{URL::to('assets-new/img/web-prize-final.jpg')}}', fade: 500},
 
 
         ]);
@@ -582,5 +716,72 @@
         });
     </script>
 
+    @if(\Auth::check())
+        <script>
+            var clipboard = new Clipboard('.js-textareacopybtn');
+            clipboard.on('success', function (e) {
+                alert('Copied to clipboard!');
+                e.clearSelection();
+            });
+            clipboard.on('error', function (e) {
+                alert('Oops, An error occurred!');
+            });
+        </script>
+        <script>
+            document.getElementById('shareBtn').onclick = function () {
+                FB.ui({
+                    method: 'share',
+                    display: 'popup',
+                    href: '{{URL::to('/')}}' + '/signup/?referral_key={{\Auth::user()->referral_key}}',
+                }, function (response) {
+                });
+            }
+        </script>
+        <script>
+            document.getElementById('shareBtn').onclick = function () {
+                FB.ui({
+                    method: 'share',
+                    display: 'popup',
+                    href: 'http://www.gamithonfantasy.com/signup/?referral_key={{\Auth::user()->referral_key}}',
+                }, function (response) {
+                });
+            }
+        </script>
+    @endif
 
+
+@stop
+@section('FbJsSdk')
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '337419313358697',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.9'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+@endsection
+@section('facbook-og-tags')
+    <meta property="og:url" content="heelo world"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="My title"/>
+    <meta property="og:description" content="Join referral here"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
+    <meta property="og:image" content="http://www.gamithonfantasy.com/assets-new/img/gamithon-logo1.png"/>
+    <meta property="fb:app_id" content="337419313358697"/>
 @stop

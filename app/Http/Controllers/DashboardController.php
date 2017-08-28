@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use \App\UserTeam;
 use DateTime;
 use phpDocumentor\Reflection\Types\Null_;
+use Validator;
 
 class DashboardController extends Controller
 {
@@ -121,7 +122,7 @@ class DashboardController extends Controller
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->with('teamtournament')->orderBy('id', 'DESC')
             ->get()
             ->toArray();
-        //   dd($data);
+        // dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
         $data['leaders'] = \App\Leaderboard::take(3)->select(['user_id', 'score'])->orderBy('score', 'DESC')->get()->toArray();
@@ -142,6 +143,11 @@ class DashboardController extends Controller
         //dd( $data['membership_plans']);
         //dd($data['accepted_challenges']);
         //dd( $data['challenges']);
+
+//dd($data['accepted_challenges']);
+//dd( $data['challenges']);
+        $data['user_scores']=\App\User::where('id',\Auth::id())->with('leaderboard.tournament')->first()->toArray();
+
         $data['user_ranking'] = 0;
         foreach ($data['leaders'] as $key => $val) {
             if ($val['user_id'] == \Auth::id()) {
@@ -154,7 +160,8 @@ class DashboardController extends Controller
 
     function teamHome()
     {
-        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->with('teamtournament')->orderBy('id', 'DESC')
+        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->
+        with('teamtournament')->orderBy('id', 'DESC')
             ->get()
             ->toArray();
         //dd($data['user_teams']);
@@ -173,10 +180,36 @@ class DashboardController extends Controller
     function postEditProfile(Request $request)
     {
 
+        $rules = array(
+            'password' => 'required|confirmed'
+        );
+
+
+        // Create a new validator instance.
+        $validator = Validator::make($request->all(), $rules);
+
+
+
+
 
         $user = \App\USER::find(\Auth::id());
         $user->about_me = $request->about_me;
         $user->name = $request->name;
+
+        if((empty($request->password_confirmation)&&empty($request->password))){
+
+        }
+        else{
+            if ($validator->passes()) {
+
+               $user->password=bcrypt($request->password);
+            }else{
+
+                    return back()->withErrors($validator->errors());
+
+            }
+
+        }
         if ($request->hasFile('profile_pic')) {
 
             $files = uploadInputs($request->profile_pic, 'user_profile_pics');

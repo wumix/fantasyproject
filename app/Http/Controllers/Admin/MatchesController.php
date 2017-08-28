@@ -39,7 +39,7 @@ class MatchesController extends Controller {
         if(empty($teams)){
             abort(404);
         }
-       $data['teams']=$teams;
+        $data['teams']=$teams;
         $data['matchid']=$matchid;
         $data['tournament_id']=$tournament_id;
         return view('adminlte::teams.add_team_to_match',$data); //shows add team to match form
@@ -49,25 +49,25 @@ class MatchesController extends Controller {
 
     }
     function addTeamToMatchPost(Request $request,$match_id,$tournament_id){
-   if(count($request->teams_id)!=2) {
-       return redirect()
-           ->route('addTeamToMatch', ['match_id' => $match_id,'tournament_id'=>$tournament_id])
-           ->with('status', 'You must choose only two teams');
-   }
+        if(count($request->teams_id)!=2) {
+            return redirect()
+                ->route('addTeamToMatch', ['match_id' => $match_id,'tournament_id'=>$tournament_id])
+                ->with('status', 'You must choose only two teams');
+        }
 
-   $myplayers=[];
-   foreach($request->teams_id as $row) {
-       $players = \App\Team::where('id', $row)->with('team_players')->firstOrFail()->toArray();
+        $myplayers=[];
+        foreach($request->teams_id as $row) {
+            $players = \App\Team::where('id', $row)->with('team_players')->firstOrFail()->toArray();
 
-foreach ($players['team_players'] as $key=>$val){
-    $myplayers[]=$val['id'];
-
-
-}
+            foreach ($players['team_players'] as $key=>$val){
+                $myplayers[]=$val['id'];
 
 
+            }
 
-   }
+
+
+        }
         $objMatch = \App\Match::findORFail($match_id);
         $objMatch->match_players()->sync(array_filter($myplayers));
         return redirect()
@@ -87,9 +87,15 @@ foreach ($players['team_players'] as $key=>$val){
             $this->objMatch->team_2_logo=$files;
         }
         $this->objMatch->save();
+<<<<<<< HEAD
        return redirect()
                         ->route('editMatchForm', ['match_id' => $this->objMatch->id])
                         ->with('status', 'Match Saved');
+=======
+        return redirect()
+            ->route('editMatchForm', ['match_id' => $this->objMatch->id])
+            ->with('status', 'Match Saved');
+>>>>>>> master
     }
 
     function editMatchForm($match_id) {
@@ -143,28 +149,28 @@ foreach ($players['team_players'] as $key=>$val){
 
     function getMatchPlayers($match_id) {
         $data['players'] = Match::where('id', $match_id)
-                ->with('match_players')
-                ->firstOrFail()
-                ->toArray();
+            ->with('match_players')
+            ->firstOrFail()
+            ->toArray();
         //dd($data);
         return view('adminlte::matches.show_players', $data);
     }
 
     function playerMatchScore($match_id, $player_id) {
         $gameId = Match::where('id', $match_id)->with('match_tournament')->firstOrFail()
-                ->toArray();
+            ->toArray();
         $gameId = $gameId['match_tournament']['game_id'];
 
         $data['player'] = Player::where('id', $player_id)->first()->toArray();
         $data['match'] = Match::where('id', $match_id)->with([
-                    'player_scores' => function($query) use ($player_id) {
-                        $query->where('player_id', $player_id);
-                    }
-                ])->first()->toArray();
+            'player_scores' => function($query) use ($player_id) {
+                $query->where('player_id', $player_id);
+            }
+        ])->first()->toArray();
 
         $data['game_actions'] = \App\GameAction::where('game_id', $gameId)
-                        ->with('game_terms')
-                        ->get()->toArray();
+            ->with('game_terms')
+            ->get()->toArray();
         $data['match_id'] = $match_id;
         $data['player_stat']=\App\PlayerMatchStats::where('match_id', $match_id)
             ->where('player_id', $player_id)->first();
@@ -183,8 +189,8 @@ foreach ($players['team_players'] as $key=>$val){
     function postAddMatchScore($match_id, $player_id) {
 
         \App\MatchPlayerScore::where('match_id', $match_id)
-                ->where('player_id', $player_id)
-                ->delete();
+            ->where('player_id', $player_id)
+            ->delete();
         foreach (Input::get('term_score') as $key => $val) {
             $playerMatchPoints['match_id'] = $match_id;
             $playerMatchPoints['player_id'] = $player_id;

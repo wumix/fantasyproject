@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    News
+    Gamithon News
 @stop
 @section('content')
 

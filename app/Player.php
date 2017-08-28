@@ -76,5 +76,8 @@ class Player extends Model
     public function player_stats() {
         return $this->belongsToMany('App\GameTypeStats', 'player_statistics','player_id','game_type_stat_id')->withPivot('stat_points');
     }
+    public function player_match_stats(){
+        return $this->hasMany(PlayerMatchStats::class, 'player_id');
+    }
 
 }

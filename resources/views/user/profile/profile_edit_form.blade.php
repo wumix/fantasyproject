@@ -108,14 +108,14 @@
                                            name="password">
                                 </div>
                                 <span class="help-block">
-                                    Enter your password if you want to change yuor current password.
+                                    Enter old password to change your password.
                                 </span>
 
                             </div>
                         </div>
                         @if ($errors->has('password'))
                             <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
+                            <strong>{{ $errors->first('password') }}</strong>
                         </span>
                         @endif
                         <div class="form-group" id="sformbox">

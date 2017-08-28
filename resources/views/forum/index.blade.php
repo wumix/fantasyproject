@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('title')
+<<<<<<< HEAD
     Challenge
+=======
+    Gamiton Forums
+>>>>>>> master
 @stop
 @section('css')
     <style>
@@ -37,7 +41,11 @@
             width: 100%;
             display: inline-block;
             font-size: 21px;
+<<<<<<< HEAD
             margin-top: 67px;
+=======
+            margin-top: 41px;
+>>>>>>> master
             margin-bottom: 36px;
         }
         .clip-bord1{
@@ -46,7 +54,11 @@
             width: 100%;
             display: inline-block;
             font-size: 21px;
+<<<<<<< HEAD
             margin-bottom: 93px;
+=======
+            margin-bottom: 52px;
+>>>>>>> master
         }
         .left_area_forum{
             width: 50%;
@@ -70,7 +82,11 @@
             font-size: 20px;
             color: #92b713;
             font-weight: bold;
+<<<<<<< HEAD
             padding: 20px 0 20px 0;
+=======
+            padding: 20px 0 0px 0;
+>>>>>>> master
         }
         .parah_forum{
             width: 100%;
@@ -112,7 +128,11 @@
         .topics_forum_num{
             font-size: 12px;
             color: #000;
+<<<<<<< HEAD
             margin-bottom: 128px;
+=======
+            margin-bottom: 61px;
+>>>>>>> master
             margin-top: 22px;
             text-align: center;
             width: 100%;
@@ -136,7 +156,11 @@
             display: inline-block;
             float: left;
             padding: 0;
+<<<<<<< HEAD
             margin-top: 54px;
+=======
+            margin-top: 20px;
+>>>>>>> master
             margin-bottom: 0;
         }
         .section_area_left_tyota_list li{

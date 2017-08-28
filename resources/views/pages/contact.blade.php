@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Contact
+    Contact | Gamithonfantasy
     @stop
 @section('content')
 <section>
@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-heading">
-                    Say Hi!
+                    Contact Us
                 </h1>
                 <hr class="light full">
                 <div class="page-content" style="margin:0 auto;max-width: 700px;">

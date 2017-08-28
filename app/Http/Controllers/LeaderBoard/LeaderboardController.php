@@ -31,16 +31,19 @@ class LeaderboardController extends Controller
 
 
         $leaderboard = new Leaderboard();
-
+ //dd($userteams);
         foreach ($userteams as $k) {
             //   echo $k['id']." ".$k['user_id']." ".$k['name'];
             $leaderboard = new Leaderboard();
+
             $score = $this->get_user_team_score($tournament_id, $k['id'], $k['user_id']);
+
             $leaderboard->tournament_id = $tournament_id;
             $leaderboard->user_id = $k['user_id'];
             $leaderboard->team_id = $k['id'];
             $leaderboard->score = $score;
             $leaderboard->save();
+
         }
         $data['leaders'] = \App\Leaderboard::with('user', 'user_team')
             ->take(3)->orderBy('score', 'DESC')->get()->toArray();
@@ -65,6 +68,7 @@ class LeaderboardController extends Controller
 
     function get_user_team_score($tournament_id, $teamId, $userid)
     {
+
 
         $data['user_teams'] = \App\UserTeam::where('user_id', $userid)
             ->where('tournament_id', $tournament_id)
@@ -123,7 +127,7 @@ class LeaderboardController extends Controller
             ->get();
         $user_team_player_transfer = $user_team_player_transfer->toArray();
         $user_team_player_transfer = $user_team_player_transfer[0];
-        // dd($team_score);
+        //dd($team_score);
 
         $teamtotal = 0;
         foreach ($team_score as $row) {

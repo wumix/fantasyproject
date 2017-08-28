@@ -261,6 +261,9 @@
                                                 @if($player['player_roles'][0]['pivot']['game_role_id']==7)
                                                     <img src="{{URL::to('/img/all-rounder-logo.png')}}" alt="">
                                                 @endif
+                                                    @if($player['player_roles'][0]['pivot']['game_role_id']==8)
+                                                        <img src="{{URL::to('/img/batsman-logo.png')}}" alt="">
+                                                    @endif
                                             </td>
                                             <td><?php
                                                 $text = "N-A";

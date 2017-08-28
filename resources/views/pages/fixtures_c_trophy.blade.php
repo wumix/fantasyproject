@@ -20,7 +20,7 @@
         }
         .mywebinar {
             line-height: 34px;
-            min-height: 80px;
+           
         }
         .mywebinar h5{
             float: left;

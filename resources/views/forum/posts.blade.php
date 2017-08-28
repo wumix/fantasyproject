@@ -455,12 +455,7 @@
 
             </span>
                                 <div class="section_reply">
-<<<<<<< HEAD
-                                    <p id="reply-{{$post['id']}}" class="main_parah">
-                                    {{$post['description']}}
-=======
                                     <p id="reply-{{$post['id']}}" class="main_parah">{{$post['description']}}
->>>>>>> master
                                     <div class="right_anqer">
                                         {{--<a href="#" class="edit_btn_one">Quote</a>--}}
                                         @if($post['user_id']==\Auth::id())
@@ -495,13 +490,7 @@
             </span>
 
                                     <div class="section_reply">
-<<<<<<< HEAD
-                                        <p class="parah" id="repparah-{{$row['id']}}">
-
-                                        {!! $row['post_text'] !!}
-=======
                                         <p class="parah" id="repparah-{{$row['id']}}">{{$row['post_text']}}
->>>>>>> master
 
                                         <div class="right_anqer_second">
                                             {{--<a href="#" class="edit_btn_one_quote">Quote</a>--}}
@@ -777,11 +766,7 @@
             var k = $('#repparah-' + postId).html();
 
 
-<<<<<<< HEAD
-            // alert(k);
-=======
            // alert(k);
->>>>>>> master
             //$('edittextarea').html(k);
 
 

@@ -269,7 +269,7 @@
 
                                             @foreach($temp as $key=>$terms)
 
-                                                @if($t=zulfi_in_array($key,$player['player_game_term_score']))
+                                                @if($t=term_in_array($key,$player['player_game_term_score']))
 
                                                     <td>{{$t}}</td>
                                                 @else

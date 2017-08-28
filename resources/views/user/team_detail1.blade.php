@@ -231,6 +231,8 @@
                                 <tr class="grey_bg_row">
                                     <th>PLAYERS</th>
                                     <th></th>
+
+
                                     <th></th>
                                     <th>R</th>
                                     <th>6s</th>
@@ -248,6 +250,7 @@
                                 @foreach($match['match_players'] as $player)
                                     @if(strtoupper($player['player_actual_teams'][0]['name'])==$team_name)
                                         <tr>
+
                                             <td>{{$player['name']}}</td>
 
 
@@ -276,6 +279,8 @@
                                                 'Wicket Taken' => '-'];
 
                                             ?>
+
+
 
                                             @foreach($temp as $key=>$terms)
 

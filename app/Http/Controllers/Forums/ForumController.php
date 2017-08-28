@@ -20,17 +20,10 @@ class ForumController extends Controller
     {
 
         $data['categories'] = ForumCategory::where('parent_id',NULL)->with(['children'=>function($query){
-<<<<<<< HEAD
-            $query->where('is_approved',1);
-        },'children.posts'])->get()->toArray();
-
-      // dd($data['categories']);
-=======
             $query->where('is_approved',1)->orderBy('created_at','DESC');
         },'children.posts'])->get()->toArray();
 
         // dd($data['categories']);
->>>>>>> master
         return view('forum/index', $data);
 
     }
@@ -39,26 +32,15 @@ class ForumController extends Controller
     {
 
         $data['categories'] = ForumCategory::where('slug', $id)->with(['children'=>function($query){
-<<<<<<< HEAD
-            $query->where('is_approved',1);
-        },'children.posts'])->first()->toArray();
-        //$data['parent_categories'] = ForumCategory::where('parent_id',NULL)->get()->toArray();
-     //  dd($data['categories']);
-=======
             $query->where('is_approved',1)->orderBy('created_at','DESC');
         },'children.posts'])->first()->toArray();
         //$data['parent_categories'] = ForumCategory::where('parent_id',NULL)->get()->toArray();
         //  dd($data['categories']);
->>>>>>> master
         return view('forum/category', $data);
 
     }
     public function addpost($id,Request $request){
-<<<<<<< HEAD
-       //dd($request->all());
-=======
         //dd($request->all());
->>>>>>> master
         $form_cat=new ForumCategory;
         $form_cat->parent_id=$request->post_id;
         $form_cat->name=$request->title;
@@ -82,11 +64,7 @@ class ForumController extends Controller
         $topic->slug=slugify($request->title);
         $topic->date=getGmtTime();
         $topic->save();
-<<<<<<< HEAD
-       return redirect()->back();
-=======
         return redirect()->back();
->>>>>>> master
     }
 
     public function categoryPosts($id)
@@ -95,15 +73,9 @@ class ForumController extends Controller
         //dd($data['posts']->toArray());
 
         $data['posts'] = ForumCategory::where('slug',$id)->with(['posts.replies.user','posts.user'])->first();
-<<<<<<< HEAD
-     //   dd($data['posts']->toArray());
-//       dd(\App\ForumPost::where('category_id',20)->get()->toArray());
-      // dd($data['posts']->toArray());
-=======
         //   dd($data['posts']->toArray());
 //       dd(\App\ForumPost::where('category_id',20)->get()->toArray());
         // dd($data['posts']->toArray());
->>>>>>> master
         return view('forum/posts', $data);
         //dd($data['posts']->toArray());
 
@@ -129,11 +101,7 @@ class ForumController extends Controller
     }
     public function edit(Request $request)
     {
-<<<<<<< HEAD
-      // dd($request->all());
-=======
         // dd($request->all());
->>>>>>> master
         //  $comment = new \App\ForumReply(array(['post_text',$request->post_text]));
         $post = new \App\ForumPost;
         $post->where('id',$request->post_id)->update(

@@ -1,10 +1,8 @@
 @extends('layouts.app')
 @section('title')
-<<<<<<< HEAD
-    Challenge
-=======
+
     Gamiton Forums
->>>>>>> master
+
 @stop
 @section('css')
     <style>
@@ -82,11 +80,9 @@
             font-size: 20px;
             color: #92b713;
             font-weight: bold;
-<<<<<<< HEAD
+
             padding: 20px 0 20px 0;
-=======
-            padding: 20px 0 0px 0;
->>>>>>> master
+
         }
         .parah_forum{
             width: 100%;
@@ -128,9 +124,7 @@
         .topics_forum_num{
             font-size: 12px;
             color: #000;
-<<<<<<< HEAD
-            margin-bottom: 128px;
-=======
+
             margin-bottom: 61px;
 >>>>>>> master
             margin-top: 22px;

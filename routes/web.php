@@ -20,7 +20,7 @@
 
 
 Route::get('/newdash', 'HomeController@newdash')->name('newdashboard');
-Route::get('/scorecard/{id}', 'HomeController@scorecard')->name('scorecard');
+Route::get('scorecard/{id}/{tournament_id}', 'HomeController@scorecard')->name('scorecard');
 Route::get('/test', 'HomeController@test')->name('test');
 Route::get('/leaderboard', 'HomeController@allTournaments')->name('dashboardhome');
 

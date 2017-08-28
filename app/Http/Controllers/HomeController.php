@@ -41,10 +41,9 @@ class HomeController extends Controller
 
 
     }
-    public function scorecard(Request $request,$id)
+    public function scorecard(Request $request,$id,$tournament_id)
     {
-
-        $tournament_id=6;
+        $data['tournament_id']=$tournament_id;
         $data['match'] = \App\Match::where('id', $id)->with(
             ['match_players.player_gameTerm_score' => function ($q) use($id) {
                 return $q->where('match_id', $id)->where('player_term_count','!=',0);

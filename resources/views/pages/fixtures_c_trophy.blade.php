@@ -20,7 +20,7 @@
         }
         .mywebinar {
             line-height: 34px;
-           
+
         }
         .mywebinar h5{
             float: left;
@@ -83,7 +83,7 @@
                         <h5 class="text-capitalize">
                             {{$fixture['team_one']}} Vs {{$fixture['team_two']}}
                         </h5>
-                        <a href="{{route('scorecard',['slug'=>$fixture['id']])}}" class="view_scorecard_btn">Score card</a>
+                        <a href="{{route('scorecard',['slug'=>$fixture['id'],'tournament_id'=>$fixture['tournament_id']])}}" class="view_scorecard_btn">Score card</a>
                     </div>
                     <div class="col-md-12 fixtures-content-padding">
 

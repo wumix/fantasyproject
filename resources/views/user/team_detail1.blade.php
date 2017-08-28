@@ -301,7 +301,7 @@
 @section('js')
     <script>
         $('#gt_team_select').change(function () {
-            window.location = "{{route('scorecard',['id'=>$match['id']])}}?team_name=" + $(this).val();
+            window.location = "{{route('scorecard',['id'=>$match['id'],'tournament_id'=>$tournament_id])}}?team_name=" + $(this).val();
         });
     </script>
 

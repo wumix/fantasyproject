@@ -1,21 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
-    @section('title')
-        Fixtures
-        @endsection
-
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="text-center" style="color: #F9960E;">
-                        {{$fixture_details['name']}}
-                        <img src="{{getUploadsPath($fixture_details['t_logo'])}}">
-                    </h1>
-                    <hr class="light full">
-=======
 @section('title')
     Fixtures
 @endsection
@@ -69,7 +54,7 @@
         }
     </style>
 
-    @endsection
+@endsection
 
 <section>
     <div class="container">
@@ -80,43 +65,9 @@
                     {{--<img src="{{getUploadsPath($fixture_details['t_logo'])}}">--}}
                 </h1>
                 <hr class="light full">
->>>>>>> master
 
             </div>
         </div>
-<<<<<<< HEAD
-    </section>
-
-
-    <section>
-        <div class="container">
-            <div class="row">
-                <?php $i = 1;?>
-                @foreach($fixture_details['tournament_matches'] as $fixture)
-                    <div class="col-md-6 venuefont">
-
-                        <h5 class="mywebinar text-capitalize"> {{$fixture['team_one']}} Vs {{$fixture['team_two']}}</h5>
-
-                        <div class="col-md-12 fixtures-content-padding">
-                            <p style="font-size: 15px">
-                          <span class="text-left "><i class="fa fa-venus" aria-hidden="true">
-                              </i> Venue :</span>{{$fixture['venue']}}
-                            </p>
-                            <p>
-
-                                <span style="font-size: 15px" class="text-left"><i class="fa fa-calendar"
-                                                                                   aria-hidden="true"></i> Date :</span> {{formatDate($fixture['start_date'])}}
-                            </p>
-                            <p><span style="font-size: 15px" class="text-left"><i
-                                            class="fa fa-clock-o"
-                                            aria-hidden="true"></i> Date :</span> {{formatTime($fixture['start_date'])}} GMT
-                            </p>
-                        </div>
-                        <div>
-                           <a href="{{route('scorecard',['slug'=>$fixture['id']])}}">Score card</a>
-                        </div>
-
-=======
     </div>
 </section>
 
@@ -135,7 +86,6 @@
                         <a href="{{route('scorecard',['slug'=>$fixture['id'],'tournament_id'=>$fixture['tournament_id']])}}" class="view_scorecard_btn">Score card</a>
                     </div>
                     <div class="col-md-12 fixtures-content-padding">
->>>>>>> master
 
                         <div class="col-md-4">
                             <div class="fixtures_wrapper">

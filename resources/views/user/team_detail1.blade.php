@@ -191,7 +191,7 @@
                         <a href="#" class="gt_teams">{{$match['team_two']}}</a>
                         <?php
                         if (empty($match['result'])) {
-                            $match['result'] = "To Be Decided";
+                            $match['result'] = "";
                         }
                         ?>
                         <span class="gt_match_result">{{$match['result']}}</span>
@@ -235,8 +235,6 @@
                                     <th>R</th>
                                     <th>6s</th>
                                     <th>4s</th>
-
-
                                     <th>SR</th>
                                     <th>ECON</th>
 
@@ -266,7 +264,6 @@
 
                                             ?>
 
-
                                             @foreach($temp as $key=>$terms)
 
                                                 @if($t=term_in_array($key,$player['player_game_term_score']))
@@ -277,8 +274,7 @@
                                                 @endif
 
                                             @endforeach
-
-
+                                            <td></td>
                                         </tr>
                                     @endif
 

@@ -62,7 +62,7 @@
             <div class="col-lg-12">
                 <h1 class="text-center" style="color: #F9960E;">
                     {{$fixture_details['name']}}
-                    <img src="{{getUploadsPath($fixture_details['t_logo'])}}">
+                    {{--<img src="{{getUploadsPath($fixture_details['t_logo'])}}">--}}
                 </h1>
                 <hr class="light full">
 

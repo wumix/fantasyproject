@@ -87,15 +87,9 @@ class MatchesController extends Controller {
             $this->objMatch->team_2_logo=$files;
         }
         $this->objMatch->save();
-<<<<<<< HEAD
-       return redirect()
-                        ->route('editMatchForm', ['match_id' => $this->objMatch->id])
-                        ->with('status', 'Match Saved');
-=======
         return redirect()
             ->route('editMatchForm', ['match_id' => $this->objMatch->id])
             ->with('status', 'Match Saved');
->>>>>>> master
     }
 
     function editMatchForm($match_id) {

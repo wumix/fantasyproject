@@ -197,11 +197,7 @@ Cricket app">
                         {{--</a>--}}
                         {{--</li>--}}
 
-<<<<<<< HEAD
-                       <li>
-=======
                         <li>
->>>>>>> master
                             <a class="page-scroll" href="{{route('usertournamenthome')}}">
                                 Create Team
                             </a>

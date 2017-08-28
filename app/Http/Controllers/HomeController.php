@@ -41,6 +41,35 @@ class HomeController extends Controller
 
 
     }
+    public function scorecard(Request $request,$id)
+    {
+
+        $tournament_id=6;
+        $data['match'] = \App\Match::where('id', $id)->with(
+            ['match_players.player_gameTerm_score' => function ($q) use($id) {
+                return $q->where('match_id', $id)->where('player_term_count','!=',0);
+            },
+
+                'match_players.player_gameTerm_score.game_terms' => function ($q) {
+                    $q->orderBy('id', 'ASC');
+                },
+                'match_players.player_match_stats' => function ($q) use($id) {
+                    $q->where('match_id', $id);
+                },'match_players.player_actual_teams' => function ($query) use ($tournament_id) {
+                $query->where('tournament_id', $tournament_id);
+            }
+            ])
+            ->first()->toArray();
+        $team_name=$data['match']['team_one'];
+        if(!empty($request->team_name)){
+            $team_name=$request->team_name;
+        }
+        $data['team_name']=strtoupper($team_name);
+        // dd($team_name);
+        //dd($data['match']['match_players'][2]);
+        return view('user.team_detail1', $data);
+
+    }
 
     /**
      * Create a new controller instance.

@@ -28,7 +28,7 @@ class UserTeam extends Model {
     }
     public function user_leaderboard(){
 
-        return $this->hasMany('App\LeaderBoard', 'team_id', 'id');
+        return $this->hasMany('\App\LeaderBoard', 'team_id', 'id');
     }
 
 }

@@ -9,11 +9,7 @@ use Validator;
 class ForumsController extends Controller
 {
     function index(){
-<<<<<<< HEAD
-      //  $data['lists'] = \App\ForumCategory::where('is_approved',0)->with('children')->paginate(10);
-=======
         //  $data['lists'] = \App\ForumCategory::where('is_approved',0)->with('children')->paginate(10);
->>>>>>> master
         $data['lists'] = \App\ForumCategory::where('parent_id','!=',NULL)->with('children')->paginate(10);
         return view('adminlte::forums.home', $data);
     }
@@ -24,13 +20,8 @@ class ForumsController extends Controller
     function approve(Request $request){
         //dd($request->all());
 
-<<<<<<< HEAD
-       $approve=\App\ForumCategory::where('id',$request->post_id);
-       $approve->update(['is_approved'=>$request->is_approved]);
-=======
         $approve=\App\ForumCategory::where('id',$request->post_id);
         $approve->update(['is_approved'=>$request->is_approved]);
->>>>>>> master
 
 
 
@@ -46,15 +37,9 @@ class ForumsController extends Controller
         ]);
     }
     function addCategoryPost(Request $request){
-<<<<<<< HEAD
-       // dd($request->all());
-       // if($this->validator($request->all())->validate()) {
-            if(1){
-=======
         // dd($request->all());
         // if($this->validator($request->all())->validate()) {
         if(1){
->>>>>>> master
             $cat = new \App\ForumCategory;
             $cat->name = $request->name;
             $cat->is_approved = 1;
@@ -73,11 +58,7 @@ class ForumsController extends Controller
     }
     public function editCategory($id){
         $data['category'] = \App\ForumCategory::where('id',$id)->firstOrFail()->toArray();
-<<<<<<< HEAD
-     //   dd( $data['category'] );
-=======
         //   dd( $data['category'] );
->>>>>>> master
         return view('adminlte::forums.category_edit',$data);
     }
     public function postEditCategory($id,Request $request){

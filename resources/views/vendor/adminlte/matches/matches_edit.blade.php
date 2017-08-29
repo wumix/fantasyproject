@@ -72,7 +72,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Team tow</label>
+                                <label>Team two</label>
                                 <select required id="game_id" name="team_two" class="custom-select form-control">
                                     <option value="">Select</option>
 

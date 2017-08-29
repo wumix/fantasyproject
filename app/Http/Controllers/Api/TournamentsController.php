@@ -22,7 +22,7 @@ class TournamentsController extends Controller
     function index(Request $request)
     {
 //dd(apache_request_headers());
-        // dd(getGmtTime());
+       // dd(getGmtTime());
 
     }
 
@@ -199,7 +199,7 @@ class TournamentsController extends Controller
 
     public function tournament_players(Request $request)
     {
-        // dd($request->all());
+       // dd($request->all());
         $team_id = $request->team_id;
         $tournament_id = $request->tournament_id;
 
@@ -297,7 +297,7 @@ class TournamentsController extends Controller
 
     function transfer_player(Request $request)
     {
-        //  dd($request->all());
+     //  dd($request->all());
 
         $start_date = getGmtTime();
         $tournamentMatches = \App\Tournament::where('id', $request->tournament_id)->with(
@@ -321,7 +321,7 @@ class TournamentsController extends Controller
 
 
         $player_in_price = $player_in_price['player_tournaments'][0]['pivot']['player_price'];
-        if ($difference > 15 || $difference < 15) {
+          if ($difference > 15 || $difference < 15) {
 
 
             if (((getUserTotalScore(Auth::id(), $tournament_id)) + $request->player_out_price) >= ($player_in_price)) {
@@ -437,7 +437,7 @@ class TournamentsController extends Controller
         $i =1;
         foreach ($result as $key=>$val) {
 
-            $val['position']=(String)$i;
+           $val['position']=(String)$i;
             $val['name'] = $val['user']['name'];
             $val['profile_pic'] = getUploadsPath($val['user']['profile_pic']);
 
@@ -446,7 +446,7 @@ class TournamentsController extends Controller
 
 
 
-
+            
             $i++;
             $leaders['leaders'][] = $val;
 

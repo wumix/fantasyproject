@@ -1,32 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-<<<<<<< HEAD
-
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-=======
 use Carbon\Carbon;
 use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
->>>>>>> master
 
 class NewsController extends Controller
 {
     //
-<<<<<<< HEAD
-    function index(){
-        $news=\App\BlogPost::where('post_type','news')->
-        orderBy('created_at','DESC')->get();
-        foreach($news as &$new){
-            $new['content']=strip_tags($new['content']);
-        }
-        return response()->json($news);
-
-    }
-=======
     function index(Request $request){
         $news_id=$request->id;
         if(empty($news_id)) {
@@ -65,5 +48,4 @@ class NewsController extends Controller
     }
 
 
->>>>>>> master
 }

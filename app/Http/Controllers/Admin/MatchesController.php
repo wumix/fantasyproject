@@ -29,7 +29,7 @@ class MatchesController extends Controller {
     }
 
     public function addMatchForm() {
-        $this->objMatch = Tournament::all()->toArray();
+        $this->objMatch = Tournament::with('teams')->get()->toArray();
         $data['result'] = $this->objMatch;
         return view('adminlte::matches.add_match', $data);
     }
@@ -100,10 +100,16 @@ class MatchesController extends Controller {
             $matches = $matches->toArray();
         } // check this later give error trhen game id has no realted data ::handle exception
         $data['match'] = $matches;
+
         $tournamentList = Tournament::all()->toArray();
         if (!empty($tournamentList)) {
             $data['tournamentlist'] = $tournamentList;
         }
+        $tournamentTeams = \App\Team::where('tournament_id',$matches['tournament_id'])->get()->toArray();
+        if (!empty($tournamentTeams)) {
+            $data['tournamentTeams'] = $tournamentTeams;
+        }
+
 
         return view('adminlte::matches.matches_edit', $data);
     }

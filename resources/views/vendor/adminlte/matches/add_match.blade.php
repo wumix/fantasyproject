@@ -33,14 +33,34 @@ Games
                     </div>
                     <div class="form-group">
                         <label>Team One</label>
-                        <input required value="{!! old('name') !!}" class="form-control" id="name"
-                               placeholder="Enter First Team Name" type="text" name="team_one">
+                        <select required id="game_id" name="team_one" class="custom-select form-control">
+                            <option value="">Select</option>
+
+                            @foreach($row['teams'] as $team)
+                            <option value="{{$row['name']}}">{{$team['name']}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label>Team Two</label>
-                        <input required value="{!! old('name') !!}" class="form-control" id="name"
-                               placeholder="Enter Second Team Name" type="text" name="team_two">
+                        <label>Team One</label>
+                        <select required id="game_id" name="team_two" class="custom-select form-control">
+                            <option value="">Select</option>
+
+                            @foreach($row['teams'] as $team)
+                            <option value="{{$row['name']}}">{{$team['name']}}</option>
+                            @endforeach
+                        </select>
                     </div>
+                    {{--<div class="form-group">--}}
+                        {{--<label>Team One</label>--}}
+                        {{--<input required value="{!! old('name') !!}" class="form-control" id="name"--}}
+                               {{--placeholder="Enter First Team Name" type="text" name="team_one">--}}
+                    {{--</div>--}}
+                    {{--<div class="form-group">--}}
+                        {{--<label>Team Two</label>--}}
+                        {{--<input required value="{!! old('name') !!}" class="form-control" id="name"--}}
+                               {{--placeholder="Enter Second Team Name" type="text" name="team_two">--}}
+                    {{--</div>--}}
                     <div class="form-group">
                         <label>Venue</label>
                         <input required value="{!! old('name') !!}" class="form-control" id="name"

@@ -34,7 +34,7 @@ class TournamentsController extends Controller
         $tournamnets['previous'] = [];
         $tournamnets['current'] = [];
         $tournamnets['upcoming'] = [];
-        $data = $this->tournamnetObj->where('game_id', $game_id)->orderBy('start_date', 'DESC')->get()->toArray();
+        $data = $this->tournamnetObj->where('is_active',1)->where('game_id', $game_id)->orderBy('start_date', 'DESC')->get()->toArray();
 
 
         foreach ($data as $tour) {

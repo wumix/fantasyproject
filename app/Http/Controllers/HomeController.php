@@ -37,33 +37,31 @@ class HomeController extends Controller
 //        }
 
 
-
-
-
     }
-    public function scorecard(Request $request,$id,$tournament_id)
+
+    public function scorecard(Request $request, $id, $tournament_id)
     {
-        $data['tournament_id']=$tournament_id;
+        $data['tournament_id'] = $tournament_id;
         $data['match'] = \App\Match::where('id', $id)->with(
-            ['match_players.player_gameTerm_score' => function ($q) use($id) {
-                return $q->where('match_id', $id)->where('player_term_count','!=',0);
+            ['match_players.player_gameTerm_score' => function ($q) use ($id) {
+                return $q->where('match_id', $id)->where('player_term_count', '!=', 0);
             },
 
                 'match_players.player_gameTerm_score.game_terms' => function ($q) {
                     $q->orderBy('id', 'ASC');
                 },
-                'match_players.player_match_stats' => function ($q) use($id) {
+                'match_players.player_match_stats' => function ($q) use ($id) {
                     $q->where('match_id', $id);
-                },'match_players.player_actual_teams' => function ($query) use ($tournament_id) {
+                }, 'match_players.player_actual_teams' => function ($query) use ($tournament_id) {
                 $query->where('tournament_id', $tournament_id);
-            },'match_players.player_roles'
+            }, 'match_players.player_roles'
             ])
             ->first()->toArray();
-        $team_name=$data['match']['team_one'];
-        if(!empty($request->team_name)){
-            $team_name=$request->team_name;
+        $team_name = $data['match']['team_one'];
+        if (!empty($request->team_name)) {
+            $team_name = $request->team_name;
         }
-        $data['team_name']=strtoupper($team_name);
+        $data['team_name'] = strtoupper($team_name);
         // dd($team_name);
         //dd($data['match']['match_players'][0]);
         return view('user.team_detail1', $data);
@@ -90,7 +88,7 @@ class HomeController extends Controller
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
 
-      //  dd($data['upcommingTour']->toArray());
+        //  dd($data['upcommingTour']->toArray());
         return view('user.dashboard.newdash', $data);
     }
 
@@ -126,34 +124,20 @@ class HomeController extends Controller
 
     public function index()
     {
-       // echo(getGmtTime());
-//        $objTourmament = \App\Tournament::all()->sortBy("start_date")->
-//        where('end_date', '>', getGmtTime());
-        //dd($objTourmament->toArray());
+
 
         $objTourmament = \App\Tournament::orderBy("start_date",
             'DESC')->
         Where('end_date', '>=', getGmtTime())->get();
-        $data['tournaments_list'] = $objTourmament->toArray(); //list of active
-       // dd($objTourmament->toArray());
-        //dd($data['tournaments_list']);
-        //  dd($tournaments_list);
-        //dd($tournaments_list);
-        //dd(  $data['tournaments_list']);
+        $data['tournaments_list'] = $objTourmament->where('is_active',1)->toArray(); //list of active
         $tournaments_data = [];
         foreach ($data['tournaments_list'] as $key => $tournament) {
             $data['tournaments_list'][$key] = $tournament;
-            $data['tournaments_list'][$key]['leaderboard'] = \App\Leaderboard::where('tournament_id', $tournament['id'])->where('score','>',0)->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
+            $data['tournaments_list'][$key]['leaderboard'] = \App\Leaderboard::where('tournament_id', $tournament['id'])->where('score', '>', 0)->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
             $data['tournaments_list'][$key]['nextmatch'] = \App\Match::getNextMatch($tournament['id']);
         }
-    //  dd($data['tournaments_list']);
-
-        // $data['tournaments_list']['leaderboard']=\App\Leaderboard::where('tournament_id', config('const.tournament_id'))->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
         $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
         $data['upcomming_tournaments_list'] = $upcommingTour->toArray(); //upcomming tournament of active
-        // $data['matches'] = \App\Match::getNextMatch();
-        //$data['matches']=$data['matches']->toarray();
-        // $data['leaders'] = \App\Leaderboard::where('tournament_id', config('const.tournament_id'))->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
         $data['news'] = \App\BlogPost::where('post_type', 'news')->take(3)->orderBy('id', 'DESC')->get()->toArray();
 
         return view('home', $data);
@@ -167,25 +151,19 @@ class HomeController extends Controller
         return view('pages.leaderboard', $data);
 
     }
+
     function allTournaments()
     {
 
         $datetime = new \DateTime();
         $date = $datetime->format('Y-m-d H:i:s');
-        $objTourmament = \App\Tournament::where('is_active',1)->get()->sortByDesc('start_date');
+        $objTourmament = \App\Tournament::where('is_active', 1)->get()->sortByDesc('start_date');
         $data['tournaments_list'] = $objTourmament->toArray();
-       // dd($data['tournaments_list']);
         return view('user.dashboard.home', $data);
 
     }
 
 
-//    public function leaderboard()
-//    {
-//        $data['leaders'] = \App\Leaderboard::with('user', 'user_team')->take(21)->orderBy('score', 'DESC')->get()->toArray();
-//        return view('pages.leaderboard', $data);
-//
-//    }
 
     public function fixturesDetial($tournament_id)
     {
@@ -278,14 +256,13 @@ class HomeController extends Controller
 
     public function howPlay()
     {
-        $data['tournament'] = \App\Tournament::where('id',6)
-            ->with(['tournament_game.game_actions.game_terms', 'game_term_points'=>function($query){
-                $query->orderBy('id','DESC');
+        $data['tournament'] = \App\Tournament::where('id', 6)
+            ->with(['tournament_game.game_actions.game_terms', 'game_term_points' => function ($query) {
+                $query->orderBy('id', 'DESC');
             }])
             ->firstOrFail()
             ->toArray();
         $data['game_actions'] = $data['tournament']['tournament_game']['game_actions'];
-        //dd($data['tournament']);
         return view('pages.how-to-play', $data);
     }
 

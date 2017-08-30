@@ -33,7 +33,7 @@ class NewsController extends Controller
 
             }
         }else{
-            $news = \App\BlogPost::where('post_type', 'news')->where('id',$news_id)->first();
+            $news = \App\BlogPost::where('id',$news_id)->first();
             $news['content'] = strip_tags($news['content']);
             $news['content'] = stripslashes($news['content']);
             $str = $news['content'];

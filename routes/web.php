@@ -228,7 +228,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::get('/players/{match_id}', 'Admin\MatchesController@getMatchPlayers')->name('showMatchPlayers');
             Route::get('/add-player-score/match/{match_id}/player/{player_id}', 'Admin\MatchesController@playerMatchScore')->name('addPlayerMatchScore');
             Route::post('/addscores/{match_id}/{player_id}', 'Admin\MatchesController@postAddMatchScore')->name('postPlayerMatchScore');
-            Route::post('/addscores/{match_id}/{player_id}', 'Admin\MatchesController@postAddMatchStats')->name('postPlayerMatchStats');
+            Route::post('/addstats/{match_id}/{player_id}', 'Admin\MatchesController@postAddMatchStats')->name('postPlayerMatchStats');
             Route::get('/add-match-players/{match_id}', 'Admin\MatchesController@addMatchPlayerForm')->name('showAddMatchPlayerForm');
             Route::post('/add-match-players/{match_id}', 'Admin\MatchesController@postAddMatchPlayers')->name('postAddMatchPlayers');
             Route::get('/addTeamtoMatch/{match_id}/{tournament_id}', 'Admin\MatchesController@addTeamToMatchForm')->name('addTeamToMatch');

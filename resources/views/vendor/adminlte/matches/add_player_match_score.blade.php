@@ -62,13 +62,13 @@
                         <button class="btn btn-success">Add</button>
                     </div>
                     {!! Form::close() !!}
-                    {!! Form::open(['method'=>'POST','url' => route('postPlayerMatchStats',['match_id'=>$match_id, 'player_id'=>$player['id']]),'files'=>true
+                    {!! Form::open(['url' => route('postPlayerMatchStats',['match_id'=>$match_id, 'player_id'=>$player['id']]),'files'=>true
                     ]) !!}
 
                     <div class="form-group">
                         <label>Details</label>
                         <input type="hidden" name="player_id" value="{{$player['id']}}">
-                        <input type="text" class="form-control" name="details" value="{{player_stat}}" placeholder="Enter Details here">
+                        <input type="text" class="form-control" name="details" value="{{$player_stat}}" placeholder="Enter Details here">
                     </div>
                     <div class="form-group">
                         <button class="btn btn-success">Add</button>

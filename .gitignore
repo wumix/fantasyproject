@@ -11,6 +11,4 @@
 Homestead.json
 Homestead.yaml
 composer.lock
-.env
-composer.lock
 composer.json

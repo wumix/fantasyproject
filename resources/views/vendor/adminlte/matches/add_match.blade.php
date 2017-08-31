@@ -37,7 +37,7 @@ Games
                             <option value="">Select</option>
 
                             @foreach($row['teams'] as $team)
-                            <option value="{{$row['name']}}">{{$team['name']}}</option>
+                            <option value="{{$team['name']}}">{{$team['name']}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -47,7 +47,7 @@ Games
                             <option value="">Select</option>
 
                             @foreach($row['teams'] as $team)
-                            <option value="{{$row['name']}}">{{$team['name']}}</option>
+                            <option value="{{$team['name']}}">{{$team['name']}}</option>
                             @endforeach
                         </select>
                     </div>

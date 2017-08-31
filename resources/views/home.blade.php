@@ -191,8 +191,8 @@
                                 <tr>
                                     <th class="border-r th1">Name</th>
                                     <th class="border-r">Venue</th>
-                                    <th class="border-r">Started At</th>
-                                    <th class="th2">Ending At</th>
+                                    <th class="border-r">Starts</th>
+                                    <th class="th2">Ends</th>
                                 </tr>
                                 </thead>
                                 <tbody class="main-taible-body">

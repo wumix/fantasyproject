@@ -679,7 +679,7 @@
     <script>
         $('#header').backstretch([
 
-
+            {url: '{{URL::to('assets-new/img/12238967.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/gamithon-Cpl-1.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/india-srilanka.jpg')}}', fade: 500},
 

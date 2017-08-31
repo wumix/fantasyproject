@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{--{{dd($leaders)}}--}}
 @section('title')
     Leaderboards
 @stop
@@ -9,8 +9,25 @@
             width: 100%;
             box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.21);
             display: inline-block;
-            padding: 20px 20px;
+            padding: 12px 20px 5px;
             margin-bottom: 22px;
+        }
+
+        .leader_bord_section_wrapper:hover {
+            background: #92B713;
+            cursor: pointer;
+        }
+
+        .leader_bord_section_wrapper:hover .leder_cirlcle_jhon_text,
+        .leader_bord_section_wrapper:hover .leder_cirlcle_jhon_text_num,
+        .leader_bord_section_wrapper:hover .leder_smaal_text,
+        .leader_bord_section_wrapper:hover .leader_curnt_text,
+        .leader_bord_section_wrapper:hover .leder_cirlcle_jhon_text_second,
+        .leader_bord_section_wrapper:hover .leder_cirlcle_jhon_text_num_second,
+        .leader_bord_section_wrapper:hover .leder_smaal_text_second,
+        .leader_bord_section_wrapper:hover .leder_cirlcle_rank_text_second,
+        .leader_bord_section_wrapper:hover .leder_cirlcle_rank_text{
+            color: #fff;
         }
 
         .leder_cirlcle_img {
@@ -35,6 +52,7 @@
         .leder_cirlcle_jhon_text {
             font-size: 20px;
             color: #92b713;
+            font-weight: 600;
         }
 
         .leder_cirlcle_jhon_text_num {
@@ -53,27 +71,31 @@
         }
 
         .leder_cirlcle_rank_text {
-            font-family: "Open Sans";
+            font-family: "Open Sans", sans-serif;
             font-size: 120px;
             color: #a8a8a8;
-            position: relative;
+            display: inline-block;
+            line-height: 105px;
         }
 
         .leder_cirlcle_rank_text span {
+            display: block;
             font-size: 12px;
-            position: absolute;
-            bottom: -6px;
-            right: 17px;
+            line-height: initial !important;
+            text-align: right;
+            padding-right: 26px;
+            line-height: initial !important;
         }
 
         .leader_curnt_text {
             font-size: 28px;
             color: #f6980e;
-            line-height: 200px;
+            line-height: 128px;
+            font-weight: 600;
         }
 
         .area_leader {
-            margin-top: 58px;
+            margin-top: 20px;
         }
 
         .section_leader_secnd {
@@ -84,7 +106,7 @@
         .back_white_leader {
             box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.35);
             width: 48%;
-            padding: 25px 0;
+            padding: 10px 0;
             margin-bottom: 20px;
         }
 
@@ -139,19 +161,20 @@
             font-family:"Open Sans";
             font-size: 69px;
             color: #a8a8a8;
-            position: relative;
+            display: inline-block;
+            line-height: 70px;
         }
 
         .leder_cirlcle_rank_text_second span {
             font-size: 12px;
-            position: absolute;
-            bottom: -6px;
-            right: 17px;
+            display: block;
+            line-height: 12px;
+            text-align: right;
         }
 
         .leader_small_sec {
             box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.35);
-            padding: 22px 0;
+            padding: 5px 0;
             width: 32%;
             margin-right: 2%;
             margin-bottom: 20px;
@@ -159,26 +182,23 @@
         }
 
         .area_leader_second {
-            margin-top: 30px;
+            margin-top: 8px;
         }
 
         .cnter_liez {
-            width: 100%;
-            display: inline-block;
-            width: 150px;
-            height: 150px;
-            line-height: 150px;
+            display: block;
             border-radius: 50%;
+            text-align: center;
         }
 
         .cnter_liez img {
             width: 100%;
             display: inline-block;
-            width: 150px;
-            height: 150px;
-            line-height: 150px;
+            width: 130px;
+            height: 130px;
+            line-height: 130px;
             border-radius: 50%;
-            border: 9px solid #fff;
+            border: 3px solid #fff;
             box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.35);
         }
 
@@ -190,7 +210,14 @@
             border-radius: 50%;
             border: 3px solid #fff;
             box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.35);
-            margin-top: 28px;
+            margin-top: 12px;
+        }
+        .leader_cup_image {
+            display: inline-block;
+            text-align: center;
+        }
+        .leader_cup_image img{
+            width: 140px;
         }
         .leader_small_sec:nth-child(3n) {
             margin-right: 0;
@@ -339,9 +366,9 @@
 
             @if(count($leaders)>3)
                 <div class="col-md-12">
-                    <div class="leader_bord_section">
+                    <div class="leader_bord_section leader_bord_section_wrapper">
 
-                        <div class="col-md-6">
+                        <div class="col-md-7">
                             <div class="col-md-4 col-sm-12">
                                 <div class="cnter_liez">
                                     <img class="img-responsive "
@@ -375,12 +402,12 @@
                             </div>
 
                         </div>
-                        <div class="col-md-6 no-padding  area_heandel">
+                        <div class="col-md-5 no-padding  area_heandel">
                             <div class="pull-left">
                                 <span class="leader_curnt_text vcenter">CURRENT LEADER</span>
                             </div>
                             <div class="pull-right">
-                                <span class=""><img src={{URL::to('/img/leader_bord_cup.png')}} alt=""/></span>
+                                <span class="leader_cup_image"><img src={{URL::to('/img/leader_bord_cup.png')}} alt=""/></span>
                             </div>
                             <div class="clear clearfix"></div>
                         </div>
@@ -389,7 +416,7 @@
 
 
                 <div class="section_leader_secnd col-md-12">
-                    <div class="col-md-6 col-sm-12 back_white_leader  pull-left">
+                    <div class="col-md-6 col-sm-12 back_white_leader leader_bord_section_wrapper pull-left">
                         <div class="col-md-12 pull-left">
                             <div class="col-md-4">
                                 <div class="cnter_liez">
@@ -420,7 +447,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-12 back_white_leader  pull-right">
+                    <div class="col-md-6 col-sm-12 back_white_leader leader_bord_section_wrapper pull-right">
                         <div class="col-md-12">
                             <div class="col-md-4">
                                 <div class="cnter_liez">
@@ -430,8 +457,8 @@
                                     @else
                                     <?php
                                     $check=explode(".",$leaders[2]['user']['profile_pic']);
-                                   // if($check[1]=="facebook"){
-                                            if(1){
+                                    // if($check[1]=="facebook"){
+                                    if(1){
                                         echo $leaders[2]['user']['profile_pic'];
                                     }else{
                                         echo Croppa::url(getUploadsPath($leaders[2]['user']['profile_pic']),156,134);
@@ -462,7 +489,7 @@
                     @foreach($leaders as $key=>$row)
 
                         <?php if($i>=3){?>
-                        <div class="col-md-4 itemsz col-sm-12 leader_small_sec no-padding">
+                        <div class="col-md-4 itemsz col-sm-12 leader_small_sec leader_bord_section_wrapper no-padding">
                             <div class="col-md-3 ">
                                 <div class="cnter_liez1">
                                     <img class="img-responsive " src="{{getUploadsPath($row['user']['profile_pic'])}}"

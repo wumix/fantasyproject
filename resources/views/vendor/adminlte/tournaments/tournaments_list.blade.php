@@ -50,9 +50,7 @@
                                             <a href="{{route('starttournament',['tournament_id'=>$row['id']])}}" class="btn btn-danger">
                                                 <i class="fa fa-times"></i> start tournamnet
                                             </a>
-                                            <a href="#" class="btn btn-danger">
-                                                <i class="fa fa-times"></i> Delete
-                                            </a>
+                                            
                                         </td>
 
 

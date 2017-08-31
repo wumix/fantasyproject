@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Leaderboard
+    Leaderboards
 @stop
 @section('css')
     <style>

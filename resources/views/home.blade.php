@@ -462,7 +462,54 @@
     <section id="portfolio">
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Jamaica Tallawahs vs S.N Patriots
+                                </div>
+                                <div class="project-name">
+                                    Jamaica Tallawahs won by 41 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS KKR">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Jamaica Tallawahs vs S.N Patriots
+                                </div>
+                                <div class="project-name">
+                                    Jamaica Tallawahs won by 41 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt="KXIP VS KKR">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Jamaica Tallawahs vs S.N Patriots
+                                </div>
+                                <div class="project-name">
+                                    Jamaica Tallawahs won by 41 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt=" DD VS GL">
@@ -558,54 +605,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    India Vs Sri lanka
-                                </div>
-                                <div class="project-name">
-                                    India won by 3 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    India Vs Sri lanka
-                                </div>
-                                <div class="project-name">
-                                    India won by 3 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt="KXIP VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    India Vs Sri lanka
-                                </div>
-                                <div class="project-name">
-                                    India won by 3 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
 
 

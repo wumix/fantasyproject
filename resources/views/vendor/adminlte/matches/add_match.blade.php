@@ -40,7 +40,7 @@ Games
                             <option value="{{$team['name']}}">{{$team['name']}}</option>
                             @endforeach
                         </select>
-                        
+
                     </div>
                     <div class="form-group">
                         <label>Team One</label>

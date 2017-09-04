@@ -468,7 +468,7 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Trinbago Knight Riders vs Brabados Tridents
+                                    Trinbago Knight Riders vs Barbados Tridents
                                 </div>
                                 <div class="project-name">
                                     Tridents won by 16 runs
@@ -485,7 +485,7 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Trinbago Knight Riders vs Brabados Tridents
+                                    Trinbago Knight Riders vs Barbados Tridents
                                 </div>
                                 <div class="project-name">
                                     Tridents won by 16 runs
@@ -502,7 +502,7 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Trinbago Knight Riders vs Brabados Tridents
+                                    Trinbago Knight Riders vs Barbados Tridents
                                 </div>
                                 <div class="project-name">
                                     Tridents won by 16 runs
@@ -518,10 +518,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Jamaica Tallawahs vs S.N Patriots
+                                    Jamaica Tallawahs vs Amazon Warriors
                                 </div>
                                 <div class="project-name">
-                                    Jamaica Tallawahs won by 41 runs
+                                    Amazon Won by 9 wickets
                                 </div>
                             </div>
                         </div>
@@ -534,10 +534,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Jamaica Tallawahs vs S.N Patriots
+                                    Jamaica Tallawahs vs Amazon Warriors
                                 </div>
                                 <div class="project-name">
-                                    Jamaica Tallawahs won by 41 runs
+                                    Amazon Won by 9 wickets
                                 </div>
                             </div>
                         </div>
@@ -551,10 +551,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Jamaica Tallawahs vs S.N Patriots
+                                    Jamaica Tallawahs vs Amazon Warriors
                                 </div>
                                 <div class="project-name">
-                                    Jamaica Tallawahs won by 41 runs
+                                   Amazon Won by 9 wickets
                                 </div>
                             </div>
                         </div>

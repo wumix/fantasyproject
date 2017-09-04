@@ -513,8 +513,8 @@
                 </div>
 
                 <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/401.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/401.jpg" class="img-responsive" alt="KXIP VS MI">
+                    <a href="img/portfolio/thumbnails/501.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/501.jpg" class="img-responsive" alt="KXIP VS MI">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -529,8 +529,8 @@
                 </div>
 
                 <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/402.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/402.jpg" class="img-responsive" alt="KXIP VS KKR">
+                    <a href="img/portfolio/thumbnails/502.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/502.jpg" class="img-responsive" alt="KXIP VS KKR">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -546,8 +546,8 @@
 
 
                 <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/403.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/403.jpg" class="img-responsive" alt="KXIP VS KKR">
+                    <a href="img/portfolio/thumbnails/503.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/503.jpg" class="img-responsive" alt="KXIP VS KKR">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">

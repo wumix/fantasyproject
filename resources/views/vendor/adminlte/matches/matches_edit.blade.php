@@ -61,24 +61,36 @@
                                 <input name="venue" value="{{$match['venue']}}" class="form-control" type="text">
                             </div>
                             <div class="form-group">
-                                <label>Team one</label>
+                                <label>Team One</label>
+                                <select required id="game_id" name="team_one" class="custom-select form-control">
+                                    <option value="">Select</option>
 
-                                <input  class="form-control" name="team_one" value="{{$match['team_one']}}"
-                                        type="text" placeholder=""/>
+                                    @foreach($tournamentTeams as $team)
+                                        <option <?php echo ($match['team_one'] == $team['name']) ? 'selected' : '' ?>
+                                                value="{{$team['name']}}">{{$team['name']}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label>Team Two</label>
+                                <label>Team two</label>
+                                <select required id="game_id" name="team_two" class="custom-select form-control">
+                                    <option value="">Select</option>
 
-                                <input  class="form-control" name="team_two" value="{{$match['team_two']}}"
-                                        type="text" placeholder=""/>
+                                    @foreach($tournamentTeams as $team)
+                                        <option <?php echo ($match['team_two'] == $team['name']) ? 'selected' : '' ?>
+                                                value="{{$team['name']}}">{{$team['name']}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Team 1 Logo</label>
                                 <input  name="team_1_logo" type="file"/>
+                                <img src="{{getUploadsPath($match['team_1_logo'])}}">
                             </div>
                             <div class="form-group">
                                 <label>Team 2 logo</label>
                                 <input  name="team_2_logo" type="file"/>
+                                <img src="{{getUploadsPath($match['team_2_logo'])}}">
                             </div>
                             <div class="form-group">
                                 <label>Result</label>

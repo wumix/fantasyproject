@@ -32,13 +32,26 @@ function getUserTotalScore($userid,$tournament_id)
 function has_user_team($user_id,$tournamnet_id)
 {
 
-    $userteam = \App\UserTeam::where('user_id', $user_id)->where('tournament_id',$tournamnet_id)->first();
+
+
+    $userteam = \App\UserTeam::where('user_id', $user_id)->where(
+        'tournament_id',$tournamnet_id)->first();
+
     ///dd($userteam);
     if ($userteam == NULL) {
         return FALSE;
     } else {
         return $userteam;
     }
+}
+function is_active_tournament($tournamnet_id){
+    $tournamnet=\APP\Tournament::where('is_active',1)->where('id',$tournamnet_id)->first();
+    if ($tournamnet == NULL) {
+        return FALSE;
+    } else {
+        return true;
+    }
+
 }
 
 function has_user_team_ipl($user_id)

@@ -29,12 +29,25 @@ class MatchesController extends Controller {
     }
 
     public function addMatchForm() {
-        $this->objMatch = Tournament::all()->toArray();
+        $this->objMatch = Tournament::with('teams')->get()->toArray();
         $data['result'] = $this->objMatch;
+       //dd( $data['result'] );
         return view('adminlte::matches.add_match', $data);
+    }
+    public function tournament_teams_ajax(Request $request) {
+        $tournamentTeams = \App\Team::where('tournament_id',$request->tournament_id)->get()->toArray();
+
+        if (!empty($tournamentTeams)) {
+            $data['tournamentTeams'] = $tournamentTeams;
+        }
+
+
+        return response()->json($tournamentTeams);
+
     }
     public function addTeamToMatchForm($matchid,$tournament_id){
         $teams=\App\Team::where('tournament_id',$tournament_id)->get()->toArray();
+
         $data=[];
         if(empty($teams)){
             abort(404);
@@ -75,35 +88,45 @@ class MatchesController extends Controller {
             ->with('status', 'Teams Added sucessfully');
     }
     public function addMatch(Request $request) {
-
+//dd($request->all());
 
         $this->objMatch->fill($request->all());
         if($request->hasFile('team_1_logo')){
             $files = uploadInputs($request->file('team_1_logo'), 'tournament_logos');
             $this->objMatch->team_1_logo=$files;
+
         }
         if($request->hasFile('team_2_logo')){
-            $files = uploadInputs($request->file('team_2_logo'), 'tournament_logos');
-            $this->objMatch->team_2_logo=$files;
+            $files1 = uploadInputs($request->file('team_2_logo'), 'tournament_logos');
+            $this->objMatch->team_2_logo=$files1;
         }
         $this->objMatch->save();
+
         return redirect()
             ->route('editMatchForm', ['match_id' => $this->objMatch->id])
             ->with('status', 'Match Saved');
     }
 
-    function editMatchForm($match_id) {
-//        echo $match_id;
-//        die;
+    function editMatchForm($match_id,Request $request) {
+
         $matches = Match::where('id', $match_id)->with('match_tournament')->first();
         if (!empty($matches)) {
             $matches = $matches->toArray();
         } // check this later give error trhen game id has no realted data ::handle exception
         $data['match'] = $matches;
+
+//       dd($match_id);
         $tournamentList = Tournament::all()->toArray();
         if (!empty($tournamentList)) {
             $data['tournamentlist'] = $tournamentList;
         }
+
+        $tournamentTeams = \App\Team::where('tournament_id',$matches['tournament_id'])->get()->toArray();
+
+        if (!empty($tournamentTeams)) {
+            $data['tournamentTeams'] = $tournamentTeams;
+        }
+
 
         return view('adminlte::matches.matches_edit', $data);
     }
@@ -113,11 +136,11 @@ class MatchesController extends Controller {
         $match->fill($request->all());
         if($request->hasFile('team_1_logo')){
             $files = uploadInputs($request->file('team_1_logo'), 'tournament_logos');
-            $this->objMatch->team_1_logo=$files;
+            $match->team_1_logo=$files;
         }
         if($request->hasFile('team_2_logo')){
-            $files = uploadInputs($request->file('team_2_logo'), 'tournament_logos');
-            $this->objMatch->team_2_logo=$files;
+            $files1 = uploadInputs($request->file('team_2_logo'), 'tournament_logos');
+            $match->team_2_logo=$files1;
         }
         $match->save();
         return redirect()->route('editMatchForm', ['match_id' => $match_id])->with('status', 'Match Updated');

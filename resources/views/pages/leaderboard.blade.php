@@ -407,7 +407,7 @@
                                 <span class="leader_curnt_text vcenter">CURRENT LEADER</span>
                             </div>
                             <div class="pull-right">
-                                <span class="leader_cup_image"><img src={{URL::to('/img/leader_bord_cup.png')}} alt=""/></span>
+                                <span class="leader_cup_image"><img src={{URL::to('/img/leader_bord_cu.png')}} alt=""/></span>
                             </div>
                             <div class="clear clearfix"></div>
                         </div>

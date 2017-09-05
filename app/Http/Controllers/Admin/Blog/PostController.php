@@ -61,17 +61,17 @@ class PostController extends Controller
 
     public function postAddBlogPost(Request $request, $blog_id = NULL)
     {
-
-      //  dd($request->all());
+//echo $blog_id;
+//  dd($request->all());
         $this->validator($request->all())->validate();
-        if ($request->post_type == "page") {
+        if ($request->post_type == "post") {
             $blogPost = \App\BlogPost::updateOrCreate(
-                ['id' => $blog_id, 'post_type' => $request->post_type], $request->all()
+                ['id' => $blog_id], $request->all()
             );
         }
         if ($request->post_type == "news") {
             $blogPost = \App\BlogPost::updateOrCreate(
-                ['id' => $blog_id, 'post_type' => $request->post_type], $request->all()
+                ['id' => $blog_id], $request->all()
             );
         }
         else {
@@ -88,8 +88,10 @@ class PostController extends Controller
             ->with('status', $flashMessage);
     }
 
+
     public function editBlogPost(Request $request, $blog_id)
     {
+
         $data['categories'] = \App\BlogCategory::all()->toArray();
         $data['blog'] = \App\BlogPost::where('id', $blog_id)->with('post_category')->firstOrFail()->toArray();
 

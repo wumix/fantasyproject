@@ -59,7 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @section('scripts')
         @include('adminlte::layouts.partials.scripts')
         @show
-            
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
                 @yield('js')
 

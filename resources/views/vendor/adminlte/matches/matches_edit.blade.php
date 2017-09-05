@@ -85,10 +85,12 @@
                             <div class="form-group">
                                 <label>Team 1 Logo</label>
                                 <input  name="team_1_logo" type="file"/>
+                                <img src="{{getUploadsPath($match['team_1_logo'])}}">
                             </div>
                             <div class="form-group">
                                 <label>Team 2 logo</label>
                                 <input  name="team_2_logo" type="file"/>
+                                <img src="{{getUploadsPath($match['team_2_logo'])}}">
                             </div>
                             <div class="form-group">
                                 <label>Result</label>

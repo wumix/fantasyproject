@@ -671,6 +671,7 @@
                         <div class="abot_me_sec1">
                     <span class="text_abot_me text-center">
                         InActive Challenges
+
                     </span>
                             @include('adminlte::layouts.form_errors')
 

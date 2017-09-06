@@ -45,7 +45,7 @@ class RegisterController extends Controller
         $data['referral_key'] =[];
     $data['referral_key'] = $request->referral_key;
 
-<<<<<<< HEAD
+
 
         if (empty($request->referral_key)) {
             $data['referral_key'] = NULL;
@@ -55,10 +55,9 @@ class RegisterController extends Controller
         }
 
 
-        return view('auth.register');
-=======
+
         return view('auth.register',$data);
->>>>>>> master
+
     }
 
     /**
@@ -163,23 +162,7 @@ class RegisterController extends Controller
             );
             \App\UserPointsScored::insert($array);
             if (!empty($request->referral_key)) {
-<<<<<<< HEAD
-                //dd('go');
-                $refferal_points = \App\UserAction::where('action_key', 'referral_signup')->first()->action_points;
-                $user_id = \App\User::where('referral_key', $request->referral_key)->first();
 
-
-                $array = array(
-                    ['tournament_id' => $row['id'], 'action_key' =>
-                        'referral_signup', 'user_id' => $user_id['id'], 'points_scored' => $refferal_points]
-                );
-                \App\UserPointsScored::insert($array);
-                \Mail::to($user_id['email'])->send(new \App\Mail\RefferalMail($user_id['name']));
-            }
-        }
-
-
-=======
 
 
                 $refferal_points = \App\UserAction::where('action_key', 'referral_signup')->first()->action_points;
@@ -200,7 +183,7 @@ class RegisterController extends Controller
         \Mail::to($user->email)->send(new \App\Mail\SignUp($user->name));
 
 
->>>>>>> master
+
     }
 
 }

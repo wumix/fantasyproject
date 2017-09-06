@@ -463,6 +463,54 @@
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/501.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/501.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    S.N Patriots v Trinbago Knight Riders
+                                </div>
+                                <div class="project-name">
+                                    S.N Patriots won by 38 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/502.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/502.jpg" class="img-responsive" alt="KXIP VS KKR">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    S.N Patriots v Trinbago Knight Riders
+                                </div>
+                                <div class="project-name">
+                                    S.N Patriots won by 38 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/503.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/503.jpg" class="img-responsive" alt="KXIP VS KKR">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    S.N Patriots v Trinbago Knight Riders
+                                </div>
+                                <div class="project-name">
+                                    S.N Patriots won by 38 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/601.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/601.jpg" class="img-responsive" alt=" DD VS GL">
                         <div class="portfolio-box-caption">
@@ -558,71 +606,6 @@
                         </div>
                     </a>
                 </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/501.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/501.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Jamaica Tallawahs vs Amazon Warriors
-                                </div>
-                                <div class="project-name">
-                                    Amazon Won by 9 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/502.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/502.jpg" class="img-responsive" alt="KXIP VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Jamaica Tallawahs vs Amazon Warriors
-                                </div>
-                                <div class="project-name">
-                                    Amazon Won by 9 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/503.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/503.jpg" class="img-responsive" alt="KXIP VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Jamaica Tallawahs vs Amazon Warriors
-                                </div>
-                                <div class="project-name">
-                                   Amazon Won by 9 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             </div>
         </div>

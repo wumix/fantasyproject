@@ -336,10 +336,10 @@
 
                                         @if(check_image($arr))
                                             <img class="media-object"
-                                             src="/uploads/source/thumb{{end($arr)}}" alt="{{end($arr)}}">
-                                            @else
-                                                <img class="media-object"
-                                                     src="/uploads/source/defualt-img.jpg" alt="{{end($arr)}}">
+                                                 src="/uploads/source/thumb{{end($arr)}}" alt="{{end($arr)}}">
+                                        @else
+                                            <img class="media-object"
+                                                 src="/uploads/source/defualt-img.jpg" alt="{{end($arr)}}">
 
                                         @endif
 
@@ -463,6 +463,103 @@
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt=" DD VS GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Guyana Amazon Warriors v Jamaica Tallawahs
+                                </div>
+                                <div class="project-name">
+                                    Guyana Amazon Warriors won by 5 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Guyana Amazon Warriors v Jamaica Tallawahs
+                                </div>
+                                <div class="project-name">
+                                    Guyana Amazon Warriors won by 5 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="../img/portfolio/thumbnails/203.jpg" class="portfolio-box">
+                        <img src="../img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="KXIP VS KKR">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Guyana Amazon Warriors v Jamaica Tallawahs
+                                </div>
+                                <div class="project-name">
+                                    Guyana Amazon Warriors won by 5 wickets
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/701.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/701.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    S.N Patriots v Trinbago Knight Riders
+                                </div>
+                                <div class="project-name">
+                                    S.N Patriots won by 38 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/702.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/702.jpg" class="img-responsive" alt="KXIP VS KKR">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    S.N Patriots v Trinbago Knight Riders
+                                </div>
+                                <div class="project-name">
+                                    S.N Patriots won by 38 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-4  col-sm-6">
+                    <a href="img/portfolio/thumbnails/703.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/703.jpg" class="img-responsive" alt="KXIP VS KKR">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    S.N Patriots v Trinbago Knight Riders
+                                </div>
+                                <div class="project-name">
+                                    S.N Patriots won by 38 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/601.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/601.jpg" class="img-responsive" alt=" DD VS GL">
                         <div class="portfolio-box-caption">
@@ -507,121 +604,6 @@
                         </div>
                     </a>
                 </div>
-
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="../img/portfolio/thumbnails/101.jpg" class="portfolio-box">
-                        <img src="../img/portfolio/thumbnails/101.jpg" class="img-responsive" alt="KXIP VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Trinbago Knight Riders vs Barbados Tridents
-                                </div>
-                                <div class="project-name">
-                                    Tridents won by 16 runs
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Trinbago Knight Riders vs Barbados Tridents
-                                </div>
-                                <div class="project-name">
-                                    Tridents won by 16 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/103.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Trinbago Knight Riders vs Barbados Tridents
-                                </div>
-                                <div class="project-name">
-                                    Tridents won by 16 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/501.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/501.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Jamaica Tallawahs vs Amazon Warriors
-                                </div>
-                                <div class="project-name">
-                                    Amazon Won by 9 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/502.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/502.jpg" class="img-responsive" alt="KXIP VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Jamaica Tallawahs vs Amazon Warriors
-                                </div>
-                                <div class="project-name">
-                                    Amazon Won by 9 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/503.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/503.jpg" class="img-responsive" alt="KXIP VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Jamaica Tallawahs vs Amazon Warriors
-                                </div>
-                                <div class="project-name">
-                                   Amazon Won by 9 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             </div>
@@ -737,16 +719,6 @@
                     method: 'share',
                     display: 'popup',
                     href: '{{URL::to('/')}}' + '/signup/?referral_key={{\Auth::user()->referral_key}}',
-                }, function (response) {
-                });
-            }
-        </script>
-        <script>
-            document.getElementById('shareBtn').onclick = function () {
-                FB.ui({
-                    method: 'share',
-                    display: 'popup',
-                    href: 'http://www.gamithonfantasy.com/signup/?referral_key={{\Auth::user()->referral_key}}',
                 }, function (response) {
                 });
             }

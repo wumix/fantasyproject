@@ -27,6 +27,9 @@ class Tournament extends Model {
     public function tournament_userteams() { //tournaments ki games
         return $this->hasMany('App\UserTeam', 'tournament_id', 'id');
     }
+    public function teams() { //tournaments ki games
+        return $this->hasMany('App\Team', 'tournament_id', 'id');
+    }
 
     public function tournament_players() {
         return $this->belongsToMany('App\Player', 'player_tournaments', 'tournament_id')

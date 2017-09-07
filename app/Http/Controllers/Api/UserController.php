@@ -49,7 +49,7 @@ class UserController extends Controller
             ['leaderboard.tournament.tournament_userteams'=>function($query){
             $query->where('user_id',\Auth::id())->whereNotNull('joined_from_match_date');
         }])->first()->toArray();
-//        return response()->json($data['user_scores'], 200);
+      // return response()->json($data['user_scores'], 200);
         $result=[];
         $result['status']=true;
         $result['tournaments_score']=[];

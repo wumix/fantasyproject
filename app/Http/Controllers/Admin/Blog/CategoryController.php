@@ -38,6 +38,7 @@ class CategoryController extends Controller {
     }
 
     function postAddBlogCategory(Request $request) {
+
         $this->validator($request->all())->validate();
         $blogCategory = new \App\BlogCategory();
         $blogCategory->name = $request->name;

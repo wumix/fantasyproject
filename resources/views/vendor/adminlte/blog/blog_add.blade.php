@@ -35,22 +35,22 @@
                     <div class="col-md-4">
 
 
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    Post Category
-                                </h3>
-                            </div>
-                            <div class="panel-bod                                                                                y">
-                                @foreach($categories as $row)
-                                <div class="form-group">
-                                    <label>
-                                        <input name="category[]" value="{{$row['id']}}" type="checkbox" /> {{$row['name']}}
-                                    </label>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
+                        {{--<div class="panel panel-default">--}}
+                            {{--<div class="panel-heading">--}}
+                                {{--<h3 class="panel-title">--}}
+                                    {{--Post Category--}}
+                                {{--</h3>--}}
+                            {{--</div>--}}
+                            {{--<div class="panel-bod                                                                                y">--}}
+                                {{--@foreach($categories as $row)--}}
+                                {{--<div class="form-group">--}}
+                                    {{--<label>--}}
+                                        {{--<input name="category[]" value="{{$row['id']}}" type="radio" /> {{$row['name']}}--}}
+                                    {{--</label>--}}
+                                {{--</div>--}}
+                                {{--@endforeach--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title">
@@ -59,7 +59,7 @@
                             </div>
                             <div class="panel-bod                                                                                y">
                                 <select class="form-control" name="post_type">
-                                    <option value="post">post</option>
+                                    <option value="post">Blog</option>
                                     <option value="news">News</option>
                                 </select>
                             </div>

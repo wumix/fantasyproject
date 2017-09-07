@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title')
-   Create Team
-    @stop
+    Create Team
+@stop
 @section('content')
 
     <section>
@@ -30,34 +30,37 @@
                                 </thead>
                                 <tbody id="selected-player" class="main-taible-body">
                                 @foreach($tournaments_list as $row)
+                                    @if(is_active_tournament($row['id']))
                                     <tr>
                                         <td class="border-r1" style="min-width: 305px;">
                                             {{--<img id="myteamtimg" class="img-circle img-thumbnail" style="width: 100px;"--}}
-                                                 {{--src="{{getUploadsPath($row['t_logo'])}}"/>--}}
+                                            {{--src="{{getUploadsPath($row['t_logo'])}}"/>--}}
                                             <h5>{{$row['name']}}</h5>
                                         </td>
 
                                         {{--<td class="border-r1">--}}
-                                            {{--<p class="myteamtt"--}}
-                                               {{--style="padding-top:34px;">{{$row['tournament_price']}}</p></td>--}}
+                                        {{--<p class="myteamtt"--}}
+                                        {{--style="padding-top:34px;">{{$row['tournament_price']}}</p></td>--}}
                                         <td class="border-r1">
 
-                                              @if($team=has_user_team(\Auth::id(),$row['id']))
+                                            @if($team=has_user_team(\Auth::id(),$row['id']))
 
-                                                <a href="{{route('teamdetail',['team_id'=>$team->id])}}"
-                                                   class="btn btn-green">
-                                                    View Team
-                                                </a>
+                                                    <a href="{{route('teamdetail',['team_id'=>$team->id])}}"
+                                                       class="btn btn-green">
+                                                        View Team
+                                                    </a>
 
-                                                  @else
+
+                                            @else
                                                 <a href="{{route('addTeam', ['tournament_id'=>$row['id']])}}"
                                                    class="btn btn-green">
-                                                  Create Team
+                                                    Create Team
                                                 </a>
-                                                @endif
+                                            @endif
 
                                         </td>
-                                    </tr>
+
+                                    @endif
                                 @endforeach
                                 </tbody>
                             </table>

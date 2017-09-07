@@ -463,6 +463,55 @@
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt=" DD VS GL">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Guyana Amazon Warriors v Jamaica Tallawahs
+                                </div>
+                                <div class="project-name">
+                                    Guyana Amazon Warriors won by 5 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Guyana Amazon Warriors v Jamaica Tallawahs
+                                </div>
+                                <div class="project-name">
+                                    Guyana Amazon Warriors won by 5 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="../img/portfolio/thumbnails/203.jpg" class="portfolio-box">
+                        <img src="../img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="KXIP VS KKR">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Guyana Amazon Warriors v Jamaica Tallawahs
+                                </div>
+                                <div class="project-name">
+                                    Guyana Amazon Warriors won by 5 wickets
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/701.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/701.jpg" class="img-responsive" alt="KXIP VS MI">
                         <div class="portfolio-box-caption">
@@ -558,55 +607,7 @@
 
 
 
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt=" DD VS GL">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Guyana Amazon Warriors v Jamaica Tallawahs
-                                </div>
-                                <div class="project-name">
-                                    Guyana Amazon Warriors won by 5 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="KXIP VS MI">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Guyana Amazon Warriors v Jamaica Tallawahs
-                                </div>
-                                <div class="project-name">
-                                    Guyana Amazon Warriors won by 5 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="../img/portfolio/thumbnails/203.jpg" class="portfolio-box">
-                        <img src="../img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="KXIP VS KKR">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Guyana Amazon Warriors v Jamaica Tallawahs
-                                </div>
-                                <div class="project-name">
-                                    Guyana Amazon Warriors won by 5 wickets
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </a>
-                </div>
 
             </div>
         </div>

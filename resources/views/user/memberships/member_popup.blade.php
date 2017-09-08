@@ -3,12 +3,12 @@ $membership_plans = \App\Membership::all();
 ?>
 <style>
     @media (min-width: 900px) {
-        .modal-dialog {
-            width: 800px;
+        #memberPopup .modal-dialog {
+            width: 600px;
             margin: 30px auto;
         }
 
-        .modal-content {
+        #memberPopup .modal-content {
             -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
             box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
         }
@@ -19,12 +19,12 @@ $membership_plans = \App\Membership::all();
     }
 
     @media (min-width: 768px) and (max-width: 899px) {
-        .modal-dialog {
+        #memberPopup .modal-dialog {
             width: 600px;
             margin: 30px auto;
         }
 
-        .modal-content {
+        #memberPopup .modal-content {
             -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
             box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
         }
@@ -309,17 +309,72 @@ $membership_plans = \App\Membership::all();
                 <div class="clear clearfix"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">
-                    I am not interested!
-                    <small>(You need to give us reason!)</small>
-                </button>
                 <button type="button" class="btn btn-success" data-dismiss="modal">
                     I will checkit later!
+                </button>
+                <button class="btn btn-danger" data-toggle="modal" href="#memberDenyFrm">
+                    I am not interested!
                 </button>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Modal -->
+<div id="memberDenyFrm" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Please tell us what we can do for you</h4>
+            </div>
+            <div class="modal-body">
+                <div class="page-content">
+                    <div class="col-md-12 text-center">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('postContact') }}">
+                            {{ csrf_field() }}
+                            <div class="input-group" style="margin-bottom: 20px">
+                                <span class="input-group-addon signinforminputs">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </span>
+                                <input type="text"
+                                       class="form-control signinforminputs1" name="name"
+                                       id="name" placeholder="Name" required="">
+                            </div>
+                            <div class="input-group" style="margin-bottom: 20px">
+                                <span class="input-group-addon signinforminputs">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </span>
+                                <input type="email" class="form-control signinforminputs1"
+                                       name="email" id="name" placeholder="Email" required="">
+                            </div>
+                            <div class="input-group" style="margin-bottom: 20px">
+                                <span class="input-group-addon signinforminputs">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </span>
+                                <input type="subject" class="form-control signinforminputs1"
+                                       name="subject" id="name" placeholder="Subject" required="">
+
+
+                            </div>
+                            <textarea type="text" name="message" class="form-control" placeholder="Meassage" required
+                                      style="height: 150px;"></textarea>
+                            <div class="form-group" style="margin-top: 20px;">
+                                <input type="submit" class="btn btn-success" value="Submit"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 

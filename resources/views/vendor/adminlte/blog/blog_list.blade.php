@@ -73,7 +73,6 @@
                     blogId: blogId,
                     _token: '{{ csrf_token() }}'
                 },
-
                 success: function (res) {
                     alert('deleted!');
                     window.location.reload();

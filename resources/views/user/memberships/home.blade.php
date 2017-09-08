@@ -1,11 +1,10 @@
 @extends('layouts.app')
 @section('title')
-   Active Tournaments
-    @stop
+    Memberships
+@stop
 @section('css')
     <style>
-
-        #plans,#plans ul,#plans ul li {
+        #plans, #plans ul, #plans ul li {
             margin: 0;
             padding: 0;
             list-style: none;
@@ -34,8 +33,8 @@
             border-radius: 5px;
             margin: 0 0 20px 0;
 
-            -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .planContainer .title h2 {
@@ -57,7 +56,6 @@
             color: #fff;
             border-radius: 5px 5px 0 0;
         }
-
 
         .planContainer .price p {
             background: #3e4f6a;
@@ -118,10 +116,11 @@
             background: #f7814d;
             border: 2px solid #f7814d;
         }
-.bestPlanButton{
-    color: #fff;
-    background: #f7814d;
-    border: 2px solid #f7814d;
+
+        .bestPlanButton {
+            color: #fff;
+            background: #f7814d;
+            border: 2px solid #f7814d;
             text-transform: uppercase;
             text-decoration: none;
             color: #3e4f6a;
@@ -134,8 +133,9 @@
             height: 2.8em;
             border-radius: 4px;
             margin: 1.5em 0 1.8em;
-    background: #00a65a; /* chage button backgoiurndnndndnddndndndn*/
-}
+            background: #00a65a; /* chage button backgoiurndnndndnddndndndn*/
+        }
+
         #credits {
             text-align: center;
             font-size: .8em;
@@ -227,7 +227,7 @@
         }
 
     </style>
-    @endsection
+@endsection
 @section('content')
 
     <section>
@@ -248,76 +248,77 @@
 
                                     {!! Form::open(['method'=>'POST','url' => route('addmoney.paypal',['id'=>$plan['id']])]) !!}
 
-                                <li class="plan">
-                                    <ul class="planContainer">
-                                        <li class="title" class="bestPlanTitle" ><h2> {{$plan['name']}}</h2></li>
-                                        <li class="price" class="bestPlanPrice" ><p>USD {{$plan['price']}}/<span>year</span></p></li>
-                                        <li>
-                                            <ul class="options">
-                                                <li>2x <span>option 1</span></li>
-                                                <li>Free <span>option 2</span></li>
-                                                <li>Unlimited <span>option 3</span></li>
-                                                <li>Unlimited <span>option 4</span></li>
-                                                <li>1x <span>option 5</span></li>
-                                            </ul>
-                                        </li>
-                                        <li class="button">
-                                            <input type="hidden" name="amount" value="{{$plan['price']}}"/>
-                                            <input value="purchase" class="bestPlanButton" type="submit"></li>
-                                    </ul>
-                                </li>
+                                    <li class="plan">
+                                        <ul class="planContainer">
+                                            <li class="title" class="bestPlanTitle"><h2> {{$plan['name']}}</h2></li>
+                                            <li class="price" class="bestPlanPrice"><p>USD {{$plan['price']}}
+                                                    /<span>year</span></p></li>
+                                            <li>
+                                                <ul class="options">
+                                                    <li>2x <span>option 1</span></li>
+                                                    <li>Free <span>option 2</span></li>
+                                                    <li>Unlimited <span>option 3</span></li>
+                                                    <li>Unlimited <span>option 4</span></li>
+                                                    <li>1x <span>option 5</span></li>
+                                                </ul>
+                                            </li>
+                                            <li class="button">
+                                                <input type="hidden" name="amount" value="{{$plan['price']}}"/>
+                                                <input value="purchase" class="bestPlanButton" type="submit"></li>
+                                        </ul>
+                                    </li>
                                     {!! Form::close() !!}
                                 @endforeach
 
                                 {{--<li class="plan">--}}
-                                    {{--<ul class="planContainer">--}}
-                                        {{--<li class="title"><h2 class="bestPlanTitle">Plan 2</h2></li>--}}
-                                        {{--<li class="price"><p class="bestPlanPrice">$20/month</p></li>--}}
-                                        {{--<li>--}}
-                                            {{--<ul class="options">--}}
-                                                {{--<li>2x <span>option 1</span></li>--}}
-                                                {{--<li>Free <span>option 2</span></li>--}}
-                                                {{--<li>Unlimited <span>option 3</span></li>--}}
-                                                {{--<li>Unlimited <span>option 4</span></li>--}}
-                                                {{--<li>1x <span>option 5</span></li>--}}
-                                            {{--</ul>--}}
-                                        {{--</li>--}}
-                                        {{--<li class="button"><a class="bestPlanButton" href="#">Purchase</a></li>--}}
-                                    {{--</ul>--}}
+                                {{--<ul class="planContainer">--}}
+                                {{--<li class="title"><h2 class="bestPlanTitle">Plan 2</h2></li>--}}
+                                {{--<li class="price"><p class="bestPlanPrice">$20/month</p></li>--}}
+                                {{--<li>--}}
+                                {{--<ul class="options">--}}
+                                {{--<li>2x <span>option 1</span></li>--}}
+                                {{--<li>Free <span>option 2</span></li>--}}
+                                {{--<li>Unlimited <span>option 3</span></li>--}}
+                                {{--<li>Unlimited <span>option 4</span></li>--}}
+                                {{--<li>1x <span>option 5</span></li>--}}
+                                {{--</ul>--}}
+                                {{--</li>--}}
+                                {{--<li class="button"><a class="bestPlanButton" href="#">Purchase</a></li>--}}
+                                {{--</ul>--}}
                                 {{--</li>--}}
 
                                 {{--<li class="plan">--}}
-                                    {{--<ul class="planContainer">--}}
-                                        {{--<li class="title"><h2>Plan 3</h2></li>--}}
-                                        {{--<li class="price"><p>$30/<span>month</span></p></li>--}}
-                                        {{--<li>--}}
-                                            {{--<ul class="options">--}}
-                                                {{--<li>2x <span>option 1</span></li>--}}
-                                                {{--<li>Free <span>option 2</span></li>--}}
-                                                {{--<li>Unlimited <span>option 3</span></li>--}}
-                                                {{--<li>Unlimited <span>option 4</span></li>--}}
-                                                {{--<li>1x <span>option 5</span></li>--}}
-                                            {{--</ul>--}}
-                                        {{--</li>--}}
-                                        {{--<li class="button"><a href="#">Purchase</a></li>--}}
-                                    {{--</ul>--}}
+                                {{--<ul class="planContainer">--}}
+                                {{--<li class="title"><h2>Plan 3</h2></li>--}}
+                                {{--<li class="price"><p>$30/<span>month</span></p></li>--}}
+                                {{--<li>--}}
+                                {{--<ul class="options">--}}
+                                {{--<li>2x <span>option 1</span></li>--}}
+                                {{--<li>Free <span>option 2</span></li>--}}
+                                {{--<li>Unlimited <span>option 3</span></li>--}}
+                                {{--<li>Unlimited <span>option 4</span></li>--}}
+                                {{--<li>1x <span>option 5</span></li>--}}
+                                {{--</ul>--}}
+                                {{--</li>--}}
+                                {{--<li class="button"><a href="#">Purchase</a></li>--}}
+                                {{--</ul>--}}
                                 {{--</li>--}}
 
                                 {{--<li class="plan">--}}
-                                    {{--<ul class="planContainer">--}}
-                                        {{--<li class="title"><h2>Plan 4</h2></li>--}}
-                                        {{--<li class="price"><p>$40/<span>month</span></p></li>--}}
-                                        {{--<li>--}}
-                                            {{--<ul class="options">--}}
-                                                {{--<li>2x <span>option 1</span></li>--}}
-                                                {{--<li>Free <span>option 2</span></li>--}}
-                                                {{--<li>Unlimited <span>option 3</span></li>--}}
-                                                {{--<li>Unlimited <span>option 4</span></li>--}}
-                                                {{--<li>1x <span>option 5</span></li>--}}
-                                            {{--</ul>--}}
-                                        {{--</li>--}}
-                                        {{--<li class="button"><a href="#">Purchase</a></li>--}}
-                                    {{--</ul>--}}
+                                {{--<ul class="planContainer">--}}
+                                {{--<li class="title"><h2>Plan 4</h2></li>--}}
+                                {{--<li class="price"><p>$40/<span>month</span></p></li>--}}
+                                {{--<li>--}}
+                                {{--<ul class="options">--}}
+                                {{--<li>2x <span>option 1</span></li>--}}
+                                {{--<li>Free <span>option 2</span></li>--}}
+                                {{--<li>Unlimited <span>option 3</span></li>--}}
+                                {{--<li>Unlimited <span>option 4</span></li>--}}
+                                {{--<li>1x <span>option 5</span></li>--}}
+                                {{--</ul>--}}
+                                {{--</li>--}}
+                                {{--<li class="button"><a href="#">Purchase</a></li>--}}
+                                {{--</ul>--}}
                                 {{--</li>--}}
                             </ul> <!-- End ul#plans -->
 

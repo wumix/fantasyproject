@@ -62,10 +62,6 @@
             text-decoration: none;
         }
     </style>
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 @endsection
 
 <section>

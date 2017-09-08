@@ -78,7 +78,6 @@ Cricket app">
 </head>
 
 <body>
-
 @yield('facebook-share-div-code')
 @yield('FbJsSdk')
 <nav class="bg-primary navbar navbar-default navbar-fixed-top">
@@ -235,6 +234,10 @@ Cricket app">
 </nav>
 <!---->
 @yield('content')
+
+
+@include('user.memberships.member_popup')
+
 <footer>
     <div class="clear clearfix"></div>
 
@@ -327,8 +330,6 @@ Cricket app">
 //            axis:"x"
 //        });
     });
-
-
 </script>
 {!! Html::script('assets-new/js/jquery.matchHeight-min.js') !!}
 {!! Html::script('assets-new/js/jquery.backstretch.min.js') !!}
@@ -336,6 +337,10 @@ Cricket app">
 {!! Html::script('js/toaster/jquery.toast.js') !!}
 @yield('js')
 @yield('addteamjs')
-
+<script>
+    $(document).ready(function () {
+        $('#memberPopup').modal('show');
+    });
+</script>
 </body>
 </html>

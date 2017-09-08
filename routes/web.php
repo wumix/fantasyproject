@@ -132,6 +132,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('add/{blog_id?}', 'Admin\Blog\PostController@postAddBlogPost')->name('postAddPost');
             Route::get('edit/{blog_id}', 'Admin\Blog\PostController@editBlogPost')->name('editPost');
             Route::post('edit/{blog_id}', 'Admin\Blog\PostController@editBlogPost')->name('postEditPost');
+            Route::delete('delete', 'Admin\Blog\PostController@deleteBlogPost')->name('deleteBlogPost');;
             Route::group(['prefix' => 'category'], function () {
                 Route::get('/', 'Admin\Blog\CategoryController@index')->name('blogCategoryList');
                 Route::get('addCategory', 'Admin\Blog\CategoryController@addCategory')->name('addCategory');

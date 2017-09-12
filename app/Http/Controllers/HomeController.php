@@ -87,6 +87,7 @@ class HomeController extends Controller
             ->get()
             ->toArray();
         //dd($data);
+        //dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
 

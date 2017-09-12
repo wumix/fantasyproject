@@ -2,38 +2,6 @@
 $membership_plans = \App\Membership::all();
 ?>
 <style>
-    @media (min-width: 900px) {
-        #memberPopup .modal-dialog {
-            width: 600px;
-            margin: 30px auto;
-        }
-
-        #memberPopup .modal-content {
-            -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-        }
-
-        .modal-sm {
-            width: 300px;
-        }
-    }
-
-    @media (min-width: 768px) and (max-width: 899px) {
-        #memberPopup .modal-dialog {
-            width: 600px;
-            margin: 30px auto;
-        }
-
-        #memberPopup .modal-content {
-            -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-        }
-
-        .modal-sm {
-            width: 300px;
-        }
-    }
-
     #plans, #plans ul, #plans ul li {
         margin: 0;
         padding: 0;
@@ -208,11 +176,6 @@ $membership_plans = \App\Membership::all();
     }
 
     @media screen and (min-width: 1025px) {
-
-        #pricePlans {
-            margin: 2em auto;
-        }
-
         #pricePlans #plans .plan {
             width: 23%;
             margin: 0 1.33% 20px 0;
@@ -255,126 +218,36 @@ $membership_plans = \App\Membership::all();
         }
 
     }
-
 </style>
-<div id="memberPopup" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">
-                    Tryout our membership plans to increase your chances of winning price!
-                </h4>
-            </div>
-            <div class="modal-body">
-                <div class="col-lg-12">
-                    <div class="page-content">
-                        <!-- your content -->
-                        <section id="pricePlans">
-                            <ul id="plans">
-                                @foreach($membership_plans as $plan)
+<section id="pricePlans">
+    <ul id="plans">
+        @foreach($membership_plans as $plan)
 
-                                    {!! Form::open(['method'=>'POST','url' => route('addmoney.paypal',['id'=>$plan['id']])]) !!}
-                                    <li class="plan">
-                                        <ul class="planContainer">
-                                            <li class="title" class="bestPlanTitle">
-                                                <h2> {{$plan['name']}}</h2></li>
-                                            <li class="price" class="bestPlanPrice"><p>
-                                                    USD {{$plan['price']}}
-                                                    /<span>year</span></p></li>
-                                            <li>
-                                                <ul class="options">
-                                                    <li>2x <span>option 1</span></li>
-                                                    <li>Free <span>option 2</span></li>
-                                                    <li>Unlimited <span>option 3</span></li>
-                                                    <li>Unlimited <span>option 4</span></li>
-                                                    <li>1x <span>option 5</span></li>
-                                                </ul>
-                                            </li>
-                                            <li class="button">
-                                                <input type="hidden" name="amount"
-                                                       value="{{$plan['price']}}"/>
-                                                <input value="purchase" class="bestPlanButton"
-                                                       type="submit"></li>
-                                        </ul>
-                                    </li>
-                                    {!! Form::close() !!}
-                                @endforeach
-                            </ul> <!-- End ul#plans -->
-                        </section>
-                        <!-- your content -->
-                    </div>
-                </div>
-                <div class="clear clearfix"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">
-                    I will checkit later!
-                </button>
-                <button class="btn btn-danger" data-toggle="modal" href="#memberDenyFrm">
-                    I am not interested!
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal -->
-<div id="memberDenyFrm" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Please tell us what we can do for you</h4>
-            </div>
-            <div class="modal-body">
-                <div class="page-content">
-                    <div class="col-md-12 text-center">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('postContact') }}">
-                            {{ csrf_field() }}
-                            <div class="input-group" style="margin-bottom: 20px">
-                                <span class="input-group-addon signinforminputs">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                </span>
-                                <input type="text"
-                                       class="form-control signinforminputs1" name="name"
-                                       id="name" placeholder="Name" required="">
-                            </div>
-                            <div class="input-group" style="margin-bottom: 20px">
-                                <span class="input-group-addon signinforminputs">
-                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                </span>
-                                <input type="email" class="form-control signinforminputs1"
-                                       name="email" id="name" placeholder="Email" required="">
-                            </div>
-                            <div class="input-group" style="margin-bottom: 20px">
-                                <span class="input-group-addon signinforminputs">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                </span>
-                                <input type="subject" class="form-control signinforminputs1"
-                                       name="subject" id="name" placeholder="Subject" required="">
-
-
-                            </div>
-                            <textarea type="text" name="message" class="form-control" placeholder="Meassage" required
-                                      style="height: 150px;"></textarea>
-                            <div class="form-group" style="margin-top: 20px;">
-                                <input type="submit" class="btn btn-success" value="Submit"/>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-3">
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-
+            {!! Form::open(['method'=>'POST','url' => route('addmoney.paypal',['id'=>$plan['id']])]) !!}
+            <li class="plan">
+                <ul class="planContainer">
+                    <li class="title" class="bestPlanTitle">
+                        <h2> {{$plan['name']}}</h2></li>
+                    <li class="price" class="bestPlanPrice"><p>
+                            USD {{$plan['price']}}
+                            /<span>year</span></p></li>
+                    <li>
+                        <ul class="options">
+                            <li>2x <span>option 1</span></li>
+                            <li>Free <span>option 2</span></li>
+                            <li>Unlimited <span>option 3</span></li>
+                            <li>Unlimited <span>option 4</span></li>
+                            <li>1x <span>option 5</span></li>
+                        </ul>
+                    </li>
+                    <li class="button">
+                        <input type="hidden" name="amount"
+                               value="{{$plan['price']}}"/>
+                        <input value="purchase" class="bestPlanButton"
+                               type="submit"></li>
+                </ul>
+            </li>
+            {!! Form::close() !!}
+        @endforeach
+    </ul> <!-- End ul#plans -->
+</section>

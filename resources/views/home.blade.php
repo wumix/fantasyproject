@@ -12,7 +12,6 @@
             padding: 20px 20px;
             margin-bottom: 40px;
         }
-
         .new_form {
             width: 100% !important;
             border: 1px solid #92B713;

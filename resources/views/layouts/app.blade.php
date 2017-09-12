@@ -239,7 +239,6 @@ Cricket app">
 @yield('content')
 
 
-@include('user.memberships.member_popup')
 
 <footer>
     <div class="clear clearfix"></div>

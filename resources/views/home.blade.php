@@ -666,6 +666,7 @@
         $('#header').backstretch([
 
             {url: '{{URL::to('assets-new/img/12238967.jpg')}}', fade: 500},
+            {url: '{{URL::to('assets-new/img/9099000.jpg')}}', fade: 500},
 
 
 

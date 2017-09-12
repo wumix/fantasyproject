@@ -8,7 +8,7 @@
  */
 return [
     'sitewise_date_format' => 'M jS, Y',
-    'sitewise_time_format' => 'H:i:s',
+    'sitewise_time_format' => 'H:i',
     'email_from' => 'info@gamithonfantasy.com',
     'tournament_id' => '3',
     ///////

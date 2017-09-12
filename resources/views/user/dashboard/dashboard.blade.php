@@ -920,12 +920,12 @@
 @section('facbook-og-tags')
     <meta property="og:url" content="heelo world"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="My title"/>
+    <meta property="og:title" content="Invite"/>
     <meta property="og:description" content="Join referral here"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="600"/>
-    <meta property="og:image" content="http://www.gamithonfantasy.com/assets-new/img/gamithon-logo1.png"/>
-    <meta property="fb:app_id" content="337419313358697"/>
+    <meta property="og:image" content="{{Url::to('assets-new/img/gamithon-logo1.png')}}"/>
+    <meta property="fb:app_id" content="<?php echo env('FB_CLIENTID') ?>"/>
 @stop
 
 
@@ -949,14 +949,4 @@
             });
         }
     </script>
-    {{--<script>--}}
-    {{--document.getElementById('shareBtn').onclick = function () {--}}
-    {{--FB.ui({--}}
-    {{--method: 'share',--}}
-    {{--display: 'popup',--}}
-    {{--href: 'http://www.gamithonfantasy.com/signup/?referral_key={{$userprofileinfo['referral_key']}}',--}}
-    {{--}, function (response) {--}}
-    {{--});--}}
-    {{--}--}}
-    {{--</script>--}}
 @endsection

@@ -23,13 +23,16 @@ Cricket app">
     <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
+    {!! Html::style('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!}
+    {!! Html::style('https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic') !!}
+
     {!! Html::style('assets-new/vendor/bootstrap/css/bootstrap.min.css') !!}
+    {!! Html::style('bootstrap-modal-extend/css/bootstrap-modal.css') !!}
+
     {!! Html::style('assets-new/css/bootstrap-tour.css') !!}
     {!! Html::style('assets-new/css/jquery.mCustomScrollbar.css') !!}
     {!! Html::style('https://fonts.googleapis.com/css?family=Raleway') !!}
     {!! Html::style('assets-new/vendor/font-awesome/css/font-awesome.min.css') !!}
-    {!! Html::style('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!}
-    {!! Html::style('https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic') !!}
 
     {!! Html::style('js/toaster/jquery.toast.css') !!}
     {!! Html::style('js/colorbox-master/example1/colorbox.css') !!}
@@ -78,7 +81,6 @@ Cricket app">
 </head>
 
 <body>
-
 @yield('facebook-share-div-code')
 @yield('FbJsSdk')
 <nav class="bg-primary navbar navbar-default navbar-fixed-top">
@@ -235,6 +237,9 @@ Cricket app">
 </nav>
 <!---->
 @yield('content')
+
+
+
 <footer>
     <div class="clear clearfix"></div>
 
@@ -293,6 +298,8 @@ Cricket app">
 {!! Html::script('assets-new/vendor/jquery/jquery.min.js') !!}
 
 {!! Html::script('assets-new/vendor/bootstrap/js/bootstrap.min.js') !!}
+{!! Html::script('bootstrap-modal-extend/js/bootstrap-modalmanager.js') !!}
+{!! Html::script('bootstrap-modal-extend/js/bootstrap-modal.js') !!}
 
 {!! Html::script('assets-new/vendor/basic-table/jquery.basictable.min.js') !!}
 {!! Html::script('assets/js/jquery.slicknav.min.js') !!}
@@ -327,8 +334,6 @@ Cricket app">
 //            axis:"x"
 //        });
     });
-
-
 </script>
 {!! Html::script('assets-new/js/jquery.matchHeight-min.js') !!}
 {!! Html::script('assets-new/js/jquery.backstretch.min.js') !!}
@@ -336,6 +341,10 @@ Cricket app">
 {!! Html::script('js/toaster/jquery.toast.js') !!}
 @yield('js')
 @yield('addteamjs')
-
+<script>
+    $(document).ready(function () {
+        $('#memberPopup').modal('show');
+    });
+</script>
 </body>
 </html>

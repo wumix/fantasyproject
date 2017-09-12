@@ -54,7 +54,9 @@ class HomeController extends Controller
                     $q->where('match_id', $id);
                 }, 'match_players.player_actual_teams' => function ($query) use ($tournament_id) {
                 $query->where('tournament_id', $tournament_id);
-            }, 'match_players.player_roles'
+            }, 'match_players.player_roles' => function ($role) {
+                $role->orderBy('game_role_id','ASC');
+            }
             ])
             ->first()->toArray();
         $team_name = $data['match']['team_one'];
@@ -63,7 +65,7 @@ class HomeController extends Controller
         }
         $data['team_name'] = strtoupper($team_name);
         // dd($team_name);
-        //dd($data['match']['match_players'][0]);
+       // dd($data['match']['match_players'][0]);
         return view('user.team_detail1', $data);
 
     }
@@ -129,7 +131,7 @@ class HomeController extends Controller
         $objTourmament = \App\Tournament::orderBy("start_date",
             'DESC')->
         Where('end_date', '>=', getGmtTime())->get();
-        $data['tournaments_list'] = $objTourmament->where('is_active',1)->toArray(); //list of active
+        $data['tournaments_list'] = $objTourmament->where('is_active', 1)->toArray(); //list of active
         $tournaments_data = [];
         foreach ($data['tournaments_list'] as $key => $tournament) {
             $data['tournaments_list'][$key] = $tournament;
@@ -162,7 +164,6 @@ class HomeController extends Controller
         return view('user.dashboard.home', $data);
 
     }
-
 
 
     public function fixturesDetial($tournament_id)

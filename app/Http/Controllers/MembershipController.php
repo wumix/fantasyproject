@@ -82,7 +82,7 @@ class MembershipController extends HomeController
      */
     public function postPaymentWithpaypal(Request $request)
     {
-        dd($request->plan_id);
+//        dd($request->plan_id);
         $id=$request->plan_id;
         $user_memberhsip = \App\User::where('id', $id)->with('membership')->get()->toArray();
         $membership = \App\Membership::where('id', $id)->first()->toArray();

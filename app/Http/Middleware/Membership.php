@@ -19,7 +19,7 @@ class Membership
         if (Auth::check() &&  \App\User::is_member(Auth::id())) {
             return $next($request);
         }
-        $data['membership_plans'] = \App\Membership::all();
+        $data['membership_plans'] = \App\Membership::with('membership_details')->get()->toArray();
         return response()->view('user.memberships.home', $data);
 
 

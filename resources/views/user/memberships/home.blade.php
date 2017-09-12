@@ -244,10 +244,10 @@
                         <!-- your content -->
                         <section id="pricePlans">
                             <ul id="plans">
+
+
                                 @foreach($membership_plans as $plan)
-
-                                    {!! Form::open(['method'=>'POST','url' => route('addmoney.paypal',['id'=>$plan['id']])]) !!}
-
+                                    {!! Form::open(['method'=>'POST','url' => route('addmoney.paypal')]) !!}
                                     <li class="plan">
                                         <ul class="planContainer">
                                             <li class="title" class="bestPlanTitle"><h2> {{$plan['name']}}</h2></li>
@@ -255,20 +255,26 @@
                                                     /<span>year</span></p></li>
                                             <li>
                                                 <ul class="options">
-                                                    <li>2x <span>option 1</span></li>
-                                                    <li>Free <span>option 2</span></li>
-                                                    <li>Unlimited <span>option 3</span></li>
-                                                    <li>Unlimited <span>option 4</span></li>
-                                                    <li>1x <span>option 5</span></li>
+                                                    <li>No of Transfer <span>{{$plan['transfers']}}</span></li>
+                                                    <li>Tournaments Points <span>{{$plan['points']}} </span></li>
+                                                    <li>Invite Points <span>{{$plan['invite_points']}}</span></li>
+                                                    <li>Share Points <span>{{$plan['share_points']}}</span></li>
+
                                                 </ul>
                                             </li>
                                             <li class="button">
+                                                <label>Select</label>
                                                 <input type="hidden" name="amount" value="{{$plan['price']}}"/>
-                                                <input value="purchase" class="bestPlanButton" type="submit"></li>
+                                                <input <?php echo ($plan['id'] == '1') ? 'checked' : '' ?> type="radio" name="plan_id" value="{{$plan['id']}}">
+
+                                            </li>
                                         </ul>
                                     </li>
-                                    {!! Form::close() !!}
+
+
                                 @endforeach
+                                    <input  value="purchase"  type="submit">
+                                    {!! Form::close() !!}
 
                                 {{--<li class="plan">--}}
                                 {{--<ul class="planContainer">--}}

@@ -61,6 +61,20 @@ class User extends Authenticatable
     {
         return (\Auth::user()->user_type == 1) ? true : false;
     }
+    public static function is_member($id){ //
+
+       $member=\App\User::where('id',$id)->with(['membership'=>function ($query){
+           $query->where('user_memberships.is_expired','0'); // 0 means not expired
+       }])->first()->toArray();
+
+       if(empty($member['membership'])){
+          return   false;
+
+       }else{
+          return true;
+       }
+
+    }
 
     public function comments()
     {
@@ -72,11 +86,12 @@ class User extends Authenticatable
     public function membership(){
         return $this->belongsToMany('App\Membership', 'user_memberships',
             'user_id', 'membership_id')->withPivot('id');
-
     }
+
     public function teams(){
         return $this->hasMany('\App\UserTeam','user_id','id');
     }
+
 
 
     /**
@@ -133,5 +148,6 @@ class User extends Authenticatable
             return $user;
         }
     }
+
 
 }

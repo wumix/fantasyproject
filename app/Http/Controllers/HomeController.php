@@ -84,7 +84,8 @@ class HomeController extends Controller
 
     public function test()
     {
-        return view('user.team_detail1');
+        dd('test');
+       // return view('user.team_detail1');
 
     }
 

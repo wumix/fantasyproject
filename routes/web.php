@@ -18,15 +18,15 @@
 
 //Media manager
 
-
 Route::get('/newdash', 'HomeController@newdash')->name('newdashboard');
 Route::get('scorecard/{id}/{tournament_id}', 'HomeController@scorecard')->name('scorecard');
-Route::get('/test', 'HomeController@test')->name('test');
+
 Route::get('/leaderboard', 'HomeController@allTournaments')->name('dashboardhome');
 
 Route::get('login/facebook/', 'Auth\LoginController@redirectToFacebookProvider')->name('facebookLogin');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleFacebookProviderCallback')->name('facebookLoginCallback');
 Route::group(['middleware' => ['web']], function () {
+
 
     Route::get('membership-popup', 'MembershipController@memberShipPopup')
         ->name('showMemberPopup');
@@ -68,54 +68,61 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('editpostreply/', 'Forums\ForumController@editreply')->name('editpostreply');
 
     });
-    Route::group(['middleware' => ['is_user']], function () {
-        Route::group(['prefix' => 'payments'], function () {
-            Route::get('/', 'PaymentController@index')->name('paymentdetails');
-        });
-        Route::group(['prefix' => 'membership'], function () {
-            Route::get('/', 'MembershipController@index')->name('membershiphome');
-            Route::post('/subscribe/{id}', 'MembershipController@subscribeMembership')->name('subscribeMembership');
-
-            Route::get('membership-popup', 'MembershipController@subscribeMembership')->name('showMemberPopup');
-        });
-        Route::group(['prefix' => 'user'], function () {
+    Route::group(['middleware' => ['membership']], function () {
+        Route::get('/test', 'HomeController@test')->name('test');
 
 
-            Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
-            Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
-            Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');
-            Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
-            Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('postUserProfile');
-            Route::any('/team-detail/', 'DashboardController@teamDetail')->name('teamdetail');
-        });
+        Route::group(['middleware' => ['is_user']], function () {
+            Route::group(['prefix' => 'payments'], function () {
+                Route::get('/', 'PaymentController@index')->name('paymentdetails');
+            });
+            Route::group(['prefix' => 'membership'], function () {
+                Route::get('/', 'MembershipController@index')->name('membershiphome');
+                Route::post('/subscribe/{id}', 'MembershipController@subscribeMembership')->name('subscribeMembership');
+
+                Route::get('membership-popup', 'MembershipController@subscribeMembership')->name('showMemberPopup');
+            });
+            Route::group(['prefix' => 'user'], function () {
 
 
-        Route::group(['prefix' => 'challenge'], function () {
+                Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
+                Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
+                Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');
+                Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
+                Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('postUserProfile');
+                Route::any('/team-detail/', 'DashboardController@teamDetail')->name('teamdetail');
+            });
 
-            Route::get('/', 'User\ChallengeController@index')->name('challenges');
-            Route::get('/check-winner/{id}', 'User\ChallengeController@checkWinner')->name('adasd');
-            Route::post('/send-challenge', 'User\ChallengeController@sendChallenge')->name('sendchallenge');
-            Route::get('/accept-challenge/{id}', 'User\ChallengeController@acceptChallenge')->name('accept_challenge');
-            Route::get('/show-challenge/{id}', 'User\ChallengeController@showUserChallenges')->name('accept');
-        });
-        Route::group(['prefix' => 'tournaments'], function () {
 
-            Route::get('/addteamname/{tournament_id}', 'User\TournamentsController@addTeam')->name('addTeam');
-            Route::get('add-players/{team_id}/{tournament_id}', 'User\TournamentsController@playTournament')->name('addPlayers');
-            Route::get('/addteam', 'User\TournamentsController@teamNamePostAjax')->name('teamNamePostAjax');
-            Route::post('/addplayerajax', 'User\TournamentsController@addUserPlayer')->name('addUserTeamPlayerAjax');
-            Route::post('/transferplayerajax', 'User\TournamentsController@transferPlayerPost')->name('transferPlayerAjax');
-            Route::post('/deleteplayerajax', 'User\TournamentsController@deletePlayerPost')->name('deletePlayerAjax');
-            Route::get('/transfer/{team_id}/{player_id}/{tournament_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
-            Route::get('/congrats/{team_id}', 'User\TournamentsController@sucessteam')->name('team-completed');
-        });
-    });
+            Route::group(['prefix' => 'challenge'], function () {
+
+                Route::get('/', 'User\ChallengeController@index')->name('challenges');
+                Route::get('/check-winner/{id}', 'User\ChallengeController@checkWinner')->name('adasd');
+                Route::post('/send-challenge', 'User\ChallengeController@sendChallenge')->name('sendchallenge');
+                Route::get('/accept-challenge/{id}', 'User\ChallengeController@acceptChallenge')->name('accept_challenge');
+                Route::get('/show-challenge/{id}', 'User\ChallengeController@showUserChallenges')->name('accept');
+            });
+            Route::group(['prefix' => 'tournaments'], function () {
+
+                Route::get('/addteamname/{tournament_id}', 'User\TournamentsController@addTeam')->name('addTeam');
+                Route::get('add-players/{team_id}/{tournament_id}', 'User\TournamentsController@playTournament')->name('addPlayers');
+                Route::get('/addteam', 'User\TournamentsController@teamNamePostAjax')->name('teamNamePostAjax');
+                Route::post('/addplayerajax', 'User\TournamentsController@addUserPlayer')->name('addUserTeamPlayerAjax');
+                Route::post('/transferplayerajax', 'User\TournamentsController@transferPlayerPost')->name('transferPlayerAjax');
+                Route::post('/deleteplayerajax', 'User\TournamentsController@deletePlayerPost')->name('deletePlayerAjax');
+                Route::get('/transfer/{team_id}/{player_id}/{tournament_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
+                Route::get('/congrats/{team_id}', 'User\TournamentsController@sucessteam')->name('team-completed');
+            });
+        }); //end is_user middleware
+    }); // end membership middleware
+
     Route::group(['prefix' => 'dashboard'], function () {
         Route::get('/', 'DashboardController@index')->name('UserDashboard');
         Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
         Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('userProfileEdit');
     });
 });
+
 Route::get('player-stats/{player_id}', 'User\TournamentsController@showPlayerState')->name('showPlayerStats');
 
 //Adminroutes
@@ -285,6 +292,6 @@ Route::group(['middleware' => ['is_blogger'], 'prefix' => 'admin/blog'], functio
     });
 });
 Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal', 'uses' => 'MembershipController@payWithPaypal',));
-Route::post('paypal/{id}', array('as' => 'addmoney.paypal', 'uses' => 'MembershipController@postPaymentWithpaypal',));
+Route::post('paypal', array('as' => 'addmoney.paypal', 'uses' => 'MembershipController@postPaymentWithpaypal',));
 Route::get('paypal', array('as' => 'payment.status', 'uses' => 'MembershipController@getPaymentStatus',));
 Route::post('test', array('as' => 'test', 'uses' => 'MembershipController@subscribeMembership',));

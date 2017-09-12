@@ -40,6 +40,7 @@ class MembershipController extends HomeController
 
     function index($isPopup = false)
     {
+
         $data['membership_plans'] = \App\Membership::all();
         return $isPopup ? view('user.memberships.member_popup', $data) : view('user.memberships.home', $data);
     }
@@ -79,9 +80,10 @@ class MembershipController extends HomeController
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function postPaymentWithpaypal(Request $request, $id)
+    public function postPaymentWithpaypal(Request $request)
     {
-
+        dd($request->plan_id);
+        $id=$request->plan_id;
         $user_memberhsip = \App\User::where('id', $id)->with('membership')->get()->toArray();
         $membership = \App\Membership::where('id', $id)->first()->toArray();
         // dd($membership);

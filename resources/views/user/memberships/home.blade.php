@@ -255,17 +255,18 @@
                                                     /<span>year</span></p></li>
                                             <li>
                                                 <ul class="options">
-                                                    <li>No of Transfer <span>{{$plan['transfers']}}</span></li>
-                                                    <li>Tournaments Points <span>{{$plan['points']}} </span></li>
-                                                    <li>Invite Points <span>{{$plan['invite_points']}}</span></li>
-                                                    <li>Share Points <span>{{$plan['share_points']}}</span></li>
+                                                    @foreach($plan['membership_details'] as $details)
+                                                        <li>{{str_replace('_',' ',$details['feature'])}} <span>{{$details['value']}}</span></li>
 
+                                                    @endforeach
                                                 </ul>
                                             </li>
                                             <li class="button">
                                                 <label>Select</label>
-                                                <input type="hidden" name="amount[{{$plan['id']}}]" value="{{$plan['price']}}"/>
-                                                <input <?php echo ($plan['id'] == '1') ? 'checked' : '' ?> type="radio" name="plan_id" value="{{$plan['id']}}">
+                                                <input type="hidden" name="amount[{{$plan['id']}}]"
+                                                       value="{{$plan['price']}}"/>
+                                                <input <?php echo ($plan['id'] == '1') ? 'checked' : '' ?> type="radio"
+                                                       name="plan_id" value="{{$plan['id']}}">
 
                                             </li>
                                         </ul>
@@ -273,8 +274,8 @@
 
 
                                 @endforeach
-                                    <input  value="purchase"  type="submit">
-                                    {!! Form::close() !!}
+                                <input value="purchase" type="submit">
+                                {!! Form::close() !!}
 
                                 {{--<li class="plan">--}}
                                 {{--<ul class="planContainer">--}}

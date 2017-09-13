@@ -30,12 +30,17 @@ class HomeController extends Controller
     {
 
 
+
 //        $users=\App\User::all();
 //        foreach($users as $user){
 //            $user= \App\User::find($user['id']);
 //            $user->referral_key= \Crypt::encrypt($user->email);
 //            $user->save();
 //        }
+
+
+
+
 
 
         // debugArr($match['match_players'][0]['player_game_term_score']);
@@ -80,17 +85,25 @@ class HomeController extends Controller
     public function test()
     {
         dd('test');
-        // return view('user.team_detail1');
+       // return view('user.team_detail1');
 
     }
 
     public function newdash()
     {
 
-        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->get()->toArray();
+        $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())
+            ->get()
+            ->toArray();
+        //dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
+
+
+
         $data['upcommingTour']->toArray();
+
+
         return view('user.dashboard.newdash', $data);
     }
 
@@ -129,16 +142,17 @@ class HomeController extends Controller
 
 
         $objTourmament = \App\Tournament::orderBy("start_date",
-            'DESC')->
+            'asc')->
         Where('end_date', '>=', getGmtTime())->get();
-        $data['tournaments_list'] = $objTourmament->where('is_active', 1)->toArray(); //list of active
+        $data['tournaments_list'] = $objTourmament->where('is_active',1)->toArray(); //list of active
         $tournaments_data = [];
         foreach ($data['tournaments_list'] as $key => $tournament) {
             $data['tournaments_list'][$key] = $tournament;
             $data['tournaments_list'][$key]['leaderboard'] = \App\Leaderboard::where('tournament_id', $tournament['id'])->where('score', '>', 0)->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
             $data['tournaments_list'][$key]['nextmatch'] = \App\Match::getNextMatch($tournament['id']);
         }
-        $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
+
+        $upcommingTour = \App\Tournament::where('start_date', '>=', getGmtTime())->orderBy("id",'desc')->get();
         $data['upcomming_tournaments_list'] = $upcommingTour->toArray(); //upcomming tournament of active
         $data['news'] = \App\BlogPost::where('post_type', 'news')->take(3)->orderBy('id', 'DESC')->get()->toArray();
 
@@ -166,6 +180,7 @@ class HomeController extends Controller
         return view('user.dashboard.home', $data);
 
     }
+
 
 
     public function fixturesDetial($tournament_id)

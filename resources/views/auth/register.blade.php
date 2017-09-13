@@ -15,8 +15,8 @@
                         <div class="">
                             <!--Form-->
                             <div class="col-md-12">
-                                <div class="col-md-4">
-                                    <div class="=col-md-12 col text-center">
+                                <div class="col-md-4 col-md-4 col-sm-offset-4">
+                                    <div class="=col-md-12  col text-center">
                                         @if (count($errors) > 0)
                                             <div class="alert alert-danger">
                                                 <ul>

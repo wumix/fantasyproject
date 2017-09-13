@@ -130,7 +130,7 @@ class HomeController extends Controller
 
 
         $objTourmament = \App\Tournament::orderBy("start_date",
-            'DESC')->
+            'asc')->
         Where('end_date', '>=', getGmtTime())->get();
         $data['tournaments_list'] = $objTourmament->where('is_active', 1)->toArray(); //list of active
         $tournaments_data = [];

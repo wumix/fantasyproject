@@ -41,7 +41,8 @@
       "app/Helpers/file.php",
       "app/Helpers/array.php",
       "app/Helpers/user.php",
-      "app/Helpers/datetime.php"
+      "app/Helpers/datetime.php",
+      "app/Helpers/miscellaneous.php"
     ],
     "psr-4": {
       "Tests\\": "tests/"

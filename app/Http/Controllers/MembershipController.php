@@ -82,8 +82,7 @@ class MembershipController extends HomeController
      */
     public function postPaymentWithpaypal(Request $request)
     {
-//        dd($request->plan_id);
-        $id=$request->plan_id;
+        $id = $request->plan_id;
         $user_memberhsip = \App\User::where('id', $id)->with('membership')->get()->toArray();
         $membership = \App\Membership::where('id', $id)->first()->toArray();
         // dd($membership);
@@ -95,7 +94,7 @@ class MembershipController extends HomeController
         $item_1->setName("Gamithon " . $membership['name'] . " Membership")/** item name **/
         ->setCurrency('USD')
             ->setQuantity(1)
-            ->setPrice($request->get('amount'));
+            ->setPrice($request->amount[$request->plan_id]);
         /** unit price **/
 
         $item_list = new ItemList();
@@ -103,7 +102,7 @@ class MembershipController extends HomeController
 
         $amount = new Amount();
         $amount->setCurrency('USD')
-            ->setTotal($request->get('amount'));
+            ->setTotal($request->amount[$request->plan_id]);
 
         $transaction = new Transaction();
         $transaction->setAmount($amount)
@@ -184,27 +183,9 @@ class MembershipController extends HomeController
         /** dd($result);exit; /** DEBUG RESULT, remove it later **/
         if ($result->getState() == 'approved') {
             $result = $result->toArray();
-            //dd($result);
-            $payment_detail = [];
-            $payment_detail['paypal_payment_id'] = $result['id'];
-            $payment_detail['intent'] = $result['intent'];
-            $payment_detail['amount'] = $result['transactions'][0]['item_list']['items'][0]['price'];
-            $payment_detail['currency'] = $result['transactions'][0]['item_list']['items'][0]['currency'];
-            $payment_detail['description'] = $result['transactions'][0]['item_list']['items'][0]['name'];
-            $payment_detail['merchant_id'] = $result['transactions'][0]['payee']['merchant_id'];
-            $payment_detail['email'] = $result['transactions'][0]['payee']['email'];
-            $payment_detail['user_id'] = \Auth::id();
-            $payment_detail['date'] = getGmtTime();
-            //  dd($payment_detail);
-            /** it's all right **/
-            /** Here Write your database logic like that insert record or value in database if you want **/
-            $user_memberhsip = \App\User::find(\Auth::id());
-            $end_date = date('Y-m-d h:i:s', strtotime('+1 years'));
-            $user_memberhsip->membership()->attach($membership_id, [
-                'end_date' => $end_date, 'start_date' => getGmtTime()]);
-            $payment = new \App\UserPayment;
-            $payment->fill($payment_detail);
-            $payment->save();
+
+            $this->addMembershipDetail($result, $membership_id); //add membership payment detail
+            userPointsAdditionInTournament(\Auth::id(),"tournament_points"); //allocates tournament points according to memberhsip  in active tournaments
             \Session::put('success', 'Payment success');
             //dd('end here');
             return Redirect::route('userdashboard');
@@ -212,6 +193,32 @@ class MembershipController extends HomeController
         \Session::put('error', 'Payment failed');
 
         return Redirect::route('paywithpaypal');
+    }
+
+
+
+    public function addMembershipDetail($result, $membership_id)
+    {
+        $payment_detail = [];
+        $payment_detail['paypal_payment_id'] = $result['id'];
+        $payment_detail['intent'] = $result['intent'];
+        $payment_detail['amount'] = $result['transactions'][0]['item_list']['items'][0]['price'];
+        $payment_detail['currency'] = $result['transactions'][0]['item_list']['items'][0]['currency'];
+        $payment_detail['description'] = $result['transactions'][0]['item_list']['items'][0]['name'];
+        $payment_detail['merchant_id'] = $result['transactions'][0]['payee']['merchant_id'];
+        $payment_detail['email'] = $result['transactions'][0]['payee']['email'];
+        $payment_detail['user_id'] = \Auth::id();
+        $payment_detail['date'] = getGmtTime();
+        //  dd($payment_detail);
+        /** it's all right **/
+        /** Here Write your database logic like that insert record or value in database if you want **/
+        $user_memberhsip = \App\User::find(\Auth::id());
+        $end_date = date('Y-m-d h:i:s', strtotime('+1 years'));
+        $user_memberhsip->membership()->attach($membership_id, ['is_expired' => '0',
+            'end_date' => $end_date, 'start_date' => getGmtTime()]);
+        $payment = new \App\UserPayment;
+        $payment->fill($payment_detail);
+        $payment->save();
     }
 
     public function memberShipPopup()

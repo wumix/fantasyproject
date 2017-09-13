@@ -113,14 +113,15 @@ Route::group(['middleware' => ['web']], function () {
                 Route::get('/transfer/{team_id}/{player_id}/{tournament_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
                 Route::get('/congrats/{team_id}', 'User\TournamentsController@sucessteam')->name('team-completed');
             });
+            Route::group(['prefix' => 'dashboard'], function () {
+                Route::get('/', 'DashboardController@index')->name('UserDashboard');
+                Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
+                Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('userProfileEdit');
+            });
         }); //end is_user middleware
     }); // end membership middleware
 
-    Route::group(['prefix' => 'dashboard'], function () {
-        Route::get('/', 'DashboardController@index')->name('UserDashboard');
-        Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
-        Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('userProfileEdit');
-    });
+
 });
 
 Route::get('player-stats/{player_id}', 'User\TournamentsController@showPlayerState')->name('showPlayerStats');

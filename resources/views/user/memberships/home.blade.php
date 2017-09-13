@@ -264,7 +264,7 @@
                                             </li>
                                             <li class="button">
                                                 <label>Select</label>
-                                                <input type="hidden" name="amount" value="{{$plan['price']}}"/>
+                                                <input type="hidden" name="amount[{{$plan['id']}}]" value="{{$plan['price']}}"/>
                                                 <input <?php echo ($plan['id'] == '1') ? 'checked' : '' ?> type="radio" name="plan_id" value="{{$plan['id']}}">
 
                                             </li>

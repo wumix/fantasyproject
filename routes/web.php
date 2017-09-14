@@ -159,6 +159,9 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
                 Route::post('addCategory', 'Admin\Blog\CategoryController@postAddBlogCategory')->name('postAddBlogCategory');
             });
         });
+        Route::group(['prefix' => 'memberships'], function () {
+
+        });
         Route::group(['prefix' => 'ranking'], function () {
             Route::get('/', 'Admin\RankingController@index')->name('adminListRanking');
             Route::get('add/{cat_id}', 'Admin\RankingController@add')->name('addRankingAdmin');

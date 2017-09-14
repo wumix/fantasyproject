@@ -107,7 +107,7 @@ class MembershipController extends HomeController
             $payment = new \App\UserPayment;
             $payment->fill($payment_detail);
             $payment->save();
-            return Redirect::route('userdashboard');
+            //return Redirect::route('\userdashboard');
         }
         $user_memberhsip = \App\User::where('id', $id)->with('membership')->get()->toArray();
         $membership = \App\Membership::where('id', $id)->first()->toArray();

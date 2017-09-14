@@ -114,7 +114,7 @@ Route::group(['middleware' => ['web']], function () {
                 Route::get('/congrats/{team_id}', 'User\TournamentsController@sucessteam')->name('team-completed');
             });
             Route::group(['prefix' => 'dashboard'], function () {
-                Route::get('/', 'DashboardController@index')->name('UserDashboard');
+               // Route::get('/', 'DashboardController@index')->name('UserDashboard');
                 Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
                 Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('userProfileEdit');
             });

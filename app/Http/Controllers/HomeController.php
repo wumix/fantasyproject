@@ -255,6 +255,11 @@ class HomeController extends Controller
     {
         return view('pages.p-p');
     }
+    public function aboutUs()
+    {
+        return view('pages.about_us');
+    }
+
 
     public function howPlay()
     {

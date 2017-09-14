@@ -31,6 +31,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('contact', 'HomeController@contactPage')->name('contactPage');
     Route::post('contact', 'HomeController@postContact')->name('postContact');
     Route::get('privacy', 'HomeController@privacyPolicy')->name('PrivacyPolicy');
+    Route::get('about', 'HomeController@aboutUs')->name('aboutus');
+
     Route::get('terms', 'HomeController@termsCon')->name('TermsCon');
     Route::get('champions-trophy', 'HomeController@fixturs')->name('champion');
     Route::get('upcomming', 'HomeController@upcommingTournamnets')->name('upcommingTournamnets');

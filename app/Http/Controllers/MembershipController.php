@@ -47,6 +47,7 @@ class MembershipController extends HomeController
 
     function subscribeMembership(Request $request, $id)
     {
+
         $this->postPaymentWithpaypal($request);
 
         $membership = \App\Membership::where('id', $id)->first()->toArray();
@@ -82,7 +83,32 @@ class MembershipController extends HomeController
      */
     public function postPaymentWithpaypal(Request $request)
     {
+
         $id = $request->plan_id;
+
+        if($id==1) {
+            $payment_detail = [];
+            $payment_detail['paypal_payment_id'] = 'N-A';
+            $payment_detail['intent'] = 'N-A';
+            $payment_detail['amount'] = '0';
+            $payment_detail['currency'] = 'N-A';
+            $payment_detail['description'] = 'Free Membership';
+            $payment_detail['merchant_id'] = 'N-A';
+            $payment_detail['email'] = 'N-A';
+            $payment_detail['user_id'] = \Auth::id();
+            $payment_detail['date'] = getGmtTime();
+            //  dd($payment_detail);
+            /** it's all right **/
+            /** Here Write your database logic like that insert record or value in database if you want **/
+            $user_memberhsip = \App\User::find(\Auth::id());
+            $end_date = date('Y-m-d h:i:s', strtotime('+1 years'));
+            $user_memberhsip->membership()->attach($id, ['is_expired' => '0',
+                'end_date' => $end_date, 'start_date' => getGmtTime()]);
+            $payment = new \App\UserPayment;
+            $payment->fill($payment_detail);
+            $payment->save();
+            return Redirect::route('userdashboard');
+        }
         $user_memberhsip = \App\User::where('id', $id)->with('membership')->get()->toArray();
         $membership = \App\Membership::where('id', $id)->first()->toArray();
         // dd($membership);

@@ -86,7 +86,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
                 Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
-              //  Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
+                Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
                 Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');
                 Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
                 Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('postUserProfile');
@@ -114,7 +114,7 @@ Route::group(['middleware' => ['web']], function () {
                 Route::get('/congrats/{team_id}', 'User\TournamentsController@sucessteam')->name('team-completed');
             });
             Route::group(['prefix' => 'dashboard'], function () {
-                Route::get('/', 'DashboardController@index')->name('UserDashboard');
+                Route::get('/userdashboard', 'DashboardController@index')->name('UserDashboard');
                 Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
                 Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('userProfileEdit');
             });

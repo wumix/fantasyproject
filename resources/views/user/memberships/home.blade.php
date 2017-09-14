@@ -4,228 +4,112 @@
 @stop
 @section('css')
     <style>
-        #plans, #plans ul, #plans ul li {
-            margin: 0;
-            padding: 0;
-            list-style: none;
+        .cl-pricetable-wrap {
+            background: #f9f9f9;
         }
 
-        #pricePlans:after {
-            content: '';
-            display: table;
-            clear: both;
-        }
-
-        #pricePlans {
-            zoom: 1;
-        }
-
-        #pricePlans {
-            max-width: 69em;
-            margin: 0 auto;
-        }
-
-        #pricePlans #plans .plan {
+        .cl-pricetable-wrap .bottom .btn-table:hover {
+            border: 2px solid #d32f2f !important;
             background: #fff;
-            float: left;
+            color: #000 !important;
+        }
+
+        .cl-pricetable-wrap .bottom .btn-table {
+            padding: 20px 0;
             width: 100%;
-            text-align: center;
-            border-radius: 5px;
-            margin: 0 0 20px 0;
-
-            -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .planContainer .title h2 {
-            font-size: 2.125em;
-            font-weight: 300;
-            color: #3e4f6a;
-            margin: 0;
-            padding: .6em 0;
-        }
-
-        .planContainer .title h2.bestPlanTitle {
-            background: #3e4f6a;
-
-            background: -webkit-linear-gradient(top, #475975, #364761);
-            background: -moz-linear-gradient(top, #475975, #364761);
-            background: -o-linear-gradient(top, #475975, #364761);
-            background: -ms-linear-gradient(top, #475975, #364761);
-            background: linear-gradient(top, #475975, #364761);
-            color: #fff;
-            border-radius: 5px 5px 0 0;
-        }
-
-        .planContainer .price p {
-            background: #3e4f6a;
-
-            background: -webkit-linear-gradient(top, #475975, #364761);
-            background: -moz-linear-gradient(top, #475975, #364761);
-            background: -o-linear-gradient(top, #475975, #364761);
-            background: -ms-linear-gradient(top, #475975, #364761);
-            background: linear-gradient(top, #475975, #364761);
-            color: #fff;
-            font-size: 1.2em;
-            font-weight: 700;
-            height: 2.6em;
-            line-height: 2.6em;
-            margin: 0 0 1em;
-        }
-
-        .planContainer .price p.bestPlanPrice {
-            background: #f7814d;
-        }
-
-        .planContainer .price p span {
-            color: #8394ae;
-        }
-
-        .planContainer .options {
-            margin-top: 10em;
-        }
-
-        .planContainer .options li {
-            font-weight: 700;
-            color: #364762;
-            line-height: 2.5;
-        }
-
-        .planContainer .options li span {
+            border: 2px solid #0c1f28;
+            display: block;
+            font-size: 15px;
             font-weight: 400;
-            color: #979797;
-        }
-
-        .planContainer .button a {
-            text-transform: uppercase;
-            text-decoration: none;
-            color: #3e4f6a;
-            font-weight: 700;
-            letter-spacing: 3px;
-            line-height: 2.8em;
-            border: 2px solid #3e4f6a;
-            display: inline-block;
-            width: 80%;
-            height: 2.8em;
-            border-radius: 4px;
-            margin: 1.5em 0 1.8em;
-        }
-
-        .planContainer .button a.bestPlanButton {
-            color: #fff;
-            background: #f7814d;
-            border: 2px solid #f7814d;
-        }
-
-        .bestPlanButton {
-            color: #fff;
-            background: #f7814d;
-            border: 2px solid #f7814d;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: #3e4f6a;
-            font-weight: 700;
-            letter-spacing: 3px;
-            line-height: 2.8em;
-            border: 2px solid #3e4f6a;
-            display: inline-block;
-            width: 80%;
-            height: 2.8em;
-            border-radius: 4px;
-            margin: 1.5em 0 1.8em;
-            background: #00a65a; /* chage button backgoiurndnndndnddndndndn*/
-        }
-
-        #credits {
             text-align: center;
-            font-size: .8em;
-            font-style: italic;
-            color: #777;
+            text-transform: uppercase;
+            color: #ffffff !important;
+            background: #f44336;
         }
 
-        #credits a {
-            color: #333;
+        .cl-header h4 {
+            font-size: 23px;
         }
 
-        #credits a:hover {
-            text-decoration: none;
+        .cl-pricetable-wrap .top {
+            text-align: center;
+            color: #f44336;
+            padding: 40px 8px 0;
         }
 
-        @media screen and (min-width: 481px) and (max-width: 768px) {
-
-            #pricePlans #plans .plan {
-                width: 49%;
-                margin: 0 2% 20px 0;
-            }
-
-            #pricePlans #plans > li:nth-child(2n) {
-                margin-right: 0;
-            }
-
+        .cl-pricetable-wrap .top .cl-header h4 {
+            font-size: 23px;
+            font-weight: 700;
+            line-height: 24px;
+            margin-bottom: 0;
+            margin-top: 0;
+            padding: 30px 0 0;
+            text-transform: uppercase;
         }
 
-        @media screen and (min-width: 769px) and (max-width: 1024px) {
-
-            #pricePlans #plans .plan {
-                width: 49%;
-                margin: 0 2% 20px 0;
-            }
-
-            #pricePlans #plans > li:nth-child(2n) {
-                margin-right: 0;
-            }
-
+        .cl-pricetable-wrap .top .popular {
+            background: #d32f2f;
+            color: #ffffff;
+            font-size: 11px;
+            left: -43px;
+            padding: 18px 34px 6px;
+            position: absolute;
+            text-transform: lowercase;
+            top: -6px;
+            transform: rotate(-50deg);
         }
 
-        @media screen and (min-width: 1025px) {
+        .cl-pricetable-wrap .top h5 {
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: lowercase;
+            display: inline-block;
+        }
 
-            #pricePlans {
-                margin: 2em auto;
-            }
+        .cl-pricetable-wrap .bottom ul {
+            text-align: left;
+            padding: 0;
+            margin: 0;
+        }
 
-            #pricePlans #plans .plan {
-                width: 23%;
-                margin: 0 1.33% 20px 0;
+        .top h3 .dolar {
+            bottom: 24px;
+            font-size: 22px;
+            font-weight: 800;
+            padding-right: 3px;
+            position: relative;
+        }
 
-                -webkit-transition: all .25s;
-                -moz-transition: all .25s;
-                -ms-transition: all .25s;
-                -o-transition: all .25s;
-                transition: all .25s;
-            }
+        .cl-pricetable-wrap .top h3 {
+            margin: 4px 0 44px;
+            display: inline-block;
+            font-size: 60px;
+            font-weight: 300;
+            line-height: 60px;
+        }
 
-            #pricePlans #plans > li:last-child {
-                margin-right: 0;
-            }
+        .bottom li {
+            color: #365260;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            list-style: none;
+            padding: 10px 12px;
+        }
 
-            #pricePlans #plans .plan:hover {
-                -webkit-transform: scale(1.04);
-                -moz-transform: scale(1.04);
-                -ms-transform: scale(1.04);
-                -o-transform: scale(1.04);
-                transform: scale(1.04);
-            }
+        .bottom li:nth-child(odd) {
+            background: #e0e0e0;
+        }
 
-            .planContainer .button a {
-                -webkit-transition: all .25s;
-                -moz-transition: all .25s;
-                -ms-transition: all .25s;
-                -o-transition: all .25s;
-                transition: all .25s;
-            }
-
-            .planContainer .button a:hover {
-                background: #3e4f6a;
-                color: #fff;
-            }
-
-            .planContainer .button a.bestPlanButton:hover {
-                background: #ff9c70;
-                border: 2px solid #ff9c70;
-            }
+        .bottom li:nth-child(even) {
 
         }
 
+        .pkg-paert {
+            max-width: 180px;
+            display: block;
+            float: left;
+        }
     </style>
 @endsection
 @section('content')
@@ -238,106 +122,86 @@
                         Membership Plans
                     </h1>
                     <hr class="light full">
-                    <div class="page-content" style="margin-bottom: 80px;">
-
-
+                    <div class="page-content price-table style1" style="margin-bottom: 80px;">
                         <!-- your content -->
                         <section id="pricePlans">
-                            <ul id="plans">
-
-
-                                @foreach($membership_plans as $plan)
-                                    {!! Form::open(['method'=>'POST','url' => route('addmoney.paypal')]) !!}
-                                    <li class="plan">
-                                        <ul class="planContainer">
-                                            <li class="title" class="bestPlanTitle"><h2> {{$plan['name']}}</h2></li>
-                                            <li class="price" class="bestPlanPrice"><p>USD {{$plan['price']}}
-                                                    /<span>year</span></p></li>
-                                            <li>
-                                                <ul class="options">
-                                                    @foreach($plan['membership_details'] as $details)
-                                                        <li>{{str_replace('_',' ',$details['feature'])}} <span>{{$details['value']}}</span></li>
-
-                                                    @endforeach
-                                                </ul>
-                                            </li>
-                                            <li class="button">
-                                                <label>Select</label>
-                                                <input type="hidden" name="amount[{{$plan['id']}}]"
-                                                       value="{{$plan['price']}}"/>
-                                                <input <?php echo ($plan['id'] == '1') ? 'checked' : '' ?> type="radio"
-                                                       name="plan_id" value="{{$plan['id']}}">
-
-                                            </li>
-                                        </ul>
-                                    </li>
-
-
-                                @endforeach
-                                <input value="purchase" type="submit">
-                                {!! Form::close() !!}
-
-                                {{--<li class="plan">--}}
-                                {{--<ul class="planContainer">--}}
-                                {{--<li class="title"><h2 class="bestPlanTitle">Plan 2</h2></li>--}}
-                                {{--<li class="price"><p class="bestPlanPrice">$20/month</p></li>--}}
-                                {{--<li>--}}
-                                {{--<ul class="options">--}}
-                                {{--<li>2x <span>option 1</span></li>--}}
-                                {{--<li>Free <span>option 2</span></li>--}}
-                                {{--<li>Unlimited <span>option 3</span></li>--}}
-                                {{--<li>Unlimited <span>option 4</span></li>--}}
-                                {{--<li>1x <span>option 5</span></li>--}}
-                                {{--</ul>--}}
-                                {{--</li>--}}
-                                {{--<li class="button"><a class="bestPlanButton" href="#">Purchase</a></li>--}}
-                                {{--</ul>--}}
-                                {{--</li>--}}
-
-                                {{--<li class="plan">--}}
-                                {{--<ul class="planContainer">--}}
-                                {{--<li class="title"><h2>Plan 3</h2></li>--}}
-                                {{--<li class="price"><p>$30/<span>month</span></p></li>--}}
-                                {{--<li>--}}
-                                {{--<ul class="options">--}}
-                                {{--<li>2x <span>option 1</span></li>--}}
-                                {{--<li>Free <span>option 2</span></li>--}}
-                                {{--<li>Unlimited <span>option 3</span></li>--}}
-                                {{--<li>Unlimited <span>option 4</span></li>--}}
-                                {{--<li>1x <span>option 5</span></li>--}}
-                                {{--</ul>--}}
-                                {{--</li>--}}
-                                {{--<li class="button"><a href="#">Purchase</a></li>--}}
-                                {{--</ul>--}}
-                                {{--</li>--}}
-
-                                {{--<li class="plan">--}}
-                                {{--<ul class="planContainer">--}}
-                                {{--<li class="title"><h2>Plan 4</h2></li>--}}
-                                {{--<li class="price"><p>$40/<span>month</span></p></li>--}}
-                                {{--<li>--}}
-                                {{--<ul class="options">--}}
-                                {{--<li>2x <span>option 1</span></li>--}}
-                                {{--<li>Free <span>option 2</span></li>--}}
-                                {{--<li>Unlimited <span>option 3</span></li>--}}
-                                {{--<li>Unlimited <span>option 4</span></li>--}}
-                                {{--<li>1x <span>option 5</span></li>--}}
-                                {{--</ul>--}}
-                                {{--</li>--}}
-                                {{--<li class="button"><a href="#">Purchase</a></li>--}}
-                                {{--</ul>--}}
-                                {{--</li>--}}
-                            </ul> <!-- End ul#plans -->
-
+                            <?php
+                            // debugArr($membership_plans);
+                            ?>
+                            {!! Form::open(['method'=>'POST','id'=>'member_frm','url' => route('addmoney.paypal')]) !!}
+                            @foreach($membership_plans as $plan)
+                                <div class="col-md-3 col-lg-3 col-sm-2 col-xs-12">
+                                    <div class="cl-pricetable-wrap price-2">
+                                        <div class="top">
+                                            {{--<span class="popular">Popular</span>--}}
+                                            <div class="cl-header">
+                                                <h4>{{$plan['name']}}</h4>
+                                            </div>
+                                            <div class="cl-subheader">
+                                                <h3>
+                                                    <span class="dolar">$</span>{{$plan['price']}}
+                                                </h3>
+                                                @if($plan['price'] > 0)
+                                                    <h5> /Year</h5>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <ul>
+                                                @foreach($plan['membership_details'] as $key => $val)
+                                                    <li>
+                                                        <span class="pkg-paert pull-left">
+                                                            {{ucfirst(str_replace('_', ' ', $val['feature']))}}
+                                                        </span>
+                                                        <span class="pull-right">
+                                                            {{  $val['value'] }}
+                                                        </span>
+                                                        <div class="clear clearfix"></div>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                            <a href="javascript:selectMemberShip('{{$plan['id']}}', '{{$plan['name']}}')"
+                                               class="btn-table btn-1 hvr-sweep-to-right">
+                                                Select
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                            <input type="hidden" name="plan_id" id="plan_id" value=""/>
+                            {!! Form::close() !!}
                         </section>
-
                         <!-- your content -->
-
-
                     </div>
                 </div>
             </div>
         </div>
-        <br> <br> <br> <br> <br> <br> <br><br> <br> <br><br> <br><br> <br>
     </section>
+    <div style="height: 40px;"></div>
 @endsection
+
+@section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+    <script>
+        function selectMemberShip(memberShipId, planName) {
+            $("#plan_id").val(memberShipId);
+            bootbox.confirm({
+                title: "Select membership packege",
+                message: "Do you want to purchase " + planName + " packege?.",
+                buttons: {
+                    cancel: {
+                        label: '<i class="fa fa-times"></i> Cancel'
+                    },
+                    confirm: {
+                        label: '<i class="fa fa-check"></i> Confirm'
+                    }
+                },
+                callback: function (result) {
+                    if (result) {
+                        $("#member_frm").submit();
+                    }
+                }
+            });
+        }
+    </script>
+@stop

@@ -751,7 +751,7 @@
                         </p>
 
                         <p class="text-center">
-                            <a class="btn btn-success" href="{{route('membershiphome')}}">Membership Plans</a>
+                            <a class="btn btn-success" href="{{route('membershiphome')}}">Change Membership Plan</a>
 
                         </p>
                         <p class="text-center">

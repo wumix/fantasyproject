@@ -209,11 +209,10 @@ class MembershipController extends HomeController
         /** dd($result);exit; /** DEBUG RESULT, remove it later **/
         if ($result->getState() == 'approved') {
             $result = $result->toArray();
-
             $this->addMembershipDetail($result, $membership_id); //add membership payment detail
             userPointsAdditionInTournament(\Auth::id(),"tournament_points"); //allocates tournament points according to memberhsip  in active tournaments
             \Session::put('success', 'Payment success');
-            //dd('end here');
+            dd('end here');
             return Redirect::route('userdashboard');
         }
         \Session::put('error', 'Payment failed');

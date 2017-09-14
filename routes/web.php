@@ -166,6 +166,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::get('/edit-stat/{player_id}', 'Admin\StatsController@editPlayerStatForm')->name('editPlayerStats');
             Route::post('/edit-stat/{player_id}', 'Admin\StatsController@editPlayerStats')->name('postPlayerEditStats');
         });
+       
         Route::group(['prefix' => 'games'], function () {
             Route::get('/', 'Admin\GamesController@index')->name('gameslist');
             Route::get('/add', 'Admin\GamesController@showAddView')->name('addGame'); //showsaddgameform

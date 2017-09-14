@@ -186,7 +186,7 @@
         function selectMemberShip(memberShipId, planName) {
             $("#plan_id").val(memberShipId);
             bootbox.confirm({
-                title: "Destroy planet?",
+                title: "Select membership packege",
                 message: "Do you want to purchase " + planName + " packege?.",
                 buttons: {
                     cancel: {
@@ -196,8 +196,10 @@
                         label: '<i class="fa fa-check"></i> Confirm'
                     }
                 },
-                callback: function () {
-                    $("#member_frm").submit();
+                callback: function (result) {
+                    if (result) {
+                        $("#member_frm").submit();
+                    }
                 }
             });
         }

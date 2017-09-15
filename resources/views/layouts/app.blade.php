@@ -175,24 +175,27 @@ Cricket app">
                             </a>
                         </li>
 
-                        <li>
 
-                            <a class="page-scroll" href="{{route('showBlog')}}">
-                                Blogs
-                            </a>
-                        </li>
-
-                        <li>
+                        <li class="has-menu">
                             <a class="page-scroll" href="{{route('showNews')}}">
                                 News
                             </a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="{{route('Forums')}}">
-                                Forums
-                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a class="page-scroll" href="{{route('Forums')}}">
+                                        Forums
+                                    </a>
 
+                                </li>
+                                <li>
+
+                                    <a class="page-scroll" href="{{route('showBlog')}}">
+                                        Blogs
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
+
                         {{--<li>--}}
                         {{--<a href="{{route('leaderboard')}}">--}}
                         {{--LeaderBoard--}}
@@ -237,7 +240,6 @@ Cricket app">
 </nav>
 <!---->
 @yield('content')
-
 
 
 <footer>

@@ -160,6 +160,11 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             });
         });
         Route::group(['prefix' => 'memberships'], function () {
+            Route::get('/', 'Admin\MembershipController@index')->name('memberhsips');
+            Route::get('add', 'Admin\MembershipController@showMembershipAddForm')->name('showAddMembershipForm');
+            Route::post('add', 'Admin\MembershipController@postAddMembership')->name('postAddMembership');
+            Route::get('edit/{id}', 'Admin\MembershipController@showMembershipEditForm')->name('showEditMembershipForm');
+            Route::post('edit/{id}', 'Admin\MembershipController@postEditMembership')->name('postEditMembership');
 
         });
         Route::group(['prefix' => 'ranking'], function () {

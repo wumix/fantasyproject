@@ -6,25 +6,27 @@
     <style>
         .cl-pricetable-wrap {
             background: #f9f9f9;
-        }
-
-        .cl-pricetable-wrap .bottom .btn-table:hover {
-            border: 2px solid #d32f2f !important;
-            background: #fff;
-            color: #000 !important;
+            font-family: 'Open Sans', sans-serif;
         }
 
         .cl-pricetable-wrap .bottom .btn-table {
-            padding: 20px 0;
+            padding: 15px;
             width: 100%;
-            border: 2px solid #0c1f28;
+            border: 2px solid #F8930E;
             display: block;
-            font-size: 15px;
-            font-weight: 400;
+            font-size: 16px;
+            font-weight: 700;
             text-align: center;
             text-transform: uppercase;
             color: #ffffff !important;
-            background: #f44336;
+            background: #F8930E;
+            text-decoration: none !important;
+        }
+
+        .cl-pricetable-wrap .bottom .btn-table:hover {
+            border: 2px solid #F8930E !important;
+            background: #fff;
+            color: #F8930E !important;
         }
 
         .cl-header h4 {
@@ -33,22 +35,23 @@
 
         .cl-pricetable-wrap .top {
             text-align: center;
-            color: #f44336;
+            color: #92B713;
             padding: 40px 8px 0;
         }
 
         .cl-pricetable-wrap .top .cl-header h4 {
             font-size: 23px;
-            font-weight: 700;
+            font-weight: 600;
             line-height: 24px;
             margin-bottom: 0;
             margin-top: 0;
-            padding: 30px 0 0;
+            padding: 5px 0 0;
             text-transform: uppercase;
+
         }
 
         .cl-pricetable-wrap .top .popular {
-            background: #d32f2f;
+            background: #F8930E;
             color: #ffffff;
             font-size: 11px;
             left: -43px;
@@ -81,7 +84,7 @@
         }
 
         .cl-pricetable-wrap .top h3 {
-            margin: 4px 0 44px;
+            margin: 4px 0 30px;
             display: inline-block;
             font-size: 60px;
             font-weight: 300;
@@ -98,7 +101,7 @@
         }
 
         .bottom li:nth-child(odd) {
-            background: #e0e0e0;
+            background: #efefef;
         }
 
         .bottom li:nth-child(even) {
@@ -108,7 +111,14 @@
         .pkg-paert {
             max-width: 180px;
             display: block;
+            font-size: 14px;
             float: left;
+            font-weight: 400;
+            text-transform: none;
+        }
+        .pkg-values{
+            font-weight: 400;
+            font-size: 14px;
         }
     </style>
 @endsection
@@ -142,7 +152,7 @@
                                                     <span class="dolar">$</span>{{$plan['price']}}
                                                 </h3>
                                                 @if($plan['price'] > 0)
-                                                    <h5> /Year</h5>
+                                                    <h5> / Year</h5>
                                                 @endif
                                             </div>
                                         </div>
@@ -153,14 +163,14 @@
                                                         <span class="pkg-paert pull-left">
                                                             {{ucfirst(str_replace('_', ' ', $val['feature']))}}
                                                         </span>
-                                                        <span class="pull-right">
+                                                        <span class="pull-right pkg-values">
                                                             {{  $val['value'] }}
                                                         </span>
                                                         <div class="clear clearfix"></div>
                                                     </li>
                                                 @endforeach
                                             </ul>
-                                            <a href="javascript:selectMemberShip('{{$plan['id']}}', '{{$plan['name']}}')"
+                                            <a href="javascript:selectMemberShip('{{$plan['id']}}', '{{$plan['name']}}', '{{$plan['price']}}')"
                                                class="btn-table btn-1 hvr-sweep-to-right">
                                                 Select
                                             </a>
@@ -169,6 +179,7 @@
                                 </div>
                             @endforeach
                             <input type="hidden" name="plan_id" id="plan_id" value=""/>
+                                <input type="hidden" name="plan_price" id="plan_price" value=""/>
                             {!! Form::close() !!}
                         </section>
                         <!-- your content -->
@@ -183,8 +194,11 @@
 @section('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
     <script>
-        function selectMemberShip(memberShipId, planName) {
+        function selectMemberShip(memberShipId, planName,planPrice) {
             $("#plan_id").val(memberShipId);
+            $("#plan_price").val(memberShipId);
+
+
             bootbox.confirm({
                 title: "Select membership packege",
                 message: "Do you want to purchase " + planName + " packege?.",

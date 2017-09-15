@@ -25,7 +25,9 @@ class Membership
         if (Auth::check() && \App\User::is_member(Auth::id())) {
             return $next($request);
         }
-        $data['membership_plans'] = \App\Membership::with('membership_details')->get()->toArray();
+        $data['membership_plans'] = \App\Membership::with(['membership_details'=>function($query){
+            $query->orderBY('feature','asc');
+        }])->get()->toArray();
         return response()->view('user.memberships.home', $data);
 
 

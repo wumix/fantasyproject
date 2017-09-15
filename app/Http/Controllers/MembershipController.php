@@ -83,9 +83,9 @@ class MembershipController extends HomeController
      */
     public function postPaymentWithpaypal(Request $request)
     {
-
+       // dd($request->all());
+        $plan_price=$request->plan_price;
         $id = $request->plan_id;
-
         if($id==1) {
             $payment_detail = [];
             $payment_detail['paypal_payment_id'] = 'N-A';
@@ -120,7 +120,7 @@ class MembershipController extends HomeController
         $item_1->setName("Gamithon " . $membership['name'] . " Membership")/** item name **/
         ->setCurrency('USD')
             ->setQuantity(1)
-            ->setPrice($request->amount[$request->plan_id]);
+            ->setPrice($plan_price);
         /** unit price **/
 
         $item_list = new ItemList();
@@ -128,7 +128,7 @@ class MembershipController extends HomeController
 
         $amount = new Amount();
         $amount->setCurrency('USD')
-            ->setTotal($request->amount[$request->plan_id]);
+            ->setTotal($plan_price);
 
         $transaction = new Transaction();
         $transaction->setAmount($amount)

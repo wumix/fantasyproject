@@ -132,8 +132,9 @@ class DashboardController extends Controller
 //dd($data['accepted_challenges']);
 //dd( $data['challenges']);
         $data['user_scores']=\App\User::where('id',\Auth::id())->with(['leaderboard.tournament'=>function($q){
-            $q->orderBY('end_date','desc');
+          //  $q->orderBY('start_date','asc');
         }])->first()->toArray();
+        //dd($data['user_scores']);
         $data['user_ranking'] = 0;
         foreach ($data['leaders'] as $key => $val) {
             if ($val['user_id'] == \Auth::id()) {

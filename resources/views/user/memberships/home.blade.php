@@ -179,7 +179,7 @@
                                 </div>
                             @endforeach
                             <input type="hidden" name="plan_id" id="plan_id" value=""/>
-                                <input type="hidden" name="plan_price" id="plan_price" value=""/>
+                                <input type="hidden" name="plan_price" id="plan_price" value="{{$plan['price']}}"/>
                             {!! Form::close() !!}
                         </section>
                         <!-- your content -->
@@ -196,7 +196,7 @@
     <script>
         function selectMemberShip(memberShipId, planName,planPrice) {
             $("#plan_id").val(memberShipId);
-            $("#plan_price").val(memberShipId);
+            $("#plan_price").val(planPrice);
 
 
             bootbox.confirm({

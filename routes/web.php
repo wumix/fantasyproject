@@ -91,6 +91,8 @@ Route::group(['middleware' => ['web']], function () {
                 Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
                 Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('postUserProfile');
                 Route::any('/team-detail/', 'DashboardController@teamDetail')->name('teamdetail');
+                Route::post('/send-user-email', 'HomeController@sendUserEmail')->name('sendUserEmail');
+
             });
 
 

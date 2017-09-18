@@ -12,6 +12,7 @@
             padding: 20px 20px;
             margin-bottom: 40px;
         }
+
         .new_form {
             width: 100% !important;
             border: 1px solid #92B713;
@@ -178,7 +179,7 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-lg-12 text-center">
+                    <div class="col-lg-9 text-center">
                         <h2 class="section-heading">
                             Active Tournament and Series
                             <hr class="light">
@@ -228,7 +229,7 @@
                             View all
                         </a>
                     </div>
-                    <div class="col-lg-3 text-center" style="display: none">
+                    <div class="col-lg-3 text-center">
 
                         @if(!\Auth::check())
                             <a href="{{route('userdashboard')}}">
@@ -241,7 +242,7 @@
                                 Share and get 5000 points
                                 <hr class="light">
                             </h2>
-                            <div class="input-group">
+                            <div class="input-group" style="display: none;">
 
                                 <input
                                         id="foo"
@@ -258,9 +259,25 @@
       </span>
                             </div>
                             <div class="row">
-                                <img src="{{URL::to('/')}}/img/facebook-share.png" id="shareBtn"
-                                     style="cursor:pointer; margin-top: 3%"/>
+                                <div class="col-md-9">
+                                    <img src="{{URL::to('/')}}/img/facebook-share.png" id="shareBtn"
+                                         style="cursor:pointer; margin-top: 3%"/>
+                                </div>
+                                <div class="col-md-3">
+                                    <button onclick="sendEmailtoUser()">Email</button>
+                                </div>
 
+                            </div>
+                            <div id="useremailform" style="display: none;" class="row"> <!-- by defualt hidden -->
+                                <form id="senduseremailform">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Enter Your Email">
+                                    <span class="input-group-btn">
+        <input class="btn btn-secondary" type="submit">Send</input>
+      </span>
+                                </div>
+
+                                </form>
                             </div>
                     </div>
                     @endif
@@ -680,7 +697,30 @@
         $(function () {
             $('.itemsz, .leadersName').matchHeight('col-md-4');
         });
+        function sendEmailtoUser() {
+            $("#useremailform").show();
 
+        }
+        $("#senduseremailform").submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '{{route('sendUserEmail')}}',
+                data: {
+                    user_email: 'alraadu58@gmail.com',
+                    user_referrral_code: 'asdasdsdd',
+                    _token: '{{csrf_token()}}'
+                },
+                success: function (data) {
+                    if (data.success == true) {
+
+                    } else {
+
+                    }
+
+                }
+            });
+        });
     </script>
 
     <script>

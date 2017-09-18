@@ -31,21 +31,13 @@ class HomeController extends Controller
 
 
 
-//        $users=\App\User::all();
-//        foreach($users as $user){
-//            $user= \App\User::find($user['id']);
-//            $user->referral_key= \Crypt::encrypt($user->email);
-//            $user->save();
-//        }
-
-
-
-
-
-
-        // debugArr($match['match_players'][0]['player_game_term_score']);
-
     }
+    public function sendUserEmail(Request $request){
+        $email=$request->user_email;
+        $refferal_key=$request->user_referrral_code;
+        Mail::to($email)->send(new \App\Mail\RefferalMail($refferal_key));
+    }
+
 
     public function scorecard(Request $request, $id, $tournament_id)
     {

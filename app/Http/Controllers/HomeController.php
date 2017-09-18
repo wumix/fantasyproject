@@ -14,6 +14,7 @@ use App\Mail\MyMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Mail\Mailer;
 use DateTime;
 use DateTimeZone;
@@ -34,8 +35,11 @@ class HomeController extends Controller
     }
     public function sendUserEmail(Request $request){
         $email=$request->user_email;
-        $refferal_key=$request->user_referrral_code;
-        Mail::to($email)->send(new \App\Mail\RefferalMail($refferal_key));
+        $refferal_key=URL::to('/')."/signup/?referral_key=".\Auth::user()->referral_key;
+        Mail::to($email)->send(new \App\Mail\SendRefferalEmailToUser($refferal_key));
+        return response()->json([
+            'success'=>true
+        ]);
     }
 
 

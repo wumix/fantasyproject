@@ -259,26 +259,39 @@
       </span>
                             </div>
                             <div class="row">
-                                <div class="col-md-9">
-                                    <img src="{{URL::to('/')}}/img/facebook-share.png" id="shareBtn"
-                                         style="cursor:pointer; margin-top: 3%"/>
+                                <div class="">
+                                    <div class="col-md-6 pull-left">
+                                        <a class="btn btn-default" href="javascript:void(0)" id="shareBtn">
+                                            <i class="fa fa-fac"></i> facebook share
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6 pull-right">
+                                        <a class="btn btn-primary" href="javascript:sendEmailtoUser()">
+                                            <i class="fa fa-mail"></i> Share via email
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <button onclick="sendEmailtoUser()">Email</button>
-                                </div>
-
-                            </div>
-                            <div id="useremailform" style="display: none;" class="row"> <!-- by defualt hidden -->
-                                <form id="senduseremailform">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Enter Your Email">
-                                    <span class="input-group-btn">
-        <input class="btn btn-secondary" type="submit">Send</input>
+                                <div class="row">
+                                    <div id="useremailform" style="display: none;" class="form-group">
+                                        <!-- by defualt hidden -->
+                                        <form id="senduseremailform">
+                                            <div class="input-group">
+                                                <input id="userrefferalemail" type="email" class="form-control"
+                                                       placeholder="Enter Your Email">
+                                                <input id="userrefferalcode"
+                                                       value="{{ URL::to('/')}}/signup/?referral_key={{\Auth::user()->referral_key}}"
+                                                       type="hidden" class="form-control"
+                                                       placeholder="Enter Your Email">
+                                                <span class="input-group-btn">
+        <input class="btn btn-secondary" type="submit" value="Send">
       </span>
-                                </div>
+                                            </div>
 
-                                </form>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
+
                     </div>
                     @endif
 
@@ -703,17 +716,17 @@
         }
         $("#senduseremailform").submit(function (e) {
             e.preventDefault();
+            $("#useremailform").hide();
             $.ajax({
                 type: 'POST',
                 url: '{{route('sendUserEmail')}}',
                 data: {
-                    user_email: 'alraadu58@gmail.com',
-                    user_referrral_code: 'asdasdsdd',
+                    user_email: $('#userrefferalemail').val(),
                     _token: '{{csrf_token()}}'
                 },
                 success: function (data) {
                     if (data.success == true) {
-
+                        $("#useremailform").hide();
                     } else {
 
                     }

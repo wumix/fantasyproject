@@ -122,7 +122,7 @@ class RegisterController extends Controller
         $fields = [
             'name' => $data['name'],
             'email' => $data['email'],
-            //  'referral_key'=> \Crypt::encrypt($data['email']),
+             'referral_key'=> \Crypt::encrypt($data['email']),
             'profile_pic' => isset($data[1]) ? $data[1] : '',
             //'referral_key'=>md5(str_random('')+ "xyz"),
             'password' => bcrypt($data['password']),

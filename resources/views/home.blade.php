@@ -447,7 +447,7 @@
                 <div class="col-lg-4 col-md-4 text-center">
 
                     <div class="service-box">
-                        <a disabled="true">
+                        <a target="_blank"  href="https://itunes.apple.com/us/app/gamithon-fantasy/id1277096945?ls=1&mt=8">
                             <img src="{{URL::to('/img/ios.png')}}"/>
 
                         </a>

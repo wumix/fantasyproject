@@ -25,16 +25,16 @@ class ChallengeController extends Controller
 
     public function sendChallenge(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
         $request->request->remove('_token');
-        $request->request->add(['tournament_id' => config('const.tournament_id')]);
+        $request->request->add(['match_id' =>$request->match_id]);
         $data = $this->userChallenge->where(['user_1_id' => $request->user_1_id, 'user_2_id' => $request->user_2_id])->first();
         if (empty($data)) {
             $this->userChallenge->fill($request->all());
             $this->userChallenge->save();
             $sender = \App\User::find($request->user_1_id);
             $reciever = $id = \App\User::find($request->user_2_id);
-            \Mail::to($reciever->email)->send(new \App\Mail\SignUp($sender->name, $reciever->name));
+            \Mail::to($reciever->email)->send(new \App\Mail\Challenge($sender->name, $reciever->name));
             return redirect()->back()
                 ->with('status', 'Challenge Sent Succesfully');
 

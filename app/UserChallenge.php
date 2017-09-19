@@ -16,7 +16,7 @@ class UserChallenge extends Model
 
     function user()
     {
-        return $this->belongsTo('\App\User','user_2_id');
+        return $this->belongsTo('\App\User','user_2_id','id');
     }
 
 }

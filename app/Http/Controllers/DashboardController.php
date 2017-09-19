@@ -130,7 +130,7 @@ class DashboardController extends Controller
             $query->where('is_accepted', 0);
         }, 'challenges.user'])->get()->toArray();
 //        echo \Auth::id();
-//        dd( $data['challenges']);
+     dd( $data['challenges']);
         $data['accepted_challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
             $query->where('is_accepted', 1);
         }, 'challenges.user'])->get()->toArray();

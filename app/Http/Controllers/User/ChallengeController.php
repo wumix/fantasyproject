@@ -44,11 +44,7 @@ class ChallengeController extends Controller
 
     }
 
-    public function makeChallengeTeam($match_id)
-    {
-        \App\Match::where('id',$match_id);
-    }
-
+   
     public function showUserChallenges()
     {
         $r = $this->userChallenge->where('user_2_id', \Auth::id())->get()->toArray();

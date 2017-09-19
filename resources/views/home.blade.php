@@ -565,7 +565,7 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Barbados Tridents Vs S.N Patriots
+                                    Barbados Tridents Vs Knight Riders
                                 </div>
                                 <div class="project-name">
                                     Patriots won by 10 wickets
@@ -580,7 +580,7 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Barbados Tridents Vs S.N Patriots
+                                    Barbados Tridents Vs Knight Riders
                                 </div>
                                 <div class="project-name">
                                     Patriots won by 10 wickets
@@ -595,7 +595,7 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Barbados Tridents Vs S.N Patriots
+                                    Barbados Tridents Vs Knight Riders
                                 </div>
                                 <div class="project-name">
                                     Patriots won by 10 wickets

@@ -124,7 +124,7 @@ class DashboardController extends Controller
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
         $data['leaders'] = \App\Leaderboard::take(3)->select(['user_id', 'score'])->orderBy('score', 'DESC')->get()->toArray();
         $data['challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
-            $query->where('is_accepted', 0);
+            $query->where('status', 0);
         }, 'challenges.user'])->get()->toArray();
         $data['accepted_challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
             $query->where('is_accepted', 1);

@@ -80,7 +80,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
         Route::group(['prefix' => 'challenge'], function () {
-
+            Route::get('team/{match_id}', 'User\ChallengeController@makeChallengeTeam')->name('makeChallengeTeam');
             Route::get('/', 'User\ChallengeController@index')->name('challenges');
             Route::get('/check-winner/{id}', 'User\ChallengeController@checkWinner')->name('adasd');
             Route::post('/send-challenge', 'User\ChallengeController@sendChallenge')->name('sendchallenge');

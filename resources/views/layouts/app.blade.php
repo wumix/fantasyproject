@@ -49,6 +49,27 @@ Cricket app">
             margin: 0 0 0 0;
 
         }
+
+        .main-navigation-menu{}
+        .main-navigation-menu li{}
+        .main-navigation-menu li a{}
+        .main-navigation-menu li:hover .dropdown-menu{
+            display: block;
+        }
+        .main-navigation-menu li .dropdown-menu{
+            left: 0;
+            background: #3b4034;
+        }
+        .main-navigation-menu li .dropdown-menu li:hover{
+            background: rgba(146, 183, 19, 0.8);
+        }
+        .main-navigation-menu li .dropdown-menu li a{
+            color: #fff !important;
+            padding: 5px 20px 7px;
+        }
+        .main-navigation-menu li .dropdown-menu li:hover a{
+            background: none;
+        }
     </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -157,7 +178,7 @@ Cricket app">
                         @endif
                     </ul>
                     <!--Bottom-->
-                    <ul class="nav navbar-nav navbar-right nav-main-menu">
+                    <ul class="nav navbar-nav navbar-right nav-main-menu main-navigation-menu">
                         <li>
                             <a class="page-scroll" href="/">Home</a>
                         </li>
@@ -173,24 +194,26 @@ Cricket app">
                             </a>
                         </li>
 
-                        <li>
 
-                            <a class="page-scroll" href="{{route('showBlog')}}">
-                                Blogs
-                            </a>
-                        </li>
 
                         <li>
                             <a class="page-scroll" href="{{route('showNews')}}">
                                 News
                             </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="page-scroll" href="{{route('showBlog')}}">
+                                        Blogs
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="{{route('Forums')}}">
+                                        Forums
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <a class="page-scroll" href="{{route('Forums')}}">
-                                Forums
-                            </a>
 
-                        </li>
                         {{--<li>--}}
                         {{--<a href="{{route('leaderboard')}}">--}}
                         {{--LeaderBoard--}}

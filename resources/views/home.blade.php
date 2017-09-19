@@ -355,11 +355,12 @@
                                         </a>
                                     </h4>
 
-                                    <span style="font-size: 12px;">
+                                    <span style="font-size: 12px; min-height:75px;display:block" >
                        {!! str_limit($val['description'], 100) !!}...
                             <br>
-                        <a href="{{route('newsdetail',['id'=>$val['slug']])}}">Read More</a>
+
     </span>
+                                    <a href="{{route('newsdetail',['id'=>$val['slug']])}}">Read More</a>
                                 </div>
                             </div>
                         </div>

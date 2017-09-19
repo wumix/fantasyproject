@@ -44,7 +44,7 @@ class ChallengeController extends Controller
 
     }
 
-   
+
     public function showUserChallenges()
     {
         $r = $this->userChallenge->where('user_2_id', \Auth::id())->get()->toArray();

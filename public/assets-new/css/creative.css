@@ -276,7 +276,7 @@ aside {
 
     .signin > span > .navbar-default .nav > li > a, .navbar-default .nav > li > a:hover {
         /*color: rgba(146, 183, 19, 0.8);*/
-        color: #92B713 !important;
+        color: orange !important;
         font-size: 15px;
     }
 

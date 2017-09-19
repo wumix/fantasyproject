@@ -5,8 +5,7 @@
         <td>
             Dear User, <br>
            your refferal code is<br>
-            <a href="{{$refferal_code}}">Your Code</a>
-
+            {{$refferal_code}}
         </td>
     </tr>
 

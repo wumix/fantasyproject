@@ -17,6 +17,7 @@ class ChallengeController extends Controller
 
     public function index()
     {
+        $data['tournament_list'] = \App\Tournament::all()->sortBy("start_date")->where('end_date', '>', getGmtTime());
         $data['users'] = \App\Leaderboard::where('tournament_id', config('const.tournament_id'))
             ->with('user', 'user_team')->orderBy('score', 'DESC')->paginate(9);
         return view('user.challenge.challenge', $data);

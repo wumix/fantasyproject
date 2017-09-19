@@ -36,13 +36,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('/', 'Api\NewsController@index');
 
     });
-
-
-
-
-
-
-    Route::group(['middleware' => 'jwt.auth'], function () {
+   Route::group(['middleware' => 'jwt.auth'], function () {
         Route::resource('tournaments', 'Api\TournamentsController', ['except' => ['index', 'show'
         ]]);
         Route::group(['prefix' => 'tournaments'], function () {

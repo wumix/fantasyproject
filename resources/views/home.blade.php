@@ -351,7 +351,7 @@
                                     <h4 class="media-heading mediah">
                                         <a class="home-news-headings"
                                            href="{{route('newsdetail',['id'=>$val['slug']])}}">
-                                            {{$val['title']}}
+                                            {!! str_limit($val['title'], 46) !!}
                                         </a>
                                     </h4>
 

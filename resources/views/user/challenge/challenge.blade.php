@@ -263,18 +263,12 @@
                     </form>
                     <?php $i = 0;?>
                     <?php $y = 4;?>
-<<<<<<< HEAD
-=======
 
->>>>>>> develop
                     @foreach($users as $key=>$user)
                         @if($i%3==0)
                             <div class="border_arrea">
                                 @endif
-<<<<<<< HEAD
-=======
 
->>>>>>> develop
                                 <div class="col-md-4">
                                     <div class="col-md-6">
                                         <div class="cnter_liez_challenge">
@@ -293,23 +287,12 @@
                                 </div>
 
                                 @if($y%3==0)
-<<<<<<< HEAD
-=======
 
->>>>>>> develop
                             </div>
                         @endif
                         <?php $i++;?>
                         <?php $y++;?>
-<<<<<<< HEAD
-                    @endforeach
 
-
-                    <div class="pagination">
-                        <img class="img-responsive " src={{URL::to('/img/pagination.png')}} alt=""/>
-                    </div>
-                </div>
-=======
 
                     @endforeach
 
@@ -319,7 +302,7 @@
                     </div>
                 </div>
 
->>>>>>> develop
+
             </div>
 
 

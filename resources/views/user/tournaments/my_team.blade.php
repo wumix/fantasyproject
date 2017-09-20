@@ -81,8 +81,7 @@
                                         @foreach($user_team_player as $row)
                                             {{--{{ dd($user_team_player)}}--}}
                                             <tr id="player_tr-del-{{$row['id']}}">
-                                                <td class="border-r1 text-left" style="min-width: 300px;
-">
+                                                <td class="border-r1 text-left" style="min-width: 300px;">
                                                     <a class="colorbox"
                                                        href="{{route('showPlayerStats', ['player_id'=>$row['id']])}}">
                                                         <img class="img-thumbnail"

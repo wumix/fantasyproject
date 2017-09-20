@@ -55,22 +55,49 @@ class ChallengeController extends Controller
 
     public function addChallengeTeam($match_id)
     {
+        //dnt forget to reciverve challenge id here
         $match_id = 96;
+        $challenge_id = 2;
+        $player = \App\UserChallenge::where('id', $challenge_id)->with('challenge_players')->first()->toArray();
+        $selectedPlayers = [];
+        if (!empty($player['challenge_players'])) {
+            $selectedPlayers = array_column($player['challenge_players'], 'id');
+        }
+
+        $data['user_team_player']=$player;
+       // dd($data['user_team_player']);
         $data['roles'] = \App\GameRole::where('game_id', 1)
             ->with([
                 'players.player_matches' => function ($query) use ($match_id) {
                     return $query->where('matches.id', $match_id);
-                },'players.player_roles',
+                }, 'players.player_roles',
+                'players' => function ($q) use ($selectedPlayers) {
+                    $q->whereNotIn('players.id', $selectedPlayers);
+                },
 
             ])
             ->get()
             ->toArray();
-        $data['team_id']=5;
-        return view('user.challenge.user_challenge_team',$data);
+        $data['team_id'] = 5;
+        return view('user.challenge.user_challenge_team', $data);
     }
-    public function addPlayerTochallengeTeam(){
+
+    public function addPlayerTochallengeTeam(Request $request)
+    {
+        $challenge_id = $request->challenge_id;
+        $player_id = $request->player_id;
+        $challenge_id = 2;
+        $player = \App\UserChallenge::find($challenge_id);
+        $player->challenge_players()->sync([$player_id => ['user_id' => 38]], false);
+
 
     }
+function deletePlayerTochallengeTeam(Request $request){
+        $challenge_id=$request->challenge_id;
+        $player_id=$request->player_id;
+        $player= \App\UserChallenge::find($challenge_id);
+        $player->challenge_players()->detach($player_id);
+}
 
     public function acceptChallenge($id)
     {

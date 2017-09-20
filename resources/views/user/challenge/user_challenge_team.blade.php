@@ -78,7 +78,41 @@
                                             <th class="th2" colspan="2">Actions</th>
                                         </tr>
                                         </thead>
+                                        <tbody id="selected-player" class="main-taible-body">
+                                        @foreach($user_team_player['challenge_players'] as $row)
+                                            {{--{{ dd($user_team_player)}}--}}
+                                            <tr id="player_tr-del-{{$row['id']}}">
+                                                <td class="border-r1 text-left" style="min-width: 300px;">
+                                                    <a class="colorbox"
+                                                       href="{{route('showPlayerStats', ['player_id'=>$row['id']])}}">
+                                                        <img class="img-thumbnail"
+                                                             src="{{getUploadsPath($row['profile_pic'])}}"
+                                                             style="width: 80px;float: left;margin-right: 24px;">
+                                                    </a>
 
+                                                    <span class="selected-player-name"> {{ucwords($row['name'])}} </span>
+                                                </td>
+
+
+                                                <td  class="cwt">
+
+                                                    <a onclick="return confirm('Are you sure you want to delete this player')"
+                                                       href="javascript:deletePlayer('{{$row['id']}}','2')"
+                                                       class=" btn btn-md bttor1">Delete Player
+                                                    </a>
+
+                                                </td>
+                                                {{--<td>--}}
+
+                                                {{--<a href="{{route('transferplayer', ['team_id'=>$team_id,'player_id'=>$row['id'],'tournament_id'=>$val['id']])}}"--}}
+                                                {{--class="btn btn-green">Transfer Player--}}
+                                                {{--</a>--}}
+
+                                                {{--</td>--}}
+
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
                                     </table>
                                 </div>
                                 <div class="row">
@@ -192,7 +226,7 @@
                                                                             <td class="add text-left">
                                                                                 <a onclick="return confirm('Are you sure you want to add this player')"
                                                                                    id="btn-player-{{$player['id']}}"
-                                                                                   href="javascript:addplayertoteam('{{$playerid}}','5')"
+                                                                                   href="javascript:addplayertoteam('{{$player['id']}}','5')"
                                                                                    class="btn btn-green">Add To Team
                                                                                 </a>
                                                                             </td>
@@ -297,16 +331,16 @@
 //                }, "2000");
 //            });
         });
-        function deletePlayer(playerid, player_price) {
+        function deletePlayer(playerid,challenge_id) {
 
             var teamid = $("#team_id").val();
             $.ajax({
                 type: 'POST',
-                url: '{{route('deletePlayerAjax')}}',
+                url: '{{route('deletePlayerTochallengeTeam')}}',
                 data: {
                     player_id: playerid,
-                    player_price: player_price,
-                    team_id: teamid, _token: '{{csrf_token()}}'
+                    challenge_id:challenge_id,
+                    _token: '{{csrf_token()}}'
                 },
                 success: function (data) {
                     if (data.success == true) {
@@ -351,20 +385,15 @@
             });
         }
 
-        function addplayertoteam( playerid, tournamentid, player_price) {
-            var arr_player_id = [];
-            arr_player_id.push(playerid);
-            var teamid = $("#team_id").val();
+        function addplayertoteam( playerid, challenge_id) {
+
             $.ajax({
                 type: 'POST',
-                url: '{{route('addUserTeamPlayerAjax')}}',
+                url: '{{route('addPlayerTochallengeTeam')}}',
                 data: {
-                    tournament_id: tournamentid,
-                    player_id: arr_player_id,
-                    role_id: roleid,
-                    role_name: rolename,
-                    player_price: player_price,
-                    team_id: teamid, _token: '{{csrf_token()}}'
+                    player_id: playerid,
+                    challenge_id: challenge_id,
+                    _token: '{{csrf_token()}}'
                 },
                 success: function (data) {
                     if (data.success == true) {

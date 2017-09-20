@@ -13,10 +13,14 @@ class UserChallenge extends Model
     protected $guarded = [];
 
 
-
     function user()
     {
-        return $this->belongsTo('\App\User','user_2_id','id');
+        return $this->belongsTo('\App\User', 'user_2_id', 'id');
+    }
+
+    function challenge_players()
+    {
+        return $this->belongsToMany('\App\Player','user_challenge_team', 'challenge_id', 'player_id');
     }
 
 }

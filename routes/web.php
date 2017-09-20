@@ -97,6 +97,8 @@ Route::group(['middleware' => ['web']], function () {
 
 
             Route::group(['prefix' => 'challenge'], function () {
+                Route::get('/confirm/{id}', 'User\ChallengeController@confirmChallengeTeam')->name('confirmChallengeTeam');
+                Route::post('/team-roles', 'User\ChallengeController@getTeamRoles')->name('getTeamRoles');
                 Route::post('/player/delete', 'User\ChallengeController@deletePlayerTochallengeTeam')->name('deletePlayerTochallengeTeam');
                 Route::post('/player/add', 'User\ChallengeController@addPlayerTochallengeTeam')->name('addPlayerTochallengeTeam');
                 Route::get('/add/{match_id}', 'User\ChallengeController@addChallengeTeam')->name('addChallengeTeam');

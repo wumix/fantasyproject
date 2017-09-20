@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\user;
 
+use App\TournamentRoleLimit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -58,14 +59,17 @@ class ChallengeController extends Controller
         //dnt forget to reciverve challenge id here
         $match_id = 96;
         $challenge_id = 2;
+        $data['challenge_id'] = $challenge_id;
+        $tournamnet_id = \App\Match::where('id', $match_id)->first()->tournament_id;
+        $data['tournamnet_id'] = $tournamnet_id;
         $player = \App\UserChallenge::where('id', $challenge_id)->with('challenge_players')->first()->toArray();
         $selectedPlayers = [];
         if (!empty($player['challenge_players'])) {
             $selectedPlayers = array_column($player['challenge_players'], 'id');
         }
 
-        $data['user_team_player']=$player;
-       // dd($data['user_team_player']);
+        $data['user_team_player'] = $player;
+        // dd($data['user_team_player']);
         $data['roles'] = \App\GameRole::where('game_id', 1)
             ->with([
                 'players.player_matches' => function ($query) use ($match_id) {
@@ -78,28 +82,113 @@ class ChallengeController extends Controller
             ])
             ->get()
             ->toArray();
+//        debugArr( $data['roles']);
+//        die;
         $data['team_id'] = 5;
         return view('user.challenge.user_challenge_team', $data);
+    }
+
+    public function playerRoleCountInChallenge($chalelnge_players, $player_role_id)
+    {
+        $count = 0;
+        foreach ($chalelnge_players['challenge_players'] as $players) {
+            if ($players['player_roles'][0]['id'] == $player_role_id) {
+                $count++;
+            }
+        }
+        return $count;
+    }
+public function confirmChallengeTeam(){
+        dd('asdasd');
+}
+    public function getTeamRoles(Request $request)
+    {
+        $challenge_id = $request->challenge_id;
+        $chalelnge_players = \App\UserChallenge::where('id', $challenge_id)
+            ->with('challenge_players.player_roles')->first()->toArray();
+        $objResponse['success'] = true;
+        $objResponse['msg'] = "Player Added successfully";
+        $objResponse['batsmen'] = $batsmen = $this->playerRoleCountInChallenge($chalelnge_players, 5);
+        $objResponse['bowler'] = $bowler = $this->playerRoleCountInChallenge($chalelnge_players, 6);
+        $objResponse['wicketkeeper'] = $wicketkeeper = $this->playerRoleCountInChallenge($chalelnge_players, 8);
+        $objResponse['allrounder'] = $allrounder = $this->playerRoleCountInChallenge($chalelnge_players, 7);
+        $teamcount = count(($chalelnge_players['challenge_players']));
+        if ($teamcount == 11) {
+            $objResponse['success'] = true;
+            $objResponse['teamsuccess'] = true;
+            $objResponse['challenge_id'] = $challenge_id;
+            //joined_from_match_date -- I guess update team here
+            return response()->json($objResponse);
+
+
+        }
+        return response()->json($objResponse);
     }
 
     public function addPlayerTochallengeTeam(Request $request)
     {
         $challenge_id = $request->challenge_id;
         $player_id = $request->player_id;
+        $tournamnet_id = $request->tournamnet_id;
+        $player_role_id = $request->role_id; //i.e batsmen has role id=7,bowler 5 etc
         $challenge_id = 2;
-        $player = \App\UserChallenge::find($challenge_id);
-        $player->challenge_players()->sync([$player_id => ['user_id' => 38]], false);
+        $chalelnge_players = \App\UserChallenge::where('id', $challenge_id)
+            ->with('challenge_players.player_roles')->first()->toArray();
+        //return count of bowlers,or batsmen depending on role id
+        $teamrolecount = $this->playerRoleCountInChallenge($chalelnge_players, $player_role_id);
+        /* return max limit against a specific role*/
+        $role_imit = \App\TournamentRoleLimit::where(['tournament_id' => $tournamnet_id, 'player_role_id' => $player_role_id])->first()->max_limit;
+        $teamcount = count(($chalelnge_players['challenge_players']));
+        $total = 0;
+            $userteamtomplete=\App\UserChallengeTeamStatus::where('user_id',38)->
+            where('challenge_id',$challenge_id)->first()->is_complete;
+
+            if($userteamtomplete==1){
+
+            }
+
+        if ($teamrolecount < $role_imit) {
+            $player = \App\UserChallenge::find($challenge_id);
+            $player->challenge_players()->sync([$player_id => ['user_id' => 38]], false);
+            $chalelnge_players = \App\UserChallenge::where('id', $challenge_id)
+                ->with('challenge_players.player_roles')->first()->toArray();
+            $objResponse['success'] = true;
+            $objResponse['msg'] = "Player Added successfully";
+            $total += $objResponse['batsmen'] = $this->playerRoleCountInChallenge($chalelnge_players, 5);
+            $total += $objResponse['bowler'] = $this->playerRoleCountInChallenge($chalelnge_players, 6);
+            $total += $objResponse['wicketkeeper'] = $this->playerRoleCountInChallenge($chalelnge_players, 8);
+            $total += $objResponse['allrounder'] = $this->playerRoleCountInChallenge($chalelnge_players, 7);
+            $teamcount=$total;
+        } else {
+            $objResponse['success'] = false;
+            $objResponse['msg'] = "You can't have more than " . $role_imit . " players in this category";
+        }
+
+        if ($teamcount == 11) {
+            $objResponse['success'] = true;
+            $objResponse['teamsuccess'] = true;
+            $objResponse['challenge_id'] = $challenge_id;
+            //joined_from_match_date -- I guess update team here
+            return response()->json($objResponse);
 
 
+        }
+        return response()->json($objResponse);
     }
-function deletePlayerTochallengeTeam(Request $request){
-        $challenge_id=$request->challenge_id;
-        $player_id=$request->player_id;
-        $player= \App\UserChallenge::find($challenge_id);
-        $player->challenge_players()->detach($player_id);
-}
 
-    public function acceptChallenge($id)
+    function deletePlayerTochallengeTeam(Request $request)
+    {
+        $challenge_id = $request->challenge_id;
+        $player_id = $request->player_id;
+        $player = \App\UserChallenge::find($challenge_id);
+        $player->challenge_players()->detach($player_id);
+        $objResponse['success'] = true;
+        $objResponse['msg'] = "Player deleted successfully";
+        return response()->json($objResponse);
+    }
+
+    public
+    function acceptChallenge($id)
     {
 
         $challenge = $this->userChallenge->findOrFail($id);
@@ -110,7 +199,8 @@ function deletePlayerTochallengeTeam(Request $request){
 
     }
 
-    public function checkWinner($challenge_id)
+    public
+    function checkWinner($challenge_id)
     {
 
 

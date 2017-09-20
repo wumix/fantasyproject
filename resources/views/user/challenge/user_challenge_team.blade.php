@@ -97,7 +97,7 @@
                                                 <td  class="cwt">
 
                                                     <a onclick="return confirm('Are you sure you want to delete this player')"
-                                                       href="javascript:deletePlayer('{{$row['id']}}','2')"
+                                                       href="javascript:deletePlayer('{{$row['id']}}','{{$challenge_id}}')"
                                                        class=" btn btn-md bttor1">Delete Player
                                                     </a>
 
@@ -226,7 +226,7 @@
                                                                             <td class="add text-left">
                                                                                 <a onclick="return confirm('Are you sure you want to add this player')"
                                                                                    id="btn-player-{{$player['id']}}"
-                                                                                   href="javascript:addplayertoteam('{{$player['id']}}','5')"
+                                                                                   href="javascript:addplayertoteam('{{$player['id']}}','{{$challenge_id}}','{{$player['player_roles'][0]['id']}}')"
                                                                                    class="btn btn-green">Add To Team
                                                                                 </a>
                                                                             </td>
@@ -318,18 +318,50 @@
     <script>
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
-//            $(window).scroll(function () {
-//                var scrollPositionTop = 0;
-//                if($(window).scrollTop() >= 3300){
-//                    scrollPositionTop = 3300;
-//                }else{
-//                   scrollPositionTop = $(window).scrollTop();
-//                }
-//                $("#point-summery").stop().animate({
-//                    "marginTop": (scrollPositionTop) + "px",
-//                    "marginLeft": ($(window).scrollLeft()) + "px"
-//                }, "2000");
-//            });
+            $.ajax({
+                type: 'POST',
+                url: '{{route('getTeamRoles')}}',
+                data: {
+                    challenge_id:'{{$challenge_id}}',
+                    _token: '{{csrf_token()}}'
+                },
+                success: function (data) {
+                    if (data.success== true) {
+                        if (data.teamsuccess == true) {
+
+
+                            var teamCompletedUrl = '{{route("confirmChallengeTeam", ['team_id'=>'id']) }}';
+                            teamCompletedUrl = teamCompletedUrl.replace('id', data.challenge_id)
+                            var html = '<a href="' + teamCompletedUrl + '" class="btn btn-green" style="margin-top: 5px;">Confirm Team</a>';
+                            // alert(html);
+                            $('#user_team_complete').html(html);
+                            // teamCompletedUrl = teamCompletedUrl.replace('id', data.team_id);
+                            //  alert(teamCompletedUrl);
+                            // console.log(teamCompletedUrl);
+
+                        }
+                        $("#remaining-batsman").html(data.batsmen);
+                        $("#remaining-bowler").html(data.bowler);
+                        $("#remaining-ar").html(data.allrounder);
+                        $("#remaining-wk").html(data.wicketkeeper);
+
+                    } else {
+                        $.toast({
+                            heading: 'Error',
+                            text: data.msg,
+                            icon: 'error',
+                            loader: true, // Change it to false to disable loader
+                            position: 'top-right',
+                            showHideTransition: 'slide',
+                            hideAfter: 10000,
+                            allowToastClose: true,
+                            loaderBg: '#92B713'  // To change the background
+                        });
+                    }
+
+                }
+            });
+
         });
         function deletePlayer(playerid,challenge_id) {
 
@@ -343,7 +375,7 @@
                     _token: '{{csrf_token()}}'
                 },
                 success: function (data) {
-                    if (data.success == true) {
+                    if (data.success== true) {
                         if (data.team_complete == false) {
                             $('#user_team_complete').html('');
                         }
@@ -385,7 +417,7 @@
             });
         }
 
-        function addplayertoteam( playerid, challenge_id) {
+        function addplayertoteam( playerid, challenge_id,role_id) {
 
             $.ajax({
                 type: 'POST',
@@ -393,6 +425,8 @@
                 data: {
                     player_id: playerid,
                     challenge_id: challenge_id,
+                    tournamnet_id:{{$tournamnet_id}},
+                    role_id:role_id,
                     _token: '{{csrf_token()}}'
                 },
                 success: function (data) {
@@ -400,8 +434,8 @@
                         if (data.teamsuccess == true) {
 
 
-                            var teamCompletedUrl = '{{route("team-completed", ['team_id'=>'id']) }}';
-                            teamCompletedUrl = teamCompletedUrl.replace('id', data.team_id)
+                            var teamCompletedUrl = '{{route("confirmChallengeTeam", ['challenge_id'=>'id']) }}';
+                            teamCompletedUrl = teamCompletedUrl.replace('id', data.challenge_id)
                             var html = '<a href="' + teamCompletedUrl + '" class="btn btn-green" style="margin-top: 5px;">Confirm Team</a>';
                             // alert(html);
                             $('#user_team_complete').html(html);
@@ -433,7 +467,7 @@
                             allowToastClose: true,
                             loaderBg: '#92B713'  // To change the background
                         });
-
+                       //location.reload();
                         $('#btn-player-' + playerid).attr('disabled', true);
                         $('#btn-player-' + playerid).remove();
                         $('#total-score-user').html(obj.player_score);

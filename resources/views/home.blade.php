@@ -356,7 +356,7 @@
                                     </h4>
 
                                     <span style="font-size: 12px; min-height:85px;display:block" >
-                       {!! str_limit($val['description'], 100) !!}...
+                       {!! substr($val['description'],0, 100) !!}...
                             <br>
 
     </span>

@@ -192,7 +192,7 @@
                                                                             <td class="add text-left">
                                                                                 <a onclick="return confirm('Are you sure you want to add this player')"
                                                                                    id="btn-player-{{$player['id']}}"
-                                                                                   href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$playerid}}','{{$playerThisTournamnetPrice}}')"
+                                                                                   href="javascript:addplayertoteam('{{$playerid}}','5')"
                                                                                    class="btn btn-green">Add To Team
                                                                                 </a>
                                                                             </td>
@@ -351,7 +351,7 @@
             });
         }
 
-        function addplayertoteam(rolename, roleid, playerid, tournamentid, player_price) {
+        function addplayertoteam( playerid, tournamentid, player_price) {
             var arr_player_id = [];
             arr_player_id.push(playerid);
             var teamid = $("#team_id").val();

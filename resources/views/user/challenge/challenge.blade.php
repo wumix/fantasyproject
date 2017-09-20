@@ -226,7 +226,8 @@
                             <input type="hidden" id="user_2_id" name="user_2_id"/>
                             <input type="hidden" id="user_1_id" name="user_1_id" value="{{Auth::id()}}"/>
                             <div class="form-group">
-                                <select id="tournament_id">
+                                <select id="tournament_id" required>
+                                    <option selected value="select" >Select Tournament</option>
                                     @foreach($tournament_list as $tournament)
                                         <option value="{{$tournament['id']}}">{{$tournament['name']}}</option>
                                     @endforeach

@@ -25,18 +25,18 @@ class ChallengeController extends Controller
 
     public function sendChallenge(Request $request)
     {
-        //dd($request->all());
+
         $request->request->remove('_token');
-        $request->request->add(['match_id' =>$request->match_id]);
+        $request->request->add(['match_id' => $request->match_id]);
         $data = $this->userChallenge->where(['user_1_id' => $request->user_1_id, 'user_2_id' => $request->user_2_id])->first();
-        if (empty($data)) {
+        // if (empty($data)) {
+        if (1) {
             $this->userChallenge->fill($request->all());
             $this->userChallenge->save();
             $sender = \App\User::find($request->user_1_id);
             $reciever = $id = \App\User::find($request->user_2_id);
             \Mail::to($reciever->email)->send(new \App\Mail\Challenge($sender->name, $reciever->name));
-            return redirect()->back()
-                ->with('status', 'Challenge Sent Succesfully');
+            return redirect()->route('addChallengeTeam', ['match_id' => $request->match_id]);
 
         } else {
             return redirect()->back()
@@ -46,11 +46,30 @@ class ChallengeController extends Controller
 
     }
 
-    public function showUserChallenges()
+    public function showUserChallenges($id)
     {
         $r = $this->userChallenge->where('user_2_id', \Auth::id())->get()->toArray();
         //$r=$this->userChallenge->find('12')->get()->toArray();
         dd($r);
+    }
+
+    public function addChallengeTeam($match_id)
+    {
+        $match_id = 96;
+        $data['roles'] = \App\GameRole::where('game_id', 1)
+            ->with([
+                'players.player_matches' => function ($query) use ($match_id) {
+                    return $query->where('matches.id', $match_id);
+                },'players.player_roles',
+
+            ])
+            ->get()
+            ->toArray();
+        $data['team_id']=5;
+        return view('user.challenge.user_challenge_team',$data);
+    }
+    public function addPlayerTochallengeTeam(){
+
     }
 
     public function acceptChallenge($id)

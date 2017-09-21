@@ -63,7 +63,7 @@ class DashboardController extends Controller
             return view('pages.team_incomplete', $dataArray);
         }
         $matcheIdsAfterThisTeamMade = \App\Match::select('id')
-            ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])->where('tournament_id',$tournament_id)
+            ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])->where('tournament_id', $tournament_id)
             ->get()->toArray();
         //  echo 'joined date'.$data['user_teams'][0]['joined_from_match_date'].'<br>';
         // echo getGmtTime();
@@ -85,18 +85,18 @@ class DashboardController extends Controller
         //dd($userTeamPlayerIds);
         $data['team_score'] = \App\Player::whereIn('id', $userTeamPlayerIds)->with(
             ['player_roles', 'player_matches',
-            'player_gameTerm_score' => function ($query) use ($matcheIdsAfterThisTeamMade) {
-                $query->whereIn('match_id', $matcheIdsAfterThisTeamMade);
-            },
-            'player_gameTerm_score.game_terms' => function ($query) {
-                $query->select('name', 'id');
-            },
-            'player_gameTerm_score.points_devision_tournament' => function ($query) use ($matcheIdsAfterThisTeamMade, $tournament_id) {
-                $query->where('tournament_id', $tournament_id);
-            }, 'player_actual_teams' => function ($query) use ($tournament_id) {
+                'player_gameTerm_score' => function ($query) use ($matcheIdsAfterThisTeamMade) {
+                    $query->whereIn('match_id', $matcheIdsAfterThisTeamMade);
+                },
+                'player_gameTerm_score.game_terms' => function ($query) {
+                    $query->select('name', 'id');
+                },
+                'player_gameTerm_score.points_devision_tournament' => function ($query) use ($matcheIdsAfterThisTeamMade, $tournament_id) {
+                    $query->where('tournament_id', $tournament_id);
+                }, 'player_actual_teams' => function ($query) use ($tournament_id) {
                 $query->where('tournament_id', $tournament_id);
             }
-        ])->get()->toArray();
+            ])->get()->toArray();
         //dd($data['team_score'][0]['player_game_term_score']);
 
 
@@ -109,16 +109,27 @@ class DashboardController extends Controller
             ->sortByDesc("start_date")->toArray();
 
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
-        $data['tournament_id']=$tournament_id;
+        $data['tournament_id'] = $tournament_id;
         // dd($data['user_team_player_transfer']->toArray());
         return view('user.team_detail', $data);
     }
 
-    function index()
+    function listChalllenges()
     {
-        //  dd(getServerTimeAsGMT());
-//        $datetime = new \DateTime();
-//        $date = $datetime->format('Y-m-d H:i:s');
+        $data['challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
+            $query->where('status', 0);
+        }, 'challenges.user'])->get()->toArray();
+        $data['sent_challenges'] = \App\UserChallenge::where(['user_1_id' => \Auth::id()])->with(['user_by'])->get()->toArray();
+        $data['accepted_challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
+            $query->where('status', 1);
+        }, 'challenges.user'])->get()->toArray();
+        return view('user.dashboard.user_challenge_team', $data);
+    }
+
+    function index(Request $request)
+    {
+
+
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->with('teamtournament')->orderBy('id', 'DESC')
             ->get()
             ->toArray();
@@ -127,16 +138,22 @@ class DashboardController extends Controller
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
         $data['leaders'] = \App\Leaderboard::take(3)->select(['user_id', 'score'])->orderBy('score', 'DESC')->get()->toArray();
         $data['challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
-            $query->where('is_accepted', 0);
+            $query->where('status', 0);
         }, 'challenges.user'])->get()->toArray();
+//        $data['sent_challenges']  = \App\User::where(['id' => \Auth::id()])->with(['sent_challenges' => function ($query) {
+//            $query->where('status', 1);
+//        }, 'sent_challenges.user.challenges'])->get()->toArray();
+        $data['sent_challenges'] = \App\UserChallenge::where(['user_1_id' => \Auth::id()])->with(['user_by'])->get()->toArray();
+
+//dd($data['sent_challenges']);
 //        echo \Auth::id();
-//        dd( $data['challenges']);
+        // dd( $data['challenges']);
         $data['accepted_challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
-            $query->where('is_accepted', 1);
+            $query->where('status', 1);
         }, 'challenges.user'])->get()->toArray();
 
-        $data['user_memberhsip']=\App\User::where('id',\Auth::id())->with(['membership'=>function($query){
-            $query->orderBy('user_memberships.id','desc')->first();
+        $data['user_memberhsip'] = \App\User::where('id', \Auth::id())->with(['membership' => function ($query) {
+            $query->orderBy('user_memberships.id', 'desc')->first();
             //$q->orderBy('job_user.created_at','asc');
         }])->first()->toArray();
 //dd($data['user_memberhsip']);
@@ -146,7 +163,7 @@ class DashboardController extends Controller
 
 //dd($data['accepted_challenges']);
 //dd( $data['challenges']);
-        $data['user_scores']=\App\User::where('id',\Auth::id())->with('leaderboard.tournament')->first()->toArray();
+        $data['user_scores'] = \App\User::where('id', \Auth::id())->with('leaderboard.tournament')->first()->toArray();
 
         $data['user_ranking'] = 0;
         foreach ($data['leaders'] as $key => $val) {
@@ -189,23 +206,19 @@ class DashboardController extends Controller
         $validator = Validator::make($request->all(), $rules);
 
 
-
-
-
         $user = \App\USER::find(\Auth::id());
         $user->about_me = $request->about_me;
         $user->name = $request->name;
 
-        if((empty($request->password_confirmation)&&empty($request->password))){
+        if ((empty($request->password_confirmation) && empty($request->password))) {
 
-        }
-        else{
+        } else {
             if ($validator->passes()) {
 
-               $user->password=bcrypt($request->password);
-            }else{
+                $user->password = bcrypt($request->password);
+            } else {
 
-                    return back()->withErrors($validator->errors());
+                return back()->withErrors($validator->errors());
 
             }
 

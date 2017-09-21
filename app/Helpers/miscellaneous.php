@@ -16,7 +16,15 @@ function membershipFeaturePoints($userid,$feature)
     }
     return $points;
 }
-
+function challengeTeamCompleteInChallenge($user_id,$challenge_id){
+    $is_complete=\App\UserChallengeTeamStatus::where('user_id', $user_id)->
+    where('challenge_id', $challenge_id)->first()->is_complete;
+    if($is_complete==1){
+        return true;
+    }else{
+        return false;
+    }
+}
 function userPointsAdditionInTournament($userid,$feature)
 {
 //    $userActionKey = 'membership_points';

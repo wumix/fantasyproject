@@ -8,6 +8,7 @@ class Membership extends Model
 {
     protected $table = 'memberships';
     protected $guarded=[];
+    public $timestamps = false;
 
     public function user(){
         return $this->belongsToMany('App\User', 'user_memberships',

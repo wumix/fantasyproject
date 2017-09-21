@@ -19,11 +19,11 @@
             background: #f4f2f2;
         }
 
-.centerlize{
-    width: 500px;
-    display:block;
-    margin: 0 auto;
-}
+        .centerlize {
+            width: 500px;
+            display: block;
+            margin: 0 auto;
+        }
 
         .sectio_absolute {
             width: 100%;
@@ -226,6 +226,17 @@
                             <input type="hidden" id="user_2_id" name="user_2_id"/>
                             <input type="hidden" id="user_1_id" name="user_1_id" value="{{Auth::id()}}"/>
                             <div class="form-group">
+                                <select id="tournament_id" required>
+                                    <option selected value="select" >Select Tournament</option>
+                                    @foreach($tournament_list as $tournament)
+                                        <option value="{{$tournament['id']}}">{{$tournament['name']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group" id="matcheslist">
+
+                            </div>
+                            <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Send Challenge</button>
                             </div>
                             {!! Form::close() !!}
@@ -299,19 +310,19 @@
                 </div>
 
 
-                    {{--@endforeach--}}
+                {{--@endforeach--}}
 
 
-                    <div class="text-center centerlize">
-                        {{$users->links()}}
-                    </div>
+                <div class="text-center centerlize">
+                    {{$users->links()}}
                 </div>
-
-
             </div>
 
 
         </div>
+
+
+    </div>
     </div>
 
 @endsection
@@ -323,5 +334,33 @@
             $(".modal-body #user_2_id").val(myBookId);
 
         });
+    </script>
+    <script>
+        $('#tournament_id').on('change', function () {
+            $.ajax({
+                type: 'GET',
+                url: '{{route('tournamentmatches')}}',
+                data: {
+                    tournament_id: $(this).val()
+                },
+                success: function (data) {
+                    var $el = $("#matcheslist");
+
+                    var ddCity = ' ';
+                    $.each(data, function (k, v) {
+
+                        ddCity += ' <input name="match_id" value="'+v.id+'" type="radio"/>' + v.team_one;
+                        ddCity += 'VS';
+                        ddCity +=  v.team_two;
+                        ddCity += '<br>';
+
+                    });
+                    //ddCity = ' </div>';
+                    $el.html(ddCity);
+
+                }
+            });
+        });
+
     </script>
 @stop

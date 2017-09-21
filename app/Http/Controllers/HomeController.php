@@ -14,6 +14,7 @@ use App\Mail\MyMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Mail\Mailer;
 use DateTime;
 use DateTimeZone;
@@ -31,21 +32,16 @@ class HomeController extends Controller
 
 
 
-//        $users=\App\User::all();
-//        foreach($users as $user){
-//            $user= \App\User::find($user['id']);
-//            $user->referral_key= \Crypt::encrypt($user->email);
-//            $user->save();
-//        }
-
-
-
-
-
-
-        // debugArr($match['match_players'][0]['player_game_term_score']);
-
     }
+    public function sendUserEmail(Request $request){
+        $email=$request->user_email;
+        $refferal_key=URL::to('/')."/signup/?referral_key=".\Auth::user()->referral_key;
+        Mail::to($email)->send(new \App\Mail\SendRefferalEmailToUser($refferal_key));
+        return response()->json([
+            'success'=>true
+        ]);
+    }
+
 
     public function scorecard(Request $request, $id, $tournament_id)
     {

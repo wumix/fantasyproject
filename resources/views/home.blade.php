@@ -12,6 +12,7 @@
             padding: 20px 20px;
             margin-bottom: 40px;
         }
+
         .new_form {
             width: 100% !important;
             border: 1px solid #92B713;
@@ -178,7 +179,7 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-lg-12 text-center">
+                    <div class="col-lg-9 text-center">
                         <h2 class="section-heading">
                             Active Tournament and Series
                             <hr class="light">
@@ -228,7 +229,7 @@
                             View all
                         </a>
                     </div>
-                    <div class="col-lg-3 text-center" style="display: none">
+                    <div class="col-lg-3 text-center">
 
                         @if(!\Auth::check())
                             <a href="{{route('userdashboard')}}">
@@ -241,7 +242,7 @@
                                 Share and get 5000 points
                                 <hr class="light">
                             </h2>
-                            <div class="input-group">
+                            <div class="input-group" style="display: none;">
 
                                 <input
                                         id="foo"
@@ -258,10 +259,39 @@
       </span>
                             </div>
                             <div class="row">
-                                <img src="{{URL::to('/')}}/img/facebook-share.png" id="shareBtn"
-                                     style="cursor:pointer; margin-top: 3%"/>
+                                <div class="">
+                                    <div class="col-md-6 pull-left">
+                                        <a class="btn btn-default" href="javascript:void(0)" id="shareBtn">
+                                            <i class="fa fa-fac"></i> facebook share
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6 pull-right">
+                                        <a class="btn btn-primary" href="javascript:sendEmailtoUser()">
+                                            <i class="fa fa-mail"></i> Share via email
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div id="useremailform" style="display: none;" class="form-group">
+                                        <!-- by defualt hidden -->
+                                        <form id="senduseremailform">
+                                            <div class="input-group">
+                                                <input id="userrefferalemail" type="email" class="form-control"
+                                                       placeholder="Enter Your Email">
+                                                <input id="userrefferalcode"
+                                                       value="{{ URL::to('/')}}/signup/?referral_key={{\Auth::user()->referral_key}}"
+                                                       type="hidden" class="form-control"
+                                                       placeholder="Enter Your Email">
+                                                <span class="input-group-btn">
+        <input class="btn btn-secondary" type="submit" value="Send">
+      </span>
+                                            </div>
 
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
+
                     </div>
                     @endif
 
@@ -680,7 +710,30 @@
         $(function () {
             $('.itemsz, .leadersName').matchHeight('col-md-4');
         });
+        function sendEmailtoUser() {
+            $("#useremailform").show();
 
+        }
+        $("#senduseremailform").submit(function (e) {
+            e.preventDefault();
+            $("#useremailform").hide();
+            $.ajax({
+                type: 'POST',
+                url: '{{route('sendUserEmail')}}',
+                data: {
+                    user_email: $('#userrefferalemail').val(),
+                    _token: '{{csrf_token()}}'
+                },
+                success: function (data) {
+                    if (data.success == true) {
+                        $("#useremailform").hide();
+                    } else {
+
+                    }
+
+                }
+            });
+        });
     </script>
 
     <script>

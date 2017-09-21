@@ -52,7 +52,11 @@ class ChallengeController extends Controller
                     'is_complete' => 0,
                 ]);
             \Mail::to($reciever->email)->send(new \App\Mail\Challenge($sender->name, $reciever->name));
-            return redirect()->route('addChallengeTeam', ['match_id' =>$match_id, 'challlenge_id' => $this->userChallenge->id]);
+            return redirect()->route('addChallengeTeam',
+                [
+                    'match_id' =>$match_id,
+                    'challlenge_id' => $this->userChallenge->id
+                ]);
 
         } else {
             return redirect()->back()
@@ -79,7 +83,9 @@ class ChallengeController extends Controller
 //        $userteamtomplete = \App\UserChallengeTeamStatus::where('user_id', \Auth::id())->
 //        where('challenge_id', $challenge_id)->first()->is_complete;
         if (challengeTeamCompleteInChallenge(\Auth::id(),$challenge_id)) {
-            return redirect()->route('UserDashboard');
+            return redirect()->route('UserDashboard')->with('status', 'Compeleted');;
+
+
         }
         $tournamnet_id = \App\Match::where('id', $match_id)->first()->tournament_id;
         $data['tournamnet_id'] = $tournamnet_id;
@@ -146,7 +152,7 @@ class ChallengeController extends Controller
         }
 
         \Mail::to($reciever->email)->send(new \App\Mail\ChallengeTeamCompleted($sender->name, $reciever->name));
-        return redirect()->route('UserDashboard');
+        return redirect()->route('UserDashboard')->with(['status','confirm']);
 
     }
 

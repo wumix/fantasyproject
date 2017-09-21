@@ -114,11 +114,22 @@ class DashboardController extends Controller
         return view('user.team_detail', $data);
     }
 
-    function index()
+    function listChalllenges()
     {
-        //  dd(getServerTimeAsGMT());
-//        $datetime = new \DateTime();
-//        $date = $datetime->format('Y-m-d H:i:s');
+        $data['challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
+            $query->where('status', 0);
+        }, 'challenges.user'])->get()->toArray();
+        $data['sent_challenges'] = \App\UserChallenge::where(['user_1_id' => \Auth::id()])->with(['user_by'])->get()->toArray();
+        $data['accepted_challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
+            $query->where('status', 1);
+        }, 'challenges.user'])->get()->toArray();
+        return view('user.dashboard.user_challenge_team', $data);
+    }
+
+    function index(Request $request)
+    {
+
+
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->with('teamtournament')->orderBy('id', 'DESC')
             ->get()
             ->toArray();

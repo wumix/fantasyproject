@@ -119,7 +119,7 @@
                                         Add players to participate in tournament
                                     </h4>
                                     <div class="help-block">
-                                        
+
                                         {{--<ul>--}}
                                             {{--<li>--}}
 

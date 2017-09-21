@@ -136,10 +136,10 @@ class DashboardController extends Controller
 
 //dd($data['sent_challenges']);
 //        echo \Auth::id();
-            // dd( $data['challenges']);
-            $data['accepted_challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
-                $query->where('status', 1);
-            }, 'challenges.user'])->get()->toArray();
+        // dd( $data['challenges']);
+        $data['accepted_challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
+            $query->where('status', 1);
+        }, 'challenges.user'])->get()->toArray();
 
         $data['user_memberhsip'] = \App\User::where('id', \Auth::id())->with(['membership' => function ($query) {
             $query->orderBy('user_memberships.id', 'desc')->first();

@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('title')
@@ -53,15 +52,14 @@
                     <hr class="light full">
                     <div class="page-content">
                         <div class="row">
-                            <div class="col-md-12">
+                            {{--<div class="col-md-12">--}}
 
 
-                                <h3 style="color: blue;">xyz</h3>
-                            </div>
+                            {{--<h3 style="color: blue;">xyz</h3>--}}
+                            {{--</div>--}}
                             <div class="col-md-12 small-sec-heading">
-                                <h3>Your Points: <span id="your_points"></span></h3>
+                                <h3>Select your players</h3>
                             </div>
-
                         </div>
 
                         <div class="row mt26">
@@ -93,7 +91,7 @@
                                                 </td>
 
 
-                                                <td  class="cwt">
+                                                <td class="cwt">
 
                                                     <a onclick="return confirm('Are you sure you want to delete this player')"
                                                        href="javascript:deletePlayer('{{$row['id']}}','{{$challenge_id}}')"
@@ -121,21 +119,21 @@
                                     <div class="help-block">
 
                                         {{--<ul>--}}
-                                            {{--<li>--}}
+                                        {{--<li>--}}
 
-                                                {{--<strong>Batsman: </strong>4--}}
-                                            {{--</li>--}}
-                                            {{--<li><strong>Bowler: </strong>4</li>--}}
-                                            {{--<li><strong>All Rounder: </strong>2</li>--}}
-                                            {{--<li><strong>Wicket Keeper: </strong>1</li>--}}
+                                        {{--<strong>Batsman: </strong>4--}}
+                                        {{--</li>--}}
+                                        {{--<li><strong>Bowler: </strong>4</li>--}}
+                                        {{--<li><strong>All Rounder: </strong>2</li>--}}
+                                        {{--<li><strong>Wicket Keeper: </strong>1</li>--}}
                                         {{--</ul>--}}
                                         {{--</small>--}}
                                         {{--<div class="alert alert-danger">--}}
-                                            {{--<ul>--}}
-                                                {{--<li>You can make a team with in available points.--}}
-                                                    {{--i.e </li>--}}
-                                                {{--<li>You must have 11 players in your team to play this tournament.</li>--}}
-                                            {{--</ul>--}}
+                                        {{--<ul>--}}
+                                        {{--<li>You can make a team with in available points.--}}
+                                        {{--i.e </li>--}}
+                                        {{--<li>You must have 11 players in your team to play this tournament.</li>--}}
+                                        {{--</ul>--}}
                                         {{--</div>--}}
 
                                         <div class="panel with-nav-tabs panel">
@@ -173,7 +171,7 @@
 
                                                                     @foreach($role['players'] as $player)
                                                                         <?php
-                                                                        if (empty($player['player_matches']))       continue;
+                                                                        if (empty($player['player_matches'])) continue;
                                                                         ?>
                                                                         <tr id="player_tr-{{$player['id']}}"
                                                                             class="cwt">
@@ -321,11 +319,11 @@
                 type: 'POST',
                 url: '{{route('getTeamRoles')}}',
                 data: {
-                    challenge_id:'{{$challenge_id}}',
+                    challenge_id: '{{$challenge_id}}',
                     _token: '{{csrf_token()}}'
                 },
                 success: function (data) {
-                    if (data.success== true) {
+                    if (data.success == true) {
                         if (data.teamsuccess == true) {
 
 
@@ -362,7 +360,7 @@
             });
 
         });
-        function deletePlayer(playerid,challenge_id) {
+        function deletePlayer(playerid, challenge_id) {
 
             var teamid = $("#team_id").val();
             $.ajax({
@@ -370,11 +368,11 @@
                 url: '{{route('deletePlayerTochallengeTeam')}}',
                 data: {
                     player_id: playerid,
-                    challenge_id:challenge_id,
+                    challenge_id: challenge_id,
                     _token: '{{csrf_token()}}'
                 },
                 success: function (data) {
-                    if (data.success== true) {
+                    if (data.success == true) {
                         if (data.team_complete == false) {
                             $('#user_team_complete').html('');
                         }
@@ -416,7 +414,7 @@
             });
         }
 
-        function addplayertoteam( playerid, challenge_id,role_id) {
+        function addplayertoteam(playerid, challenge_id, role_id) {
 
             $.ajax({
                 type: 'POST',
@@ -425,10 +423,11 @@
                     player_id: playerid,
                     challenge_id: challenge_id,
                     tournamnet_id:{{$tournamnet_id}},
-                    role_id:role_id,
+                    role_id: role_id,
                     _token: '{{csrf_token()}}'
                 },
                 success: function (data) {
+                    window.location.reload();
                     if (data.success == true) {
                         if (data.teamsuccess == true) {
 
@@ -466,7 +465,7 @@
                             allowToastClose: true,
                             loaderBg: '#92B713'  // To change the background
                         });
-                       //location.reload();
+
                         $('#btn-player-' + playerid).attr('disabled', true);
                         $('#btn-player-' + playerid).remove();
                         $('#total-score-user').html(obj.player_score);
@@ -491,6 +490,7 @@
                         $('#selected-player').append(t);
                         t = "";
                         $('#player_tr-' + obj.id).html(t);
+                        window.location.reload();
                     } else {
 //                        $('.error').html(data.msg);
 //                        $('.error').fadeIn(200).delay(1500).fadeOut(200); //fade out after 3 seconds

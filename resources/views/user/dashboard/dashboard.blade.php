@@ -811,6 +811,11 @@
                             <a class="btn btn-success" href="{{route('challenges')}}">Challenge</a>
 
                         </p>
+                        <p class="text-center">
+                            <a class="btn btn-success" href="{{route('listChalllenges')}}">Dashboard</a>
+
+                        </p>
+
 
 
 

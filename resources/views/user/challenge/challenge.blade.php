@@ -221,7 +221,7 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Enter the points you want to challenge</label>
-                                <input class="form-control" type="text" name="rewards">
+                                <input required class="form-control" type="text" name="rewards">
                             </div>
                             <input type="hidden" id="user_2_id" name="user_2_id"/>
                             <input type="hidden" id="user_1_id" name="user_1_id" value="{{Auth::id()}}"/>
@@ -346,7 +346,7 @@
                     $.each(data, function (k, v) {
                         console.log(v);
                         ddCity += '<tr >';
-                        ddCity += '<td><input name="match_id" value="' + v.id + '" type="radio"/></td>';
+                        ddCity += '<td><input required name="match_id" value="' + v.id + '" type="radio"/></td>';
                         ddCity += '<td>'
                         ddCity += v.team_one + ' VS ' + v.team_two;
                         ddCity += '</td></tr>';

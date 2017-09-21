@@ -227,12 +227,13 @@ Cricket app">
                                     My Team
                                 </a>
                             </li>
-                            <li class="new-arrival">
-                                <a href="{{route('challenges')}}" class="page-scroll">
-                                    Challange a player
-                                </a>
-                            </li>
+
                         @endif
+                        <li class="new-arrival">
+                            <a href="{{route('challenges')}}" class="page-scroll">
+                                Challange a player
+                            </a>
+                        </li>
                     <!--                            <li>
                                                             <a class="page-scroll" href="{{route('UserDashboard')}}">DashBoard</a>
                                                         </li>-->

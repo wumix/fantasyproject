@@ -98,7 +98,7 @@ class LeaderboardController extends Controller
         // $matcheIdsAfterThisTeamMade=[1,2,3,4,5,6,7,8,9,10];
         //dd($matcheIdsAfterThisTeamMade);
         //  $userTeamPlayerIds=[1,2,3,4,5,6,7,8,9,10];
-        //dd($userTeamPlayerIds);
+       // dd($userTeamPlayerIds);
         $data['team_score'] = \App\Player::whereIn('id', $userTeamPlayerIds)->with(['player_roles', 'player_matches',
             'player_gameTerm_score' => function ($query) use ($matcheIdsAfterThisTeamMade) {
                 $query->whereIn('match_id', $matcheIdsAfterThisTeamMade);

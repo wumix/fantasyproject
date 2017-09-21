@@ -1,3 +1,4 @@
+{{dd(userScoreInChallenge(38,1))}}
 @extends('layouts.app')
 @section('title')
 Create Team

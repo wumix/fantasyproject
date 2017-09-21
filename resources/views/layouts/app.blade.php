@@ -77,7 +77,21 @@ Cricket app">
         ga('create', 'UA-98453424-1', 'auto');
         ga('send', 'pageview');
     </script>
-
+    <style>
+        li.new-arrival > a::after {
+            content: "New";
+            background-color: orange;
+            padding: 0 3px;
+            color: #fff;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            font-size: 10px;
+            position: absolute;
+            top: 0;
+            right: 14px;
+        }
+    </style>
 </head>
 
 <body>
@@ -100,14 +114,12 @@ Cricket app">
                                                                                          class="fa fa-tachometer sign-in-icon"
                                                                                          aria-hidden="true"></i>
                             My Account</a>
-
                     @endif
                     @if(!Auth::check())
 
                         <a href="{{route('login')}}" style="color: #ffffff;"> <i class="fa fa-sign-in sign-in-icon"
                                                                                  aria-hidden="true"></i>
                             Sign In</a>
-
                     @endif
                     @if(Auth::check())
 
@@ -213,6 +225,11 @@ Cricket app">
                             <li>
                                 <a href="{{route('teamHome')}}" class="page-scroll">
                                     My Team
+                                </a>
+                            </li>
+                            <li class="new-arrival">
+                                <a href="{{route('challenges')}}" class="page-scroll">
+                                    Challange a player
                                 </a>
                             </li>
                         @endif

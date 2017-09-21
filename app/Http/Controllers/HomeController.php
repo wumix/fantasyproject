@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 use App\GameAction;
 use App\Http\Requests;
 use App\Mail\MyMail;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
@@ -31,14 +32,15 @@ class HomeController extends Controller
     {
 
 
-
     }
-    public function sendUserEmail(Request $request){
-        $email=$request->user_email;
-        $refferal_key=URL::to('/')."/signup/?referral_key=".\Auth::user()->referral_key;
+
+    public function sendUserEmail(Request $request)
+    {
+        $email = $request->user_email;
+        $refferal_key = URL::to('/') . "/signup/?referral_key=" . \Auth::user()->referral_key;
         Mail::to($email)->send(new \App\Mail\SendRefferalEmailToUser($refferal_key));
         return response()->json([
-            'success'=>true
+            'success' => true
         ]);
     }
 
@@ -81,7 +83,7 @@ class HomeController extends Controller
     public function test()
     {
         dd('test');
-       // return view('user.team_detail1');
+        // return view('user.team_detail1');
 
     }
 
@@ -94,7 +96,6 @@ class HomeController extends Controller
         //dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
-
 
 
         $data['upcommingTour']->toArray();
@@ -140,7 +141,7 @@ class HomeController extends Controller
         $objTourmament = \App\Tournament::orderBy("start_date",
             'asc')->
         Where('end_date', '>=', getGmtTime())->get();
-        $data['tournaments_list'] = $objTourmament->where('is_active',1)->toArray(); //list of active
+        $data['tournaments_list'] = $objTourmament->where('is_active', 1)->toArray(); //list of active
         $tournaments_data = [];
         foreach ($data['tournaments_list'] as $key => $tournament) {
             $data['tournaments_list'][$key] = $tournament;
@@ -148,7 +149,7 @@ class HomeController extends Controller
             $data['tournaments_list'][$key]['nextmatch'] = \App\Match::getNextMatch($tournament['id']);
         }
 
-        $upcommingTour = \App\Tournament::where('start_date', '>=', getGmtTime())->orderBy("id",'desc')->get();
+        $upcommingTour = \App\Tournament::where('start_date', '>=', getGmtTime())->orderBy("id", 'desc')->get();
         $data['upcomming_tournaments_list'] = $upcommingTour->toArray(); //upcomming tournament of active
         $data['news'] = \App\BlogPost::where('post_type', 'news')->take(3)->orderBy('id', 'DESC')->get()->toArray();
 
@@ -176,7 +177,6 @@ class HomeController extends Controller
         return view('user.dashboard.home', $data);
 
     }
-
 
 
     public function fixturesDetial($tournament_id)
@@ -285,4 +285,15 @@ class HomeController extends Controller
         return view('pages.how-to-play', $data);
     }
 
+    public function searchUser(Request $request)
+    {
+        $searchParam = $request->get('searchParam');
+        if (strlen($searchParam) > 2) {
+            $user = User::where('email', 'like', '%' . $searchParam . '%')
+                ->orWhere('name', 'like', '%' . $searchParam . '%')
+                ->get()->toArray();
+            return response()->json($user);
+        }
+
+    }
 }

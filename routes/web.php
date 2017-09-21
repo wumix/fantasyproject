@@ -83,8 +83,6 @@ Route::group(['middleware' => ['web']], function () {
                 Route::get('membership-popup', 'MembershipController@subscribeMembership')->name('showMemberPopup');
             });
             Route::group(['prefix' => 'user'], function () {
-
-
                 Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
                 Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
                 Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');
@@ -92,7 +90,7 @@ Route::group(['middleware' => ['web']], function () {
                 Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('postUserProfile');
                 Route::any('/team-detail/', 'DashboardController@teamDetail')->name('teamdetail');
                 Route::post('/send-user-email', 'HomeController@sendUserEmail')->name('sendUserEmail');
-
+                Route::post('find', 'HomeController@searchUser')->name('searchUserParams');
             });
 
 
@@ -103,7 +101,7 @@ Route::group(['middleware' => ['web']], function () {
                 Route::post('/player/add', 'User\ChallengeController@addPlayerTochallengeTeam')->name('addPlayerTochallengeTeam');
                 Route::get('/add/{match_id}/{challenge_id}', 'User\ChallengeController@addChallengeTeam')->name('addChallengeTeam');
                 Route::get('/listChalllenges', 'User\DashboardController@listChalllenges')->name('listChalllenges');
-                Route::get('/', 'User\ChallengeController@show')->name('challenges');
+                //Route::get('/', 'User\ChallengeController@show')->name('challenges');
                 Route::get('/', 'User\ChallengeController@index')->name('challenges');
                 Route::get('/check-winner/{id}', 'User\ChallengeController@checkWinner')->name('adasd');
                 Route::post('/send-challenge', 'User\ChallengeController@sendChallenge')->name('sendchallenge');

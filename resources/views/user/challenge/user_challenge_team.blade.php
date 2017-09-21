@@ -73,8 +73,7 @@
                                             <th class="border-r th1" style="min-width: 300px;
 ">PLAYERS
                                             </th>
-                                            <th class="border-r">ROLES</th>
-                                            <th class="border-r">POINTS</th>
+
                                             <th class="th2" colspan="2">Actions</th>
                                         </tr>
                                         </thead>
@@ -120,24 +119,24 @@
                                         Add players to participate in tournament
                                     </h4>
                                     <div class="help-block">
-                                        For playing tournament you will need:
-                                        <ul>
-                                            <li>
+                                        
+                                        {{--<ul>--}}
+                                            {{--<li>--}}
 
-                                                <strong>Batsman: </strong>4
-                                            </li>
-                                            <li><strong>Bowler: </strong>4</li>
-                                            <li><strong>All Rounder: </strong>2</li>
-                                            <li><strong>Wicket Keeper: </strong>1</li>
-                                        </ul>
-                                        </small>
-                                        <div class="alert alert-danger">
-                                            <ul>
-                                                <li>You can make a team with in available points.
-                                                    i.e </li>
-                                                <li>You must have 11 players in your team to play this tournament.</li>
-                                            </ul>
-                                        </div>
+                                                {{--<strong>Batsman: </strong>4--}}
+                                            {{--</li>--}}
+                                            {{--<li><strong>Bowler: </strong>4</li>--}}
+                                            {{--<li><strong>All Rounder: </strong>2</li>--}}
+                                            {{--<li><strong>Wicket Keeper: </strong>1</li>--}}
+                                        {{--</ul>--}}
+                                        {{--</small>--}}
+                                        {{--<div class="alert alert-danger">--}}
+                                            {{--<ul>--}}
+                                                {{--<li>You can make a team with in available points.--}}
+                                                    {{--i.e </li>--}}
+                                                {{--<li>You must have 11 players in your team to play this tournament.</li>--}}
+                                            {{--</ul>--}}
+                                        {{--</div>--}}
 
                                         <div class="panel with-nav-tabs panel">
                                             <div class="panel-heading">
@@ -167,7 +166,7 @@
                                                                         </th>
 
                                                                         <th class="point">Team</th>
-                                                                        <th class="add">Points required to buy</th>
+
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody class="main-taible-body">

@@ -28,7 +28,9 @@ class ChallengeController extends Controller
     {
 
         $request->request->remove('_token');
-        $request->request->add(['match_id' => $request->match_id]);
+        $match_id=$request->request->add(['match_id' =>96]);
+
+        $match_id=96;
         $data = $this->userChallenge->where(['user_1_id' => $request->user_1_id, 'user_2_id' => $request->user_2_id])->first();
         // if (empty($data)) {
         if (1) {
@@ -36,8 +38,21 @@ class ChallengeController extends Controller
             $this->userChallenge->save();
             $sender = \App\User::find($request->user_1_id);
             $reciever = $id = \App\User::find($request->user_2_id);
+
+            \App\UserChallengeTeamStatus::insert(
+                [
+                    'user_id' => $request->user_1_id,
+                    'challenge_id' => $this->userChallenge->id,
+                    'is_complete' => 0,
+                ]);
+            \App\UserChallengeTeamStatus::insert(
+                [
+                    'user_id' => $request->user_2_id,
+                    'challenge_id' => $this->userChallenge->id,
+                    'is_complete' => 0,
+                ]);
             \Mail::to($reciever->email)->send(new \App\Mail\Challenge($sender->name, $reciever->name));
-            return redirect()->route('addChallengeTeam', ['match_id' => $request->match_id]);
+            return redirect()->route('addChallengeTeam', ['match_id' =>$match_id, 'challlenge_id' => $this->userChallenge->id]);
 
         } else {
             return redirect()->back()
@@ -54,22 +69,38 @@ class ChallengeController extends Controller
         dd($r);
     }
 
-    public function addChallengeTeam($match_id)
+    public function addChallengeTeam($match_id, $challenge_id)
     {
         //dnt forget to reciverve challenge id here
-        $match_id = 96;
-        $challenge_id = 2;
+
+//        $match_id = 96;
+//        $challenge_id = 2;
         $data['challenge_id'] = $challenge_id;
+//        $userteamtomplete = \App\UserChallengeTeamStatus::where('user_id', \Auth::id())->
+//        where('challenge_id', $challenge_id)->first()->is_complete;
+        if (challengeTeamCompleteInChallenge(\Auth::id(),$challenge_id)) {
+            return redirect()->route('UserDashboard');
+        }
         $tournamnet_id = \App\Match::where('id', $match_id)->first()->tournament_id;
         $data['tournamnet_id'] = $tournamnet_id;
-        $player = \App\UserChallenge::where('id', $challenge_id)->with('challenge_players')->first()->toArray();
+        $user_id = \Auth::id();
+        $player = \App\UserChallenge::where('id', $challenge_id)->with(
+            ['challenge_players' => function ($q) use ($user_id) {
+            $q->where('user_id', $user_id);
+        }
+        ])->first();
+        if (empty($player)) {
+            $player = [];
+        } else {
+            $player = $player->toArray();
+        }
+
         $selectedPlayers = [];
         if (!empty($player['challenge_players'])) {
             $selectedPlayers = array_column($player['challenge_players'], 'id');
         }
 
         $data['user_team_player'] = $player;
-        // dd($data['user_team_player']);
         $data['roles'] = \App\GameRole::where('game_id', 1)
             ->with([
                 'players.player_matches' => function ($query) use ($match_id) {
@@ -77,12 +108,14 @@ class ChallengeController extends Controller
                 }, 'players.player_roles',
                 'players' => function ($q) use ($selectedPlayers) {
                     $q->whereNotIn('players.id', $selectedPlayers);
-                },
+                },'players.player_actual_teams'=> function ($query) use ($tournamnet_id) {
+                    $query->where('tournament_id', $tournamnet_id);
+                }
 
             ])
             ->get()
             ->toArray();
-//        debugArr( $data['roles']);
+//     debugArr( $data['roles']);
 //        die;
         $data['team_id'] = 5;
         return view('user.challenge.user_challenge_team', $data);
@@ -98,14 +131,37 @@ class ChallengeController extends Controller
         }
         return $count;
     }
-public function confirmChallengeTeam(){
-        dd('asdasd');
-}
+
+    public function confirmChallengeTeam(Request $request, $challenge_id)
+    {
+        $challenge = \App\UserChallengeTeamStatus::where('user_id', \Auth::id())->where('challenge_id', $challenge_id);
+        $challenge->update(['is_complete' => 1]);
+        $challenge=\App\UserChallenge::find($challenge_id)->first();
+        if(\Auth::id()==$challenge->user_1_id){
+            $sender = \App\User::find($challenge->user_1_id);
+            $reciever = $id = \App\User::find($challenge->user_2_id);
+        }else{
+            $sender = \App\User::find($challenge->user_2_id);
+            $reciever = $id = \App\User::find($challenge->user_1_id);
+        }
+
+        \Mail::to($reciever->email)->send(new \App\Mail\ChallengeTeamCompleted($sender->name, $reciever->name));
+        return redirect()->route('UserDashboard');
+
+    }
+
     public function getTeamRoles(Request $request)
     {
         $challenge_id = $request->challenge_id;
+        $user_ids = \Auth::id();
         $chalelnge_players = \App\UserChallenge::where('id', $challenge_id)
-            ->with('challenge_players.player_roles')->first()->toArray();
+            ->with([
+                'challenge_players.player_roles',
+                'challenge_players' => function ($q) use ($user_ids) {
+                    $q->where('user_id', $user_ids);
+
+                }])->first()->toArray();
+
         $objResponse['success'] = true;
         $objResponse['msg'] = "Player Added successfully";
         $objResponse['batsmen'] = $batsmen = $this->playerRoleCountInChallenge($chalelnge_players, 5);
@@ -131,34 +187,41 @@ public function confirmChallengeTeam(){
         $player_id = $request->player_id;
         $tournamnet_id = $request->tournamnet_id;
         $player_role_id = $request->role_id; //i.e batsmen has role id=7,bowler 5 etc
-        $challenge_id = 2;
+        $user_ids = \Auth::id();
         $chalelnge_players = \App\UserChallenge::where('id', $challenge_id)
-            ->with('challenge_players.player_roles')->first()->toArray();
+            ->with([
+                'challenge_players.player_roles',
+                'challenge_players' => function ($q) use ($user_ids) {
+                    $q->where('user_id', $user_ids);
+
+                }])->first()->toArray();
+//        dd($chalelnge_players);
         //return count of bowlers,or batsmen depending on role id
         $teamrolecount = $this->playerRoleCountInChallenge($chalelnge_players, $player_role_id);
         /* return max limit against a specific role*/
         $role_imit = \App\TournamentRoleLimit::where(['tournament_id' => $tournamnet_id, 'player_role_id' => $player_role_id])->first()->max_limit;
         $teamcount = count(($chalelnge_players['challenge_players']));
         $total = 0;
-            $userteamtomplete=\App\UserChallengeTeamStatus::where('user_id',38)->
-            where('challenge_id',$challenge_id)->first()->is_complete;
 
-            if($userteamtomplete==1){
-
-            }
 
         if ($teamrolecount < $role_imit) {
             $player = \App\UserChallenge::find($challenge_id);
-            $player->challenge_players()->sync([$player_id => ['user_id' => 38]], false);
+            $player->challenge_players()->attach([$player_id => ['user_id' => \Auth::id()]]);
+            $user_ids = \Auth::id();
             $chalelnge_players = \App\UserChallenge::where('id', $challenge_id)
-                ->with('challenge_players.player_roles')->first()->toArray();
+                ->with([
+                    'challenge_players.player_roles',
+                    'challenge_players' => function ($q) use ($user_ids) {
+                        $q->where('user_id', $user_ids);
+
+                    }])->first()->toArray();
             $objResponse['success'] = true;
             $objResponse['msg'] = "Player Added successfully";
             $total += $objResponse['batsmen'] = $this->playerRoleCountInChallenge($chalelnge_players, 5);
             $total += $objResponse['bowler'] = $this->playerRoleCountInChallenge($chalelnge_players, 6);
             $total += $objResponse['wicketkeeper'] = $this->playerRoleCountInChallenge($chalelnge_players, 8);
             $total += $objResponse['allrounder'] = $this->playerRoleCountInChallenge($chalelnge_players, 7);
-            $teamcount=$total;
+            $teamcount = $total;
         } else {
             $objResponse['success'] = false;
             $objResponse['msg'] = "You can't have more than " . $role_imit . " players in this category";
@@ -187,19 +250,21 @@ public function confirmChallengeTeam(){
         return response()->json($objResponse);
     }
 
-    public
-    function acceptChallenge($id)
+
+    function acceptChallenge($challenge_id, $match_id)
     {
 
-        $challenge = $this->userChallenge->findOrFail($id);
-        $challenge->is_accepted = 1;
+
+        $challenge = $this->userChallenge->findOrFail($challenge_id);
+        $challenge->status = 1;
         $challenge->save();
-        return redirect()->back()
-            ->with('status', 'Challenge Accepted ');
+
+        return redirect()->route('addChallengeTeam', ['match_id' => $match_id, 'challenge_id' => $challenge_id]);
+
 
     }
 
-    public
+
     function checkWinner($challenge_id)
     {
 

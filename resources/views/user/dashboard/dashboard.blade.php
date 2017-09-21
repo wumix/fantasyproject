@@ -670,13 +670,14 @@
                     @if(!empty($challenges[0]['challenges']))
                         <div class="abot_me_sec1">
                     <span class="text_abot_me text-center">
-                        InActive Challenges
+                        In active Challenges
 
                     </span>
                             @include('adminlte::layouts.form_errors')
 
                             @foreach($challenges as $val)
                                 @foreach($val['challenges'] as $row)
+
                                     <ul class="img_area_area">
                                         <li>
 
@@ -684,7 +685,8 @@
                                         </li>
                                         <li>
                                             Reward: <span id="game_lame">{{$row['rewards']}}</span>
-                                            <a href="{{route('accept_challenge',['id'=>$row['id']])}}">Accept</a>
+                                            <a href="{{route('accept_challenge',['id'=>$row['id'],'match_id'=>$row['match_id']])}}">Accept</a>
+                                            <a href="{{route('accept_challenge',['id'=>$row['id'],'match_id'=>$row['match_id']])}}">Reject</a>
                                         </li>
 
 
@@ -711,21 +713,68 @@
                                         <li>
                                             Reward: <span id="game_lame">{{$row['rewards']}}</span>
                                             <span id="game_lame">
-                                        @if($row['status']==0)
+                                        @if($row['won']==0)
                                                     In progress
                                                 @endif
-                                                @if($row['status']==1)
+                                                @if($row['won']==1)
                                                     Won
                                                 @endif
-                                                @if($row['status']==2)
+                                                @if($row['won']==2)
                                                     Lost
                                                 @endif
+                                            @if(!challengeTeamCompleteInChallenge(\Auth::id(),$row['id']))
+                                                <a class="btn btn-danger" href="{{route('addChallengeTeam',[
+                                                        'match_id'=>$row['match_id'],'challenge_id'=>$row['id']])}}">Complete Team</a>
+
+                                            @endif
                                         </span>
                                         </li>
 
 
                                     </ul>
                                 @endforeach
+                            @endforeach
+
+                        </div>
+                    @endif
+                    @if(!empty($sent_challenges))
+                        <div class="abot_me_sec2">
+                    <span class="text_abot_me text-center">
+                        Sent Chanllenges
+                    </span>
+                            @include('adminlte::layouts.form_errors')
+
+                            @foreach($sent_challenges as $row)
+
+                                    <ul class="img_area_area">
+                                        <li>
+
+                                            Vs <span id="game_lame">{{$row['user_by']['name']}}</span>
+                                        </li>
+                                        <li>
+                                            Reward: <span id="game_lame">{{$row['rewards']}}</span>
+                                            <span id="game_lame">
+
+                                                @if($row['status']==0)
+                                                    Not accpeted
+                                                @endif
+                                                @if($row['status']==1)
+                                                    In Progress
+                                                @endif
+                                                @if($row['status']==2)
+                                                    Rejected
+                                                @endif
+                                                @if(!challengeTeamCompleteInChallenge(\Auth::id(),$row['id']))
+                                                        <a class="btn btn-danger" href="{{route('addChallengeTeam',[
+                                                        'match_id'=>$row['match_id'],'challenge_id'=>$row['id']])}}">Complete Team</a>
+
+                                                @endif
+                                        </span>
+                                        </li>
+
+
+                                    </ul>
+
                             @endforeach
 
                         </div>
@@ -758,6 +807,11 @@
                             <a class="btn btn-success" href="{{route('paymentdetails')}}">Payment History</a>
 
                         </p>
+                        <p class="text-center">
+                            <a class="btn btn-success" href="{{route('challenges')}}">Challenge</a>
+
+                        </p>
+
 
 
                     </div>

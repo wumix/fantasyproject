@@ -83,8 +83,6 @@ Route::group(['middleware' => ['web']], function () {
                 Route::get('membership-popup', 'MembershipController@subscribeMembership')->name('showMemberPopup');
             });
             Route::group(['prefix' => 'user'], function () {
-
-
                 Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
                 Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
                 Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');
@@ -92,7 +90,7 @@ Route::group(['middleware' => ['web']], function () {
                 Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('postUserProfile');
                 Route::any('/team-detail/', 'DashboardController@teamDetail')->name('teamdetail');
                 Route::post('/send-user-email', 'HomeController@sendUserEmail')->name('sendUserEmail');
-
+                Route::post('find', 'HomeController@searchUser')->name('searchUserParams');
             });
 
 

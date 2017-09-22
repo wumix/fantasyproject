@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\TournamentRoleLimit;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,11 +17,21 @@ class ChallengeController extends Controller
         $this->userChallenge = new \App\UserChallenge;
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $searchParam = $request->get('searchParam');
+
         $data['tournament_list'] = \App\Tournament::all()->sortBy("start_date")->where('end_date', '>', getGmtTime());
         $data['users'] = \App\Leaderboard::where('tournament_id', config('const.tournament_id'))
-            ->with('user', 'user_team')->orderBy('score', 'DESC')->paginate(9);
+            ->with('user', 'user_team')->orderBy('score', 'DESC')
+            ->paginate(9);
+        if (strlen($searchParam) > 2) {
+
+            $data['users'] = User::where('email', 'like', '%' . $searchParam . '%')
+                ->orWhere('name', 'like', '%' . $searchParam . '%')
+                ->paginate(9);
+        }
+        $data['searchParam'] = $searchParam;
         return view('user.challenge.challenge', $data);
     }
 
@@ -28,9 +39,9 @@ class ChallengeController extends Controller
     {
 
         $request->request->remove('_token');
-        $match_id=$request->request->add(['match_id' =>96]);
+        $match_id = $request->request->add(['match_id' => 96]);
 
-        $match_id=96;
+        $match_id = 96;
         $data = $this->userChallenge->where(['user_1_id' => $request->user_1_id, 'user_2_id' => $request->user_2_id])->first();
         // if (empty($data)) {
         if (1) {
@@ -54,7 +65,7 @@ class ChallengeController extends Controller
             \Mail::to($reciever->email)->send(new \App\Mail\Challenge($sender->name, $reciever->name));
             return redirect()->route('addChallengeTeam',
                 [
-                    'match_id' =>$match_id,
+                    'match_id' => $match_id,
                     'challlenge_id' => $this->userChallenge->id
                 ]);
 
@@ -82,7 +93,7 @@ class ChallengeController extends Controller
         $data['challenge_id'] = $challenge_id;
 //        $userteamtomplete = \App\UserChallengeTeamStatus::where('user_id', \Auth::id())->
 //        where('challenge_id', $challenge_id)->first()->is_complete;
-        if (challengeTeamCompleteInChallenge(\Auth::id(),$challenge_id)) {
+        if (challengeTeamCompleteInChallenge(\Auth::id(), $challenge_id)) {
             return redirect()->route('UserDashboard')->with('status', 'Compeleted');;
 
 
@@ -92,9 +103,9 @@ class ChallengeController extends Controller
         $user_id = \Auth::id();
         $player = \App\UserChallenge::where('id', $challenge_id)->with(
             ['challenge_players' => function ($q) use ($user_id) {
-            $q->where('user_id', $user_id);
-        }
-        ])->first();
+                $q->where('user_id', $user_id);
+            }
+            ])->first();
         if (empty($player)) {
             $player = [];
         } else {
@@ -114,7 +125,7 @@ class ChallengeController extends Controller
                 }, 'players.player_roles',
                 'players' => function ($q) use ($selectedPlayers) {
                     $q->whereNotIn('players.id', $selectedPlayers);
-                },'players.player_actual_teams'=> function ($query) use ($tournamnet_id) {
+                }, 'players.player_actual_teams' => function ($query) use ($tournamnet_id) {
                     $query->where('tournament_id', $tournamnet_id);
                 }
 
@@ -142,17 +153,17 @@ class ChallengeController extends Controller
     {
         $challenge = \App\UserChallengeTeamStatus::where('user_id', \Auth::id())->where('challenge_id', $challenge_id);
         $challenge->update(['is_complete' => 1]);
-        $challenge=\App\UserChallenge::find($challenge_id)->first();
-        if(\Auth::id()==$challenge->user_1_id){
+        $challenge = \App\UserChallenge::find($challenge_id)->first();
+        if (\Auth::id() == $challenge->user_1_id) {
             $sender = \App\User::find($challenge->user_1_id);
             $reciever = $id = \App\User::find($challenge->user_2_id);
-        }else{
+        } else {
             $sender = \App\User::find($challenge->user_2_id);
             $reciever = $id = \App\User::find($challenge->user_1_id);
         }
 
         \Mail::to($reciever->email)->send(new \App\Mail\ChallengeTeamCompleted($sender->name, $reciever->name));
-        return redirect()->route('UserDashboard')->with(['status','confirm']);
+        return redirect()->route('UserDashboard')->with(['status', 'confirm']);
 
     }
 

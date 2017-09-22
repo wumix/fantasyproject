@@ -229,7 +229,7 @@
                             View all
                         </a>
                     </div>
-                    <div class="col-lg-3 text-center">
+                    <div class="col-lg-3">
 
                         @if(!\Auth::check())
                             <a href="{{route('userdashboard')}}">
@@ -242,22 +242,6 @@
                                 Share and get 5000 points
                                 <hr class="light">
                             </h2>
-                            <div class="input-group" style="display: none;">
-
-                                <input
-                                        id="foo"
-                                        type="text"
-                                        readonly
-                                        value="{{ URL::to('/')}}/signup/?referral_key={{\Auth::user()->referral_key}}"
-                                        class="js-copytextarea form-control new_form"
-                                        onclick="select()"
-
-                                >
-                                <span class="input-group-btn">
-        <button class="btn btn-secondary js-textareacopybtn" data-clipboard-target="#foo"
-                type="button">Copy</button>
-      </span>
-                            </div>
                             <div class="row">
                                 <div class="">
                                     <div class="col-md-6 pull-left">

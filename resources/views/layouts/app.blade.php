@@ -52,6 +52,9 @@ Cricket app">
             margin: 0 0 0 0;
 
         }
+        .p0{
+            padding-left: 0;
+        }
     </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -77,7 +80,21 @@ Cricket app">
         ga('create', 'UA-98453424-1', 'auto');
         ga('send', 'pageview');
     </script>
-
+    <style>
+        li.new-arrival > a::after {
+            content: "New";
+            background-color: orange;
+            padding: 0 3px;
+            color: #fff;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            font-size: 10px;
+            position: absolute;
+            top: 0;
+            right: 14px;
+        }
+    </style>
 </head>
 
 <body>
@@ -100,14 +117,12 @@ Cricket app">
                                                                                          class="fa fa-tachometer sign-in-icon"
                                                                                          aria-hidden="true"></i>
                             My Account</a>
-
                     @endif
                     @if(!Auth::check())
 
                         <a href="{{route('login')}}" style="color: #ffffff;"> <i class="fa fa-sign-in sign-in-icon"
                                                                                  aria-hidden="true"></i>
                             Sign In</a>
-
                     @endif
                     @if(Auth::check())
 
@@ -175,24 +190,27 @@ Cricket app">
                             </a>
                         </li>
 
-                        <li>
 
-                            <a class="page-scroll" href="{{route('showBlog')}}">
-                                Blogs
-                            </a>
-                        </li>
-
-                        <li>
+                        <li class="has-menu">
                             <a class="page-scroll" href="{{route('showNews')}}">
                                 News
                             </a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="{{route('Forums')}}">
-                                Forums
-                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a class="page-scroll" href="{{route('Forums')}}">
+                                        Forums
+                                    </a>
 
+                                </li>
+                                <li>
+
+                                    <a class="page-scroll" href="{{route('showBlog')}}">
+                                        Blogs
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
+
                         {{--<li>--}}
                         {{--<a href="{{route('leaderboard')}}">--}}
                         {{--LeaderBoard--}}
@@ -212,7 +230,13 @@ Cricket app">
                                     My Team
                                 </a>
                             </li>
+
                         @endif
+                        <li class="new-arrival">
+                            <a href="{{route('challenges')}}" class="page-scroll">
+                                Challange a player
+                            </a>
+                        </li>
                     <!--                            <li>
                                                             <a class="page-scroll" href="{{route('UserDashboard')}}">DashBoard</a>
                                                         </li>-->
@@ -237,7 +261,6 @@ Cricket app">
 </nav>
 <!---->
 @yield('content')
-
 
 
 <footer>

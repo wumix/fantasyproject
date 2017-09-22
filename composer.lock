@@ -236,16 +236,16 @@
         },
         {
             "name": "bkwld/croppa",
-            "version": "4.5.1",
+            "version": "4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/BKWLD/croppa.git",
-                "reference": "5e93e97e0e20388a2f942a561911319eb956be77"
+                "reference": "ad18844355a673a1300cd3b1861aa3c8d07cf418"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BKWLD/croppa/zipball/5e93e97e0e20388a2f942a561911319eb956be77",
-                "reference": "5e93e97e0e20388a2f942a561911319eb956be77",
+                "url": "https://api.github.com/repos/BKWLD/croppa/zipball/ad18844355a673a1300cd3b1861aa3c8d07cf418",
+                "reference": "ad18844355a673a1300cd3b1861aa3c8d07cf418",
                 "shasum": ""
             },
             "require": {
@@ -253,7 +253,7 @@
                 "illuminate/routing": "4 - 5",
                 "illuminate/support": "4 - 5",
                 "league/flysystem": "~1.0",
-                "php": ">=5.4.0",
+                "php": ">=5.5.0",
                 "symfony/http-foundation": "2 - 3",
                 "symfony/http-kernel": "2 - 3",
                 "weotch/phpthumb": "^1.0.5"
@@ -266,6 +266,16 @@
                 "phpunit/phpunit": "~4.0"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bkwld\\Croppa\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Croppa": "Bkwld\\Croppa\\Facade"
+                    }
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Bkwld\\Croppa": "src/"
@@ -281,7 +291,7 @@
                 }
             ],
             "description": "Image thumbnail creation through specially formatted URLs for Laravel",
-            "time": "2016-09-08T16:24:58+00:00"
+            "time": "2017-09-21T15:22:16+00:00"
         },
         {
             "name": "cocur/slugify",

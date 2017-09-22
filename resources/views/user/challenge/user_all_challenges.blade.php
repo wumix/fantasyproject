@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 @section('title')
 Create Team
@@ -96,6 +97,8 @@ Challenges Revieced
                                 <th class="th2">BY</th>
                                 <th class="th2">Status</th>
                                 <th class="th2">Team Status</th>
+                                <th class="th2">Tour Score</th>
+                                <th class="th2">Opponent Score</th>
                             </tr>
                             </thead>
                             <tbody id="selected-player" class="main-taible-body">
@@ -130,6 +133,21 @@ Challenges Revieced
                                         @endif
 
                                     </td>
+                                    <td>
+                                        @if(!challengeTeamCompleteInChallenge(\Auth::id(),$row['id']))
+                                            <a class="btn btn-danger" href="{{route('addChallengeTeam',[
+                                                        'match_id'=>$row['match_id'],'challenge_id'=>$row['id']])}}">Complete Team</a>
+
+                                        @else
+                                            Team Complete
+                                        @endif
+                                    </td>
+                                <td>
+                                    {{userScoreInChallenge($row['user_1_id'],$row['id'])}}
+                                </td>
+                                <td>
+                                    {{userScoreInChallenge($row['user_2_id'],$row['id'])}}
+                                </td>
 
 
 

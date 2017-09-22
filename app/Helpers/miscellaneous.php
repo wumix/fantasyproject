@@ -25,6 +25,10 @@ function challengeTeamCompleteInChallenge($user_id,$challenge_id){
         return false;
     }
 }
+function userScoreInChallenge($user_id,$challenge_id){
+   //return \App\UserChallengePlayerScore::where('user_id',$user_id,$challenge_id)->get()->count();
+    return DB::table('user_challenge_player_score')->where('user_id',$user_id,$challenge_id)->sum('score');
+}
 function userPointsAdditionInTournament($userid,$feature)
 {
 //    $userActionKey = 'membership_points';

@@ -40,9 +40,9 @@ class TournamentsController extends Controller
 
     function tournamentMatches(Request $request)
     {
-        $tournament_id = 6;
-//      /  $tournament_id = $request->tournament_id;
-        $match_list = \App\Match::where('tournament_id', $tournament_id)->where('start_date', '<=', getGmtTime())->get();
+
+        $tournament_id = $request->tournament_id;
+        $match_list = \App\Match::where('tournament_id', 6)->where('start_date', '<=', getGmtTime())->get();
         return response()->json($match_list);
 
     }

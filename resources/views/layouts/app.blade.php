@@ -240,6 +240,15 @@ Cricket app">
                             <a href="{{route('challenges')}}" class="page-scroll">
                                 Challange a player
                             </a>
+                            @if(Auth::check())
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a class="page-scroll" href="{{route('listChalllenges')}}">
+                                            My Challanges
+                                        </a>
+                                    </li>
+                                </ul>
+                            @endif
                         </li>
                     <!--                            <li>
                                                             <a class="page-scroll" href="{{route('UserDashboard')}}">DashBoard</a>

@@ -68,11 +68,9 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('editpostreply/', 'Forums\ForumController@editreply')->name('editpostreply');
 
     });
-    Route::group(['middleware' => ['membership']], function () {
-        Route::get('/test', 'HomeController@test')->name('test');
-
-
-        Route::group(['middleware' => ['is_user']], function () {
+    Route::group(['middleware' => ['is_user']], function () {
+        Route::group(['middleware' => ['membership']], function () {
+            //Route::get('/test', 'HomeController@test')->name('test');
             Route::group(['prefix' => 'payments'], function () {
                 Route::get('/', 'PaymentController@index')->name('paymentdetails');
             });

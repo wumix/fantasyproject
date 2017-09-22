@@ -282,14 +282,14 @@
                                     <div class="col-md-6">
                                         <div class="cnter_liez_challenge">
                                             <img class="img-responsive "
-                                                 src="{{getUploadsPath($user['user']['profile_pic'])}}" alt=""/>
+                                                 src="{{getUploadsPath($user['profile_pic'])}}" alt=""/>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                 <span class="challnge_text">
-                                   {{$user['user']['name']}}
+                                   {{$user['name']}}
                                 </span>
-                                        <a href="javascript:openChallangeModel('{{$user['user']['id']}}')"
+                                        <a href="javascript:openChallangeModel('{{$user['id']}}')"
                                            class="open-AddBookDialog">
                                             Challenge Me
                                         </a>
@@ -300,7 +300,7 @@
                                 @endif
                             @endforeach
                             <div class="container text-center">
-                                {{$users->links()}}
+                                {{$users->appends(request()->input())->links()}}
                             </div>
                         @else
                             <div class="col-md-4">

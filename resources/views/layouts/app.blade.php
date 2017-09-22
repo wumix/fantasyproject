@@ -372,7 +372,7 @@ Cricket app">
 </script>
 <script>
     function sendEmailtoUser() {
-        $("#useremailform").toggle();
+        $("#useremailform").slideToggle();
     }
     $("#senduseremailform").submit(function (e) {
         e.preventDefault();
@@ -390,11 +390,11 @@ Cricket app">
             success: function (data) {
                 if (data.success == true) {
                     setTimeout(function () {
-                        $("#useremailform").hide();
+                        $("#useremailform").slideUp();
                         $("#btnSendRefrelEmail").html('Send');
-                        $("#referelMsg").hide();
-                    }, 2000);
-                    $("#referelMsg").show();
+                        $("#referelMsg").slideUp();
+                    }, 3000);
+                    $("#referelMsg").slideDown();
                     $("#referelMsg").addClass('alert-success');
                     $("#referelMsg").html('Referel has been sent!');
                     $('#userrefferalemail').val('');

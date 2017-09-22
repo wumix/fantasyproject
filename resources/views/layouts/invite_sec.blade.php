@@ -133,7 +133,8 @@ if (\Request::route()->getName() == 'challenges') {
                     </div>
 
                 </form>
-                <div id="referelMsg" style="display: none;" class="alert">
+
+                <div id="referelMsg" style="display: none; margin-top: 10px;" class="alert">
 
                 </div>
             </div>

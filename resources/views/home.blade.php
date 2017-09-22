@@ -3,32 +3,6 @@
 @section('css')
     {!! Html::style('assets-new/css/slick-theme.css') !!}
     {!! Html::style('assets-new/css/slick.css') !!}
-    <style>
-        .rfral_code {
-            width: 100%;
-            display: inline-block;
-            background: #fff;
-            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
-            padding: 20px 20px;
-            margin-bottom: 40px;
-        }
-
-        .new_form {
-            width: 100% !important;
-            border: 1px solid #92B713;
-            background: #000 !important;
-            border-radius: 10px;
-            color: #fff;
-            height: 42px;
-        }
-
-        .js-textareacopybtn {
-            padding: 11px;
-            width: 76px;
-            background: #92B713;
-            color: #fff;
-        }
-    </style>
 @endsection
 
 
@@ -77,24 +51,28 @@
                         <span id="getting-started{{$i}}" class="circle">
                             10
                         </span>
+
                                                 <p class="mtb10">Days</p>
                                             </div>
                                             <div class="col-md-3 text-center">
                         <span id="getting-started{{$i+1}}" class="circle">
                             10
                         </span>
+
                                                 <p class="mtb10">Hours</p>
                                             </div>
                                             <div class="col-md-3 text-center">
                         <span id="getting-started{{$i+2}}" class="circle">
                             10
                         </span>
+
                                                 <p class="mtb10" style="margin-left: 12px;">Min</p>
                                             </div>
                                             <div class="col-md-3 text-center">
                         <span id="getting-started{{$i+3}}" class="circle">
                             10
                         </span>
+
                                                 <p class="mtb10" style="margin-left: 12px;">Sec</p>
                                             </div>
                                         </div>
@@ -122,18 +100,18 @@
                                             @foreach($tournament['leaderboard'] as $leader)
                                                 <div class="col-md-4  text-center">
                                                     <div class="circle2 leadersName" style="padding-top: 5px;">
-                                                        <span id="getting-started1">
-                                                          <img style="width: 50px;
-                                    height: 50px; border-radius: 50%;
-                                    margin:0 auto;
+                        <span id="getting-started1">
+                          <img style="width: 50px;
+    height: 50px; border-radius: 50%;
+    margin:0 auto;
 
 
-                                " src="{{getUploadsPath($leader['user']['profile_pic'])}}"/>
-                                                        </span>
+" src="{{getUploadsPath($leader['user']['profile_pic'])}}"/>
+                        </span>
+
                                                         <p class="no-mrg-in-home ">{{$leader['user']['name']}}</p>
-                                                        <p class="no-mrg-in-home1 leaderboardscore">
-                                                            {{$leader['score']}}
-                                                        </p>
+
+                                                        <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
                                                     </div>
                                                 </div>
                                             @endforeach
@@ -232,61 +210,14 @@
                         </a>
                     </div>
                     <div class="col-lg-3">
-
-                        @if(!\Auth::check())
-                            <a href="{{route('userdashboard')}}">
-                                <img style="margin-top: 15px;"
-                                     src="{{URL::to('/')}}/img/refer-img.png"/>
-                            </a>
-                        @else
-                            <h2 class="section-heading" style="margin-top: 30px;
-    font-size: 21px;">
-                                Share and get 5000 points
-                                <hr class="light">
-                            </h2>
-                            <div class="row">
-                                <div class="">
-                                    <div class="col-md-6 pull-left">
-                                        <a class="btn btn-default" href="javascript:void(0)" id="shareBtn">
-                                            <i class="fa fa-fac"></i> facebook share
-                                        </a>
-                                    </div>
-                                    <div class="col-md-6 pull-right">
-                                        <a class="btn btn-primary" href="javascript:sendEmailtoUser()">
-                                            <i class="fa fa-mail"></i> Share via email
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div id="useremailform" style="display: none;" class="form-group">
-                                        <!-- by defualt hidden -->
-                                        <form id="senduseremailform">
-                                            <div class="input-group">
-                                                <input id="userrefferalemail" type="email" class="form-control"
-                                                       placeholder="Enter Your Email">
-                                                <input id="userrefferalcode"
-                                                       value="{{ URL::to('/')}}/signup/?referral_key={{\Auth::user()->referral_key}}"
-                                                       type="hidden" class="form-control"
-                                                       placeholder="Enter Your Email">
-                                                <span class="input-group-btn">
-        <input class="btn btn-secondary" type="submit" value="Send">
-      </span>
-                                            </div>
-
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
+                        @include('layouts.invite_sec')
                     </div>
-                    @endif
-
                 </div>
-            </div>
             </div>
         </section>
     @endif
     @if(!empty($upcomming_tournaments_list))
+
         {{--<section class="bg-primary" id="about">--}}
         {{--<div class="container">--}}
         {{--<div class="row">--}}
@@ -403,6 +334,7 @@
                     <div class="service-box">
                         <a>
                             <i class="fa fa-4x fa-user-plus sr-icons"></i>
+
                             <p class="text-muted">
                                 SIGN UP TO PLAY AT GAMITHON
                             </p>
@@ -413,6 +345,7 @@
                     <div class="service-box">
                         <a disabled='disabled'>
                             <i class="fa fa-4x fa-users sr-icons"></i>
+
                             <p class="text-muted">
                                 CREATE YOUR TEAM
                             </p>
@@ -424,6 +357,7 @@
                     <div class="service-box">
                         <a disabled="true">
                             <i class="fa fa-4x fa-trophy sr-icons"></i>
+
                             <p class="text-muted">
                                 SELECT PLAYERS AND WIN PRIZES!
                             </p>
@@ -452,7 +386,8 @@
 
                 <div class="col-lg-4 col-md-4 text-center">
                     <div class="service-box">
-                        <a target="_blank" href="https://play.google.com/store/apps/details?id=com.branches.gamithon">
+                        <a target="_blank"
+                           href="https://play.google.com/store/apps/details?id=com.branches.gamithon">
                             <img src="{{URL::to('/img/google.png')}}"/>
 
                         </a>
@@ -479,6 +414,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt=" DD VS GL">
+
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -496,6 +432,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="KXIP VS MI">
+
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -511,6 +448,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <a href="../img/portfolio/thumbnails/203.jpg" class="portfolio-box">
                         <img src="../img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="KXIP VS KKR">
+
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -528,6 +466,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/701.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/701.jpg" class="img-responsive" alt="KXIP VS MI">
+
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -544,6 +483,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/702.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/702.jpg" class="img-responsive" alt="KXIP VS KKR">
+
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -561,6 +501,7 @@
                 <div class="col-lg-4  col-sm-6">
                     <a href="img/portfolio/thumbnails/703.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/703.jpg" class="img-responsive" alt="KXIP VS KKR">
+
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -576,6 +517,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/601.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/601.jpg" class="img-responsive" alt=" DD VS GL">
+
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -591,6 +533,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/602.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/602.jpg" class="img-responsive" alt="KXIP VS MI">
+
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -606,6 +549,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/603.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/603.jpg" class="img-responsive" alt=" DD VS GL">
+
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -691,38 +635,11 @@
 
 
     </script>
-    <script>
-        $(function () {
-            $('.itemsz, .leadersName').matchHeight('col-md-4');
-        });
-        function sendEmailtoUser() {
-            $("#useremailform").show();
 
-        }
-        $("#senduseremailform").submit(function (e) {
-            e.preventDefault();
-            $("#useremailform").hide();
-            $.ajax({
-                type: 'POST',
-                url: '{{route('sendUserEmail')}}',
-                data: {
-                    user_email: $('#userrefferalemail').val(),
-                    _token: '{{csrf_token()}}'
-                },
-                success: function (data) {
-                    if (data.success == true) {
-                        $("#useremailform").hide();
-                    } else {
-
-                    }
-
-                }
-            });
-        });
-    </script>
 
     <script>
         $(document).ready(function () {
+            $('.itemsz, .leadersName').matchHeight('col-md-4');
             $('.carousal-leaders-tourm').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
@@ -732,9 +649,7 @@
                 fade: true,
                 prevArrow: '<a href="" style=" font-size:43px; text-decoration:none;border: none;cursor: hand; outline: none;left:-25px;position: absolute; top:50%;" class="fa fa-chevron-circle-left"></a>',
                 nextArrow: '<a href="" style=" font-size:43px; text-decoration:none;border: none;cursor: hand; outline: none;right:-25px;position: absolute; top:50%;" class="fa fa-chevron-circle-right"></a>'
-
                 //prevArrow:'<button type="button" class="slick-prev" style="fa fa-chevron-circle-right" aria-hidden="true"></i>Previous</button>'
-
             });
         });
     </script>
@@ -775,7 +690,6 @@
             });
             FB.AppEvents.logPageView();
         };
-
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) {

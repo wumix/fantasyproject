@@ -52,7 +52,8 @@ Cricket app">
             margin: 0 0 0 0;
 
         }
-        .p0{
+
+        .p0 {
             padding-left: 0;
         }
     </style>
@@ -367,6 +368,43 @@ Cricket app">
 <script>
     $(document).ready(function () {
         $('#memberPopup').modal('show');
+    });
+</script>
+<script>
+    function sendEmailtoUser() {
+        $("#useremailform").slideToggle();
+    }
+    $("#senduseremailform").submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '{{route('sendUserEmail')}}',
+            data: {
+                user_email: $('#userrefferalemail').val(),
+                _token: '{{csrf_token()}}'
+            },
+            beforeSend: function () {
+                $("#btnSendRefrelEmail").html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>');
+                $("#btnSendRefrelEmail").attr('disabled', true);
+            },
+            success: function (data) {
+                if (data.success == true) {
+                    setTimeout(function () {
+                        $("#useremailform").slideUp();
+                        $("#btnSendRefrelEmail").html('Send');
+                        $("#referelMsg").slideUp();
+                    }, 3000);
+                    $("#referelMsg").slideDown();
+                    $("#referelMsg").addClass('alert-success');
+                    $("#referelMsg").html('Referel has been sent!');
+                    $('#userrefferalemail').val('');
+                } else {
+                    $("#referelMsg").addClass('alert-danger');
+                    $("#referelMsg").html('Referel has not been sent!');
+                }
+                $("#btnSendRefrelEmail").attr('disabled', false);
+            }
+        });
     });
 </script>
 </body>

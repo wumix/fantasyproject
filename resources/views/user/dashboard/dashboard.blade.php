@@ -367,7 +367,6 @@
                                 Active Chanllenges
                             </span>
                             @include('adminlte::layouts.form_errors')
-
                             @foreach($accepted_challenges as $val)
                                 @foreach($val['challenges'] as $row)
                                     <ul class="aboutsec">
@@ -389,13 +388,12 @@
                                                 @endif
                                                 @if(!challengeTeamCompleteInChallenge(\Auth::id(),$row['id']))
                                                     <a class="btn btn-danger" href="{{route('addChallengeTeam',[
-                                                        'match_id'=>$row['match_id'],'challenge_id'=>$row['id']])}}">Complete Team</a>
-
+                                                        'match_id'=>$row['match_id'],'challenge_id'=>$row['id']])}}">
+                                                        Complete Team
+                                                    </a>
                                                 @endif
                                         </span>
                                         </li>
-
-
                                     </ul>
                                 @endforeach
                             @endforeach
@@ -444,7 +442,7 @@
 
                         </div>
                     @endif
-                    <div class="abot_me_sec">
+                    <div class="abot_me_sec" style="display:none;">
 
                         <p class="text-center">
                         <div id="shareBtn" class="btn btn-success clearfix center">Invite Friends</div>
@@ -476,7 +474,7 @@
 
                         </p>
                         <p class="text-center">
-                            <a class="btn btn-success" href="{{route('listChalllenges')}}">Dashboard</a>
+                            <a class="btn btn-success" href="{{route('listChalllenges')}}">See All Challenges</a>
 
                         </p>
 

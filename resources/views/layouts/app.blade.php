@@ -203,7 +203,7 @@ Cricket app">
                             <ul class="dropdown-menu">
                                 <li>
                                     <a class="page-scroll" href="{{route('showBlog')}}">
-                                        Blogs
+                                        Blog
                                     </a>
                                 </li>
                                 <li>

@@ -35,6 +35,7 @@
                                 </tr>
                                 </thead>
                                 <tbody id="selected-player" class="main-taible-body">
+                                @if(!empty($sent_challenges))
                                 @foreach($sent_challenges as $row)
 
                                     <tr>
@@ -97,6 +98,13 @@
 
 
                                 @endforeach
+                                    @else
+
+                                        <tr>
+                                            <td colspan="8">No challenges Yet</td>
+                                        </tr>
+
+                                @endif
                                 </tbody>
                             </table>
 
@@ -124,72 +132,80 @@
                                 </tr>
                                 </thead>
                                 <tbody id="selected-player" class="main-taible-body">
-                                @foreach($accepted_challenges[0]['challenges'] as $row)
+                                @if(!empty($accepted_challenges[0]['challenges']))
+                                    @foreach($accepted_challenges[0]['challenges'] as $row)
 
-                                    <tr>
+                                        <tr>
 
-                                        <td class="border-r1">
-                                            <h5>{{getMatchName($row['match_id'])}}</h5>
-                                        </td>
-                                        <td>
-                                            {{$row['rewards']}}
-                                        </td>
-                                        <td class="border-r1">
+                                            <td class="border-r1">
+                                                <h5>{{getMatchName($row['match_id'])}}</h5>
+                                            </td>
+                                            <td>
+                                                {{$row['rewards']}}
+                                            </td>
+                                            <td class="border-r1">
 
-                                            {{$row['user']['name']}}
+                                                {{$row['user']['name']}}
 
-                                        </td>
+                                            </td>
 
-                                        <td class="border-r1">
-                                            @if($row['status']==0)
-                                                Not accpeted
-                                                <a href="{{route('accept_challenge',['id'=>$row['id'],'match_id'=>$row['match_id']])}}">Accept</a>
+                                            <td class="border-r1">
+                                                @if($row['status']==0)
+                                                    Not accpeted
+                                                    <a href="{{route('accept_challenge',['id'=>$row['id'],'match_id'=>$row['match_id']])}}">Accept</a>
 
-                                            @endif
-                                            @if($row['status']==1)
-                                                Accepted
-                                            @endif
-                                            @if($row['status']==2)
-                                                Rejected
-                                            @endif
-                                            @if($row['status']==3)
-                                                Pending
-                                            @endif
+                                                @endif
+                                                @if($row['status']==1)
+                                                    Accepted
+                                                @endif
+                                                @if($row['status']==2)
+                                                    Rejected
+                                                @endif
+                                                @if($row['status']==3)
+                                                    Pending
+                                                @endif
 
 
-                                        </td>
+                                            </td>
 
-                                        <td class="border-r1">
-                                            @if(!challengeTeamCompleteInChallenge(\Auth::id(),$row['id']))
-                                                <a class="btn btn-danger" href="{{route('addChallengeTeam',[
+                                            <td class="border-r1">
+                                                @if(!challengeTeamCompleteInChallenge(\Auth::id(),$row['id']))
+                                                    <a class="btn btn-danger" href="{{route('addChallengeTeam',[
                                                         'match_id'=>$row['match_id'],'challenge_id'=>$row['id']])}}">Complete
-                                                    Team</a>
+                                                        Team</a>
 
-                                            @else
-                                                Team Complete
-                                            @endif
-                                        </td>
-                                        <td class="border-r1">
-                                            {{$user_1_score=userScoreInChallenge($row['user_1_id'],$row['id'])}}
-                                        </td>
-                                        <td class="border-r1">
-                                            {{$user_2_score=userScoreInChallenge($row['user_2_id'],$row['id'])}}
-                                        </td>
-                                        <td class="border-r1">
-                                            @if($row['won']==0)
-                                                In progress
-                                            @elseif($user_1_score>$user_2_score)
-                                                Won
-                                            @else
-                                                Lost
-                                            @endif
+                                                @else
+                                                    Team Complete
+                                                @endif
+                                            </td>
+                                            <td class="border-r1">
+                                                {{$user_1_score=userScoreInChallenge($row['user_1_id'],$row['id'])}}
+                                            </td>
+                                            <td class="border-r1">
+                                                {{$user_2_score=userScoreInChallenge($row['user_2_id'],$row['id'])}}
+                                            </td>
+                                            <td class="border-r1">
+                                                @if($row['won']==0)
+                                                    In progress
+                                                @elseif($user_1_score>$user_2_score)
+                                                    Won
+                                                @else
+                                                    Lost
+                                                @endif
 
 
-                                        </td>
+                                            </td>
 
+                                        </tr>
+
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="8">
+                                            No Challenges yet
+                                        </td>
                                     </tr>
-
-                                @endforeach
+                                    @endif
                                 </tbody>
                             </table>
 

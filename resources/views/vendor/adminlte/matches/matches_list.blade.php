@@ -49,6 +49,9 @@
                                     <a href="{{route('addTeamToMatch', ['match_id'=>$row['id'],'tournament_id'=>$tournamentId])}}" class="btn btn-success">
                                         Add Team To Match
                                     </a>
+                                    <a href="{{route('calculateMatchChallenges', ['match_id'=>$row['id'],'tournament_id'=>$tournamentId])}}" class="btn btn-success">
+                                        Calculate challenges
+                                    </a>
                                     <!--                                    <a href="#" class="btn btn-danger">
                                                                             <i class="fa fa-times"></i> Delete
                                                                         </a>-->

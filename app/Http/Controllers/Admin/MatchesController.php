@@ -28,6 +28,140 @@ class MatchesController extends Controller {
         return view('adminlte::matches.matches_list', $data);
     }
 
+    public function calculateMatchChallenges($match_id){
+
+        $match_challenges = \App\UserChallenge::where('match_id', 96)->with('challenge_players')->get()->toArray();
+
+        foreach ($match_challenges as $challenge) {
+            //dd($challenge);
+            $match_id = $challenge['match_id'] = 96;
+            $tournamnet_id = \App\Match::where('id', $match_id)->first()->tournament_id;
+            $user_1_team = \App\UserChallengeTeamPlayers::where(
+                [
+                    'user_id' => $challenge['user_1_id'],
+                    'challenge_id' => $challenge['id']]
+            )->get()->toArray();
+
+
+            $userTeamPlayerIds = array_column($user_1_team, 'player_id');
+            //dd($userTeamPlayerIds);
+            $team_score1 = \App\Player::whereIn('id', $userTeamPlayerIds)->with(
+                ['player_roles', 'player_matches',
+                    'player_gameTerm_score' => function ($query) use ($match_id) {
+                        $query->where('match_id', $match_id);
+                    },
+                    'player_gameTerm_score.game_terms' => function ($query) {
+                        $query->select('name', 'id');
+                    },
+                    'player_gameTerm_score.points_devision_tournament' => function ($query) use ($match_id, $tournamnet_id) {
+                        //$query->where('tournament_id', $tournamnet_id);
+
+                    }
+                ])->get()->toArray();
+
+            //--------------------------
+
+            foreach ($team_score1 as $row) {
+
+                $playertotal = 0;
+
+
+                foreach ($row['player_game_term_score'] as $termscore) {
+                    foreach ($termscore['points_devision_tournament'] as $points) {
+
+                        if ($points['qty_from'] == $points['qty_to']) {
+                            //   echo "yes";
+                            //     echo $points['points'] * $termscore['player_term_count'];
+                            $playertotal += $points['points'] * $termscore['player_term_count'];
+                        } else {
+                            if (($points['qty_from'] <= $termscore['player_term_count']) && ($points['qty_to'] >= $termscore['player_term_count'])) {
+                                //  echo $points['qty_from']." ". $termscore['player_term_count']." ".$points['qty_to']."<br>";
+
+
+                                $playertotal += $points['points'];
+                            }
+                        }
+                    }
+                }
+
+
+                \App\UserChallengePlayerScore::insert(
+                    [
+                        'user_id' => $challenge['user_1_id'],
+                        'challenge_id' => $challenge['id'],
+                        'score' => $playertotal,
+                    ]);
+
+
+            }
+            //####### start user 2 cal
+            $user_2_team = \App\UserChallengeTeamPlayers::where(
+                [
+                    'user_id' => $challenge['user_2_id'],
+                    'challenge_id' => $challenge['id']]
+            )->get()->toArray();
+
+
+            $userTeamPlayerIds = array_column($user_2_team, 'player_id');
+            //dd($userTeamPlayerIds);
+            $team_score2 = \App\Player::whereIn('id', $userTeamPlayerIds)->with(
+                ['player_roles', 'player_matches',
+                    'player_gameTerm_score' => function ($query) use ($match_id) {
+                        $query->where('match_id', $match_id);
+                    },
+                    'player_gameTerm_score.game_terms' => function ($query) {
+                        $query->select('name', 'id');
+                    },
+                    'player_gameTerm_score.points_devision_tournament' => function ($query) use ($match_id, $tournamnet_id) {
+                        //$query->where('tournament_id', $tournamnet_id);
+
+                    }
+                ])->get()->toArray();
+
+            //--------------------------
+
+            foreach ($team_score2 as $row) {
+
+                $playertotal = 0;
+
+
+                foreach ($row['player_game_term_score'] as $termscore) {
+                    foreach ($termscore['points_devision_tournament'] as $points) {
+
+                        if ($points['qty_from'] == $points['qty_to']) {
+                            //   echo "yes";
+                            //     echo $points['points'] * $termscore['player_term_count'];
+                            $playertotal += $points['points'] * $termscore['player_term_count'];
+                        } else {
+                            if (($points['qty_from'] <= $termscore['player_term_count']) && ($points['qty_to'] >= $termscore['player_term_count'])) {
+                                //  echo $points['qty_from']." ". $termscore['player_term_count']." ".$points['qty_to']."<br>";
+
+
+                                $playertotal += $points['points'];
+                            }
+                        }
+                    }
+                }
+
+
+                \App\UserChallengePlayerScore::insert(
+                    [
+                        'user_id' => $challenge['user_2_id'],
+                        'challenge_id' => $challenge['id'],
+                        'score' => $playertotal,
+                    ]);
+
+
+            }
+
+            //## end user 2 cal
+
+            //-----------------------------
+
+        } //end outer forach
+
+    }
+
     public function addMatchForm() {
         $this->objMatch = Tournament::with('teams')->get()->toArray();
         $data['result'] = $this->objMatch;

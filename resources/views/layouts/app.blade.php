@@ -236,7 +236,7 @@ Cricket app">
                             </li>
 
                         @endif
-                        <li class="new-arrival">
+                        <li class="new-arrival has-menu">
                             <a href="{{route('challenges')}}" class="page-scroll">
                                 Challange a player
                             </a>

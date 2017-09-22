@@ -204,7 +204,7 @@
                                                                                 @endif
                                                                             </td>
 
-                                                                            <td class=" text-left"><p
+                                                                            <!--<td class=" text-left"><p
                                                                                         class="myteamtt">
                                                                                     <?php
                                                                                     $playerThisTournamnetPrice = 0;
@@ -218,7 +218,7 @@
                                                                                     ?>
                                                                                     {{$playerThisTournamnetPrice}}
                                                                                 </p>
-                                                                            </td>
+                                                                            </td> -->
 
                                                                             <td class="add text-left">
                                                                                 <a onclick="return confirm('Are you sure you want to add this player')"

@@ -51,4 +51,8 @@ function userPointsAdditionInTournament($userid,$feature)
 
 }
 
+function getMatchName($match_id){
+   return  \App\Match::where('id',$match_id)->first()->name;
+}
+
 ?>

@@ -370,7 +370,7 @@
 
                             @foreach($accepted_challenges as $val)
                                 @foreach($val['challenges'] as $row)
-                                    <ul class="img_area_area">
+                                    <ul class="aboutsec">
                                         <li>
 
                                             Vs <span id="game_lame">{{$row['user']['name']}}</span>

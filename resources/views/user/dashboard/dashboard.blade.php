@@ -377,21 +377,9 @@
                                         <li>
                                             Reward: <span id="game_lame">{{$row['rewards']}}</span>
                                             <span id="game_lame">
-                                        @if($row['won']==0)
-                                                    In progress
-                                                @endif
-                                                @if($row['won']==1)
-                                                    Won
-                                                @endif
-                                                @if($row['won']==2)
-                                                    Lost
-                                                @endif
-                                                @if(!challengeTeamCompleteInChallenge(\Auth::id(),$row['id']))
-                                                    <a class="btn btn-danger" href="{{route('addChallengeTeam',[
-                                                        'match_id'=>$row['match_id'],'challenge_id'=>$row['id']])}}">
-                                                        Complete Team
-                                                    </a>
-                                                @endif
+
+                                                <a class="btn btn-success" href="{{route('listChalllenges')}}">See All </a>
+
                                         </span>
                                         </li>
                                     </ul>
@@ -418,20 +406,7 @@
                                         Reward: <span id="game_lame">{{$row['rewards']}}</span>
                                         <span id="game_lame">
 
-                                                @if($row['status']==0)
-                                                Not accpeted
-                                            @endif
-                                            @if($row['status']==1)
-                                                In Progress
-                                            @endif
-                                            @if($row['status']==2)
-                                                Rejected
-                                            @endif
-                                            @if(!challengeTeamCompleteInChallenge(\Auth::id(),$row['id']))
-                                                <a class="btn btn-danger" href="{{route('addChallengeTeam',[
-                                                        'match_id'=>$row['match_id'],'challenge_id'=>$row['id']])}}">Complete Team</a>
-
-                                            @endif
+                                                <a class="btn btn-success" href="{{route('listChalllenges')}}">See All </a>
                                         </span>
                                     </li>
 

@@ -255,7 +255,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/add-max-roles/{tournament_id}', 'Admin\TournamentsController@postAddTournamentRolesLimit')->name('postAddmaxRoles');
         }); //Matches
         Route::group(['prefix' => 'match'], function () {
-            Route::post('/challenges/{match_id}', 'Admin\MatchesController@calculateMatchChallenges')->name('calculateMatchChallenges');
+            Route::get('/challenges/{match_id}', 'Admin\MatchesController@calculateMatchChallenges')->name('calculateMatchChallenges');
             Route::post('/tournamnet-teams', 'Admin\MatchesController@tournament_teams_ajax')->name('tournamnetTeams');
             Route::get('/', 'Admin\MatchesController@index')->name('Matcheslist');
             Route::get('/add', 'Admin\MatchesController@addMatchForm')->name('addMatch'); //showsaddplayerform

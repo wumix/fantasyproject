@@ -30,11 +30,11 @@ class MatchesController extends Controller {
 
     public function calculateMatchChallenges($match_id){
 
-        $match_challenges = \App\UserChallenge::where('match_id', 96)->with('challenge_players')->get()->toArray();
+        $match_challenges = \App\UserChallenge::where('match_id', $match_id)->with('challenge_players')->get()->toArray();
 
         foreach ($match_challenges as $challenge) {
             //dd($challenge);
-            $match_id = $challenge['match_id'] = 96;
+
             $tournamnet_id = \App\Match::where('id', $match_id)->first()->tournament_id;
             $user_1_team = \App\UserChallengeTeamPlayers::where(
                 [
@@ -157,6 +157,7 @@ class MatchesController extends Controller {
             //## end user 2 cal
 
             //-----------------------------
+            \App\UserChallenge::where('match_id',$match_id)->update(['won'=>1]);
 
         } //end outer forach
 

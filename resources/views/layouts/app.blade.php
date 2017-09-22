@@ -83,8 +83,8 @@ Cricket app">
     </script>
     <style>
         li.new-arrival > a::after {
-            content: "New";
-            background-color: orange;
+            content: "New !!!";
+            background-color: #cc0000;
             padding: 0 3px;
             color: #fff;
             -webkit-border-radius: 5px;
@@ -92,8 +92,11 @@ Cricket app">
             border-radius: 5px;
             font-size: 10px;
             position: absolute;
-            top: 0;
+            top: -6px;
             right: 14px;
+            width: 50px;
+            text-align: center;
+            font-weight: 600;
         }
     </style>
 </head>

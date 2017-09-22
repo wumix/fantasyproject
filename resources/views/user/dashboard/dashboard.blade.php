@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('title')
@@ -6,30 +5,9 @@
 @stop
 @section('css')
     <style>
-        .btn-dash {
-            display: block;
-            width: 150px;
-            margin: 0 auto !important;
-            font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-            border: none;
-            border-radius: 5px;
-            font-weight: 400;
-            background: #92B713 !important;
-            text-transform: capitalize;
-        }
-
-        .highlight-badge {
-            border: 2px solid #F98709;
-            padding: 2px;
-        }
 
         .btn-gamithon-default {
             background: #92B713 !important;
-        }
-
-        .upcomin_list {
-            margin: 0;
-            padding: 0;
         }
 
         .section_area {
@@ -69,16 +47,6 @@
 
         }
 
-        .abot_me {
-            width: 100%;
-            display: inline-block;
-            background: #fff;
-            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
-            padding: 0 29px;
-            position: relative;
-            margin-bottom: 40px;
-        }
-
         .rfral_code {
             width: 100%;
             display: inline-block;
@@ -108,42 +76,17 @@
             box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
             padding: 0 29px;
             margin-bottom: 40px;
-        }
-
-        .abot_me_sec1 {
-            width: 100%;
-            display: inline-block;
-            background: #fff;
-            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
-            padding: 0 29px;
-            margin-bottom: 40px;
-        }
-
-        .share_text_area {
-            width: 100%;
-            display: inline-block;
-            background: #fff;
-            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
-            padding: 0 29px;
-
-        }
-
-        .abot_me_sec2 {
-            width: 100%;
-            display: inline-block;
-            background: #fff;
-            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
-            padding: 0 29px;
+            padding: 20px 20px;
+            position: relative;
         }
 
         .text_abot_me {
             width: 100%;
             display: inline-block;
-
             font-size: 15px;
             color: #030303;
             text-transform: uppercase;
-            padding: 25px 0;
+            margin-bottom: 10px;
         }
 
         .parah_abot {
@@ -157,54 +100,12 @@
             padding-bottom: 25px;
         }
 
-        .parah_abot1 {
-            width: 100%;
-            display: inline-block;
-
-            font-size: 15px;
-            color: #a8a8a8;
-            text-transform: uppercase;
-        }
-
-        .friends {
-            width: 100%;
-            display: none;
-
-            font-size: 15px;
-            color: #030303;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .small_circle {
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            display: inline-block;
-            border-radius: 50%;
-            margin-right: 16px;
-        }
-
         .small_circle img {
             width: 50px;
             height: 50px;
             line-height: 50px;
             display: inline-block;
             border-radius: 50%;
-        }
-
-        .img_area {
-            width: 100%;
-            display: inline-block;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .jhone {
-            display: inline-block;
-
-            font-size: 12px;
-            color: #4b4b4b;
         }
 
         .btn_club {
@@ -217,7 +118,6 @@
             margin: 0 auto;
             border-radius: 38px;
             position: absolute;
-            bottom: -17px;
             left: 83px;
         }
 
@@ -286,15 +186,6 @@
             padding-top: 38px;
         }
 
-        .number_sec {
-            display: inline-block;
-
-            font-size: 70px;
-            color: #8b8b8c;
-            font-weight: bold;
-            float: right;
-        }
-
         .medal {
             width: 100%;
             display: inline-block;
@@ -317,25 +208,6 @@
             font-weight: bold;
         }
 
-        .upcoming_sec {
-            width: 100%;
-            display: inline-block;
-            background: #fff;
-            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
-            padding: 27px 24px 35px 30px;
-            margin-top: 30px;
-        }
-
-        .text_abot_me_upcome {
-            width: 100%;
-            display: inline-block;
-            border-bottom: 1px solid #b7b7b7;
-
-            font-size: 15px;
-            color: #030303;
-            text-transform: uppercase;
-        }
-
         .upcomin_list li {
             list-style: none;
             padding: 20px 0;
@@ -344,71 +216,6 @@
         .upcomin_list li:nth-child(2) {
             border-bottom: none;
             padding-bottom: 0px;
-        }
-
-        .left_upcoming {
-            display: inline-block;
-            float: left;
-            width: 71%;
-        }
-
-        .right_upcoming {
-            display: inline-block;
-            float: right;
-            width: 24%;
-        }
-
-        .text_abot_me_upcome_tour {
-            width: 100%;
-            display: inline-block;
-
-            font-size: 15px;
-            color: #030303;
-            text-transform: uppercase;
-
-        }
-
-        .clor_text {
-            width: 100%;
-            display: inline-block;
-
-            font-size: 12px;
-            color: #818181;
-            padding: 7px 0;
-        }
-
-        .time_area {
-            width: 100%;
-            display: inline-block;
-
-            font-size: 21px;
-            font-weight: bold;
-            color: #28b23c;
-            margin-bottom: 13px;
-        }
-
-        .more_btn {
-            width: 100%;
-            display: inline-block;
-
-            font-size: 12px;
-            color: #818181;
-        }
-
-        .sect {
-            display: inline-block;
-            float: right;
-            width: 55%;
-        }
-
-        .nine_area {
-            display: inline-block;
-
-            font-size: 80px;
-            color: #818181;
-            font-weight: bold;
-            float: right;
-            position: relative;
         }
 
         .nine_area span {
@@ -446,132 +253,15 @@
             text-transform: uppercase;
         }
 
-        @media all and (min-width: 961px) and (max-width: 1200px) {
-
-            .upcoming_sec {
-                margin-bottom: 50px;
-            }
-
-            .btn_club {
-                left: 20%;
-            }
-
-            .circle_area_for img {
-                width: 200px;
-                height: 200px;
-                line-height: 200px;
-            }
+        ul.aboutsec {
+            margin: 0;
+            padding: 0;
         }
 
-        @media all and (min-width: 769px) and (max-width: 960px) {
-            .owner_text {
-                font-size: 27px;
-            }
-
-            .right_sec {
-                margin-top: 30px;
-            }
-
-            .upcoming_sec {
-                margin-bottom: 50px;
-            }
-
-            .btn_club {
-                left: 37%;
-            }
-
-            .circle_area_for img {
-                width: 200px;
-                height: 200px;
-                line-height: 200px;
-            }
+        ul.aboutsec li {
+            list-style: none;
+            padding: 6px 0;
         }
-
-        @media all and (min-width: 100px) and (max-width: 768px) {
-            .owner_text {
-                font-size: 19px;
-                font-weight: bold;
-            }
-
-            .right_sec {
-                margin-top: 30px;
-            }
-
-            .upcoming_sec {
-                margin-bottom: 50px;
-            }
-
-            .btn_club {
-                left: 37%;
-            }
-
-            .circle_area_for img {
-                width: 200px;
-                height: 200px;
-                line-height: 200px;
-            }
-
-            .owner_text {
-                font-size: 30px;
-
-            }
-
-            .left_upcoming {
-                width: 100%;
-            }
-
-            .abot_me {
-                margin-top: 25px;
-            }
-
-        }
-
-        @media all and (min-width: 100px) and (max-width: 480px) {
-            .owner_text {
-                font-size: 15px;
-                font-weight: bold;
-            }
-
-            .btn_club {
-                left: 20%;
-            }
-
-            .text_con {
-                bottom: -123px;
-            }
-
-            .sect {
-                display: inline-block;
-                float: right;
-                width: 100%;
-                margin-top: 30px;
-            }
-
-            element {
-            }
-
-            .img_area_area {
-                width: 100%;
-                display: inline-block;
-                float: left;
-                margin: 0;
-                -webkit-margin-before: 0em !important;
-                -webkit-margin-after: 0em !important;
-                -webkit-margin-start: 0px !important;
-                -webkit-margin-end: 0px !important;
-                -webkit-padding-start: 0px !important;
-            }
-
-            .img_area_area li {
-                width: 100%;
-                display: inline-block;
-                float: left;
-                margin-bottom: 14px;
-                text-align: center;
-            }
-
-        }
-
     </style>
 @endsection
 @section('content')
@@ -595,7 +285,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="abot_me">
+                    <div class="abot_me_sec">
                     <span class="text_abot_me">
                         A Little about me
                     </span>
@@ -606,35 +296,14 @@
                                 {{$userprofileinfo['about_me']}}
                             @endif
                         </p>
-                        {{--<span class="friends">--}}
-                        {{--Friends</span>--}}
-                        {{--<div class="img_area">--}}
-                        {{--<span class="small_circle">--}}
-                        {{--<img src={{URL::to('/img/small_circle.png')}} alt=""/>--}}
-                        {{--<span class="jhone">Jhon Doe</span>--}}
-                        {{--</span>--}}
-
-                        {{--<span class="small_circle">--}}
-                        {{--<img src={{URL::to('/img/small_circle.png')}} alt=""/>--}}
-                        {{--<span class="jhone">Jhon Doe</span>--}}
-                        {{--</span>--}}
-                        {{--<span class="small_circle">--}}
-                        {{--<img src={{URL::to('/img/small_circle.png')}} alt=""/>--}}
-                        {{--<span class="jhone">Jhon Doe</span>--}}
-                        {{--</span>--}}
-                        {{--<span class="small_circle">--}}
-                        {{--<img src={{URL::to('/img/small_circle.png')}} alt=""/>--}}
-                        {{--<span class="jhone">Jhon Doe</span>--}}
-                        {{--</span>--}}
-                        {{--</div>--}}
                         <a href="{{route('userProfileEdit')}}" class="btn_club">Edit</a>
                     </div>
                     <div class="abot_me_sec">
-                    <span class="text_abot_me text-center">
+                    <span class="text_abot_me">
                          Tournament Scores
                     </span>
 
-                        <ul class="img_area_area">
+                        <ul class="aboutsec">
                             @foreach($user_scores['leaderboard'] as $score)
                                 @if(!empty($score['tournament']))
                                     <li>
@@ -643,9 +312,9 @@
                                     </li>
                                 @endif
                             @endforeach
-
                         </ul>
                     </div>
+
                     <div class="rfral_code" style="display:none;">
 
                         <div class="col-lg-12">
@@ -667,21 +336,16 @@
                             </div>
                         </div>
                     </div>
-
                     @if(!empty($challenges[0]['challenges']))
-                        <div class="abot_me_sec1">
-                    <span class="text_abot_me text-center">
-                        In active Challenges
-
-                    </span>
+                        <div class="abot_me_sec">
+                            <span class="text_abot_me">
+                                Inactive Challenges
+                            </span>
                             @include('adminlte::layouts.form_errors')
-
                             @foreach($challenges as $val)
                                 @foreach($val['challenges'] as $row)
-
-                                    <ul class="img_area_area">
+                                    <ul class="aboutsec">
                                         <li>
-
                                             Name <span id="game_lame">{{$row['user']['name']}}</span>
                                         </li>
                                         <li>
@@ -698,10 +362,10 @@
                         </div>
                     @endif
                     @if(!empty($accepted_challenges[0]['challenges']))
-                        <div class="abot_me_sec2">
-                    <span class="text_abot_me text-center">
-                        Active Chanllenges
-                    </span>
+                        <div class="abot_me_sec">
+                            <span class="text_abot_me">
+                                Active Chanllenges
+                            </span>
                             @include('adminlte::layouts.form_errors')
 
                             @foreach($accepted_challenges as $val)
@@ -723,11 +387,11 @@
                                                 @if($row['won']==2)
                                                     Lost
                                                 @endif
-                                            @if(!challengeTeamCompleteInChallenge(\Auth::id(),$row['id']))
-                                                <a class="btn btn-danger" href="{{route('addChallengeTeam',[
+                                                @if(!challengeTeamCompleteInChallenge(\Auth::id(),$row['id']))
+                                                    <a class="btn btn-danger" href="{{route('addChallengeTeam',[
                                                         'match_id'=>$row['match_id'],'challenge_id'=>$row['id']])}}">Complete Team</a>
 
-                                            @endif
+                                                @endif
                                         </span>
                                         </li>
 
@@ -739,50 +403,49 @@
                         </div>
                     @endif
                     @if(!empty($sent_challenges))
-                        <div class="abot_me_sec2">
-                    <span class="text_abot_me text-center">
+                        <div class="abot_me_sec">
+                    <span class="text_abot_me">
                         Sent Chanllenges
                     </span>
                             @include('adminlte::layouts.form_errors')
 
                             @foreach($sent_challenges as $row)
 
-                                    <ul class="img_area_area">
-                                        <li>
+                                <ul class="img_area_area">
+                                    <li>
 
-                                            Vs <span id="game_lame">{{$row['user_by']['name']}}</span>
-                                        </li>
-                                        <li>
-                                            Reward: <span id="game_lame">{{$row['rewards']}}</span>
-                                            <span id="game_lame">
+                                        Vs <span id="game_lame">{{$row['user_by']['name']}}</span>
+                                    </li>
+                                    <li>
+                                        Reward: <span id="game_lame">{{$row['rewards']}}</span>
+                                        <span id="game_lame">
 
                                                 @if($row['status']==0)
-                                                    Not accpeted
-                                                @endif
-                                                @if($row['status']==1)
-                                                    In Progress
-                                                @endif
-                                                @if($row['status']==2)
-                                                    Rejected
-                                                @endif
-                                                @if(!challengeTeamCompleteInChallenge(\Auth::id(),$row['id']))
-                                                        <a class="btn btn-danger" href="{{route('addChallengeTeam',[
+                                                Not accpeted
+                                            @endif
+                                            @if($row['status']==1)
+                                                In Progress
+                                            @endif
+                                            @if($row['status']==2)
+                                                Rejected
+                                            @endif
+                                            @if(!challengeTeamCompleteInChallenge(\Auth::id(),$row['id']))
+                                                <a class="btn btn-danger" href="{{route('addChallengeTeam',[
                                                         'match_id'=>$row['match_id'],'challenge_id'=>$row['id']])}}">Complete Team</a>
 
-                                                @endif
+                                            @endif
                                         </span>
-                                        </li>
+                                    </li>
 
 
-                                    </ul>
+                                </ul>
 
                             @endforeach
 
                         </div>
                     @endif
-                    <div class="abot_me_sec1">
+                    <div class="abot_me_sec">
 
-                        <hr/>
                         <p class="text-center">
                         <div id="shareBtn" class="btn btn-success clearfix center">Invite Friends</div>
                         </p>
@@ -816,8 +479,6 @@
                             <a class="btn btn-success" href="{{route('listChalllenges')}}">Dashboard</a>
 
                         </p>
-
-
 
 
                     </div>

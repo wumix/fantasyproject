@@ -122,16 +122,18 @@
                                             @foreach($tournament['leaderboard'] as $leader)
                                                 <div class="col-md-4  text-center">
                                                     <div class="circle2 leadersName" style="padding-top: 5px;">
-                        <span id="getting-started1">
-                          <img style="width: 50px;
-    height: 50px; border-radius: 50%;
-    margin:0 auto;
+                                                        <span id="getting-started1">
+                                                          <img style="width: 50px;
+                                    height: 50px; border-radius: 50%;
+                                    margin:0 auto;
 
 
-" src="{{getUploadsPath($leader['user']['profile_pic'])}}"/>
-                        </span>
+                                " src="{{getUploadsPath($leader['user']['profile_pic'])}}"/>
+                                                        </span>
                                                         <p class="no-mrg-in-home ">{{$leader['user']['name']}}</p>
-                                                        <p class="no-mrg-in-home1 leaderboardscore">{{$leader['score']}}</p>
+                                                        <p class="no-mrg-in-home1 leaderboardscore">
+                                                            {{$leader['score']}}
+                                                        </p>
                                                     </div>
                                                 </div>
                                             @endforeach
@@ -285,7 +287,6 @@
         </section>
     @endif
     @if(!empty($upcomming_tournaments_list))
-
         {{--<section class="bg-primary" id="about">--}}
         {{--<div class="container">--}}
         {{--<div class="row">--}}
@@ -788,12 +789,12 @@
     </script>
 @endsection
 @section('facbook-og-tags')
-    <meta property="og:url" content="heelo world"/>
+    <meta property="og:url" content="{{URL::to('/')}}"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="My title"/>
+    <meta property="og:title" content="Gamithon Fantasy"/>
     <meta property="og:description" content="Join referral here"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="600"/>
-    <meta property="og:image" content="http://www.gamithonfantasy.com/assets-new/img/gamithon-logo1.png"/>
+    <meta property="og:image" content="{{URL::to('assets-new/img/gamithon-logo1.png')}}"/>
     <meta property="fb:app_id" content="337419313358697"/>
 @stop

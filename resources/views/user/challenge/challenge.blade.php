@@ -275,35 +275,44 @@
                     </form>
 
                     <div id="user-container">
-                        @foreach($users as $key=>$user)
-                            <?php $key = $key + 1; ?>
-                            <div class="col-md-4">
-                                <div class="col-md-6">
-                                    <div class="cnter_liez_challenge">
-                                        <img class="img-responsive "
-                                             src="{{getUploadsPath($user['user']['profile_pic'])}}" alt=""/>
+                        @if(count($users) > 0)
+                            @foreach($users as $key=>$user)
+                                <?php $key = $key + 1; ?>
+                                <div class="col-md-4">
+                                    <div class="col-md-6">
+                                        <div class="cnter_liez_challenge">
+                                            <img class="img-responsive "
+                                                 src="{{getUploadsPath($user['user']['profile_pic'])}}" alt=""/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
+                                    <div class="col-md-6">
                                 <span class="challnge_text">
                                    {{$user['user']['name']}}
                                 </span>
-                                    <a href="javascript:openChallangeModel('{{$user['user']['id']}}')"
-                                       class="open-AddBookDialog">
-                                        Challenge Me
-                                    </a>
+                                        <a href="javascript:openChallangeModel('{{$user['user']['id']}}')"
+                                           class="open-AddBookDialog">
+                                            Challenge Me
+                                        </a>
+                                    </div>
                                 </div>
+                                @if($key%3 == 0)
+                                    <div class="border_arrea"></div>
+                                @endif
+                            @endforeach
+                            <div class="container text-center">
+                                {{$users->links()}}
                             </div>
-                            @if($key%3 == 0)
-                                <div class="border_arrea"></div>
-                            @endif
-                        @endforeach
-                        <div class="container text-center">
-                            {{$users->links()}}
-                        </div>
+                        @else
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                @include('layouts.invite_sec')
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        @endif
                     </div>
                     <div class="clear clearfix"></div>
-
                 </div>
             </div>
         </div>

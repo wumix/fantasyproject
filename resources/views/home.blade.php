@@ -3,83 +3,6 @@
 @section('css')
     {!! Html::style('assets-new/css/slick-theme.css') !!}
     {!! Html::style('assets-new/css/slick.css') !!}
-    <style>
-        .rfral_code {
-            width: 100%;
-            display: inline-block;
-            background: #fff;
-            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
-            padding: 20px 20px;
-            margin-bottom: 40px;
-        }
-
-        .new_form {
-            width: 100% !important;
-            border: 1px solid #92B713;
-            background: #000 !important;
-            border-radius: 10px;
-            color: #fff;
-            height: 42px;
-        }
-
-        .js-textareacopybtn {
-            padding: 11px;
-            width: 76px;
-            background: #92B713;
-            color: #fff;
-        }
-
-        .login_share_btns_wrapper a {
-            width: 100%;
-            font-weight: 600;
-            height: 49px;
-            font-size: 15px;
-            line-height: 37px;
-        }
-
-        .login_share_btns_wrapper a:first-child {
-            color: #fff;
-            background: #3b5998;
-            margin-bottom: 15px;
-        }
-
-        .login_share_btns_wrapper a:first-child:hover {
-            background: #6d84b4 !important;
-            color: #fff !important;
-        }
-
-        .login_share_btns_wrapper a i {
-            display: inline-block;
-            font-size: 18px;
-            vertical-align: middle;
-            margin-right: 7px;
-        }
-
-        .login_share_btns_wrapper a:last-child i {
-            vertical-align: -1px;
-        }
-
-        #useremailform {
-            clear: both;
-            width: 100%;
-            margin: 0 auto;
-            /*background: #92B713;*/
-            background: #efefef;
-            padding: 10px 10px;
-            position: relative;
-        }
-
-        #useremailform .input-group input[type=email] {
-            box-shadow: none;
-            border: 1px solid #92B713;
-        }
-
-        #useremailform .input-group .input-group-btn input[type=submit] {
-            height: 34px !important;
-            background: #92B713 !important;
-            font-weight: 600 !important;
-        }
-    </style>
 @endsection
 
 
@@ -287,56 +210,9 @@
                         </a>
                     </div>
                     <div class="col-lg-3">
-
-                        @if(!\Auth::check())
-                            <a href="{{route('userdashboard')}}">
-                                <img style="margin-top: 22px;"
-                                     src="{{URL::to('/')}}/img/refer-img.png"/>
-                            </a>
-                        @else
-                            <h2 class="section-heading" style="margin-top: 30px;
-    font-size: 21px;">
-                                Share and get 5000 points
-                                <hr class="light">
-                            </h2>
-                            <div class="row">
-                                <div class="col-md-12 login_share_btns_wrapper">
-                                    {{--<div class="col-md-6 pull-left">--}}
-                                    <a class="btn btn-default" href="javascript:void(0)" id="shareBtn">
-                                        <i class="fa fa-facebook-square"></i> facebook share
-                                    </a>
-                                    {{--</div>--}}
-                                    {{--<div class="col-md-6 pull-right">--}}
-                                    <a class="btn btn-primary" href="javascript:sendEmailtoUser()">
-                                        <i class="fa fa-envelope"></i> Share via email
-                                    </a>
-
-                                    <div id="useremailform" style="display: none;" class="form-group">
-                                        <!-- by defualt hidden -->
-                                        <form id="senduseremailform">
-                                            <div class="input-group">
-                                                <input id="userrefferalemail" type="email" class="form-control"
-                                                       placeholder="Enter Your Email">
-                                                <input id="userrefferalcode"
-                                                       value="{{ URL::to('/')}}/signup/?referral_key={{\Auth::user()->referral_key}}"
-                                                       type="hidden" class="form-control"
-                                                       placeholder="Enter Your Email">
-                                                <span class="input-group-btn">
-                                                    <input class="btn btn-secondary" type="submit" value="Send">
-                                                </span>
-                                            </div>
-
-                                        </form>
-                                    </div>
-                                    {{--</div>--}}
-                                </div>
-                            </div>
-
+                        @include('layouts.invite_sec')
                     </div>
-                    @endif
-
                 </div>
-            </div>
             </div>
         </section>
     @endif
@@ -759,38 +635,11 @@
 
 
     </script>
-    <script>
-        $(function () {
-            $('.itemsz, .leadersName').matchHeight('col-md-4');
-        });
-        function sendEmailtoUser() {
-            $("#useremailform").toggle();
 
-        }
-        $("#senduseremailform").submit(function (e) {
-            e.preventDefault();
-            $("#useremailform").hide();
-            $.ajax({
-                type: 'POST',
-                url: '{{route('sendUserEmail')}}',
-                data: {
-                    user_email: $('#userrefferalemail').val(),
-                    _token: '{{csrf_token()}}'
-                },
-                success: function (data) {
-                    if (data.success == true) {
-                        $("#useremailform").hide();
-                    } else {
-
-                    }
-
-                }
-            });
-        });
-    </script>
 
     <script>
         $(document).ready(function () {
+            $('.itemsz, .leadersName').matchHeight('col-md-4');
             $('.carousal-leaders-tourm').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
@@ -800,9 +649,7 @@
                 fade: true,
                 prevArrow: '<a href="" style=" font-size:43px; text-decoration:none;border: none;cursor: hand; outline: none;left:-25px;position: absolute; top:50%;" class="fa fa-chevron-circle-left"></a>',
                 nextArrow: '<a href="" style=" font-size:43px; text-decoration:none;border: none;cursor: hand; outline: none;right:-25px;position: absolute; top:50%;" class="fa fa-chevron-circle-right"></a>'
-
                 //prevArrow:'<button type="button" class="slick-prev" style="fa fa-chevron-circle-right" aria-hidden="true"></i>Previous</button>'
-
             });
         });
     </script>
@@ -843,7 +690,6 @@
             });
             FB.AppEvents.logPageView();
         };
-
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) {

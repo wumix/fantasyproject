@@ -367,7 +367,6 @@
                                 Active Chanllenges
                             </span>
                             @include('adminlte::layouts.form_errors')
-
                             @foreach($accepted_challenges as $val)
                                 @foreach($val['challenges'] as $row)
                                     <ul class="img_area_area">
@@ -389,13 +388,12 @@
                                                 @endif
                                                 @if(!challengeTeamCompleteInChallenge(\Auth::id(),$row['id']))
                                                     <a class="btn btn-danger" href="{{route('addChallengeTeam',[
-                                                        'match_id'=>$row['match_id'],'challenge_id'=>$row['id']])}}">Complete Team</a>
-
+                                                        'match_id'=>$row['match_id'],'challenge_id'=>$row['id']])}}">
+                                                        Complete Team
+                                                    </a>
                                                 @endif
                                         </span>
                                         </li>
-
-
                                     </ul>
                                 @endforeach
                             @endforeach

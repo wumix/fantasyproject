@@ -136,6 +136,7 @@ class HomeController extends Controller
 
     public function index()
     {
+       // dd(bcrypt('user'));
 
 
         $objTourmament = \App\Tournament::orderBy("start_date",

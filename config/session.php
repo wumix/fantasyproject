@@ -122,7 +122,7 @@ return [
     |
     */
 
-    'cookie' => 'laravel_session',
+    'cookie' => 'laravel_session_cookie',
 
     /*
     |--------------------------------------------------------------------------
@@ -147,6 +147,7 @@ return [
     | available to in your application. A sensible default has been set.
     |
     */
+
 
     'domain' => env('SESSION_DOMAIN', null),
 

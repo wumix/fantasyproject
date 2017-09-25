@@ -30,7 +30,7 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-
+//        dd( env('SESSION_DOMAIN', null));
 
     }
 

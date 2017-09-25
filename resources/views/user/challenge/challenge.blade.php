@@ -362,7 +362,8 @@
                         ddCity += '<tr >';
                         ddCity += '<td><input required name="match_id" value="' + v.id + '" type="radio"/></td>';
                         ddCity += '<td>'
-                        ddCity += v.team_one + ' VS ' + v.team_two;
+                       // ddCity += v.team_one + ' VS ' + v.team_two+v.name;
+                        ddCity += v.name;
                         ddCity += '</td></tr>';
 
                     });

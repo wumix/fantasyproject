@@ -38,9 +38,7 @@ class ChallengeController extends Controller
     {
 
         $request->request->remove('_token');
-        $match_id = $request->request->add(['match_id' => 96]);
-
-        $match_id = 96;
+        $match_id = $request->match_id;
         $data = $this->userChallenge->where(['user_1_id' => $request->user_1_id, 'user_2_id' => $request->user_2_id])->first();
         // if (empty($data)) {
         if (1) {

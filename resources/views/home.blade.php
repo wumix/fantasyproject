@@ -296,15 +296,16 @@
                                     <h4 class="media-heading mediah">
                                         <a class="home-news-headings"
                                            href="{{route('newsdetail',['id'=>$val['slug']])}}">
-                                            {{$val['title']}}
+                                            {!! substr($val['title'],0, 30) !!}
                                         </a>
                                     </h4>
 
-                                    <span style="font-size: 12px;">
-                       {!! str_limit($val['description'], 100) !!}...
+                                    <span style="font-size: 12px; min-height:85px;display:block" >
+                       {!! substr($val['description'],0, 115) !!}...
                             <br>
-                        <a href="{{route('newsdetail',['id'=>$val['slug']])}}">Read More</a>
+
     </span>
+                                    <a href="{{route('newsdetail',['id'=>$val['slug']])}}">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -396,7 +397,7 @@
                 <div class="col-lg-4 col-md-4 text-center">
 
                     <div class="service-box">
-                        <a disabled="true">
+                        <a target="_blank"  href="https://itunes.apple.com/us/app/gamithon-fantasy/id1277096945?ls=1&mt=8">
                             <img src="{{URL::to('/img/ios.png')}}"/>
 
                         </a>
@@ -412,68 +413,17 @@
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/201.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/201.jpg" class="img-responsive" alt=" DD VS GL">
+
+                    <a href="img/portfolio/thumbnails/601.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/601.jpg" class="img-responsive" alt="KXIP VS MI">
 
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Guyana Amazon Warriors v Jamaica Tallawahs
+                                    India Vs Australia
                                 </div>
                                 <div class="project-name">
-                                    Guyana Amazon Warriors won by 5 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/202.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/202.jpg" class="img-responsive" alt="KXIP VS MI">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Guyana Amazon Warriors v Jamaica Tallawahs
-                                </div>
-                                <div class="project-name">
-                                    Guyana Amazon Warriors won by 5 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="../img/portfolio/thumbnails/203.jpg" class="portfolio-box">
-                        <img src="../img/portfolio/thumbnails/203.jpg" class="img-responsive" alt="KXIP VS KKR">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Guyana Amazon Warriors v Jamaica Tallawahs
-                                </div>
-                                <div class="project-name">
-                                    Guyana Amazon Warriors won by 5 wickets
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/701.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/701.jpg" class="img-responsive" alt="KXIP VS MI">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    S.N Patriots v Trinbago Knight Riders
-                                </div>
-                                <div class="project-name">
-                                    S.N Patriots won by 38 runs
+                                    India won by 50 runs
                                 </div>
                             </div>
                         </div>
@@ -481,87 +431,153 @@
                 </div>
 
                 <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/702.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/702.jpg" class="img-responsive" alt="KXIP VS KKR">
+
+                    <a href="img/portfolio/thumbnails/602.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/602.jpg" class="img-responsive" alt="KXIP VS KKR">
 
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    S.N Patriots v Trinbago Knight Riders
+                                    India Vs Australia
                                 </div>
                                 <div class="project-name">
-                                    S.N Patriots won by 38 runs
+                                    India won by 50 runs
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
+
 
 
                 <div class="col-lg-4  col-sm-6">
-                    <a href="img/portfolio/thumbnails/703.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/703.jpg" class="img-responsive" alt="KXIP VS KKR">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    S.N Patriots v Trinbago Knight Riders
-                                </div>
-                                <div class="project-name">
-                                    S.N Patriots won by 38 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/601.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/601.jpg" class="img-responsive" alt=" DD VS GL">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Barbados Tridents Vs S.N Patriots
-                                </div>
-                                <div class="project-name">
-                                    Patriots won by 10 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/602.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/602.jpg" class="img-responsive" alt="KXIP VS MI">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Barbados Tridents Vs S.N Patriots
-                                </div>
-                                <div class="project-name">
-                                    Patriots won by 10 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
                     <a href="img/portfolio/thumbnails/603.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/603.jpg" class="img-responsive" alt=" DD VS GL">
+                        <img src="img/portfolio/thumbnails/603.jpg" class="img-responsive" alt="KXIP VS KKR">
 
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Barbados Tridents Vs S.N Patriots
+                                    India Vs Australia
                                 </div>
                                 <div class="project-name">
-                                    Patriots won by 10 wickets
+                                    India won by 50 runs
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
+                <div class="col-lg-4 col-sm-6">
+
+                    <a href="img/portfolio/thumbnails/301.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/301.jpg" class="img-responsive" alt=" DD VS GL">
+
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    England vs West Indies
+                                </div>
+                                <div class="project-name">
+                                    England won by 7 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+
+                    <a href="img/portfolio/thumbnails/302.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/302.jpg" class="img-responsive" alt="KXIP VS MI">
+
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-category text-faded">
+                                        England vs West Indies
+                                    </div>
+                                    <div class="project-name">
+                                        England won by 7 wickets
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/303.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/303.jpg" class="img-responsive" alt=" DD VS GL">
+
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-category text-faded">
+                                        England vs West Indies
+                                    </div>
+                                    <div class="project-name">
+                                        England won by 7 wickets
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+
+                    <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt=" DD VS GL">
+
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    India Vs Australia
+                                </div>
+                                <div class="project-name">
+                                    India won by 26 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-4 col-sm-6">
+
+                    <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt="KXIP VS MI">
+
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    India Vs Australia
+                                </div>
+                                <div class="project-name">
+                                    India won by 26 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+
+                    <a href="../img/portfolio/thumbnails/103.jpg" class="portfolio-box">
+                        <img src="../img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS KKR">
+
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    India Vs Australia
+                                </div>
+                                <div class="project-name">
+                                    India won by 26 runs
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </a>
+                </div>
+
 
 
             </div>
@@ -623,12 +639,11 @@
     <script>
         $('#header').backstretch([
 
+            {url: '{{URL::to('assets-new/img/2342342.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/12238967.jpg')}}', fade: 500},
-            {url: '{{URL::to('assets-new/img/gamithon-Cpl-1.jpg')}}', fade: 500},
-            {url: '{{URL::to('assets-new/img/india-srilanka.jpg')}}', fade: 500},
+            {url: '{{URL::to('assets-new/img/india-vs-australia.jpg')}}', fade: 500},
+            {url: '{{URL::to('assets-new/img/9099000.jpg')}}', fade: 500},
 
-
-            {url: '{{URL::to('assets-new/img/web-prize-final.jpg')}}', fade: 500},
 
 
         ]);

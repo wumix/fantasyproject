@@ -39,7 +39,10 @@ class PostController extends Controller
 
         }
 
-        $data['posts'] = \App\BlogPost::where('post_type', $data['blog_type'])->orWhere('post_type','news')->get()->toArray();
+        $data['posts'] = \App\BlogPost::where('post_type', $data['blog_type'])
+            ->orWhere('post_type', 'news')
+            ->orderBy('id', 'desc')
+            ->paginate(15);
 
         return view('adminlte::blog.blog_list', $data);
     }
@@ -73,8 +76,7 @@ class PostController extends Controller
             $blogPost = \App\BlogPost::updateOrCreate(
                 ['id' => $blog_id], $request->all()
             );
-        }
-        else {
+        } else {
             $blogPost = \App\BlogPost::updateOrCreate(
                 ['id' => $blog_id], $request->all()
             );
@@ -102,4 +104,12 @@ class PostController extends Controller
         return view('adminlte::blog.blog_edit', $data);
     }
 
+    public function deleteBlogPost(Request $request)
+    {
+        $blog_id = $request->get('blogId');
+        \App\BlogPost::find($blog_id)->delete();
+        return response()->json([
+            'deleted' => 'success'
+        ]);
+    }
 }

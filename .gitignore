@@ -12,6 +12,11 @@ Homestead.json
 Homestead.yaml
 composer.lock
 composer.json
+<<<<<<< HEAD
 .htaccess
 
 
+=======
+.env
+.htaccess
+>>>>>>> master

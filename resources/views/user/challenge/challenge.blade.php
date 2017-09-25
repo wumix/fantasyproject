@@ -274,10 +274,12 @@
                         </label>
                     </form>
 
+
                     <div id="user-container">
                         @if(count($users) > 0)
                             @foreach($users as $key=>$user)
                                 <?php $key = $key + 1; ?>
+
                                 <div class="col-md-4">
                                     <div class="col-md-6">
                                         <div class="cnter_liez_challenge">
@@ -295,6 +297,7 @@
                                         </a>
                                     </div>
                                 </div>
+
                                 @if($key%3 == 0)
                                     <div class="border_arrea"></div>
                                 @endif
@@ -318,6 +321,7 @@
         </div>
     </div>
 
+
     <div id="challange-player-users-template" style="display: none;">
         <div class="col-md-4">
             <div class="col-md-6">
@@ -325,6 +329,7 @@
                     <img class="img-responsive "
                          src="js_userProfilePic" alt=""/>
                 </div>
+
             </div>
             <div class="col-md-6">
                 <span class="challnge_text">

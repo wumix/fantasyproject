@@ -19,7 +19,9 @@
 //Media manager
 
 Route::get('/newdash', 'HomeController@newdash')->name('newdashboard');
-Route::get('scorecard/{id}/{tournament_id}', 'HomeController@scorecard')->name('scorecard');
+
+Route::get('scorecard/{match_id}/{tournament_id}', 'HomeController@scorecard')->name('scorecard');
+Route::get('/test', 'HomeController@test')->name('test');
 
 Route::get('/leaderboard', 'HomeController@allTournaments')->name('dashboardhome');
 
@@ -35,6 +37,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('contact', 'HomeController@contactPage')->name('contactPage');
     Route::post('contact', 'HomeController@postContact')->name('postContact');
     Route::get('privacy', 'HomeController@privacyPolicy')->name('PrivacyPolicy');
+    Route::get('about', 'HomeController@aboutUs')->name('aboutus');
+
     Route::get('terms', 'HomeController@termsCon')->name('TermsCon');
     Route::get('champions-trophy', 'HomeController@fixturs')->name('champion');
     Route::get('upcomming', 'HomeController@upcommingTournamnets')->name('upcommingTournamnets');
@@ -157,6 +161,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('add/{blog_id?}', 'Admin\Blog\PostController@postAddBlogPost')->name('postAddPost');
             Route::get('edit/{blog_id}', 'Admin\Blog\PostController@editBlogPost')->name('editPost');
             Route::post('edit/{blog_id}', 'Admin\Blog\PostController@editBlogPost')->name('postEditPost');
+            Route::delete('delete', 'Admin\Blog\PostController@deleteBlogPost')->name('deleteBlogPost');;
             Route::group(['prefix' => 'category'], function () {
                 Route::get('/', 'Admin\Blog\CategoryController@index')->name('blogCategoryList');
                 Route::get('addCategory', 'Admin\Blog\CategoryController@addCategory')->name('addCategory');
@@ -196,6 +201,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::get('/edit-stat/{player_id}', 'Admin\StatsController@editPlayerStatForm')->name('editPlayerStats');
             Route::post('/edit-stat/{player_id}', 'Admin\StatsController@editPlayerStats')->name('postPlayerEditStats');
         });
+       
         Route::group(['prefix' => 'games'], function () {
             Route::get('/', 'Admin\GamesController@index')->name('gameslist');
             Route::get('/add', 'Admin\GamesController@showAddView')->name('addGame'); //showsaddgameform

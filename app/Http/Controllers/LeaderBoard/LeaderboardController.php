@@ -11,6 +11,7 @@ class LeaderboardController extends Controller
 {
     function index($tournament_id)
     {
+
         $userid = \App\User::all()->toArray();
         $userteams = [];
 
@@ -33,10 +34,11 @@ class LeaderboardController extends Controller
         $leaderboard = new Leaderboard();
  //dd($userteams);
         foreach ($userteams as $k) {
-            //   echo $k['id']." ".$k['user_id']." ".$k['name'];
+
             $leaderboard = new Leaderboard();
 
             $score = $this->get_user_team_score($tournament_id, $k['id'], $k['user_id']);
+
 
             $leaderboard->tournament_id = $tournament_id;
             $leaderboard->user_id = $k['user_id'];
@@ -45,6 +47,7 @@ class LeaderboardController extends Controller
             $leaderboard->save();
 
         }
+
         $data['leaders'] = \App\Leaderboard::with('user', 'user_team')
             ->take(3)->orderBy('score', 'DESC')->get()->toArray();
 
@@ -81,7 +84,7 @@ class LeaderboardController extends Controller
         $matcheIdsAfterThisTeamMade = \App\Match::select('id')
             ->where('start_date', '>=', $data['user_teams'][0]['joined_from_match_date'])
             ->get()->toArray();
-        //  dd($matcheIdsAfterThisTeamMade);
+        // dd($matcheIdsAfterThisTeamMade);
 
         if (!empty($matcheIdsAfterThisTeamMade)) {
             $matcheIdsAfterThisTeamMade = array_column($matcheIdsAfterThisTeamMade, 'id');
@@ -95,10 +98,11 @@ class LeaderboardController extends Controller
         if (!empty($data['user_team_players'])) {
             $userTeamPlayerIds = array_column($data['user_team_players'], 'id');
         }
+
         // $matcheIdsAfterThisTeamMade=[1,2,3,4,5,6,7,8,9,10];
         //dd($matcheIdsAfterThisTeamMade);
         //  $userTeamPlayerIds=[1,2,3,4,5,6,7,8,9,10];
-       // dd($userTeamPlayerIds);
+
         $data['team_score'] = \App\Player::whereIn('id', $userTeamPlayerIds)->with(['player_roles', 'player_matches',
             'player_gameTerm_score' => function ($query) use ($matcheIdsAfterThisTeamMade) {
                 $query->whereIn('match_id', $matcheIdsAfterThisTeamMade);
@@ -114,8 +118,8 @@ class LeaderboardController extends Controller
 
         //dd($data);
         //dd($data['team_score']);
-//       debugArr($data['team_score']);
-//       die;
+ // dd($data['team_score']);
+//     die;
         $x = \App\UserTeam::where('user_id', \Auth::id())->with('user_team_player.player_matches')->get();
         $data['matches'] = \App\Match::all()->where('tournament_id', $tournament_id)
             ->where('matches', '>=', date("Y-m-d"))

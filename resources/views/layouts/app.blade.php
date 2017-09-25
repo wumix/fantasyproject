@@ -53,8 +53,10 @@ Cricket app">
 
         }
 
+
         .p0 {
             padding-left: 0;
+
         }
     </style>
 
@@ -178,7 +180,7 @@ Cricket app">
                         @endif
                     </ul>
                     <!--Bottom-->
-                    <ul class="nav navbar-nav navbar-right nav-main-menu">
+                    <ul class="nav navbar-nav navbar-right nav-main-menu main-navigation-menu">
                         <li>
                             <a class="page-scroll" href="/">Home</a>
                         </li>
@@ -193,6 +195,7 @@ Cricket app">
                                 Leader Boards
                             </a>
                         </li>
+
 
 
                         <li class="has-menu">
@@ -210,6 +213,7 @@ Cricket app">
 
                                     <a class="page-scroll" href="{{route('showBlog')}}">
                                         Blogs
+
                                     </a>
                                 </li>
                             </ul>
@@ -287,12 +291,16 @@ Cricket app">
     <section class="footer">
         <div class="container">
             <div class="row" id="final-footer">
-                <div class="col-sm-12 col-md-4 text-left">
-                    Copyright © 2017 Gamithon Fantasy.<br/> All Rights Reserved
+                <div class="col-sm-12 col-md-3 text-left">
+                    Copyright © 2017 Gamithon Fantasy.<br>All Rights Reserved
                 </div>
-                <div class="col-sm-12 col-md-4 text-center">
+                <div class="col-sm-12 col-md-5 text-center">
                     <ul class="nav navbar-nav">
-
+                        <li>
+                            <a class="page-scroll" href="{{route('aboutus')}}">
+                                About Us
+                            </a>
+                        </li>
                         <li>
                             <a class="page-scroll" href="{{route('TermsCon')}}">
                                 Terms & Conditions

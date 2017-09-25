@@ -122,7 +122,7 @@ return [
     |
     */
 
-    'cookie' => 'laravel_cooki',
+    'cookie' => 'cookie_laravel',
 
     /*
     |--------------------------------------------------------------------------
@@ -149,8 +149,8 @@ return [
     */
 
 
-  //  'domain' => env('SESSION_DOMAIN', null),
-    'domain' => 'gamitonfantasy.com',
+    'domain' => env('SESSION_DOMAIN', null),
+
 
     /*
     |--------------------------------------------------------------------------

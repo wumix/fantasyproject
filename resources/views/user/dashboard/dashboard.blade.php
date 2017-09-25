@@ -389,7 +389,7 @@
                         </div>
                     @endif
                     @if(!empty($sent_challenges))
-                        <div class="abot_me_sec">
+                        <div class="abot_me_sec" style="display:none;">
                     <span class="text_abot_me">
                         Sent Chanllenges
                     </span>

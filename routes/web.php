@@ -73,7 +73,7 @@ Route::group(['middleware' => ['web']], function () {
 
     });
     Route::group(['middleware' => ['is_user']], function () {
-       // Route::group(['middleware' => ['membership']], function () {
+       Route::group(['middleware' => ['membership']], function () {
             //Route::get('/test', 'HomeController@test')->name('test');
             Route::group(['prefix' => 'payments'], function () {
                 Route::get('/', 'PaymentController@index')->name('paymentdetails');
@@ -126,7 +126,7 @@ Route::group(['middleware' => ['web']], function () {
                 Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
                 Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('userProfileEdit');
             });
-        //}); //end membership middleware
+        }); //end membership middleware
     }); // end user middleware
 
 

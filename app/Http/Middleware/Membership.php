@@ -21,14 +21,14 @@ class Membership
 //        $actionPoints = \App\UserAction::getPointsByKey($userActionKey);
 //        $objTourmament = \App\Tournament::all()->sortBy("start_date")->where('end_date', '>', getGmtTime());
 //        dd($objTourmament);
-
-        if (Auth::check() && \App\User::is_member(Auth::id())) {
-            return $next($request);
-        }
-        $data['membership_plans'] = \App\Membership::with(['membership_details'=>function($query){
-            $query->orderBY('feature','asc');
-        }])->get()->toArray();
-        return response()->view('user.memberships.home', $data);
+        return $next($request);
+//        if (Auth::check() && \App\User::is_member(Auth::id())) {
+//            return $next($request);
+//        }
+//        $data['membership_plans'] = \App\Membership::with(['membership_details'=>function($query){
+//            $query->orderBY('feature','asc');
+//        }])->get()->toArray();
+//        return response()->view('user.memberships.home', $data);
 
 
     }

@@ -220,8 +220,14 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>Enter the points you want to challenge</label>
-                                <input required class="form-control" type="text" name="rewards">
+                                <select class="form-control" required name="rewards">
+                                    <option value="5000">5000</option>
+                                    <option value="10000">10,000</option>
+                                    <option value="15000">15,000</option>
+                                    <option value="20000">20,000</option>
+                                    <option value="25000">25,000</option>
+                                </select>
+
                             </div>
                             <input type="hidden" id="user_2_id" name="user_2_id"/>
                             <input type="hidden" id="user_1_id" name="user_1_id" value="{{Auth::id()}}"/>
@@ -280,23 +286,23 @@
                             @foreach($users as $key=>$user)
                                 <?php $key = $key + 1; ?>
 
-                                    <div class="col-md-4">
-                                        <div class="col-md-6">
-                                            <div class="cnter_liez_challenge">
-                                                <img class="img-responsive "
-                                                     src="{{getUploadsPath($user['profile_pic'])}}" alt=""/>
-                                            </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-6">
+                                        <div class="cnter_liez_challenge">
+                                            <img class="img-responsive "
+                                                 src="{{getUploadsPath($user['profile_pic'])}}" alt=""/>
                                         </div>
-                                        <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6">
                                 <span class="challnge_text">
                                    {{$user['name']}}
                                 </span>
-                                            <a href="javascript:openChallangeModel('{{$user['id']}}')"
-                                               class="open-AddBookDialog">
-                                                Challenge Me
-                                            </a>
-                                        </div>
+                                        <a href="javascript:openChallangeModel('{{$user['id']}}')"
+                                           class="open-AddBookDialog">
+                                            Challenge Me
+                                        </a>
                                     </div>
+                                </div>
 
 
                                 @if($key%3 == 0)
@@ -359,7 +365,7 @@
                     var ddCity = '<div class="table-responsive">';
                     ddCity += '<table class="table table-responsive table-hover">';
                     $.each(data, function (k, v) {
-                        console.log(v);
+
                         ddCity += '<tr >';
                         ddCity += '<td><input required name="match_id" value="' + v.id + '" type="radio"/></td>';
                         ddCity += '<td>'

@@ -280,23 +280,24 @@
                             @foreach($users as $key=>$user)
                                 <?php $key = $key + 1; ?>
 
-                                <div class="col-md-4">
-                                    <div class="col-md-6">
-                                        <div class="cnter_liez_challenge">
-                                            <img class="img-responsive "
-                                                 src="{{getUploadsPath($user['profile_pic'])}}" alt=""/>
+                                    <div class="col-md-4">
+                                        <div class="col-md-6">
+                                            <div class="cnter_liez_challenge">
+                                                <img class="img-responsive "
+                                                     src="{{getUploadsPath($user['profile_pic'])}}" alt=""/>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
+                                        <div class="col-md-6">
                                 <span class="challnge_text">
                                    {{$user['name']}}
                                 </span>
-                                        <a href="javascript:openChallangeModel('{{$user['id']}}')"
-                                           class="open-AddBookDialog">
-                                            Challenge Me
-                                        </a>
+                                            <a href="javascript:openChallangeModel('{{$user['id']}}')"
+                                               class="open-AddBookDialog">
+                                                Challenge Me
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
+
 
                                 @if($key%3 == 0)
                                     <div class="border_arrea"></div>
@@ -362,7 +363,7 @@
                         ddCity += '<tr >';
                         ddCity += '<td><input required name="match_id" value="' + v.id + '" type="radio"/></td>';
                         ddCity += '<td>'
-                       // ddCity += v.team_one + ' VS ' + v.team_two+v.name;
+                        // ddCity += v.team_one + ' VS ' + v.team_two+v.name;
                         ddCity += v.name;
                         ddCity += '</td></tr>';
 

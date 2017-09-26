@@ -23,7 +23,7 @@ class ChallengeController extends Controller
 
         $data['tournament_list'] = \App\Tournament::all()->sortBy("start_date")->where('end_date', '>', getGmtTime());
 
-        $data['users'] = User::paginate(9);
+        $data['users'] = User::where('id','!=',\Auth::id())->paginate(9);
 
         if (strlen($searchParam) > 2) {
             $data['users'] = User::where('email', 'like', '%' . $searchParam . '%')

@@ -40,7 +40,7 @@ class MembershipController extends HomeController
 
     function index($isPopup = false)
     {
-
+    return;
         $data['membership_plans'] = \App\Membership::all();
         return $isPopup ? view('user.memberships.member_popup', $data) : view('user.memberships.home', $data);
     }

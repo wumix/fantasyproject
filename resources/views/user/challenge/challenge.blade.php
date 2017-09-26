@@ -220,8 +220,14 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>Enter the points you want to challenge</label>
-                                <input required class="form-control" type="text" name="rewards">
+                                <select class="form-control" required name="rewards">
+                                    <option value="5000">5000</option>
+                                    <option value="10000">10,000</option>
+                                    <option value="15000">15,000</option>
+                                    <option value="20000">20,000</option>
+                                    <option value="25000">25,000</option>
+                                </select>
+
                             </div>
                             <input type="hidden" id="user_2_id" name="user_2_id"/>
                             <input type="hidden" id="user_1_id" name="user_1_id" value="{{Auth::id()}}"/>
@@ -274,10 +280,12 @@
                         </label>
                     </form>
 
+
                     <div id="user-container">
                         @if(count($users) > 0)
                             @foreach($users as $key=>$user)
                                 <?php $key = $key + 1; ?>
+
                                 <div class="col-md-4">
                                     <div class="col-md-6">
                                         <div class="cnter_liez_challenge">
@@ -295,6 +303,8 @@
                                         </a>
                                     </div>
                                 </div>
+
+
                                 @if($key%3 == 0)
                                     <div class="border_arrea"></div>
                                 @endif
@@ -318,6 +328,7 @@
         </div>
     </div>
 
+
     <div id="challange-player-users-template" style="display: none;">
         <div class="col-md-4">
             <div class="col-md-6">
@@ -325,6 +336,7 @@
                     <img class="img-responsive "
                          src="js_userProfilePic" alt=""/>
                 </div>
+
             </div>
             <div class="col-md-6">
                 <span class="challnge_text">
@@ -357,7 +369,8 @@
                         ddCity += '<tr >';
                         ddCity += '<td><input required name="match_id" value="' + v.id + '" type="radio"/></td>';
                         ddCity += '<td>'
-                        ddCity += v.team_one + ' VS ' + v.team_two;
+                        // ddCity += v.team_one + ' VS ' + v.team_two+v.name;
+                        ddCity += v.name;
                         ddCity += '</td></tr>';
 
                     });

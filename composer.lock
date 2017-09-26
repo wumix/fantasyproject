@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d8d2bd442f02b37e6b238e74a35d1f0",
+    "content-hash": "52ce042421ce034ada1d16758a43b31f",
     "packages": [
         {
             "name": "acacha/admin-lte-template-laravel",
@@ -236,16 +236,16 @@
         },
         {
             "name": "bkwld/croppa",
-            "version": "4.6.0",
+            "version": "4.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/BKWLD/croppa.git",
-                "reference": "ad18844355a673a1300cd3b1861aa3c8d07cf418"
+                "reference": "5e93e97e0e20388a2f942a561911319eb956be77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BKWLD/croppa/zipball/ad18844355a673a1300cd3b1861aa3c8d07cf418",
-                "reference": "ad18844355a673a1300cd3b1861aa3c8d07cf418",
+                "url": "https://api.github.com/repos/BKWLD/croppa/zipball/5e93e97e0e20388a2f942a561911319eb956be77",
+                "reference": "5e93e97e0e20388a2f942a561911319eb956be77",
                 "shasum": ""
             },
             "require": {
@@ -253,7 +253,7 @@
                 "illuminate/routing": "4 - 5",
                 "illuminate/support": "4 - 5",
                 "league/flysystem": "~1.0",
-                "php": ">=5.5.0",
+                "php": ">=5.4.0",
                 "symfony/http-foundation": "2 - 3",
                 "symfony/http-kernel": "2 - 3",
                 "weotch/phpthumb": "^1.0.5"
@@ -266,16 +266,6 @@
                 "phpunit/phpunit": "~4.0"
             },
             "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Bkwld\\Croppa\\ServiceProvider"
-                    ],
-                    "aliases": {
-                        "Croppa": "Bkwld\\Croppa\\Facade"
-                    }
-                }
-            },
             "autoload": {
                 "psr-0": {
                     "Bkwld\\Croppa": "src/"
@@ -291,7 +281,7 @@
                 }
             ],
             "description": "Image thumbnail creation through specially formatted URLs for Laravel",
-            "time": "2017-09-21T15:22:16+00:00"
+            "time": "2016-09-08T16:24:58+00:00"
         },
         {
             "name": "cocur/slugify",
@@ -1931,55 +1921,6 @@
                 "random"
             ],
             "time": "2017-03-13T16:27:32+00:00"
-        },
-        {
-            "name": "paypal/rest-api-sdk-php",
-            "version": "1.12.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/paypal/PayPal-PHP-SDK.git",
-                "reference": "0925b11ee2261fe369f2bd7a6abfc1bf322a6601"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/paypal/PayPal-PHP-SDK/zipball/0925b11ee2261fe369f2bd7a6abfc1bf322a6601",
-                "reference": "0925b11ee2261fe369f2bd7a6abfc1bf322a6601",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-json": "*",
-                "php": ">=5.3.0",
-                "psr/log": "^1.0.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "PayPal": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "PayPal",
-                    "homepage": "https://github.com/paypal/rest-api-sdk-php/contributors"
-                }
-            ],
-            "description": "PayPal's PHP SDK for REST APIs",
-            "homepage": "http://paypal.github.io/PayPal-PHP-SDK/",
-            "keywords": [
-                "payments",
-                "paypal",
-                "rest",
-                "sdk"
-            ],
-            "time": "2017-07-11T19:16:53+00:00"
         },
         {
             "name": "psr/http-message",

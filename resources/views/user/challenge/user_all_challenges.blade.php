@@ -29,7 +29,7 @@
                                     <th class="th2">To</th>
                                     <th class="th2">Status</th>
                                     <th class="th2">Team Status</th>
-                                    <th class="th2">Tour Score</th>
+                                    <th class="th2">Your Score</th>
                                     <th class="th2">Opponent Score</th>
                                     <th class="th2">won/lost</th>
                                 </tr>

@@ -23,7 +23,8 @@ class ChallengeController extends Controller
 
         $data['tournament_list'] = \App\Tournament::all()->sortBy("start_date")->where('end_date', '>', getGmtTime());
 
-        $data['users'] = User::paginate(9);
+        $data['users'] = User::where('id','!=',\Auth::id())->
+        where('id','!=',1)->paginate(9);
 
         if (strlen($searchParam) > 2) {
             $data['users'] = User::where('email', 'like', '%' . $searchParam . '%')
@@ -38,9 +39,11 @@ class ChallengeController extends Controller
     {
 
         $request->request->remove('_token');
-        $match_id = $request->request->add(['match_id' => 96]);
-
-        $match_id = 96;
+        $match_id = $request->match_id;
+        if(empty($match_id)){
+            return redirect()->back()
+                ->with('status', 'You have must select a match');
+        }
         $data = $this->userChallenge->where(['user_1_id' => $request->user_1_id, 'user_2_id' => $request->user_2_id])->first();
         // if (empty($data)) {
         if (1) {
@@ -76,7 +79,9 @@ class ChallengeController extends Controller
 
     }
 
+
     public function showUserChallenges($id)
+
     {
         $r = $this->userChallenge->where('user_2_id', \Auth::id())->get()->toArray();
         //$r=$this->userChallenge->find('12')->get()->toArray();

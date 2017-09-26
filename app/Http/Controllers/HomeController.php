@@ -60,7 +60,9 @@ class HomeController extends Controller
                     $q->where('match_id', $id);
                 }, 'match_players.player_actual_teams' => function ($query) use ($tournament_id) {
                 $query->where('tournament_id', $tournament_id);
-            }, 'match_players.player_roles'
+            }, 'match_players.player_roles' => function ($role) {
+                $role->orderBy('game_role_id','ASC');
+            }
             ])
             ->first()->toArray();
         $team_name = $data['match']['team_one'];
@@ -69,7 +71,7 @@ class HomeController extends Controller
         }
         $data['team_name'] = strtoupper($team_name);
         // dd($team_name);
-        //dd($data['match']['match_players'][0]);
+       // dd($data['match']['match_players'][0]);
         return view('user.team_detail1', $data);
 
     }
@@ -93,6 +95,7 @@ class HomeController extends Controller
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())
             ->get()
             ->toArray();
+        //dd($data);
         //dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
@@ -136,6 +139,7 @@ class HomeController extends Controller
 
     public function index()
     {
+       // dd(bcrypt('user'));
 
 
         $objTourmament = \App\Tournament::orderBy("start_date",
@@ -149,7 +153,9 @@ class HomeController extends Controller
             $data['tournaments_list'][$key]['nextmatch'] = \App\Match::getNextMatch($tournament['id']);
         }
 
-        $upcommingTour = \App\Tournament::where('start_date', '>=', getGmtTime())->orderBy("id", 'desc')->get();
+
+        $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
+
         $data['upcomming_tournaments_list'] = $upcommingTour->toArray(); //upcomming tournament of active
         $data['news'] = \App\BlogPost::where('post_type', 'news')->take(3)->orderBy('id', 'DESC')->get()->toArray();
 
@@ -158,7 +164,7 @@ class HomeController extends Controller
 
     public function leaderboard($tournament_id)
     {
-        $data['leaders'] = \App\Leaderboard::where('tournament_id', $tournament_id)->with('user', 'user_team')->take(20)->
+        $data['leaders'] = \App\Leaderboard::where('tournament_id', $tournament_id)->with('user', 'user_team')->where('score', '>', 0)->take(20)->
         orderBy('score', 'DESC')->get()->toArray();
 
         $data['tournamet'] = \App\Tournament::find($tournament_id)->name;
@@ -267,6 +273,11 @@ class HomeController extends Controller
     {
         return view('pages.p-p');
     }
+    public function aboutUs()
+    {
+        return view('pages.about_us');
+    }
+
 
     public function howPlay()
     {

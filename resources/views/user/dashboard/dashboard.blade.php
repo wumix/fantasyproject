@@ -337,7 +337,7 @@
                         </div>
                     </div>
                     @if(!empty($challenges[0]['challenges']))
-                        <div class="abot_me_sec">
+                        <div class="abot_me_sec" style="display:none;">
                             <span class="text_abot_me">
                                 Inactive Challenges
                             </span>
@@ -362,7 +362,7 @@
                         </div>
                     @endif
                     @if(!empty($accepted_challenges[0]['challenges']))
-                        <div class="abot_me_sec">
+                        <div class="abot_me_sec" style="display:none;">
                             <span class="text_abot_me">
                                 Active Chanllenges
                             </span>
@@ -389,7 +389,7 @@
                         </div>
                     @endif
                     @if(!empty($sent_challenges))
-                        <div class="abot_me_sec">
+                        <div class="abot_me_sec" style="display:none;">
                     <span class="text_abot_me">
                         Sent Chanllenges
                     </span>

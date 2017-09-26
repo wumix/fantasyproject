@@ -14,5 +14,5 @@ composer.lock
 composer.json
 
 .htaccess
-
+.env
 

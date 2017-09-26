@@ -111,7 +111,7 @@
 
                         </div>
                         <!-- your content -->
-                        <h3>Challenges Revieced</h3>
+                        <h3>Challenges Received</h3>
                         <!-- your content -->
 
                         <div class="table-responsive">

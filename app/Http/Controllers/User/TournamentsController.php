@@ -42,7 +42,7 @@ class TournamentsController extends Controller
     {
 
         $tournament_id = $request->tournament_id;
-        $match_list = \App\Match::where('tournament_id', $tournament_id)->where('start_date', '<=', getGmtTime())->get();
+        $match_list = \App\Match::where('tournament_id', $tournament_id)->where('start_date', '=>', getGmtTime())->get();
         return response()->json($match_list);
 
     }

@@ -122,7 +122,7 @@ return [
     |
     */
 
-    'cookie' => 'cookie_laravel',
+    'cookie' => 'cookie_gamithonfantasy_live',
 
     /*
     |--------------------------------------------------------------------------

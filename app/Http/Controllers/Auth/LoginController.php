@@ -24,7 +24,7 @@ class LoginController extends Controller
         attemptLogin as attemptLoginAtAuthenticatesUsers;
     }
 
-    protected $userRedirect = '/dashboard';
+    protected $userRedirect = '/user/userdashboard';
 
     /**
      * Show the application's front-emd login form.

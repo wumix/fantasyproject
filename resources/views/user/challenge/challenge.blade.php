@@ -353,7 +353,7 @@
                     var ddCity = '<div class="table-responsive">';
                     ddCity += '<table class="table table-responsive table-hover">';
                     $.each(data, function (k, v) {
-                        console.log(v);
+
                         ddCity += '<tr >';
                         ddCity += '<td><input required name="match_id" value="' + v.id + '" type="radio"/></td>';
                         ddCity += '<td>'

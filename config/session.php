@@ -123,7 +123,7 @@ return [
     */
 
 
-    'cookie' => 'cookie_gamithon_dev',
+    'cookie' =>env('COOKIE_NAME'),
 
 
     /*

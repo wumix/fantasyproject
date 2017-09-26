@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Create Team
+    My Challenges
 @stop
 @section('content')
 

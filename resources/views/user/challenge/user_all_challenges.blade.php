@@ -16,7 +16,7 @@
 
 
                         <!-- your content -->
-                        Challenges sent
+                       <h3>Challenges sent</h3>
                         <div class="table-responsive">
 
                             <table class="table table-bordered table-striped ">
@@ -111,7 +111,7 @@
 
                         </div>
                         <!-- your content -->
-                        Challenges Revieced
+                        <h3>Challenges Revieced</h3>
                         <!-- your content -->
 
                         <div class="table-responsive">

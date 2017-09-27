@@ -209,11 +209,12 @@
                             View all
                         </a>
                     </div>
-                    <div class="col-lg-3">
+                    <div style="transform: translateY(50%)">
                         @include('layouts.invite_sec')
                     </div>
                 </div>
             </div>
+            <div class="clear clearfix"></div>
         </section>
     @endif
     @if(!empty($upcomming_tournaments_list))
@@ -300,7 +301,7 @@
                                         </a>
                                     </h4>
 
-                                    <span style="font-size: 12px; min-height:85px;display:block" >
+                                    <span style="font-size: 12px; min-height:85px;display:block">
                        {!! substr($val['description'],0, 115) !!}...
                             <br>
 
@@ -397,7 +398,8 @@
                 <div class="col-lg-4 col-md-4 text-center">
 
                     <div class="service-box">
-                        <a target="_blank"  href="https://itunes.apple.com/us/app/gamithon-fantasy/id1277096945?ls=1&mt=8">
+                        <a target="_blank"
+                           href="https://itunes.apple.com/us/app/gamithon-fantasy/id1277096945?ls=1&mt=8">
                             <img src="{{URL::to('/img/ios.png')}}"/>
 
                         </a>
@@ -420,7 +422,7 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                   India Vs Australia
+                                    India Vs Australia
                                 </div>
                                 <div class="project-name">
                                     India won by 5 wickets
@@ -560,7 +562,6 @@
                 </div>
 
 
-
                 <div class="col-lg-4  col-sm-6">
                     <a href="img/portfolio/thumbnails/603.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/603.jpg" class="img-responsive" alt="KXIP VS KKR">
@@ -577,8 +578,6 @@
                         </div>
                     </a>
                 </div>
-
-
 
 
             </div>
@@ -645,7 +644,6 @@
             {url: '{{URL::to('assets-new/img/12238967.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/india-vs-australia.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/9099000.jpg')}}', fade: 500},
-
 
 
         ]);

@@ -36,7 +36,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('/', 'Api\NewsController@index');
 
     });
-   Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::group(['middleware' => 'jwt.auth'], function () {
         Route::resource('tournaments', 'Api\TournamentsController', ['except' => ['index', 'show'
         ]]);
         Route::group(['prefix' => 'tournaments'], function () {
@@ -57,7 +57,9 @@ Route::group(['prefix' => 'v1'], function () {
             Route::get('confirm_team', 'Api\UserController@confirm_team');
             Route::resource('/', 'Api\User');
         });
-
+        Route::group(['prefix' => 'user'], function () {
+            Route::get('/', 'Api\TournamentsController@show');
+        });
     });
     Route::group(['prefix' => 'players'], function () {
         Route::get('/', 'Api\PlayersController@getPlayerStats');

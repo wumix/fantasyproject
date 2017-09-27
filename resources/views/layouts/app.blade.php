@@ -432,7 +432,7 @@ Cricket app">
 </script>
 <script type="application/ld+json"> {
 "@context" : "http://schema.org",
-"@type" : "Fantasy Gaming Website",
+"@type" : "Organization",
 "name":"Gamithon Fantasy",
 "url":"http://www.gamithonfantasy.com/",
 "email":"http://www.gamithonfantasyworld.com"

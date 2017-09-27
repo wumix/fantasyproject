@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\UserChallenge;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use \App\User;
 
 class ChallengeController extends Controller
 {
+    protected $userChallenge;
+
+    function __construct()
+    {
+        $this->userChallenge = new \App\UserChallenge;
+    }
 
     function index()
     {
@@ -18,21 +25,24 @@ class ChallengeController extends Controller
     {
 
         $data['sent_challenges'] = \App\UserChallenge::where(['user_1_id' => \Auth::id()])->with(['user_by'])->get()->toArray();
-        $data['accepted_challenges']= \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
+        $data['accepted_challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
             $query->where('status', 1);
         }, 'challenges.user'])->get()->toArray();
 
         return response()->json($data);
     }
-    function sendChallenge(Request $request){
+
+    function sendChallenge(Request $request)
+    {
 
         $match_id = $request->match_id;
-        $match_id = $request->points;
-        if(empty($match_id)){
+        $user_1_id = \Auth::Id();
+        $request->request->add(['user_1_id'=>$user_1_id]);
+        if (empty($match_id)) {
             return redirect()->back()
                 ->with('status', 'You have must select a match');
         }
-        $data = $this->userChallenge->where(['user_1_id' => $request->user_1_id, 'user_2_id' => $request->user_2_id])->first();
+        $data = $this->userChallenge->where(['user_1_id' => $user_1_id, 'user_2_id' => $request->user_2_id])->first();
         // if (empty($data)) {
         if (1) {
             $this->userChallenge->fill($request->all());
@@ -42,7 +52,7 @@ class ChallengeController extends Controller
 
             \App\UserChallengeTeamStatus::insert(
                 [
-                    'user_id' => $request->user_1_id,
+                    'user_id' => $user_1_id,
                     'challenge_id' => $this->userChallenge->id,
                     'is_complete' => 0,
                 ]);

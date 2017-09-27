@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
+<div itemscope itemtype="http://schema.org/Product">
+    <meta itemprop="description" content=" Gamithon Fantasy - Play Fantasy League Create Team">
+    <span itemprop="name" style="display:block;"><strong>Gamithon Fantasy</strong></span>
+</div>
 <head>
 
     <link rel="shortcut icon" href="../img/gamithon-fevi.ico" type="image/x-icon"/>

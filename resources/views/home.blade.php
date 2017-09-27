@@ -209,7 +209,7 @@
                             View all
                         </a>
                     </div>
-                    <div style="transform: translateY(50%)">
+                    <div class="col-lg-3">
                         @include('layouts.invite_sec')
                     </div>
                 </div>

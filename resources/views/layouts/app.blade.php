@@ -3,6 +3,7 @@
 
 <head>
 
+
     <link rel="shortcut icon" href="../img/gamithon-fevi.ico" type="image/x-icon"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -336,6 +337,7 @@ Cricket app">
             </div>
         </div>
     </section>
+
 </footer>
 <!---->
 
@@ -428,5 +430,12 @@ Cricket app">
         });
     });
 </script>
+<script type="application/ld+json"> {
+"@context" : "http://schema.org",
+"@type" : "Fantasy Gaming Website",
+"name":"Gamithon Fantasy",
+"url":"http://www.gamithonfantasy.com/",
+"email":"http://www.gamithonfantasyworld.com"
+} </script>
 </body>
 </html>

@@ -9,14 +9,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-heading">
-                        Challenges
+                        My Challenges
                     </h1>
                     <hr class="light full">
                     <div class="page-content" style="margin-bottom: 80px;">
 
 
                         <!-- your content -->
-                        Challenges sent
+                       <h3>Challenges sent</h3>
                         <div class="table-responsive">
 
                             <table class="table table-bordered table-striped ">
@@ -111,7 +111,7 @@
 
                         </div>
                         <!-- your content -->
-                        Challenges Revieced
+                        <h3>Challenges Received</h3>
                         <!-- your content -->
 
                         <div class="table-responsive">

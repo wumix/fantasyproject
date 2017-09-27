@@ -103,7 +103,7 @@ Route::group(['middleware' => ['web']], function () {
                 Route::post('/player/add', 'User\ChallengeController@addPlayerTochallengeTeam')->name('addPlayerTochallengeTeam');
                 Route::get('/add/{match_id}/{challenge_id}', 'User\ChallengeController@addChallengeTeam')->name('addChallengeTeam');
                 Route::get('/list', 'DashboardController@listChalllenges')->name('listChalllenges');
-                Route::get('/', 'User\ChallengeController@show')->name('challenges');
+              //  Route::get('/', 'User\ChallengeController@show')->name('challenges');
                 Route::get('/', 'User\ChallengeController@index')->name('challenges');
                 Route::get('/check-winner/{id}', 'User\ChallengeController@checkWinner')->name('adasd');
                 Route::post('/send-challenge', 'User\ChallengeController@sendChallenge')->name('sendchallenge');

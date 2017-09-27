@@ -20,6 +20,9 @@ class UserController extends Controller
     {
         $this->user = $user;
     }
+    function index(){
+
+    }
 
     /**
      * Register

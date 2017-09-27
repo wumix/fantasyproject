@@ -242,13 +242,13 @@ Cricket app">
                         @endif
                         <li class="new-arrival has-menu">
                             <a href="{{route('challenges')}}" class="page-scroll">
-                                Challange a player
+                                Challenge a player
                             </a>
                             @if(Auth::check())
                                 <ul class="sub-menu">
                                     <li>
                                         <a class="page-scroll" href="{{route('listChalllenges')}}">
-                                            My Challanges
+                                            My Challenge
                                         </a>
                                     </li>
                                 </ul>

@@ -21,7 +21,9 @@ class UserController extends Controller
         $this->user = $user;
     }
     function index(){
-
+        $users = \App\User::where('id', '!=', \Auth::id())->
+        where('id', '!=', 1)->paginate(9);
+        return response()->json($users);
     }
 
     /**

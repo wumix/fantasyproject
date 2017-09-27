@@ -1,7 +1,7 @@
 @extends('layouts.app')
 {{--{{dd($leaders)}}--}}
 @section('title')
-    Leaderboards
+    Leaderboard {{$tournamet}}
 @stop
 @section('css')
     <style>

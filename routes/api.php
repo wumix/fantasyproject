@@ -23,8 +23,6 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('login', 'Api\UserController@authenticate');
 
     Route::post('register', 'Api\UserController@create');
-    //Route::post('password/email', 'Auth\ForgotPasswordController@getResetToken');
-    // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
     Route::any('/sendpush', 'Api\OrdersController@sendPushMessage');
     Route::post('login_with_facebook', 'Api\UserController@loginFacebook');
     Route::group(['prefix' => 'tournaments'], function () {
@@ -55,14 +53,21 @@ Route::group(['prefix' => 'v1'], function () {
             Route::get('check', 'Api\UserController@checkTeam');
             Route::get('team', 'Api\UserController@createTeam');
             Route::get('confirm_team', 'Api\UserController@confirm_team');
-            Route::resource('/', 'Api\User');
+            Route::get('/', 'Api\UserController@index');
+           // Route::resource('/', 'Api\User');
+
         });
-        Route::group(['prefix' => 'user'], function () {
-            Route::get('/', 'Api\TournamentsController@show');
+        Route::group(['prefix' => 'challenge'], function () {
+
+            Route::get('/', 'Api\ChallengeController@showChallenges');
+            Route::post('send', 'Api\ChallengeController@sendChallenge');
+
         });
+
     });
     Route::group(['prefix' => 'players'], function () {
         Route::get('/', 'Api\PlayersController@getPlayerStats');
 
     });
+
 });

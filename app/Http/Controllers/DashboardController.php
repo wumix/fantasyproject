@@ -145,40 +145,25 @@ class DashboardController extends Controller
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())->with('teamtournament')->orderBy('id', 'DESC')
             ->get()
             ->toArray();
-        // dd($data);
         $data['userprofileinfo'] = \App\User::findOrFail(\Auth::id());
         $data['upcommingTour'] = \App\Tournament::all()->sortBy("start_date")->where('start_date', '<=', getGmtTime())->Where('end_date', '>=', getGmtTime());
         $data['leaders'] = \App\Leaderboard::take(3)->select(['user_id', 'score'])->orderBy('score', 'DESC')->get()->toArray();
         $data['challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
             $query->where('status', 0);
         }, 'challenges.user'])->get()->toArray();
-//        $data['sent_challenges']  = \App\User::where(['id' => \Auth::id()])->with(['sent_challenges' => function ($query) {
-//            $query->where('status', 1);
-//        }, 'sent_challenges.user.challenges'])->get()->toArray();
         $data['sent_challenges'] = \App\UserChallenge::where(['user_1_id' => \Auth::id()])->with(['user_by'])->get()->toArray();
-
-//dd($data['sent_challenges']);
-//        echo \Auth::id();
-        // dd( $data['challenges']);
         $data['accepted_challenges'] = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
             $query->where('status', 1);
         }, 'challenges.user'])->get()->toArray();
 
-
         $data['user_memberhsip'] = \App\User::where('id', \Auth::id())->with(['membership' => function ($query) {
             $query->orderBy('user_memberships.id', 'desc')->first();
-            //$q->orderBy('job_user.created_at','asc');
+
         }])->first()->toArray();
-//dd($data['user_memberhsip']);
-        //dd( $data['membership_plans']);
-        //dd($data['accepted_challenges']);
-        //dd( $data['challenges']);
 
-//dd($data['accepted_challenges']);
-//dd( $data['challenges']);
 
-        $data['user_scores']=\App\User::where('id',\Auth::id())->with(['leaderboard.tournament'=>function($q){
-          //  $q->orderBY('start_date','asc');
+        $data['user_scores'] = \App\User::where('id', \Auth::id())->with(['leaderboard.tournament' => function ($q) {
+            //  $q->orderBY('start_date','asc');
         }])->first()->toArray();
         //dd($data['user_scores']);
 

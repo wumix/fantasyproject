@@ -3,6 +3,19 @@
 @section('css')
     {!! Html::style('assets-new/css/slick-theme.css') !!}
     {!! Html::style('assets-new/css/slick.css') !!}
+
+
+    <style>
+        .refer_friend_wrapper{
+            position: relative;
+        }
+        .refer_friend_wrapper img{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+
 @endsection
 
 
@@ -220,7 +233,7 @@
                             View all
                         </a>
                     </div>
-                    <div class="col-lg-3" @if(!\Auth::check()) style="transform: translateY(50%);" @endif>
+                    <div class="col-lg-3 @if(!\Auth::check()) refer_friend_wrapper @endif">
                         @include('layouts.invite_sec')
                     </div>
                 </div>
@@ -647,7 +660,12 @@
         @endif
     @endforeach
 
+<script>
 
+        var refer_frnd_height = $('.refer_friend_wrapper').parent().height();
+        $('.refer_friend_wrapper').css('height', refer_frnd_height + 'px');
+
+</script>
     <script>
         $('#header').backstretch([
 

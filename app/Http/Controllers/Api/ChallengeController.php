@@ -28,8 +28,8 @@ class ChallengeController extends Controller
         $accepted_challenges= \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
             //$query->where('status', 1);
         }, 'challenges.user'])->get()->toArray();
-
-        $data['accepted_challenges']=$accepted_challenges['challenges'];
+//dd($accepted_challenges);
+        $data['accepted_challenges']=$accepted_challenges[0]['challenges'];
         return response()->json($data);
     }
 

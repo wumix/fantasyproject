@@ -158,8 +158,19 @@
         <section class="bg-primary" id="about">
             <div class="container">
                 <div class="row">
+                    <div class="col-lg-2">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- home_page -->
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:120px;height:240px"
+                             data-ad-client="ca-pub-8140847957930358"
+                             data-ad-slot="6115581633"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
 
-                    <div class="col-lg-9 text-center">
+                    </div>
+                    <div class="col-lg-7 text-center">
                         <h2 class="section-heading">
                             Active Tournament and Series
                             <hr class="light">

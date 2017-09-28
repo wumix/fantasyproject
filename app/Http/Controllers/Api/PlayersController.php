@@ -13,6 +13,9 @@ class PlayersController extends Controller
 
 
     }
+    public function addPlayer(){
+
+    }
 
     function getPlayerStats(Request $request)
     {
@@ -49,11 +52,11 @@ class PlayersController extends Controller
                     // }
 
                 }
-                // dd($result);
+
             }
         }
-        // die;
+
         return response()->json($result);
-        // return response()->json($player);
+
     }
 }

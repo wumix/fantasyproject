@@ -90,17 +90,10 @@ class ChallengeController extends Controller
 
     public function addChallengeTeam($match_id, $challenge_id)
     {
-        //dnt forget to reciverve challenge id here
 
-//        $match_id = 96;
-//        $challenge_id = 2;
         $data['challenge_id'] = $challenge_id;
-//        $userteamtomplete = \App\UserChallengeTeamStatus::where('user_id', \Auth::id())->
-//        where('challenge_id', $challenge_id)->first()->is_complete;
         if (challengeTeamCompleteInChallenge(\Auth::id(), $challenge_id)) {
-            return redirect()->route('UserDashboard')->with('status', 'Compeleted');;
-
-
+            return redirect()->route('UserDashboard')->with('status', 'Compeleted');
         }
         $tournamnet_id = \App\Match::where('id', $match_id)->first()->tournament_id;
         $data['tournamnet_id'] = $tournamnet_id;
@@ -136,8 +129,7 @@ class ChallengeController extends Controller
             ])
             ->get()
             ->toArray();
-//     debugArr( $data['roles']);
-//        die;
+
         $data['team_id'] = 5;
         return view('user.challenge.user_challenge_team', $data);
     }

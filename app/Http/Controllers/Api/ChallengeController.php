@@ -75,5 +75,48 @@ class ChallengeController extends Controller
                 ->with('status', 'You have already challenged this user');
         }
     }
+    function challengeTeam(Request $request){
+        $challenge_id=$request->challenge_id;
+        $data['challenge_id'] = $challenge_id;
+        if (challengeTeamCompleteInChallenge(\Auth::id(), $challenge_id)) {
+            return redirect()->route('UserDashboard')->with('status', 'Compeleted');
+        }
+        $tournamnet_id = \App\Match::where('id', $match_id)->first()->tournament_id;
+        $data['tournamnet_id'] = $tournamnet_id;
+        $user_id = \Auth::id();
+        $player = \App\UserChallenge::where('id', $challenge_id)->with(
+            ['challenge_players' => function ($q) use ($user_id) {
+                $q->where('user_id', $user_id);
+            }
+            ])->first();
+        if (empty($player)) {
+            $player = [];
+        } else {
+            $player = $player->toArray();
+        }
+
+        $selectedPlayers = [];
+        if (!empty($player['challenge_players'])) {
+            $selectedPlayers = array_column($player['challenge_players'], 'id');
+        }
+
+        $data['user_team_player'] = $player;
+        $data['roles'] = \App\GameRole::where('game_id', 1)
+            ->with([
+                'players.player_matches' => function ($query) use ($match_id) {
+                    return $query->where('matches.id', $match_id);
+                }, 'players.player_roles',
+                'players' => function ($q) use ($selectedPlayers) {
+                    $q->whereNotIn('players.id', $selectedPlayers);
+                }, 'players.player_actual_teams' => function ($query) use ($tournamnet_id) {
+                    $query->where('tournament_id', $tournamnet_id);
+                }
+
+            ])
+            ->get()
+            ->toArray();
+
+        $data['team_id'] = 5;
+    }
 
 }

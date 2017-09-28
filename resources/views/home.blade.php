@@ -416,6 +416,59 @@
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
 
+                    <a href="img/portfolio/thumbnails/901.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/901.jpg" class="img-responsive" alt="KXIP VS MI">
+
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    England Vs West Indies
+                                </div>
+                                <div class="project-name">
+                                    England won by 6 runs DL method
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+
+                    <a href="img/portfolio/thumbnails/902.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/902.jpg" class="img-responsive" alt="KXIP VS KKR">
+
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    England Vs West Indies
+                                </div>
+                                <div class="project-name">
+                                    England won by 6 runs DL method
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-4  col-sm-6">
+                    <a href="img/portfolio/thumbnails/903.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/903.jpg" class="img-responsive" alt="KXIP VS KKR">
+
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    England Vs West Indies
+                                </div>
+                                <div class="project-name">
+                                    England won by 6 runs DL method
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+
                     <a href="img/portfolio/thumbnails/801.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/801.jpg" class="img-responsive" alt=" DD VS GL">
 
@@ -525,59 +578,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-sm-6">
 
-                    <a href="img/portfolio/thumbnails/601.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/601.jpg" class="img-responsive" alt="KXIP VS MI">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    India Vs Australia
-                                </div>
-                                <div class="project-name">
-                                    India won by 50 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-
-                    <a href="img/portfolio/thumbnails/602.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/602.jpg" class="img-responsive" alt="KXIP VS KKR">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    India Vs Australia
-                                </div>
-                                <div class="project-name">
-                                    India won by 50 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="col-lg-4  col-sm-6">
-                    <a href="img/portfolio/thumbnails/603.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/603.jpg" class="img-responsive" alt="KXIP VS KKR">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    India Vs Australia
-                                </div>
-                                <div class="project-name">
-                                    India won by 50 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
 
             </div>

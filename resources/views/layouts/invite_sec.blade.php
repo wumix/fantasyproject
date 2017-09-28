@@ -93,8 +93,7 @@ if (\Request::route()->getName() == 'challenges') {
 ?>
 @if(!\Auth::check())
     <a href="{{route('userdashboard')}}">
-        <img style="margin-top: 22px;"
-             src="{{URL::to('/')}}/img/refer-img.png"/>
+        <img src="{{URL::to('/')}}/img/refer-img.png"/>
     </a>
 @else
     <h2 class="section-heading" style="margin-top: 30px;

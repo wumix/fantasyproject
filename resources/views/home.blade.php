@@ -220,7 +220,7 @@
                             View all
                         </a>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3" @if(!\Auth::check()) style="transform: translateY(50%);" @endif>
                         @include('layouts.invite_sec')
                     </div>
                 </div>

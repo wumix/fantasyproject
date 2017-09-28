@@ -76,8 +76,10 @@ class ChallengeController extends Controller
         }
     }
     function challengeTeam(Request $request){
+
         $challenge_id=$request->challenge_id;
         $data['challenge_id'] = $challenge_id;
+        $match_id= \App\UserChallenge::where('id',$challenge_id)->first()->match_id;
         if (challengeTeamCompleteInChallenge(\Auth::id(), $challenge_id)) {
             return redirect()->route('UserDashboard')->with('status', 'Compeleted');
         }
@@ -115,6 +117,8 @@ class ChallengeController extends Controller
             ])
             ->get()
             ->toArray();
+        return response()->json($data['roles']);
+
 
         $data['team_id'] = 5;
     }

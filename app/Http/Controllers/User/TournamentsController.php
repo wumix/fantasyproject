@@ -49,6 +49,8 @@ class TournamentsController extends Controller
 
     }
 
+
+
     function showTournamentDetails($tournament_id)
     {
 

@@ -23,12 +23,21 @@ class ChallengeController extends Controller
 
     function showChallenges()
     {
-
-        $data['sent_challenges'] = \App\UserChallenge::where(['user_1_id' => \Auth::id()])->with(['user_by'])->get()->toArray();
-        $accepted_challenges = \App\User::where(['id' => \Auth::id()])->with(['challenges' => function ($query) {
-            $query->where('status', 1);
+        $user_id = 434;
+        $sent_challenges = \App\UserChallenge::where(['user_1_id' => $user_id])->with(['user_by'])->get()->toArray();
+        $data['accepted_challenges'] = $accepted_challenges = \App\User::where(['id' => $user_id])->with(['challenges' => function ($query) {
+            // $query->where('status', 1);
         }, 'challenges.user'])->get()->toArray();
-        dd($accepted_challenges);
+        //  return response()->json($sent_challenges);
+        // $data['sent_challenges']=[];
+
+
+        foreach ($sent_challenges as &$challenge) {
+            $challenge['user'] = $challenge['user_by'];
+            unset($challenge['user_by']);
+
+        }
+        $data['sent_challenges'] = $sent_challenges;
         $data['accepted_challenges'] = $accepted_challenges[0]['challenges'];
         return response()->json($data);
     }

@@ -21,8 +21,21 @@ class TournamentsController extends Controller
 
     function index(Request $request)
     {
-//dd(apache_request_headers());
-       // dd(getGmtTime());
+        $objTourmament = \App\Tournament::orderBy("start_date",
+            'asc')->
+        Where('end_date', '>=', getGmtTime())->get();
+        $data['tournaments_list'] = $objTourmament->where('is_active', 1)->toArray(); //list of active
+        return response()->json($data['tournaments_list']);
+
+    }
+    function tournamentMatches(Request $request)
+    {
+
+        $tournament_id = $request->tournament_id;
+
+        $match_list = \App\Match::where('tournament_id', $tournament_id)->where('start_date', '>=', getGmtTime())->get();
+
+        return response()->json($match_list);
 
     }
 

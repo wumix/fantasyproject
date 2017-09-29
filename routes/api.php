@@ -43,6 +43,8 @@ Route::group(['prefix' => 'v1'], function () {
             Route::get('delete_player', 'Api\TournamentsController@delete_player');
             Route::get('transfer_player', 'Api\TournamentsController@transfer_player');
             Route::get('/', 'Api\TournamentsController@show');
+            Route::get('list', 'Api\TournamentsController@index');
+            Route::get('matches', 'Api\TournamentsController@tournamentMatches')->name('tournamentmatches');
 
         });
         Route::group(['prefix' => 'user'], function () {
@@ -62,6 +64,7 @@ Route::group(['prefix' => 'v1'], function () {
             Route::get('/', 'Api\ChallengeController@showChallenges');
             Route::post('send', 'Api\ChallengeController@sendChallenge');
             Route::get('team', 'Api\ChallengeController@challengeTeam');
+
 
 
 

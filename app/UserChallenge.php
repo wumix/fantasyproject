@@ -27,6 +27,9 @@ class UserChallenge extends Model
         return $this->belongsToMany('\App\Player','user_challenge_team', 'challenge_id', 'player_id')
             ->withPivot('user_id');
     }
+    function match(){
+        return $this->belongsTo('\App\Match','id');
+    }
 
 
 }

@@ -28,7 +28,7 @@ class UserChallenge extends Model
             ->withPivot('user_id');
     }
     function match(){
-        return $this->belongsTo('\App\Match','id');
+        return $this->belongsTo('\App\Match','match_id');
     }
 
 

@@ -18,6 +18,7 @@
 
 //Media manager
 
+
 Route::get('/newdash', 'HomeController@newdash')->name('newdashboard');
 
 Route::get('scorecard/{match_id}/{tournament_id}', 'HomeController@scorecard')->name('scorecard');

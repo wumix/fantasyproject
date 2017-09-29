@@ -24,7 +24,9 @@ class ChallengeController extends Controller
     function showChallenges()
     {
         $user_id = 434;
-        $sent_challenges = \App\UserChallenge::where(['user_1_id' => $user_id])->with(['user_by','match'])->get()->toArray();
+        $sent_challenges = \App\UserChallenge::where(['user_1_id' => $user_id])->with(['user_by','match'=>function($q){
+            $q->select('id','name');
+        }])->get()->toArray();
         $data['accepted_challenges'] = $accepted_challenges = \App\User::where(['id' => $user_id])->with(
             [
                 'challenges.match'=>function ($query) {
@@ -96,13 +98,17 @@ class ChallengeController extends Controller
 
         $challenge_id = $request->challenge_id;
         $data['challenge_id'] = $challenge_id;
+
         $match_id = \App\UserChallenge::where('id', $challenge_id)->first()->match_id;
-        if (challengeTeamCompleteInChallenge(\Auth::id(), $challenge_id)) {
-            return redirect()->route('UserDashboard')->with('status', 'Compeleted');
-        }
+
+//        if (challengeTeamCompleteInChallenge(\Auth::id(), $challenge_id)) {
+//            return redirect()->route('UserDashboard')->with('status', 'Compeleted');
+//        }
         $tournamnet_id = \App\Match::where('id', $match_id)->first()->tournament_id;
+
         $data['tournamnet_id'] = $tournamnet_id;
         $user_id = \Auth::id();
+
         $player = \App\UserChallenge::where('id', $challenge_id)->with(
             ['challenge_players' => function ($q) use ($user_id) {
                 $q->where('user_id', $user_id);
@@ -130,10 +136,10 @@ class ChallengeController extends Controller
                 }, 'players.player_actual_teams' => function ($query) use ($tournamnet_id) {
                     $query->where('tournament_id', $tournamnet_id);
                 }
-
             ])
             ->get()
             ->toArray();
+
         return response()->json($data['roles']);
 
 

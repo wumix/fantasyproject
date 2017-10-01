@@ -126,7 +126,7 @@ class ChallengeController extends Controller
         }
 
         $data['user_team_player'] = $player;
-        $data['roles'] = \App\GameRole::where('game_id', 1)
+        $roles = \App\GameRole::where('game_id', 1)
             ->with([
                 'players.player_matches' => function ($query) use ($match_id) {
                     return $query->where('matches.id', $match_id);
@@ -139,8 +139,16 @@ class ChallengeController extends Controller
             ])
             ->get()
             ->toArray();
+        return response()->json($roles);
+        $k=[];
+        foreach ($roles as &$role) {
+            foreach ($role as $key=>&$player){
+               $k[$role['name']]=$player;
+            }
+        }
+        dd($k);
 
-        return response()->json($data['roles']);
+        return response()->json($roles);
 
 
         $data['team_id'] = 5;

@@ -28,7 +28,7 @@ class ChallengeController extends Controller
             $q->select('id', 'name');
         }])->get()->toArray();
         foreach ($sent_challenges as &$sent){
-            $sent['is_team_complete']=challengeTeamCompleteInChallenge($user_id,$sent['id']);
+            $sent['is_team_complete']=(string)challengeTeamCompleteInChallenge($user_id,$sent['id']);
         }
         $data['accepted_challenges'] = $accepted_challenges = \App\User::where(['id' => $user_id])->with(
             [
@@ -48,7 +48,7 @@ class ChallengeController extends Controller
 
         }
         foreach($accepted_challenges[0]['challenges'] as &$c){
-            $c['is_team_complete']=challengeTeamCompleteInChallenge($user_id,$c['id']);
+            $c['is_team_complete']=(string)challengeTeamCompleteInChallenge($user_id,$c['id']);
         }
         $data['sent_challenges'] = $sent_challenges;
         $data['accepted_challenges'] = $accepted_challenges[0]['challenges'];

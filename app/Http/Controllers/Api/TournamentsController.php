@@ -22,7 +22,7 @@ class TournamentsController extends Controller
     function index(Request $request)
     {
 
-        $objTourmament = \App\Tournament::orderBy("start_date",
+        $objTourmament['tournaments'] = \App\Tournament::orderBy("start_date",
             'asc')->
         Where('end_date', '>=', getGmtTime())->where('is_active', 1)->with(['tournament_matches'=>function($q){
             $q->where('start_date', '>=', getGmtTime());

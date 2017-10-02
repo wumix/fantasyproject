@@ -169,7 +169,7 @@ class ChallengeController extends Controller
                     } else {
                         $player['in_team'] = "0";
                     }
-                    $player['role_id'] = $player['player_roles'][0]['id'];
+                    $player['role_id'] =(string) $player['player_roles'][0]['id'];
                     $player['team_name'] = $player['player_actual_teams'][0]['name'];
                     unset($player['player_roles']);
                     unset($player['player_actual_teams']);

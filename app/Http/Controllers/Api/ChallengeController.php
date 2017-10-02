@@ -190,11 +190,11 @@ class ChallengeController extends Controller
                     $q->where('user_id', $user_id);
 
                 }])->first()->toArray();
-        $k['bat_count'] = $batsmen = $this->playerRoleCountInChallenge($chalelnge_players, 5);
-        $k['bowl_count'] = $bowler = $this->playerRoleCountInChallenge($chalelnge_players, 6);
-        $k['wicket_count'] = $wicketkeeper = $this->playerRoleCountInChallenge($chalelnge_players, 8);
-        $k['allround_count'] = $allrounder = $this->playerRoleCountInChallenge($chalelnge_players, 7);
-        $k['team_count'] = $batsmen + $bowler + $wicketkeeper + $allrounder;
+        $k['bat_count'] =(string) $batsmen = $this->playerRoleCountInChallenge($chalelnge_players, 5);
+        $k['bowl_count'] = (string)$bowler = $this->playerRoleCountInChallenge($chalelnge_players, 6);
+        $k['wicket_count'] = (string)$wicketkeeper = $this->playerRoleCountInChallenge($chalelnge_players, 8);
+        $k['allround_count'] =(string) $allrounder = $this->playerRoleCountInChallenge($chalelnge_players, 7);
+        $k['team_count'] =(string) $batsmen + $bowler + $wicketkeeper + $allrounder;
         return response()->json($k);
 
 
@@ -243,10 +243,10 @@ class ChallengeController extends Controller
                     }])->first()->toArray();
             $objResponse['success'] = true;
             $objResponse['msg'] = "Player Added successfully";
-            $total += $objResponse['batsmen'] = $this->playerRoleCountInChallenge($chalelnge_players, 5);
-            $total += $objResponse['bowler'] = $this->playerRoleCountInChallenge($chalelnge_players, 6);
-            $total += $objResponse['wicketkeeper'] = $this->playerRoleCountInChallenge($chalelnge_players, 8);
-            $total += $objResponse['allrounder'] = $this->playerRoleCountInChallenge($chalelnge_players, 7);
+            $total += $objResponse['batsmen'] = (string)$this->playerRoleCountInChallenge($chalelnge_players, 5);
+            $total += $objResponse['bowler'] = (string)$this->playerRoleCountInChallenge($chalelnge_players, 6);
+            $total += $objResponse['wicketkeeper'] = (string)$this->playerRoleCountInChallenge($chalelnge_players, 8);
+            $total += $objResponse['allrounder'] = (string)$this->playerRoleCountInChallenge($chalelnge_players, 7);
             $teamcount = $total;
         } else {
             $objResponse['success'] = false;
@@ -264,7 +264,21 @@ class ChallengeController extends Controller
         }
         return response()->json($objResponse);
     }
+public function confirmChallengeTeam(Request $request){
+    $challenge_id=$request->challenge_id;
+    $challenge = \App\UserChallengeTeamStatus::where('user_id', \Auth::id())->where('challenge_id', $challenge_id);
+    $challenge->update(['is_complete' => 1]);
+    $challenge = \App\UserChallenge::find($challenge_id)->first();
+    if (\Auth::id() == $challenge->user_1_id) {
+        $sender = \App\User::find($challenge->user_1_id);
+        $reciever = $id = \App\User::find($challenge->user_2_id);
+    } else {
+        $sender = \App\User::find($challenge->user_2_id);
+        $reciever = $id = \App\User::find($challenge->user_1_id);
+    }
+    \Mail::to($reciever->email)->send(new \App\Mail\ChallengeTeamCompleted($sender->name, $reciever->name));
 
+}
     public function playerRoleCountInChallenge($chalelnge_players, $player_role_id)
     {
         $count = 0;

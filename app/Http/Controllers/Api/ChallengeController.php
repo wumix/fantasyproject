@@ -61,6 +61,8 @@ class ChallengeController extends Controller
             } else {
                 $c['is_team_complete'] = "false";
             }
+            $c['your_score']=userScoreInChallenge($c['user_2_id'],$c['id']);
+            $c['apponent_score']=userScoreInChallenge($c['user_1_id'],$c['id']);
 
         }
         $data['sent_challenges'] = $sent_challenges;

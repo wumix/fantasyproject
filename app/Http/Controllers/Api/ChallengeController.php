@@ -27,6 +27,9 @@ class ChallengeController extends Controller
         $sent_challenges = \App\UserChallenge::where(['user_1_id' => $user_id])->with(['user_by', 'match' => function ($q) {
             $q->select('id', 'name');
         }])->get()->toArray();
+        foreach ($sent_challenges as &$sent){
+            $sent['is_team_complete']=challengeTeamCompleteInChallenge($sent['id']);
+        }
         $data['accepted_challenges'] = $accepted_challenges = \App\User::where(['id' => $user_id])->with(
             [
                 'challenges.match' => function ($query) {

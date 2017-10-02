@@ -23,7 +23,7 @@ class ChallengeController extends Controller
 
     function showChallenges()
     {
-        $user_id = 317;
+        
         $sent_challenges = \App\UserChallenge::where(['user_1_id' => $user_id])->with(['user_by', 'match' => function ($q) {
             $q->select('id', 'name');
         }])->get()->toArray();
@@ -134,7 +134,7 @@ class ChallengeController extends Controller
 
         $data['tournamnet_id'] = $tournamnet_id;
         $user_id = \Auth::id();
-        $user_id = 434;
+
         $player = \App\UserChallenge::where('id', $challenge_id)->with(
             ['challenge_players' => function ($q) use ($user_id) {
                 $q->where('user_id', $user_id);

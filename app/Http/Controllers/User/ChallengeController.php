@@ -129,7 +129,7 @@ class ChallengeController extends Controller
             ])
             ->get()
             ->toArray();
-        
+
 
         $data['team_id'] = 5;
         return view('user.challenge.user_challenge_team', $data);

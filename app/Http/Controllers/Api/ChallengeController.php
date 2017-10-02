@@ -130,29 +130,41 @@ class ChallengeController extends Controller
                 'players.player_matches' => function ($query) use ($match_id) {
                      $query->where('player_matches.match_id', $match_id);
                 }, 'players.player_roles',
-                'players' => function ($q) use ($selectedPlayers,$match_id) {
-                    $q->whereNotIn('players.id', $selectedPlayers);
-                }, 'players.player_actual_teams' => function ($query) use ($tournamnet_id) {
+                 'players.player_actual_teams' => function ($query) use ($tournamnet_id) {
                     $query->where('tournament_id', $tournamnet_id);
                 }
 
             ])
             ->get()
             ->toArray();
-       return response()->json($roles);
+
+
+       //return response()->json($roles);
        //dd($roles);
         $k=[];
         foreach ($roles as &$role) {
             foreach ($role['players'] as $key=>&$player){
-                unset($player['player_roles']);
-                unset($player['pivot']);
+
                 
                 if (empty($player['player_matches'])) {
 
                     continue;
 
                 }else {
+                    if(in_array($player['id'],$selectedPlayers)){
+                        $player['in_team']="1";
+                    }else{
+                        $player['in_team']="0";
+                    }
+                    $player['role_id']=$player['player_roles'][0]['id'];
+                    $player['team_name']=$player['player_actual_teams'][0]['name'];
+                    unset($player['player_roles']);
+                    unset($player['player_actual_teams']);
+                    unset($player['pivot']);
+                    unset($player['player_matches']);
                     $k[$role['name']][] = $player;
+
+
                 }
 
             }

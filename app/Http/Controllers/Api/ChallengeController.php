@@ -33,6 +33,9 @@ class ChallengeController extends Controller
             } else {
                 $sent['is_team_complete'] = "false";
             }
+            $sent['your_score']=userScoreInChallenge($sent['user_1_id'],$sent['id']);
+            $sent['apponent_score']=userScoreInChallenge($sent['user_2_id'],$sent['id']);
+
 
         }
         $data['accepted_challenges'] = $accepted_challenges = \App\User::where(['id' => $user_id])->with(
@@ -130,9 +133,6 @@ class ChallengeController extends Controller
 
         $match_id = $this->getMatchId($challenge_id);
         $tournamnet_id = $this->tournamentId($match_id);
-//        if (challengeTeamCompleteInChallenge(\Auth::id(), $challenge_id)) {
-//            return redirect()->route('UserDashboard')->with('status', 'Compeleted');
-//        }
 
 
         $data['tournamnet_id'] = $tournamnet_id;
@@ -168,9 +168,6 @@ class ChallengeController extends Controller
             ->get()
             ->toArray();
 
-
-        //return response()->json($roles);
-        //dd($roles);
 
 
         $k = [];

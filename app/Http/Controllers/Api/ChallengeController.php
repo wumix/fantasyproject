@@ -165,9 +165,9 @@ class ChallengeController extends Controller
 
                 } else {
                     if (in_array($player['id'], $selectedPlayers)) {
-                        $player['in_team'] = "1";
+                        $player['in_team'] = "true";
                     } else {
-                        $player['in_team'] = "0";
+                        $player['in_team'] = "false";
                     }
                     $player['role_id'] =(string) $player['player_roles'][0]['id'];
                     $player['team_name'] = $player['player_actual_teams'][0]['name'];

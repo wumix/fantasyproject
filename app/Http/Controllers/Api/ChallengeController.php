@@ -108,7 +108,6 @@ class ChallengeController extends Controller
 
         $data['tournamnet_id'] = $tournamnet_id;
         $user_id = \Auth::id();
-
         $player = \App\UserChallenge::where('id', $challenge_id)->with(
             ['challenge_players' => function ($q) use ($user_id) {
                 $q->where('user_id', $user_id);
@@ -129,26 +128,38 @@ class ChallengeController extends Controller
         $roles = \App\GameRole::where('game_id', 1)
             ->with([
                 'players.player_matches' => function ($query) use ($match_id) {
-                    return $query->where('matches.id', $match_id);
+                    return $query->where('player_matches.id', $match_id);
                 }, 'players.player_roles',
                 'players' => function ($q) use ($selectedPlayers) {
                     $q->whereNotIn('players.id', $selectedPlayers);
                 }, 'players.player_actual_teams' => function ($query) use ($tournamnet_id) {
                     $query->where('tournament_id', $tournamnet_id);
                 }
+
             ])
             ->get()
             ->toArray();
-        return response()->json($roles);
+       //return response()->json($roles);
+       //dd($roles);
         $k=[];
         foreach ($roles as &$role) {
-            foreach ($role as $key=>&$player){
-               $k[$role['name']]=$player;
+            foreach ($role['players'] as $key=>&$player){
+                unset($player['player_roles']);
+                unset($player['pivot']);
+                
+                if (empty($player['player_matches'])) {
+
+                    continue;
+
+                }else {
+                    $k[$role['name']][] = $player;
+                }
+
             }
         }
-        dd($k);
+        return response()->json($k);
 
-        return response()->json($roles);
+       // return response()->json($roles);
 
 
         $data['team_id'] = 5;

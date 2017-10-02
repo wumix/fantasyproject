@@ -23,7 +23,7 @@ class ChallengeController extends Controller
 
     function showChallenges()
     {
-
+        $user_id=\Auth::id();
         $sent_challenges = \App\UserChallenge::where(['user_1_id' => $user_id])->with(['user_by', 'match' => function ($q) {
             $q->select('id', 'name');
         }])->get()->toArray();
@@ -62,6 +62,7 @@ class ChallengeController extends Controller
         }
         $data['sent_challenges'] = $sent_challenges;
         $data['accepted_challenges'] = $accepted_challenges[0]['challenges'];
+
         return response()->json($data);
     }
 

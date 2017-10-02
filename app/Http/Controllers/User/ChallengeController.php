@@ -250,7 +250,96 @@ class ChallengeController extends Controller
 
 
         }
-        return response()->json($objResponse);
+        $challenge_id = $request->challenge_id;
+        $data['challenge_id'] = $challenge_id;
+
+        $match_id = $this->getMatchId($challenge_id);
+        $tournamnet_id=$this->tournamentId($match_id);
+//        if (challengeTeamCompleteInChallenge(\Auth::id(), $challenge_id)) {
+//            return redirect()->route('UserDashboard')->with('status', 'Compeleted');
+//        }
+
+
+        $data['tournamnet_id'] = $tournamnet_id;
+        $user_id = \Auth::id();
+        $user_id = 434;
+        $player = \App\UserChallenge::where('id', $challenge_id)->with(
+            ['challenge_players' => function ($q) use ($user_id) {
+                $q->where('user_id', $user_id);
+            }
+            ])->first();
+        if (empty($player)) {
+            $player = [];
+        } else {
+            $player = $player->toArray();
+        }
+
+        $selectedPlayers = [];
+        if (!empty($player['challenge_players'])) {
+            $selectedPlayers = array_column($player['challenge_players'], 'id');
+        }
+
+        $data['user_team_player'] = $player;
+        $roles = \App\GameRole::where('game_id', 1)
+            ->with([
+                'players.player_matches' => function ($query) use ($match_id) {
+                    $query->where('player_matches.match_id', $match_id);
+                }, 'players.player_roles',
+                'players.player_actual_teams' => function ($query) use ($tournamnet_id) {
+                    $query->where('tournament_id', $tournamnet_id);
+                }
+
+            ])
+            ->get()
+            ->toArray();
+
+
+        //return response()->json($roles);
+        //dd($roles);
+
+
+        $k = [];
+        foreach ($roles as &$role) {
+            foreach ($role['players'] as $key => &$player) {
+
+
+                if (empty($player['player_matches'])) {
+
+                    continue;
+
+                } else {
+                    if (in_array($player['id'], $selectedPlayers)) {
+                        $player['in_team'] = "true";
+                    } else {
+                        $player['in_team'] = "false";
+                    }
+                    $player['role_id'] =(string) $player['player_roles'][0]['id'];
+                    $player['team_name'] = $player['player_actual_teams'][0]['name'];
+                    unset($player['player_roles']);
+                    unset($player['player_actual_teams']);
+                    unset($player['pivot']);
+                    unset($player['player_matches']);
+                    $player['profile_pic'] = getUploadsPath($player['profile_pic']);
+                    $k[strtolower(str_replace(' ', '_', $role['name']))][] = $player;
+
+
+                }
+
+            }
+        }
+        $chalelnge_players = \App\UserChallenge::where('id', $challenge_id)
+            ->with([
+                'challenge_players.player_roles',
+                'challenge_players' => function ($q) use ($user_id) {
+                    $q->where('user_id', $user_id);
+
+                }])->first()->toArray();
+        $k['bat_count'] =(string) $batsmen = $this->playerRoleCountInChallenge($chalelnge_players, 5);
+        $k['bowl_count'] = (string)$bowler = $this->playerRoleCountInChallenge($chalelnge_players, 6);
+        $k['wicket_count'] = (string)$wicketkeeper = $this->playerRoleCountInChallenge($chalelnge_players, 8);
+        $k['allround_count'] =(string) $allrounder = $this->playerRoleCountInChallenge($chalelnge_players, 7);
+        $k['team_count'] =(string) $batsmen + $bowler + $wicketkeeper + $allrounder;
+        return response()->json($k);
     }
 
     function deletePlayerTochallengeTeam(Request $request)

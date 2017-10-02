@@ -128,9 +128,9 @@ class ChallengeController extends Controller
         $roles = \App\GameRole::where('game_id', 1)
             ->with([
                 'players.player_matches' => function ($query) use ($match_id) {
-                    return $query->where('player_matches.id', $match_id);
+                     $query->where('player_matches.match_id', $match_id);
                 }, 'players.player_roles',
-                'players' => function ($q) use ($selectedPlayers) {
+                'players' => function ($q) use ($selectedPlayers,$match_id) {
                     $q->whereNotIn('players.id', $selectedPlayers);
                 }, 'players.player_actual_teams' => function ($query) use ($tournamnet_id) {
                     $query->where('tournament_id', $tournamnet_id);
@@ -139,7 +139,7 @@ class ChallengeController extends Controller
             ])
             ->get()
             ->toArray();
-       //return response()->json($roles);
+       return response()->json($roles);
        //dd($roles);
         $k=[];
         foreach ($roles as &$role) {

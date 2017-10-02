@@ -16,7 +16,7 @@ function membershipFeaturePoints($userid,$feature)
     }
     return $points;
 }
-function challengeTeamCompleteInChallenge($user_id=450,$challenge_id=5){
+function challengeTeamCompleteInChallenge($user_id,$challenge_id){
     
     $is_complete=\App\UserChallengeTeamStatus::where('user_id', $user_id)->
     where('challenge_id', $challenge_id)->first();

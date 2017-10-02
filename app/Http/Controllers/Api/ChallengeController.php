@@ -214,10 +214,7 @@ class ChallengeController extends Controller
         return response()->json($k);
 
 
-        // return response()->json($roles);
 
-
-        $data['team_id'] = 5;
     }
 
     public function addPlayerTochallengeTeam(Request $request)
@@ -229,7 +226,6 @@ class ChallengeController extends Controller
         $match_id = $this->getMatchId($challenge_id);
         $tournamnet_id=$this->tournamentId($match_id);
         $user_ids = \Auth::id();
-        $user_ids=434;
         $chalelnge_players = \App\UserChallenge::where('id', $challenge_id)
             ->with([
                 'challenge_players.player_roles',
@@ -290,7 +286,7 @@ class ChallengeController extends Controller
 
         $data['tournamnet_id'] = $tournamnet_id;
         $user_id = \Auth::id();
-        $user_id = 434;
+
         $player = \App\UserChallenge::where('id', $challenge_id)->with(
             ['challenge_players' => function ($q) use ($user_id) {
                 $q->where('user_id', $user_id);

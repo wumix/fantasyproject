@@ -65,6 +65,7 @@ Route::group(['prefix' => 'v1'], function () {
             Route::post('send', 'Api\ChallengeController@sendChallenge');
             Route::get('team', 'Api\ChallengeController@challengeTeam')->name('challenge_team');
             Route::get('add-player', 'Api\ChallengeController@addPlayerTochallengeTeam');
+            Route::get('delete-player', 'Api\ChallengeController@deltePlayerFormChallenge');
             Route::get('confirm', 'Api\ChallengeController@confirmChallengeTeam');
 
 

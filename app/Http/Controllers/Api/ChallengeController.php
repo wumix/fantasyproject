@@ -184,7 +184,7 @@ class ChallengeController extends Controller
         $k['bowl_count'] = $bowler = $this->playerRoleCountInChallenge($chalelnge_players, 6);
         $k['wicket_count'] = $wicketkeeper = $this->playerRoleCountInChallenge($chalelnge_players, 8);
         $k['allround_count'] = $allrounder = $this->playerRoleCountInChallenge($chalelnge_players, 7);
-        k['team_count']=$batsmen+$bowler+$wicketkeeper+$allrounder;
+        $k['team_count']=$batsmen+$bowler+$wicketkeeper+$allrounder;
         return response()->json($k);
 
 

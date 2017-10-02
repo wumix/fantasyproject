@@ -64,6 +64,8 @@ Route::group(['prefix' => 'v1'], function () {
             Route::get('/', 'Api\ChallengeController@showChallenges');
             Route::post('send', 'Api\ChallengeController@sendChallenge');
             Route::get('team', 'Api\ChallengeController@challengeTeam');
+            Route::get('add-player', 'Api\ChallengeController@addPlayerTochallengeTeam');
+
 
 
 

@@ -108,6 +108,7 @@ class ChallengeController extends Controller
 
         $data['tournamnet_id'] = $tournamnet_id;
         $user_id = \Auth::id();
+        $user_id=434;
         $player = \App\UserChallenge::where('id', $challenge_id)->with(
             ['challenge_players' => function ($q) use ($user_id) {
                 $q->where('user_id', $user_id);
@@ -141,6 +142,8 @@ class ChallengeController extends Controller
 
        //return response()->json($roles);
        //dd($roles);
+
+
         $k=[];
         foreach ($roles as &$role) {
             foreach ($role['players'] as $key=>&$player){
@@ -162,19 +165,45 @@ class ChallengeController extends Controller
                     unset($player['player_actual_teams']);
                     unset($player['pivot']);
                     unset($player['player_matches']);
-                    $k[$role['name']][] = $player;
+                    $player['profile_pic']=getUploadsPath($player['profile_pic']);
+                    $k[ strtolower(str_replace(' ','_',$role['name']))][] = $player;
 
 
                 }
 
             }
         }
+        $chalelnge_players = \App\UserChallenge::where('id', $challenge_id)
+            ->with([
+                'challenge_players.player_roles',
+                'challenge_players' => function ($q) use ($user_id) {
+                    $q->where('user_id', $user_id);
+
+                }])->first()->toArray();
+        $k['bat_count'] = $batsmen = $this->playerRoleCountInChallenge($chalelnge_players, 5);
+        $k['bowl_count'] = $bowler = $this->playerRoleCountInChallenge($chalelnge_players, 6);
+        $k['wicket_count'] = $wicketkeeper = $this->playerRoleCountInChallenge($chalelnge_players, 8);
+        $k['allround_count'] = $allrounder = $this->playerRoleCountInChallenge($chalelnge_players, 7);
         return response()->json($k);
+
+
+
+
 
        // return response()->json($roles);
 
 
         $data['team_id'] = 5;
+    }
+    public function playerRoleCountInChallenge($chalelnge_players, $player_role_id)
+    {
+        $count = 0;
+        foreach ($chalelnge_players['challenge_players'] as $players) {
+            if ($players['player_roles'][0]['id'] == $player_role_id) {
+                $count++;
+            }
+        }
+        return $count;
     }
 
 }

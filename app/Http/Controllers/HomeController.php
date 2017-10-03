@@ -139,7 +139,26 @@ class HomeController extends Controller
 
     public function index()
     {
-       // dd(bcrypt('user'));
+//        dd(config('const.cricapi_key'));
+//
+//        $client = new \GuzzleHttp\Client();
+//        $res = $client->request('GET', 'http://cricapi.com/api/fantasySquad',[
+//            'query' => ['apikey' => 'g1H4mzNEa3eXUX6kFqztImtKeQL2','unique_id'=>'1034809']
+//        ]);
+//        $body=$res->getBody();
+//        $result=\GuzzleHttp\json_decode($body->getContents());
+//        $res = $result;
+//        $players=\App\Player::get()->toArray();
+//        dd($players);
+//        foreach($res->squad as $r){
+//            foreach($r->players as $r){
+//               echo $r->pid.'<br>';
+//                echo $r->name.'<br>';
+//
+//            }
+//        }
+//
+//        die;
 
 
         $objTourmament = \App\Tournament::orderBy("start_date",

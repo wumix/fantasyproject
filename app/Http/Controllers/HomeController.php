@@ -138,19 +138,53 @@ class HomeController extends Controller
 
   public function addPlayerStats($pid){
 
-//      $api_key=config('const.cricapi_key');
-//      $client = new \GuzzleHttp\Client();
-//      $res = $client->request('GET', 'http://cricapi.com/api/playerStats',[
-//          'query' => ['apikey' => $api_key,'pid'=>$pid]
-//      ]);
-//      $body=$res->getBody();
-//      $result=\GuzzleHttp\json_decode($body->getContents());
-//      $res =(array)$result;
-//      foreach($res['data'] as $fkey=>$batbowl){
-//          foreach ($batbowl->ODIs as $key=>$gameforamt){
-//        dd($batbowl);
-//          }
-//      }
+      $api_key=config('const.cricapi_key');
+      $client = new \GuzzleHttp\Client();
+      $res = $client->request('GET', 'http://cricapi.com/api/playerStats',[
+          'query' => ['apikey' => $api_key,'pid'=>$pid]
+      ]);
+      $body=$res->getBody();
+      $result=\GuzzleHttp\json_decode($body->getContents());
+      $res =(array)$result;
+      $syncdata = [];
+      $player_id=\App\Player::where('cricapi_pid',$pid)->first()->id;
+      \App\PlayerStatistics::where('player_id', $player_id)->delete();
+      foreach($res['data'] as $fkey=>$batbowl){
+          foreach ($batbowl as $skey=>$gameforamt){
+          //skey gives us formats key i.e listA,T20i,Batting bowling
+              //fkey gives us batting blowling
+           $format_id=\App\Format::where('name',$skey)->first()->id;
+           $playing_cat_id= \App\PlayingCategory::where('name',$fkey)->first()->id;
+           foreach($gameforamt as $tkey=>$types){
+               //type tell weather its 50 twty of etc
+
+               $type_id=\App\Type::where('name',10)->first()->id;
+
+
+              // echo $tkey=.' '.$types;
+               $syncdata = array(
+                   array(
+                       'player_id' =>$player_id,
+                       'format_id' =>$format_id,
+                       'type_id' => $type_id,
+                       'score'=>$types,
+                       'playing_category'=>$playing_cat_id
+                       )
+
+
+               );
+
+               \App\PlayerStatDetail::insert($syncdata);
+
+
+           }
+
+
+
+          }
+      }
+      die;
+//      $syncdata = [];
 //      foreach ($request->stats as $key => $val) {
 //          $syncdata = array(
 //              array('stat_points' => $val['name'], 'game_type_stat_id' => $val['id'], 'player_id' => $pid)
@@ -162,7 +196,6 @@ class HomeController extends Controller
     public function index()
     {
 
-      $this->addPlayerStats(253802);
 //        $client = new \GuzzleHttp\Client();
 //        $res = $client->request('GET', 'http://cricapi.com/api/fantasySquad',[
 //            'query' => ['apikey' => 'g1H4mzNEa3eXUX6kFqztImtKeQL2','unique_id'=>'1034809']

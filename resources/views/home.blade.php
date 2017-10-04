@@ -676,7 +676,7 @@
             {url: '{{URL::to('assets-new/img/2342342.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/12238967.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/india-vs-australia.jpg')}}', fade: 500},
-            {url: '{{URL::to('assets-new/img/9099000.jpg')}}', fade: 500},
+            
 
 
         ]);

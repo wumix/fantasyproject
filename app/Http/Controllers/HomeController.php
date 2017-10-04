@@ -156,25 +156,26 @@ class HomeController extends Controller
            $format_id=\App\Format::where('name',$skey)->first()->id;
            $playing_cat_id= \App\PlayingCategory::where('name',$fkey)->first()->id;
            foreach($gameforamt as $tkey=>$types){
+               echo $types.'<br>';
                //type tell weather its 50 twty of etc
 
-               $type_id=\App\Type::where('name',10)->first()->id;
+               $type_id=\App\Type::where('name',$tkey)->first()->id. ' '.$types.'<br>';
 
 
               // echo $tkey=.' '.$types;
-               $syncdata = array(
-                   array(
-                       'player_id' =>$player_id,
-                       'format_id' =>$format_id,
-                       'type_id' => $type_id,
-                       'score'=>$types,
-                       'playing_category'=>$playing_cat_id
-                       )
-
-
-               );
-
-               \App\PlayerStatDetail::insert($syncdata);
+//               $syncdata = array(
+//                   array(
+//                       'player_id' =>$player_id,
+//                       'format_id' =>$format_id,
+//                       'type_id' => $type_id,
+//                       'score'=>$types,
+//                       'playing_category'=>$playing_cat_id
+//                       )
+//
+//
+//               );
+//
+//               \App\PlayerStatDetail::insert($syncdata);
 
 
            }
@@ -195,6 +196,8 @@ class HomeController extends Controller
 }
     public function index()
     {
+//        $t= \App\Player::where('id',1)->with('player_stats_details')->get()->toArray();
+//        $this->addPlayerStats(253802);
 
 //        $client = new \GuzzleHttp\Client();
 //        $res = $client->request('GET', 'http://cricapi.com/api/fantasySquad',[

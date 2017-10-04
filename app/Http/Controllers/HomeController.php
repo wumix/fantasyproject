@@ -136,11 +136,33 @@ class HomeController extends Controller
         return $this->timestamp;
     }
 
+  public function addPlayerStats($pid){
 
+//      $api_key=config('const.cricapi_key');
+//      $client = new \GuzzleHttp\Client();
+//      $res = $client->request('GET', 'http://cricapi.com/api/playerStats',[
+//          'query' => ['apikey' => $api_key,'pid'=>$pid]
+//      ]);
+//      $body=$res->getBody();
+//      $result=\GuzzleHttp\json_decode($body->getContents());
+//      $res =(array)$result;
+//      foreach($res['data'] as $fkey=>$batbowl){
+//          foreach ($batbowl->ODIs as $key=>$gameforamt){
+//        dd($batbowl);
+//          }
+//      }
+//      foreach ($request->stats as $key => $val) {
+//          $syncdata = array(
+//              array('stat_points' => $val['name'], 'game_type_stat_id' => $val['id'], 'player_id' => $pid)
+//
+//
+//          );
+
+}
     public function index()
     {
-//        dd(config('const.cricapi_key'));
-//
+
+      $this->addPlayerStats(253802);
 //        $client = new \GuzzleHttp\Client();
 //        $res = $client->request('GET', 'http://cricapi.com/api/fantasySquad',[
 //            'query' => ['apikey' => 'g1H4mzNEa3eXUX6kFqztImtKeQL2','unique_id'=>'1034809']
@@ -149,11 +171,13 @@ class HomeController extends Controller
 //        $result=\GuzzleHttp\json_decode($body->getContents());
 //        $res = $result;
 //        $players=\App\Player::get()->toArray();
-//        dd($players);
+//        $players = array_column($players, 'cricapi_pid');
+//
 //        foreach($res->squad as $r){
 //            foreach($r->players as $r){
-//               echo $r->pid.'<br>';
-//                echo $r->name.'<br>';
+//               if(in_array($r->pid,$players)){
+//                   echo $r->pid." ".$r->name;
+//                }
 //
 //            }
 //        }

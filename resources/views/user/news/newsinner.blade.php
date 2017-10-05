@@ -109,6 +109,22 @@
     </section>
 @endsection
 @section('js')
+    <script type="application/ld+json">
+
+{
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "url": "https://gamithonfantasy.com/news",
+    "author":"gamithonfantasy.com",
+    "headline":"  {!! $postdetail['title'] !!}",
+    "image":"http://www.gamithonfantasy.com/uploads/source/evinlewis.jpg",
+    "dateModified":"2017-10-05",
+    "mainEntityOfPage":"gamithonfantasy.com",
+    "datePublished":"2017-10-05"
+
+}
+
+    </script>
     <script>
         /* go nawaz */
         $(".fb-comments").attr("data-href", window.location.href);

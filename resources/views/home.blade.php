@@ -198,10 +198,10 @@ Cricket app">
 
                     </div>
                     <div class="col-lg-7 text-center">
-                        <h2 class="section-heading">
+                        <h1 class="section-heading">
                             Active Tournament and Series
                             <hr class="light">
-                        </h2>
+                        </h1>
 
                         <div class="table-responsive">
                             <table class="table table-striped table-stripedhome gen-table">

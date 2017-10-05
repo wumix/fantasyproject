@@ -64,7 +64,7 @@
     "dateModified":"2017-10-05",
     "mainEntityOfPage":"gamithonfantasy.com",
     "datePublished":"2017-10-05",
-    "publisher":"Person"
+    "publisher":Person
 
 }
 

@@ -739,6 +739,14 @@ Cricket app">
         </script>
     @endif
 
+    <script type="application/ld+json"> {
+"@context" : "http://schema.org",
+"@type" : "Organization",
+"name":"Gamithon Fantasy",
+"url":"http://www.gamithonfantasy.com/",
+"email":"http://www.gamithonfantasyworld.com"
+}
+</script>
 
 @stop
 @section('FbJsSdk')

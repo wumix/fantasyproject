@@ -1,4 +1,8 @@
 @extends('layouts.app')
+@section('meta-keywords')
+    <meta name="description" content="Gamithon fantasy where you have found the excitement of challenge other payers and compete with friends and other!...
+">
+@endsection
 @section('title')
     Challenge
 @stop

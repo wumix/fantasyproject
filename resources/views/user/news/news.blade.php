@@ -57,7 +57,7 @@
 {
     "@context": "http://schema.org",
     "@type": "NewsArticle",
-    "url": "https://gamithonfantasy.com/blog"
+    "url": "https://gamithonfantasy.com/news"
 }
 
     </script>

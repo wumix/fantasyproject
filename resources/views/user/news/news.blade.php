@@ -57,7 +57,14 @@
 {
     "@context": "http://schema.org",
     "@type": "NewsArticle",
-    "url": "https://gamithonfantasy.com/news"
+    "url": "https://gamithonfantasy.com/news",
+    "author":"gamithonfantasy.com",
+    "headline":"gamithonfantasy.com",
+    "image":"gamithonfantasy.com",
+    "publisher":"gamithonfantasy.com",
+    "dateModified":"gamithonfantasy.com",
+    "mainEntityOfPage":"gamithonfantasy.com",
+
 }
 
     </script>

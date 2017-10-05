@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('meta-keywords')
+    <meta name="description" content="Gamithon Fantasy cricket is a strategy game, Based on their cricketer's real-life performance, users get points and compete with others to win prizes…">
+@endsection
 @section('title')
     Terms and Conditions
 @stop

@@ -2,6 +2,9 @@
 @section('title')
     Gamiton Forums
 @stop
+@section('meta-keywords')
+    <meta name="description" content="Discuss the game we all love and know well. Including International and Domestic cricket from around the world, as well as cricketing issues…">
+@endsection
 @section('css')
     <style>
         .new_topic_btn{

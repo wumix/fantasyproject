@@ -3,6 +3,9 @@
 @section('title')
     Make your team
 @stop
+@section('meta-keywords')
+    <meta name="description" content="In Gamithon Fantasy you can view your cricket team after you create the team so you know what players you have selected…">
+@endsection
 @section('css')
     <style>
         .small-sec-heading {

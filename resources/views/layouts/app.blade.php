@@ -7,18 +7,7 @@
     <link rel="shortcut icon" href="../img/gamithon-fevi.ico" type="image/x-icon"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <meta name="keywords" content="fantasy Cricket
-Play Fantasy Cricket,
-IPL Fantasy League,
-PSL Fantasy League,
-CPL Fantasy League,
-Fantasy Cricket League,
-Cricket League,
-Cricket Fantasy League,
-Cricket Fantasy,
-Play Fantasy Cricket and Win Cash Daily,
-Cricket app">
+    @yield('meta-keywords')
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @yield('facbook-og-tags')
@@ -54,7 +43,6 @@ Cricket app">
             margin: 0 0 0 0;
 
         }
-
 
         .p0 {
             padding-left: 0;
@@ -197,7 +185,6 @@ Cricket app">
                                 Leader Boards
                             </a>
                         </li>
-
 
 
                         <li class="has-menu">
@@ -436,6 +423,7 @@ Cricket app">
 "name":"Gamithon Fantasy",
 "url":"http://www.gamithonfantasy.com/",
 "email":"http://www.gamithonfantasyworld.com"
-} </script>
+}
+</script>
 </body>
 </html>

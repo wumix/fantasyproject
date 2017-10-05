@@ -1,5 +1,19 @@
 @extends('layouts.app')
 {{--{{dd($matches->t)}}--}}
+@section('meta-keywords')
+    <meta name="keywords" content="fantasy Cricket
+Play Fantasy Cricket,
+IPL Fantasy League,
+PSL Fantasy League,
+CPL Fantasy League,
+Fantasy Cricket League,
+Cricket League,
+Cricket Fantasy League,
+Cricket Fantasy,
+Play Fantasy Cricket and Win Cash Daily,
+Cricket app">
+    <meta name="description" content="Gamithon Fantasy cricket is a strategy game, Based on their cricketer's real-life performance, users get points and compete with others to win prizes…">
+    @endsection
 @section('css')
     {!! Html::style('assets-new/css/slick-theme.css') !!}
     {!! Html::style('assets-new/css/slick.css') !!}

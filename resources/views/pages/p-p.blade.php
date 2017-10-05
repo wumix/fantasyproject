@@ -1,4 +1,8 @@
 @extends('layouts.app')
+@section('meta-keywords')
+    <meta name="description" content="The Privacy Policy of Gamithon Fantasy cricket includes all the actors and characters involved in this portal as fictitious and not actual.
+">
+@endsection
 @section('content')
 <section>
     @section('title')

@@ -1,6 +1,10 @@
 @extends('layouts.app')
+@section('meta-keywords')
+    <meta name="description" content="Gamithon Fantasy is where you create fantasy cricket team and playing in tournaments/series completely free and win 50$ price…">
+@endsection
 @section('content')
 <section>
+
     @section('title')
         About Us
     @stop

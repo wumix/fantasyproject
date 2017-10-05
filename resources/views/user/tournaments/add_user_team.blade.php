@@ -1,12 +1,11 @@
-@php
 
-    //dd($tournament_detail);
-
-@endphp
 @extends('layouts.app')
 @section('title')
     Make team
     @stop
+@section('meta-keywords')
+    <meta name="description" content="Create an amazing fantasy cricket team with one of the 11 player configurations at Gamithon Fantasy and enjoy playing…">
+@endsection
 @section('content')
     <section>
         <div class="container">

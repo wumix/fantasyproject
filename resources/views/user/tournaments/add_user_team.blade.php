@@ -1,8 +1,6 @@
 
 @extends('layouts.app')
-@section('meta-keywords')
-    <meta name="description" content="Create an amazing fantasy cricket team with one of the 11 player configurations at Gamithon Fantasy and enjoy playing…">
-@endsection
+
 @section('title')
     Make team
     @stop

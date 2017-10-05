@@ -6,7 +6,6 @@
 
     <link rel="shortcut icon" href="../img/gamithon-fevi.ico" type="image/x-icon"/>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     @yield('meta-keywords')
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">

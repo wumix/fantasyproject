@@ -61,7 +61,6 @@
     "author":"gamithonfantasy.com",
     "headline":"gamithonfantasy.com",
     "image":"http://www.gamithonfantasy.com/uploads/source/evinlewis.jpg",
-    "publisher":"gamithonfantasy.com",
     "dateModified":"2017-10-05",
     "mainEntityOfPage":"gamithonfantasy.com",
     "datePublished":"2017-10-05"

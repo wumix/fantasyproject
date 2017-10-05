@@ -103,7 +103,7 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header main-top-menu">
                 <a class="navbar-brand logo-site page-scroll" href="/">
-                    <img src="{{URL::to('assets-new/img/gamithon-logo1.png')}}" style="width: 250px;"/>
+                    <img src="{{URL::to('assets-new/img/gamithon-logo2.png')}}" style="width: 250px;"/>
                 </a>
                 <div class="text-left" id="signhide" style="padding-left: 10px;">
                     @if(Auth::check())

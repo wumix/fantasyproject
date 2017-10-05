@@ -63,7 +63,7 @@
     "image":"gamithonfantasy.com",
     "publisher":"gamithonfantasy.com",
     "dateModified":"gamithonfantasy.com",
-    "mainEntityOfPage":"gamithonfantasy.com",
+    "mainEntityOfPage":"gamithonfantasy.com"
 
 }
 

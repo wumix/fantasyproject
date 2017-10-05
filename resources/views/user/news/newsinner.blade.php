@@ -129,6 +129,7 @@
       "url": "https://google.com/logo.jpg"
     }
   },
+  "description": "{!! str_limit($new['description'], 50) !!}..."
 
 }
 

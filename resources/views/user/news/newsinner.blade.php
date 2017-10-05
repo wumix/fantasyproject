@@ -126,7 +126,7 @@
     "name": "gamithon",
     "logo": {
       "@type": "ImageObject",
-      "url": "{{Croppa::url(getUploadsPath($new['image']),160,160)}}"
+      "url": "{{url(getUploadsPath($new['image'])}}"
     }
   },
   "description": "{!! str_limit($new['description'], 50) !!}..."

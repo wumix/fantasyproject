@@ -126,7 +126,7 @@
     "name": "gamithon",
     "logo": {
       "@type": "ImageObject",
-      "url": "{{url(getUploadsPath($new['image'])}}"
+      "url": "{{url(getUploadsPath($new['image']))}}"
     }
   },
   "description": "{!! str_limit($new['description'], 50) !!}..."

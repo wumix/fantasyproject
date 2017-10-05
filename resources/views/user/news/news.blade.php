@@ -52,6 +52,15 @@
     </section>
 @endsection
 @section('js')
+    <script type="application/ld+json">
+
+{
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "url": "https://gamithonfantasy.com/blog"
+}
+
+    </script>
     <script>
         $(function () {
             $('.itemsz').matchHeight('col-md-4');
@@ -60,3 +69,4 @@
     </script>
 
 @stop
+

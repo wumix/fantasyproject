@@ -64,9 +64,17 @@
     "dateModified":"2017-10-05",
     "mainEntityOfPage":"gamithonfantasy.com",
     "datePublished":"2017-10-05",
-    "publisher":"gamithon fantasy"
+    "publisher":{
+    "@type": "Organization",
+    "name": "gamithon",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://google.com/logo.jpg"
+    }
+  },
 
 }
+
 
     </script>
     <script>

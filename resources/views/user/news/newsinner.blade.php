@@ -117,10 +117,18 @@
     "url": "https://gamithonfantasy.com/news",
     "author":"gamithonfantasy.com",
     "headline":"  {!! $postdetail['title'] !!}",
-    "image":"http://www.gamithonfantasy.com/uploads/source/evinlewis.jpg",
+    "image":"{{getUploadsPath($postdetail['image'])}}",
     "dateModified":"2017-10-05",
     "mainEntityOfPage":"gamithonfantasy.com",
-    "datePublished":"2017-10-05"
+    "datePublished":"2017-10-05",
+    "publisher":{
+    "@type": "Organization",
+    "name": "gamithon",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://google.com/logo.jpg"
+    }
+  },
 
 }
 

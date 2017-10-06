@@ -13,7 +13,7 @@
     <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
-     {!! Html::style('assets-new/css/google-fonts.css', array('async' => 'async')) !!}
+     {!! Html::style('assets-new/css/google-fonts.css') !!}
     {!! Html::style('assets-new/css/google-fonts1.css') !!}
     {!! Html::style('assets-new/vendor/bootstrap/css/bootstrap.min.css') !!}
     {!! Html::style('bootstrap-modal-extend/css/bootstrap-modal.css') !!}

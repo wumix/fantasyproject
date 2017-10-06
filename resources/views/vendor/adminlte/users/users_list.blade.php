@@ -13,6 +13,7 @@ Games
                 <div class="box-header with-border">
                     <h3 class="box-title">List of users</h3>
                     <span class="pull-right">
+                        Total Teams : {{$team_count}}
                         Total users: {{$users_list->total()}}
                     </span>
                 </div>

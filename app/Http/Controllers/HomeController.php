@@ -30,7 +30,7 @@ class HomeController extends Controller
 {
     public function __construct()
     {
- // $player=\App\Player::where('id',1)->with()->get();
+
 
     }
 

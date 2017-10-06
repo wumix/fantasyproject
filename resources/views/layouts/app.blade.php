@@ -13,10 +13,10 @@
     <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
-     {!! Html::style('assets-new/css/google-fonts.css') !!}
-    {!! Html::style('assets-new/css/google-fonts1.css') !!}
-    {!! Html::style('assets-new/vendor/bootstrap/css/bootstrap.min.css') !!}
-    {!! Html::style('bootstrap-modal-extend/css/bootstrap-modal.css') !!}
+     {!! Html::style('assets-new/css/google-fonts.css', array('async' => 'async')) !!}
+    {!! Html::style('assets-new/css/google-fonts1.css', array('async' => 'async')) !!}
+    {!! Html::style('assets-new/vendor/bootstrap/css/bootstrap.min.css', array('async' => 'async')) !!}
+    {!! Html::style('bootstrap-modal-extend/css/bootstrap-modal.css', array('async' => 'async')) !!}
 
     {!! Html::style('assets-new/css/bootstrap-tour.css') !!}
     {!! Html::style('assets-new/css/jquery.mCustomScrollbar.css') !!}
@@ -25,8 +25,8 @@
 
     {!! Html::style('js/toaster/jquery.toast.css') !!}
     {!! Html::style('js/colorbox-master/example1/colorbox.css') !!}
-    {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}
-    {!! Html::style('assets-new/vendor/magnific-popup/magnific-popup.css') !!}
+    {!! Html::style('assets-new/vendor/basic-table/basictable.css', array('async' => 'async')) !!}
+    {!! Html::style('assets-new/vendor/magnific-popup/magnific-popup.css', array('async' => 'async')) !!}
     {!! Html::style('assets/css/slicknav.css', array('async' => 'async')) !!}
     {!! Html::style('assets-new/css/creative.css') !!}
     {!! Html::style('assets-new/css/style.css') !!}

@@ -30,7 +30,9 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-    $player=\App\Player::where('id',1)->with('player_stats_details')->get()->toArray();
+    $player=\App\Player::where('id',1)->with(['player_stats_details'=>function($q){
+        $q->groupBy('name');
+    }])->get()->toArray();
     dd($player);
 
     }

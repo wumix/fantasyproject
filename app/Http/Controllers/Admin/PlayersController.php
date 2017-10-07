@@ -71,7 +71,7 @@ class PlayersController extends Controller
 
         }
         $objplayer->save();
-
+        $objplayer->cricapi_pid=Input::get('cricapi_pid');
         $lastInsertId = $objplayer->id;
         $objPlayer = \App\Player::find($lastInsertId);
         $objPlayer->player_roles()->sync(array_filter(Input::get('player_roles')));

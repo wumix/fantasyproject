@@ -22,6 +22,12 @@ Games
                                placeholder="Enter Player Name" type="text" name="name">
                     </div>
                     <div class="form-group">
+                        <label>Cric Api ID</label>
+                        <input
+                                class="form-control" name="cricapi_pid" value=""
+                                type="text" placeholder="Enter Cric Api ID"/>
+                    </div>
+                    <div class="form-group">
                         <label>Select Player Game</label>
                         <select id="game_id" name="game_id" class="custom-select form-control">
                             <option value="">Select</option>

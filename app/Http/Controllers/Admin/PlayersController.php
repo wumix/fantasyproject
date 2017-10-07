@@ -107,7 +107,7 @@ class PlayersController extends Controller
         $player = \App\Player::find(Input::get('player_id'));
         $player->name = Input::get('player_name');
         $player->game_id = Input::get('game_id');
-
+         $player->cricapi_pid=Input::get('cricapi_pid');
         if (Input::hasFile('profile_pic')) {
             $files = uploadInputs(Input::file('profile_pic'), 'profile_pics');
             $player->profile_pic = $files;

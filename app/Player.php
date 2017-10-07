@@ -9,7 +9,7 @@ class Player extends Model
 
     protected $table = 'players';
     protected $fillable = [
-        'name', 'game_id', 'profile_pic', 'created_at', 'updated_at'
+        'name', 'game_id','cricapi_pid' ,'profile_pic', 'created_at', 'updated_at'
     ];
 
     public function player_games()

@@ -28,16 +28,173 @@ use Validator;
  */
 class HomeController extends Controller
 {
+    public function index()
+    {
+        $this->match_player_score(1075503);
+//        $t= \App\Player::where('id',1)->with('player_stats_details')->get()->toArray();
+//        $this->addPlayerStats(253802);
+
+//        $client = new \GuzzleHttp\Client();
+//        $res = $client->request('GET', 'http://cricapi.com/api/fantasySquad',[
+//            'query' => ['apikey' => 'g1H4mzNEa3eXUX6kFqztImtKeQL2','unique_id'=>'1034809']
+//        ]);
+//        $body=$res->getBody();
+//        $result=\GuzzleHttp\json_decode($body->getContents());
+//        $res = $result;
+//        $players=\App\Player::get()->toArray();
+//        $players = array_column($players, 'cricapi_pid');
+//
+//        foreach($res->squad as $r){
+//            foreach($r->players as $r){
+//               if(in_array($r->pid,$players)){
+//                   echo $r->pid." ".$r->name;
+//                }
+//
+//            }
+//        }
+//
+//        die;
+
+
+        $objTourmament = \App\Tournament::orderBy("start_date",
+            'asc')->
+        Where('end_date', '>=', getGmtTime())->get();
+        $data['tournaments_list'] = $objTourmament->where('is_active', 1)->toArray(); //list of active
+        $tournaments_data = [];
+        foreach ($data['tournaments_list'] as $key => $tournament) {
+            $data['tournaments_list'][$key] = $tournament;
+            $data['tournaments_list'][$key]['leaderboard'] = \App\Leaderboard::where('tournament_id', $tournament['id'])->where('score', '>', 0)->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
+            $data['tournaments_list'][$key]['nextmatch'] = \App\Match::getNextMatch($tournament['id']);
+        }
+
+
+        $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
+
+        $data['upcomming_tournaments_list'] = $upcommingTour->toArray(); //upcomming tournament of active
+        $data['news'] = \App\BlogPost::where('post_type', 'news')->take(3)->orderBy('id', 'DESC')->get()->toArray();
+
+        return view('home', $data);
+    }
+
     public function __construct()
     {
-    $player=\App\Player::where('id',1)->with(['player_stats_details'=>function($q){
-        $q->groupBy('name');
-    }])->get()->toArray();
-    dd($player);
+//    $player=\App\Player::where('id',1)->with(['player_stats_details'=>function($q){
+//        $q->get()->unique('name');
+//    }])->get()->toArray();
+//    debugArr($player);
+//    die;
 
     }
 
-    public function sendUserEmail(Request $request)
+    public function getIdOfTerm($game_terms, $word)
+    {
+
+
+        foreach ($game_terms as $key => $term) {
+
+
+            if ($term['name'] == $word) return $term['id'];
+        }
+
+
+    }
+
+    function insertPlayerData($game_terms, $player_id, $match_id, $score, $search_key)
+    {
+        $syncdata =
+            array(
+                'player_id' => $player_id,
+                'match_id' => $match_id,
+                'game_term_id' => $this->getIdOfTerm($game_terms, $search_key),
+                'player_term_count' => $score
+
+            );
+
+        return $syncdata;
+    }
+
+//$flight = App\Flight::updateOrCreate(
+//['departure' => 'Oakland', 'destination' => 'San Diego'],
+//['price' => 99]
+//);
+public function add_player($pid){
+    $api_key=config('const.cricapi_key');
+    $client = new \GuzzleHttp\Client();
+    $res = $client->request('GET', 'http://cricapi.com/api/playerStats',[
+        'query' => ['apikey' => $api_key,'pid'=>$pid]
+    ]);
+    $body=$res->getBody();
+    $result=\GuzzleHttp\json_decode($body->getContents());
+    $res =(array)$result;
+    //public\uploads\player_pictures\2017\03
+    $image=explode("/",$res['imageURL']);
+    $image=end($image);
+    file_put_contents('uploads/cricapi/'.$image, file_get_contents($res['imageURL']));
+
+    $player=new \App\Player;
+  $player->name=$res['fullName'];
+  $player->profile_pic='cricapi/'.$image;
+  $player->cricapi_pid=$pid;
+  $player->game_id=1;
+  $player->save();
+    $player=\App\Player::find($player->id);
+    $player->player_roles()->sync('7');
+}
+    public function match_player_score($cric_match_api = 1120285)
+    {
+        $match_id = \App\Match::where('cricapi_match_id', $cric_match_api)->first()->id;
+        $api_key = config('const.cricapi_key');
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', 'http://cricapi.com/api/fantasySummary', [
+            'query' => ['apikey' => config('const.cricapi_key'), 'unique_id' => $cric_match_api]
+        ]);
+        $body = $res->getBody();
+        $result = \GuzzleHttp\json_decode($body->getContents());
+        $res = (array)$result;
+       // dd($res['data']->batting[0]->scores);
+
+        $player_data=[];
+        $game_terms = \App\GameTerm::where('game_id', 1)->get()->toArray();
+        foreach ($res['data']->batting[0]->scores as $key => $player) {
+            $player=(array)$player;
+            $player_id = \App\Player::where('cricapi_pid', $player['pid'])->first();
+            if (empty($player_id)) {
+                $this->add_player($player['pid']);
+            } else {
+                $player_id = $player_id['id'];
+                $player_data[]=$this->insertPlayerData($game_terms, $player_id, $match_id, $player['SR'], 'SR');
+                $player_data[]=$this->insertPlayerData($game_terms, $player_id, $match_id, $player['6s'], '6s');
+                $player_data[]=$this->insertPlayerData($game_terms, $player_id, $match_id, $player['4s'], '4s');
+                $player_data[]=$this->insertPlayerData($game_terms, $player_id, $match_id, $player['R'], 'R');
+                $player_data[]=$this->insertPlayerData($game_terms, $player_id, $match_id, $player['R'], 'Runs');
+            }
+            \App\MatchPlayerScore::insert($player_data);
+            $player_data=[];
+
+
+        }
+        foreach ($res['data']->bowling[0]->scores as $key => $player) {
+            $player=(array)$player;
+            $player_id = \App\Player::where('cricapi_pid', $player['pid'])->first();
+            if (empty($player_id)) {
+
+            } else {
+                $player_id = $player_id['id'];
+                $player_data[]=$this->insertPlayerData($game_terms, $player_id, $match_id, $player['W'], 'W');
+                $player_data[]=$this->insertPlayerData($game_terms, $player_id, $match_id, $player['Econ'], 'Econ');
+
+            }
+            \App\MatchPlayerScore::insert($player_data);
+            $player_data=[];
+
+
+        }
+
+
+die;
+    }
+
+    public  function sendUserEmail(Request $request)
     {
         $email = $request->user_email;
         $refferal_key = URL::to('/') . "/signup/?referral_key=" . \Auth::user()->referral_key;
@@ -48,7 +205,7 @@ class HomeController extends Controller
     }
 
 
-    public function scorecard(Request $request, $id, $tournament_id)
+    public  function scorecard(Request $request, $id, $tournament_id)
     {
         $data['tournament_id'] = $tournament_id;
         $data['match'] = \App\Match::where('id', $id)->with(
@@ -64,7 +221,7 @@ class HomeController extends Controller
                 }, 'match_players.player_actual_teams' => function ($query) use ($tournament_id) {
                 $query->where('tournament_id', $tournament_id);
             }, 'match_players.player_roles' => function ($role) {
-                $role->orderBy('game_role_id','ASC');
+                $role->orderBy('game_role_id', 'ASC');
             }
             ])
             ->first()->toArray();
@@ -74,7 +231,7 @@ class HomeController extends Controller
         }
         $data['team_name'] = strtoupper($team_name);
         // dd($team_name);
-       // dd($data['match']['match_players'][0]);
+        // dd($data['match']['match_players'][0]);
         return view('user.team_detail1', $data);
 
     }
@@ -85,14 +242,16 @@ class HomeController extends Controller
      * @return void
      */
 
-    public function test()
+    public
+    function test()
     {
         dd('test');
         // return view('user.team_detail1');
 
     }
 
-    public function newdash()
+    public
+    function newdash()
     {
 
         $data['user_teams'] = \App\UserTeam::where('user_id', \Auth::id())
@@ -139,33 +298,35 @@ class HomeController extends Controller
         return $this->timestamp;
     }
 
-  public function addPlayerStats($pid){
+    public
+    function addPlayerStats($pid)
+    {
 
-      $api_key=config('const.cricapi_key');
-      $client = new \GuzzleHttp\Client();
-      $res = $client->request('GET', 'http://cricapi.com/api/playerStats',[
-          'query' => ['apikey' => $api_key,'pid'=>$pid]
-      ]);
-      $body=$res->getBody();
-      $result=\GuzzleHttp\json_decode($body->getContents());
-      $res =(array)$result;
-      $syncdata = [];
-      $player_id=\App\Player::where('cricapi_pid',$pid)->first()->id;
-      \App\PlayerStatistics::where('player_id', $player_id)->delete();
-      foreach($res['data'] as $fkey=>$batbowl){
-          foreach ($batbowl as $skey=>$gameforamt){
-          //skey gives us formats key i.e listA,T20i,Batting bowling
-              //fkey gives us batting blowling
-           $format_id=\App\Format::where('name',$skey)->first()->id;
-           $playing_cat_id= \App\PlayingCategory::where('name',$fkey)->first()->id;
-           foreach($gameforamt as $tkey=>$types){
-               echo $types.'<br>';
-               //type tell weather its 50 twty of etc
+        $api_key = config('const.cricapi_key');
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', 'http://cricapi.com/api/playerStats', [
+            'query' => ['apikey' => $api_key, 'pid' => $pid]
+        ]);
+        $body = $res->getBody();
+        $result = \GuzzleHttp\json_decode($body->getContents());
+        $res = (array)$result;
+        $syncdata = [];
+        $player_id = \App\Player::where('cricapi_pid', $pid)->first()->id;
+        \App\PlayerStatistics::where('player_id', $player_id)->delete();
+        foreach ($res['data'] as $fkey => $batbowl) {
+            foreach ($batbowl as $skey => $gameforamt) {
+                //skey gives us formats key i.e listA,T20i,Batting bowling
+                //fkey gives us batting blowling
+                $format_id = \App\Format::where('name', $skey)->first()->id;
+                $playing_cat_id = \App\PlayingCategory::where('name', $fkey)->first()->id;
+                foreach ($gameforamt as $tkey => $types) {
+                    echo $types . '<br>';
+                    //type tell weather its 50 twty of etc
 
-               $type_id=\App\Type::where('name',$tkey)->first()->id. ' '.$types.'<br>';
+                    $type_id = \App\Type::where('name', $tkey)->first()->id . ' ' . $types . '<br>';
 
 
-              // echo $tkey=.' '.$types;
+                    // echo $tkey=.' '.$types;
 //               $syncdata = array(
 //                   array(
 //                       'player_id' =>$player_id,
@@ -181,13 +342,12 @@ class HomeController extends Controller
 //               \App\PlayerStatDetail::insert($syncdata);
 
 
-           }
+                }
 
 
-
-          }
-      }
-      die;
+            }
+        }
+        die;
 //      $syncdata = [];
 //      foreach ($request->stats as $key => $val) {
 //          $syncdata = array(
@@ -196,55 +356,11 @@ class HomeController extends Controller
 //
 //          );
 
-}
-    public function index()
-    {
-//        $t= \App\Player::where('id',1)->with('player_stats_details')->get()->toArray();
-//        $this->addPlayerStats(253802);
-
-//        $client = new \GuzzleHttp\Client();
-//        $res = $client->request('GET', 'http://cricapi.com/api/fantasySquad',[
-//            'query' => ['apikey' => 'g1H4mzNEa3eXUX6kFqztImtKeQL2','unique_id'=>'1034809']
-//        ]);
-//        $body=$res->getBody();
-//        $result=\GuzzleHttp\json_decode($body->getContents());
-//        $res = $result;
-//        $players=\App\Player::get()->toArray();
-//        $players = array_column($players, 'cricapi_pid');
-//
-//        foreach($res->squad as $r){
-//            foreach($r->players as $r){
-//               if(in_array($r->pid,$players)){
-//                   echo $r->pid." ".$r->name;
-//                }
-//
-//            }
-//        }
-//
-//        die;
-
-
-        $objTourmament = \App\Tournament::orderBy("start_date",
-            'asc')->
-        Where('end_date', '>=', getGmtTime())->get();
-        $data['tournaments_list'] = $objTourmament->where('is_active', 1)->toArray(); //list of active
-        $tournaments_data = [];
-        foreach ($data['tournaments_list'] as $key => $tournament) {
-            $data['tournaments_list'][$key] = $tournament;
-            $data['tournaments_list'][$key]['leaderboard'] = \App\Leaderboard::where('tournament_id', $tournament['id'])->where('score', '>', 0)->with('user', 'user_team')->take(3)->orderBy('score', 'DESC')->get()->toArray();
-            $data['tournaments_list'][$key]['nextmatch'] = \App\Match::getNextMatch($tournament['id']);
-        }
-
-
-        $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
-
-        $data['upcomming_tournaments_list'] = $upcommingTour->toArray(); //upcomming tournament of active
-        $data['news'] = \App\BlogPost::where('post_type', 'news')->take(3)->orderBy('id', 'DESC')->get()->toArray();
-
-        return view('home', $data);
     }
 
-    public function leaderboard($tournament_id)
+
+    public
+    function leaderboard($tournament_id)
     {
         $data['leaders'] = \App\Leaderboard::where('tournament_id', $tournament_id)->with('user', 'user_team')->where('score', '>', 0)->take(20)->
         orderBy('score', 'DESC')->get()->toArray();
@@ -267,7 +383,8 @@ class HomeController extends Controller
     }
 
 
-    public function fixturesDetial($tournament_id)
+    public
+    function fixturesDetial($tournament_id)
     {
         $data['fixture_details'] = \App\Tournament::where('slug', $tournament_id)->with(['tournament_matches' => function ($query) {
             $query->orderBy('start_date', 'asc');
@@ -278,24 +395,28 @@ class HomeController extends Controller
 
     }
 
-    public function contactPage()
+    public
+    function contactPage()
     {
         return view('pages.contact');
     }
 
 
-    public function upcommingTournamnets()
+    public
+    function upcommingTournamnets()
     {
         return view('pages.upccoming_tournaments');
     }
 
 
-    public function championTrophy()
+    public
+    function championTrophy()
     {
         return view('pages.fixtures_c_trophy');
     }
 
-    public function rankings()
+    public
+    function rankings()
     {
 //        $stats = \App\Game::where('id', '1')
 //            ->with('game_roles', 'game_type.game_type_points.player_roles')->get()->toArray();
@@ -310,7 +431,8 @@ class HomeController extends Controller
         return view('pages.rankings', $data);
     }
 
-    public function postContact(Request $request)
+    public
+    function postContact(Request $request)
     {
         $this->validatorContact($request->all())->validate();
         $emailRecievers = [
@@ -336,7 +458,8 @@ class HomeController extends Controller
      * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validatorContact(array $data)
+    protected
+    function validatorContact(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
@@ -346,22 +469,27 @@ class HomeController extends Controller
         ]);
     }
 
-    public function termsCon()
+    public
+    function termsCon()
     {
         return view('pages.t-c');
     }
 
-    public function privacyPolicy()
+    public
+    function privacyPolicy()
     {
         return view('pages.p-p');
     }
-    public function aboutUs()
+
+    public
+    function aboutUs()
     {
         return view('pages.about_us');
     }
 
 
-    public function howPlay()
+    public
+    function howPlay()
     {
 
 
@@ -378,7 +506,8 @@ class HomeController extends Controller
         return view('pages.how-to-play', $data);
     }
 
-    public function searchUser(Request $request)
+    public
+    function searchUser(Request $request)
     {
         $searchParam = $request->get('searchParam');
         if (strlen($searchParam) > 2) {

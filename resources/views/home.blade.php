@@ -186,7 +186,7 @@ Cricket app">
         <section class="bg-primary" id="about">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-2">
+                    <div class="col-lg-12">
                         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                         <ins class="adsbygoogle"
                              style="display:block; text-align:center;"
@@ -197,7 +197,6 @@ Cricket app">
                         <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                         </script>
-
                     </div>
                     <div class="col-lg-7 text-center">
                         <h1 class="section-heading">

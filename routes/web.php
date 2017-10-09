@@ -74,60 +74,60 @@ Route::group(['middleware' => ['web']], function () {
 
     });
     Route::group(['middleware' => ['is_user']], function () {
-      // Route::group(['middleware' => ['membership']], function () {
-            //Route::get('/test', 'HomeController@test')->name('test');
-            Route::group(['prefix' => 'payments'], function () {
-                Route::get('/', 'PaymentController@index')->name('paymentdetails');
-            });
-            Route::group(['prefix' => 'membership'], function () {
-                Route::get('/', 'MembershipController@index')->name('membershiphome');
-                Route::post('/subscribe/{id}', 'MembershipController@subscribeMembership')->name('subscribeMembership');
+        // Route::group(['middleware' => ['membership']], function () {
+        //Route::get('/test', 'HomeController@test')->name('test');
+        Route::group(['prefix' => 'payments'], function () {
+            Route::get('/', 'PaymentController@index')->name('paymentdetails');
+        });
+        Route::group(['prefix' => 'membership'], function () {
+            Route::get('/', 'MembershipController@index')->name('membershiphome');
+            Route::post('/subscribe/{id}', 'MembershipController@subscribeMembership')->name('subscribeMembership');
 
-                Route::get('membership-popup', 'MembershipController@subscribeMembership')->name('showMemberPopup');
-            });
-            Route::group(['prefix' => 'user'], function () {
-                Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
-                Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
-                Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');
-                Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
-                Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('postUserProfile');
-                Route::any('/team-detail/', 'DashboardController@teamDetail')->name('teamdetail');
-                Route::post('/send-user-email', 'HomeController@sendUserEmail')->name('sendUserEmail');
-                Route::post('find', 'HomeController@searchUser')->name('searchUserParams');
-            });
+            Route::get('membership-popup', 'MembershipController@subscribeMembership')->name('showMemberPopup');
+        });
+        Route::group(['prefix' => 'user'], function () {
+            Route::get('/addcomment', 'BlogController@addcommentajax')->name('addcommentajax');
+            Route::get('/userdashboard', 'DashboardController@index')->name('userdashboard');
+            Route::get('/teamhome', 'DashboardController@teamHome')->name('teamHome');
+            Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
+            Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('postUserProfile');
+            Route::any('/team-detail/', 'DashboardController@teamDetail')->name('teamdetail');
+            Route::post('/send-user-email', 'HomeController@sendUserEmail')->name('sendUserEmail');
+            Route::post('find', 'HomeController@searchUser')->name('searchUserParams');
+        });
 
 
-            Route::group(['prefix' => 'challenge'], function () {
-                Route::get('/confirm/{challenge_id}', 'User\ChallengeController@confirmChallengeTeam')->name('confirmChallengeTeam');
-                Route::post('/team-roles', 'User\ChallengeController@getTeamRoles')->name('getTeamRoles');
-                Route::post('/player/delete', 'User\ChallengeController@deletePlayerTochallengeTeam')->name('deletePlayerTochallengeTeam');
-                Route::post('/player/add', 'User\ChallengeController@addPlayerTochallengeTeam')->name('addPlayerTochallengeTeam');
-                Route::get('/add/{match_id}/{challenge_id}', 'User\ChallengeController@addChallengeTeam')->name('addChallengeTeam');
-                Route::get('/list', 'DashboardController@listChalllenges')->name('listChalllenges');
-              //  Route::get('/', 'User\ChallengeController@show')->name('challenges');
-                Route::get('/', 'User\ChallengeController@index')->name('challenges');
-                Route::get('/check-winner/{id}', 'User\ChallengeController@checkWinner')->name('adasd');
-                Route::post('/send-challenge', 'User\ChallengeController@sendChallenge')->name('sendchallenge');
-                Route::get('/accept-challenge/{challenge_id}/{match_id}', 'User\ChallengeController@acceptChallenge')->name('accept_challenge');
-                Route::get('/show-challenge/{id}', 'User\ChallengeController@showUserChallenges')->name('accept');
-            });
-            Route::group(['prefix' => 'tournaments'], function () {
-                Route::get('tournament_matches', 'User\TournamentsController@tournamentMatches')->name('tournamentmatches');
-                Route::get('/addteamname/{tournament_id}', 'User\TournamentsController@addTeam')->name('addTeam');
-                Route::get('add-players/{team_id}/{tournament_id}', 'User\TournamentsController@playTournament')->name('addPlayers');
-                Route::get('/addteam', 'User\TournamentsController@teamNamePostAjax')->name('teamNamePostAjax');
-                Route::post('/addplayerajax', 'User\TournamentsController@addUserPlayer')->name('addUserTeamPlayerAjax');
-                Route::post('/transferplayerajax', 'User\TournamentsController@transferPlayerPost')->name('transferPlayerAjax');
-                Route::post('/deleteplayerajax', 'User\TournamentsController@deletePlayerPost')->name('deletePlayerAjax');
-                Route::get('/transfer/{team_id}/{player_id}/{tournament_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
-                Route::get('/congrats/{team_id}', 'User\TournamentsController@sucessteam')->name('team-completed');
-            });
-            Route::group(['prefix' => 'dashboard'], function () {
-                Route::get('/userdashboard', 'DashboardController@index')->name('UserDashboard');
-                Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
-                Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('userProfileEdit');
-            });
-    //    }); //end membership middleware
+        Route::group(['prefix' => 'challenge'], function () {
+            Route::get('/confirm/{challenge_id}', 'User\ChallengeController@confirmChallengeTeam')->name('confirmChallengeTeam');
+            Route::post('/team-roles', 'User\ChallengeController@getTeamRoles')->name('getTeamRoles');
+            Route::post('/player/delete', 'User\ChallengeController@deletePlayerTochallengeTeam')->name('deletePlayerTochallengeTeam');
+            Route::post('/player/add', 'User\ChallengeController@addPlayerTochallengeTeam')->name('addPlayerTochallengeTeam');
+            Route::get('/add/{match_id}/{challenge_id}', 'User\ChallengeController@addChallengeTeam')->name('addChallengeTeam');
+            Route::get('/list', 'DashboardController@listChalllenges')->name('listChalllenges');
+            //  Route::get('/', 'User\ChallengeController@show')->name('challenges');
+            Route::get('/', 'User\ChallengeController@index')->name('challenges');
+            Route::get('/check-winner/{id}', 'User\ChallengeController@checkWinner')->name('adasd');
+            Route::post('/send-challenge', 'User\ChallengeController@sendChallenge')->name('sendchallenge');
+            Route::get('/accept-challenge/{challenge_id}/{match_id}', 'User\ChallengeController@acceptChallenge')->name('accept_challenge');
+            Route::get('/show-challenge/{id}', 'User\ChallengeController@showUserChallenges')->name('accept');
+        });
+        Route::group(['prefix' => 'tournaments'], function () {
+            Route::get('tournament_matches', 'User\TournamentsController@tournamentMatches')->name('tournamentmatches');
+            Route::get('/addteamname/{tournament_id}', 'User\TournamentsController@addTeam')->name('addTeam');
+            Route::get('add-players/{team_id}/{tournament_id}', 'User\TournamentsController@playTournament')->name('addPlayers');
+            Route::get('/addteam', 'User\TournamentsController@teamNamePostAjax')->name('teamNamePostAjax');
+            Route::post('/addplayerajax', 'User\TournamentsController@addUserPlayer')->name('addUserTeamPlayerAjax');
+            Route::post('/transferplayerajax', 'User\TournamentsController@transferPlayerPost')->name('transferPlayerAjax');
+            Route::post('/deleteplayerajax', 'User\TournamentsController@deletePlayerPost')->name('deletePlayerAjax');
+            Route::get('/transfer/{team_id}/{player_id}/{tournament_id}', 'User\TournamentsController@transferPlayer')->name('transferplayer');
+            Route::get('/congrats/{team_id}', 'User\TournamentsController@sucessteam')->name('team-completed');
+        });
+        Route::group(['prefix' => 'dashboard'], function () {
+            Route::get('/userdashboard', 'DashboardController@index')->name('UserDashboard');
+            Route::get('/edit-profile', 'DashboardController@editProfileform')->name('userProfileEdit');
+            Route::post('/edit-profile', 'DashboardController@postEditProfile')->name('userProfileEdit');
+        });
+        //    }); //end membership middleware
     }); // end user middleware
 
 
@@ -202,7 +202,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::get('/edit-stat/{player_id}', 'Admin\StatsController@editPlayerStatForm')->name('editPlayerStats');
             Route::post('/edit-stat/{player_id}', 'Admin\StatsController@editPlayerStats')->name('postPlayerEditStats');
         });
-       
+
         Route::group(['prefix' => 'games'], function () {
             Route::get('/', 'Admin\GamesController@index')->name('gameslist');
             Route::get('/add', 'Admin\GamesController@showAddView')->name('addGame'); //showsaddgameform
@@ -275,6 +275,13 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::post('/add-match-players/{match_id}', 'Admin\MatchesController@postAddMatchPlayers')->name('postAddMatchPlayers');
             Route::get('/addTeamtoMatch/{match_id}/{tournament_id}', 'Admin\MatchesController@addTeamToMatchForm')->name('addTeamToMatch');
             Route::post('/addTeamtoMatch/{match_id}/{tournament_id}', 'Admin\MatchesController@addTeamToMatchPost')->name('addTeamToMatchPost');
+            Route::get('/update-score/{match_id}', function ($match_id) {
+
+                $exitCode = Artisan::call('updatescore', [
+                    'match_id' => $match_id
+                ]);
+            })->name('updatescoring');
+
         });
 //Userroutes
         Route::group(['prefix' => 'user'], function () {

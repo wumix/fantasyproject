@@ -22,6 +22,11 @@ Games
                                placeholder="Enter Match Name" type="text" name="name">
                     </div>
                     <div class="form-group">
+                        <label>CriApi match ID </label>
+                        <input  required class="form-control" name="cricapi_match_id" value="{{$match['cricapi_match_id']}}" type="text"
+                                placeholder="Enter Cric Api match id"/>
+                    </div>
+                    <div class="form-group">
                         <label>Select Match Tournament</label>
                         <select id="tournament_id" name="tournament_id" class="custom-select form-control">
                             <option value="">Select</option>

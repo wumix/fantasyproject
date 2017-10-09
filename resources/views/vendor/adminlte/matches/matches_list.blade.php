@@ -54,6 +54,11 @@
                                     <a href="{{route('calculateMatchChallenges', ['match_id'=>$row['id'],'tournament_id'=>$tournamentId])}}" class="btn btn-success">
                                         Calculate challenges
                                     </a>
+                                    @if($row['cricapi_match_id']!=0)
+                                    <a href="{{route('updatescoring', ['match_id'=>$row['cricapi_match_id']])}}" class="btn btn-success">
+                                        Update Score
+                                    </a>
+                                    @endif
                                     <!--                                    <a href="#" class="btn btn-danger">
                                                                             <i class="fa fa-times"></i> Delete
                                                                         </a>-->

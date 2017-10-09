@@ -30,6 +30,11 @@
                                         placeholder=""/>
                             </div>
                             <div class="form-group">
+                                <label>CriApi match ID </label>
+                                <input  class="form-control" name="cricapi_match_id" value="{{$match['cricapi_match_id']}}" type="text"
+                                        placeholder=""/>
+                            </div>
+                            <div class="form-group">
                                 <label>Change Tournament</label>
                                 <select id="tournament_id" name="tournament_id" class="custom-select form-control">
                                     <option value="">Select</option>

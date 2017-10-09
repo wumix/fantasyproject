@@ -186,7 +186,7 @@ Cricket app">
         <section class="bg-primary" id="about">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-2">
                         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                         <ins class="adsbygoogle"
                              style="display:block; text-align:center;"

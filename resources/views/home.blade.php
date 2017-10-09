@@ -20,13 +20,63 @@ Cricket app">
 
 
     <style>
-        .refer_friend_wrapper{
+        .refer_friend_wrapper {
             position: relative;
         }
-        .refer_friend_wrapper img{
+
+        .refer_friend_wrapper img {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
+        }
+
+        .itemsz {
+            background: none;
+            border-radius: 10px;
+            border: 6px solid #92b713;
+            overflow: hidden;
+        }
+
+        .itemsz .gami_blog_thumb{
+
+        }
+        .itemsz .gami_blog_thumb{
+
+        }
+        .itemsz .gami_blog_desc h4{
+            margin: 5px 0 10px;
+        }
+        .itemsz .gami_blog_desc h4 .home-news-headings{
+            font-size: 16px;
+        }
+        .itemsz .gami_blog_desc .gami_news_btn{
+            display: inline-block;
+            background: #92b713;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 2px solid #92b713;
+            text-decoration: none !important;
+        }
+        .itemsz .gami_blog_desc .gami_news_btn:hover{
+            background: none;
+            color: #92b713;
+        }
+
+        .owl-carousel .owl-nav.disabled {
+            display: block !important;
+        }
+
+        .owl-theme .owl-nav [class*=owl-]{
+            background: #92b713;
+            border: 2px solid #92b713;
+            font-size: 17px;
+            margin: 5px;
+            padding: 3px 20px;
+        }
+        .owl-theme .owl-nav [class*=owl-]:hover{
+            color: #92b713;
+            background: none;
         }
     </style>
 
@@ -305,16 +355,16 @@ Cricket app">
     @endif
 
     @if(!empty($news))
-        <section class="bg-primary" style="padding-bottom: 20px;">
+        <section class="bg-primary" style="padding-top: 20px; padding-bottom: 20px;">
             <div class="container">
-                <div class="">
+                <div class="owl-carousel owl-theme">
                     <!-- start news -->
 
                     @foreach($news as $key=>$val)
 
-                        <div class="col-md-4 itemsz " style="margin: 15px 0 15px 0;  padding: 15px;">
+                        <div class="itemsz item" style="padding: 0; background: #fff;">
                             <div class="media newscolor">
-                                <div class="media-left">
+                                <div class="gami_blog_thumb col-md-5" style="padding: 0;">
                                     <a href="{{route('newsdetail',['id'=>$val['slug']])}}">
                                         <?php $arr = explode('/', $val['image']); ?>
 
@@ -323,7 +373,7 @@ Cricket app">
                                                  src="/uploads/source/thumb{{end($arr)}}" alt="{{end($arr)}}">
                                         @else
                                             <img class="media-object"
-                                                 src="/uploads/source/defualt-img.jpg" alt="{{end($arr)}}">
+                                                 src="/uploads/source/default-img.jpg" alt="{{end($arr)}}" height="160">
 
                                         @endif
 
@@ -331,7 +381,7 @@ Cricket app">
 
 
                                 </div>
-                                <div class="media-body">
+                                <div class="gami_blog_desc col-md-7">
                                     <h4 class="media-heading mediah">
                                         <a class="home-news-headings"
                                            href="{{route('newsdetail',['id'=>$val['slug']])}}">
@@ -339,12 +389,11 @@ Cricket app">
                                         </a>
                                     </h4>
 
-                                    <span style="font-size: 12px; min-height:85px;display:block">
-                       {!! substr($val['description'],0, 115) !!}...
-                            <br>
-
-    </span>
-                                    <a href="{{route('newsdetail',['id'=>$val['slug']])}}">Read More</a>
+                                    <span style="font-size: 13px;min-height:55px;display:block;margin-bottom: 10px;">
+                                        {!! substr($val['description'],0, 71) !!}...
+                                        <br>
+                                    </span>
+                                    <a href="{{route('newsdetail',['id'=>$val['slug']])}}" class="gami_news_btn">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -670,6 +719,28 @@ Cricket app">
                                 event.strftime('%S')
                             );
                         });
+
+
+                    // Qwl Carousel JS
+                    $('.owl-carousel').owlCarousel({
+                        loop:true,
+                        margin:15,
+                        nav:true,
+                        navText: ["<i class='fa fa-arrow-left'></i>","<i class='fa fa-arrow-right'></i>"],
+                        responsive:{
+                            0:{
+                                items:1
+                            },
+                            600:{
+                                items:3
+                            },
+                            1000:{
+                                items:3
+                            }
+                        }
+                    });
+
+
                 </script>
                 <?php $i = $i + 4?>
             @endif
@@ -690,7 +761,7 @@ Cricket app">
             {url: '{{URL::to('assets-new/img/2342342.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/12238967.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/india-vs-australia.jpg')}}', fade: 500},
-            
+
 
 
         ]);

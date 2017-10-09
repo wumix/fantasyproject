@@ -89,7 +89,7 @@ class getmatchplayers extends Command
     }
     public function handle()
     {
-        $t= \App\Player::where('id',1)->with('player_stats_details')->get()->toArray();
+
         $this->addPlayerStats(253802);
 
 

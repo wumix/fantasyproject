@@ -161,18 +161,18 @@
             display: inline-block;
             background: #fff;
             box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
-            padding: 22px 10px 0px 10px;
+            padding: 15px 10px 0px 10px;
         }
 
         .trophies {
             width: 100%;
             display: inline-block;
-
-            font-size: 15px;
+            font-size: 21px;
             color: #030303;
-            text-transform: uppercase;
+            text-transform: capitalize;
             border-bottom: 1px solid #b7b7b7;
-            padding-bottom: 25px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #92b713;
         }
 
         .plyer_one {
@@ -289,6 +289,7 @@
                     <span class="text_abot_me">
                         A Little about me
                     </span>
+
                         <p class="parah_abot">
                             @if(empty($userprofileinfo['about_me']))
                                 Nothing About You yet
@@ -319,8 +320,9 @@
 
                         <div class="col-lg-12">
                             <span class="text_abot_me text-center">
-                         Share and win 5000 points
-                    </span>
+                                 Share and win 500 points
+                            </span>
+
                             <div class="input-group">
                                 <input type="text"
                                        value="{{ URL::to('/')}}/signup/?referral_key={{$userprofileinfo['referral_key']}}"
@@ -330,9 +332,10 @@
                                        id="ref_link"
                                 >
                                 <span class="input-group-btn">
-        <button class="btn btn-secondary js-textareacopybtn" data-clipboard-target="#ref_link"
-                type="button">Copy referral code</button>
-      </span>
+                                    <button class="btn btn-secondary js-textareacopybtn" data-clipboard-target="#ref_link"
+                                            type="button">Copy referral code
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -378,7 +381,8 @@
                                             Reward: <span id="game_lame">{{$row['rewards']}}</span>
                                             <span id="game_lame">
 
-                                                <a class="btn btn-success" href="{{route('listChalllenges')}}">See All </a>
+                                                <a class="btn btn-success" href="{{route('listChalllenges')}}">See
+                                                    All </a>
 
                                         </span>
                                         </li>
@@ -406,7 +410,8 @@
                                         Reward: <span id="game_lame">{{$row['rewards']}}</span>
                                         <span id="game_lame">
 
-                                                <a class="btn btn-success" href="{{route('listChalllenges')}}">See All </a>
+                                                <a class="btn btn-success" href="{{route('listChalllenges')}}">See
+                                                    All </a>
                                         </span>
                                     </li>
 
@@ -417,9 +422,10 @@
 
                         </div>
                     @endif
-                    <div class="abot_me_sec" >
+                    <div class="abot_me_sec" style="display:none;">
 
                         <p class="text-center">
+
                         <div id="shareBtn" class="btn btn-success clearfix center">Invite Friends</div>
                         </p>
                         <p>
@@ -440,14 +446,17 @@
                             <a class="btn btn-success" href="{{route('membershiphome')}}">Change Membership Plan</a>
 
                         </p>
+
                         <p class="text-center">
                             <a class="btn btn-success" href="{{route('paymentdetails')}}">Payment History</a>
 
                         </p>
+
                         <p class="text-center">
                             <a class="btn btn-success" href="{{route('challenges')}}">Challenge</a>
 
                         </p>
+
                         <p class="text-center">
                             <a class="btn btn-success" href="{{route('listChalllenges')}}">See All Challenges</a>
 
@@ -472,7 +481,7 @@
 
                         </div>
                         <div class="col-md-6">
-                            <ul class="medal">
+                            <ul class="medal" style="padding: 0;">
                                 <li id="exp" class="<?php $user_ranking == 1 ? 'highlight-badge' : '' ?>">
                                     <img src={{URL::to('/img/gold-medal.png')}} alt=""/>
                                     <span>
@@ -496,51 +505,195 @@
                         </div>
                     </div>
 
-                    <div class="right_sec_second">
+                    <div class="col-md-6">
+                        <div class="right_sec_second">
 
-                        <div class="col-md-12">
-                            <div class="col-md-3">
-                            </div>
                             <div class="col-md-12">
-                                @if(empty($user_teams))
-                                    <div class="alert">
-                                        <p style="color: #F88509;">
-                                            You don't have any team yet.
-                                            <a class="btn btn-gamithon-default btn-success pull-right"
-                                               href="{{route('usertournamenthome')}}">
-                                                Press here to make your team to win prizes
-                                            </a>
-                                        </p>
-                                    </div>
-                                @else
-                                    <span class="trophies text-center">Your Teams</span>
-                                    {!! Form::open(['url' => route('teamdetail'),'method'=>'get']) !!}
-                                    <div class="form-group">
-                                        <select required id="team_id" style="width:100%;" name="team_id"
-                                                class="form-control dropdown-toggle col-md-12"
-                                                data-toggle="dropdown"
-                                                style="border:1px solid #9acc59; border-radius: 6px;">
-                                            <option value="">Please select your team</option>
-                                            @foreach($user_teams as $row)
-                                                <option id="dropdownbtn"
-                                                        value="{{$row['id']}}">{{$row['name']}}
-                                                    ( {{$row['teamtournament']['name']}} )
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="clear clearfix" style="margin-top:10px;"></div>
-                                    <div style="margin-top:10px;" class="form-group text-center">
-                                        <button class="btn btn-block btn-gamithon-default btn-success"
-                                                type="submit">
-                                            Go
-                                        </button>
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-12">
+                                    @if(empty($user_teams))
+                                        <div class="alert">
+                                            <p style="color: #F88509;">
+                                                You don't have any team yet.
+                                                <a class="btn btn-gamithon-default btn-success pull-right"
+                                                   href="{{route('usertournamenthome')}}">
+                                                    Press here to make your team to win prizes
+                                                </a>
+                                            </p>
+                                        </div>
+                                    @else
+                                        <span class="trophies text-center">Your Teams</span>
+                                        {!! Form::open(['url' => route('teamdetail'),'method'=>'get']) !!}
+                                        <div class="form-group">
+                                            <select required id="team_id" style="width:100%;" name="team_id"
+                                                    class="form-control dropdown-toggle col-md-12"
+                                                    data-toggle="dropdown"
+                                                    style="border:1px solid #9acc59; border-radius: 6px;">
+                                                <option value="">Please select your team</option>
+                                                @foreach($user_teams as $row)
+                                                    <option id="dropdownbtn"
+                                                            value="{{$row['id']}}">{{$row['name']}}
+                                                        ( {{$row['teamtournament']['name']}} )
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="clear clearfix" style="margin-top:10px;"></div>
+                                        <div style="margin-top:10px;" class="form-group text-center">
+                                            <button class="btn btn-block btn-gamithon-default btn-success"
+                                                    type="submit">
+                                                Go
+                                            </button>
+                                        </div>
+
+                                        </form>
+                                    @endif
+                                </div>
+                                <div class="col-md-3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="right_sec" style="padding: 15px 20px 20px;">
+                            <style>
+                                .rfral_code {
+                                    width: 100%;
+                                    display: inline-block;
+                                    background: #fff;
+                                    box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
+                                    padding: 20px 20px;
+                                    margin-bottom: 40px;
+                                }
+
+                                .new_form {
+                                    width: 100% !important;
+                                    border: 1px solid #92B713;
+                                    background: #000 !important;
+                                    border-radius: 10px;
+                                    color: #fff;
+                                    height: 42px;
+                                }
+
+                                .js-textareacopybtn {
+                                    padding: 11px;
+                                    width: 76px;
+                                    background: #92B713;
+                                    color: #fff;
+                                }
+
+                                .login_share_btns_wrapper a {
+                                    width: 150px;
+                                    font-weight: 600;
+                                    height: 36px;
+                                    font-size: 13px;
+                                    line-height: 25px;
+                                    vertical-align: top;
+                                }
+
+                                .login_share_btns_wrapper a:first-child {
+                                    color: #fff;
+                                    background: #3b5998;
+                                    margin-bottom: 15px;
+                                    margin-right: 15px;
+                                }
+
+                                .login_share_btns_wrapper a:first-child:hover {
+                                    background: #6d84b4 !important;
+                                    color: #fff !important;
+                                }
+
+                                .login_share_btns_wrapper a i {
+                                    display: inline-block;
+                                    font-size: 15px;
+                                    vertical-align: -1px;
+                                    margin-right: 7px;
+                                }
+                                .login_share_btns_wrapper a:hover {
+                                    color: #fff !important;
+                                }
+
+                                .login_share_btns_wrapper a:last-child i {
+                                    vertical-align: -1px;
+                                }
+
+                                #useremailform {
+                                    clear: both;
+                                    width: 100%;
+                                    margin: 0 auto;
+                                    /*background: #92B713;*/
+                                    background: #efefef;
+                                    padding: 10px 10px;
+                                    position: relative;
+                                }
+
+                                #useremailform .input-group input[type=email] {
+                                    box-shadow: none;
+                                    border: 1px solid #92B713;
+                                }
+
+                                #useremailform .input-group .input-group-btn input[type=submit] {
+                                    height: 34px !important;
+                                    background: #92B713 !important;
+                                    font-weight: 600 !important;
+                                }
+
+                                .btn-referel-send {
+                                    border-radius: 0;
+                                    height: 34px;
+                                }
+
+                                .input-group-addon {
+                                    border: none;
+                                    padding: 0;
+                                }
+                            </style>
+                            <h2 class="section-heading" style="margin-top: 0px;font-size: 21px; text-align: center">
+                                Share and get 500 points
+                                <hr class="light">
+                            </h2>
+                            <div class="row">
+                                <div class="col-md-12 login_share_btns_wrapper">
+
+                                    <a class="btn btn-default" href="javascript:void(0)" id="shareBtn">
+                                        <i class="fa fa-facebook-square"></i> facebook share
+                                    </a>
+
+
+                                    <a class="btn btn-primary" href="javascript:sendEmailtoUser()">
+                                        <i class="fa fa-envelope"></i> Share via email
+                                    </a>
+
+                                    <div id="useremailform" style="display: none;" class="form-group">
+                                        <!-- by defualt hidden -->
+                                        <form id="senduseremailform">
+                                            <input id="userrefferalcode"
+                                                   value="http://gamithon.dev/signup/?referral_key=eyJpdiI6IkxHaEtLQzViVk8zbUJlSUVKbzlrRnc9PSIsInZhbHVlIjoiOEhURGhXWnFoQXYxNEtJbnN0MUw5b1IwaFF4ZTNEUUxSY1hzR2VQbHBXaz0iLCJtYWMiOiI3OWY4ZTM1NWM2ZWRlODUyODBhOWRlMjhhMzVkODdhNjk3YjFlMzJkYmE2YWFmYmIxMTc1NWEzNWFmNmY2ZjZiIn0="
+                                                   type="hidden" class="form-control" placeholder="Enter Your Email">
+
+                                            <div class="input-group">
+                                                <input required="" id="userrefferalemail" type="email"
+                                                       class="form-control" placeholder="Enter email of your friend"
+                                                       style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;"
+                                                       autocomplete="off">
+                                                <span class="input-group-addon">
+                                                        <button class="btn btn-referel-send btn-primary"
+                                                                id="btnSendRefrelEmail" type="submit">
+                                                            Send
+                                                        </button>
+                                                    </span>
+                                            </div>
+
+                                        </form>
+
+                                        <div id="referelMsg" style="display: none; margin-top: 10px;" class="alert">
+
+                                        </div>
                                     </div>
 
-                                    </form>
-                                @endif
-                            </div>
-                            <div class="col-md-3">
+                                </div>
                             </div>
                         </div>
                     </div>

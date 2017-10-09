@@ -30,7 +30,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-
+        //return view('pages.player_stat');
 
         $objTourmament = \App\Tournament::orderBy("start_date",
             'asc')->
@@ -54,14 +54,40 @@ class HomeController extends Controller
 
     public function __construct()
     {
+        $t = \App\Player::where('id', 1)->with(
+            'player_stats_details')->first()->toArray();
+        $bowl = 0;
+        $bat = 0;
+        foreach ($t['player_stats_details'] as $key => &$val) {
+
+
+            if ($val['name'] == "bowling") {
+                if($bowl==0) {
+                    $bowl++;
+                }else{
+                    unset($t['player_stats_details'][$key]);
+                }
+            }
+
+
+            if ($val['name'] == "batting") {
+                if($bat==0) {
+                    $bat++;
+                }else{
+                    unset($t['player_stats_details'][$key]);
+                }
+            }
+
+
+        }
+return view('pages.player_stat');
+        dd($t['player_stats_details']);
 
 
     }
 
 
-
-
-    public  function sendUserEmail(Request $request)
+    public function sendUserEmail(Request $request)
     {
         $email = $request->user_email;
         $refferal_key = URL::to('/') . "/signup/?referral_key=" . \Auth::user()->referral_key;
@@ -72,7 +98,7 @@ class HomeController extends Controller
     }
 
 
-    public  function scorecard(Request $request, $id, $tournament_id)
+    public function scorecard(Request $request, $id, $tournament_id)
     {
         $data['tournament_id'] = $tournament_id;
         $data['match'] = \App\Match::where('id', $id)->with(

@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
-
 <head>
-
 
     <link rel="shortcut icon" href="../img/gamithon-fevi.ico" type="image/x-icon"/>
     <meta charset="utf-8">
-    @yield('meta-keywords')
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="fantasy Cricket
+Play Fantasy Cricket,
+IPL Fantasy League,
+PSL Fantasy League,
+CPL Fantasy League,
+Fantasy Cricket League,
+Cricket League,
+Cricket Fantasy League,
+Cricket Fantasy,
+Play Fantasy Cricket and Win Cash Daily,
+Cricket app">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @yield('facbook-og-tags')
     <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
-     {!! Html::style('assets-new/css/google-fonts.css', array('async' => 'async')) !!}
-    {!! Html::style('assets-new/css/google-fonts1.css', array('async' => 'async')) !!}
-    {!! Html::style('assets-new/vendor/bootstrap/css/bootstrap.min.css', array('async' => 'async')) !!}
-    {!! Html::style('bootstrap-modal-extend/css/bootstrap-modal.css', array('async' => 'async')) !!}
+    {!! Html::style('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!}
+    {!! Html::style('https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic') !!}
+
+    {!! Html::style('assets-new/vendor/bootstrap/css/bootstrap.min.css') !!}
+    {!! Html::style('bootstrap-modal-extend/css/bootstrap-modal.css') !!}
 
     {!! Html::style('assets-new/css/bootstrap-tour.css') !!}
     {!! Html::style('assets-new/css/jquery.mCustomScrollbar.css') !!}
@@ -25,12 +36,14 @@
 
     {!! Html::style('js/toaster/jquery.toast.css') !!}
     {!! Html::style('js/colorbox-master/example1/colorbox.css') !!}
-    {!! Html::style('assets-new/vendor/basic-table/basictable.css', array('async' => 'async')) !!}
-    {!! Html::style('assets-new/vendor/magnific-popup/magnific-popup.css', array('async' => 'async')) !!}
-    {!! Html::style('assets/css/slicknav.css', array('async' => 'async')) !!}
+    {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}
+    {!! Html::style('assets-new/vendor/magnific-popup/magnific-popup.css') !!}
+    {!! Html::style('assets/css/slicknav.css') !!}
     {!! Html::style('assets-new/css/creative.css') !!}
     {!! Html::style('assets-new/css/style.css') !!}
     {!! Html::style('assets-new/css/fixtures.css') !!}
+    {!! Html::style('assets-new/css/owl.carousel.min.css') !!}
+    {!! Html::style('assets-new/css/owl.theme.default.min.css') !!}
 
     @yield('css')
     <style>
@@ -41,6 +54,7 @@
             margin: 0 0 0 0;
 
         }
+
 
         .p0 {
             padding-left: 0;
@@ -88,6 +102,60 @@
             text-align: center;
             font-weight: 600;
         }
+
+
+        #header_fixtures_wrapper {
+            padding: 10px 0;
+            background: #efefef;
+        }
+        #header_fixtures_wrapper .fixture_wrapper{
+            font-family: 'Open Sans', Sans-Serif;
+            text-align: center;
+            padding: 10px 0;
+            border-right: 2px dotted #f7921e;
+        }
+        #header_fixtures_wrapper .fixture_wrapper:last-child{
+            border-right: none;
+        }
+        #header_fixtures_wrapper .fixture_wrapper .team_score{
+            width: 50px;
+        }
+        #header_fixtures_wrapper .fixture_wrapper .team_score,
+        #header_fixtures_wrapper .fixture_wrapper .teams_scores_wrapper > span{
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+        }
+        #header_fixtures_wrapper .fixture_wrapper .team_score_1{
+
+        }
+        #header_fixtures_wrapper .fixture_wrapper .team_score_2{
+
+        }
+        #header_fixtures_wrapper .fixture_wrapper .teams_scores_wrapper > span{
+            font-size: 20px;
+            font-weight: 600;
+            vertical-align: middle;
+            margin: 0 30px;
+        }
+        #header_fixtures_wrapper .fixture_wrapper .team_score span{
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #000;
+        }
+        #header_fixtures_wrapper .fixture_wrapper .team_score img{
+            margin-bottom: 5px;
+        }
+        #header_fixtures_wrapper .fixture_wrapper .teams_scores_wrapper .match_summary{
+            display: block;
+            text-align: center;
+            padding-top: 10px;
+            font-size: 14px;
+            color: #f7921e;
+            font-style: italic;
+        }
+
     </style>
 </head>
 
@@ -102,7 +170,7 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header main-top-menu">
                 <a class="navbar-brand logo-site page-scroll" href="/">
-                    <img src="{{URL::to('assets-new/img/gamithon-logo2.png')}}" style="width: 250px;"/>
+                    <img src="{{URL::to('assets-new/img/gamithon-logo1.png')}}" style="width: 250px;"/>
                 </a>
                 <div class="text-left" id="signhide" style="padding-left: 10px;">
                     @if(Auth::check())
@@ -185,6 +253,7 @@
                         </li>
 
 
+
                         <li class="has-menu">
                             <a class="page-scroll" href="{{route('showNews')}}">
                                 News
@@ -229,13 +298,13 @@
                         @endif
                         <li class="new-arrival has-menu">
                             <a href="{{route('challenges')}}" class="page-scroll">
-                                Challenge a player
+                                Challange a player
                             </a>
                             @if(Auth::check())
                                 <ul class="sub-menu">
                                     <li>
                                         <a class="page-scroll" href="{{route('listChalllenges')}}">
-                                            My Challenge
+                                            My Challanges
                                         </a>
                                     </li>
                                 </ul>
@@ -264,6 +333,93 @@
     <!-- /.container-fluid -->
 </nav>
 <!---->
+
+
+<!-- Header fixtures Start -->
+<div id="header_fixtures_wrapper" style="display: none;">
+    <div class="container">
+        <div class="row">
+
+            <!-- Fixture Start -->
+            <div class="col-md-3 fixture_wrapper">
+                <div class="teams_scores_wrapper">
+
+                    <div class="team_score_1 team_score">
+                        <img src="{{URL::to('img/pakistan_icon.png')}}" alt="">
+                        <span>120/2</span>
+                    </div>
+                    <span>VS</span>
+                    <div class="team_score_2 team_score">
+                        <img src="{{URL::to('img/srilanka_icon.png')}}" alt="">
+                        <span>220/3</span>
+                    </div>
+                    <span class="match_summary">Srilanka won by 5 wickets</span>
+
+                </div>
+            </div>
+            <!-- Fixture End -->
+
+            <!-- Fixture Start -->
+            <div class="col-md-3 fixture_wrapper">
+                <div class="teams_scores_wrapper">
+
+                    <div class="team_score_1 team_score">
+                        <img src="{{URL::to('img/pakistan_icon.png')}}" alt="">
+                        <span>120/2</span>
+                    </div>
+                    <span>VS</span>
+                    <div class="team_score_2 team_score">
+                        <img src="{{URL::to('img/srilanka_icon.png')}}" alt="">
+                        <span>220/3</span>
+                    </div>
+                    <span class="match_summary">Srilanka won by 5 wickets</span>
+
+                </div>
+            </div>
+            <!-- Fixture End -->
+
+            <!-- Fixture Start -->
+            <div class="col-md-3 fixture_wrapper">
+                <div class="teams_scores_wrapper">
+
+                    <div class="team_score_1 team_score">
+                        <img src="{{URL::to('img/pakistan_icon.png')}}" alt="">
+                        <span>120/2</span>
+                    </div>
+                    <span>VS</span>
+                    <div class="team_score_2 team_score">
+                        <img src="{{URL::to('img/srilanka_icon.png')}}" alt="">
+                        <span>220/3</span>
+                    </div>
+                    <span class="match_summary">Srilanka won by 5 wickets</span>
+
+                </div>
+            </div>
+            <!-- Fixture End -->
+
+            <!-- Fixture Start -->
+            <div class="col-md-3 fixture_wrapper">
+                <div class="teams_scores_wrapper">
+
+                    <div class="team_score_1 team_score">
+                        <img src="{{URL::to('img/pakistan_icon.png')}}" alt="">
+                        <span>120/2</span>
+                    </div>
+                    <span>VS</span>
+                    <div class="team_score_2 team_score">
+                        <img src="{{URL::to('img/srilanka_icon.png')}}" alt="">
+                        <span>220/3</span>
+                    </div>
+                    <span class="match_summary">Srilanka won by 5 wickets</span>
+
+                </div>
+            </div>
+            <!-- Fixture End -->
+
+        </div>
+    </div>
+</div>
+<!-- Header fixtures End -->
 @yield('content')
 
 
@@ -322,7 +478,6 @@
             </div>
         </div>
     </section>
-
 </footer>
 <!---->
 
@@ -336,8 +491,7 @@
 {!! Html::script('assets-new/vendor/basic-table/jquery.basictable.min.js') !!}
 {!! Html::script('assets/js/jquery.slicknav.min.js') !!}
 <!-- Plugin JavaScript -->
-
-{!! Html::script('assets-new/js/jquery-easing.js') !!}
+{!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}
 {!! Html::script('assets-new/js/scrollreveal.min.js') !!}
 {!! Html::script('assets-new/js/bootstrap-tour.js') !!}
 {!! Html::script('assets-new/js/jquery.magnific-popup.min.js') !!}
@@ -370,6 +524,7 @@
 </script>
 {!! Html::script('assets-new/js/jquery.matchHeight-min.js') !!}
 {!! Html::script('assets-new/js/jquery.backstretch.min.js') !!}
+{!! Html::script('assets-new/js/owl.carousel.min.js') !!}
 {!! Html::script('js/colorbox-master/jquery.colorbox-min.js') !!}
 {!! Html::script('js/toaster/jquery.toast.js') !!}
 @yield('js')
@@ -416,6 +571,5 @@
         });
     });
 </script>
-
 </body>
 </html>

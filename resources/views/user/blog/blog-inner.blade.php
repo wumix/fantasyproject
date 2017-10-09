@@ -15,6 +15,10 @@
 @section('title')
 {{$postdetail['title']}}
 @stop
+@section('meta-keywords')
+
+    <meta name="description" content="Up to date with the latest and breaking Cricket News, detailed analysis on trending cricket topics, series and match previews, interviews and more ...">
+@endsection
 @section('facebook-share-div-code')
 <div id="fb-root"></div>
 <script>(function (d, s, id) {
@@ -110,4 +114,5 @@
         /* go nawaz */
         $(".fb-comments").attr("data-href", window.location.href);
     </script>
+
 @stop

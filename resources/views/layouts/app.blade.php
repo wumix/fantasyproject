@@ -1,33 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
+
 <head>
+
 
     <link rel="shortcut icon" href="../img/gamithon-fevi.ico" type="image/x-icon"/>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <meta name="keywords" content="fantasy Cricket
-Play Fantasy Cricket,
-IPL Fantasy League,
-PSL Fantasy League,
-CPL Fantasy League,
-Fantasy Cricket League,
-Cricket League,
-Cricket Fantasy League,
-Cricket Fantasy,
-Play Fantasy Cricket and Win Cash Daily,
-Cricket app">
+    @yield('meta-keywords')
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @yield('facbook-og-tags')
     <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
-    {!! Html::style('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!}
-    {!! Html::style('https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic') !!}
-
-    {!! Html::style('assets-new/vendor/bootstrap/css/bootstrap.min.css') !!}
-    {!! Html::style('bootstrap-modal-extend/css/bootstrap-modal.css') !!}
+     {!! Html::style('assets-new/css/google-fonts.css', array('async' => 'async')) !!}
+    {!! Html::style('assets-new/css/google-fonts1.css', array('async' => 'async')) !!}
+    {!! Html::style('assets-new/vendor/bootstrap/css/bootstrap.min.css', array('async' => 'async')) !!}
+    {!! Html::style('bootstrap-modal-extend/css/bootstrap-modal.css', array('async' => 'async')) !!}
 
     {!! Html::style('assets-new/css/bootstrap-tour.css') !!}
     {!! Html::style('assets-new/css/jquery.mCustomScrollbar.css') !!}
@@ -36,9 +25,9 @@ Cricket app">
 
     {!! Html::style('js/toaster/jquery.toast.css') !!}
     {!! Html::style('js/colorbox-master/example1/colorbox.css') !!}
-    {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}
-    {!! Html::style('assets-new/vendor/magnific-popup/magnific-popup.css') !!}
-    {!! Html::style('assets/css/slicknav.css') !!}
+    {!! Html::style('assets-new/vendor/basic-table/basictable.css', array('async' => 'async')) !!}
+    {!! Html::style('assets-new/vendor/magnific-popup/magnific-popup.css', array('async' => 'async')) !!}
+    {!! Html::style('assets/css/slicknav.css', array('async' => 'async')) !!}
     {!! Html::style('assets-new/css/creative.css') !!}
     {!! Html::style('assets-new/css/style.css') !!}
     {!! Html::style('assets-new/css/fixtures.css') !!}
@@ -52,7 +41,6 @@ Cricket app">
             margin: 0 0 0 0;
 
         }
-
 
         .p0 {
             padding-left: 0;
@@ -114,7 +102,7 @@ Cricket app">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header main-top-menu">
                 <a class="navbar-brand logo-site page-scroll" href="/">
-                    <img src="{{URL::to('assets-new/img/gamithon-logo1.png')}}" style="width: 250px;"/>
+                    <img src="{{URL::to('assets-new/img/gamithon-logo2.png')}}" style="width: 250px;"/>
                 </a>
                 <div class="text-left" id="signhide" style="padding-left: 10px;">
                     @if(Auth::check())
@@ -197,7 +185,6 @@ Cricket app">
                         </li>
 
 
-
                         <li class="has-menu">
                             <a class="page-scroll" href="{{route('showNews')}}">
                                 News
@@ -242,13 +229,13 @@ Cricket app">
                         @endif
                         <li class="new-arrival has-menu">
                             <a href="{{route('challenges')}}" class="page-scroll">
-                                Challange a player
+                                Challenge a player
                             </a>
                             @if(Auth::check())
                                 <ul class="sub-menu">
                                     <li>
                                         <a class="page-scroll" href="{{route('listChalllenges')}}">
-                                            My Challanges
+                                            My Challenge
                                         </a>
                                     </li>
                                 </ul>
@@ -335,6 +322,7 @@ Cricket app">
             </div>
         </div>
     </section>
+
 </footer>
 <!---->
 
@@ -348,7 +336,8 @@ Cricket app">
 {!! Html::script('assets-new/vendor/basic-table/jquery.basictable.min.js') !!}
 {!! Html::script('assets/js/jquery.slicknav.min.js') !!}
 <!-- Plugin JavaScript -->
-{!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}
+
+{!! Html::script('assets-new/js/jquery-easing.js') !!}
 {!! Html::script('assets-new/js/scrollreveal.min.js') !!}
 {!! Html::script('assets-new/js/bootstrap-tour.js') !!}
 {!! Html::script('assets-new/js/jquery.magnific-popup.min.js') !!}
@@ -427,5 +416,6 @@ Cricket app">
         });
     });
 </script>
+
 </body>
 </html>

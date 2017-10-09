@@ -2,6 +2,10 @@
 @section('title')
    LeaderBoards
     @stop
+@section('meta-keywords')
+
+    <meta name="description" content="Gamithon fantasy is a cricket fantasy game where you can create your own team and win 50$ in every tournament…">
+@endsection
 @section('content')
 
     <section>

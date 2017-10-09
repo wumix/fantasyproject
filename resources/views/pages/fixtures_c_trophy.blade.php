@@ -3,7 +3,7 @@
 @section('content')
 @section('title')
 
-    Fixtures
+    {{$fixture_details['name']}}
 @endsection
 @section('css')
     <style>

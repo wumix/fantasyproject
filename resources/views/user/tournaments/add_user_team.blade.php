@@ -1,12 +1,10 @@
-@php
 
-    //dd($tournament_detail);
-
-@endphp
 @extends('layouts.app')
+
 @section('title')
     Make team
     @stop
+
 @section('content')
     <section>
         <div class="container">

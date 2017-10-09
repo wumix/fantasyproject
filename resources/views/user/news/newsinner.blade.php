@@ -109,6 +109,31 @@
     </section>
 @endsection
 @section('js')
+    <script type="application/ld+json">
+
+{
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "url": "https://gamithonfantasy.com/news",
+    "author":"gamithonfantasy.com",
+    "headline":"  {!! $postdetail['title'] !!}",
+    "image":"{{getUploadsPath($postdetail['image'])}}",
+    "dateModified":"2017-10-05",
+    "mainEntityOfPage":"gamithonfantasy.com",
+    "datePublished":"2017-10-05",
+    "publisher":{
+    "@type": "Organization",
+    "name": "gamithon",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{getUploadsPath($postdetail['image'])}}"
+    }
+  },
+  "description": "{!! str_limit($new['description'], 50) !!}..."
+
+}
+
+    </script>
     <script>
         /* go nawaz */
         $(".fb-comments").attr("data-href", window.location.href);

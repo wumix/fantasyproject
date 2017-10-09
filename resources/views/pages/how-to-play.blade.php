@@ -3,6 +3,11 @@
 @section('title')
     How To Play at Gamithon Fantasy
 @stop
+@section('meta-keywords')
+
+<meta name="description" content="It's a skill-based game that makes you experience the thrill. You will have to select a team of 11 players all over the world. Winners get exciting cash prizes!">
+@endsection
+
 @section('css')
     <style>
         .how_play_sec{

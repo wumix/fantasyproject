@@ -52,6 +52,31 @@
     </section>
 @endsection
 @section('js')
+    <script type="application/ld+json">
+
+{
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "url": "https://gamithonfantasy.com/news",
+    "author":"gamithonfantasy.com",
+    "headline":"gamithonfantasy.com",
+    "image":"http://www.gamithonfantasy.com/uploads/source/evinlewis.jpg",
+    "dateModified":"2017-10-05",
+    "mainEntityOfPage":"gamithonfantasy.com",
+    "datePublished":"2017-10-05",
+    "publisher":{
+    "@type": "Organization",
+    "name": "gamithon",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://google.com/logo.jpg"
+    }
+  },
+
+}
+
+
+    </script>
     <script>
         $(function () {
             $('.itemsz').matchHeight('col-md-4');
@@ -60,3 +85,4 @@
     </script>
 
 @stop
+

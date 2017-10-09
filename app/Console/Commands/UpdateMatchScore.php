@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
 
 class UpdateMatchScore extends Command
 {
@@ -57,16 +58,24 @@ class UpdateMatchScore extends Command
 
     function insertPlayerData($game_terms, $player_id, $match_id, $score, $search_key)
     {
-        $syncdata =
-            array(
-                'player_id' => $player_id,
-                'match_id' => $match_id,
-                'game_term_id' => $this->getIdOfTerm($game_terms, $search_key),
-                'player_term_count' => $score
+//        $syncdata =
+//            [[ 'player_id' => $player_id,
+//                'match_id' => $match_id,
+//                'game_term_id' => $this->getIdOfTerm($game_terms, $search_key),
+//                ],['player_term_count' => $score]
+//
+//            ];
 
-            );
 
-        return $syncdata;
+
+        \App\MatchPlayerScore::updateOrCreate(
+            ['player_id' => $player_id,
+            'match_id' => $match_id,
+            'game_term_id' => $this->getIdOfTerm($game_terms, $search_key)
+        ],['player_term_count' => $score]);
+
+
+        return  ;
     }
     public function add_player($pid){
         $api_key=config('const.cricapi_key');
@@ -80,7 +89,15 @@ class UpdateMatchScore extends Command
         //public\uploads\player_pictures\2017\03
         $image=explode("/",$res['imageURL']);
         $image=end($image);
-        file_put_contents('uploads/cricapi/'.$image, file_get_contents($res['imageURL']));
+        $dlimage=file_get_contents($res['imageURL']);
+       file_put_contents('public/uploads/cricapi/'.$image,$dlimage);
+//        $fp = fopen('public/uploads/'.$image, "x");
+//        fwrite($fp, $dlimage);
+//        fclose($fp);
+//        die;
+
+      // file_put_contents('uploads/'.$image, );
+
 
         $player=new \App\Player;
         $player->name=$res['fullName'];
@@ -119,7 +136,7 @@ class UpdateMatchScore extends Command
                 $player_data[]=$this->insertPlayerData($game_terms, $player_id, $match_id, $player['R'], 'R');
                 $player_data[]=$this->insertPlayerData($game_terms, $player_id, $match_id, $player['R'], 'Runs');
             }
-            \App\MatchPlayerScore::insert($player_data);
+           // \App\MatchPlayerScore::updateOrCreate($player_data);
             $player_data=[];
 
 
@@ -135,7 +152,7 @@ class UpdateMatchScore extends Command
                 $player_data[]=$this->insertPlayerData($game_terms, $player_id, $match_id, $player['Econ'], 'Econ');
 
             }
-            \App\MatchPlayerScore::insert($player_data);
+           // \App\MatchPlayerScore::updateOrCreate($player_data);
             $player_data=[];
 
 

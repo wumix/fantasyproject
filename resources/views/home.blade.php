@@ -1,8 +1,35 @@
 @extends('layouts.app')
 {{--{{dd($matches->t)}}--}}
+@section('meta-keywords')
+    <meta name="keywords" content="fantasy Cricket
+Play Fantasy Cricket,
+IPL Fantasy League,
+PSL Fantasy League,
+CPL Fantasy League,
+Fantasy Cricket League,
+Cricket League,
+Cricket Fantasy League,
+Cricket Fantasy,
+Play Fantasy Cricket and Win Cash Daily,
+Cricket app">
+    <meta name="description" content="Gamithon Fantasy cricket is a strategy game, Based on their cricketer's real-life performance, users get points and compete with others to win prizes…">
+    @endsection
 @section('css')
     {!! Html::style('assets-new/css/slick-theme.css') !!}
     {!! Html::style('assets-new/css/slick.css') !!}
+
+
+    <style>
+        .refer_friend_wrapper{
+            position: relative;
+        }
+        .refer_friend_wrapper img{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+
 @endsection
 
 
@@ -158,12 +185,23 @@
         <section class="bg-primary" id="about">
             <div class="container">
                 <div class="row">
+                    <div class="col-lg-2">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- home_page -->
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:120px;height:240px"
+                             data-ad-client="ca-pub-8140847957930358"
+                             data-ad-slot="6115581633"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
 
-                    <div class="col-lg-9 text-center">
-                        <h2 class="section-heading">
+                    </div>
+                    <div class="col-lg-7 text-center">
+                        <h1 class="section-heading">
                             Active Tournament and Series
                             <hr class="light">
-                        </h2>
+                        </h1>
 
                         <div class="table-responsive">
                             <table class="table table-striped table-stripedhome gen-table">
@@ -209,11 +247,12 @@
                             View all
                         </a>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 @if(!\Auth::check()) refer_friend_wrapper @endif">
                         @include('layouts.invite_sec')
                     </div>
                 </div>
             </div>
+            <div class="clear clearfix"></div>
         </section>
     @endif
     @if(!empty($upcomming_tournaments_list))
@@ -300,7 +339,7 @@
                                         </a>
                                     </h4>
 
-                                    <span style="font-size: 12px; min-height:85px;display:block" >
+                                    <span style="font-size: 12px; min-height:85px;display:block">
                        {!! substr($val['description'],0, 115) !!}...
                             <br>
 
@@ -397,7 +436,8 @@
                 <div class="col-lg-4 col-md-4 text-center">
 
                     <div class="service-box">
-                        <a target="_blank"  href="https://itunes.apple.com/us/app/gamithon-fantasy/id1277096945?ls=1&mt=8">
+                        <a target="_blank"
+                           href="https://itunes.apple.com/us/app/gamithon-fantasy/id1277096945?ls=1&mt=8">
                             <img src="{{URL::to('/img/ios.png')}}"/>
 
                         </a>
@@ -414,79 +454,21 @@
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
 
-                    <a href="img/portfolio/thumbnails/801.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/801.jpg" class="img-responsive" alt=" DD VS GL">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                   India Vs Australia
-                                </div>
-                                <div class="project-name">
-                                    India won by 5 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-
-                    <a href="img/portfolio/thumbnails/802.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/802.jpg" class="img-responsive" alt="KXIP VS MI">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="portfolio-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        India Vs Australia
-                                    </div>
-                                    <div class="project-name">
-                                        India won by 5 wickets
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/803.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/803.jpg" class="img-responsive" alt=" DD VS GL">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="portfolio-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        India Vs Australia
-                                    </div>
-                                    <div class="project-name">
-                                        India won by 5 wickets
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-
                     <a href="img/portfolio/thumbnails/701.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/701.jpg" class="img-responsive" alt=" DD VS GL">
 
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    England Vs West Indies
+                                    India Vs Australia
                                 </div>
                                 <div class="project-name">
-                                    West Indies won by 124 runs
+                                    India won by 7 wickets
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-
-
                 <div class="col-lg-4 col-sm-6">
 
                     <a href="img/portfolio/thumbnails/702.jpg" class="portfolio-box">
@@ -494,11 +476,32 @@
 
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    England Vs West Indies
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-category text-faded">
+                                        India Vs Australia
+                                    </div>
+                                    <div class="project-name">
+                                        India won by 7 wickets
+                                    </div>
                                 </div>
-                                <div class="project-name">
-                                    West Indies won by 124 runs
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/thumbnails/703.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/703.jpg" class="img-responsive" alt=" DD VS GL">
+
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-category text-faded">
+                                        India Vs Australia
+                                    </div>
+                                    <div class="project-name">
+                                        India won by 7 wickets
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -506,16 +509,52 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
 
-                    <a href="../img/portfolio/thumbnails/703.jpg" class="portfolio-box">
-                        <img src="../img/portfolio/thumbnails/703.jpg" class="img-responsive" alt="KXIP VS KKR">
+                    <a href="img/portfolio/thumbnails/801.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/801.jpg" class="img-responsive" alt=" DD VS GL">
 
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    England Vs West Indies
+                                    India Vs Australia
                                 </div>
                                 <div class="project-name">
-                                    West Indies won by 124 runs
+                                    Australia won by 21 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-4 col-sm-6">
+
+                    <a href="img/portfolio/thumbnails/802.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/802.jpg" class="img-responsive" alt="KXIP VS MI">
+
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    India Vs Australia
+                                </div>
+                                <div class="project-name">
+                                    Australia won by 21 runs
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+
+                    <a href="../img/portfolio/thumbnails/803.jpg" class="portfolio-box">
+                        <img src="../img/portfolio/thumbnails/803.jpg" class="img-responsive" alt="KXIP VS KKR">
+
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    India Vs Australia
+                                </div>
+                                <div class="project-name">
+                                    Australia won by 21 runs
                                 </div>
                             </div>
 
@@ -531,10 +570,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    India Vs Australia
+                                    England Vs West Indies
                                 </div>
                                 <div class="project-name">
-                                    India won by 50 runs
+                                    England won by 6 runs DL method
                                 </div>
                             </div>
                         </div>
@@ -549,16 +588,15 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    India Vs Australia
+                                    England Vs West Indies
                                 </div>
                                 <div class="project-name">
-                                    India won by 50 runs
+                                    England won by 6 runs DL method
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-
 
 
                 <div class="col-lg-4  col-sm-6">
@@ -568,15 +606,17 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    India Vs Australia
+                                    England Vs West Indies
                                 </div>
                                 <div class="project-name">
-                                    India won by 50 runs
+                                    England won by 6 runs DL method
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
+
+
 
 
 
@@ -636,16 +676,21 @@
         @endif
     @endforeach
 
+<script>
 
+        var refer_frnd_height = $('.refer_friend_wrapper').parent().height();
+        $('.refer_friend_wrapper').css('height', refer_frnd_height + 'px');
+
+</script>
     <script>
         $('#header').backstretch([
+
 
             {url: '{{URL::to('assets-new/img/23434534.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/2342342.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/12238967.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/india-vs-australia.jpg')}}', fade: 500},
-            {url: '{{URL::to('assets-new/img/9099000.jpg')}}', fade: 500},
-
+            
 
 
         ]);
@@ -694,6 +739,14 @@
         </script>
     @endif
 
+    <script type="application/ld+json"> {
+"@context" : "http://schema.org",
+"@type" : "Organization",
+"name":"Gamithon Fantasy",
+"url":"http://www.gamithonfantasy.com/",
+"email":"http://www.gamithonfantasyworld.com"
+}
+</script>
 
 @stop
 @section('FbJsSdk')
@@ -726,6 +779,6 @@
     <meta property="og:description" content="Join referral here"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="600"/>
-    <meta property="og:image" content="{{URL::to('assets-new/img/gamithon-logo1.png')}}"/>
+    <meta property="og:image" content="{{URL::to('assets-new/img/default-profile-pic-1.png')}}"/>
     <meta property="fb:app_id" content="337419313358697"/>
 @stop

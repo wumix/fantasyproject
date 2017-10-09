@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class MatchPlayerScore extends Model {
 
     protected $table = 'match_player_scores';
+    protected $guarded = [];
+    public $timestamps = false;
 
     public function game_terms() {
         return $this->belongsTo(GameTerm::class, 'game_term_id');

@@ -30,7 +30,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $this->match_player_score(1075503);
+        //file_put_contents('uploads/cricapi/11728.jpg', 'http://cricapi.com/playerpic/28763.jpg');
+        //die;
+       // $this->match_player_score(1075503);
 //        $t= \App\Player::where('id',1)->with('player_stats_details')->get()->toArray();
 //        $this->addPlayerStats(253802);
 

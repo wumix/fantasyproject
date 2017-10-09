@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Type extends Model
+class PlayerStatDetail extends Model
 {
-    protected $table = 'type';
+    protected $table = 'player_stats_details';
     public $timestamps = false;
     protected $guarded = [];
 

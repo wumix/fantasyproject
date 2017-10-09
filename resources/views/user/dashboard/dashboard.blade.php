@@ -417,7 +417,7 @@
 
                         </div>
                     @endif
-                    <div class="abot_me_sec" style="display:none;">
+                    <div class="abot_me_sec" >
 
                         <p class="text-center">
                         <div id="shareBtn" class="btn btn-success clearfix center">Invite Friends</div>

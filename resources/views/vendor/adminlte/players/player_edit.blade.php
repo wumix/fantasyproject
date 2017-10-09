@@ -39,6 +39,13 @@
                                        type="text" placeholder=""/>
                             </div>
                             <div class="form-group">
+                                <label>Cric Api ID</label>
+                                <input
+                                        class="form-control" name="cricapi_pid" value="{{$player['cricapi_pid']}}"
+                                        type="text" placeholder=""/>
+                            </div>
+
+                            <div class="form-group">
                                 <label>Change Game</label>
                                 <select id="game_id" name="game_id" class="custom-select form-control">
                                     <option value="">Select</option>

@@ -12,18 +12,20 @@ Cricket Fantasy League,
 Cricket Fantasy,
 Play Fantasy Cricket and Win Cash Daily,
 Cricket app">
-    <meta name="description" content="Gamithon Fantasy cricket is a strategy game, Based on their cricketer's real-life performance, users get points and compete with others to win prizes…">
-    @endsection
+    <meta name="description"
+          content="Gamithon Fantasy cricket is a strategy game, Based on their cricketer's real-life performance, users get points and compete with others to win prizes…">
+@endsection
 @section('css')
     {!! Html::style('assets-new/css/slick-theme.css') !!}
     {!! Html::style('assets-new/css/slick.css') !!}
 
 
     <style>
-        .refer_friend_wrapper{
+        .refer_friend_wrapper {
             position: relative;
         }
-        .refer_friend_wrapper img{
+
+        .refer_friend_wrapper img {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -178,7 +180,6 @@ Cricket app">
     </header>
     <!--BASBB-->
     <!-- ..........................Banner Start ............................-->
-    <!-----------    ----------->
 
 
     @if(!empty($tournaments_list))
@@ -187,11 +188,12 @@ Cricket app">
                 <div class="row">
                     <div class="col-lg-2">
                         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <!-- home_page -->
                         <ins class="adsbygoogle"
-                             style="display:inline-block;width:120px;height:240px"
+                             style="display:block; text-align:center;"
+                             data-ad-layout="in-article"
+                             data-ad-format="fluid"
                              data-ad-client="ca-pub-8140847957930358"
-                             data-ad-slot="6115581633"></ins>
+                             data-ad-slot="4288440163"></ins>
                         <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                         </script>
@@ -617,10 +619,6 @@ Cricket app">
                 </div>
 
 
-
-
-
-
             </div>
         </div>
     </section>
@@ -676,12 +674,12 @@ Cricket app">
         @endif
     @endforeach
 
-<script>
+    <script>
 
         var refer_frnd_height = $('.refer_friend_wrapper').parent().height();
         $('.refer_friend_wrapper').css('height', refer_frnd_height + 'px');
 
-</script>
+    </script>
     <script>
         $('#header').backstretch([
 
@@ -690,7 +688,6 @@ Cricket app">
             {url: '{{URL::to('assets-new/img/2342342.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/12238967.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/india-vs-australia.jpg')}}', fade: 500},
-            
 
 
         ]);
@@ -746,7 +743,8 @@ Cricket app">
 "url":"http://www.gamithonfantasy.com/",
 "email":"http://www.gamithonfantasyworld.com"
 }
-</script>
+
+    </script>
 
 @stop
 @section('FbJsSdk')

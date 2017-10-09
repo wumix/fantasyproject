@@ -181,24 +181,27 @@ Cricket app">
     <!--BASBB-->
     <!-- ..........................Banner Start ............................-->
 
+    <section>
+        <div class="col-lg-12">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle"
+                 style="display:block; text-align:center;"
+                 data-ad-layout="in-article"
+                 data-ad-format="fluid"
+                 data-ad-client="ca-pub-8140847957930358"
+                 data-ad-slot="4288440163"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </section>
 
     @if(!empty($tournaments_list))
         <section class="bg-primary" id="about">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-2">
-                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <ins class="adsbygoogle"
-                             style="display:block; text-align:center;"
-                             data-ad-layout="in-article"
-                             data-ad-format="fluid"
-                             data-ad-client="ca-pub-8140847957930358"
-                             data-ad-slot="4288440163"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                    </div>
-                    <div class="col-lg-7 text-center">
+
+                    <div class="col-lg-9 text-center">
                         <h1 class="section-heading">
                             Active Tournament and Series
                             <hr class="light">

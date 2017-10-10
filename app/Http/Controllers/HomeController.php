@@ -30,7 +30,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('pages.player_stat');
+      //  return view('pages.player_stat');
 
         $objTourmament = \App\Tournament::orderBy("start_date",
             'asc')->
@@ -54,7 +54,7 @@ class HomeController extends Controller
 
     public function __construct()
     {
-        //return;
+        return;
         $t = \App\Player::where('id', 1)->with(
             'playing_category.playing_formats')->get()->unique('id')->toArray();
 

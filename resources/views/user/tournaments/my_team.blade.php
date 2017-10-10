@@ -35,7 +35,8 @@
             .point-summery {
                 position: fixed;
                 right: 15px;
-                top: 35%;
+                top: 50%;
+                margin-top: calc(496px / -2);
             }
         }
     </style>
@@ -70,153 +71,6 @@
                                     </div>
 
                                 </div>
-
-                                <!-- Share Module-->
-                                <div class="col-md-6">
-                                    <style>
-                                        .rfral_code {
-                                            width: 100%;
-                                            display: inline-block;
-                                            background: #fff;
-                                            box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
-                                            padding: 20px 20px;
-                                            margin-bottom: 40px;
-                                        }
-
-                                        .new_form {
-                                            width: 100% !important;
-                                            border: 1px solid #92B713;
-                                            background: #000 !important;
-                                            border-radius: 10px;
-                                            color: #fff;
-                                            height: 42px;
-                                        }
-
-                                        .js-textareacopybtn {
-                                            padding: 11px;
-                                            width: 76px;
-                                            background: #92B713;
-                                            color: #fff;
-                                        }
-
-                                        .login_share_btns_wrapper a {
-                                            width: 187px;
-                                            font-weight: 600;
-                                            height: 36px;
-                                            font-size: 13px;
-                                            line-height: 25px;
-                                            vertical-align: top;
-                                        }
-
-                                        .login_share_btns_wrapper a:first-child {
-                                            color: #fff;
-                                            background: #3b5998;
-                                            margin-bottom: 15px;
-                                            margin-right: 15px;
-                                        }
-
-                                        .login_share_btns_wrapper a:first-child:hover {
-                                            background: #6d84b4 !important;
-                                            color: #fff !important;
-                                        }
-
-                                        .login_share_btns_wrapper a i {
-                                            display: inline-block;
-                                            font-size: 15px;
-                                            vertical-align: -1px;
-                                            margin-right: 7px;
-                                        }
-
-                                        .login_share_btns_wrapper a:hover {
-                                            color: #fff !important;
-                                        }
-
-                                        .login_share_btns_wrapper a:last-child i {
-                                            vertical-align: -1px;
-                                        }
-
-                                        #useremailform {
-                                            clear: both;
-                                            width: 100%;
-                                            margin: 0 auto;
-                                            /*background: #92B713;*/
-                                            background: #efefef;
-                                            padding: 10px 10px;
-                                            position: relative;
-                                        }
-
-                                        #useremailform .input-group input[type=email] {
-                                            box-shadow: none;
-                                            border: 1px solid #92B713;
-                                        }
-
-                                        #useremailform .input-group .input-group-btn input[type=submit] {
-                                            height: 34px !important;
-                                            background: #92B713 !important;
-                                            font-weight: 600 !important;
-                                        }
-
-                                        .btn-referel-send {
-                                            border-radius: 0;
-                                            height: 34px;
-                                        }
-
-                                        .input-group-addon {
-                                            border: none;
-                                            padding: 0;
-                                        }
-                                    </style>
-                                    <h2 class="section-heading"
-                                        style="margin-top: 0px;font-size: 21px; text-align: center;">
-                                        Share and get 500 points
-                                        <hr class="light">
-                                    </h2>
-                                    <div class="row">
-                                        <div class="col-md-12 login_share_btns_wrapper">
-
-                                            <a class="btn btn-default" href="javascript:void(0)" id="shareBtn">
-                                                <i class="fa fa-facebook-square"></i> facebook share
-                                            </a>
-
-
-                                            <a class="btn btn-primary" href="javascript:sendEmailtoUser()">
-                                                <i class="fa fa-envelope"></i> Share via email
-                                            </a>
-
-                                            <div id="useremailform" style="display: none;" class="form-group">
-                                                <!-- by defualt hidden -->
-                                                <form id="senduseremailform">
-                                                    <input id="userrefferalcode"
-                                                           value="http://gamithon.dev/signup/?referral_key=eyJpdiI6IkxHaEtLQzViVk8zbUJlSUVKbzlrRnc9PSIsInZhbHVlIjoiOEhURGhXWnFoQXYxNEtJbnN0MUw5b1IwaFF4ZTNEUUxSY1hzR2VQbHBXaz0iLCJtYWMiOiI3OWY4ZTM1NWM2ZWRlODUyODBhOWRlMjhhMzVkODdhNjk3YjFlMzJkYmE2YWFmYmIxMTc1NWEzNWFmNmY2ZjZiIn0="
-                                                           type="hidden" class="form-control"
-                                                           placeholder="Enter Your Email">
-
-                                                    <div class="input-group">
-                                                        <input required="" id="userrefferalemail" type="email"
-                                                               class="form-control"
-                                                               placeholder="Enter email of your friend"
-                                                               style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;"
-                                                               autocomplete="off">
-                                                        <span class="input-group-addon">
-                                                        <button class="btn btn-referel-send btn-primary"
-                                                                id="btnSendRefrelEmail" type="submit">
-                                                            Send
-                                                        </button>
-                                                    </span>
-                                                    </div>
-
-                                                </form>
-
-                                                <div id="referelMsg" style="display: none; margin-top: 10px;"
-                                                     class="alert">
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Share Module-->
 
                             </div>
                         </div>
@@ -421,55 +275,59 @@
                                 </div>
                             </div>
                             <div class="point-summery col-md-3" id="point-summery">
-                                <h4 class="small-sec-heading">
-                                    Remaining points <span class="pull-right"
-                                                           id="your_points1">{{getUserTotalScore(Auth::id(),$tournament_detail['id'])}}</span>
-                                </h4>
-                                <hr class="light"/>
-                                <h5 style="color: #92B713;">
-                                    You have selected
-                                </h5>
-                                <ul class="players-cal-summery">
-                                    <li>
-                                        Batsman
-                                        <span class="pull-right">
-                                           <span id="remaining-batsman">{{getPlayerNoInTeam(\Auth::id(),$team_id,5)}}</span>/4
-                                        </span>
-                                    </li>
-                                    <li>
-                                        Bowler
-                                        <span class="pull-right">
-                                            <span id="remaining-bowler">{{getPlayerNoInTeam(\Auth::id(),$team_id,6)}}</span>/4
-                                        </span>
-                                    </li>
-                                    <li>
-                                        All Rounder
-                                        <span class="pull-right">
-                                            <span id="remaining-ar">{{getPlayerNoInTeam(\Auth::id(),$team_id,7)}}</span>/2
-                                        </span>
-                                    </li>
-                                    <li>
-                                        Wicket Keeper
-                                        <span class="pull-right">
-                                            <span id="remaining-wk">{{getPlayerNoInTeam(\Auth::id(),$team_id,8)}}</span>/1
-                                        </span>
-                                    </li>
 
-                                    <li>
-
+                                <div class="col-md-12">
+                                    <h4 class="small-sec-heading">
+                                        Remaining points <span class="pull-right"
+                                                               id="your_points1">{{getUserTotalScore(Auth::id(),$tournament_detail['id'])}}</span>
+                                    </h4>
+                                    <hr class="light"/>
+                                    <h5 style="color: #92B713;">
+                                        You have selected
+                                    </h5>
+                                    <ul class="players-cal-summery">
+                                        <li>
+                                            Batsman
+                                            <span class="pull-right">
+                                               <span id="remaining-batsman">{{getPlayerNoInTeam(\Auth::id(),$team_id,5)}}</span>/4
+                                            </span>
+                                        </li>
+                                        <li>
+                                            Bowler
+                                            <span class="pull-right">
+                                                <span id="remaining-bowler">{{getPlayerNoInTeam(\Auth::id(),$team_id,6)}}</span>/4
+                                            </span>
+                                        </li>
+                                        <li>
+                                            All Rounder
+                                            <span class="pull-right">
+                                                <span id="remaining-ar">{{getPlayerNoInTeam(\Auth::id(),$team_id,7)}}</span>/2
+                                            </span>
+                                        </li>
+                                        <li>
+                                            Wicket Keeper
+                                            <span class="pull-right">
+                                                <span id="remaining-wk">{{getPlayerNoInTeam(\Auth::id(),$team_id,8)}}</span>/1
+                                            </span>
+                                        </li>
+                                        <li>
                                             <span id="user_team_complete" class="pull-right">
                                                 @if(getUserTeamPlayersCount($team_id)==11)
                                                     <a class="btn btn-green" style="margin-top: 5px;"
                                                        href="{{route("team-completed", ['team_id'=>$team_id]) }}">Confirm
                                                         Team</a>
                                                 @endif
-
                                             </span>
+                                        </li>
+                                    </ul>
+                                </div>
 
-                                    </li>
+                                <!-- Share Module-->
+                                <div class="col-md-12 text-center">
+                                    @include('layouts.invite_sec')
+                                </div>
+                                <!-- Share Module-->
 
-
-                                </ul>
                             </div>
                         </div>
                         <!---->
@@ -621,7 +479,7 @@
                         staturl = staturl.replace('pid', obj.id);
                         t += '<input type=hidden" name="player_id_t" value="' + obj.id + '"/>';
                         t += '<td class="border-r1 text-left"><a href="' + staturl + '" class="colorbox cboxElement">' +
-                            '<img id="myteamtimg" class="img-thumbnail" style="width: 80px;float: left;margin-right: 24px;"  src="' + obj.profile_pic + ' "></a><span class="selected-player-name">' + obj.name + '</span> </td>';
+                                '<img id="myteamtimg" class="img-thumbnail" style="width: 80px;float: left;margin-right: 24px;"  src="' + obj.profile_pic + ' "></a><span class="selected-player-name">' + obj.name + '</span> </td>';
                         t += '<td class="border-r1"> ' + obj.role_name + '</span></td>';
                         t += '<td class="border-r1">' + obj.price + '</td>';
                         var url = '{{ route("transferplayer", ["team_id"=>"id","player_id"=>'pid',"tournament_id"=>'tid']) }}';

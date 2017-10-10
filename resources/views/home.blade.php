@@ -25,7 +25,7 @@ Cricket app">
             position: relative;
         }
 
-        .refer_friend_wrapper img {
+        .refer_friend_wrapper .login_share_wrapper {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -65,7 +65,7 @@ Cricket app">
         }
 
         .owl-carousel .owl-nav.disabled {
-            display: block !important;
+            display: none !important;
         }
 
         .owl-theme .owl-nav [class*=owl-]{
@@ -334,7 +334,7 @@ Cricket app">
                             View all
                         </a>
                     </div>
-                    <div class="col-lg-3 @if(!\Auth::check()) refer_friend_wrapper @endif">
+                    <div class="col-lg-3 refer_friend_wrapper @if(!\Auth::check()) refer_friend_wrapper @endif">
                         @include('layouts.invite_sec')
                     </div>
                 </div>
@@ -763,6 +763,9 @@ Cricket app">
                         loop:true,
                         margin:15,
                         nav:true,
+                        autoplay:true,
+                        autoplayTimeout:3000,
+                        autoplayHoverPause:false,
                         navText: ["<i class='fa fa-arrow-left'></i>","<i class='fa fa-arrow-right'></i>"],
                         responsive:{
                             0:{

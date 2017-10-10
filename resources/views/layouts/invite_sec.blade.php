@@ -25,34 +25,43 @@
     }
 
     .login_share_btns_wrapper a {
-        width: 100%;
+        /*width: 100%;*/
         font-weight: 600;
-        height: 49px;
-        font-size: 15px;
-        line-height: 37px;
+        /*height: 49px;*/
+        /*font-size: 15px;*/
+        /*line-height: 37px;*/
+        background: none;
+    }
+    .login_share_btns_wrapper a:hover,
+    .login_share_btns_wrapper a:focus,
+    .login_share_btns_wrapper a:active {
+        background: none !important;
+    }
+    .login_share_btns_wrapper a:hover img{
+        opacity: 0.8;
     }
 
-    .login_share_btns_wrapper a:first-child {
-        color: #fff;
-        background: #3b5998;
-        margin-bottom: 15px;
-    }
+    /*.login_share_btns_wrapper a:first-child {*/
+    /*color: #fff;*/
+    /*background: #3b5998;*/
+    /*margin-bottom: 15px;*/
+    /*}*/
 
-    .login_share_btns_wrapper a:first-child:hover {
-        background: #6d84b4 !important;
-        color: #fff !important;
-    }
+    /*.login_share_btns_wrapper a:first-child:hover {*/
+    /*background: #6d84b4 !important;*/
+    /*color: #fff !important;*/
+    /*}*/
 
-    .login_share_btns_wrapper a i {
-        display: inline-block;
-        font-size: 18px;
-        vertical-align: middle;
-        margin-right: 7px;
-    }
+    /*.login_share_btns_wrapper a i {*/
+    /*display: inline-block;*/
+    /*font-size: 18px;*/
+    /*vertical-align: middle;*/
+    /*margin-right: 7px;*/
+    /*}*/
 
-    .login_share_btns_wrapper a:last-child i {
-        vertical-align: -1px;
-    }
+    /*.login_share_btns_wrapper a:last-child i {*/
+    /*vertical-align: -1px;*/
+    /*}*/
 
     #useremailform {
         clear: both;
@@ -92,52 +101,63 @@ if (\Request::route()->getName() == 'challenges') {
 }
 ?>
 @if(!\Auth::check())
-    <a href="{{route('userdashboard')}}">
-        <img src="{{URL::to('/')}}/img/refer-img.png"/>
-    </a>
+    <div class="login_share_wrapper">
+        <a href="{{route('userdashboard')}}">
+            <img src="{{URL::to('/')}}/img/refer-img.png"/>
+        </a>
+    </div>
 @else
-    <h2 class="section-heading" style="margin-top: 30px;
-    font-size: 21px;">
-        {{$headingInvite}}
-        <hr class="light">
-    </h2>
+    {{--<h2 class="section-heading" style="margin-top: 30px; font-size: 21px;">--}}
+    {{--{{$headingInvite}}--}}
+    {{--<hr class="light">--}}
+    {{--</h2>--}}
     <div class="row">
-        <div class="col-md-12 login_share_btns_wrapper">
-            {{--<div class="col-md-6 pull-left">--}}
-            <a class="btn btn-default" href="javascript:void(0)" id="shareBtn">
-                <i class="fa fa-facebook-square"></i> facebook share
-            </a>
-            {{--</div>--}}
-            {{--<div class="col-md-6 pull-right">--}}
-            <a class="btn btn-primary" href="javascript:sendEmailtoUser()">
-                <i class="fa fa-envelope"></i> Share via email
-            </a>
+        <div class="login_share_wrapper">
+            <img src="{{URL::to('/')}}/img/refer-img.png"/>
 
-            <div id="useremailform" style="display: none;" class="form-group">
-                <!-- by defualt hidden -->
-                <form id="senduseremailform">
-                    <input id="userrefferalcode"
-                           value="{{ URL::to('/')}}/signup/?referral_key={{\Auth::user()->referral_key}}"
-                           type="hidden" class="form-control"
-                           placeholder="Enter Your Email">
+            <div class="col-md-12 login_share_btns_wrapper">
+                {{--<div class="col-md-6 pull-left">--}}
 
-                    <div class="input-group">
-                        <input required id="userrefferalemail" type="email" class="form-control"
-                               placeholder="Enter email of your friend">
+                <a class="btn btn-default" href="javascript:void(0)" id="shareBtn">
+                    {{--<i class="fa fa-facebook-square"></i> facebook share--}}
+                    <img src="{{URL::to('/')}}/img/fb_share_icon.png"/>
+                </a>
+
+                {{--</div>--}}
+                {{--<div class="col-md-6 pull-right">--}}
+
+                <a class="btn btn-primary" href="javascript:sendEmailtoUser()">
+                    {{--<i class="fa fa-envelope"></i> Share via email--}}
+                    <img src="{{URL::to('/')}}/img/email_share_icon.png"/>
+                </a>
+
+
+                <div id="useremailform" style="display: none;" class="form-group">
+                    <!-- by defualt hidden -->
+                    <form id="senduseremailform">
+                        <input id="userrefferalcode"
+                               value="{{ URL::to('/')}}/signup/?referral_key={{\Auth::user()->referral_key}}"
+                               type="hidden" class="form-control"
+                               placeholder="Enter Your Email">
+
+                        <div class="input-group">
+                            <input required id="userrefferalemail" type="email" class="form-control"
+                                   placeholder="Enter email of your friend">
                         <span class="input-group-addon">
                             <button class="btn btn-referel-send btn-primary" id="btnSendRefrelEmail" type="submit">
-                             Send
+                                Send
                             </button>
                         </span>
+                        </div>
+
+                    </form>
+
+                    <div id="referelMsg" style="display: none; margin-top: 10px;" class="alert">
+
                     </div>
-
-                </form>
-
-                <div id="referelMsg" style="display: none; margin-top: 10px;" class="alert">
-
                 </div>
+                {{--</div>--}}
             </div>
-            {{--</div>--}}
         </div>
     </div>
 @endif

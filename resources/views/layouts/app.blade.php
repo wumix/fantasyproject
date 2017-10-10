@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -111,14 +112,18 @@ Cricket app">
         #header_fixtures_wrapper .fixture_wrapper{
             font-family: 'Open Sans', Sans-Serif;
             text-align: center;
-            padding: 10px 0;
+            padding: 5px 0;
             border-right: 2px dotted #f7921e;
         }
         #header_fixtures_wrapper .fixture_wrapper:last-child{
             border-right: none;
         }
         #header_fixtures_wrapper .fixture_wrapper .team_score{
-            width: 50px;
+            max-width: 120px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #92b713;
         }
         #header_fixtures_wrapper .fixture_wrapper .team_score,
         #header_fixtures_wrapper .fixture_wrapper .teams_scores_wrapper > span{
@@ -133,10 +138,10 @@ Cricket app">
 
         }
         #header_fixtures_wrapper .fixture_wrapper .teams_scores_wrapper > span{
-            font-size: 20px;
+            font-size: 10px;
             font-weight: 600;
             vertical-align: middle;
-            margin: 0 30px;
+            margin: 0 10px;
         }
         #header_fixtures_wrapper .fixture_wrapper .team_score span{
             display: block;
@@ -146,14 +151,16 @@ Cricket app">
         }
         #header_fixtures_wrapper .fixture_wrapper .team_score img{
             margin-bottom: 5px;
+            width: 100%;
+            height: auto;
         }
         #header_fixtures_wrapper .fixture_wrapper .teams_scores_wrapper .match_summary{
             display: block;
             text-align: center;
-            padding-top: 10px;
-            font-size: 14px;
+            font-size: 11px;
             color: #f7921e;
             font-style: italic;
+            padding: 0 30px;
         }
 
     </style>
@@ -334,92 +341,8 @@ Cricket app">
 </nav>
 <!---->
 
+@yield('live_scores')
 
-<!-- Header fixtures Start -->
-<div id="header_fixtures_wrapper" style="display: none;">
-    <div class="container">
-        <div class="row">
-
-            <!-- Fixture Start -->
-            <div class="col-md-3 fixture_wrapper">
-                <div class="teams_scores_wrapper">
-
-                    <div class="team_score_1 team_score">
-                        <img src="{{URL::to('img/pakistan_icon.png')}}" alt="">
-                        <span>120/2</span>
-                    </div>
-                    <span>VS</span>
-                    <div class="team_score_2 team_score">
-                        <img src="{{URL::to('img/srilanka_icon.png')}}" alt="">
-                        <span>220/3</span>
-                    </div>
-                    <span class="match_summary">Srilanka won by 5 wickets</span>
-
-                </div>
-            </div>
-            <!-- Fixture End -->
-
-            <!-- Fixture Start -->
-            <div class="col-md-3 fixture_wrapper">
-                <div class="teams_scores_wrapper">
-
-                    <div class="team_score_1 team_score">
-                        <img src="{{URL::to('img/pakistan_icon.png')}}" alt="">
-                        <span>120/2</span>
-                    </div>
-                    <span>VS</span>
-                    <div class="team_score_2 team_score">
-                        <img src="{{URL::to('img/srilanka_icon.png')}}" alt="">
-                        <span>220/3</span>
-                    </div>
-                    <span class="match_summary">Srilanka won by 5 wickets</span>
-
-                </div>
-            </div>
-            <!-- Fixture End -->
-
-            <!-- Fixture Start -->
-            <div class="col-md-3 fixture_wrapper">
-                <div class="teams_scores_wrapper">
-
-                    <div class="team_score_1 team_score">
-                        <img src="{{URL::to('img/pakistan_icon.png')}}" alt="">
-                        <span>120/2</span>
-                    </div>
-                    <span>VS</span>
-                    <div class="team_score_2 team_score">
-                        <img src="{{URL::to('img/srilanka_icon.png')}}" alt="">
-                        <span>220/3</span>
-                    </div>
-                    <span class="match_summary">Srilanka won by 5 wickets</span>
-
-                </div>
-            </div>
-            <!-- Fixture End -->
-
-            <!-- Fixture Start -->
-            <div class="col-md-3 fixture_wrapper">
-                <div class="teams_scores_wrapper">
-
-                    <div class="team_score_1 team_score">
-                        <img src="{{URL::to('img/pakistan_icon.png')}}" alt="">
-                        <span>120/2</span>
-                    </div>
-                    <span>VS</span>
-                    <div class="team_score_2 team_score">
-                        <img src="{{URL::to('img/srilanka_icon.png')}}" alt="">
-                        <span>220/3</span>
-                    </div>
-                    <span class="match_summary">Srilanka won by 5 wickets</span>
-
-                </div>
-            </div>
-            <!-- Fixture End -->
-
-        </div>
-    </div>
-</div>
-<!-- Header fixtures End -->
 @yield('content')
 
 

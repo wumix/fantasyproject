@@ -20,6 +20,9 @@ class Match extends Model {
     public function player_scores() {
         return $this->hasMany(MatchPlayerScore::class);
     }
+    public function match_scores() {
+        return $this->hasMany('\App\MatchScore', 'match_id');
+    }
 
     public function match_players() {
         return $this->belongsToMany('App\Player', 'player_matches', 'match_id', 'player_id');

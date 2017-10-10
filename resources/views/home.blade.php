@@ -1,5 +1,6 @@
+
 @extends('layouts.app')
-{{--{{dd($matches->t)}}--}}
+
 @section('meta-keywords')
     <meta name="keywords" content="fantasy Cricket
 Play Fantasy Cricket,
@@ -86,6 +87,43 @@ Cricket app">
 @section('title')
     Gamithon Fantasy - Play Fantasy League Create Team
 @stop
+@section('live_scores')
+    <!-- Header fixtures Start -->
+    <div id="header_fixtures_wrapper" style="">
+        <div class="container">
+            <div class="row">
+
+                <!-- Fixture Start -->
+                @foreach($match_scores as $match_score)
+                <div class="col-md-3 fixture_wrapper">
+                    <div class="teams_scores_wrapper">
+
+                        <div class="team_score_1 team_score">
+                           {{$match_score['team_one']}}
+
+                        </div>
+                        <span>VS</span>
+                        <div class="team_score_2 team_score">
+                            {{$match_score['team_two']}}
+
+                        </div>
+                        @if($match_score['match_scores'][0]['score'])
+                        <span class="match_summary">{{$match_score['match_scores'][0]['score']}}</span>
+                        @else
+                            <span class="match_summary">{{$match_score['match_scores'][0]['description']}}</span>
+                        @endif
+                    </div>
+                </div>
+                @endforeach
+                <!-- Fixture End -->
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Header fixtures End -->
+    @endsection
 @section('content')
     <!--BASBB-->
 

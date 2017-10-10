@@ -630,16 +630,7 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
 @endsection
-@section('facbook-og-tags')
-    <meta property="og:url" content="heelo world"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:title" content="Invite"/>
-    <meta property="og:description" content="Join referral here"/>
-    <meta property="og:image:width" content="1200"/>
-    <meta property="og:image:height" content="600"/>
-    <meta property="og:image" content="{{Url::to('assets-new/img/gamithon-logo1.png')}}"/>
-    <meta property="fb:app_id" content="<?php echo env('FB_CLIENTID') ?>"/>
-@stop
+
 
 
 @section('js')
@@ -664,3 +655,36 @@
     </script>
 
 @endsection
+@section('FbJsSdk')
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '337419313358697',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.9'
+            });
+            FB.AppEvents.logPageView();
+        };
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+@endsection
+@section('facbook-og-tags')
+    <meta property="og:url" content="{{URL::to('/')}}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Gamithon Fantasy"/>
+    <meta property="og:description" content="Join referral here"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
+    <meta property="og:image" content="{{URL::to('assets-new/img/default-profile-pic-1.png')}}"/>
+    <meta property="fb:app_id" content="337419313358697"/>
+@stop

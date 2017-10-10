@@ -603,58 +603,23 @@
         </div>
     </div>
     <div class="clearfix clear" style="margin-bottom: 100px;"></div>
-
-@endsection
-
-@section('FbJsSdk')
     <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '337419313358697',
-                autoLogAppEvents: true,
-                xfbml: true,
-                version: 'v2.9'
-            });
-            FB.AppEvents.logPageView();
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {
-                return;
-            }
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-@endsection
-
-
-
-@section('js')
-    {!! Html::script('js/clipboard.min.js') !!}
-    <script>
-        var clipboard = new Clipboard('.js-textareacopybtn');
-        clipboard.on('success', function (e) {
-            alert('Copied to clipboard!');
-            e.clearSelection();
-        });
-        clipboard.on('error', function (e) {
-            alert('Oops, An error occurred!');
-        });
         document.getElementById('shareBtn').onclick = function () {
             FB.ui({
                 method: 'share',
                 display: 'popup',
-                href: '{{URL::to('/')}}' + '/signup/?referral_key={{$userprofileinfo['referral_key']}}',
+                href: '{{URL::to('/')}}' + '/signup/?referral_key={{\Auth::user()->referral_key}}',
             }, function (response) {
             });
         }
     </script>
 
 @endsection
+
+
+
+
+
 @section('FbJsSdk')
     <script>
         window.fbAsyncInit = function () {

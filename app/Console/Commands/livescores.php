@@ -38,7 +38,7 @@ class livescores extends Command
     public function handle()
     {
         $data['match_scores']=\App\Match::where('cricscore_api','!=',0)
-            ->with('match_scores')->take(1)->get()->toArray();
+            ->with('match_scores')->get()->toArray();
         foreach ($data['match_scores'] as $match_scorez) {
             $match_id = $match_scorez['id'];
 

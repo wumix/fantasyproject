@@ -31,10 +31,7 @@ class HomeController extends Controller
     public function index()
     {
         $data['match_scores']=\App\Match::where('cricscore_api','!=',0)
-            ->with('match_scores')->get()->toArray();
-
-
-
+            ->with('match_scores')->take(4)->get()->toArray();
 
         $objTourmament = \App\Tournament::orderBy("start_date",
             'asc')->

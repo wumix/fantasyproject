@@ -17,7 +17,7 @@ class Kernel extends ConsoleKernel
         Commands\getmatchplayers::class,
         Commands\UpdateMatchScore::class,
         Commands\livescores::class,
-        
+
 
     ];
 

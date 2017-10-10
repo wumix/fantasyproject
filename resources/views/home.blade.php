@@ -228,7 +228,6 @@ Cricket app">
     </header>
     <!--BASBB-->
     <!-- ..........................Banner Start ............................-->
-    <!-----------    ----------->
 
 
     @if(!empty($tournaments_list))

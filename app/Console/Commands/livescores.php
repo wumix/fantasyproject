@@ -45,7 +45,7 @@ class livescores extends Command
             $api_key = config('const.cricapi_key');
             $client = new \GuzzleHttp\Client();
             $res = $client->request('GET', 'http://cricscore-api.appspot.com/csa?id=1075503', [
-                'query' => ['id' => 1120285]
+                'query' => ['id' => $match_scorez['cricscore_api']]
             ]);
             $body = $res->getBody();
             $result = \GuzzleHttp\json_decode($body->getContents());

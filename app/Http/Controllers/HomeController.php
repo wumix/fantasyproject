@@ -35,6 +35,7 @@ class HomeController extends Controller
 
 
 
+
         $objTourmament = \App\Tournament::orderBy("start_date",
             'asc')->
         Where('end_date', '>=', getGmtTime())->get();

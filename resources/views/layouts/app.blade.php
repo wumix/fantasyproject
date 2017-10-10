@@ -483,11 +483,11 @@ Cricket app">
                     }, 3000);
                     $("#referelMsg").slideDown();
                     $("#referelMsg").addClass('alert-success');
-                    $("#referelMsg").html('Referel has been sent!');
+                    $("#referelMsg").html('Referral has been sent!');
                     $('#userrefferalemail').val('');
                 } else {
                     $("#referelMsg").addClass('alert-danger');
-                    $("#referelMsg").html('Referel has not been sent!');
+                    $("#referelMsg").html('Referral has not been sent!');
                 }
                 $("#btnSendRefrelEmail").attr('disabled', false);
             }

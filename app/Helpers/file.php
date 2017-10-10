@@ -72,7 +72,7 @@ function getUploadsPath($fileName = NULL) {
 function check_image($arr){
     if(file_exists('uploads/source/'.end($arr))){
         $thumbnail = Image::open('uploads/source/'.end($arr))
-            ->thumbnail(new Imagine\Image\Box(177,105));
+            ->thumbnail(new Imagine\Image\Box(177,163));
         $thumbnail->save('uploads/source/thumb'.end($arr));
         return true;
     }else{

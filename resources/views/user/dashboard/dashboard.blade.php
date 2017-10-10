@@ -603,8 +603,22 @@
         </div>
     </div>
     <div class="clearfix clear" style="margin-bottom: 100px;"></div>
+    <script>
+        document.getElementById('shareBtn').onclick = function () {
+            FB.ui({
+                method: 'share',
+                display: 'popup',
+                href: '{{URL::to('/')}}' + '/signup/?referral_key={{\Auth::user()->referral_key}}',
+            }, function (response) {
+            });
+        }
+    </script>
 
 @endsection
+
+
+
+
 
 @section('FbJsSdk')
     <script>
@@ -617,7 +631,6 @@
             });
             FB.AppEvents.logPageView();
         };
-
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) {
@@ -631,36 +644,12 @@
     </script>
 @endsection
 @section('facbook-og-tags')
-    <meta property="og:url" content="heelo world"/>
+    <meta property="og:url" content="{{URL::to('/')}}"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="Invite"/>
+    <meta property="og:title" content="Gamithon Fantasy"/>
     <meta property="og:description" content="Join referral here"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="600"/>
-    <meta property="og:image" content="{{Url::to('assets-new/img/gamithon-logo1.png')}}"/>
-    <meta property="fb:app_id" content="<?php echo env('FB_CLIENTID') ?>"/>
+    <meta property="og:image" content="{{URL::to('assets-new/img/default-profile-pic-1.png')}}"/>
+    <meta property="fb:app_id" content="337419313358697"/>
 @stop
-
-
-@section('js')
-    {!! Html::script('js/clipboard.min.js') !!}
-    <script>
-        var clipboard = new Clipboard('.js-textareacopybtn');
-        clipboard.on('success', function (e) {
-            alert('Copied to clipboard!');
-            e.clearSelection();
-        });
-        clipboard.on('error', function (e) {
-            alert('Oops, An error occurred!');
-        });
-        document.getElementById('shareBtn').onclick = function () {
-            FB.ui({
-                method: 'share',
-                display: 'popup',
-                href: '{{URL::to('/')}}' + '/signup/?referral_key={{$userprofileinfo['referral_key']}}',
-            }, function (response) {
-            });
-        }
-    </script>
-
-@endsection

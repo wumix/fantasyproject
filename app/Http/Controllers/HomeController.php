@@ -33,9 +33,6 @@ class HomeController extends Controller
         $data['match_scores']=\App\Match::where('cricscore_api','!=',0)
             ->with('match_scores')->get()->toArray();
 
-       // dd($match_score);
-      //  return view('pages.player_stat');
-
         $objTourmament = \App\Tournament::orderBy("start_date",
             'asc')->
         Where('end_date', '>=', getGmtTime())->get();

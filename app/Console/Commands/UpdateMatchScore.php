@@ -82,12 +82,6 @@ class UpdateMatchScore extends Command
         $image=end($image);
         $dlimage=file_get_contents($res['imageURL']);
        file_put_contents(Url::to('uploads/cricapi/').$image,$dlimage);
-//        $fp = fopen('public/uploads/'.$image, "x");
-//        fwrite($fp, $dlimage);
-//        fclose($fp);
-//        die;
-
-      // file_put_contents('uploads/'.$image, );
 
 
         $player=new \App\Player;

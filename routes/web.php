@@ -281,7 +281,8 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
                     'match_id' => $match_id
                 ]);
             })->name('updatescoring');
-            Route::get('live-score', function ($match_id) {
+
+            Route::get('live-score', function () {
                 $exitCode = Artisan::call('livescore');
             })->name('updatelivescore');
 

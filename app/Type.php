@@ -10,4 +10,5 @@ class Type extends Model
     public $timestamps = false;
     protected $guarded = [];
 
+
 }

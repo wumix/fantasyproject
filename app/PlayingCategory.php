@@ -13,13 +13,13 @@ class PlayingCategory extends Model
 
     public function type(){
         return $this->belongsToMany(
-            '\App\Type','player_stats_details','playing_category','type_id');
+            '\App\Type','player_stats_details','playing_category','type_id')->withPivot('score');
 
     }
-    public function Player_fromat()
+    public function playing_formats()
     {
-        return $this->belongsToMany('\App\Type','player_stats_details',
-            'format_id','type_id');
+        return $this->belongsToMany('\App\Format','player_stats_details',
+            'playing_category','format_id');
     }
 
 }

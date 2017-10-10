@@ -30,7 +30,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        //return view('pages.player_stat');
+        return view('pages.player_stat');
 
         $objTourmament = \App\Tournament::orderBy("start_date",
             'asc')->
@@ -54,18 +54,22 @@ class HomeController extends Controller
 
     public function __construct()
     {
+        //return;
         $t = \App\Player::where('id', 1)->with(
-            'player_stats_details')->first()->toArray();
+            'playing_category.playing_formats')->get()->unique('id')->toArray();
+
         $bowl = 0;
         $bat = 0;
-        foreach ($t['player_stats_details'] as $key => &$val) {
+        debugArr($t);
+        die;
+        foreach ($t['playing_category'] as $key => &$val) {
 
 
             if ($val['name'] == "bowling") {
                 if($bowl==0) {
                     $bowl++;
                 }else{
-                    unset($t['player_stats_details'][$key]);
+                    unset($t['playing_category'][$key]);
                 }
             }
 
@@ -74,14 +78,15 @@ class HomeController extends Controller
                 if($bat==0) {
                     $bat++;
                 }else{
-                    unset($t['player_stats_details'][$key]);
+                    unset($t['playing_category'][$key]);
                 }
             }
 
 
         }
-return view('pages.player_stat');
-        dd($t['player_stats_details']);
+//return view('pages.player_stat');
+
+
 
 
     }

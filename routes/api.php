@@ -25,6 +25,8 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('register', 'Api\UserController@create');
     Route::any('/sendpush', 'Api\OrdersController@sendPushMessage');
     Route::post('login_with_facebook', 'Api\UserController@loginFacebook');
+
+    Route::get('/livescores', 'Api\LiveScoreController@index');
     Route::group(['prefix' => 'tournaments'], function () {
         Route::get('fixtures', 'Api\TournamentsController@tournament_fixtures');
         Route::get('leaderboard', 'Api\TournamentsController@tournament_leaderboard');
@@ -56,7 +58,7 @@ Route::group(['prefix' => 'v1'], function () {
             Route::get('team', 'Api\UserController@createTeam');
             Route::get('confirm_team', 'Api\UserController@confirm_team');
             Route::get('/', 'Api\UserController@index');
-           // Route::resource('/', 'Api\User');
+            // Route::resource('/', 'Api\User');
 
         });
         Route::group(['prefix' => 'challenge'], function () {
@@ -67,10 +69,6 @@ Route::group(['prefix' => 'v1'], function () {
             Route::get('add-player', 'Api\ChallengeController@addPlayerTochallengeTeam');
             Route::get('delete-player', 'Api\ChallengeController@deltePlayerFormChallenge');
             Route::get('confirm', 'Api\ChallengeController@confirmChallengeTeam');
-
-
-
-
 
 
         });

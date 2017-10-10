@@ -33,8 +33,7 @@ class HomeController extends Controller
         $data['match_scores']=\App\Match::where('cricscore_api','!=',0)
             ->with('match_scores')->get()->toArray();
 
-       // dd($match_score);
-      //  return view('pages.player_stat');
+
 
         $objTourmament = \App\Tournament::orderBy("start_date",
             'asc')->
@@ -51,7 +50,7 @@ class HomeController extends Controller
         $upcommingTour = \App\Tournament::all()->sortBy("start_date")->where('start_date', '>=', getGmtTime());
 
         $data['upcomming_tournaments_list'] = $upcommingTour->toArray(); //upcomming tournament of active
-        $data['news'] = \App\BlogPost::where('post_type', 'news')->take(3)->orderBy('id', 'DESC')->get()->toArray();
+        $data['news'] = \App\BlogPost::where('post_type', 'news')->take(6)->orderBy('id', 'DESC')->get()->toArray();
 
         return view('home', $data);
     }

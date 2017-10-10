@@ -282,6 +282,10 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
                 ]);
             })->name('updatescoring');
 
+            Route::get('live-score', function () {
+                $exitCode = Artisan::call('livescore');
+            })->name('updatelivescore');
+
         });
 //Userroutes
         Route::group(['prefix' => 'user'], function () {

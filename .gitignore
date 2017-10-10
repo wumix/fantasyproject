@@ -12,7 +12,6 @@ Homestead.json
 Homestead.yaml
 composer.lock
 composer.json
-
 .htaccess
 .env
 

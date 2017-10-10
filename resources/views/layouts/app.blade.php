@@ -108,12 +108,17 @@ Cricket app">
         #header_fixtures_wrapper {
             padding: 10px 0;
             background: #efefef;
+            text-align: center;
         }
         #header_fixtures_wrapper .fixture_wrapper{
+            float: none;
             font-family: 'Open Sans', Sans-Serif;
             text-align: center;
             padding: 5px 0;
             border-right: 2px dotted #f7921e;
+            width: calc(100% / 4.3);
+            display: inline-block;
+            vertical-align: top;
         }
         #header_fixtures_wrapper .fixture_wrapper:last-child{
             border-right: none;

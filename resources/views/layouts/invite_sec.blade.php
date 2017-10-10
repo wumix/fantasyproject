@@ -32,12 +32,14 @@
         /*line-height: 37px;*/
         background: none;
     }
+
     .login_share_btns_wrapper a:hover,
     .login_share_btns_wrapper a:focus,
     .login_share_btns_wrapper a:active {
         background: none !important;
     }
-    .login_share_btns_wrapper a:hover img{
+
+    .login_share_btns_wrapper a:hover img {
         opacity: 0.8;
     }
 
@@ -113,8 +115,12 @@ if (\Request::route()->getName() == 'challenges') {
     {{--</h2>--}}
     <div class="row">
         <div class="login_share_wrapper">
-            <img src="{{URL::to('/')}}/img/refer-img.png"/>
 
+            @if(Request::is('/'))
+                <img src="{{URL::to('/')}}/img/refer-img.png"/>
+            @else
+                <img src="{{URL::to('/')}}/img/refer2.png"/>
+            @endif
             <div class="col-md-12 login_share_btns_wrapper">
                 {{--<div class="col-md-6 pull-left">--}}
 

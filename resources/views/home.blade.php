@@ -64,7 +64,8 @@ Cricket app">
             color: #92b713;
         }
 
-        .owl-carousel .owl-nav.disabled {
+        .owl-carousel .owl-nav,
+        .owl-carousel .owl-dots {
             display: none !important;
         }
 
@@ -89,7 +90,7 @@ Cricket app">
 @stop
 @section('live_scores')
     <!-- Header fixtures Start -->
-    <div id="header_fixtures_wrapper" style="">
+    <div id="header_fixtures_wrapper">
         <div class="container">
             <div class="row">
 

@@ -282,40 +282,35 @@ class HomeController extends Controller
     }
 
 
-    public
-    function fixturesDetial($tournament_id)
+    public    function fixturesDetial($tournament_id)
     {
         $data['fixture_details'] = \App\Tournament::where('slug', $tournament_id)->with(['tournament_matches' => function ($query) {
             $query->orderBy('start_date', 'asc');
 
         }])->firstOrFail()->toArray();
 
-        return view('pages.fixtures_c_trophy', $data);
+        return view('pages.fixtures', $data);
 
     }
 
-    public
-    function contactPage()
+    public    function contactPage()
     {
         return view('pages.contact');
     }
 
 
-    public
-    function upcommingTournamnets()
+    public    function upcommingTournamnets()
     {
         return view('pages.upccoming_tournaments');
     }
 
 
-    public
-    function championTrophy()
+    public    function championTrophy()
     {
         return view('pages.fixtures_c_trophy');
     }
 
-    public
-    function rankings()
+    public    function rankings()
     {
 //        $stats = \App\Game::where('id', '1')
 //            ->with('game_roles', 'game_type.game_type_points.player_roles')->get()->toArray();
@@ -330,8 +325,7 @@ class HomeController extends Controller
         return view('pages.rankings', $data);
     }
 
-    public
-    function postContact(Request $request)
+    public    function postContact(Request $request)
     {
         $this->validatorContact($request->all())->validate();
         $emailRecievers = [
@@ -379,6 +373,10 @@ class HomeController extends Controller
     {
         return view('pages.p-p');
     }
+    public function fantasycricket(){
+        return view('pages.fantasy-cricket');
+    }
+
 
     public
     function aboutUs()

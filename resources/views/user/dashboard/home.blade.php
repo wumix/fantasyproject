@@ -36,14 +36,8 @@
                                 @foreach($tournaments_list as $row)
                                     <tr>
                                         <td class="border-r1" style="min-width: 305px;">
-                                            {{--<img id="myteamtimg" class="img-circle img-thumbnail" style="width: 100px;"--}}
-                                                 {{--src="{{getUploadsPath($row['t_logo'])}}"/>--}}
                                             <h5>{{$row['name']}}</h5>
                                         </td>
-
-                                        {{--<td class="border-r1">--}}
-                                            {{--<p class="myteamtt"--}}
-                                               {{--style="padding-top:34px;">{{$row['tournament_price']}}</p></td>--}}
 
                                         <td class="border-r1">
                                             <a href="{{route('homeleaderboard', ['id'=>$row['id']])}}"

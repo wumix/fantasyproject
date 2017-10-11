@@ -30,9 +30,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $data['match_scores']=\App\Match::where('cricscore_api','!=',0)
+        $data['match_scores'] = \App\Match::where('cricscore_api', '!=', 0)
             ->with('match_scores')->take(4)->get()->toArray();
-
+        //dd($data['match_scores']);
         $objTourmament = \App\Tournament::orderBy("start_date",
             'asc')->
         Where('end_date', '>=', getGmtTime())->get();
@@ -67,18 +67,18 @@ class HomeController extends Controller
 
 
             if ($val['name'] == "bowling") {
-                if($bowl==0) {
+                if ($bowl == 0) {
                     $bowl++;
-                }else{
+                } else {
                     unset($t['playing_category'][$key]);
                 }
             }
 
 
             if ($val['name'] == "batting") {
-                if($bat==0) {
+                if ($bat == 0) {
                     $bat++;
-                }else{
+                } else {
                     unset($t['playing_category'][$key]);
                 }
             }
@@ -86,8 +86,6 @@ class HomeController extends Controller
 
         }
 //return view('pages.player_stat');
-
-
 
 
     }
@@ -131,7 +129,37 @@ class HomeController extends Controller
         $data['team_name'] = strtoupper($team_name);
         // dd($team_name);
         // dd($data['match']['match_players'][0]);
-        return view('user.scorecard', $data);
+        return view('pages.scorecard', $data);
+
+    }
+    public function scorecardPopup(Request $request, $id, $tournament_id)
+    {
+        $data['tournament_id'] = $tournament_id;
+        $data['match'] = \App\Match::where('id', $id)->with(
+            ['match_players.player_gameTerm_score' => function ($q) use ($id) {
+                return $q->where('match_id', $id)->where('player_term_count', '!=', 0);
+            },
+
+                'match_players.player_gameTerm_score.game_terms' => function ($q) {
+                    $q->orderBy('id', 'ASC');
+                },
+                'match_players.player_match_stats' => function ($q) use ($id) {
+                    $q->where('match_id', $id);
+                }, 'match_players.player_actual_teams' => function ($query) use ($tournament_id) {
+                $query->where('tournament_id', $tournament_id);
+            }, 'match_players.player_roles' => function ($role) {
+                $role->orderBy('game_role_id', 'ASC');
+            }
+            ])
+            ->first()->toArray();
+        $team_name = $data['match']['team_one'];
+        if (!empty($request->team_name)) {
+            $team_name = $request->team_name;
+        }
+        $data['team_name'] = strtoupper($team_name);
+        // dd($team_name);
+        // dd($data['match']['match_players'][0]);
+        return view('pages.scorecard-popup', $data);
 
     }
 
@@ -258,7 +286,7 @@ class HomeController extends Controller
     }
 
 
-    public  function leaderboard($tournament_id)
+    public function leaderboard($tournament_id)
     {
         $data['leaders'] = \App\Leaderboard::where('tournament_id', $tournament_id)->with('user', 'user_team')->where('score', '>', 0)->take(20)->
         orderBy('score', 'DESC')->get()->toArray();
@@ -282,7 +310,7 @@ class HomeController extends Controller
     }
 
 
-    public    function fixturesDetial($tournament_id)
+    public function fixturesDetial($tournament_id)
     {
         $data['fixture_details'] = \App\Tournament::where('slug', $tournament_id)->with(['tournament_matches' => function ($query) {
             $query->orderBy('start_date', 'asc');
@@ -293,24 +321,24 @@ class HomeController extends Controller
 
     }
 
-    public    function contactPage()
+    public function contactPage()
     {
         return view('pages.contact');
     }
 
 
-    public    function upcommingTournamnets()
+    public function upcommingTournamnets()
     {
         return view('pages.upccoming_tournaments');
     }
 
 
-    public    function championTrophy()
+    public function championTrophy()
     {
         return view('pages.fixtures_c_trophy');
     }
 
-    public    function rankings()
+    public function rankings()
     {
 //        $stats = \App\Game::where('id', '1')
 //            ->with('game_roles', 'game_type.game_type_points.player_roles')->get()->toArray();
@@ -325,7 +353,7 @@ class HomeController extends Controller
         return view('pages.rankings', $data);
     }
 
-    public    function postContact(Request $request)
+    public function postContact(Request $request)
     {
         $this->validatorContact($request->all())->validate();
         $emailRecievers = [
@@ -373,7 +401,9 @@ class HomeController extends Controller
     {
         return view('pages.p-p');
     }
-    public function fantasycricket(){
+
+    public function fantasycricket()
+    {
         return view('pages.fantasy-cricket');
     }
 

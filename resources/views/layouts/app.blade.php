@@ -106,6 +106,10 @@ Cricket app">
             background: #efefef;
             text-align: center;
         }
+        #header_fixtures_wrapper a:focus,
+        #header_fixtures_wrapper a:active{
+            outline: none;
+        }
         #header_fixtures_wrapper .fixture_wrapper{
             float: none;
             font-family: 'Open Sans', Sans-Serif;

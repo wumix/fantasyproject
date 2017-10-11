@@ -44,6 +44,7 @@
             box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.21);
             padding: 50px 36px;
             margin: 25px 0;
+            overflow-x: auto;
         }
 
         .scorin_bord_sec {
@@ -154,6 +155,9 @@
             color: #575454;
         }
 
+        .gt_scorecard_wrapper {
+            min-width: 1100px;
+        }
         .gt_scorecard_wrapper table tr th:nth-child(1),
         .gt_scorecard_wrapper table tr td:nth-child(1) {
             padding-left: 15px !important;

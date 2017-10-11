@@ -71,6 +71,7 @@ class UpdateMatchScore extends Command
     }
     public function add_player($pid){
         $api_key=config('const.cricapi_key');
+
         $client = new \GuzzleHttp\Client();
         $res = $client->request('GET', 'http://cricapi.com/api/playerStats',[
             'query' => ['apikey' => $api_key,'pid'=>$pid]

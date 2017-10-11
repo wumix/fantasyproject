@@ -18,7 +18,7 @@ class livescores extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'used to update live scores';
 
     /**
      * Create a new command instance.
@@ -42,18 +42,19 @@ class livescores extends Command
         foreach ($data['match_scores'] as $match_scorez) {
             $match_id = $match_scorez['id'];
 
-            $api_key = config('const.cricapi_key');
+            $api_key=config('const.cricapi_key');
             $client = new \GuzzleHttp\Client();
-            $res = $client->request('GET', 'http://cricscore-api.appspot.com/csa?id=1075503', [
-                'query' => ['id' => $match_scorez['cricscore_api']]
+            $res = $client->request('GET', 'http://cricapi.com/api/cricketScore',[
+                'query' => ['apikey' => $api_key,'unique_id'=>$match_scorez['cricapi_match_id']]
             ]);
             $body = $res->getBody();
+
             $result = \GuzzleHttp\json_decode($body->getContents());
             $res = (array)$result;
-            foreach ($res as $score) {
-                $match_score = \App\Match::find($match_id);
-                $match_score->match_scores()->updateOrCreate(['match_id'=>$match_id],['description' => $score->de,'score' =>$score->si]);
-            }
+            if(!empty($res['error'])) continue;
+            $match_score = \App\Match::find($match_id);
+            $match_score->match_scores()->updateOrCreate(['match_id'=>$match_id],['description' => $res['description'],'score' =>$res['score']]);
+
 
         }
     }

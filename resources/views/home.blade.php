@@ -541,6 +541,59 @@ Cricket app">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
 
+                    <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt="KXIP VS MI">
+
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    India Vs Australia
+                                </div>
+                                <div class="project-name">
+                                    Australia won by 8 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+
+                    <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt="KXIP VS KKR">
+
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    India Vs Australia
+                                </div>
+                                <div class="project-name">
+                                    Australia won by 8 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-4  col-sm-6">
+                    <a href="img/portfolio/thumbnails/103.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS KKR">
+
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    India Vs Australia
+                                </div>
+                                <div class="project-name">
+                                    Australia won by 8 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+
                     <a href="img/portfolio/thumbnails/701.jpg" class="portfolio-box">
                         <img src="img/portfolio/thumbnails/701.jpg" class="img-responsive" alt=" DD VS GL">
 
@@ -649,59 +702,7 @@ Cricket app">
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-sm-6">
 
-                    <a href="img/portfolio/thumbnails/601.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/601.jpg" class="img-responsive" alt="KXIP VS MI">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    England Vs West Indies
-                                </div>
-                                <div class="project-name">
-                                    England won by 6 runs DL method
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-
-                    <a href="img/portfolio/thumbnails/602.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/602.jpg" class="img-responsive" alt="KXIP VS KKR">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    England Vs West Indies
-                                </div>
-                                <div class="project-name">
-                                    England won by 6 runs DL method
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="col-lg-4  col-sm-6">
-                    <a href="img/portfolio/thumbnails/603.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/603.jpg" class="img-responsive" alt="KXIP VS KKR">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    England Vs West Indies
-                                </div>
-                                <div class="project-name">
-                                    England won by 6 runs DL method
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
 
 
@@ -891,6 +892,6 @@ Cricket app">
     <meta property="og:description" content="Join referral here"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="600"/>
-    <meta property="og:image" content="{{URL::to('assets-new/img/default-profile-pic-1.png')}}"/>
+    <meta property="og:image" content="{{URL::to('/img/fb_share_logo.png')}}"/>
     <meta property="fb:app_id" content="337419313358697"/>
 @stop

@@ -174,6 +174,14 @@
     </section>
 
 
-
-
 @endsection
+@section('facbook-og-tags')
+    <meta property="og:url" content="{{URL::to('/')}}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Gamithon Fantasy"/>
+    <meta property="og:description" content="Join referral here"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="600"/>
+    <meta property="og:image" content="{{URL::to('/img/fb_share_logo.png')}}"/>
+    <meta property="fb:app_id" content="337419313358697"/>
+@stop

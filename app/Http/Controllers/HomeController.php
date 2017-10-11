@@ -402,6 +402,10 @@ class HomeController extends Controller
     {
         return view('pages.p-p');
     }
+    function scoreRule()
+    {
+        return view('pages.score-rule');
+    }
 
     public function fantasycricket()
     {

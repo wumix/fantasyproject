@@ -301,13 +301,13 @@
                                                     <img src="{{URL::to('/img/batsman-logo.png')}}" alt="">
                                                 @endif
                                             </td>
-                                            <td><?php
+                                          <!--  <td><?php
                                                 $text = "N-A";
                                                 if (!empty($player['player_match_stats'][0]['text'])) {
                                                     $text = $player['player_match_stats'][0]['text'];
                                                 }
                                                 echo $text;
-                                                ?></td>
+                                                ?></td> -->
                                             <?php $temp = ['Runs' => '-', '6s' => '-', '4s' => '-', 'SR' => '-', 'Econ' => '-',
                                                 'W' => '-'];
 

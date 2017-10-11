@@ -260,7 +260,7 @@ Cricket app">
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="page-scroll" href="#">
+                                    <a class="page-scroll" href="{{route('scorerule')}}">
                                         Score Rules
                                     </a>
                                 </li>

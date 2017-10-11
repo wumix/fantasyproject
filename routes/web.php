@@ -39,6 +39,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('contact', 'HomeController@contactPage')->name('contactPage');
     Route::post('contact', 'HomeController@postContact')->name('postContact');
     Route::get('privacy', 'HomeController@privacyPolicy')->name('PrivacyPolicy');
+    Route::get('rule', 'HomeController@scoreRule')->name('scorerule');
+
     Route::get('fantasy-cricket', 'HomeController@fantasycricket')->name('fantasycricket');
     Route::get('about', 'HomeController@aboutUs')->name('aboutus');
 

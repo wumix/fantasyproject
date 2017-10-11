@@ -404,7 +404,17 @@ class HomeController extends Controller
     }
     function scoreRule()
     {
-        return view('pages.score-rule');
+        $data['tournament'] = \App\Tournament::where('id', config('const.tournament_id'))
+            ->with(['tournament_game.game_actions.game_terms', 'game_term_points' => function ($q) {
+                $q->orderBY('points', 'DESC');
+
+
+            }])
+            ->firstOrFail()
+            ->toArray();
+        //dd( $data['tournament'] );
+        $data['game_actions'] = $data['tournament']['tournament_game']['game_actions'];
+        return view('pages.score-rule',$data);
     }
 
     public function fantasycricket()

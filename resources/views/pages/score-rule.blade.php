@@ -7,49 +7,59 @@
 @section('css')
     <style>
 
-        .gamithon_page_heading {
-            font-size: 24px;
-            line-height: 32px;
-            font-weight: 600;
-        }
+        .score_rule_wrapper{
 
-        .fantasy_cricket_bottom_sections {
-            margin-bottom: 30px;
         }
-
-        .fantasy_cricket_bottom_sections .fantasy_cricket_call_to_action {
-            padding: 30px;
+        .score_rule_wrapper .nav-tabs{
             text-align: center;
-            background: #efefef;
-            border: 2px solid #ccc;
-            border-radius: 11px;
+            /*border-bottom: 2px solid #92B713;*/
+            border-bottom: none;
         }
-
-        .fantasy_cricket_bottom_sections .fantasy_cricket_call_to_action h3 {
-            margin-top: 0;
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 25px;
-            line-height: 24px;
-            color: #f7921e;
-        }
-
-        .fantasy_cricket_bottom_sections .fantasy_cricket_call_to_action .gamithon_section_btn {
+        .score_rule_wrapper .nav-tabs li{
             display: inline-block;
+            float: none;
+        }
+        .score_rule_wrapper .nav-tabs li a{
             background: #92B713;
-            padding: 8px 15px;
-            border: 2px solid #92B713;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
             color: #fff;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 10px 25px;
+            border: 1px solid #92B713;
             border-radius: 5px;
         }
+        .score_rule_wrapper .nav-tabs li a:active,
+        .score_rule_wrapper .nav-tabs li a:focus,
+        .score_rule_wrapper .nav-tabs li.active a,
+        .score_rule_wrapper .nav-tabs li:hover a{
+            background: #F8930E;
+            padding: 10px 25px;
+            border: 1px solid #F8930E;
+            color: #fff;
+        }
 
-        .fantasy_cricket_bottom_sections .fantasy_cricket_call_to_action .gamithon_section_btn:hover {
-            color: #92B713;
-            background: none;
-            text-decoration: none;
+        .score_rule_table_wrapper{
+
+        }
+        .score_rule_table_wrapper thead{
+
+        }
+        .score_rule_table_wrapper thead tr:first-child{
+            background: #92B713;
+        }
+        .score_rule_table_wrapper thead tr:first-child th{
+            color: #fff;
+            font-size: 18px;
+        }
+        .score_rule_table_wrapper tr td,
+        .score_rule_table_wrapper tr th{
+            padding: 10px 15px !important;
+        }
+        .score_rule_table_wrapper tr td:first-child{
+            width: 70%;
+        }
+        .score_rule_table_wrapper tr td:last-child{
+            width: 30%;
         }
 
     </style>
@@ -67,47 +77,70 @@
                         Score Rule
                     </h1>
                     <hr class="light full">
-                    <div class="page-content">
+                    <div class="scorin_bord_sec">
 
-
-                        <h2 class="gamithon_page_heading">What Is Fantasy Cricket?</h2>
-
-                        <p>Do you have what it takes to put together a winning cricket team? GamithonFantasy.com gives
-                            you the perfect chance to find out. Fantasy Cricket, like other fantasy games, puts you in
-                            the front line as General Manager and Coach of your team. You select from a list of the best
-                            players in the Series/Tournament. Their on-field performance drives your fantasy point total
-                            and overall success.</p>
-
-                        <p>Specifically, fantasy cricket works like this: You decide what type of series/tournament you
-                            want to participate in, acquire a roster of players, then set your lineup before the
-                            series/tournament starts and watch as sixes, fours, stumps, catches, run rates and much,
-                            much more generate fantasy points for or against your team. Whether you win or lose and
-                            climb or fall on the leaderboard all depends on how well you maximize the talent on your
-                            roster each series/tournament. Will you make a risky move to start with the new opener or
-                            will you play it safe and keep your seasoned lineup consistent?</p>
-
-                        <p>Will your team earn the title of GamithonFantasy.com Fantasy Cricket Champion this
-                            series/tournament? Find the right settings to suit your interests and start building your
-                            winning team today!</p>
-
-                        <div class="fantasy_cricket_bottom_sections row">
-
-                            <div class="col-md-6">
-                                <div class="fantasy_cricket_call_to_action">
-                                    <h3>New to gamithonfantasy.com Fantasy Cricket?</h3>
-                                    <a href="#" class="gamithon_section_btn">Sign Up Now!</a>
+                        <!--start -->
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <div class="panel with-nav-tabs panel score_rule_wrapper">
+                                    <div class="panel-heading">
+                                        <ul class="nav nav-tabs">
+                                            @foreach($game_actions as $key => $val)
+                                                <li class="{!! ($key == 0) ? 'active':'' !!}">
+                                                    <a href="#action-{{$val['id']}}" data-toggle="tab">
+                                                        {{$val['name']}}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="tab-content">
+                                            @foreach($game_actions as $key => $val)
+                                                <div class="tab-pane {!! ($key == 0) ? 'active':'' !!}" id="action-{{$val['id']}}">
+                                                    <div class="table-responsive col-md-12">
+                                                        <table class="table table-striped table-bordered score_rule_table_wrapper">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Rule</th>
+                                                                <th>Points</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            @foreach($val['game_terms'] as $key => $val)
+                                                                <?php
+                                                                $termFromToPoints = tapArray($tournament['game_term_points'], ['game_term_id' => $val['id']], false);
+                                                                ?>
+                                                                @foreach($termFromToPoints as $termPointIndex => $termPointVal)
+                                                                    <tr  class="cwt">
+                                                                        <td>
+                                                                            <?php
+                                                                            $qtyToTxt = ($termPointVal['qty_to'] > 999) ? 'Above' : $termPointVal['qty_to'];
+                                                                            ?>
+                                                                            @php($fromToText = ': '.$termPointVal['qty_from'].' - '.$qtyToTxt)
+                                                                            @if($termPointVal['qty_from']-$termPointVal['qty_to'] == 0)
+                                                                                @php($fromToText = '')
+                                                                            @endif
+                                                                            {{$val['name']}} {{$fromToText}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{$termPointVal['points']}}
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                @endforeach<!--Game actions outer loop-->
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="col-md-6">
-                                <div class="fantasy_cricket_call_to_action">
-                                    <h3>Back for another series/tournament?</h3>
-                                    <a href="#" class="gamithon_section_btn">Activate Your Team!</a>
-                                </div>
-                            </div>
-
                         </div>
 
+                        <!-- tab end -->
                     </div>
                 </div>
             </div>

@@ -339,7 +339,7 @@ Cricket app">
                         {{--</a>--}}
                         {{--</li>--}}
                         <li>
-                            <a class="page-scroll" href="{{route('contactPage')}}">Contact Us</a>
+                            <a class="page-scroll" href="{{route('contactPage')}}">Feedback</a>
                         </li>
                     </ul>
                 </div>

@@ -190,9 +190,9 @@
                         <a href="#" class="gt_teams">{{$match['team_one']}}</a> vs
                         <a href="#" class="gt_teams">{{$match['team_two']}}</a>
                         <?php
-                        if (empty($match['result'])) {
-                            $match['result'] = "";
-                        }
+//                        if (empty($match['result'])) {
+//                            $match['result'] = "";
+//                        }
                         ?>
                         <span class="gt_match_result">{{$match['result']}}</span>
                     </div>

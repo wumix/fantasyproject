@@ -95,7 +95,7 @@
                             <div class="col-md-6">
                                 <div class="fantasy_cricket_call_to_action">
                                     <h3>New to gamithonfantasy.com Fantasy Cricket?</h3>
-                                    <a href="{{route('signUp')}}" class="gamithon_section_btn">Sign Up Now!</a>
+                                    <a href="{{route('login')}}" class="gamithon_section_btn">Sign Up Now!</a>
                                 </div>
                             </div>
 

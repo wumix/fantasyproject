@@ -58,13 +58,13 @@
 @section('content')
     <section>
         @section('title')
-            Fantasy Cricket
+            Score Rule
         @stop
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-heading">
-                        Fantasy Cricket
+                        Score Rule
                     </h1>
                     <hr class="light full">
                     <div class="page-content">

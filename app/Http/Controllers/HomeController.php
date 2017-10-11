@@ -131,7 +131,7 @@ class HomeController extends Controller
         $data['team_name'] = strtoupper($team_name);
         // dd($team_name);
         // dd($data['match']['match_players'][0]);
-        return view('user.team_detail1', $data);
+        return view('user.scorecard', $data);
 
     }
 

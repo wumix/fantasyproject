@@ -275,8 +275,8 @@
                                                 }
                                                 echo $text;
                                                 ?></td>
-                                            <?php $temp = ['Runs' => '-', '6s' => '-', '4s' => '-', 'Scoring Rate' => '-', 'R.R.P.O' => '-',
-                                                'Wicket Taken' => '-'];
+                                            <?php $temp = ['Runs' => '-', '6s' => '-', '4s' => '-', 'SR' => '-', 'R.R.P.O' => '-',
+                                                'W' => '-'];
 
                                             ?>
 

@@ -226,7 +226,7 @@
 //                            $match['result'] = "";
 //                        }
                         ?>
-                        <span class="gt_match_result">{{$match['result']}}</span>
+                      <!--  <span class="gt_match_result">{{$match['result']}}</span>-->
                     </div>
 
                     <div class="table-responsive gt_scorecard_wrapper">

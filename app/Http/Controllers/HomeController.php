@@ -152,6 +152,7 @@ class HomeController extends Controller
             }
             ])
             ->first()->toArray();
+
         $team_name = $data['match']['team_one'];
         if (!empty($request->team_name)) {
             $team_name = $request->team_name;

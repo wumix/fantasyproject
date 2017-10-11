@@ -1,9 +1,41 @@
-@extends('layouts.app')
 
-@section('title')
-    Scorecards
-@stop
-@section('css')
+{{--{{dd($player)}}--}}
+        <!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <link rel="shortcut icon" href="../img/gamithon-fevi.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gamithon Fantasy</title>
+
+    <!-- Bootstrap Core CSS -->
+{!! Html::style('assets-new/vendor/bootstrap/css/bootstrap.min.css') !!}
+{!! Html::style('assets-new/css/bootstrap-tour.css') !!}
+{!! Html::style('js/colorbox-master/example1/colorbox.css') !!}
+{!! Html::style('assets-new/css/jquery.mCustomScrollbar.css') !!}
+{!! Html::style('https://fonts.googleapis.com/css?family=Raleway') !!}
+{!! Html::style('assets-new/vendor/font-awesome/css/font-awesome.min.css') !!}
+{!! Html::style('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!}
+{!! Html::style('https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic') !!}
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {!! Html::style('assets-new/vendor/magnific-popup/magnific-popup.css') !!}
+    {!! Html::style('assets/css/slicknav.css') !!}
+    {!! Html::style('assets-new/css/creative.css') !!}
+    {!! Html::style('assets-new/css/style.css') !!}
+    {!! Html::style('assets-new/css/fixtures.css') !!}
+
+
+    {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}
     <style>
         .how_play_sec {
             width: 100%;
@@ -172,8 +204,8 @@
         }
 
     </style>
-@endsection
-@section('content')
+</head>
+<body>
     <div class="container">
         <div class="row" style="min-height: 500px;">
             <div class="col-md-12">
@@ -199,6 +231,7 @@
 
                     <div class="table-responsive gt_scorecard_wrapper">
                         <!--<table class="table table-striped">-->
+
                         @if(!empty($match['match_players']))
                             <table class="table">
                                 <thead>
@@ -314,14 +347,17 @@
 
         </div>
     </div>
-
-@endsection
-@section('js')
+    <script src="http://gamithonfantasy.com/assets-new/vendor/jquery/jquery.min.js"></script>
     <script>
         $('#gt_team_select').change(function () {
-            window.location = "{{route('scorecard',['id'=>$match['id'],'tournament_id'=>$tournament_id])}}?team_name=" + $(this).val();
+            window.location = "{{route('scorecardpopup',['id'=>$match['id'],'tournament_id'=>$tournament_id])}}?team_name=" + $(this).val();
         });
     </script>
+</body>
+</html>
 
 
-@endsection
+
+
+
+

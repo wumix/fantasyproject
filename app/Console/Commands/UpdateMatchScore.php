@@ -82,7 +82,7 @@ class UpdateMatchScore extends Command
         $image=explode("/",$res['imageURL']);
         $image=end($image);
         $dlimage=file_get_contents($res['imageURL']);
-       file_put_contents('uploads/cricapi/'.$image,$dlimage);
+       //file_put_contents('uploads/cricapi/'.$image,$dlimage);
 
 
         $player=new \App\Player;

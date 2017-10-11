@@ -95,14 +95,14 @@
                             <div class="col-md-6">
                                 <div class="fantasy_cricket_call_to_action">
                                     <h3>New to gamithonfantasy.com Fantasy Cricket?</h3>
-                                    <a href="#" class="gamithon_section_btn">Sign Up Now!</a>
+                                    <a href="{{route('signUp')}}" class="gamithon_section_btn">Sign Up Now!</a>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="fantasy_cricket_call_to_action">
                                     <h3>Back for another series/tournament?</h3>
-                                    <a href="#" class="gamithon_section_btn">Activate Your Team!</a>
+                                    <a href="{{route('usertournamenthome')}}" class="gamithon_section_btn">Activate Your Team!</a>
                                 </div>
                             </div>
 

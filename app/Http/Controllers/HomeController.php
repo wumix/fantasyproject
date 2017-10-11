@@ -258,11 +258,11 @@ class HomeController extends Controller
     }
 
 
-    public
-    function leaderboard($tournament_id)
+    public  function leaderboard($tournament_id)
     {
         $data['leaders'] = \App\Leaderboard::where('tournament_id', $tournament_id)->with('user', 'user_team')->where('score', '>', 0)->take(20)->
         orderBy('score', 'DESC')->get()->toArray();
+        //dd($data['leaders']);
 
         $data['tournamet'] = \App\Tournament::find($tournament_id)->name;
 

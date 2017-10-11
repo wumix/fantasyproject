@@ -96,7 +96,7 @@ Cricket app">
 
                 <!-- Fixture Start -->
                 @foreach($match_scores as $match_score)
-                <a
+                <a class="colorbox"
                    href="{{route('scorecardpopup',['slug'=>$match_score['id'],'tournament_id'=>$match_score['tournament_id']])}}"
                    class="view_scorecard_btn">
                     <div class="col-md-3 fixture_wrapper">

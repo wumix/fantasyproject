@@ -166,17 +166,19 @@ class RegisterController extends Controller
             if (!empty($request->referral_key)) {
                 $refferal_points = \App\UserAction::where('action_key', 'referral_signup')->first()->action_points;
                 $user_id = \App\User::where('referral_key', $request->referral_key)->first();
-                $newarray =
-                    [
-                        'tournament_id' => $row['id'],
-                        'action_key' =>'referral_signup',
-                        'user_id' => $user_id['id'],
-                        'points_scored' => $refferal_points
-                    ];
+                if(!empty($user_id)) {
+                    $newarray =
+                        [
+                            'tournament_id' => $row['id'],
+                            'action_key' => 'referral_signup',
+                            'user_id' => $user_id['id'],
+                            'points_scored' => $refferal_points
+                        ];
 
-                \App\UserPointsScored::insert($newarray);
-                \Mail::to($user_id['email'])->send(new \App\Mail\RefferalMail($user_id['name']));
-            }
+                    \App\UserPointsScored::insert($newarray);
+                    \Mail::to($user_id['email'])->send(new \App\Mail\RefferalMail($user_id['name']));
+                }
+                }
         }
         \Mail::to($user->email)->send(new \App\Mail\SignUp($user->name));
 

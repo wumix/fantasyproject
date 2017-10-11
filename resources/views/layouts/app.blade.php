@@ -249,10 +249,22 @@ Cricket app">
                             <a class="page-scroll" href="/">Home</a>
                         </li>
 
-                        <li>
+                        <li class="has-menu">
                             <a class="page-scroll" href="{{route('howPlay')}}">
                                 How to play
                             </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a class="page-scroll" href="{{route('fantasycricket')}}">
+                                        Fantasy Cricket
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="#">
+                                        Score Rules
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a class="page-scroll" href="{{route('dashboardhome')}}">

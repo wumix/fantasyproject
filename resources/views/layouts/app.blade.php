@@ -30,14 +30,14 @@ Cricket app">
     {!! Html::style('assets-new/vendor/bootstrap/css/bootstrap.min.css') !!}
     {!! Html::style('bootstrap-modal-extend/css/bootstrap-modal.css') !!}
 
-    {!! Html::style('assets-new/css/bootstrap-tour.css') !!}
+    {{--{!! Html::style('assets-new/css/bootstrap-tour.css') !!}--}}
     {!! Html::style('assets-new/css/jquery.mCustomScrollbar.css') !!}
     {!! Html::style('https://fonts.googleapis.com/css?family=Raleway') !!}
     {!! Html::style('assets-new/vendor/font-awesome/css/font-awesome.min.css') !!}
 
     {!! Html::style('js/toaster/jquery.toast.css') !!}
     {!! Html::style('js/colorbox-master/example1/colorbox.css') !!}
-    {!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}
+    {{--{!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}--}}
     {!! Html::style('assets-new/vendor/magnific-popup/magnific-popup.css') !!}
     {!! Html::style('assets/css/slicknav.css') !!}
     {!! Html::style('assets-new/css/creative.css') !!}
@@ -52,14 +52,10 @@ Cricket app">
             list-style: none;
             overflow: hidden;
             padding: 0;
-            margin: 0 0 0 0;
-
+            margin: 0;
         }
-
-
         .p0 {
             padding-left: 0;
-
         }
     </style>
 
@@ -253,10 +249,22 @@ Cricket app">
                             <a class="page-scroll" href="/">Home</a>
                         </li>
 
-                        <li>
+                        <li class="has-menu">
                             <a class="page-scroll" href="{{route('howPlay')}}">
                                 How to play
                             </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a class="page-scroll" href="{{route('fantasycricket')}}">
+                                        Fantasy Cricket
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="page-scroll" href="#">
+                                        Score Rules
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a class="page-scroll" href="{{route('dashboardhome')}}">

@@ -488,6 +488,8 @@ class ChallengeController extends Controller
             $reciever = $id = \App\User::find($challenge->user_1_id);
         }
         \Mail::to($reciever->email)->send(new \App\Mail\ChallengeTeamCompleted($sender->name, $reciever->name));
+        $data['message']="Team Added Successfully";
+        return response()->json($data);
 
     }
 

@@ -31,11 +31,11 @@ Cricket app">
     {!! Html::style('bootstrap-modal-extend/css/bootstrap-modal.css') !!}
 
     {{--{!! Html::style('assets-new/css/bootstrap-tour.css') !!}--}}
-    {!! Html::style('assets-new/css/jquery.mCustomScrollbar.css') !!}
+    {!! Html::style('assets-new/css/jquery.mCustomScrollbar.css',['media'=>'print','async'=>true]) !!}
     {!! Html::style('https://fonts.googleapis.com/css?family=Raleway',['media'=>'print','async'=>true]) !!}
     {!! Html::style('assets-new/vendor/font-awesome/css/font-awesome.min.css') !!}
 
-    {!! Html::style('js/toaster/jquery.toast.css') !!}
+    {!! Html::style('js/toaster/jquery.toast.css',['media'=>'print','async'=>true]) !!}
     {!! Html::style('js/colorbox-master/example1/colorbox.css',['media'=>'print','async'=>true]) !!}
     {{--{!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}--}}
     {!! Html::style('assets-new/vendor/magnific-popup/magnific-popup.css',['media'=>'print','async'=>true]) !!}
@@ -44,7 +44,7 @@ Cricket app">
     {!! Html::style('assets-new/css/style.css') !!}
     {!! Html::style('assets-new/css/fixtures.css') !!}
     {!! Html::style('assets-new/css/owl.carousel.min.css',['media'=>'print','async'=>true]) !!}
-    {!! Html::style('assets-new/css/owl.theme.default.min.css') !!}
+    {!! Html::style('assets-new/css/owl.theme.default.min.css',['media'=>'print','async'=>true]) !!}
     {!! Html::style('assets-new/css/main_site_style.css') !!}
 
     @yield('css')

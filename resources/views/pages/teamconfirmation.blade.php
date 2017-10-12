@@ -4,9 +4,6 @@
 @stop
 @section('content')
     <section>
-        <style>
-
-        </style>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

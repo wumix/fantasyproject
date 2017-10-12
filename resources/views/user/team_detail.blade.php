@@ -31,27 +31,6 @@ foreach ($team_score as $teamplayers) {
     Team Detail
 @stop
 @section('content')
-    <style>
-        .transfered_player_img {
-            width: 50px;
-        }
-
-        .transfered_container {
-            float: left;
-        }
-
-        .transfered_player_img {
-            left: 50%;
-        }
-
-        .current_player {
-            float: left;
-        }
-
-        .thinkBorder {
-            border-width: 1px;
-        }
-    </style>
     <section>
         <div class="container">
 

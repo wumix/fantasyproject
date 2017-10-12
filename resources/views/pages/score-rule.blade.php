@@ -4,67 +4,6 @@
 ">
 @endsection
 
-@section('css')
-    <style>
-
-        .score_rule_wrapper{
-
-        }
-        .score_rule_wrapper .nav-tabs{
-            text-align: center;
-            /*border-bottom: 2px solid #92B713;*/
-            border-bottom: none;
-        }
-        .score_rule_wrapper .nav-tabs li{
-            display: inline-block;
-            float: none;
-        }
-        .score_rule_wrapper .nav-tabs li a{
-            background: #92B713;
-            color: #fff;
-            font-weight: 600;
-            font-size: 16px;
-            padding: 10px 25px;
-            border: 1px solid #92B713;
-            border-radius: 5px;
-        }
-        .score_rule_wrapper .nav-tabs li a:active,
-        .score_rule_wrapper .nav-tabs li a:focus,
-        .score_rule_wrapper .nav-tabs li.active a,
-        .score_rule_wrapper .nav-tabs li:hover a{
-            background: #F8930E;
-            padding: 10px 25px;
-            border: 1px solid #F8930E;
-            color: #fff;
-        }
-
-        .score_rule_table_wrapper{
-
-        }
-        .score_rule_table_wrapper thead{
-
-        }
-        .score_rule_table_wrapper thead tr:first-child{
-            background: #92B713;
-        }
-        .score_rule_table_wrapper thead tr:first-child th{
-            color: #fff;
-            font-size: 18px;
-        }
-        .score_rule_table_wrapper tr td,
-        .score_rule_table_wrapper tr th{
-            padding: 10px 15px !important;
-        }
-        .score_rule_table_wrapper tr td:first-child{
-            width: 70%;
-        }
-        .score_rule_table_wrapper tr td:last-child{
-            width: 30%;
-        }
-
-    </style>
-@endsection
-
 @section('content')
     <section>
         @section('title')

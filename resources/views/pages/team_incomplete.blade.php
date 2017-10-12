@@ -4,13 +4,6 @@
 @stop
 @section('content')
     <section>
-        <style>
-            footer{
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-            }
-        </style>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

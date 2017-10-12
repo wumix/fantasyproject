@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('meta-keywords')
@@ -13,115 +12,53 @@ Cricket Fantasy League,
 Cricket Fantasy,
 Play Fantasy Cricket and Win Cash Daily,
 Cricket app">
-    <meta name="description" content="Gamithon Fantasy cricket is a strategy game, Based on their cricketer's real-life performance, users get points and compete with others to win prizes…">
-    @endsection
+    <meta name="description"
+          content="Gamithon Fantasy cricket is a strategy game, Based on their cricketer's real-life performance, users get points and compete with others to win prizes…">
+@endsection
 @section('css')
     {!! Html::style('assets-new/css/slick-theme.css') !!}
     {!! Html::style('assets-new/css/slick.css') !!}
-
-
-    <style>
-        .refer_friend_wrapper {
-            position: relative;
-        }
-
-        .refer_friend_wrapper .login_share_wrapper {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .itemsz {
-            background: none;
-            border-radius: 10px;
-            border: 6px solid #92b713;
-            overflow: hidden;
-        }
-
-        .itemsz .gami_blog_thumb{
-
-        }
-        .itemsz .gami_blog_thumb{
-
-        }
-        .itemsz .gami_blog_desc h4{
-            margin: 5px 0 10px;
-        }
-        .itemsz .gami_blog_desc h4 .home-news-headings{
-            font-size: 16px;
-        }
-        .itemsz .gami_blog_desc .gami_news_btn{
-            display: inline-block;
-            background: #92b713;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            border: 2px solid #92b713;
-            text-decoration: none !important;
-        }
-        .itemsz .gami_blog_desc .gami_news_btn:hover{
-            background: none;
-            color: #92b713;
-        }
-
-        .owl-carousel .owl-nav,
-        .owl-carousel .owl-dots {
-            display: none !important;
-        }
-
-        .owl-theme .owl-nav [class*=owl-]{
-            background: #92b713;
-            border: 2px solid #92b713;
-            font-size: 17px;
-            margin: 5px;
-            padding: 3px 20px;
-        }
-        .owl-theme .owl-nav [class*=owl-]:hover{
-            color: #92b713;
-            background: none;
-        }
-    </style>
 
 @endsection
 
 
 @section('title')
     Gamithon Fantasy - Play Fantasy League Create Team
-@stop
-@section('live_scores')
-    <!-- Header fixtures Start -->
+    @stop
+    @section('live_scores')
+            <!-- Header fixtures Start -->
     <div id="header_fixtures_wrapper">
         <div class="container">
             <div class="row">
 
                 <!-- Fixture Start -->
                 @foreach($match_scores as $match_score)
-                <a class="colorbox"
-                   href="{{route('scorecardpopup',['slug'=>$match_score['id'],'tournament_id'=>$match_score['tournament_id']])}}"
-                   class="view_scorecard_btn">
-                    <div class="col-md-3 fixture_wrapper">
-                    <div class="teams_scores_wrapper">
+                    <a class="colorbox"
+                       href="{{route('scorecardpopup',['slug'=>$match_score['id'],'tournament_id'=>$match_score['tournament_id']])}}"
+                       class="view_scorecard_btn">
+                        <div class="col-md-3 fixture_wrapper">
+                            <div class="teams_scores_wrapper">
 
-                        <div class="team_score_1 team_score">
-                           {{$match_score['team_one']}}
+                                <div class="team_score_1 team_score">
+                                    {{$match_score['team_one']}}
 
+                                </div>
+                                <span>VS</span>
+
+                                <div class="team_score_2 team_score">
+                                    {{$match_score['team_two']}}
+
+                                </div>
+                                @if($match_score['match_scores'][0]['score'])
+                                    <span class="match_summary">{{$match_score['match_scores'][0]['score']}}</span>
+                                @else
+                                    <span class="match_summary">{{$match_score['match_scores'][0]['description']}}</span>
+                                @endif
+                            </div>
                         </div>
-                        <span>VS</span>
-                        <div class="team_score_2 team_score">
-                            {{$match_score['team_two']}}
-
-                        </div>
-                        @if($match_score['match_scores'][0]['score'])
-                        <span class="match_summary">{{$match_score['match_scores'][0]['score']}}</span>
-                        @else
-                            <span class="match_summary">{{$match_score['match_scores'][0]['description']}}</span>
-                        @endif
-                    </div>
-                </div>
-                </a>
-                @endforeach
-                <!-- Fixture End -->
-
+                    </a>
+                    @endforeach
+                            <!-- Fixture End -->
 
 
             </div>
@@ -129,8 +66,8 @@ Cricket app">
     </div>
     <!-- Header fixtures End -->
     @endsection
-@section('content')
-    <!--BASBB-->
+    @section('content')
+            <!--BASBB-->
 
     <header id="header">
         <div id="abcd" class="header-content container">
@@ -268,6 +205,10 @@ Cricket app">
                 </div>
             </div>
         </div>
+        <div id="home_banner_nav">
+            <span class="banner_navigation prev_slide"><i class="fa fa-chevron-circle-left"></i></span>
+            <span class="banner_navigation next_slide"><i class="fa fa-chevron-circle-right"></i></span>
+        </div>
     </header>
     <!--BASBB-->
     <!-- ..........................Banner Start ............................-->
@@ -277,32 +218,33 @@ Cricket app">
         <section class="bg-primary" id="about">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-2">
-                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <!-- home_page -->
-                        <ins class="adsbygoogle"
-                             style="display:inline-block;width:120px;height:240px"
-                             data-ad-client="ca-pub-8140847957930358"
-                             data-ad-slot="6115581633"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
+                    {{--<div class="col-lg-2">--}}
+                    {{--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
+                    {{--<!-- home_page -->--}}
+                    {{--<ins class="adsbygoogle"--}}
+                    {{--style="display:inline-block;width:120px;height:240px"--}}
+                    {{--data-ad-client="ca-pub-8140847957930358"--}}
+                    {{--data-ad-slot="6115581633"></ins>--}}
+                    {{--<script>--}}
+                    {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                    {{--</script>--}}
 
-                    </div>
-                    <div class="col-lg-7 text-center">
+                    {{--</div>--}}
+                    <div class="col-lg-9 text-center">
                         <h1 class="section-heading">
                             Active Tournament and Series
                             <hr class="light">
                         </h1>
 
-                        <div class="table-responsive">
+                        <div class="table-responsive active_tournament_wrapper">
                             <table class="table table-striped table-stripedhome gen-table">
                                 <thead class="main-taible-head">
                                 <tr>
                                     <th class="border-r th1">Name</th>
                                     <th class="border-r">Venue</th>
                                     <th class="border-r">Starts</th>
-                                    <th class="th2">Ends</th>
+                                    <th class="th2 border-r">Ends</th>
+                                    <th class="th2"></th>
                                 </tr>
                                 </thead>
                                 <tbody class="main-taible-body">
@@ -320,11 +262,12 @@ Cricket app">
                                                 echo formatDate($row['start_date']);
                                                 ?>
                                             </td>
-                                            <td>
+                                            <td class="border-r">
                                                 <?php
                                                 echo formatDate($row['end_date']);
                                                 ?>
                                             </td>
+                                            <td><a href="#" class="active_tournaments_btn">View Scorecard</a></td>
                                         </tr>
                                     @endforeach
                                 @else
@@ -399,7 +342,7 @@ Cricket app">
     @if(!empty($news))
         <section class="bg-primary" style="padding-top: 20px; padding-bottom: 20px;">
             <div class="container">
-                <div class="owl-carousel owl-theme">
+                <div class="blog_carousel owl-carousel owl-theme">
                     <!-- start news -->
 
                     @foreach($news as $key=>$val)
@@ -435,191 +378,168 @@ Cricket app">
                                         {!! substr($val['description'],0, 71) !!}...
                                         <br>
                                     </span>
-                                    <a href="{{route('newsdetail',['id'=>$val['slug']])}}" class="gami_news_btn">Read More</a>
+                                    <a href="{{route('newsdetail',['id'=>$val['slug']])}}" class="gami_news_btn">Read
+                                        More</a>
                                 </div>
                             </div>
                         </div>
-                @endforeach
-                <!-- end news -->
+                        @endforeach
+                                <!-- end news -->
                 </div>
             </div>
         </section>
-    @endif
+        @endif
 
 
-    <!-- LETS PLAY AT GAMITHON  Start-->
-    <section id="services" class=" services-padding-bottom bg-dark how-to-play-summery">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">How to play Gamithon Fantasy</h2>
+                <!-- LETS PLAY AT GAMITHON  Start-->
+        <section id="how_to_play" class=" services-padding-bottom bg-dark how-to-play-summery">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">How to play Gamithon Fantasy</h2>
 
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="row">
+            <div class="container">
+                <div class="row">
 
 
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="service-box">
-                        <a>
+                    <div class="col-lg-4 col-md-6 text-center">
+                        <div class="service-box">
                             <i class="fa fa-4x fa-user-plus sr-icons"></i>
 
                             <p class="text-muted">
                                 SIGN UP TO PLAY AT GAMITHON
                             </p>
-                        </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="service-box">
-                        <a disabled='disabled'>
+                    <div class="col-lg-4 col-md-6 text-center">
+                        <div class="service-box">
                             <i class="fa fa-4x fa-users sr-icons"></i>
 
                             <p class="text-muted">
                                 CREATE YOUR TEAM
                             </p>
-                        </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="col-lg-4 col-md-6 text-center">
 
-                    <div class="service-box">
-                        <a disabled="true">
+                        <div class="service-box">
                             <i class="fa fa-4x fa-trophy sr-icons"></i>
 
                             <p class="text-muted">
                                 SELECT PLAYERS AND WIN PRIZES!
                             </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="mobile_applications" class=" services-padding-bottom bg-dark how-to-play-summery"
+                 style="background:#252525 !important">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">Download Our Mobile Applications</h2>
+
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-2 col-md-2 text-center">
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 text-center">
+                        <div class="service-box">
+                            <a target="_blank"
+                               href="https://play.google.com/store/apps/details?id=com.branches.gamithon">
+                                <img src="{{URL::to('/img/google.png')}}"/>
+
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 text-center">
+
+                        <div class="service-box">
+                            <a target="_blank"
+                               href="https://itunes.apple.com/us/app/gamithon-fantasy/id1277096945?ls=1&mt=8">
+                                <img src="{{URL::to('/img/ios.png')}}"/>
+
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 text-center">
+                    </div>
+                </div>
+            </div>
+        </section>
+        {{--.............................Gallry Start..............................................--}}
+        <section id="portfolio">
+            <div class="container-fluid">
+                <div class="row no-gutter popup-gallery">
+                    <div class="col-lg-4 col-sm-6">
+
+                        <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
+                            <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt="KXIP VS MI">
+
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-category text-faded">
+                                        India Vs Australia
+                                    </div>
+                                    <div class="project-name">
+                                        Australia won by 8 wickets
+                                    </div>
+                                </div>
+                            </div>
                         </a>
                     </div>
 
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="services" class=" services-padding-bottom bg-dark how-to-play-summery"
-             style="background:#252525 !important">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Download Our Mobile Applications</h2>
+                    <div class="col-lg-4 col-sm-6">
 
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
+                        <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
+                            <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt="KXIP VS KKR">
 
-                <div class="col-lg-2 col-md-2 text-center">
-                </div>
-
-                <div class="col-lg-4 col-md-4 text-center">
-                    <div class="service-box">
-                        <a target="_blank"
-                           href="https://play.google.com/store/apps/details?id=com.branches.gamithon">
-                            <img src="{{URL::to('/img/google.png')}}"/>
-
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-category text-faded">
+                                        India Vs Australia
+                                    </div>
+                                    <div class="project-name">
+                                        Australia won by 8 wickets
+                                    </div>
+                                </div>
+                            </div>
                         </a>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4 text-center">
 
-                    <div class="service-box">
-                        <a target="_blank"
-                           href="https://itunes.apple.com/us/app/gamithon-fantasy/id1277096945?ls=1&mt=8">
-                            <img src="{{URL::to('/img/ios.png')}}"/>
 
+                    <div class="col-lg-4  col-sm-6">
+                        <a href="img/portfolio/thumbnails/103.jpg" class="portfolio-box">
+                            <img src="img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS KKR">
+
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-category text-faded">
+                                        India Vs Australia
+                                    </div>
+                                    <div class="project-name">
+                                        Australia won by 8 wickets
+                                    </div>
+                                </div>
+                            </div>
                         </a>
                     </div>
-                </div>
-                <div class="col-lg-2 col-md-2 text-center">
-                </div>
-            </div>
-        </div>
-    </section>
-    {{--.............................Gallry Start..............................................--}}
-    <section id="portfolio">
-        <div class="container-fluid">
-            <div class="row no-gutter popup-gallery">
-                <div class="col-lg-4 col-sm-6">
+                    <div class="col-lg-4 col-sm-6">
 
-                    <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <a href="img/portfolio/thumbnails/701.jpg" class="portfolio-box">
+                            <img src="img/portfolio/thumbnails/701.jpg" class="img-responsive" alt=" DD VS GL">
 
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    India Vs Australia
-                                </div>
-                                <div class="project-name">
-                                    Australia won by 8 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-
-                    <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt="KXIP VS KKR">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    India Vs Australia
-                                </div>
-                                <div class="project-name">
-                                    Australia won by 8 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="col-lg-4  col-sm-6">
-                    <a href="img/portfolio/thumbnails/103.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/103.jpg" class="img-responsive" alt="KXIP VS KKR">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    India Vs Australia
-                                </div>
-                                <div class="project-name">
-                                    Australia won by 8 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-
-                    <a href="img/portfolio/thumbnails/701.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/701.jpg" class="img-responsive" alt=" DD VS GL">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    India Vs Australia
-                                </div>
-                                <div class="project-name">
-                                    India won by 7 wickets
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-
-                    <a href="img/portfolio/thumbnails/702.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/702.jpg" class="img-responsive" alt="KXIP VS MI">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
+                            <div class="portfolio-box-caption">
                                 <div class="portfolio-box-caption-content">
                                     <div class="project-category text-faded">
                                         India Vs Australia
@@ -629,94 +549,107 @@ Cricket app">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
 
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/thumbnails/703.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/703.jpg" class="img-responsive" alt=" DD VS GL">
+                        <a href="img/portfolio/thumbnails/702.jpg" class="portfolio-box">
+                            <img src="img/portfolio/thumbnails/702.jpg" class="img-responsive" alt="KXIP VS MI">
 
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="portfolio-box-caption-content">
+                                        <div class="project-category text-faded">
+                                            India Vs Australia
+                                        </div>
+                                        <div class="project-name">
+                                            India won by 7 wickets
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 col-sm-6">
+                        <a href="img/portfolio/thumbnails/703.jpg" class="portfolio-box">
+                            <img src="img/portfolio/thumbnails/703.jpg" class="img-responsive" alt=" DD VS GL">
+
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="portfolio-box-caption-content">
+                                        <div class="project-category text-faded">
+                                            India Vs Australia
+                                        </div>
+                                        <div class="project-name">
+                                            India won by 7 wickets
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+
+                        <a href="img/portfolio/thumbnails/801.jpg" class="portfolio-box">
+                            <img src="img/portfolio/thumbnails/801.jpg" class="img-responsive" alt=" DD VS GL">
+
+                            <div class="portfolio-box-caption">
                                 <div class="portfolio-box-caption-content">
                                     <div class="project-category text-faded">
                                         India Vs Australia
                                     </div>
                                     <div class="project-name">
-                                        India won by 7 wickets
+                                        Australia won by 21 runs
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-
-                    <a href="img/portfolio/thumbnails/801.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/801.jpg" class="img-responsive" alt=" DD VS GL">
-
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    India Vs Australia
-                                </div>
-                                <div class="project-name">
-                                    Australia won by 21 runs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
 
 
-                <div class="col-lg-4 col-sm-6">
+                    <div class="col-lg-4 col-sm-6">
 
-                    <a href="img/portfolio/thumbnails/802.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/802.jpg" class="img-responsive" alt="KXIP VS MI">
+                        <a href="img/portfolio/thumbnails/802.jpg" class="portfolio-box">
+                            <img src="img/portfolio/thumbnails/802.jpg" class="img-responsive" alt="KXIP VS MI">
 
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    India Vs Australia
-                                </div>
-                                <div class="project-name">
-                                    Australia won by 21 runs
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-category text-faded">
+                                        India Vs Australia
+                                    </div>
+                                    <div class="project-name">
+                                        Australia won by 21 runs
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
 
-                    <a href="../img/portfolio/thumbnails/803.jpg" class="portfolio-box">
-                        <img src="../img/portfolio/thumbnails/803.jpg" class="img-responsive" alt="KXIP VS KKR">
+                        <a href="../img/portfolio/thumbnails/803.jpg" class="portfolio-box">
+                            <img src="../img/portfolio/thumbnails/803.jpg" class="img-responsive" alt="KXIP VS KKR">
 
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    India Vs Australia
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-category text-faded">
+                                        India Vs Australia
+                                    </div>
+                                    <div class="project-name">
+                                        Australia won by 21 runs
+                                    </div>
                                 </div>
-                                <div class="project-name">
-                                    Australia won by 21 runs
-                                </div>
+
+
                             </div>
+                        </a>
+                    </div>
 
 
-                        </div>
-                    </a>
                 </div>
-
-
-
-
-
-
-
             </div>
-        </div>
-    </section>
-    <!-- /.....................footer Start here......................../ -->
+        </section>
+        <!-- /.....................footer Start here......................../ -->
 @endsection
 @section('js')
     {!! Html::script('assets-new/js/slick.js') !!}
@@ -741,47 +674,47 @@ Cricket app">
 
                     $('#getting-started{{$i}}').countdown(tournamentDateTime, function (event) {
                         $(this).text(
-                            event.strftime('%D')
+                                event.strftime('%D')
                         );
                     });
                     $("#getting-started{{$i+1}}")
-                        .countdown(tournamentDateTime, function (event) {
-                            $(this).text(
-                                event.strftime('%H')
-                            );
-                        });
+                            .countdown(tournamentDateTime, function (event) {
+                                $(this).text(
+                                        event.strftime('%H')
+                                );
+                            });
                     $("#getting-started{{$i+2}}")
-                        .countdown(tournamentDateTime, function (event) {
-                            $(this).text(
-                                event.strftime('%M')
-                            );
-                        });
+                            .countdown(tournamentDateTime, function (event) {
+                                $(this).text(
+                                        event.strftime('%M')
+                                );
+                            });
                     $("#getting-started{{$i+3}}")
-                        .countdown(tournamentDateTime, function (event) {
-                            $(this).text(
-                                event.strftime('%S')
-                            );
-                        });
+                            .countdown(tournamentDateTime, function (event) {
+                                $(this).text(
+                                        event.strftime('%S')
+                                );
+                            });
 
 
                     // Qwl Carousel JS
                     $('.owl-carousel').owlCarousel({
-                        loop:true,
-                        margin:15,
-                        nav:true,
-                        autoplay:true,
-                        autoplayTimeout:3000,
-                        autoplayHoverPause:false,
-                        navText: ["<i class='fa fa-arrow-left'></i>","<i class='fa fa-arrow-right'></i>"],
-                        responsive:{
-                            0:{
-                                items:1
+                        loop: true,
+                        margin: 15,
+                        nav: true,
+                        autoplay: true,
+                        autoplayTimeout: 3000,
+                        autoplayHoverPause: false,
+                        navText: ["<i class='fa fa-arrow-left'></i>", "<i class='fa fa-arrow-right'></i>"],
+                        responsive: {
+                            0: {
+                                items: 1
                             },
-                            600:{
-                                items:3
+                            600: {
+                                items: 3
                             },
-                            1000:{
-                                items:3
+                            1000: {
+                                items: 3
                             }
                         }
                     });
@@ -793,12 +726,12 @@ Cricket app">
         @endif
     @endforeach
 
-<script>
+    <script>
 
         var refer_frnd_height = $('.refer_friend_wrapper').parent().height();
         $('.refer_friend_wrapper').css('height', refer_frnd_height + 'px');
 
-</script>
+    </script>
     <script>
         $('#header').backstretch([
 
@@ -809,8 +742,14 @@ Cricket app">
             {url: '{{URL::to('assets-new/img/india-vs-australia.jpg')}}', fade: 500},
 
 
-
         ]);
+
+        $('#home_banner_nav .prev_slide').click(function () {
+            $('#header').backstretch("prev");
+        });
+        $('#home_banner_nav .next_slide').click(function () {
+            $('#header').backstretch("next");
+        });
 
 
     </script>
@@ -863,7 +802,12 @@ Cricket app">
 "url":"http://www.gamithonfantasy.com/",
 "email":"http://www.gamithonfantasyworld.com"
 }
-</script>
+
+
+
+
+
+    </script>
 
 @stop
 @section('FbJsSdk')
@@ -893,7 +837,8 @@ Cricket app">
     <meta property="og:url" content="{{URL::to('/')}}"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="What is fantasy Cricket?"/>
-    <meta property="og:description" content="It's a skill-based game that makes you experience the thrill of a coach who would go through before playing every match - a real test of your cricketing skills, your knowledge and understanding of player strengths and weaknesses. You will have to select a team of 11 from a pool of players and compete with other users from all over the world. Winners get exciting cash prizes!"/>
+    <meta property="og:description"
+          content="It's a skill-based game that makes you experience the thrill of a coach who would go through before playing every match - a real test of your cricketing skills, your knowledge and understanding of player strengths and weaknesses. You will have to select a team of 11 from a pool of players and compete with other users from all over the world. Winners get exciting cash prizes!"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="600"/>
     <meta property="og:image" content="{{URL::to('/img/fb-reffer.jpg')}}"/>

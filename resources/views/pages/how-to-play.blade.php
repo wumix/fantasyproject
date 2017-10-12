@@ -8,63 +8,6 @@
 <meta name="description" content="It's a skill-based game that makes you experience the thrill. You will have to select a team of 11 players all over the world. Winners get exciting cash prizes!">
 @endsection
 
-@section('css')
-    <style>
-        .how_play_sec{
-            width: 100%;
-            display: inline-block;
-            background: #fff;
-            box-shadow:0px 0px 27px rgba(0,0,0,0.21);
-            padding: 50px 36px;
-            margin: 25px 0;
-        }
-        .scorin_bord_sec{
-            width: 100%;
-            display: inline-block;
-            background: #fff;
-            box-shadow:0px 0px 27px rgba(0,0,0,0.21);
-            padding:50px 36px 0 36px;
-            margin-bottom: 10px;
-        }
-        .sign_text{
-            font-size: 16px;
-            color: #333333;
-        }
-        .sign_text span{
-            color: #92b713;
-        }
-        .sign_up_imp{
-            width: 100%;
-            display: inline-block;
-            text-align: center;
-            padding: 15px 0px 55px 0;
-        }
-        ul{
-            padding: 0;
-        }
-        li{
-            list-style: none;
-        }
-
-        @media all and (min-width: 100px) and (max-width: 768px) {
-            .sign_up_imp img{
-                width: 377px;
-            }
-            .scorin_bord_sec p{
-                text-align: justify;
-            }
-        }
-        @media all and (min-width: 100px) and (max-width: 480px) {
-            .sign_up_imp img {
-                width: 251px;
-            }
-
-            .scorin_bord_sec p{
-                text-align: justify;
-            }
-        }
-    </style>
-@endsection
 @section('content')
     <div class="container">
         <div class="row">

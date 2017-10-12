@@ -5,65 +5,6 @@
 
     {{$fixture_details['name']}}
 @endsection
-@section('css')
-    <style>
-        .fixtures_wrapper {
-            box-shadow: 0 0 20px -3px #ccc;
-            text-align: center;
-            padding: 20px 20px 10px;
-        }
-
-        .fixtures_scorecard_wrapper {
-            margin-bottom: 30px;
-        }
-
-        .fixtures-content-padding {
-            border: 2px solid #92b713;
-            padding: 30px 15px;
-        }
-
-        .mywebinar {
-            line-height: 34px;
-
-        }
-
-        .mywebinar h5 {
-            float: left;
-            width: 70%;
-        }
-
-        .fixtures_wrapper > span {
-            text-align: center;
-            display: inline-block;
-            color: #92b713;
-            font-weight: 600;
-        }
-
-        .fixtures_wrapper > span i {
-            display: block;
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-
-        .view_scorecard_btn {
-            background: #fff;
-            display: inline-block;
-            padding: 10px 20px;
-            float: right;
-            line-height: 15px;
-            border-radius: 4px;
-            margin-left: 10px;
-            border: 2px solid #fff;
-        }
-
-        .view_scorecard_btn:hover {
-            background: transparent;
-            color: #fff;
-            text-decoration: none;
-        }
-    </style>
-@endsection
-
 <section>
     <div class="container">
         <div class="row">

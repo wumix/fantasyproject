@@ -2,44 +2,6 @@
 @section('title')
     Player transfer
 @stop
-@section('css')
-    <style>
-        .small-sec-heading {
-            color: orangered;
-            font-family: Raleway
-        }
-
-        .point-summery {
-            padding: 8px;
-            box-shadow: 5px 5px 5px 5px #CECECE;
-            background: #fff;
-        }
-
-        .players-cal-summery {
-            margin: 0;
-            padding: 0;
-        }
-
-        .players-cal-summery li {
-            list-style: none;
-            border-bottom: 1px solid #CECECE;
-            padding: 5px 0;
-        }
-
-        .players-cal-summery li:last-child {
-            border-bottom: none;
-        }
-
-        @media screen and (min-width: 1000px) {
-            .point-summery {
-                position: fixed;
-                right: 15px;
-                top: 35%;
-            }
-        }
-    </style>
-
-@stop
 @section('content')
 
     <section>

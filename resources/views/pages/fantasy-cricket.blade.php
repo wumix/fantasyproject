@@ -4,57 +4,6 @@
 ">
 @endsection
 
-@section('css')
-    <style>
-
-        .gamithon_page_heading {
-            font-size: 24px;
-            line-height: 32px;
-            font-weight: 600;
-        }
-
-        .fantasy_cricket_bottom_sections {
-            margin-bottom: 30px;
-        }
-
-        .fantasy_cricket_bottom_sections .fantasy_cricket_call_to_action {
-            padding: 30px;
-            text-align: center;
-            background: #efefef;
-            border: 2px solid #ccc;
-            border-radius: 11px;
-        }
-
-        .fantasy_cricket_bottom_sections .fantasy_cricket_call_to_action h3 {
-            margin-top: 0;
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 25px;
-            line-height: 24px;
-            color: #f7921e;
-        }
-
-        .fantasy_cricket_bottom_sections .fantasy_cricket_call_to_action .gamithon_section_btn {
-            display: inline-block;
-            background: #92B713;
-            padding: 8px 15px;
-            border: 2px solid #92B713;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            color: #fff;
-            border-radius: 5px;
-        }
-
-        .fantasy_cricket_bottom_sections .fantasy_cricket_call_to_action .gamithon_section_btn:hover {
-            color: #92B713;
-            background: none;
-            text-decoration: none;
-        }
-
-    </style>
-@endsection
-
 @section('content')
     <section>
         @section('title')

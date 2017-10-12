@@ -45,19 +45,9 @@ Cricket app">
     {!! Html::style('assets-new/css/fixtures.css') !!}
     {!! Html::style('assets-new/css/owl.carousel.min.css') !!}
     {!! Html::style('assets-new/css/owl.theme.default.min.css') !!}
+    {!! Html::style('assets-new/css/main_site_style.css') !!}
 
     @yield('css')
-    <style>
-        .slick_nav li {
-            list-style: none;
-            overflow: hidden;
-            padding: 0;
-            margin: 0;
-        }
-        .p0 {
-            padding-left: 0;
-        }
-    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -82,93 +72,6 @@ Cricket app">
         ga('create', 'UA-98453424-1', 'auto');
         ga('send', 'pageview');
     </script>
-    <style>
-        li.new-arrival > a::after {
-            content: "New !!!";
-            background-color: #cc0000;
-            padding: 0 3px;
-            color: #fff;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            border-radius: 5px;
-            font-size: 10px;
-            position: absolute;
-            top: -6px;
-            right: 14px;
-            width: 50px;
-            text-align: center;
-            font-weight: 600;
-        }
-
-
-        #header_fixtures_wrapper {
-            padding: 10px 0;
-            background: #efefef;
-            text-align: center;
-        }
-        #header_fixtures_wrapper a:focus,
-        #header_fixtures_wrapper a:active{
-            outline: none;
-        }
-        #header_fixtures_wrapper .fixture_wrapper{
-            float: none;
-            font-family: 'Open Sans', Sans-Serif;
-            text-align: center;
-            padding: 5px 0;
-            border-right: 2px dotted #f7921e;
-            width: calc(100% / 4.3);
-            display: inline-block;
-            vertical-align: top;
-        }
-        #header_fixtures_wrapper .fixture_wrapper:last-child{
-            border-right: none;
-        }
-        #header_fixtures_wrapper .fixture_wrapper .team_score{
-            max-width: 120px;
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #92b713;
-        }
-        #header_fixtures_wrapper .fixture_wrapper .team_score,
-        #header_fixtures_wrapper .fixture_wrapper .teams_scores_wrapper > span{
-            display: inline-block;
-            text-align: center;
-            vertical-align: middle;
-        }
-        #header_fixtures_wrapper .fixture_wrapper .team_score_1{
-
-        }
-        #header_fixtures_wrapper .fixture_wrapper .team_score_2{
-
-        }
-        #header_fixtures_wrapper .fixture_wrapper .teams_scores_wrapper > span{
-            font-size: 10px;
-            font-weight: 600;
-            vertical-align: middle;
-            margin: 0 10px;
-        }
-        #header_fixtures_wrapper .fixture_wrapper .team_score span{
-            display: block;
-            font-size: 12px;
-            font-weight: 600;
-            color: #000;
-        }
-        #header_fixtures_wrapper .fixture_wrapper .team_score img{
-            margin-bottom: 5px;
-            width: 100%;
-            height: auto;
-        }
-        #header_fixtures_wrapper .fixture_wrapper .teams_scores_wrapper .match_summary{
-            display: block;
-            text-align: center;
-            font-size: 11px;
-            color: #f7921e;
-            font-style: italic;
-            padding: 0 30px;
-        }
-
-    </style>
 </head>
 
 <body>

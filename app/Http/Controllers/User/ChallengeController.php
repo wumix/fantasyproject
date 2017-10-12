@@ -268,14 +268,10 @@ class ChallengeController extends Controller
 
     function acceptChallenge($challenge_id, $match_id)
     {
-
-
         $challenge = $this->userChallenge->findOrFail($challenge_id);
         $challenge->status = 1;
         $challenge->save();
-
         return redirect()->route('addChallengeTeam', ['match_id' => $match_id, 'challenge_id' => $challenge_id]);
-
 
     }
 

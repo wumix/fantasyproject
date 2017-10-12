@@ -334,7 +334,7 @@ Cricket app">
 {!! Html::script('assets-new/vendor/basic-table/jquery.basictable.min.js') !!}
 {!! Html::script('assets/js/jquery.slicknav.min.js') !!}
 <!-- Plugin JavaScript -->
-{!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js') !!}
+{!! Html::script('assets-new/js/easing.js') !!}
 {!! Html::script('assets-new/js/scrollreveal.min.js') !!}
 {!! Html::script('assets-new/js/bootstrap-tour.js') !!}
 {!! Html::script('assets-new/js/jquery.magnific-popup.min.js') !!}

@@ -178,10 +178,10 @@
 @section('facbook-og-tags')
     <meta property="og:url" content="{{URL::to('/')}}"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="Gamithon Fantasy"/>
-    <meta property="og:description" content="Join referral here"/>
+    <meta property="og:title" content="What is fantasy Cricket?"/>
+    <meta property="og:description" content="It's a skill-based game that makes you experience the thrill of a coach who would go through before playing every match - a real test of your cricketing skills, your knowledge and understanding of player strengths and weaknesses. You will have to select a team of 11 from a pool of players and compete with other users from all over the world. Winners get exciting cash prizes!"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="600"/>
-    <meta property="og:image" content="{{URL::to('/img/fb_share_logo.png')}}"/>
-    <meta property="fb:app_id" content="337419313358697"/>
+    <meta property="og:image" content="{{URL::to('/img/fb-reffer.jpg')}}"/>
+    <meta property="fb:app_id" content="{{config('const.fbappid')}}"/>
 @stop

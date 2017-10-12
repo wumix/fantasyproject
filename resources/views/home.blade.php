@@ -267,7 +267,7 @@ Cricket app">
                                                 echo formatDate($row['end_date']);
                                                 ?>
                                             </td>
-                                            <td><a href="#" class="active_tournaments_btn">View Scorecard</a></td>
+                                            <td><a href="{{route('fixturesdetail',['tournament_id'=>$row['slug']])}}" class="active_tournaments_btn">View Scorecard</a></td>
                                         </tr>
                                     @endforeach
                                 @else

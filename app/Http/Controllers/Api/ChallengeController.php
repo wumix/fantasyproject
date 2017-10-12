@@ -475,7 +475,9 @@ class ChallengeController extends Controller
 
     public function confirmChallengeTeam(Request $request)
     {
+
         $challenge_id = $request->challenge_id;
+        dd($challenge);
         $challenge = \App\UserChallengeTeamStatus::where('user_id', \Auth::id())->where('challenge_id', $challenge_id);
         $challenge->update(['is_complete' => 1]);
         $challenge = \App\UserChallenge::find($challenge_id)->first();

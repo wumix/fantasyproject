@@ -65,7 +65,7 @@ class addsquad extends Command
 
                     } else {
                         \App\Player::addPlayer($players->name, NULL, $players->pid);
-                       
+
                     }
 
                 }

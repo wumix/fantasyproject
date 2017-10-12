@@ -37,11 +37,14 @@ class addsquad extends Command
      */
     function checkPlayerInDb($products, $field, $value)
     {
+
         foreach ($products as $key => $product) {
-            if ($product[$field] === $value)
+            if ($product[$field]== $value) {
                 return true;
+            }
         }
         return false;
+
     }
     public function handle()
     {
@@ -57,11 +60,12 @@ class addsquad extends Command
         if(empty($res['error'])) {
             foreach ($res['squad'] as $team) {
                 foreach ($team->players as $players) {
-                    if ($this->checkPlayerInDb($dbplayers, 'cricapi_pid', $players->pid)) {
+                    $check=$this->checkPlayerInDb($dbplayers, 'cricapi_pid', $players->pid);
+                    if ($check) {
 
                     } else {
                         \App\Player::addPlayer($players->name, NULL, $players->pid);
-
+                       
                     }
 
                 }
@@ -70,6 +74,7 @@ class addsquad extends Command
         }else{
             dd('squad not available');
         }
+        die;
 
 
     }

@@ -427,7 +427,7 @@
 
                         <p class="text-center">
 
-                        <div id="shareBtn" class="btn btn-success clearfix center">Invite Friends</div>
+                        <div id="shareBtns" class="btn btn-success clearfix center">Invite Friends</div>
                         </p>
                         <p>
                             Current Membership:

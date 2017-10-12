@@ -864,7 +864,8 @@ Cricket app">
 "@type" : "Organization",
 "name":"Gamithon Fantasy",
 "url":"http://www.gamithonfantasy.com/",
-"email":"http://www.gamithonfantasyworld.com"
+"email":"http://www.gamithonfantasyworld.com",
+"logo": "{{URL::to('/img/fb-reffer.jpg')}}",
 }
 
     </script>

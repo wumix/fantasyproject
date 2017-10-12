@@ -44,6 +44,7 @@
                             </div>
                         </div>
                     @endforeach
+                        <div class="text-center"> {{$posts->links()}} </div>
                 </div>
             </div>
         </div>

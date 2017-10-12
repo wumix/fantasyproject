@@ -38,6 +38,16 @@ class UserController extends Controller
             return response()->json(['status' => 'fail', 'error' => 'could_not_create_token'], 500);
         }
     }
+    public function search (Request $request){
+        $searchParam = $request->get('searchParam');
+        if (strlen($searchParam) > 2) {
+            $data['users'] = User::where('email', 'like', '%' . $searchParam . '%')
+                ->orWhere('name', 'like', '%' . $searchParam . '%')
+                ->paginate(9);
+        }
+        return response()->json( $data['users']);
+
+    }
     function editName(Request $request){
         $user = \App\USER::find(\Auth::id());
         $user->name=$request->name;

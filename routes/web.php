@@ -23,6 +23,8 @@ Route::get('/newdash', 'HomeController@newdash')->name('newdashboard');
 
 Route::get('scorecard/{match_id}/{tournament_id}', 'HomeController@scorecard')->name('scorecard');
 Route::get('pop-scorecard/{match_id}/{tournament_id}', 'HomeController@scorecardPopup')->name('scorecardpopup');
+Route::get('squad/{match_id}/{tournament_id}', 'HomeController@squad')->name('squad');
+
 Route::get('/test', 'HomeController@test')->name('test');
 
 Route::get('/leaderboard', 'HomeController@allTournaments')->name('dashboardhome');
@@ -289,6 +291,11 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             Route::get('live-score', function () {
                 $exitCode = Artisan::call('livescore');
             })->name('updatelivescore');
+            Route::get('add-squad/{match_id}', function ($match_id) {
+                $exitCode = Artisan::call('addsquad', [
+                    'match_id' => $match_id
+                ]);
+            })->name('addsquad');
 
         });
 //Userroutes

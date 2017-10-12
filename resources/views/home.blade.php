@@ -19,6 +19,78 @@ Cricket app">
     {!! Html::style('assets-new/css/slick-theme.css') !!}
     {!! Html::style('assets-new/css/slick.css') !!}
 
+<<<<<<< HEAD
+=======
+
+    <style>
+        .refer_friend_wrapper {
+            position: relative;
+        }
+
+        .refer_friend_wrapper .login_share_wrapper {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .itemsz {
+            background: none;
+            border-radius: 10px;
+            border: 6px solid #92b713;
+            overflow: hidden;
+        }
+
+        .itemsz .gami_blog_thumb {
+
+        }
+
+        .itemsz .gami_blog_thumb {
+
+        }
+
+        .itemsz .gami_blog_desc h4 {
+            margin: 5px 0 10px;
+        }
+
+        .itemsz .gami_blog_desc h4 .home-news-headings {
+            font-size: 16px;
+        }
+
+        .itemsz .gami_blog_desc .gami_news_btn {
+            display: inline-block;
+            background: #92b713;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 2px solid #92b713;
+            text-decoration: none !important;
+        }
+
+        .itemsz .gami_blog_desc .gami_news_btn:hover {
+            background: none;
+            color: #92b713;
+        }
+
+        .owl-carousel .owl-nav,
+        .owl-carousel .owl-dots {
+            display: none !important;
+        }
+
+        .owl-theme .owl-nav [class*=owl-] {
+            background: #92b713;
+            border: 2px solid #92b713;
+            font-size: 17px;
+            margin: 5px;
+            padding: 3px 20px;
+        }
+
+        .owl-theme .owl-nav [class*=owl-]:hover {
+            color: #92b713;
+            background: none;
+        }
+    </style>
+
+>>>>>>> 0513bf4406efc83cd58fe222b63574399ae61830
 @endsection
 
 
@@ -36,6 +108,7 @@ Cricket app">
                     <a class="colorbox"
                        href="{{route('scorecardpopup',['slug'=>$match_score['id'],'tournament_id'=>$match_score['tournament_id']])}}"
                        class="view_scorecard_btn">
+<<<<<<< HEAD
                         <div class="col-md-3 fixture_wrapper">
                             <div class="teams_scores_wrapper">
 
@@ -59,15 +132,48 @@ Cricket app">
                     </a>
                     @endforeach
                             <!-- Fixture End -->
+=======
+                    <div class="col-md-3 fixture_wrapper">
+
+                        <div class="teams_scores_wrapper">
+
+                            <div class="team_score_1 team_score">
+                                {{$match_score['team_one']}}
+
+                            </div>
+                            <span>VS</span>
+                            <div class="team_score_2 team_score">
+                                {{$match_score['team_two']}}
+
+                            </div>
+                            @if($match_score['match_scores'][0]['score'])
+                                <span class="match_summary">{{$match_score['match_scores'][0]['score']}}</span>
+                            @else
+                                <span class="match_summary">{{$match_score['match_scores'][0]['description']}}</span>
+                            @endif
+
+
+                        </div>
+                    </div></a>
+
+            @endforeach
+            <!-- Fixture End -->
+>>>>>>> 0513bf4406efc83cd58fe222b63574399ae61830
 
 
             </div>
         </div>
     </div>
     <!-- Header fixtures End -->
+<<<<<<< HEAD
     @endsection
     @section('content')
             <!--BASBB-->
+=======
+@endsection
+@section('content')
+    <!--BASBB-->
+>>>>>>> 0513bf4406efc83cd58fe222b63574399ae61830
 
     <header id="header">
         <div id="abcd" class="header-content container">
@@ -476,6 +582,7 @@ Cricket app">
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
         </section>
         {{--.............................Gallry Start..............................................--}}
         <section id="portfolio">
@@ -485,6 +592,36 @@ Cricket app">
 
                         <a href="img/portfolio/thumbnails/101.jpg" class="portfolio-box">
                             <img src="img/portfolio/thumbnails/101.jpg" class="img-responsive" alt="KXIP VS MI">
+=======
+        </div>
+    </section>
+    {{--.............................Gallry Start..............................................--}}
+    <section id="portfolio">
+        <div class="container-fluid">
+            <div class="row no-gutter popup-gallery">
+                <div class="col-lg-4 col-sm-6">
+
+                    <a href="img/portfolio/thumbnails/901.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/901.jpg" class="img-responsive" alt="KXIP VS MI">
+
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    India Vs Australia
+                                </div>
+                                <div class="project-name">
+                                    Australia won by 8 wickets
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+
+                    <a href="img/portfolio/thumbnails/902.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/902.jpg" class="img-responsive" alt="KXIP VS KKR">
+>>>>>>> 0513bf4406efc83cd58fe222b63574399ae61830
 
                             <div class="portfolio-box-caption">
                                 <div class="portfolio-box-caption-content">
@@ -501,8 +638,14 @@ Cricket app">
 
                     <div class="col-lg-4 col-sm-6">
 
+<<<<<<< HEAD
                         <a href="img/portfolio/thumbnails/102.jpg" class="portfolio-box">
                             <img src="img/portfolio/thumbnails/102.jpg" class="img-responsive" alt="KXIP VS KKR">
+=======
+                <div class="col-lg-4  col-sm-6">
+                    <a href="img/portfolio/thumbnails/903.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/903.jpg" class="img-responsive" alt="KXIP VS KKR">
+>>>>>>> 0513bf4406efc83cd58fe222b63574399ae61830
 
                             <div class="portfolio-box-caption">
                                 <div class="portfolio-box-caption-content">
@@ -613,6 +756,7 @@ Cricket app">
                         <a href="img/portfolio/thumbnails/802.jpg" class="portfolio-box">
                             <img src="img/portfolio/thumbnails/802.jpg" class="img-responsive" alt="KXIP VS MI">
 
+<<<<<<< HEAD
                             <div class="portfolio-box-caption">
                                 <div class="portfolio-box-caption-content">
                                     <div class="project-category text-faded">
@@ -647,6 +791,8 @@ Cricket app">
 
 
                 </div>
+=======
+>>>>>>> 0513bf4406efc83cd58fe222b63574399ae61830
             </div>
         </section>
         <!-- /.....................footer Start here......................../ -->
@@ -800,13 +946,17 @@ Cricket app">
 "@type" : "Organization",
 "name":"Gamithon Fantasy",
 "url":"http://www.gamithonfantasy.com/",
-"email":"http://www.gamithonfantasyworld.com"
+"email":"http://www.gamithonfantasyworld.com",
+"logo": "{{URL::to('/img/fb-reffer.jpg')}}"
 }
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 0513bf4406efc83cd58fe222b63574399ae61830
     </script>
 
 @stop

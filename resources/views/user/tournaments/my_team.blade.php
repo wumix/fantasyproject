@@ -51,6 +51,7 @@
                                         </tr>
                                         </thead>
                                         <tbody id="selected-player" class="main-taible-body">
+                                        @if(!empty($user_team_player))
                                         @foreach($user_team_player as $row)
                                             {{--{{ dd($user_team_player)}}--}}
                                             <tr id="player_tr-del-{{$row['id']}}">
@@ -97,6 +98,11 @@
 
                                             </tr>
                                         @endforeach
+                                            @else
+                                            <td id="noplayer" class="border-r1" colspan="4">
+                                                No Player added yet
+                                            </td>
+                                        @endif
                                         </tbody>
                                     </table>
                                 </div>
@@ -141,6 +147,7 @@
 
                                             <div class="panel-body">
                                                 <div class="tab-content">
+
                                                     @foreach($roles as $key=>$role)
                                                         <div class="tab-pane fade {!! ($key == 0) ? 'in active':'' !!}"
                                                              id="tab{{$role['id']}}default">
@@ -211,7 +218,7 @@
                                                                             </td>
 
                                                                             <td class="add text-left">
-                                                                                <a onclick="return confirm('Are you sure you want to add this player')"
+                                                                                <a
                                                                                    id="btn-player-{{$player['id']}}"
                                                                                    href="javascript:addplayertoteam('{{$role['name']}}','{{$role['id']}}','{{$player['id']}}','{{$playerid}}','{{$playerThisTournamnetPrice}}')"
                                                                                    class="btn btn-green">Add To Team
@@ -227,6 +234,8 @@
                                                             </div>
                                                         </div>
                                                     @endforeach
+
+
 
 
                                                 </div>
@@ -448,7 +457,7 @@
                         url = url.replace('pid', obj.id);
                         url = url.replace('id', obj.team_id);
                         url = url.replace('tid', obj.tournament_id);
-                        t += '<td  class="cwt"><a href="javascript:deletePlayer(' + obj.id + ',' + obj.price + ')" id="" class="btn btn-md bttor1">Delete Player</a></td >';
+                        t += '<td  class="cwt"><a onclick="return confirm(\'Are you sure you want to add this player\')" href="javascript:deletePlayer(' + obj.id + ',' + obj.price + ')" id="" class="btn btn-md bttor1">Delete Player</a></td >';
                         //  t += '<td><a href="' + url + '" class="btn btn-green">Transfer Player</a></td >';
 
                         // t += '<td>Player transfer is disabled by the end of today\'s match!</td >';
@@ -456,6 +465,7 @@
                         $('#selected-player').append(t);
                         t = "";
                         $('#player_tr-' + obj.id).html(t);
+                        $('#noplayer').hide();
                     } else {
 //                        $('.error').html(data.msg);
 //                        $('.error').fadeIn(200).delay(1500).fadeOut(200); //fade out after 3 seconds

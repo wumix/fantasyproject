@@ -39,6 +39,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['middleware' => 'jwt.auth'], function () {
         Route::resource('tournaments', 'Api\TournamentsController', ['except' => ['index', 'show'
         ]]);
+        Route::get('search', 'Api\UserController@search');
         Route::group(['prefix' => 'tournaments'], function () {
             Route::get('players', 'Api\TournamentsController@tournament_players');
             Route::get('add_player', 'Api\TournamentsController@add_player');
@@ -65,6 +66,7 @@ Route::group(['prefix' => 'v1'], function () {
 
             Route::get('/', 'Api\ChallengeController@showChallenges');
             Route::post('send', 'Api\ChallengeController@sendChallenge');
+            Route::get('accept', 'Api\ChallengeController@acceptChallenge');
             Route::get('team', 'Api\ChallengeController@challengeTeam')->name('challenge_team');
             Route::get('add-player', 'Api\ChallengeController@addPlayerTochallengeTeam');
             Route::get('delete-player', 'Api\ChallengeController@deltePlayerFormChallenge');

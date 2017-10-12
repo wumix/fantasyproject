@@ -10,15 +10,28 @@ use \App\User;
 class ChallengeController extends Controller
 {
     protected $userChallenge;
+    function index()
+    {
+
+    }
 
     function __construct()
     {
         $this->userChallenge = new \App\UserChallenge;
     }
 
-    function index()
-    {
 
+
+    function acceptChallenge(Request $request)
+    {
+        $challenge_id = $request->challenge_id;
+        $match_id = $request->match_id;
+        $challenge = $this->userChallenge->findOrFail($challenge_id);
+        $challenge->status = 1;
+        $challenge->save();
+        $data['status'] = true;
+        $data['message'] = "Accepted successfully";
+        return response()->json($data);
     }
 
     function showChallenges()
@@ -33,8 +46,8 @@ class ChallengeController extends Controller
             } else {
                 $sent['is_team_complete'] = "false";
             }
-            $sent['your_score']=userScoreInChallenge($sent['user_1_id'],$sent['id']);
-            $sent['apponent_score']=userScoreInChallenge($sent['user_2_id'],$sent['id']);
+            $sent['your_score'] = userScoreInChallenge($sent['user_1_id'], $sent['id']);
+            $sent['apponent_score'] = userScoreInChallenge($sent['user_2_id'], $sent['id']);
 
 
         }
@@ -61,8 +74,8 @@ class ChallengeController extends Controller
             } else {
                 $c['is_team_complete'] = "false";
             }
-            $c['your_score']=userScoreInChallenge($c['user_2_id'],$c['id']);
-            $c['apponent_score']=userScoreInChallenge($c['user_1_id'],$c['id']);
+            $c['your_score'] = userScoreInChallenge($c['user_2_id'], $c['id']);
+            $c['apponent_score'] = userScoreInChallenge($c['user_1_id'], $c['id']);
 
         }
         $data['sent_challenges'] = $sent_challenges;
@@ -171,7 +184,6 @@ class ChallengeController extends Controller
             ->toArray();
 
 
-
         $k = [];
         foreach ($roles as &$role) {
             foreach ($role['players'] as $key => &$player) {
@@ -227,7 +239,6 @@ class ChallengeController extends Controller
         $player->challenge_players()->detach($player_id);
         $match_id = $this->getMatchId($challenge_id);
         $tournamnet_id = $this->tournamentId($match_id);
-
 
 
         $data['tournamnet_id'] = $tournamnet_id;

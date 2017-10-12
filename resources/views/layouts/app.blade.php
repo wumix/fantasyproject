@@ -24,26 +24,26 @@ Cricket app">
     <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
-    {!! Html::style('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800',['async']) !!}
-    {!! Html::style('https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic',['async']) !!}
+    {!! Html::style('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800',['media'=>'print','async'=>true]) !!}
+    {!! Html::style('https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic',['media'=>'print','async'=>true]) !!}
 
     {!! Html::style('assets-new/vendor/bootstrap/css/bootstrap.min.css') !!}
     {!! Html::style('bootstrap-modal-extend/css/bootstrap-modal.css') !!}
 
     {{--{!! Html::style('assets-new/css/bootstrap-tour.css') !!}--}}
     {!! Html::style('assets-new/css/jquery.mCustomScrollbar.css') !!}
-    {!! Html::style('https://fonts.googleapis.com/css?family=Raleway') !!}
+    {!! Html::style('https://fonts.googleapis.com/css?family=Raleway',['media'=>'print','async'=>true]) !!}
     {!! Html::style('assets-new/vendor/font-awesome/css/font-awesome.min.css') !!}
 
     {!! Html::style('js/toaster/jquery.toast.css') !!}
-    {!! Html::style('js/colorbox-master/example1/colorbox.css') !!}
+    {!! Html::style('js/colorbox-master/example1/colorbox.css',['media'=>'print','async'=>true]) !!}
     {{--{!! Html::style('assets-new/vendor/basic-table/basictable.css') !!}--}}
-    {!! Html::style('assets-new/vendor/magnific-popup/magnific-popup.css',['async']) !!}
+    {!! Html::style('assets-new/vendor/magnific-popup/magnific-popup.css',['media'=>'print','async'=>true]) !!}
     {!! Html::style('assets/css/slicknav.css') !!}
     {!! Html::style('assets-new/css/creative.css') !!}
     {!! Html::style('assets-new/css/style.css') !!}
     {!! Html::style('assets-new/css/fixtures.css') !!}
-    {!! Html::style('assets-new/css/owl.carousel.min.css',['async']) !!}
+    {!! Html::style('assets-new/css/owl.carousel.min.css',['media'=>'print','async'=>true]) !!}
     {!! Html::style('assets-new/css/owl.theme.default.min.css') !!}
     {!! Html::style('assets-new/css/main_site_style.css') !!}
 

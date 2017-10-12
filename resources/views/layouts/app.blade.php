@@ -43,8 +43,8 @@ Cricket app">
     {!! Html::style('assets-new/css/creative.css') !!}
     {!! Html::style('assets-new/css/style.css') !!}
     {!! Html::style('assets-new/css/fixtures.css') !!}
-    {!! Html::style('assets-new/css/owl.carousel.min.css',['media'=>'print','async'=>true]) !!}
-    {!! Html::style('assets-new/css/owl.theme.default.min.css',['media'=>'print','async'=>true]) !!}
+    {!! Html::style('assets-new/css/owl.carousel.min.css') !!}
+    {!! Html::style('assets-new/css/owl.theme.default.min.css') !!}
     {!! Html::style('assets-new/css/main_site_style.css') !!}
 
     @yield('css')

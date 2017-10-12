@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('meta-keywords')
@@ -13,8 +12,9 @@ Cricket Fantasy League,
 Cricket Fantasy,
 Play Fantasy Cricket and Win Cash Daily,
 Cricket app">
-    <meta name="description" content="Gamithon Fantasy cricket is a strategy game, Based on their cricketer's real-life performance, users get points and compete with others to win prizes…">
-    @endsection
+    <meta name="description"
+          content="Gamithon Fantasy cricket is a strategy game, Based on their cricketer's real-life performance, users get points and compete with others to win prizes…">
+@endsection
 @section('css')
     {!! Html::style('assets-new/css/slick-theme.css') !!}
     {!! Html::style('assets-new/css/slick.css') !!}
@@ -38,19 +38,23 @@ Cricket app">
             overflow: hidden;
         }
 
-        .itemsz .gami_blog_thumb{
+        .itemsz .gami_blog_thumb {
 
         }
-        .itemsz .gami_blog_thumb{
+
+        .itemsz .gami_blog_thumb {
 
         }
-        .itemsz .gami_blog_desc h4{
+
+        .itemsz .gami_blog_desc h4 {
             margin: 5px 0 10px;
         }
-        .itemsz .gami_blog_desc h4 .home-news-headings{
+
+        .itemsz .gami_blog_desc h4 .home-news-headings {
             font-size: 16px;
         }
-        .itemsz .gami_blog_desc .gami_news_btn{
+
+        .itemsz .gami_blog_desc .gami_news_btn {
             display: inline-block;
             background: #92b713;
             color: #fff;
@@ -59,7 +63,8 @@ Cricket app">
             border: 2px solid #92b713;
             text-decoration: none !important;
         }
-        .itemsz .gami_blog_desc .gami_news_btn:hover{
+
+        .itemsz .gami_blog_desc .gami_news_btn:hover {
             background: none;
             color: #92b713;
         }
@@ -69,14 +74,15 @@ Cricket app">
             display: none !important;
         }
 
-        .owl-theme .owl-nav [class*=owl-]{
+        .owl-theme .owl-nav [class*=owl-] {
             background: #92b713;
             border: 2px solid #92b713;
             font-size: 17px;
             margin: 5px;
             padding: 3px 20px;
         }
-        .owl-theme .owl-nav [class*=owl-]:hover{
+
+        .owl-theme .owl-nav [class*=owl-]:hover {
             color: #92b713;
             background: none;
         }
@@ -96,39 +102,41 @@ Cricket app">
 
                 <!-- Fixture Start -->
                 @foreach($match_scores as $match_score)
-                <a class="colorbox"
-                   href="{{route('scorecardpopup',['slug'=>$match_score['id'],'tournament_id'=>$match_score['tournament_id']])}}"
-                   class="view_scorecard_btn">
+                    <a class="colorbox"
+                       href="{{route('scorecardpopup',['slug'=>$match_score['id'],'tournament_id'=>$match_score['tournament_id']])}}"
+                       class="view_scorecard_btn">
                     <div class="col-md-3 fixture_wrapper">
-                    <div class="teams_scores_wrapper">
 
-                        <div class="team_score_1 team_score">
-                           {{$match_score['team_one']}}
+                        <div class="teams_scores_wrapper">
+
+                            <div class="team_score_1 team_score">
+                                {{$match_score['team_one']}}
+
+                            </div>
+                            <span>VS</span>
+                            <div class="team_score_2 team_score">
+                                {{$match_score['team_two']}}
+
+                            </div>
+                            @if($match_score['match_scores'][0]['score'])
+                                <span class="match_summary">{{$match_score['match_scores'][0]['score']}}</span>
+                            @else
+                                <span class="match_summary">{{$match_score['match_scores'][0]['description']}}</span>
+                            @endif
+
 
                         </div>
-                        <span>VS</span>
-                        <div class="team_score_2 team_score">
-                            {{$match_score['team_two']}}
+                    </div></a>
 
-                        </div>
-                        @if($match_score['match_scores'][0]['score'])
-                        <span class="match_summary">{{$match_score['match_scores'][0]['score']}}</span>
-                        @else
-                            <span class="match_summary">{{$match_score['match_scores'][0]['description']}}</span>
-                        @endif
-                    </div>
-                </div>
-                </a>
-                @endforeach
-                <!-- Fixture End -->
-
+            @endforeach
+            <!-- Fixture End -->
 
 
             </div>
         </div>
     </div>
     <!-- Header fixtures End -->
-    @endsection
+@endsection
 @section('content')
     <!--BASBB-->
 
@@ -435,7 +443,8 @@ Cricket app">
                                         {!! substr($val['description'],0, 71) !!}...
                                         <br>
                                     </span>
-                                    <a href="{{route('newsdetail',['id'=>$val['slug']])}}" class="gami_news_btn">Read More</a>
+                                    <a href="{{route('newsdetail',['id'=>$val['slug']])}}" class="gami_news_btn">Read
+                                        More</a>
                                 </div>
                             </div>
                         </div>
@@ -708,11 +717,6 @@ Cricket app">
                 </div>
 
 
-
-
-
-
-
             </div>
         </div>
     </section>
@@ -766,22 +770,22 @@ Cricket app">
 
                     // Qwl Carousel JS
                     $('.owl-carousel').owlCarousel({
-                        loop:true,
-                        margin:15,
-                        nav:true,
-                        autoplay:true,
-                        autoplayTimeout:3000,
-                        autoplayHoverPause:false,
-                        navText: ["<i class='fa fa-arrow-left'></i>","<i class='fa fa-arrow-right'></i>"],
-                        responsive:{
-                            0:{
-                                items:1
+                        loop: true,
+                        margin: 15,
+                        nav: true,
+                        autoplay: true,
+                        autoplayTimeout: 3000,
+                        autoplayHoverPause: false,
+                        navText: ["<i class='fa fa-arrow-left'></i>", "<i class='fa fa-arrow-right'></i>"],
+                        responsive: {
+                            0: {
+                                items: 1
                             },
-                            600:{
-                                items:3
+                            600: {
+                                items: 3
                             },
-                            1000:{
-                                items:3
+                            1000: {
+                                items: 3
                             }
                         }
                     });
@@ -793,12 +797,12 @@ Cricket app">
         @endif
     @endforeach
 
-<script>
+    <script>
 
         var refer_frnd_height = $('.refer_friend_wrapper').parent().height();
         $('.refer_friend_wrapper').css('height', refer_frnd_height + 'px');
 
-</script>
+    </script>
     <script>
         $('#header').backstretch([
 
@@ -807,7 +811,6 @@ Cricket app">
             {url: '{{URL::to('assets-new/img/2342342.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/12238967.jpg')}}', fade: 500},
             {url: '{{URL::to('assets-new/img/india-vs-australia.jpg')}}', fade: 500},
-
 
 
         ]);
@@ -863,7 +866,8 @@ Cricket app">
 "url":"http://www.gamithonfantasy.com/",
 "email":"http://www.gamithonfantasyworld.com"
 }
-</script>
+
+    </script>
 
 @stop
 @section('FbJsSdk')
@@ -893,7 +897,8 @@ Cricket app">
     <meta property="og:url" content="{{URL::to('/')}}"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="What is fantasy Cricket?"/>
-    <meta property="og:description" content="It's a skill-based game that makes you experience the thrill of a coach who would go through before playing every match - a real test of your cricketing skills, your knowledge and understanding of player strengths and weaknesses. You will have to select a team of 11 from a pool of players and compete with other users from all over the world. Winners get exciting cash prizes!"/>
+    <meta property="og:description"
+          content="It's a skill-based game that makes you experience the thrill of a coach who would go through before playing every match - a real test of your cricketing skills, your knowledge and understanding of player strengths and weaknesses. You will have to select a team of 11 from a pool of players and compete with other users from all over the world. Winners get exciting cash prizes!"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="600"/>
     <meta property="og:image" content="{{URL::to('/img/fb-reffer.jpg')}}"/>

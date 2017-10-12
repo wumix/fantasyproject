@@ -265,7 +265,7 @@ Cricket app">
                                 </li>
                                 <li>
                                     <a class="page-scroll" href="{{route('scorerule')}}">
-                                        Score Rules
+                                        Points System
                                     </a>
                                 </li>
                             </ul>

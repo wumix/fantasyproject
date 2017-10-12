@@ -34,6 +34,7 @@ class HomeController extends Controller
     {
 
 
+        // dd($match_players->toArray());
 
 
         //--------------------------------------
@@ -69,7 +70,7 @@ class HomeController extends Controller
         $bowl = 0;
         $bat = 0;
         debugArr($t);
-        die;
+
         foreach ($t['playing_category'] as $key => &$val) {
 
 
@@ -137,6 +138,20 @@ class HomeController extends Controller
         // dd($team_name);
         // dd($data['match']['match_players'][0]);
         return view('pages.scorecard', $data);
+
+    }
+
+    public function squad($match_id,$tournament_id)
+    {
+        $squad=\App\Match::where('id',$match_id)->with(['match_players.player_actual_teams'=>function ($q) use($tournament_id){
+            $q->where('tournament_id',$tournament_id)->first();
+        }])->get();
+        if(empty($squad)){
+            $data['squad']=[];
+        }else{
+            $data['squad']=$squad->toArray();
+        }
+        return view('pages.squad',$data);
 
     }
 

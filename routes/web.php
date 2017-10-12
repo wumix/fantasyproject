@@ -23,6 +23,8 @@ Route::get('/newdash', 'HomeController@newdash')->name('newdashboard');
 
 Route::get('scorecard/{match_id}/{tournament_id}', 'HomeController@scorecard')->name('scorecard');
 Route::get('pop-scorecard/{match_id}/{tournament_id}', 'HomeController@scorecardPopup')->name('scorecardpopup');
+Route::get('squad/{match_id}/{tournament_id}', 'HomeController@squad')->name('squad');
+
 Route::get('/test', 'HomeController@test')->name('test');
 
 Route::get('/leaderboard', 'HomeController@allTournaments')->name('dashboardhome');

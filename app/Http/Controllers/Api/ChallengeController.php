@@ -377,7 +377,7 @@ class ChallengeController extends Controller
             $objResponse['teamsuccess'] = true;
             $objResponse['challenge_id'] = $challenge_id;
             //joined_from_match_date -- I guess update team here
-            return response()->json($objResponse);
+          //  return response()->json($objResponse);
 
 
         }

@@ -624,7 +624,7 @@
     <script>
         window.fbAsyncInit = function () {
             FB.init({
-                appId: '337419313358697',
+                appId: '{{config('const.fbappid')}}',
                 autoLogAppEvents: true,
                 xfbml: true,
                 version: 'v2.9'
@@ -651,5 +651,5 @@
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="600"/>
     <meta property="og:image" content="{{URL::to('assets-new/img/default-profile-pic-1.png')}}"/>
-    <meta property="fb:app_id" content="337419313358697"/>
+    <meta property="fb:app_id" content="{{config('const.fbappid')}}"/>
 @stop

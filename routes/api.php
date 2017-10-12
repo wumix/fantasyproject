@@ -39,6 +39,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['middleware' => 'jwt.auth'], function () {
         Route::resource('tournaments', 'Api\TournamentsController', ['except' => ['index', 'show'
         ]]);
+        Route::get('search', 'Api\UserController@search');
         Route::group(['prefix' => 'tournaments'], function () {
             Route::get('players', 'Api\TournamentsController@tournament_players');
             Route::get('add_player', 'Api\TournamentsController@add_player');

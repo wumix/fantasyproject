@@ -10,16 +10,17 @@ use \App\User;
 class ChallengeController extends Controller
 {
     protected $userChallenge;
+    function index()
+    {
+
+    }
 
     function __construct()
     {
         $this->userChallenge = new \App\UserChallenge;
     }
 
-    function index()
-    {
 
-    }
 
     function acceptChallenge(Request $request)
     {
@@ -31,7 +32,6 @@ class ChallengeController extends Controller
         $data['status'] = true;
         $data['message'] = "Accepted successfully";
         return response()->json($data);
-
     }
 
     function showChallenges()

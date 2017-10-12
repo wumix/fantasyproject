@@ -84,16 +84,8 @@ class UpdateMatchScore extends Command
         $image=end($image);
         $dlimage=file_get_contents($res['imageURL']);
        //file_put_contents('uploads/cricapi/'.$image,$dlimage);
+        \App\Player::addPlayer($res['fullName'],$image,$pid);
 
-
-        $player=new \App\Player;
-        $player->name=$res['fullName'];
-        $player->profile_pic='cricapi/'.$image;
-        $player->cricapi_pid=$pid;
-        $player->game_id=1;
-        $player->save();
-        $player=\App\Player::find($player->id);
-        $player->player_roles()->sync('7');
     }
     public function match_player_score($cric_match_api)
     {
@@ -106,9 +98,6 @@ class UpdateMatchScore extends Command
         $body = $res->getBody();
         $result = \GuzzleHttp\json_decode($body->getContents());
         $res = (array)$result;
-
-
-
         $player_data=[];
         $game_terms = \App\GameTerm::where('game_id', 1)->get()->toArray();
         foreach ($res['data']->batting[0]->scores as $key => $player) {

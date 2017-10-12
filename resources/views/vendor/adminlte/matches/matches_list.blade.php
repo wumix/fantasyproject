@@ -58,6 +58,9 @@
                                     <a href="{{route('updatescoring', ['match_id'=>$row['cricapi_match_id']])}}" class="btn btn-success">
                                         Update Score
                                     </a>
+                                    <a href="{{route('addsquad', ['match_id'=>$row['cricapi_match_id']])}}" class="btn btn-success">
+                                        Add Squad
+                                    </a>
                                     @endif
                                     <!--                                    <a href="#" class="btn btn-danger">
                                                                             <i class="fa fa-times"></i> Delete

@@ -28,8 +28,15 @@ use Validator;
  */
 class HomeController extends Controller
 {
+
+
     public function index()
     {
+
+
+
+
+        //--------------------------------------
         $data['match_scores'] = \App\Match::where('cricscore_api', '!=', 0)
             ->with('match_scores')->take(4)->get()->toArray();
         //dd($data['match_scores']);
@@ -132,6 +139,7 @@ class HomeController extends Controller
         return view('pages.scorecard', $data);
 
     }
+
     public function scorecardPopup(Request $request, $id, $tournament_id)
     {
         $data['tournament_id'] = $tournament_id;
@@ -402,6 +410,7 @@ class HomeController extends Controller
     {
         return view('pages.p-p');
     }
+
     function scoreRule()
     {
         $data['tournament'] = \App\Tournament::where('id', config('const.tournament_id'))
@@ -414,7 +423,7 @@ class HomeController extends Controller
             ->toArray();
         //dd( $data['tournament'] );
         $data['game_actions'] = $data['tournament']['tournament_game']['game_actions'];
-        return view('pages.score-rule',$data);
+        return view('pages.score-rule', $data);
     }
 
     public function fantasycricket()

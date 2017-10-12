@@ -82,6 +82,16 @@ class Player extends Model
     public function playing_type(){
         return $this->belongsToMany('\App\Type','player_stats_details','player_id','type_id');
     }
+    public static function addPlayer($name,$image=NUll,$pid){
+        $player=new \App\Player;
+        $player->name=$name;
+        $player->profile_pic='cricapi/'.$image;
+        $player->cricapi_pid=$pid;
+        $player->game_id=1;
+        $player->save();
+        $player=\App\Player::find($player->id);
+        $player->player_roles()->sync('7');
+    }
 
     
 

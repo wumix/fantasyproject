@@ -141,17 +141,17 @@ class HomeController extends Controller
 
     }
 
-    public function squad($match_id,$tournament_id)
+    public function squad($match_id, $tournament_id)
     {
-        $squad=\App\Match::where('id',$match_id)->with(['match_players.player_actual_teams'=>function ($q) use($tournament_id){
-            $q->where('tournament_id',$tournament_id)->first();
+        $squad = \App\Match::where('id', $match_id)->with(['match_players.player_actual_teams' => function ($q) use ($tournament_id) {
+            $q->where('tournament_id', $tournament_id)->first();
         }])->get();
-        if(empty($squad)){
-            $data['squad']=[];
-        }else{
-            $data['squad']=$squad->toArray();
+        if (empty($squad)) {
+            $data['squad'] = [];
+        } else {
+            $data['squad'] = $squad->toArray();
         }
-        return view('pages.squad',$data);
+        return view('pages.squad', $data);
 
     }
 
@@ -383,7 +383,6 @@ class HomeController extends Controller
         $emailRecievers = [
             'umair_hamid100@yahoo.com',
             'hassan@branchezconsulting.com',
-            'alraadu58@gmail.com',
             'adeel@branchezconsulting.com'
         ];
         \Mail::send('emails.contact', array(

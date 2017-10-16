@@ -49,10 +49,12 @@ Cricket app">
                                     {{$match_score['team_two']}}
 
                                 </div>
-                                @if(empty($match_score['match_scores'][0]['score']))
-                                    <span class="match_summary">{{$match_score['match_scores'][0]['score']}}</span>
-                                @else
-                                    <span class="match_summary">{{$match_score['match_scores'][0]['description']}}</span>
+                                @if(!empty($match_score['match_scores']))
+                                    @if(empty($match_score['match_scores'][0]['score']))
+                                        <span class="match_summary">{{$match_score['match_scores'][0]['score']}}</span>
+                                    @else
+                                        <span class="match_summary">{{$match_score['match_scores'][0]['description']}}</span>
+                                    @endif
                                 @endif
                             </div>
                         </div>
@@ -267,7 +269,8 @@ Cricket app">
                                                 echo formatDate($row['end_date']);
                                                 ?>
                                             </td>
-                                            <td><a href="{{route('fixturesdetail',['tournament_id'=>$row['slug']])}}" class="active_tournaments_btn">View Scorecard</a></td>
+                                            <td><a href="{{route('fixturesdetail',['tournament_id'=>$row['slug']])}}"
+                                                   class="active_tournaments_btn">View Scorecard</a></td>
                                         </tr>
                                     @endforeach
                                 @else
@@ -802,6 +805,7 @@ Cricket app">
 "url":"http://www.gamithonfantasy.com/",
 "email":"http://www.gamithonfantasyworld.com"
 }
+
 
 
 

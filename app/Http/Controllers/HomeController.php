@@ -34,13 +34,10 @@ class HomeController extends Controller
     {
 
 
-        // dd($match_players->toArray());
-
-
-        //--------------------------------------
+   
         $data['match_scores'] = \App\Match::where('cricapi_match_id', '!=', 0)
             ->with('match_scores')->take(4)->get()->toArray();
-        //dd($data['match_scores']);
+
         $objTourmament = \App\Tournament::orderBy("start_date",
             'asc')->
         Where('end_date', '>=', getGmtTime())->get();

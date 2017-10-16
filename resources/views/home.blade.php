@@ -32,6 +32,11 @@ Cricket app">
             <div class="row">
 
                 <!-- Fixture Start -->
+                <?php
+               // $match_count=dd(count($match_scores));
+
+                ?>
+
                 @foreach($match_scores as $match_score)
                     <a class="colorbox"
                        href="{{route('scorecardpopup',['slug'=>$match_score['id'],'tournament_id'=>$match_score['tournament_id']])}}"

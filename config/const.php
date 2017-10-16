@@ -13,6 +13,6 @@ return [
     'tournament_id' => '3',
     ///////
     'facebook_redirect' => env('FACBOOK_REDIRECT', 'http://gamithonfantasy.com/login/facebook/callback'),
-    'cricapi_key'=>'9vf1hFyMZDb04nrsA2KOsZXHvPO2',
+    'cricapi_key'=>'vS00Os3PN0euSYRufX2joebxjK33',
     'fbappid'=>'712839212231397'
 ];

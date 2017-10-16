@@ -49,7 +49,11 @@ Cricket app">
                                     {{$match_score['team_two']}}
 
                                 </div>
-                                
+                                @if(empty($match_score['match_scores'][0]['score']))
+                                    <span class="match_summary">{{$match_score['match_scores'][0]['score']}}</span>
+                                @else
+                                    <span class="match_summary">{{$match_score['match_scores'][0]['description']}}</span>
+                                @endif
                             </div>
                         </div>
                     </a>

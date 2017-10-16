@@ -38,8 +38,8 @@ class HomeController extends Controller
 
 
         //--------------------------------------
-        $data['match_scores'] = \App\Match::where('cricscore_api', '!=', 0)
-            ->with('match_scores')->take(4)->get()->toArray();
+        $data['match_scores'] = \App\Match::where('cricapi_match_id', '!=', 0)
+            ->with('match_scores')->take(4)->orderBy('id', 'DESC')->get()->toArray();
         //dd($data['match_scores']);
         $objTourmament = \App\Tournament::orderBy("start_date",
             'asc')->
@@ -249,8 +249,7 @@ class HomeController extends Controller
         return $this->timestamp;
     }
 
-    public
-    function addPlayerStats($pid)
+    public function addPlayerStats($pid)
     {
 
         $api_key = config('const.cricapi_key');
@@ -277,20 +276,6 @@ class HomeController extends Controller
                     $type_id = \App\Type::where('name', $tkey)->first()->id . ' ' . $types . '<br>';
 
 
-                    // echo $tkey=.' '.$types;
-//               $syncdata = array(
-//                   array(
-//                       'player_id' =>$player_id,
-//                       'format_id' =>$format_id,
-//                       'type_id' => $type_id,
-//                       'score'=>$types,
-//                       'playing_category'=>$playing_cat_id
-//                       )
-//
-//
-//               );
-//
-//               \App\PlayerStatDetail::insert($syncdata);
 
 
                 }
@@ -299,13 +284,7 @@ class HomeController extends Controller
             }
         }
         die;
-//      $syncdata = [];
-//      foreach ($request->stats as $key => $val) {
-//          $syncdata = array(
-//              array('stat_points' => $val['name'], 'game_type_stat_id' => $val['id'], 'player_id' => $pid)
-//
-//
-//          );
+
 
     }
 
@@ -364,15 +343,12 @@ class HomeController extends Controller
 
     public function rankings()
     {
-//        $stats = \App\Game::where('id', '1')
-//            ->with('game_roles', 'game_type.game_type_points.player_roles')->get()->toArray();
-//        $data['rankings'] = $stats;
-//        //dd($stats);
+
         $data['rankings'] = \App\RankingCategory::with(['category_players' => function ($query) {
             $query->orderBy('rating', 'DESC');
 
         }])->get()->toArray();
-        //dd($data['rankings']);
+
 
         return view('pages.rankings', $data);
     }
@@ -402,8 +378,7 @@ class HomeController extends Controller
      * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected
-    function validatorContact(array $data)
+    protected    function validatorContact(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
@@ -413,14 +388,12 @@ class HomeController extends Controller
         ]);
     }
 
-    public
-    function termsCon()
+    public    function termsCon()
     {
         return view('pages.t-c');
     }
 
-    public
-    function privacyPolicy()
+    public    function privacyPolicy()
     {
         return view('pages.p-p');
     }
@@ -471,8 +444,7 @@ class HomeController extends Controller
         return view('pages.how-to-play', $data);
     }
 
-    public
-    function searchUser(Request $request)
+    public   function searchUser(Request $request)
     {
         $searchParam = $request->get('searchParam');
         if (strlen($searchParam) > 2) {

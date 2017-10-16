@@ -39,7 +39,7 @@ class HomeController extends Controller
 
         //--------------------------------------
         $data['match_scores'] = \App\Match::where('cricapi_match_id', '!=', 0)
-            ->with('match_scores')->take(4)->orderBy('id', 'DESC')->get()->toArray();
+            ->with('match_scores')->take(4)->get()->toArray();
         //dd($data['match_scores']);
         $objTourmament = \App\Tournament::orderBy("start_date",
             'asc')->
